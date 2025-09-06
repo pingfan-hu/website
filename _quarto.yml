@@ -27,16 +27,20 @@ website:
     left:
       - icon: person-badge
         href: about.qmd
-        text: "About"
+        text: About
       - icon: file-bar-graph
         href: projects.qmd
-        text: "Projects"
+        text: Projects
       - icon: file-text
         href: blog.qmd
-        text: "Blog"
+        text: Blog
       - icon: file-slides
         href: talks.qmd
-        text: "Talks"
+        text: Talks
+      - icon: person-vcard
+        href: resume.pdf
+        text: Resume
+        target: _blank
 
     right:
       - icon: linkedin

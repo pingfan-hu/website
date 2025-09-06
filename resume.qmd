@@ -1,0 +1,185 @@
+---
+title: ""
+format:
+  resume-pdf:
+    keep-tex: false
+colorlinks: true
+author: Pingfan Hu
+cvfont: raleway #texlive fonts like raleway,fetamont,gillius,comfortaa
+cvcolor: 
+  main: B22122
+  accent: 5E9EA0
+jobtitle: "PhD Candidate in Systems Engineering\n{{< fa map-marker-alt >}} Washington, DC"
+sidebar:
+  image: images/portrait.png
+  bullets:
+    - "{{< var rnolink >}}, Quarto, Shiny"
+    - "Data Analysis & Data Viz"
+    - "Web Development"
+  sections: 
+    - name: Contact
+      items:
+        - icon: envelope
+          text: pingfan.hu@gwu.edu
+          href: mailto:pingfan.hu@gwu.edu
+        - icon: home
+          text: pingfanhu.com
+          href: https://pingfanhu.com
+        - icon: github
+          text: pingfan-hu
+          href: https://github.com/pingfan-hu
+        - icon: linkedin
+          text: "in/pingfan"
+          href: "https://www.linkedin.com/in/pingfan/"   
+    - name: Skills
+      items:
+        - text: R
+          exp: 
+            num: 1
+        - text: Quarto & Shiny
+          exp: 
+            num: 0.9
+        - text: Software Development
+          exp: 
+            num: 0.8
+        - text: Web Development
+          exp: 
+            num: 0.8
+        - text: Data Analysis
+          exp: 
+            num: 0.8
+        - text: SQL
+          exp: 
+            num: 0.5
+        - text: Python
+          exp: 
+            num: 0.5
+        - text: Shell
+          exp: 
+            num: 0.4
+
+    - name: Languages
+      items:
+        - "English: Proficient"
+        - "Chinese: Native"
+ 
+execute: 
+  echo: false
+---
+
+```{r}
+#| label: functions
+
+cveducation <- function(tbl, when, what, where) {
+    command_start <- "\\cveducation"
+    tbl[[where]] <- gsub("\n", " \\\\newline ", tbl[[where]])
+    res <- paste0(
+        command_start, "{", tbl[[when]], "}", 
+        "{", tbl[[what]], "}",
+        "{", tbl[[where]], "}"
+        )
+    cat(res, sep = "\n\n\n")
+}
+
+cvevent <- function(tbl, when, what, where, descr) {
+    command_start <- "\\cvevent"
+    tbl[[where]] <- gsub("\n", " \\\\newline ", tbl[[where]])
+    res <- paste0(
+        command_start, "{", tbl[[when]], "}", 
+        "{", tbl[[what]], "}",
+        "{", tbl[[where]], "}",
+        "{", tbl[[descr]], "}"
+        )
+    cat(res, sep = "\n\n\n")
+}
+
+cvproj <- function(tbl, what, role, items){
+    command_start <- "\\cvproj"
+    res <- paste0(
+        command_start, "{", tbl[[what]], "}",
+        "{", tbl[[role]], "}",
+        "{", sapply(tbl[[items]], function(x)paste0(x,collapse = ", ")), "}"
+    )
+    cat(res, sep = "\n\n\n")
+}
+```
+
+# Summary
+
+I am a research software engineer and PhD candidate in [EMSE](https://emse.engineering.gwu.edu/) at [George Washington University](https://www.gwu.edu/), supervised by professor [John Helveston](https://www.jhelvy.com). I do {{< var rlink >}} development and data analysis in human behavior using choice models. I develop websites and webapps using {{< var quarto >}} and {{< var shiny >}}.
+
+# Education
+
+```{r}
+#| label: education
+#| output: asis
+tibble::tribble(
+    ~role, ~institution, ~dates,
+    
+    "PhD in Systems Engineering",
+    "\\href{https://emse.engineering.gwu.edu}{\\textbf{George Washington University}} \\hfill \\faIcon{map-marker-alt} Washington, DC, USA",
+    "2023 - Present",
+
+    "MS in Mechanical Engineering",
+    "\\href{https://www.sydney.edu.au/engineering/schools/school-aerospace-mechanical-mechatronic-engineering.html}{\\textbf{University of Sydney}} \\hfill \\faIcon{map-marker-alt} Sydney, NSW, Australia",
+    "2016 - 2018",
+
+    "BS in Industrial Engineering, with Minor in Six Sigma",
+    "\\href{https://www.ime.psu.edu/index.aspx}{\\textbf{Pennsylvania State University}} \\hfill \\faIcon{map-marker-alt} State College, PA, USA",
+    "2011 - 2015"    
+) |>
+    cveducation(when = "dates", what = "role", where = "institution")
+```
+\vspace{-8pt}
+
+# Projects
+
+```{r}
+#| label: proj
+#| output: asis
+tibble::tribble(
+    ~what, ~role, ~items,
+    "surveydown \\& sdstudio",
+    "Creator, Maintainer, First Author of Journal Paper",
+    "\\href{https://pingfanhu.com/projects/03_surveydown/}{\\textbf{surveydown}} is an \\faIcon{r-project} package and an open-source platform for programmable, markdown-based surveys, invented under supervision of professor \\href{https://www.jhelvy.com}{John Helveston}. \\\\
+    \\href{https://pingfanhu.com/projects/04_sdstudio/}{\\textbf{sdstudio}} is a companion \\faIcon{r-project} package as GUI support for surveydown.",
+
+    "BEV Smart Charging Researches",
+    "Major Contributor, First Author of 2 Journal Papers",
+    "\\href{https://pingfanhu.com/projects/01_sc_adoption/}{User adoption research} on BEV smart charging by discrete choice models using survey results, followed by an \\href{https://pingfanhu.com/projects/02_smc_economy/}{economic analysis} on grid simulations of peak shaving cost-effectiveness. These researches provide insights to help policymakers and utilities design better systems that benefit both the grid and EV owners."
+) |>
+    cvproj(what = "what", role = "role", items = "items")
+
+```
+\vspace{-8pt}
+
+# Experience
+
+```{r}
+#| label: experience
+#| output: asis
+tibble::tribble(
+    ~role, ~institution, ~dates, ~details,
+
+    "Graduate Research Assistant",
+    "\\href{https://emse.engineering.gwu.edu}{\\textbf{George Washington University}} \\hfill \\faIcon{map-marker-alt} Washington, DC, USA",
+    "2023 - Present",
+    "PhD research proposal, design, and implementation in sustainable transportation and survey software invention using data analysis tools. Teaching assistant for systems engineering classes.",
+
+    "Project Engineer",
+    "\\href{https://www.harscorail.com}{\\textbf{Harsco Rail}} \\hfill \\faIcon{map-marker-alt} SC, USA \\& Beijing, CN",
+    "2021 - 2022",
+    "Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills.",
+
+    "Project Engineer",
+    "\\href{https://www.haier.com/global/haier_geappliances/}{\\textbf{GE Appliances}} \\hfill \\faIcon{map-marker-alt} Qingdao, CN",
+    "2019 - 2020",
+    "Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs.",
+
+    "Assistant Process Engineer (Intern)",
+    "\\href{https://www.kurtzersa.com}{\\textbf{Kurtz Ersa GmbH}} \\hfill \\faIcon{map-marker-alt} Wertheim, DE",
+    "2017",
+    "Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first \\href{https://www.youtube.com/watch?v=eUE0a_2C6XI}{Asian market promotion video on YouTube}."
+) |>
+    cvevent(when = "dates", what = "role", where = "institution", descr = "details")
+```

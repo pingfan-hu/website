@@ -8,3 +8,4 @@ blog_files
 site_libs
 /.claude/
 .env
+/.luarc.json
