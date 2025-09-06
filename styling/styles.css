@@ -1,5 +1,20 @@
 /* ---- Typography ---- */
 
+/* All links - remove underlines but keep color */
+a {
+  text-decoration: none;
+}
+
+/* Add underlines on hover for all links */
+a:hover {
+  text-decoration: underline;
+}
+
+/* Remove hover underlines for heading links */
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+  text-decoration: none;
+}
+
 /* Paragraph spacing */
 p {
   margin-bottom: 0.5rem;

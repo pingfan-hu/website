@@ -7,31 +7,37 @@ number-sections: false
 
 My name is **Pingfan Hu**, a research software engineer and PhD candidate in [EMSE](https://emse.engineering.gwu.edu/) at [George Washington University](https://www.gwu.edu/), supervised by professor [John Helveston](https://www.jhelvy.com). I am experienced in {{< var rlink >}} (base {{< var rnolink >}} + tidyverse) and {{< var python >}} development mainly in data analysis and data viz. I write moderate CSS and HTML codes as well.
 
+For a one-page summary of my academic and professional experience, please check out my resume:
+
+<center>
+<a href="resume.pdf" class="btn btn-primary" role="button" target="_blank"> Pingfan's Resume </a>
+</center>
+<br>
+
+### [**Research Projects**](projects.qmd)
+
+My research projects are proudly funded by the {{< var sloan >}}.
+
 I have 2 focuses in my field of study:
 
 1. **Researches on human behavior in transportation and sustainability using discrete choice models and data visualization.** My [smart charging adoption](projects/01_sc_adoption) research is implemented with survey-based data analysis that studies BEV (Battery Electric Vehicle) owners' willingness to opt in smart charging programs. This is followed by the [SMC economy](projects/02_smc_economy) analysis. The ultimate goal is to provide insights for policymakers and utilities to design better smart charging programs that benefit both the grid and BEV owners.
 2. **Development of open-source software for survey construction and data analysis.** The [surveydown](https://surveydown.org) {{< var rnolink >}} package is a flexible, open-source platform for making surveys with {{< var rnolink >}}, Quarto, Shiny, and PostgreSQL. It is designed to address the problems of version control, collaboration, and reproducibility in survey construction. The [sdstudio](https://sdstudio.surveydown.org) {{< var rnolink >}} package is a companion of surveydown, providing a GUI for survey building, preview, and data management.
 
-My research projects are proudly funded by the {{< var sloan >}}. For more information about my projects, please proceed to the [Projects](projects.qmd) page.
+### [**Blog**](blog.qmd)
 
-I write blogs on this site, mainly for the purpose of encapsulating my thoughts and ideas in the process of my research. I also write tutorials and guides for the tools and packages I use. You can find them in the [Blog](blog.qmd) page.
+I write blog posts on this site, mainly for the purpose of encapsulating my thoughts and ideas in the process of my research. I also write tutorials and guides for the tools and packages I use.
 
-The [Talks](talks.qmd) page contains my academic presentations in forms of conference posters and presentations.
+### [**Talks**](talks.qmd)
 
-For a one-page summary of my academic and professional experience, please check out my resume:
-
-<center>
-<a href="pdf/resume.pdf" class="btn btn-primary" role="button" target="_blank"> Pingfan's Resume </a>
-</center>
-<br>
+I collect my conference talks on this section, including presentation slides and posters.
 
 ## Experience and Expertise
 
 #### Degrees
 
-- (Ongoing) **PhD** - *Doctor of Philosophy* in Engineering Management and Systems Engineering at [George Washington University](https://www.emse.seas.gwu.edu), supervised by professor [John Helveston](https://www.jhelvy.com).
-- **MPE** - *Master of Professional Engineering* in Mechanical Engineering at [Sydney University](https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html), qualified by [Engineers Australia](https://www.engineersaustralia.org.au).
-- **BS** - *Bachelor of Science* in Industrial & Manufacturing Engineering at [Penn State University](https://www.ime.psu.edu), with a minor of Six Sigma.
+- (Ongoing) **Ph.D.** - *Doctor of Philosophy* in Engineering Management and Systems Engineering at [George Washington University](https://www.emse.seas.gwu.edu), supervised by professor [John Helveston](https://www.jhelvy.com).
+- **M.P.E.** - *Master of Professional Engineering* in Mechanical Engineering at [Sydney University](https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html), qualified by [Engineers Australia](https://www.engineersaustralia.org.au).
+- **B.S.** - *Bachelor of Science* in Industrial & Manufacturing Engineering at [Penn State University](https://www.ime.psu.edu), with a minor of Six Sigma.
 
 #### Professional Skills
 

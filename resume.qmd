@@ -9,7 +9,7 @@ cvfont: raleway #texlive fonts like raleway,fetamont,gillius,comfortaa
 cvcolor: 
   main: B22122
   accent: 5E9EA0
-jobtitle: "PhD Candidate in Systems Engineering\n{{< fa map-marker-alt >}} Washington, DC"
+jobtitle: "Ph.D. Candidate in Systems Engineering \\newline \\faIcon{map-marker-alt} Washington, DC"
 sidebar:
   image: images/portrait.png
   bullets:
@@ -116,15 +116,15 @@ I am a research software engineer and PhD candidate in [EMSE](https://emse.engin
 tibble::tribble(
     ~role, ~institution, ~dates,
     
-    "PhD in Systems Engineering",
+    "Ph.D. in Systems Engineering",
     "\\href{https://emse.engineering.gwu.edu}{\\textbf{George Washington University}} \\hfill \\faIcon{map-marker-alt} Washington, DC, USA",
     "2023 - Present",
 
-    "MS in Mechanical Engineering",
+    "M.P.E. in Mechanical Engineering",
     "\\href{https://www.sydney.edu.au/engineering/schools/school-aerospace-mechanical-mechatronic-engineering.html}{\\textbf{University of Sydney}} \\hfill \\faIcon{map-marker-alt} Sydney, NSW, Australia",
     "2016 - 2018",
 
-    "BS in Industrial Engineering, with Minor in Six Sigma",
+    "B.S. in Industrial Engineering, with Minor in Six Sigma",
     "\\href{https://www.ime.psu.edu/index.aspx}{\\textbf{Pennsylvania State University}} \\hfill \\faIcon{map-marker-alt} State College, PA, USA",
     "2011 - 2015"    
 ) |>
