@@ -237,12 +237,18 @@ thead {
   min-height: 1em;
   padding-top: 0.5em;
   padding-bottom: 0em;
+  z-index: 1000;
+}
+
+footer.footer .nav-footer, #quarto-header>nav {
+  padding-top: 0.5em;
 }
 
 .nav-footer-center {
   min-height: 2em;
 }
 
+/* Media queries */
 @media (max-width: 767.98px) {
   .nav-footer-center,
   .nav-footer-left,

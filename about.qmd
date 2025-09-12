@@ -14,7 +14,7 @@ For a one-page summary of my academic and professional experience, please check 
 </center>
 <br>
 
-### [**Research Projects**](projects.qmd)
+### [**Projects**](projects.qmd)
 
 My research projects are proudly funded by the {{< var sloan >}}.
 
@@ -31,7 +31,7 @@ I write blog posts on this site, mainly for the purpose of encapsulating my thou
 
 I collect my conference talks on this section, including presentation slides and posters.
 
-## Experience and Expertise
+## Expertise
 
 #### Degrees
 
