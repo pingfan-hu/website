@@ -218,12 +218,21 @@ thead {
 }
 
 /* Navigation */
+.navbar-nav a {
+  text-decoration: none;
+}
+
+.navbar-nav a:hover {
+  text-decoration: none;
+  color: #ffffffff;
+}
+
 @media (min-width: 768px) {
   .navbar-nav {
     flex-wrap: nowrap !important;
     white-space: nowrap;
   }
-  
+
   .navbar-nav .nav-item {
     flex-shrink: 1;
   }
