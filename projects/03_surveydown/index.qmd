@@ -33,7 +33,7 @@ PLOS One, *August 2025*
 
 ::: {.d-flex .justify-content-end}
 [<i class="bi bi-journal-bookmark-fill"></i> PLOS One Webpage](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0331002){.btn .btn-outline-primary .mx-1}
-[<i class="bi bi-file-earmark-pdf"></i> PDF](/pdf/surveydown_2025.pdf){.btn .btn-outline-primary .mx-1}
+[<i class="bi bi-file-earmark-pdf"></i> PDF](/files/surveydown_2025.pdf){.btn .btn-outline-primary .mx-1}
 :::
 :::
 ::::

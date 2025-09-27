@@ -1,8 +1,8 @@
 project:
   type: website
   resources:
-    - pdf/
-    - talks/pdf/
+    - files/
+    - talks/
 
 website:
   title: Pingfan Hu
@@ -65,8 +65,8 @@ format:
     toc-depth: 5
     toc-location: right
     lightbox: true
-    css: styling/styles.css
-    theme: [united, styling/theme.scss]
+    css: styles/styles.css
+    theme: [united, styles/theme.scss]
     embed-resources: true
     link-external-newwindow: true
     link-external-icon: false
