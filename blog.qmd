@@ -37,5 +37,5 @@ site_password <- Sys.getenv("SITE_PASSWORD", "defaultpass")
 
 cat(paste0('<script>window.SITE_PASSWORD = "', site_password, '";</script>'))
 cat('<script>window.PROTECTED_FILES = ', jsonlite::toJSON(protected_files), ';</script>')
-cat('<script src="styling/auth.js"></script>')
+cat('<script src="styles/auth.js"></script>')
 ```

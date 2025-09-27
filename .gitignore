@@ -9,3 +9,4 @@ site_libs
 /.claude/
 .env
 /.luarc.json
+**/*.quarto_ipynb

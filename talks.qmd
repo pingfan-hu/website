@@ -5,13 +5,12 @@ toc: false
 ---
 
 ```{r}
+#| results: asis
 library(tidyverse)
-library(googlesheets4)
 library(htmltools)
 library(commonmark)
 
-gs4_deauth()
-talks_data <- read_sheet("1WISHM4Y0kp12QAsXMRt3KhE9mQ18ofpNSUzz6V82tU8")
+talks_data <- read_csv("talks/talks.csv")
 
 # Function to convert markdown to HTML
 render_markdown <- function(text) {
@@ -19,17 +18,17 @@ render_markdown <- function(text) {
 }
 
 # Functions to construct paths
-make_slides_path <- function(folder_name) {
-  file.path("/talks", "slides", folder_name)
+make_slides_path <- function(name) {
+  paste0("https://pingfan-hu.github.io/", name, "/")
 }
 
-make_pdf_path <- function(folder_name) {
-  paste0(file.path("/talks", "pdf", folder_name), ".pdf")
+make_pdf_path <- function(name) {
+  paste0(file.path("/talks", name), ".pdf")
 }
 
 # Create presentations using HTML tags
 presentations <- talks_data %>%
-  pmap(function(Date, Title, Event, Location, Directory, Type = "slide") {
+  pmap(function(Date, Title, Event, Location, Name, Type = "slide") {
     # Default to "slide" if Type is not provided
     presentation_type <- if(is.null(Type) || is.na(Type)) "slide" else tolower(Type)
     
@@ -49,7 +48,7 @@ presentations <- talks_data %>%
         # Conditionally render either Slides button or Poster text
         if(presentation_type == "slide") {
           a(
-            href = make_slides_path(Directory),
+            href = make_slides_path(Name),
             class = "presentation-button",
             target = "_blank",
             rel = "noopener noreferrer",
@@ -66,7 +65,7 @@ presentations <- talks_data %>%
         },
         # Always show PDF button
         a(
-          href = make_pdf_path(Directory),
+          href = make_pdf_path(Name),
           class = "presentation-button",
           target = "_blank",
           rel = "noopener noreferrer",
