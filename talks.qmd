@@ -1,7 +1,6 @@
 ---
 title: "Talks"
 echo: false
-toc: false
 ---
 
 ```{r}
@@ -26,56 +25,95 @@ make_pdf_path <- function(name) {
   paste0(file.path("/talks", name), ".pdf")
 }
 
-# Create presentations using HTML tags
-presentations <- talks_data %>%
-  pmap(function(Date, Title, Event, Location, Name, Type = "slide") {
-    # Default to "slide" if Type is not provided
-    presentation_type <- if(is.null(Type) || is.na(Type)) "slide" else tolower(Type)
-    
+make_github_path <- function(name) {
+  paste0("https://github.com/pingfan-hu/", name)
+}
+
+# Create presentation function
+create_presentation <- function(Date, Title, Event, Location, Name, Type = "slide") {
+  # Default to "slide" if Type is not provided
+  presentation_type <- if(is.null(Type) || is.na(Type)) "slide" else tolower(Type)
+
+  div(
+    class = "presentation-box",
     div(
-      class = "presentation-box",
+      class = "presentation-content",
+      div(class = "presentation-title", Title),
       div(
-        class = "presentation-content",
-        div(class = "presentation-title", Title),
-        div(
-          class = "presentation-details",
-          div(class = "event-location", render_markdown(Event)),
-          div(class = "presentation-date", format(Date, "%B %d, %Y"))
-        )
-      ),
-      div(
-        class = "presentation-icons",
-        # Conditionally render either Slides button or Poster text
-        if(presentation_type == "slide") {
+        class = "presentation-details",
+        div(class = "event-location", render_markdown(Event)),
+        div(class = "presentation-date", format(Date, "%B %d, %Y"))
+      )
+    ),
+    div(
+      class = "presentation-icons",
+      # Conditionally render either 3 round buttons or single PDF button
+      if(presentation_type == "slide") {
+        list(
+          # Slides button
           a(
             href = make_slides_path(Name),
-            class = "presentation-button",
+            class = "presentation-button round-button",
             target = "_blank",
             rel = "noopener noreferrer",
-            tags$i(class = "bi bi-file-earmark-slides"),
-            span("Slides")
+            tags$i(class = "bi bi-file-earmark-slides")
+          ),
+          # PDF button
+          a(
+            href = make_pdf_path(Name),
+            class = "presentation-button round-button",
+            target = "_blank",
+            rel = "noopener noreferrer",
+            tags$i(class = "bi bi-file-earmark-pdf")
+          ),
+          # GitHub repo button
+          a(
+            href = make_github_path(Name),
+            class = "presentation-button round-button",
+            target = "_blank",
+            rel = "noopener noreferrer",
+            tags$i(class = "bi bi-github")
           )
-        } else {
-          # Simple centered text for Poster
-          div(
-            style = "text-align: center; width: 100px; margin-right: 0.5rem;",
-            tags$i(class = "bi bi-easel"),
-            span("Poster")
-          )
-        },
-        # Always show PDF button
+        )
+      } else {
+        # Single PDF button for Poster
         a(
           href = make_pdf_path(Name),
-          class = "presentation-button",
+          class = "presentation-button round-button",
           target = "_blank",
           rel = "noopener noreferrer",
-          tags$i(class = "bi bi-file-earmark-pdf"),
-          span("PDF")
+          tags$i(class = "bi bi-file-earmark-pdf")
         )
-      )
+      }
     )
-  })
+  )
+}
 
-# Render all presentations
-div(class = "presentations-container", presentations)
+# Filter and create slides
+slides_data <- talks_data %>%
+  filter(is.na(Type) | tolower(Type) == "slide")
+
+slides_presentations <- slides_data %>%
+  pmap(create_presentation)
+
+# Filter and create posters
+posters_data <- talks_data %>%
+  filter(!is.na(Type) & tolower(Type) == "poster")
+
+posters_presentations <- posters_data %>%
+  pmap(create_presentation)
+```
+
+## Slides
+
+```{r}
+#| results: asis
+div(class = "presentations-container", slides_presentations)
+```
+
+## Posters
+
+```{r}
+#| results: asis
+div(class = "presentations-container", posters_presentations)
 ```
