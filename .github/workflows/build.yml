@@ -22,11 +22,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libxml2-dev
 
-      - name: Install R packages
-        run: |
-          install.packages('pak', repos = sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch))
-          pak::pkg_install(c('tidyverse', 'kableExtra', 'here', 'surveydown'))
-        shell: Rscript {0}
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::tidyverse
+            any::kableExtra
+            any::here
+            any::surveydown
+
+      - name: Install TinyTeX
+        run: quarto install tinytex
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
