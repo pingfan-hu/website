@@ -126,8 +126,12 @@ Secondly, we need an **Automator** application:
 4. In the shell script box, enter:
 
 ```{bash}
-cd ~/Documents/GitHub # Change to your GitHub repo dir
-./pull-all-repos.sh
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# Change this path to the root folder of your GitHub repos
+cd "$HOME/Documents/GitHub" || exit 1
+
+"$HOME/Documents/GitHub/pull-all-repos.sh"
 ```
 
 5. Save it as an application and move it into your "Application" folder. Mine has the name being "Pull All Repos".
