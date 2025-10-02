@@ -1,0 +1,12 @@
+:::: {.card .mb-4 .custom-card}
+::: {.card-body}
+**Conference Paper** - IEEE VPPC 2024
+
+Hu, P., Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2024). *Measuring consumer willingness to enroll in battery electric vehicle smart charging programs*. 2024 IEEE Vehicle Power and Propulsion Conference (VPPC), 1–17. https://doi.org/10.1109/VPPC63154.2024.10755299
+
+::: {.d-flex .justify-content-end}
+[<i class="bi bi-journal-bookmark-fill"></i> IEEE Webpage](https://ieeexplore.ieee.org/document/10755299){.btn .btn-outline-primary .mx-1}
+[<i class="bi bi-file-earmark-pdf"></i> PDF](/files/2024_ieee_smart_charging.pdf){.btn .btn-outline-primary .mx-1}
+:::
+:::
+::::

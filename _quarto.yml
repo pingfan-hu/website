@@ -28,19 +28,18 @@ website:
       - icon: person-badge
         href: about.qmd
         text: About
-      - icon: file-bar-graph
-        href: projects.qmd
-        text: Projects
       - icon: file-text
         href: blog.qmd
         text: Blog
+      - icon: file-bar-graph
+        href: projects.qmd
+        text: Projects
+      - icon: file-pdf
+        href: papers.qmd
+        text: Papers
       - icon: file-slides
         href: talks.qmd
         text: Talks
-      - icon: person-vcard
-        href: resume.pdf
-        text: Resume
-        target: _blank
 
     right:
       - icon: linkedin

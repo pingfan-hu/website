@@ -8,7 +8,7 @@ listing:
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [title, description, categories, image]
+  fields: [title, description, image]
   grid-columns: 2
   image-height: auto
 grid: 
