@@ -15,28 +15,15 @@ description: "An open-source survey platform using {{< var rnolink >}}, Quarto, 
 
 <a href='https://surveydown.org'><img src='surveydown.png' align="right" style="height:139px;"/></a>
 
-## Useful Links
-
 ::: {.d-flex .justify-content-center .flex-wrap .text-center}
 [<i class="bi bi-browser-safari"></i> Website](https://surveydown.org){.btn .btn-primary .m-1 style="width: 140px;"}
 [<i class="bi bi-github"></i> GitHub](https://github.com/surveydown-dev/surveydown){.btn .btn-primary .m-1 style="width: 140px;"}
 [<i class="bi bi-award"></i> Award](https://ospo.gwu.edu/2024-student-open-source-award-winners){.btn .btn-primary .m-1 style="width: 140px;"}
 :::
 
-## Publication
+## Paper
 
-:::: {.card .mb-4 .custom-card}
-::: {.card-body}
-**Journal Paper** - surveydown: An open-source, markdown-based platform for programmable and reproducible surveys
-
-PLOS One, *August 2025*
-
-::: {.d-flex .justify-content-end}
-[<i class="bi bi-journal-bookmark-fill"></i> PLOS One Webpage](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0331002){.btn .btn-outline-primary .mx-1}
-[<i class="bi bi-file-earmark-pdf"></i> PDF](/files/surveydown_2025.pdf){.btn .btn-outline-primary .mx-1}
-:::
-:::
-::::
+{{< include /chunks/2025_plosone_surveydown.qmd >}}
 
 ## Citation
 
