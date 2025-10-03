@@ -141,8 +141,8 @@ tibble::tribble(
     ~what, ~role, ~items,
     "surveydown \\& sdstudio",
     "Creator, Maintainer, First Author of Journal Paper",
-    "\\href{https://pingfanhu.com/projects/03_surveydown/}{\\textbf{surveydown}} is an \\faIcon{r-project} package and an open-source platform for programmable, markdown-based surveys, invented together with professor \\href{https://www.jhelvy.com}{John Helveston}. \\\\
-    \\href{https://pingfanhu.com/projects/04_sdstudio/}{\\textbf{sdstudio}} is a companion \\faIcon{r-project} package as GUI support for surveydown.",
+    "\\href{https://pingfanhu.com/projects/2024-surveydown/}{\\textbf{surveydown}} is an \\faIcon{r-project} package and an open-source platform for programmable, markdown-based surveys, invented together with professor \\href{https://www.jhelvy.com}{John Helveston}. \\\\
+    \\href{https://pingfanhu.com/projects/2025-sdstudio/}{\\textbf{sdstudio}} is a companion \\faIcon{r-project} package as GUI support for surveydown.",
 
     "BEV Smart Charging Researches",
     "Major Contributor, First Author of 2 Journal Papers",
