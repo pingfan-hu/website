@@ -32,5 +32,5 @@ I am a research software engineer and PhD candidate in [EMSE](https://emse.engin
 
 #### Research Focus:
 
-1. **Transportation Research**: I study human behavior in sustainable transportation using discrete choice models. My work focuses on smart charging [adoption](projects/01_sc_adoption) and [economy](projects/02_smc_economy) analysis, providing insights to help policymakers and utilities design better systems that benefit both the grid and EV owners.
-2. **Open-Source Software**: I develop open-source tools for survey construction and data analysis. [surveydown](https://surveydown.org) is a flexible platform for creating surveys with {{< var rnolink >}}, Quarto, and Shiny. [sdstudio](https://sdstudio.surveydown.org) is a companion GUI for surveydown.
+1. **Transportation Research**: I study human behavior in sustainable transportation using discrete choice models. My work focuses on smart charging [adoption](/projects/2024-sc-adoption) and [economy](/projects/2025-smc-economy) analysis, providing insights to help policymakers and utilities design better systems that benefit both the grid and EV owners.
+2. **Open-Source Software**: I develop open-source tools for survey construction and data analysis. [surveydown](/projects/2024-surveydown) is a flexible platform for creating surveys with {{< var rnolink >}}, Quarto, and Shiny. [sdstudio](/projects/2025-sdstudio) is a companion GUI for surveydown.

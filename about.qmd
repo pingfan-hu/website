@@ -14,18 +14,22 @@ For a one-page summary of my academic and professional experience, please check 
 </center>
 <br>
 
+### [**Blog**](blog.qmd)
+
+I write blog posts on this site, mainly for the purpose of encapsulating my thoughts and ideas in the process of my research. I also write tutorials and guides for the tools and packages I use.
+
 ### [**Projects**](projects.qmd)
 
 My research projects are proudly funded by the {{< var sloan >}}.
 
 I have 2 focuses in my field of study:
 
-1. **Researches on human behavior in transportation and sustainability using discrete choice models and data visualization.** My [smart charging adoption](projects/01_sc_adoption) research is implemented with survey-based data analysis that studies BEV (Battery Electric Vehicle) owners' willingness to opt in smart charging programs. This is followed by the [SMC economy](projects/02_smc_economy) analysis. The ultimate goal is to provide insights for policymakers and utilities to design better smart charging programs that benefit both the grid and BEV owners.
-2. **Development of open-source software for survey construction and data analysis.** The [surveydown](https://surveydown.org) {{< var rnolink >}} package is a flexible, open-source platform for making surveys with {{< var rnolink >}}, Quarto, Shiny, and PostgreSQL. It is designed to address the problems of version control, collaboration, and reproducibility in survey construction. The [sdstudio](https://sdstudio.surveydown.org) {{< var rnolink >}} package is a companion of surveydown, providing a GUI for survey building, preview, and data management.
+1. **Researches on human behavior in transportation and sustainability using discrete choice models and data visualization.** My [smart charging adoption](/projects/2024-sc-adoption) research is implemented with survey-based data analysis that studies BEV (Battery Electric Vehicle) owners' willingness to opt in smart charging programs. This is followed by the [SMC economy](/projects/2025-smc-economy) analysis. The ultimate goal is to provide insights for policymakers and utilities to design better smart charging programs that benefit both the grid and BEV owners.
+2. **Development of open-source software for survey construction and data analysis.** The [surveydown](/projects/2024-surveydown) {{< var rnolink >}} package is a flexible, open-source platform for making surveys with {{< var rnolink >}}, Quarto, Shiny, and PostgreSQL. It is designed to address the problems of version control, collaboration, and reproducibility in survey construction. The [sdstudio](/projects/2025-sdstudio) {{< var rnolink >}} package is a companion of surveydown, providing a GUI for survey building, preview, and data management.
 
-### [**Blog**](blog.qmd)
+### [**Papers**](papers.qmd)
 
-I write blog posts on this site, mainly for the purpose of encapsulating my thoughts and ideas in the process of my research. I also write tutorials and guides for the tools and packages I use.
+I collect my publications on this section, including journal papers, conference papers, and preprints.
 
 ### [**Talks**](talks.qmd)
 

@@ -6,7 +6,7 @@ Hu, P., Bunea, B., & Helveston, J. P. (2025). *surveydown: An open-source, markd
 
 ::: {.d-flex .justify-content-end}
 [<i class="bi bi-journal-bookmark-fill"></i> PLOS One Webpage](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0331002){.btn .btn-outline-primary .mx-1}
-[<i class="bi bi-file-earmark-pdf"></i> PDF](/files/2025_plosone_surveydown.pdf){.btn .btn-outline-primary .mx-1}
+[<i class="bi bi-file-earmark-pdf"></i> PDF](/files/2025-plosone-surveydown.pdf){.btn .btn-outline-primary .mx-1}
 :::
 :::
 ::::
