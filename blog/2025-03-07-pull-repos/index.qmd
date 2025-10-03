@@ -1,7 +1,7 @@
 ---
 title: "Shortcut to Pull GitHub Repos"
 date: "2025-03-07"
-categories: [Tutorial]
+categories: [Tutorial, Web Development]
 echo: true
 eval: false
 description: "A MacOS tutorial of a shortcut to pull all local GitHub repositories"

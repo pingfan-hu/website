@@ -2,7 +2,7 @@
 title: "Smart Charging Adoption"
 author: "Pingfan Hu et al."
 date: "Jan, 2024"
-categories: [Smart Charging, Survey]
+categories: [Transportation, Survey]
 description: "EV owner preferences for smart charging programs."
 ---
 

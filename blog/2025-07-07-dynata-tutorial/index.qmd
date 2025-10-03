@@ -1,7 +1,7 @@
 ---
-title: "Dynata Link Embedding with surveydown"
+title: "🔒Dynata Link Embedding with surveydown"
 date: "2025-07-07"
-categories: [Tutorial]
+categories: [Tutorial, Survey]
 number-sections: true
 eval: false
 description: "A brief tutorial on how to embed Dynata links in your surveydown survey."

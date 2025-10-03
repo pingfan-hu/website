@@ -1,7 +1,7 @@
 ---
 title: "Solar and Wind Energy Advancements"
 date: "Sept, 2023"
-categories: [Data Viz]
+categories: [Sustainability, Data Viz]
 description: "A master-level renewable energy data viz."
 ---
 
