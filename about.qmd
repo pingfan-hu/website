@@ -5,7 +5,7 @@ number-sections: false
 
 ![](/images/about.png){fig-align="center" width="800"}
 
-My name is **Pingfan Hu**, a research software engineer and PhD candidate in [EMSE](https://emse.engineering.gwu.edu/) at [George Washington University](https://www.gwu.edu/), supervised by professor [John Helveston](https://www.jhelvy.com). I am experienced in {{< var rlink >}} (base {{< var rnolink >}} + tidyverse) and {{< var python >}} development mainly in data analysis and data viz. I write moderate CSS and HTML codes as well.
+My name is **Pingfan Hu**, a research software engineer and PhD candidate in [EMSE](https://emse.engineering.gwu.edu/) at [George Washington University](https://www.gwu.edu/), advised by professor [John Helveston](https://www.jhelvy.com). I am experienced in {{< var rlink >}} (base {{< var rnolink >}} + tidyverse) and {{< var python >}} development mainly in data analysis and data viz. I write moderate CSS and HTML codes as well.
 
 For a one-page summary of my academic and professional experience, please check out my resume:
 
@@ -35,7 +35,7 @@ I collect my conference talks on this section, including presentation slides and
 
 #### Degrees
 
-- (Ongoing) **Ph.D.** - *Doctor of Philosophy* in Engineering Management and Systems Engineering at [George Washington University](https://www.emse.seas.gwu.edu), supervised by professor [John Helveston](https://www.jhelvy.com).
+- (Ongoing) **Ph.D.** - *Doctor of Philosophy* in Engineering Management and Systems Engineering at [George Washington University](https://www.emse.seas.gwu.edu), advised by professor [John Helveston](https://www.jhelvy.com).
 - **M.P.E.** - *Master of Professional Engineering* in Mechanical Engineering at [Sydney University](https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html), qualified by [Engineers Australia](https://www.engineersaustralia.org.au).
 - **B.S.** - *Bachelor of Science* in Industrial & Manufacturing Engineering at [Penn State University](https://www.ime.psu.edu), with a minor of Six Sigma.
 
