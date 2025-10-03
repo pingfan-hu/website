@@ -106,7 +106,7 @@ cvproj <- function(tbl, what, role, items){
 
 # Summary
 
-I am a research software engineer and PhD candidate in [EMSE](https://emse.engineering.gwu.edu/) at [George Washington University](https://www.gwu.edu/), supervised by professor [John Helveston](https://www.jhelvy.com). I do {{< var rlink >}} development and data analysis in human behavior using choice models. I develop websites and webapps using {{< var quarto >}} and {{< var shiny >}}.
+I am a research software engineer and PhD candidate in [EMSE](https://emse.engineering.gwu.edu/) at [George Washington University](https://www.gwu.edu/), advised by professor [John Helveston](https://www.jhelvy.com). I do {{< var rlink >}} development and data analysis in human behavior using choice models. I develop websites and webapps using {{< var quarto >}} and {{< var shiny >}}.
 
 # Education
 
@@ -141,7 +141,7 @@ tibble::tribble(
     ~what, ~role, ~items,
     "surveydown \\& sdstudio",
     "Creator, Maintainer, First Author of Journal Paper",
-    "\\href{https://pingfanhu.com/projects/03_surveydown/}{\\textbf{surveydown}} is an \\faIcon{r-project} package and an open-source platform for programmable, markdown-based surveys, invented under supervision of professor \\href{https://www.jhelvy.com}{John Helveston}. \\\\
+    "\\href{https://pingfanhu.com/projects/03_surveydown/}{\\textbf{surveydown}} is an \\faIcon{r-project} package and an open-source platform for programmable, markdown-based surveys, invented together with professor \\href{https://www.jhelvy.com}{John Helveston}. \\\\
     \\href{https://pingfanhu.com/projects/04_sdstudio/}{\\textbf{sdstudio}} is a companion \\faIcon{r-project} package as GUI support for surveydown.",
 
     "BEV Smart Charging Researches",

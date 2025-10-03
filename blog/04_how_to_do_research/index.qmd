@@ -41,24 +41,24 @@ You may have heard a lot about literature review and bibliography since this is 
 
 ### 1. Literature Review and Bibliography
 
-I want to discuss some simple questions: Why do we do literature review and bibliography? What are the requirements for them? The usual answers are "I do so since my supervisor wants me to, and he/she has some solid requirements." This interpretation is correct, but not enough. My interpretations are:
+I want to discuss some simple questions: Why do we do literature review and bibliography? What are the requirements for them? The usual answers are "I do so since my advisor wants me to, and he/she has some solid requirements." This interpretation is correct, but not enough. My interpretations are:
 
 1.  You do literature review because you want to study and record the current progress of your research field or topic, and a bibliography works as a collection of your successful literature review.
 2.  There is no solid requirement for doing literature review and bibliography, since you are doing them for yourself. It's more important that your review notes make sense to you than to anyone else.
 3.  Although there is no solid requirement, your literature review should at least contain 2 parts: what you can learn from this literature, and what you can criticize. The other optional parts are the datasets and plots that interest you, or the methods you can learn from.
 
-Working as a PhD student or a researcher is different from being an ordinary student. You are already in your career and should treat your job in a professional way instead of "finishing tasks and handing in assignments", so, doing research is not to acquire objectives from your supervisor, get them done and report back. It is rather a conversation to yourself: What can I learn from this literature? What are its problems? How can it contribute to my project?
+Working as a PhD student or a researcher is different from being an ordinary student. You are already in your career and should treat your job in a professional way instead of "finishing tasks and handing in assignments", so, doing research is not to acquire objectives from your advisor, get them done and report back. It is rather a conversation to yourself: What can I learn from this literature? What are its problems? How can it contribute to my project?
 
 ### 2. Research Notes
 
 Taking research notes is a highly case-by-case matter. It's purely depending on your topic and your objectives. For me, I keep track of my project progress in different forms:
 
-1.  **Meeting Minutes and GitHub Issues**: [GitHub](https://github.com) is a repository management database by Microsoft. If you have coding projects, it's highly recommended to set up a GitHub account and start managing your project on it. I have weekly meeting with my supervisor, and bi-weekly meetings with my research team. I take notes and summarize into meeting minutes, have them sent to the team via email, and record into the **Issue** page of my project GitHub repo. For problems that cannot be immediately solved, I create a stand-alone **issue** and label as "To-do".
+1.  **Meeting Minutes and GitHub Issues**: [GitHub](https://github.com) is a repository management database by Microsoft. If you have coding projects, it's highly recommended to set up a GitHub account and start managing your project on it. I have weekly meeting with my advisor, and bi-weekly meetings with my research team. I take notes and summarize into meeting minutes, have them sent to the team via email, and record into the **Issue** page of my project GitHub repo. For problems that cannot be immediately solved, I create a stand-alone **issue** and label as "To-do".
 2.  **Markdown Pages**: I use [Quarto](https://quarto.org) on [RStudio](https://posit.co) and record my research progress as `qmd` documents and sort them in chronological order. It's easy for me to trace back and look for the project history.
 3.  **Craft Doc**: For some semi-formal notes, I usually record them into my Craft Doc. [Craft](https://www.craft.do) is a note-taking platform compatible with Mac, Windows, and mobile devices. It is similar to [Notion](https://www.notion.so/) but is a bit simpler to deal with. How Craft Doc works is by creating markdown documents and render them in real time.
 4.  **Apple Notes**: For purely informal notes, which might come out during conversations or casual time, I quickly note down with Apple Notes. There is one little trick for Mac: simply moving your cursor to the bottom right corner, you can see a little pop-up of a note page. Click on it and start to write. I record and clear these notes on weekly basis to make sure I have them taken good care of before I totally forget what these graffiti are.
 
-You might want to share some notes with your supervisor or your other teammates. I'll discuss about them in the [Publication & Communication](#publication-communication) section.
+You might want to share some notes with your advisor or your other teammates. I'll discuss about them in the [Publication & Communication](#publication-communication) section.
 
 ## Research Tools
 
@@ -66,7 +66,7 @@ There are tons of tools that we can freely access. For me, I'm making use of [Go
 
 ### 1. Google Scholar
 
-[Google Scholar](https://scholar.google.com) is the starting point of doing research, and it's perhaps the largest database that we can access. You may search for any keywords with proper filtering to look for the possible outcomes that may interest you. You may also search for your supervisor's name. His/her personal page will show the list of publications, along with the counts of citations in a bar chart in chronological order.
+[Google Scholar](https://scholar.google.com) is the starting point of doing research, and it's perhaps the largest database that we can access. You may search for any keywords with proper filtering to look for the possible outcomes that may interest you. You may also search for your advisor's name. His/her personal page will show the list of publications, along with the counts of citations in a bar chart in chronological order.
 
 ::: {style="text-align: center;"}
 ![***Figure 1**: Google Scholar: Stand on the shoulders of giants*](images/01_google_scholar.jpg){width="600"}
@@ -157,7 +157,7 @@ In this **interface**:
 
 ## Publication & Communication {#publication-communication}
 
-Rome was not built in a day. It takes a considerable amount of time to do the research project. It's vital to have regular communication with your supervisor. It could be face to face, online, email, or whatever method you both may prefer. Having your research resources available to your supervisor and other team members is important. Then it comes to the publication and communication methods.
+Rome was not built in a day. It takes a considerable amount of time to do the research project. It's vital to have regular communication with your advisor. It could be face to face, online, email, or whatever method you both may prefer. Having your research resources available to your advisor and other team members is important. Then it comes to the publication and communication methods.
 
 Likewise, there is no unique rule to do this, and only what you and your team feels comfortable is the right rule. For me, I use [GitHub](https://github.com), [Craft Doc,](https://www.craft.do) and my personal website (yeah, this website).
 
@@ -183,7 +183,7 @@ Tips of using **GitHub** and **GitHub Desktop**:
     c.  You can start a **project** with your teammates and use the project management system in GitHub. Note that **project** is not the same as **repo**.
     d.  You can fork **main** repo or any **branch** to make your own **branch**. Then, you may choose to merge your **branch** to **main** when necessary. This is for teamwork purpose.
 2.  **Private vs Public**:
-    a.  GitHub repos are by default set as **private** as you create them, which is necessary for all your on-going projects since they are usually confidential. Then, you assign your supervisor or anyone you want to cooperate with as **collaborator(s)**.
+    a.  GitHub repos are by default set as **private** as you create them, which is necessary for all your on-going projects since they are usually confidential. Then, you assign your advisor or anyone you want to cooperate with as **collaborator(s)**.
     b.  If you want to share your ideas and thoughts, you may set some of your other repos as **public**, so that they can benefit the others.
 3.  **Verbs in GitHub**:
     a.  To **commit** means to commit your local version on stage and ready for pushing.
