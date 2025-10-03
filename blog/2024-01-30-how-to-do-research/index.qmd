@@ -1,6 +1,6 @@
 ---
 title: "How to Do Research"
-date: "Jan 30, 2024"
+date: "2024-01-30"
 categories: [Tutorial]
 bibliography: references.bib
 description: "An overview of my research methodologies"

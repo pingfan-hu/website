@@ -1,6 +1,6 @@
 ---
 title: "The History of Logit"
-date: "May 20, 2024"
+date: "2024-05-20"
 categories: [Modeling]
 code-fold: true
 code-tools: true

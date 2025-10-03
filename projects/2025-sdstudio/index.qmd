@@ -4,7 +4,7 @@ author:
   - name: "[Pingfan Hu](https://pingfanhu.com)"
   - name: "[John Helveston](https://www.jhelvy.com)"
   - name: "[Bogdan Bunea](https://www.linkedin.com/in/bogdanbt/)"
-date: '2025-06-29'
+date: "Jun, 2025"
 image: "banner.png"
 number-sections: true
 categories:

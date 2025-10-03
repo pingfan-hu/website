@@ -1,6 +1,6 @@
 ---
 title: "formr Instance Deployment"
-date: "Dec 30, 2023"
+date: "2023-12-30"
 categories: [Tutorial]
 description: "A tutorial of deploying the formr instance using Ubuntu 22.04 on Akamai (prior name Linode)"
 ---

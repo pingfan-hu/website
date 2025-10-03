@@ -1,18 +1,17 @@
 ---
-title: "Master Projects"
-date: "May 24, 2023"
+title: "Multi-layer Network Science"
+date: "May, 2023"
 categories: [Data Viz]
-bibliography: ../references.bib
-description: "A collection of my master-level projects. It contains a multi-layer network analysis, and a renewable energy data viz"
+description: "A master-level multi-layer network analysis."
 ---
 
-## Network Science of the Mid-Atlantic Region
+::: {.d-flex .justify-content-center .flex-wrap .text-center}
+[<i class="bi bi-file-richtext"></i> Documentation](https://pingfan.craft.me/2023-network-science){.btn .btn-primary .m-1}
+:::
 
-This project is a multi-layer network science study on the Mid-Atlantic region. It is a student research project for [the FEW's Lab](https://blogs.gwu.edu/caitlin-grady/) managed by Prof Caitlin Grady.
+This project is a multi-layer network science study on the Mid-Atlantic region. It is a student research project for [the FEW's Lab](https://fewslab.org) managed by Prof Caitlin Grady.
 
-<a href="https://pingfan.craft.me/few" class="btn btn-primary" role="button"> Access the Project </a>
-
-### Project Scope
+## Project Scope
 
 ::: columns
 ::: {.column width="45%"}
@@ -60,9 +59,9 @@ The latter part of this project focuses on layers of rail and road.
 
 The codes can be modified so that you can expand to other selections of states, or to introduce other sources of `shp` files or `csv` files.
 
-### Project Overview
+## Project Overview
 
-#### 1. Spatial Analysis
+### 1. Spatial Analysis
 
 This section is the starting part of this project. It takes in geographical files from trusted sources and generates the proper maps and csv files out of them.
 
@@ -88,7 +87,7 @@ The Topography Map:
 
 ![](images/02_topography_map.png){fig-align="center" width="800"}
 
-#### 2. Centrality Analysis
+### 2. Centrality Analysis
 
 This section takes in the 4 edge files and the 4 node files, and generates the 3 types of centralities of each.
 
@@ -100,7 +99,7 @@ The centrality values are all listed in a ***descending order***.
 
 *Hint: any centrality `csv` file can also be used as a collection of nodes in its corresponding layer.*
 
-#### 3. Path Calculation
+### 3. Path Calculation
 
 Starting from this section, we only focus on the **rail** and **road** layers.
 
@@ -123,7 +122,7 @@ The `csv` headers are:
 9.  Target FAF Zone Description
 10. Path Count - the count of shortest paths
 
-#### 4. Degree Centrality Dist
+### 4. Degree Centrality Dist
 
 This section takes in the degree centralities of rails and roads, and generates the degree centrality distribution plots of them.
 
@@ -135,7 +134,7 @@ The ***Road*** Degree Centrality Distribution plot:
 
 ![](images/04_road_degree_centrality.png){fig-align="center" width="800"}
 
-#### 5. Network Attacks
+### 5. Network Attacks
 
 This section generates the deterministic and stochastic attacks on rails and roads.
 
@@ -157,30 +156,3 @@ The Rail Centrality Attack plot:
 The Road Centrality Attack plot:
 
 ![](images/06_road_centrality_attack.png){fig-align="center" width="800"}
-
-## Solar and Wind Energy Advancements
-
-This project studies the driving effects of ***solar*** and ***wind*** energy advancements. It is a Master-level project for [EMSE 6572](https://eda.seas.gwu.edu) instructed by [Prof John Helveston](https://www.jhelvy.com).
-
-<a href="https://rr.pingfanhu.com" class="btn btn-primary" role="button"> Access the Project </a>
-
-### Project Overview
-
-This project is performed as a team consisting of Pingfan Hu and Abbey Kollar.
-
-Renewable energy in the USA has seen significant growth from 2000 to 2023. This research studies solar and wind energies and dives into three primary reasons behind this expansion:
-
-1.  Cost of Solar and Wind Energy
-2.  Policies and Incentives, and
-3.  Energy Research Budgets
-
-This project contains the following:
-
-1.  Project Proposal
-2.  Progress Report
-3.  Final Report
-4.  Presentation
-
-The study aims to highlight which of these factors played the most crucial roles in this energy transformation. By understanding these relationships, we can better anticipate the future of renewable energy and make informed decisions.
-
-Data wrangling and analysis are both performed using R coding language, presented with Quarto files.

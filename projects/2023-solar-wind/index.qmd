@@ -1,0 +1,33 @@
+---
+title: "Solar and Wind Energy Advancements"
+date: "Sept, 2023"
+categories: [Data Viz]
+description: "A master-level renewable energy data viz."
+---
+
+::: {.d-flex .justify-content-center .flex-wrap .text-center}
+[<i class="bi bi-file-richtext"></i> Documentation](https://rr.pingfanhu.com){.btn .btn-primary .m-1}
+:::
+
+This project studies the driving effects of ***solar*** and ***wind*** energy advancements. It is a Master-level project for [EMSE 6572](https://eda.seas.gwu.edu) instructed by [Prof John Helveston](https://www.jhelvy.com).
+
+## Project Overview
+
+This project is performed as a team consisting of Pingfan Hu and Abbey Kollar.
+
+Renewable energy in the USA has seen significant growth from 2000 to 2023. This research studies solar and wind energies and dives into three primary reasons behind this expansion:
+
+1.  Cost of Solar and Wind Energy
+2.  Policies and Incentives, and
+3.  Energy Research Budgets
+
+This project contains the following:
+
+1.  Project Proposal
+2.  Progress Report
+3.  Final Report
+4.  Presentation
+
+The study aims to highlight which of these factors played the most crucial roles in this energy transformation. By understanding these relationships, we can better anticipate the future of renewable energy and make informed decisions.
+
+Data wrangling and analysis are both performed using R coding language, presented with Quarto files.
