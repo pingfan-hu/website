@@ -64,7 +64,7 @@ If you are using my template, there are several things I want to explain to ease
 
 2.  I used the [United theme](https://bootswatch.com/united/). This is a free theme made by Bootswatch. There are 25 Bootswatch themes in total, all compatible with Quarto doc. You can access them in the **Themes** drop-down menu.
 
-3.  I also used a customized `scss` file called `theme.scss` and another css file called `styles.css`. Both `scss` and `css` files are used to define personal page layout settings. The YAML grammar looks like this (You can see the full YAML codes in the `_quarto.yml` file):
+3.  I also used a customized `scss` file called `theme.scss` and another css file called `styles.css`. Both `scss` and `css` files are used to define personal page layout settings. The YAML grammar looks like this (You can see the full YAML code in the `_quarto.yml` file):
 
     ``` yaml
     format:
