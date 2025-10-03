@@ -25,7 +25,11 @@ description: "An open-source survey platform using {{< var rnolink >}}, Quarto, 
 
 {{< include /chunks/2025-plosone-surveydown.qmd >}}
 
-## Citation
+### Abstract
+
+This paper introduces the surveydown survey platform. With surveydown, researchers can create surveys that are programmable and reproducible using markdown and R code, leveraging the Quarto publication system and R Shiny web framework. While most survey platforms rely on graphical interfaces or spreadsheets to define survey content, surveydown uses plain text, enabling version control and collaboration via tools like GitHub. The package renders surveys as interactive Shiny web applications, allowing for complex features like conditional skip logic, dynamic question display, and complex randomization. The package supports a diverse set of question types and formatting options and users can leverage Shiny’s powerful reactive programming model to create a wide variety of interactive features. As an open-source platform, surveydown provides researchers full control over their survey implementation, including the survey application as well as where and how the resulting response data are stored. Workflows are entirely reproducible and integrate seamlessly with existing workflows for data collection and analysis in R.
+
+### Citation
 
 If you use this package in a publication, please cite the *PLOS One* article associated with it! You can get the citation information by typing `citation("surveydown")` into R, or copying below.
 
@@ -35,11 +39,23 @@ citation("surveydown")
 
 ::: {.callout-note icon=false}
 
-## Suggested citation
-
-Hu P, Bunea B, Helveston J (2025). “surveydown: An open-source, markdown-based platform for programmable and reproducible surveys.” _PLOS One_, *20*(8). [doi:10.1371/journal.pone.0331002](https://doi.org/10.1371/journal.pone.0331002)
-
+### Suggested citation
+Hu, P., Bunea, B., & Helveston, J. P. (2025). *surveydown: An open-source, markdown-based platform for programmable and reproducible surveys*. PLOS ONE, 20(8), e0331002. https://doi.org/10.1371/journal.pone.0331002
 :::
+
+### Bibtex
+
+```{.bib}
+@Article{,
+  title = {surveydown: An open-source, markdown-based platform for programmable and reproducible surveys},
+  author = {Pingfan Hu and Bogdan Bunea and John Paul Helveston},
+  journal = {PLOS One},
+  year = {2025},
+  volume = {20},
+  number = {8},
+  doi = {10.1371/journal.pone.0331002}
+}
+```
 
 ## Overview
 
