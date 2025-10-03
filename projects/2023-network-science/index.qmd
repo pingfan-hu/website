@@ -1,7 +1,7 @@
 ---
 title: "Multi-layer Network Science"
 date: "May, 2023"
-categories: [Data Viz]
+categories: [Transportation, Data Viz]
 description: "A master-level multi-layer network analysis."
 ---
 

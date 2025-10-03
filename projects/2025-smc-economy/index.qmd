@@ -2,7 +2,7 @@
 title: "SMC Economy"
 author: "Pingfan Hu et al."
 date: "Jan, 2025"
-categories: [Smart Charging, Simulation]
+categories: [Transportation, Data Viz]
 description: "Cost-effectiveness of Supplier-managed Charging programs."
 ---
 

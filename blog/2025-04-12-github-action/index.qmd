@@ -1,7 +1,7 @@
 ---
 title: "GitHub Action to Automatically Build Website"
 date: "2025-04-12"
-categories: [Tutorial]
+categories: [Tutorial, Web Development]
 echo: true
 eval: false
 description: "A tutorial of how to create GitHub Action to automatically build your website."
@@ -36,6 +36,13 @@ The built folder is by default `_site/` for Quarto. The first step is to add `_s
 
 Then, create a GitHub Actions workflow file to build your site when you push to your repository. Create a file at `.github/workflows/build.yml` with content like this:
 
+::: {.callout-tip}
+1. In "Install R dependencies" step, you may need to modify the list of packages according to your own needs.
+2. The "Install TinyTeX" step is only necessary if you have PDF output in your website.
+3. In "Render Quarto Project" step, I set an environment variable `SITE_PASSWORD` to pass to Quarto. You can remove it if you don't need it.
+4. Conduct to LLM to modify the workflow file according to your own needs.
+:::
+
 ```{yaml}
 name: Build and Deploy to Netlify
 
@@ -61,19 +68,25 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libxml2-dev
 
-      - name: Install R packages
-        run: |
-          install.packages('pak', repos = sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch))
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::tidyverse
+            any::kableExtra
+            any::here
+            any::surveydown
 
-          # Change to your required packages
-          pak::pkg_install(c('tidyverse', 'kableExtra', 'here', 'surveydown'))
-        shell: Rscript {0}
+      - name: Install TinyTeX
+        run: quarto install tinytex
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
+        env:
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0

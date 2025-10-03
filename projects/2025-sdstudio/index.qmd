@@ -7,9 +7,7 @@ author:
 date: "Jun, 2025"
 image: "banner.png"
 number-sections: true
-categories:
-  - Software
-  - Survey
+categories: [Software, Survey]
 execute:
   echo: true
   eval: false
