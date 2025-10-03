@@ -23,7 +23,7 @@ description: "An open-source survey platform using {{< var rnolink >}}, Quarto, 
 
 ## Paper
 
-{{< include /chunks/2025_plosone_surveydown.qmd >}}
+{{< include /chunks/2025-plosone-surveydown.qmd >}}
 
 ## Citation
 

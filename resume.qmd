@@ -146,7 +146,7 @@ tibble::tribble(
 
     "BEV Smart Charging Researches",
     "Major Contributor, First Author of 2 Journal Papers",
-    "\\href{https://pingfanhu.com/projects/01_sc_adoption/}{User adoption research} on BEV smart charging by discrete choice models using survey results, followed by an \\href{https://pingfanhu.com/projects/02_smc_economy/}{economic analysis} on grid simulations of peak shaving cost-effectiveness. These researches provide insights to help policymakers and utilities design better systems that benefit both the grid and EV owners."
+    "\\href{https://pingfanhu.com/projects/2024-sc-adoption/}{User adoption research} on BEV smart charging by discrete choice models using survey results, followed by an \\href{https://pingfanhu.com/projects/2025-smc-economy/}{economic analysis} on grid simulations of peak shaving cost-effectiveness. These researches provide insights to help policymakers and utilities design better systems that benefit both the grid and EV owners."
 ) |>
     cvproj(what = "what", role = "role", items = "items")
 

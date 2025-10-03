@@ -6,7 +6,7 @@ Hu, P., Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston
 
 ::: {.d-flex .justify-content-end}
 [<i class="bi bi-journal-bookmark-fill"></i> IEEE Webpage](https://ieeexplore.ieee.org/document/10755299){.btn .btn-outline-primary .mx-1}
-[<i class="bi bi-file-earmark-pdf"></i> PDF](/files/2024_ieee_smart_charging.pdf){.btn .btn-outline-primary .mx-1}
+[<i class="bi bi-file-earmark-pdf"></i> PDF](/files/2024-ieee-smart-charging.pdf){.btn .btn-outline-primary .mx-1}
 :::
 :::
 ::::

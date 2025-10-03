@@ -16,7 +16,7 @@ page-layout: full
 #| results: asis
 
 # Define protected files here
-protected_files <- c("08_dynata_tutorial")
+protected_files <- c("08-dynata-tutorial")
 
 # Read .env file if it exists
 if (file.exists(".env")) {
