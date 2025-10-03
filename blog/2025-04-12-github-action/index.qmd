@@ -1,6 +1,6 @@
 ---
 title: "GitHub Action to Automatically Build Website"
-date: "Apr 12, 2025"
+date: "2025-04-12"
 categories: [Tutorial]
 echo: true
 eval: false

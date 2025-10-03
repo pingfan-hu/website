@@ -3,14 +3,12 @@ title: "Projects"
 toc: false
 listing:
   contents: projects
-  sort: "date"
+  sort: "date desc"
   type: grid
   categories: false
   sort-ui: false
   filter-ui: false
   fields: [title, description, image]
-  grid-columns: 2
+  grid-columns: 3
   image-height: auto
-grid: 
-  body-width: 700px
 ---

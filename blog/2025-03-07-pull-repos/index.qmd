@@ -1,6 +1,6 @@
 ---
 title: "Shortcut to Pull GitHub Repos"
-date: "Mar 07, 2025"
+date: "2025-03-07"
 categories: [Tutorial]
 echo: true
 eval: false
