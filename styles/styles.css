@@ -285,6 +285,13 @@ footer.footer .nav-footer {
 }
 
 /* Media queries */
+/* Hide right navbar on mobile */
+@media (max-width: 767.98px) {
+  .navbar-nav.ms-auto {
+    display: none !important;
+  }
+}
+
 @media (max-width: 767.98px) {
   .nav-footer-center,
   .nav-footer-left,
