@@ -5,7 +5,7 @@ number-sections: false
 
 ![](/images/about.png){fig-align="center" width="800"}
 
-My name is **Pingfan Hu**, a research software engineer and PhD candidate in [EMSE](https://emse.engineering.gwu.edu/) at [George Washington University](https://www.gwu.edu/), advised by professor [John Helveston](https://www.jhelvy.com). I am experienced in {{< var rlink >}} (base {{< var rnolink >}} + tidyverse) and {{< var python >}} development mainly in data analysis and data viz. I write moderate CSS and HTML codes as well.
+{{< include /chunks/intro.qmd >}}
 
 For a one-page summary of my academic and professional experience, please check out my resume:
 

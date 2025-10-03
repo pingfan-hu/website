@@ -171,7 +171,7 @@ The first time you run this, you'll be prompted:
 zsh:2: permission denied: ./pull-all-repos.sh
 ```
 
-You need to run these codes in your Terminal:
+You need to run this code in your Terminal:
 
 ```{bash}
 cd ~/Documents/GitHub # Change to your root dir of GitHub repo

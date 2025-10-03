@@ -57,7 +57,7 @@ layers_kable
 
 The latter part of this project focuses on layers of rail and road.
 
-The codes can be modified so that you can expand to other selections of states, or to introduce other sources of `shp` files or `csv` files.
+The code can be modified so that you can expand to other selections of states, or to introduce other sources of `shp` files or `csv` files.
 
 ## Project Overview
 
