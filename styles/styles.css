@@ -1,3 +1,6 @@
+/* ---- Fonts ---- */
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css');
+
 /* ---- Typography ---- */
 
 /* All links - remove underlines but keep color */
@@ -39,6 +42,11 @@ blockquote {
 }
 
 /* ---- Code ---- */
+
+/* Apply Maple Mono font to all code elements */
+code, pre, .sourceCode {
+  font-family: 'Maple Mono', monospace !important;
+}
 
 /* Default height limit */
 pre.sourceCode {
