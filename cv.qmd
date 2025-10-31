@@ -16,9 +16,9 @@ execute:
 \vspace{-5pt}
 \par\centering{800 22nd St NW, Washington, DC 20052}
 \vspace{-5pt}
-\par\centering{{\large\Telefon} +1 (202) 468-1083}
+\par\centering{ {\large\Telefon} +1 (202) 468-1083}
 \vspace{-5pt}
-\par\centering{{\large\Letter} \href{mailto:pingfan.hu@gwu.edu}{pingfan.hu@gwu.edu}}
+\par\centering{ {\large\Letter} \href{mailto:pingfan.hu@gwu.edu}{pingfan.hu@gwu.edu}}
 \vspace{-5pt}
 \par\centering{\href{http://www.pingfanhu.com}{www.pingfanhu.com}}
 
