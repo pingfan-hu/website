@@ -1,0 +1,54 @@
+\usepackage{marvosym} % Allows the use of symbols
+\usepackage{parskip} % Spacing adjustments
+
+% Main font
+
+\usepackage{fontspec}
+\setmainfont{LXGWBright}[
+  Path           = _extensions/cv/fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Medium,
+  ItalicFont     = *-Italic,
+  BoldItalicFont = *-MediumItalic
+]
+\setsansfont{LXGWBright}[
+  Path           = _extensions/cv/fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Medium,
+  ItalicFont     = *-Italic,
+  BoldItalicFont = *-MediumItalic
+]
+
+% Monospace font
+
+\setmonofont{MapleMono-NF}[
+  Path           = _extensions/cv/fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  ItalicFont     = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+
+% Header and footer
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\textcolor{gray}{\footnotesize\emph{Updated \today}}}
+\fancyfoot[R]{\textcolor{gray}{\footnotesize\emph{\href{https://pingfanhu.com}{pingfanhu.com}}}}
+\fancyfoot[C]{\textcolor{gray}{\footnotesize\emph{Page \thepage\ of \pageref{LastPage}}}}
+\renewcommand{\headrulewidth}{0pt} % Removes the header line
+\renewcommand{\footrulewidth}{0pt} % Removes the footer line
+\usepackage{lastpage} % Required for \pageref{LastPage}
+
+% Links
+
+\usepackage{hyperref}
+\usepackage{color}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}

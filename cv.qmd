@@ -1,0 +1,134 @@
+---
+format: cv-pdf
+execute:
+  warning: false
+  echo: false
+  message: false
+  eval: true
+---
+
+\par\centering{\LARGE{Pingfan Hu}}
+\par\centering{Engineering Management and Systems Engineering}
+\vspace{-5pt}
+\par\centering{The George Washington University}
+\vspace{-5pt}
+\par\centering{4581 Science \& Engineering Hall}
+\vspace{-5pt}
+\par\centering{800 22nd St NW, Washington, DC 20052}
+\vspace{-5pt}
+\par\centering{{\large\Telefon} +1 (202) 468-1083}
+\vspace{-5pt}
+\par\centering{{\large\Letter} \href{mailto:pingfan.hu@gwu.edu}{pingfan.hu@gwu.edu}}
+\vspace{-5pt}
+\par\centering{\href{http://www.pingfanhu.com}{www.pingfanhu.com}}
+
+\vspace{-10pt}
+
+# Education & Training
+
+\vspace{-10pt}
+\begin{longtable}{lll}
+
+    2025 & \textbf{George Washington University}, Washington, D.C. & Ph.D. Systems Engineering\\
+
+    \multicolumn{3}{l}{Proposal: \emph{Electric Vehicle Smart Charging Adoption, Grid Peak-Shaving Quantification,}}\\
+
+    \multicolumn{3}{l}{\emph{and The surveydown Survey Platform}}\\
+    
+    \multicolumn{3}{l}{Doctoral Committee: \emph{John Paul Helveston, Caitlin Grady, Johan René van Dorp, \& Eric Hittinger}}\\[5pt]
+    
+    2018 & \textbf{University of Sydney}, Sydney, NSW, Australia & M.P.E. Mechanical Engineering\\
+
+    2015 & \textbf{Pennsylvania State University}, State College, PA & B.S. Industrial Engineering\\
+
+\end{longtable}
+
+\vspace{-15pt}
+
+# Research Interests
+
+- **Electric Vehicle Smart Charging Adoption**: Survey fielding and modeling on electric vehicle owners' preferences and sensitivities of smart charging programs, including supplier-managed charging and vehicle-to-grid.
+- **Grid Supply Curve Peak-Shaving**: Simulation and analysis of nation-wide grid supply curve impacts from electric vehicle charging behaviors, and quantification of peak-shaving with smart charging application.
+- **Open-source Survey Platform**: Development of \textit{surveydown}, an open-source R package for designing, deploying, and managing online surveys with advanced features for choice modeling applications.
+- **Companion Survey Tool**: Development of \textit{sdstudio}, a Shiny application to provide a user-friendly interface for designing and deploying surveys using the \textit{surveydown} R package.
+
+\vspace{-15pt}
+
+# Honors / Awards
+
+- 2024: 2nd Prize in GW's 2024 Student Open Source Awards for \textit{surveydown} R package
+
+# Publications
+
+<!-- Set spacing in between list -->
+
+\apptocmd{\tightlist}{\setlength{\itemsep}{4pt}}{}{}
+
+ORCID: \href{https://orcid.org/0009-0001-4877-4844}{0009-0001-4877-4844} | [Google Scholar Profile](https://scholar.google.com/citations?hl=en&user=cHRn7ysAAAAJ)
+
+## A. Journal Articles
+
+1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "surveydown: An open-source, markdown-based platform for programmable and reproducible surveys" *PLOS ONE*. 20(8). DOI: [10.1371/journal.pone.0331002](https://doi.org/10.1371/journal.pone.0331002)
+
+## B. Conference Proceedings
+
+1. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" (Paper No. TRBAM-25-01317). Paper accepted for presentation at the Transportation Research Board 104th Annual Meeting, Washington, D.C.
+2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2024). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" *2024 IEEE Vehicle Power and Propulsion Conference (VPPC)*. 1–17. DOI: [10.1109/VPPC63154.2024.10755299](https://doi.org/10.1109/VPPC63154.2024.10755299)
+
+## C. Working Papers & Papers Under Review
+
+1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "sdstudio: A Companion Package for Designing and Managing surveydown Surveys." *Under review at The Journal of Open Source Software*.
+2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential of electric vehicle supplier-managed charging." *Working paper*.
+3. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A. & Helveston, J.P. (2024) "Measuring Electric Vehicle Owners' Willingness to Participate in BEV Smart Charging Programs" *Under review at Environmental Research Letters*.
+
+## D. Software
+
+1. **Hu, P.** (aut,cre,cph) (2025) "`MiniCalendar`: A free and open-source mini menu bar calendar" macOS application.
+2. **Hu, P.** (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "`sdstudio`: Companion Application for the `surveydown` Survey Platform" R package.
+3. Helveston, J. P. (aut,cre,cph), **Hu, P.** (aut,cre), Bogdan Bunea (aut,cre) (2024) "`surveydown`: Markdown-Based Surveys Using Quarto Shiny Documents" R package.
+
+# Presentations / Conferences
+
+## A. Conference Presentations
+
+1. "surveydown: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
+2. "surveydown: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny", with John Paul Helveston. Posit Conference 2025 — The R & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
+3. "Grid-Integration of Electric Vehicles: Consumer Preferences for Supplier Managed Charging". Bridging Transportation Researchers 7. Online. Aug 06, 2025.
+4. "surveydown: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys". GW Open Source Conference 2025. Washington, DC. Mar 24, 2025.
+5. "Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs", with Brian Tarroja Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. 2024 IEEE Vehicle Power and Propulsion Conference (VPPC). Washington, DC. Oct 03, 2024.
+
+## B. Posters
+
+1. "surveydown: An Open-Source, Markdown-Based Survey Platform". GW 2025 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
+2. "Electric Vehicle Owner Preferences for Smart Charging". GW 2025 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
+3. "The BEV Smart Charging Adoption Project". 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 06, 2025.
+
+# Teaching & Education
+
+## A. Teaching Assistantships
+
+- Fall 2025 - EMSE 4572 / 6572: Exploratory Data Analysis
+- Spring 2025 - EMSE 4571: Programming for Analytics
+
+## B. Workshops
+
+- "`surveydown`: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. [jhelvy.github.io/2025-surveydown-workshop](https://jhelvy.github.io/2025-surveydown-workshop/).
+
+# Memberships in Professional Organizations
+
+- Transportation Research Board
+
+# Industry Experience
+
+- Project Engineer at *Harsco Rail*. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
+- Project Engineer at *GE Appliances*. Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs. Qingdao, China (2019 - 2020).
+- Assistant Process Engineer (Intern) at *Kurtz Ersa GmbH*. Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first Asian market promotion video on YouTube. Wertheim, Germany (Jan. - Mar. 2017).
+
+# Skills
+
+- **Languages**: English (*Proficient*), Chinese (*Native*).
+- **Modeling & Analysis**: Conjoint Analysis, Discrete Choice Modeling, Monte Carlo Simulation, Consumer Preferences, Regression.
+- **Data Collection**: Survey Design & Fielding, Database Management, Data Wrangling.
+- **Programming**: R, Quarto, Shiny, Git, LaTeX, Typst, Netlify, Python, PostgreSQL, Shell, HTML, CSS.
+- **Software**: Affinity, MS Office, Final Cut Pro.
+- **Large Language Models**: Claude Code CLI, Ollama.

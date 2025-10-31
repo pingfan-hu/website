@@ -7,10 +7,11 @@ number-sections: false
 
 {{< include /chunks/intro.qmd >}}
 
-For a one-page summary of my academic and professional experience, please check out my resume:
+Check out my **resume** and **cv** here:
 
 <center>
-<a href="resume.pdf" class="btn btn-primary" role="button" target="_blank"> Pingfan's Resume </a>
+<a href="resume.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 180px; margin: 5px;"> Pingfan's Resume </a>
+<a href="cv.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 180px; margin: 5px;"> Pingfan's CV </a>
 </center>
 <br>
 
