@@ -22,18 +22,15 @@ execute:
 \vspace{-5pt}
 \par\centering{\href{http://www.pingfanhu.com}{www.pingfanhu.com}}
 
-\vspace{-10pt}
-
 # Education & Training
 
-\vspace{-10pt}
 \begin{longtable}{lll}
 
     2025 & \textbf{George Washington University}, Washington, D.C. & Ph.D. Systems Engineering\\
 
-    \multicolumn{3}{l}{Proposal: \emph{Electric Vehicle Smart Charging Adoption, Grid Peak-Shaving Quantification,}}\\
+    \multicolumn{3}{l}{Proposal: \emph{Electric Vehicle Smart Charging Adoption, Grid Peak-Shaving Quantification, and}}\\
 
-    \multicolumn{3}{l}{\emph{and The surveydown Survey Platform}}\\
+    \multicolumn{3}{l}{\emph{The \texttt{surveydown} Survey Platform}}\\
     
     \multicolumn{3}{l}{Doctoral Committee: \emph{John Paul Helveston, Caitlin Grady, Johan René van Dorp, \& Eric Hittinger}}\\[5pt]
     
@@ -43,24 +40,20 @@ execute:
 
 \end{longtable}
 
-\vspace{-15pt}
+\vspace{-10pt}
 
 # Research Interests
 
 - **Electric Vehicle Smart Charging Adoption**: Survey fielding and modeling on electric vehicle owners' preferences and sensitivities of smart charging programs, including supplier-managed charging and vehicle-to-grid.
 - **Grid Supply Curve Peak-Shaving**: Simulation and analysis of nation-wide grid supply curve impacts from electric vehicle charging behaviors, and quantification of peak-shaving with smart charging application.
-- **Open-source Survey Platform**: Development of \textit{surveydown}, an open-source R package for designing, deploying, and managing online surveys with advanced features for choice modeling applications.
-- **Companion Survey Tool**: Development of \textit{sdstudio}, a Shiny application to provide a user-friendly interface for designing and deploying surveys using the \textit{surveydown} R package.
-
-\vspace{-15pt}
+- **Open-source Survey Platform**: Development of `surveydown`, an open-source R package for designing, deploying, and managing online surveys with advanced features for choice modeling applications.
+- **Companion Survey Tool**: Development of `sdstudio`, a companion R package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases.
 
 # Honors / Awards
 
-- 2024: 2nd Prize in GW's 2024 Student Open Source Awards for \textit{surveydown} R package
+- 2024: 2nd Prize in GW's 2024 Student Open Source Awards for the `surveydown` R package
 
 # Publications
-
-<!-- Set spacing in between list -->
 
 \apptocmd{\tightlist}{\setlength{\itemsep}{4pt}}{}{}
 
@@ -68,7 +61,7 @@ ORCID: \href{https://orcid.org/0009-0001-4877-4844}{0009-0001-4877-4844} | [Goog
 
 ## A. Journal Articles
 
-1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "surveydown: An open-source, markdown-based platform for programmable and reproducible surveys" *PLOS ONE*. 20(8). DOI: [10.1371/journal.pone.0331002](https://doi.org/10.1371/journal.pone.0331002)
+1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "`surveydown`: An open-source, markdown-based platform for programmable and reproducible surveys" *PLOS ONE*. 20(8). DOI: [10.1371/journal.pone.0331002](https://doi.org/10.1371/journal.pone.0331002)
 
 ## B. Conference Proceedings
 
@@ -77,7 +70,7 @@ ORCID: \href{https://orcid.org/0009-0001-4877-4844}{0009-0001-4877-4844} | [Goog
 
 ## C. Working Papers & Papers Under Review
 
-1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "sdstudio: A Companion Package for Designing and Managing surveydown Surveys." *Under review at The Journal of Open Source Software*.
+1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys." *Under review at The Journal of Open Source Software*.
 2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential of electric vehicle supplier-managed charging." *Working paper*.
 3. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A. & Helveston, J.P. (2024) "Measuring Electric Vehicle Owners' Willingness to Participate in BEV Smart Charging Programs" *Under review at Environmental Research Letters*.
 
@@ -91,15 +84,15 @@ ORCID: \href{https://orcid.org/0009-0001-4877-4844}{0009-0001-4877-4844} | [Goog
 
 ## A. Conference Presentations
 
-1. "surveydown: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
-2. "surveydown: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny", with John Paul Helveston. Posit Conference 2025 — The R & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
+1. "`surveydown`: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
+2. "`surveydown`: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny", with John Paul Helveston. Posit Conference 2025 — The R & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
 3. "Grid-Integration of Electric Vehicles: Consumer Preferences for Supplier Managed Charging". Bridging Transportation Researchers 7. Online. Aug 06, 2025.
-4. "surveydown: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys". GW Open Source Conference 2025. Washington, DC. Mar 24, 2025.
+4. "`surveydown`: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys". GW Open Source Conference 2025. Washington, DC. Mar 24, 2025.
 5. "Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs", with Brian Tarroja Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. 2024 IEEE Vehicle Power and Propulsion Conference (VPPC). Washington, DC. Oct 03, 2024.
 
 ## B. Posters
 
-1. "surveydown: An Open-Source, Markdown-Based Survey Platform". GW 2025 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
+1. "`surveydown`: An Open-Source, Markdown-Based Survey Platform". GW 2025 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
 2. "Electric Vehicle Owner Preferences for Smart Charging". GW 2025 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
 3. "The BEV Smart Charging Adoption Project". 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 06, 2025.
 

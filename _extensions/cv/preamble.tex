@@ -1,25 +1,21 @@
 \usepackage{marvosym} % Allows the use of symbols
 \usepackage{parskip} % Spacing adjustments
 
+% Section spacing (using KOMA-Script commands)
+\RedeclareSectionCommand[
+  beforeskip=7pt,
+  afterskip=5pt
+]{section}
+\RedeclareSectionCommand[
+  beforeskip=5pt,
+  afterskip=5pt
+]{subsection}
+
 % Main font
 
 \usepackage{fontspec}
-\setmainfont{LXGWBright}[
-  Path           = _extensions/cv/fonts/,
-  Extension      = .ttf,
-  UprightFont    = *-Regular,
-  BoldFont       = *-Medium,
-  ItalicFont     = *-Italic,
-  BoldItalicFont = *-MediumItalic
-]
-\setsansfont{LXGWBright}[
-  Path           = _extensions/cv/fonts/,
-  Extension      = .ttf,
-  UprightFont    = *-Regular,
-  BoldFont       = *-Medium,
-  ItalicFont     = *-Italic,
-  BoldItalicFont = *-MediumItalic
-]
+\setmainfont{Optima}
+\setsansfont{Optima}
 
 % Monospace font
 
