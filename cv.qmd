@@ -22,7 +22,7 @@ execute:
 \vspace{-5pt}
 \par\centering{\href{http://www.pingfanhu.com}{www.pingfanhu.com}}
 
-# Education & Training
+# Education
 
 \begin{longtable}{lll}
 
@@ -49,7 +49,7 @@ execute:
 - **Open-source Survey Platform**: Development of `surveydown`, an open-source R package for designing, deploying, and managing online surveys with advanced features for choice modeling applications.
 - **Companion Survey Tool**: Development of `sdstudio`, a companion R package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases.
 
-# Honors / Awards
+# Honors & Awards
 
 - [2025](https://engineering.gwu.edu/building-platform-make-survey-research-more-accessible): Profiled by GW Engineering for contributing to the `surveydown` platform.
 - [2024](https://ospo.gwu.edu/2024-student-open-source-award-winners): 2nd Prize in GW's 2024 Student Open Source Awards for the `surveydown` R package.
@@ -81,9 +81,9 @@ ORCID: [0009-0001-4877-4844](https://orcid.org/0009-0001-4877-4844) | [Google Sc
 2. **Hu, P.** (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "`sdstudio`: Companion Application for the `surveydown` Survey Platform" R package.
 3. Helveston, J. P. (aut,cre,cph), **Hu, P.** (aut,cre), Bogdan Bunea (aut,cre) (2024) "`surveydown`: Markdown-Based Surveys Using Quarto Shiny Documents" R package.
 
-# Presentations / Conferences
+# Presentations
 
-## A. Conference Presentations
+## A. Conferences
 
 1. "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys". Quant UX Con 2025. Virtual. Nov 05, 2025.
 2. "`surveydown`: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
@@ -98,7 +98,7 @@ ORCID: [0009-0001-4877-4844](https://orcid.org/0009-0001-4877-4844) | [Google Sc
 2. "Electric Vehicle Owner Preferences for Smart Charging". GW 2025 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
 3. "The BEV Smart Charging Adoption Project". 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 06, 2025.
 
-# Teaching & Education
+# Teaching
 
 ## A. Teaching Assistantships
 
@@ -110,9 +110,10 @@ ORCID: [0009-0001-4877-4844](https://orcid.org/0009-0001-4877-4844) | [Google Sc
 - "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. [jhelvy.github.io/2025-qux-surveydown-workshop/](https://jhelvy.github.io/2025-qux-surveydown-workshop/).
 - "`surveydown`: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. [jhelvy.github.io/2025-surveydown-workshop](https://jhelvy.github.io/2025-surveydown-workshop/).
 
-# Memberships in Professional Organizations
+# Organization Memberships
 
-- Transportation Research Board
+- Institute of Electrical and Electronics Engineers (IEEE)
+- Transportation Research Board (TRB)
 
 # Industry Experience
 
