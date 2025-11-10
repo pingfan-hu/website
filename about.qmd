@@ -7,17 +7,12 @@ number-sections: false
 
 {{< include /chunks/intro.qmd >}}
 
-Check out my **resume** and **cv** here:
+Check out my **Resume** and **CV** here:
 
 <center>
-<a href="resume.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 180px; margin: 5px;"> Pingfan's Resume </a>
-<a href="cv.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 180px; margin: 5px;"> Pingfan's CV </a>
+<a href="resume.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 140px; margin: 5px;"><i class="bi bi-person-badge"></i> Resume </a>
+<a href="cv.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 140px; margin: 5px;"><i class="bi bi-file-earmark-text"></i> CV </a>
 </center>
-<br>
-
-### [**Blog**](blog.qmd)
-
-I write blog posts on this site, mainly for the purpose of encapsulating my thoughts and ideas in the process of my research. I also write tutorials and guides for the tools and packages I use.
 
 ### [**Projects**](projects.qmd)
 
@@ -28,13 +23,11 @@ I have 2 focuses in my field of study:
 1. **Researches on human behavior in transportation and sustainability using discrete choice models and data visualization.** My [smart charging adoption](/projects/2024-sc-adoption) research is implemented with survey-based data analysis that studies BEV (Battery Electric Vehicle) owners' willingness to opt in smart charging programs. This is followed by the [SMC economy](/projects/2025-smc-economy) analysis. The ultimate goal is to provide insights for policymakers and utilities to design better smart charging programs that benefit both the grid and BEV owners.
 2. **Development of open-source software for survey construction and data analysis.** The [surveydown](/projects/2024-surveydown) {{< var rnolink >}} package is a flexible, open-source platform for making surveys with {{< var rnolink >}}, Quarto, Shiny, and PostgreSQL. It is designed to address the problems of version control, collaboration, and reproducibility in survey construction. The [sdstudio](/projects/2025-sdstudio) {{< var rnolink >}} package is a companion of surveydown, providing a GUI for survey building, preview, and data management.
 
-### [**Papers**](papers.qmd)
+### Other Sections
 
-I collect my publications on this section, including journal papers, conference papers, and preprints.
-
-### [**Talks**](talks.qmd)
-
-I collect my conference talks on this section, including presentation slides and posters.
+- [**Blog**](blog.qmd): I write blog posts on this section, mainly for encapsulating my thoughts and ideas during my research. I also write tutorials and guides for the tools and packages I use or develop.
+- [**Papers**](papers.qmd): I collect my publications on this section, including journal papers, conference papers, and preprints.
+- [**Talks**](talks.qmd): I collect my conference talks on this section, including presentation slides and posters.
 
 ## Expertise
 
@@ -44,18 +37,19 @@ I collect my conference talks on this section, including presentation slides and
 - **M.P.E.** - *Master of Professional Engineering* in Mechanical Engineering at [Sydney University](https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html), qualified by [Engineers Australia](https://www.engineersaustralia.org.au).
 - **B.S.** - *Bachelor of Science* in Industrial & Manufacturing Engineering at [Penn State University](https://www.ime.psu.edu), with a minor of Six Sigma.
 
-#### Professional Skills
+#### Skills
 
--   Experienced in {{< var rlink >}} coding and {{< var rlink >}} package development. Proficient in {{< var python >}} coding as well.
--   Expertise in data analysis and data visualization with coding skills and commercial tools like Power BI, Minitab, and Excel.
--   Advanced usage on LLM (large language model) like ChatGPT, Claude, and Gemini; capable of local deployment with Ollama.
--   Proficient knowledge in vehicles, transportation, and supply chain with industrial & mechanical engineering skills.
--   Solid work experience in engineering management.
+- Modeling & Analysis: Conjoint Analysis, Discrete Choice Modeling, Monte Carlo Simulation,
+Consumer Preferences, Regression.
+- Data Science: Survey Design & Fielding, Database Management, Data Wrangling.
+- Programming: R, Quarto, Shiny, Git, LaTeX, Typst, Netlify, Python, SQL, Shell, HTML, CSS.
+- Software: Affinity, MS Office, Final Cut Pro.
+- Large Language Models: Claude Code CLI, Ollama.
 
 #### Languages
 
--   Chinese Mandarin - Native language
--   English - Proficient technical writing and oral communication
+- Chinese Mandarin - Native language
+- English - Proficient technical writing and oral communication
 
 ## Personal Life
 
