@@ -51,13 +51,14 @@ execute:
 
 # Honors / Awards
 
-- 2024: 2nd Prize in GW's 2024 Student Open Source Awards for the `surveydown` R package
+- [2025](https://engineering.gwu.edu/building-platform-make-survey-research-more-accessible): Profiled by GW Engineering for contributing to the `surveydown` platform.
+- [2024](https://ospo.gwu.edu/2024-student-open-source-award-winners): 2nd Prize in GW's 2024 Student Open Source Awards for the `surveydown` R package.
 
 # Publications
 
 \apptocmd{\tightlist}{\setlength{\itemsep}{4pt}}{}{}
 
-ORCID: \href{https://orcid.org/0009-0001-4877-4844}{0009-0001-4877-4844} | [Google Scholar Profile](https://scholar.google.com/citations?hl=en&user=cHRn7ysAAAAJ)
+ORCID: [0009-0001-4877-4844](https://orcid.org/0009-0001-4877-4844) | [Google Scholar Profile](https://scholar.google.com/citations?hl=en&user=cHRn7ysAAAAJ)
 
 ## A. Journal Articles
 
