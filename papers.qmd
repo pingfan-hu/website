@@ -4,6 +4,7 @@ echo: false
 toc: false
 ---
 
+{{< include /chunks/2025-joss-sdstudio.qmd >}}
 {{< include /chunks/2025-plosone-surveydown.qmd >}}
 {{< include /chunks/2025-trb-smart-charging.qmd >}}
 {{< include /chunks/2024-ieee-smart-charging.qmd >}}

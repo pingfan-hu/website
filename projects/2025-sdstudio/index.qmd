@@ -5,8 +5,6 @@ author:
   - name: "[John Helveston](https://www.jhelvy.com)"
   - name: "[Bogdan Bunea](https://www.linkedin.com/in/bogdanbt/)"
 date: "Jun, 2025"
-image: "banner.png"
-number-sections: true
 categories: [Software, Survey]
 execute:
   echo: true
@@ -16,9 +14,20 @@ description: A companion {{< var rnolink >}} package as GUI support for surveydo
 
 <a href='https://sdstudio.surveydown.org'><img src='images/sdstudio.png' align="right" style="height:139px;"/></a>
 
-As a companion package to the [surveydown](https://surveydown.org/) platform, **sdstudio** serves as a comprehensive GUI for working with surveydown surveys. It allows you to build and preview surveys as well as manage response data all without requiring programming knowledge.
+::: {.d-flex .justify-content-center .flex-wrap .text-center}
+[<i class="bi bi-browser-safari"></i> Website](https://sdstudio.surveydown.org){.btn .btn-primary .m-1 style="width: 120px;"}
+[<i class="bi bi-github"></i> GitHub](https://github.com/surveydown-dev/sdstudio){.btn .btn-primary .m-1 style="width: 120px;"}
+[<i class="bi bi-r-circle-fill"></i> CRAN](https://cran.r-project.org/web/packages/sdstudio/){.btn .btn-primary .m-1 style="width: 120px;"}
+[<i class="bi bi-r-square-fill"></i> R-univ](https://cran.r-universe.dev/sdstudio){.btn .btn-primary .m-1 style="width: 120px;"}
+:::
 
-Below is a brief walkthrough video of the **sdstudio** package:
+## Paper
+
+{{< include /chunks/2025-joss-sdstudio.qmd >}}
+
+## Video
+
+Below is a brief walkthrough video of the `sdstudio` package:
 
 ::: {style="width:100%; text-align:center;"}
 {{< video https://www.youtube.com/watch?v=p00ivfg1B1M >}} ***Intro to sdstudio***
@@ -30,32 +39,35 @@ Below is a brief walkthrough video of the **sdstudio** package:
 
 ### Installation
 
-The **sdstudio** package is currently in development and can be installed directly from GitHub:
+Installing `sdstudio`:
 
-```r
-# Development version
+```{r}
+# Option 1: install from CRAN
+install.packages("sdstudio")
+
+# Option 2: install from GitHub
 pak::pak("surveydown-dev/sdstudio", ask = FALSE)
 ```
 
-Since **sdstudio** is a companion package of **surveydown**, make sure to install **surveydown** as well:
+Make sure to install `surveydown` as well:
 
-```r
-# Development version
-pak::pak("surveydown-dev/surveydown", ask = FALSE)
-
-# CRAN version
+```{r}
+# Option 1: install from CRAN
 install.packages("surveydown")
+
+# Option 2: install from GitHub
+pak::pak("surveydown-dev/surveydown", ask = FALSE)
 ```
 
-### Launch!
+### Launch
 
-Launch the studio in your browser using this function:
+Simply call the `launch()` function to start the studio:
 
-```r
+```{r}
 sdstudio::launch()
 ```
 
-The **sdstudio** interface is organized into three main tabs that follow the natural survey workflow:
+The `sdstudio` interface is organized into three main tabs that follow the natural survey workflow:
 
 - **🏗️ Build**: Visual survey creation with side-by-side structure and scripts
 - **👁️ Preview**: Real-time survey testing
@@ -69,7 +81,7 @@ The "Build" tab is your workspace of survey construction. You can either start f
 
 ::: {.callout-note}
 
-We currently have 15 templates to choose from. The ***default*** template contains a minimum basic structure for a clean start. You might also try the ***question_type*** template for a showcase of all question types, or try some advanced features with ***conditional_display***, ***conditional_navigation***, etc. For a full list of templates, see the [templates repo](https://github.com/surveydown-dev/templates) on GitHub.
+We currently have 16 templates to choose from. The ***default*** template contains a minimum basic structure for a clean start. You might also try the ***question_type*** template for a showcase of all question types, or try some advanced features with ***conditional_display***, ***conditional_navigation***, etc. For a full list of templates, go to the [surveydown-dev GitHub site](https://github.com/surveydown-dev) and search for any repo starting with "template_".
 
 :::
 
@@ -164,7 +176,7 @@ You might have noticed there is a green refresh button on the top right as well.
 
 ## The "Responses" Tab
 
-We built **sdstudio** for two purposes: for designing surveys and for managing survey response data. You can use the studio for either or both purposes. 
+We built `sdstudio` for two purposes: for designing surveys and for managing survey response data. You can use the studio for either or both purposes. 
 
 The "Responses" tab is used to view two forms of survey response data:
 
@@ -237,7 +249,7 @@ When you input your database credentials in the "Responses" tab, it creates a lo
 
 In this `.env` file, you will find the following variables:
 
-```r
+```{r}
 # Database connection settings for surveydown
 SD_HOST="your-database-host"
 SD_PORT="your-database-port"
@@ -247,7 +259,7 @@ SD_PASSWORD="your-database-password"
 SD_TABLE="your-database-table"
 ```
 
-The editing of this file is bi-directional, so you can either edit on this file, or use the **sdstudio** interface.
+The editing of this file is bi-directional, so you can either edit on this file, or use the `sdstudio` interface.
 
 ### GSSAPI Encryption
 
@@ -255,14 +267,14 @@ The `sdstudio::launch()` function allows the `gssencmode` argument. It controls 
 
 By default, we set `gssencmode = "auto"`, which attempts to use GSSAPI encryption if available, falling back to a plain connection if not. This is the recommended mode for most users. The connection status will show a green "Connected (GSSAPI enabled)" message if GSSAPI is successfully enabled, or a yellow "Connected (GSSAPI disabled)" message if it falls back to plain connection:
 
-```r
+```{r}
 # Auto mode (recommended) - tries GSSAPI first, falls back if needed
 sdstudio::launch()
 ```
 
 However, if you want to explicitly control the encryption mode, you can set `gssencmode` to one of the following values:
 
-```r
+```{r}
 # Prefer mode - only use GSSAPI
 sdstudio::launch(gssencmode = "prefer")
 
@@ -272,7 +284,7 @@ sdstudio::launch(gssencmode = "disable")
 
 ## Conclusion
 
-As a companion GUI for the **surveydown** platform, **sdstudio** significantly simplifies the survey creation process. It allows users to build, preview, and manage surveys through an intuitive interface, without requiring extensive programming skills. The three-tab workflow - Build, Preview, and Responses - provides a comprehensive solution that covers the entire survey lifecycle.
+As a companion GUI for the `surveydown` platform, `sdstudio` significantly simplifies the survey creation process. It allows users to build, preview, and manage surveys through an intuitive interface, without requiring extensive programming skills. The three-tab workflow - Build, Preview, and Responses - provides a comprehensive solution that covers the entire survey lifecycle.
 
 If you have any questions or feedback you'd like to share, please drop us a line using [GitHub Discussions](https://github.com/orgs/surveydown-dev/discussions).
 
