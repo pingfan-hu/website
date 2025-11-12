@@ -11,11 +11,7 @@ website:
   site-url: https://pingfanhu.com
   repo-url: https://github.com/pingfan-hu/pingfanWebsite
   back-to-top-navigation: false
-  open-graph:
-    locale: en_US
-    site-name: Pingfan Hu
-    description: "PhD candidate at George Washington University focusing on sustainable transportation using choice models and R programming. Developer of open-source survey tools."
-    image: images/logo.png
+  open-graph: true
   page-footer:
     center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
     border: true
