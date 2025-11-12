@@ -9,7 +9,6 @@ categories: [Software, Survey]
 execute:
   echo: true
   eval: false
-  warning: false
 description: "An open-source survey platform using {{< var rnolink >}}, Quarto, Shiny, and PostgreSQL."
 ---
 
@@ -25,6 +24,14 @@ description: "An open-source survey platform using {{< var rnolink >}}, Quarto, 
 ## Paper
 
 {{< include /chunks/2025-plosone-surveydown.qmd >}}
+
+## Video
+
+Below is an intro video of `surveydown` by my advisor, professor [John Helveston](https://www.jhelvy.com), in [posit::conf 2025](https://posit.co/conference/):
+
+::: {style="width:100%; text-align:center;"}
+{{< video https://www.youtube.com/watch?v=VwoeFKNvN5k >}} ***Intro to surveydown***
+:::
 
 ## Overview
 
