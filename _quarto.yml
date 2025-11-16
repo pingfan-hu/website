@@ -11,7 +11,10 @@ website:
   site-url: https://pingfanhu.com
   repo-url: https://github.com/pingfan-hu/pingfanWebsite
   back-to-top-navigation: false
-  open-graph: true
+  open-graph:
+    title: Pingfan Hu
+    image: images/logo.png
+    description: "PhD candidate at GWU focusing on sustainable transportation and open-source survey tools."
   page-footer:
     center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
     border: true
