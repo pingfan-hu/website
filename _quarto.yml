@@ -5,16 +5,14 @@ project:
     - talks/
 
 website:
+  open-graph: true
   title: Pingfan Hu
-  description: "PhD candidate at George Washington University focusing on sustainable transportation using choice models and R programming. Developer of open-source survey tools."
-  favicon: images/logo.png
+  description: PhD candidate at GWU focusing on sustainable transportation and open-source survey tools.
+  favicon: /images/logo.png
+  image: /images/logo.png
   site-url: https://pingfanhu.com
   repo-url: https://github.com/pingfan-hu/pingfanWebsite
   back-to-top-navigation: false
-  open-graph:
-    title: Pingfan Hu
-    image: images/logo.png
-    description: "PhD candidate at GWU focusing on sustainable transportation and open-source survey tools."
   page-footer:
     center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
     border: true
