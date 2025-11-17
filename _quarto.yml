@@ -7,7 +7,7 @@ project:
 website:
   title: Pingfan Hu
   description: PhD candidate at GWU focusing on sustainable transportation and open-source survey tools.
-  image: images/logo.png
+  image: images/image.png
   favicon: images/logo.png
   site-url: https://pingfanhu.com
   repo-url: https://github.com/pingfan-hu/pingfanWebsite
