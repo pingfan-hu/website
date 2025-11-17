@@ -1,6 +1,6 @@
 ---
 title: "About"
-number-sections: false
+description-meta: "Short bio of Pingfan Hu."
 ---
 
 ![](/images/about.png){fig-align="center" width="800"}
