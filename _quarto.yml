@@ -16,8 +16,7 @@ website:
   repo-url: https://github.com/pingfan-hu/website
   back-to-top-navigation: false
   twitter-card: true
-  open-graph:
-    locale: en_US
+  open-graph: true
   page-footer:
     center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
     border: true
