@@ -14,14 +14,11 @@ website:
   repo-url: https://github.com/pingfan-hu/website
   back-to-top-navigation: false
   twitter-card:
-    title: "Pingfan Hu - PhD Candidate at GWU"
     image: images/image.png
     image-width: 1200
     image-height: 630
   open-graph:
     locale: en_US
-    title: "Pingfan Hu - PhD Candidate at GWU"
-    site-name: "Pingfan Hu - PhD Candidate at GWU"
     image: images/image.png
     image-width: 1200
     image-height: 630
