@@ -1,5 +1,6 @@
 ---
 title: "SMC Economy"
+image: "/projects/banners/2025-smc-economy.png"
 author: "Pingfan Hu et al."
 date: "Jan, 2025"
 categories: [Transportation, Data Viz]

@@ -1,5 +1,6 @@
 ---
 title: "GitHub Action to Automatically Build Website"
+image: "/blog/banners/2025-04-12-github-action.png"
 date: "2025-04-12"
 categories: [Tutorial, Web Development]
 echo: true

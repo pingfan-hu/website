@@ -1,5 +1,6 @@
 ---
 title: "How to Do Research"
+image: "/blog/banners/2024-01-30-how-to-do-research.png"
 date: "2024-01-30"
 categories: [Tutorial]
 bibliography: references.bib

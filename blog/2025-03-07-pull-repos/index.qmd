@@ -1,5 +1,6 @@
 ---
 title: "Shortcut to Pull GitHub Repos"
+image: "/blog/banners/2025-03-07-pull-repos.png"
 date: "2025-03-07"
 categories: [Tutorial, Web Development]
 echo: true
