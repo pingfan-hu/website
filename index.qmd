@@ -1,6 +1,8 @@
 ---
 title: "Pingfan Hu"
 image: images/homepage.png
+open-graph:
+  image: images/card.png
 toc: false
 grid:
   body-width: 1200px
