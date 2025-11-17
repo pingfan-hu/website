@@ -12,9 +12,7 @@ website:
   site-url: https://pingfanhu.com
   repo-url: https://github.com/pingfan-hu/pingfanWebsite
   back-to-top-navigation: false
-  open-graph:
-    locale: es_ES
-    site-name: https://pingfanhu.com
+  open-graph: true
   page-footer:
     center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
     border: true
