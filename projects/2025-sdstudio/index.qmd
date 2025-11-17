@@ -1,5 +1,6 @@
 ---
 title: sdstudio
+image: "/projects/banners/2025-sdstudio.png"
 author:
   - name: "[Pingfan Hu](https://pingfanhu.com)"
   - name: "[John Helveston](https://www.jhelvy.com)"

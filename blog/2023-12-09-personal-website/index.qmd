@@ -1,5 +1,6 @@
 ---
 title: "How to Make a Personal Website"
+image: "/blog/banners/2023-12-09-personal-website.png"
 date: "2023-12-09"
 categories: [Tutorial, Web Development]
 description: "A tutorial of making a personal website using Quarto on RStudio"

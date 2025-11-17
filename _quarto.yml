@@ -4,6 +4,8 @@ project:
     - files/
     - talks/
     - images/
+    - projects/banners/
+    - blog/banners/
 
 website:
   title: Pingfan Hu
@@ -13,15 +15,9 @@ website:
   site-url: https://pingfanhu.com
   repo-url: https://github.com/pingfan-hu/website
   back-to-top-navigation: false
-  twitter-card:
-    image: images/image.png
-    image-width: 1200
-    image-height: 630
+  twitter-card: true
   open-graph:
     locale: en_US
-    image: images/image.png
-    image-width: 1200
-    image-height: 630
   page-footer:
     center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
     border: true

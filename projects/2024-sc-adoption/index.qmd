@@ -1,5 +1,6 @@
 ---
 title: "Smart Charging Adoption"
+image: "/projects/banners/2024-sc-adoption.png"
 author: "Pingfan Hu et al."
 date: "Jan, 2024"
 categories: [Transportation, Survey]
