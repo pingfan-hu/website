@@ -5,14 +5,16 @@ project:
     - talks/
 
 website:
-  open-graph: true
   title: Pingfan Hu
   description: PhD candidate at GWU focusing on sustainable transportation and open-source survey tools.
-  favicon: /images/logo.png
-  image: /images/logo.png
+  image: images/logo.png
+  favicon: images/logo.png
   site-url: https://pingfanhu.com
   repo-url: https://github.com/pingfan-hu/pingfanWebsite
   back-to-top-navigation: false
+  open-graph:
+    locale: es_ES
+    site-name: https://pingfanhu.com
   page-footer:
     center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
     border: true
