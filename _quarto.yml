@@ -18,6 +18,9 @@ website:
     locale: en_US
     title: "Pingfan Hu - PhD Candidate at GWU"
     site-name: "Pingfan Hu - PhD Candidate at GWU"
+    image: images/image.png
+    image-width: 1200
+    image-height: 630
   page-footer:
     center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
     border: true
