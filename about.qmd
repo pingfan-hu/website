@@ -1,6 +1,7 @@
 ---
 title: "About"
-description-meta: "Short bio of Pingfan Hu."
+open-graph:
+  description: "Short bio and expertise of Pingfan Hu"
 ---
 
 ![](/images/about.png){fig-align="center" width="800"}

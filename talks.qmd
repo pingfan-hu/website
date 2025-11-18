@@ -1,5 +1,7 @@
 ---
 title: "Talks"
+open-graph:
+  description: "Talks and presentations by Pingfan Hu"
 echo: false
 ---
 

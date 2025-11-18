@@ -1,5 +1,7 @@
 ---
 title: "Blog"
+open-graph:
+  description: "Blog posts and tutorials by Pingfan Hu"
 listing:
   contents: blog
   sort: "date desc"
