@@ -1,5 +1,7 @@
 ---
 title: "Papers"
+open-graph:
+  description: "Research publications by Pingfan Hu"
 echo: false
 toc: false
 ---
