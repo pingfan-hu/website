@@ -1,0 +1,263 @@
+---
+title: "Announcing surveydown v1.0.0!"
+image: "/blog/banners/2025-11-21-surveydown-version-1.png"
+author:
+  - name: John Paul Helveston
+  - name: Pingfan Hu
+description: "The first stable release of surveydown is here!"
+date: '2025-11-21'
+categories: [Software, Survey]
+execute: 
+  echo: true
+  eval: false
+---
+
+<a href='https://surveydown.org'><img src='images/surveydown.png' align="right" style="height:139px;"/></a>
+
+::: {.d-flex .justify-content-center .flex-wrap .text-center}
+[<i class="bi bi-browser-safari"></i> Website](https://surveydown.org){.btn .btn-primary .m-1 style="width: 120px;"}
+[<i class="bi bi-github"></i> GitHub](https://github.com/surveydown-dev/surveydown){.btn .btn-primary .m-1 style="width: 120px;"}
+:::
+
+We are thrilled to announce the `v1.0.0` release of `surveydown`, a stable release with improvements to YAML settings, page navigation, question creation, and a smoother overall developer experience.
+
+## Installation
+
+Verion 1.0.0 is coming to CRAN soon, but in the meantime you can upgrade to it by installing it from GitHub:
+
+```{r}
+# install.packages("pak")
+pak::pak("surveydown-dev/surveydown")
+```
+
+Now, let's check out the new features!
+
+## YAML settings
+
+A YAML header is used in every `.qmd` file as metadata to define page behavior. The `survey.qmd` file in each `surveydown` survey also relies on the YAML header, but we've made some significant changes to improve the experience.
+
+**YAML omission:** First, you no longer need to include any YAML header at all now as `surveydown` now auto-loads the following:
+
+```yaml
+---
+format: html
+echo: false
+warning: false
+---
+```
+
+This used to be the standard YAML header in `survey.qmd`, but now if you leave it out, these settings will be used by default.
+
+**New YAML experience:** An empty YAML is fine if you want to use all default settings, so your `survey.qmd` file can start directly with your library calls and survey content:
+
+````{r}
+```{r}
+library(surveydown)
+library(other_packages)
+```
+
+Survey content...
+````
+
+**YAML settings:** We have also expanded the YAML header to include all other survey settings to customize your survey behavior. Below is a full list of all possible YAML settings with their default values, including **theme**, **survey**, and **system message** settings. The comprehensive list of settings used in any one survey are generated in your `_survey/settings.yml` file of any `surveydown` survey project.
+
+```yaml
+---
+theme-settings:
+  theme: default
+  barposition: top
+  footer-left: ''
+  footer-center: ''
+  footer-right: ''
+
+survey-settings:
+  show-previous: no
+  use-cookies: no
+  auto-scroll: no
+  rate-survey: no
+  all-questions-required: no
+  start-page: your_first_page
+  system-language: en
+  highlight-unanswered: yes
+  highlight-color: gray
+  capture-metadata: yes
+  required-questions: []
+
+system-messages:
+  cancel: Cancel
+  confirm-exit: Confirm Exit
+  sure-exit: Are you sure you want to exit the survey?
+  submit-exit: Submit and Exit
+  warning: Warning
+  required: Please answer all required questions before proceeding.
+  rating-title: Before you go...
+  rating-text: 'Rate your survey experience:'
+  rating-scale: from 1-poor to 5-excellent
+  previous: Previous
+  next: Next
+  exit: Exit Survey
+  close-tab: Please close this tab manually to exit the survey.
+  choose-option: Choose an option...
+  click: Click here
+  redirect: Redirecting in
+  seconds: seconds
+  new-tab: Opens in a new tab
+  redirect-error: "Error: This text won't trigger any redirection..."
+---
+```
+
+You can customize any of them in `survey.qmd` to fit your survey needs. For example, say you want to **enable cookies**, you can have these YAML settings in your `survey.qmd` file (cookies are on by default):
+
+```yaml
+---
+survey-settings:
+  use-cookies: yes
+---
+```
+
+Note also the `system-messages` category. Here you can customize the text of all system messages used in your survey. For example, to change the "Next" button label to "Continue", you can do this:
+
+```yaml
+---
+system-messages:
+  next: Continue
+---
+```
+
+This used to be handled in a separate `translations.yml` file, but now they're all consolidated into the YAML header for easier access.
+
+## Previous Button Support
+
+One of the most requested features is finally here: **previous buttons**! Survey respondents can now navigate backwards through your survey, and you have full control over whether to enable this feature globally or on a per-page basis.
+
+**Global setting:** By default, previous buttons are **not** enabled, but you can enable them globally by changing the YAML header setting in the `survey.qmd` file:
+
+```yaml
+---
+survey-settings:
+  show-previous: true
+---
+```
+
+**Page-Level override:** You can override the global setting on specific pages using the newly introduced `sd_nav()` function in your `survey.qmd` file:
+
+```{r}
+# Enable previous button on a page
+sd_nav(show_previous = TRUE)
+
+# Disable previous button on a page
+sd_nav(show_previous = FALSE)
+```
+
+Here are examples of previous button being enabled and disabled:
+
+<center>
+<img src="images/previous_off.png" style="max-width: 700px; width: 100%; border: 1px solid #5654A2;">
+<p><em>Previous button disabled</em></p>
+</center>
+<br>
+
+<center>
+<img src="images/previous_on.png" style="max-width: 700px; width: 100%; border: 1px solid #5654A2;">
+<p><em>Previous button enabled</em></p>
+</center>
+
+## Auto Page Navigation
+
+One of our favorite new additions is auto-injecting page navigation. In previous versions of `surveydown`, you needed to add `sd_next()` on each page to insert next buttons. But now navigation buttons are auto injected at the end of each page unless you call `sd_nav()` or `sd_close()` on that page, which will override the global settings.
+
+This means survey page definition can be as simple as:
+
+```{r}
+--- page_1
+
+Page 1 content...
+
+--- page_2
+
+Page 2 content...
+
+--- page_3
+
+Page 3 content...
+```
+
+No navigation code needed - `surveydown` handles it for you!
+
+::: {.callout-tip}
+
+The auto nav injection is equivalent to having `sd_nav()` at the end of a page with a succeeding page. If you manually call `sd_nav()` or `sd_close()`, the auto injection will be overridden.
+
+:::
+
+**Manual navigation control**: Use `sd_nav()` or `sd_close()` to customize navigation.
+
+The new `sd_nav()` function replaces the old `sd_next()`, providing a unified interface for both previous and next buttons.
+
+In most cases, calling `sd_nav()` with empty parameters will suffice, as it defaults to showing the navigation buttons based on your global settings.
+
+`sd_nav()` has the following arguments:
+
+- `page_next`: Which page to go to next? (defaults to the next page in order)
+- `label_previous`: Override previous button label (defaults to the system message "Previous")
+- `label_next`: Override next button label (defaults to the system message "Next")
+- `show_previous`: Show previous button? (defaults to the global setting)
+- `show_next`: Show next button? (defaults to the global setting)
+
+Likewise, `sd_close()` supports both previous and next buttons with the following arguments:
+
+- `label_close`: Label on the close page buttons (defaults to the system message "Close")
+- `label_previous`: Override previous button label (defaults to the system message "Previous")
+- `show_previous`: Show previous button? (defaults to the global setting)
+
+## `sd_question()` Enhancements
+
+Since `surveydown` is built on top of shiny, we originally used the singular word `option` to define multiple-choice options in `sd_question()` (this is what shiny uses). But this can be confusing, since most of the time you want to provide multiple `options` (plural).
+
+To address this, now **both `option` and `options` are supported** for `sd_question()` when using multiple-choice type questions, such as `mc`, `mc_buttons`, etc.
+
+**Auto label to value conversion**: When defining `option` or `options`, the traditional way to define options is the pattern `label = value`, like this:
+
+```{r}
+sd_question(
+  id = "favorite_color",
+  type = "mc",
+  label = "What's your favorite color?",
+  options = c(
+    "Light Blue" = "light_blue",
+    "Dark Green" = "dark_green",
+    "Bright Red" = "bright_red"
+  )
+)
+```
+
+But in case you forget this pattern, you can now just provide a single vector of labels like this:
+
+```{r}
+sd_question(
+  id = "favorite_color",
+  type = "mc",
+  label = "What's your favorite color?",
+  options = c(
+    "Light Blue",
+    "Dark Green",
+    "Bright Red"
+  )
+)
+```
+
+In this case, the value stored in the data will be automatically converted to snake case. In this example, the above question will store the following values in the database:
+
+| Display Label | Database Value |
+|--------------|----------------|
+| Light Blue   | `light_blue`   |
+| Dark Green   | `dark_green`   |
+| Bright Red   | `bright_red`   |
+
+## What's Next?
+
+This `v1.0.0` release marks a major milestone for `surveydown`, but we're not stopping here. We have exciting features planned for future releases. Stay tuned!
+
+As always, we welcome your feedback and contributions. If you encounter any issues or have suggestions, please [open an issue for the package](https://github.com/surveydown-dev/surveydown/issues), [create a discussion in our organization](https://github.com/orgs/surveydown-dev/discussions), or contribute directly via pull requests.
+
+Happy surveying!
