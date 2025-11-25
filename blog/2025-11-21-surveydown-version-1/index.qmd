@@ -4,7 +4,7 @@ image: "/blog/banners/2025-11-21-surveydown-version-1.png"
 author:
   - name: John Paul Helveston
   - name: Pingfan Hu
-description: "The first stable release of surveydown is here!"
+description: "A stable release of `surveydown` with experience improvements to YAML, navigation, and question creation."
 date: '2025-11-21'
 categories: [Software, Survey]
 execute: 
