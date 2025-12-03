@@ -141,7 +141,7 @@ tibble::tribble(
     ~what, ~role, ~items,
     "surveydown \\& sdstudio",
     "Creator, Maintainer, First Author of a Journal Paper",
-    "\\href{https://pingfanhu.com/projects/2024-surveydown/}{\\textbf{surveydown}} surveydown is an open-source, feature-packed \\faIcon{r-project} package for programmable survey design \\& deployment, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend.\\\\
+    "\\href{https://pingfanhu.com/projects/2024-surveydown/}{\\textbf{surveydown}} is an open-source, feature-packed \\faIcon{r-project} package for programmable survey design \\& deployment, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend.\\\\
     \\href{https://pingfanhu.com/projects/2025-sdstudio/}{\\textbf{sdstudio}} is a companion \\faIcon{r-project} package as GUI \\& SQL support for surveydown.",
 
     "BEV Smart Charging Researches",
