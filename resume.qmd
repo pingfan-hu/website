@@ -14,8 +14,8 @@ sidebar:
   image: images/portrait.png
   bullets:
     - "{{< var rnolink >}}, Quarto, Shiny"
-    - "Data Analysis & Data Viz"
-    - "Web Development"
+    - "Data Science"
+    - "Software Development"
   sections: 
     - name: Contact
       items:
@@ -36,6 +36,9 @@ sidebar:
         - text: R
           exp: 
             num: 1
+        - text: Data Science
+          exp: 
+            num: 1
         - text: Quarto & Shiny
           exp: 
             num: 0.9
@@ -43,9 +46,6 @@ sidebar:
           exp: 
             num: 0.8
         - text: Web Development
-          exp: 
-            num: 0.8
-        - text: Data Analysis
           exp: 
             num: 0.8
         - text: SQL
@@ -140,13 +140,13 @@ tibble::tribble(
 tibble::tribble(
     ~what, ~role, ~items,
     "surveydown \\& sdstudio",
-    "Creator, Maintainer, First Author of Journal Paper",
+    "Creator, Maintainer, First Author of a Journal Paper",
     "\\href{https://pingfanhu.com/projects/2024-surveydown/}{\\textbf{surveydown}} is an \\faIcon{r-project} package and an open-source platform for programmable, markdown-based surveys, invented together with professor \\href{https://www.jhelvy.com}{John Helveston}. \\\\
-    \\href{https://pingfanhu.com/projects/2025-sdstudio/}{\\textbf{sdstudio}} is a companion \\faIcon{r-project} package as GUI support for surveydown.",
+    \\href{https://pingfanhu.com/projects/2025-sdstudio/}{\\textbf{sdstudio}} is a companion \\faIcon{r-project} package as GUI and SQL support for surveydown.",
 
     "BEV Smart Charging Researches",
     "Major Contributor, First Author of 2 Journal Papers",
-    "\\href{https://pingfanhu.com/projects/2024-sc-adoption/}{User adoption research} on BEV smart charging by discrete choice models using survey results, followed by an \\href{https://pingfanhu.com/projects/2025-smc-economy/}{economic analysis} on grid simulations of peak shaving cost-effectiveness. These researches provide insights to help policymakers and utilities design better systems that benefit both the grid and EV owners."
+    "\\href{https://pingfanhu.com/projects/2024-sc-adoption/}{User adoption research} on BEV smart charging by discrete choice models using survey results, followed by an \\href{https://pingfanhu.com/projects/2025-smc-economy/}{economic analysis} on grid simulations of peak shaving cost-efficiency. These researches provide insights to help policymakers and utilities design better systems that benefit both the grid and EV owners."
 ) |>
     cvproj(what = "what", role = "role", items = "items")
 
@@ -164,7 +164,7 @@ tibble::tribble(
     "Graduate Research Assistant",
     "\\href{https://emse.engineering.gwu.edu}{\\textbf{George Washington University}} \\hfill \\faIcon{map-marker-alt} Washington, DC, USA",
     "2023 - Present",
-    "PhD research proposal, design, and implementation in sustainable transportation and survey software invention using data analysis tools. Teaching assistant for systems engineering classes.",
+    "PhD research proposal, design, and implementation in sustainable transportation and survey software invention using data science skills and tools. Teaching assistant for systems engineering classes in data analysis and data viz.",
 
     "Project Engineer",
     "\\href{https://www.harscorail.com}{\\textbf{Harsco Rail}} \\hfill \\faIcon{map-marker-alt} SC, USA \\& Beijing, CN",

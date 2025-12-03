@@ -1,0 +1,12 @@
+:::: {.card .mb-4 .custom-card}
+::: {.card-body}
+**Journal Paper** - Environmental Research Letters 2025
+
+Hu, P., Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). *Measuring electric vehicle owners' willingness to participate in smart charging programs*. Environmental Research Letters. https://doi.org/10.1088/1748-9326/ae2597
+
+::: {.d-flex .justify-content-end}
+[<i class="bi bi-journal-bookmark-fill"></i> ERL Webpage](https://iopscience.iop.org/article/10.1088/1748-9326/ae2597){.btn .btn-outline-primary .mx-1}
+[<i class="bi bi-file-earmark-pdf"></i> PDF](https://iopscience.iop.org/article/10.1088/1748-9326/ae2597/pdf){.btn .btn-outline-primary .mx-1}
+:::
+:::
+::::

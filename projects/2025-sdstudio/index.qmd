@@ -22,10 +22,6 @@ description: A companion {{< var rnolink >}} package as GUI support for surveydo
 [<i class="bi bi-r-square-fill"></i> R-univ](https://cran.r-universe.dev/sdstudio){.btn .btn-primary .m-1 style="width: 120px;"}
 :::
 
-## Paper
-
-{{< include /chunks/2025-joss-sdstudio.qmd >}}
-
 ## Video
 
 Below is a brief walkthrough video of the `sdstudio` package:
