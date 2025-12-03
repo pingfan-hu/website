@@ -44,10 +44,10 @@ execute:
 
 # Research Interests
 
+- **Open-source Survey Platform**: Development of `surveydown`, an open-source, feature-packed R package for designing & deploying surveys, and survey data management with PostgreSQL.
+- **Companion Survey Tool**: Development of `sdstudio`, a companion R package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases.
 - **Electric Vehicle Smart Charging Adoption**: Survey fielding and modeling on electric vehicle owners' preferences and sensitivities of smart charging programs, including supplier-managed charging and vehicle-to-grid.
 - **Grid Supply Curve Peak-Shaving**: Simulation and analysis of nation-wide grid supply curve impacts from electric vehicle charging behaviors, and quantification of peak-shaving with smart charging application.
-- **Open-source Survey Platform**: Development of `surveydown`, an open-source R package for designing, deploying, and managing online surveys with advanced features for choice modeling applications.
-- **Companion Survey Tool**: Development of `sdstudio`, a companion R package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases.
 
 # Honors & Awards
 
@@ -64,6 +64,8 @@ ORCID: [0009-0001-4877-4844](https://orcid.org/0009-0001-4877-4844) | [Google Sc
 
 1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "`surveydown`: An open-source, markdown-based platform for programmable and reproducible surveys" *PLOS ONE*. 20(8). DOI: [10.1371/journal.pone.0331002](https://doi.org/10.1371/journal.pone.0331002)
 
+2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring electric vehicle owners' willingness to participate in smart charging programs". *Environmental Research Letters*. DOI: [10.1088/1748-9326/ae2597](https://doi.org/10.1088/1748-9326/ae2597)
+
 ## B. Conference Proceedings
 
 1. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" (Paper No. TRBAM-25-01317). Paper accepted for presentation at the Transportation Research Board 104th Annual Meeting, Washington, D.C.
@@ -73,7 +75,6 @@ ORCID: [0009-0001-4877-4844](https://orcid.org/0009-0001-4877-4844) | [Google Sc
 
 1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys." *Under review at The Journal of Open Source Software*.
 2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential of electric vehicle supplier-managed charging." *Working paper*.
-3. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A. & Helveston, J.P. (2024) "Measuring Electric Vehicle Owners' Willingness to Participate in BEV Smart Charging Programs" *Under review at Environmental Research Letters*.
 
 ## D. Software
 
