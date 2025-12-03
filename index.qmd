@@ -34,5 +34,6 @@ about:
 
 #### Research Focus:
 
-1. **Transportation Research**: I study human behavior in sustainable transportation using discrete choice models. My work focuses on smart charging [adoption](/projects/2024-sc-adoption) and [economy](/projects/2025-smc-economy) analysis, providing insights to help policymakers and utilities design better systems that benefit both the grid and EV owners.
-2. **Open-Source Software**: I develop open-source tools for survey construction and data analysis. [surveydown](/projects/2024-surveydown) is a flexible platform for creating surveys with {{< var rnolink >}}, Quarto, and Shiny. [sdstudio](/projects/2025-sdstudio) is a companion GUI for surveydown.
+1. **Open-Source Software**: I develop open-source tools for survey construction and data science. [surveydown](/projects/2024-surveydown) is an open-source, feature-packed {{< var rnolink >}} package for programmable survey design & deployment, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend. [sdstudio](/projects/2025-sdstudio) is a companion package as GUI and SQL support for surveydown.
+
+2. **Transportation Research**: I study human behavior in sustainable transportation using discrete choice models. My work focuses on smart charging [adoption](/projects/2024-sc-adoption) and [economy](/projects/2025-smc-economy) analysis, providing insights to help policymakers and utilities design better systems that benefit both the grid and EV owners.
