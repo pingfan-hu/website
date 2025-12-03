@@ -21,8 +21,10 @@ My research projects are proudly funded by the {{< var sloan >}}.
 
 I have 2 focuses in my field of study:
 
-1. **Researches on human behavior in transportation and sustainability using discrete choice models and data visualization.** My [smart charging adoption](/projects/2024-sc-adoption) research is implemented with survey-based data analysis that studies BEV (Battery Electric Vehicle) owners' willingness to opt in smart charging programs. This is followed by the [SMC economy](/projects/2025-smc-economy) analysis. The ultimate goal is to provide insights for policymakers and utilities to design better smart charging programs that benefit both the grid and BEV owners.
-2. **Development of open-source software for survey construction and data analysis.** The [surveydown](/projects/2024-surveydown) {{< var rnolink >}} package is a flexible, open-source platform for making surveys with {{< var rnolink >}}, Quarto, Shiny, and PostgreSQL. It is designed to address the problems of version control, collaboration, and reproducibility in survey construction. The [sdstudio](/projects/2025-sdstudio) {{< var rnolink >}} package is a companion of surveydown, providing a GUI for survey building, preview, and data management.
+1. **Development of open-source software for survey construction and data analysis.** The [surveydown](/projects/2024-surveydown) {{< var rnolink >}} package is an open-source, feature-packed platform for programmable survey design & deployment, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend. It is designed to address the problems of version control, collaboration, and reproducibility in survey construction. The [sdstudio](/projects/2025-sdstudio) {{< var rnolink >}} package is a companion of surveydown, providing a GUI for survey building, preview, and easy SQL management.
+
+2. **Researches on human behavior in transportation and sustainability using discrete choice models and data visualization.** My [smart charging adoption](/projects/2024-sc-adoption) research is implemented with survey-based data analysis that studies BEV (Battery Electric Vehicle) owners' willingness to opt in smart charging programs. This is followed by the [SMC economy](/projects/2025-smc-economy) analysis. The ultimate goal is to provide insights for policymakers and utilities to design better smart charging programs that benefit both the grid and BEV owners.
+
 
 ### Other Sections
 
@@ -43,7 +45,7 @@ I have 2 focuses in my field of study:
 - Modeling & Analysis: Conjoint Analysis, Discrete Choice Modeling, Monte Carlo Simulation,
 Consumer Preferences, Regression.
 - Data Science: Survey Design & Fielding, Database Management, Data Wrangling.
-- Programming: R, Quarto, Shiny, Git, LaTeX, Typst, Netlify, Python, SQL, Shell, HTML, CSS.
+- Programming: {{< var rnolink >}}, Quarto, Shiny, Git, LaTeX, Typst, Netlify, Python, SQL, Shell, HTML, CSS.
 - Software: Affinity, MS Office, Final Cut Pro.
 - Large Language Models: Claude Code CLI, Ollama.
 
