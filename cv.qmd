@@ -44,7 +44,7 @@ execute:
 
 # Research Interests
 
-- **Open-source Survey Platform**: Development of `surveydown`, an open-source, feature-packed \faIcon{r-project} package for programmable survey design & deployment, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend.
+- **Open-source Survey Platform**: Development of `surveydown`, an open-source, feature-packed \faIcon{r-project} package for programmable and reproducible surveys, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend.
 - **Companion Survey Tool**: Development of `sdstudio`, a companion \faIcon{r-project} package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases.
 - **Electric Vehicle Smart Charging Adoption**: Survey fielding and modeling on electric vehicle owners' preferences and sensitivities of smart charging programs, including supplier-managed charging and vehicle-to-grid.
 - **Grid Supply Curve Peak-Shaving**: Simulation and analysis of nation-wide grid supply curve impacts from electric vehicle charging behaviors, and quantification of peak-shaving with smart charging application.
