@@ -1,5 +1,7 @@
 \usepackage{marvosym} % Allows the use of symbols
 \usepackage{parskip} % Spacing adjustments
+\usepackage{ragged2e} % Better ragged alignment
+\setlength{\RaggedRightParindent}{0pt}
 
 % Section spacing (using KOMA-Script commands)
 \RedeclareSectionCommand[
@@ -62,3 +64,8 @@
 \usepackage{color}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+% Force left alignment for all content
+\raggedright
+\let\oldpar\par
+\def\par{\oldpar\raggedright}
