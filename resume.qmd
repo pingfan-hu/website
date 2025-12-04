@@ -1,5 +1,22 @@
 ---
-format: cv-pdf
+format:
+  cv-pdf:
+    fontsize: 10pt
+    geometry:
+      - top=0.5in
+      - bottom=0.5in
+      - left=0.5in
+      - right=0.5in
+      - includefoot
+    include-in-header:
+      text: |
+        \usepackage{parskip}
+        \setlength{\parskip}{4pt}
+        \setlength{\itemsep}{2pt}
+        \setlength{\parsep}{2pt}
+        \setlength{\topsep}{2pt}
+        \usepackage{enumitem}
+        \setlist{nosep}
 execute:
   warning: false
   echo: false
@@ -10,64 +27,43 @@ execute:
 \par\centering{\LARGE{Pingfan Hu}}
 \par\centering{Washington, DC | {\large\Letter} \href{mailto:pingfan.hu@gwu.edu}{pingfan.hu@gwu.edu} | {\large\Telefon} (202) 468-1083 | \href{http://www.pingfanhu.com}{pingfanhu.com}}
 
-# Education
+### EDUCATION
 
-\begin{longtable}{lll}
+\begin{longtable}{lllll}
 
-    2025 & \textbf{George Washington University}, Washington, D.C. & Ph.D. Systems Engineering\\
+    2026 & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
     
-    2018 & \textbf{University of Sydney}, Sydney, NSW, Australia & M.P.E. Mechanical Engineering\\
+    2018 & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.2\\
 
-    2015 & \textbf{Pennsylvania State University}, State College, PA & B.S. Industrial Engineering\\
+    2015 & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
 
 \end{longtable}
 
-\vspace{-10pt}
+\vspace{-20pt}
 
-# Skills
+### [PROJECTS](https://pingfanhu.com/projects)
 
-- **Languages**: English (*Proficient*), Chinese (*Native*).
-- **Programming**: \faIcon{r-project}, Quarto, Shiny, Git, LaTeX, Typst, Python, SQL, Shell, HTML, CSS.
-- **Data Science**: Survey Design & Fielding, Database Management, Data Wrangling, Data viz.
-- **Modeling**: Conjoint Analysis, Discrete Choice Modeling, Monte Carlo Simulation.
-- **Software**: Affinity, MS Office, Final Cut Pro.
-- **Large Language Models**: Claude Code CLI, Ollama.
+**`surveydown` Survey Platform** - *Helveston Lab, GWU* \hfill 2023-2024
 
-# [Projects](https://pingfanhu.com/projects)
+- Developed `surveydown`, an open-source, \faIcon{r-project} package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Mainly responsible for UI and SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
+- Published a journal article in *Plos ONE* with 1000+ views, presented at Posit Conference 2025, awarded 2nd prize and profiled by GW Engineering.
 
-**The `surveydown` Survey Platform** \hfill 2023-2024
+**`sdstudio` Companion Package** - *Individual Project* \hfill 2025
 
-*Helveston Lab, GWU*
-
-- `surveydown` is an open-source, feature-packed \faIcon{r-project} package for programmable survey design & deployment, combining Quarto UI, Shiny framework, and PostgreSQL backend. Now having 150+ stars on GitHub and 6000+ downloads on CRAN.
-- Invented `surveydown` together with my advisor, Prof. John Helveston, mainly responsible for UI design, database management, and template maintenance.
-- First author of a related journal article published in *Plos ONE* with 1000+ views, presented at Posit Conference 2025, awarded 2nd prize and profiled by GW Engineering.
-
-**The `sdstudio` Companion Package** \hfill 2025
-
-*Individual Project*
-
-- `sdstudio` is a companion \faIcon{r-project} package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases. Now having 200+ downloads on CRAN.
-- Developed `sdstudio` to lower the technical barrier of using `surveydown`, responsible for the full development of all features and UI/UX design.
+- Developed `sdstudio` as GUI and SQL support to `surveydown`, responsible for the full development of all features and UI/UX design, now having 200+ downloads on CRAN.
 - Proposing a conference presentation at GW OSCON 2026.
 
-**The BEV Smart Charging Adoption Project** \hfill 2024-2025
+**BEV Smart Charging Adoption Project** - *Joint between GWU, UC Davis & UC Irvine* \hfill 2024-2025
 
-*Joint Project between GWU, UC Davis & UC Irvine*
+- Performed survey fielding, data wrangling, and discrete choice modeling. Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality. Leveraged mixed logit models to estimate consumer preferences and sensitivities to various smart charging program attributes.
+- Published a journal article in *IOP Science*, 2 conference papers in *IEEE* and *TRB*, with 300+ views altogether.
 
-- This project collects BEV owner adoption to smart charging programs using conjoint surveys and discrete choice modeling.
-- Responsible for survey fielding, data wrangling, and choice model estimation using \faIcon{r-project}. Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality. Leveraged mixed logit models to estimate consumer preferences and sensitivities to various smart charging program attributes.
-- First author of a journal article in *IOP Science*, 2 conference papers in *IEEE* and *TRB*, with 300+ views altogether.
+**Smart Charging Cost-Efficiency Project** - *Joint between GWU, UC Davis & UC Irvine* \hfill 2025-2026
 
-**The Smart Charging Cost-Efficiency Project** \hfill 2025-2026
+- Performed Monte Carlo simulation to evaluate the BEV usage status quo. Processed grid supply data from NREL's Cambium model across all 18 grids nationwide, and simulated charging sessions to quantify cost savings with various smart charging strategies.
+- Proposing a journal paper to *Applied Energy*.
 
-*Joint Project between GWU, UC Davis & UC Irvine*
-
-- This project simulates nation-wide grid supply curve impacts from electric vehicle charging behaviors, and quantifies peak-shaving with smart charging application.
-- Responsible for data collection, data wrangling, Monte Carlo simulation, and result analysis using \faIcon{r-project}. Processed grid supply data from NREL's Cambium model across all 18 grids nationwide, and simulated charging sessions to quantify peak-shaving potential with various smart charging strategies.
-- First author of a working paper, proposing submission to the *Applied Energy* journal.
-
-# Experiences
+### WORK EXPERIENCE
 
 **Harsco Rail** \hfill SC, USA \& Beijing, China
 
@@ -89,10 +85,10 @@ execute:
 
 - Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples. Conducted Asian market analysis for Ersa's 2017 marketing strategy. Served as the face of the company by starring in Ersa's first Asian market promotional video.
 
-# Additional Information
+### SKILLS
 
-- Honors & Awards: 2nd Prize in GW's 2024 Student Open Source Awards; Profiled by GW Engineering in 2025.
-- Publications: 2 journal articles, 2 conference proceedings, and 3 software packages.
-- Teaching: Teaching Assistant for EMSE 4571 & EMSE 4572/6572 at GWU.
-- Workshops: Delivered `surveydown` workshop at Quant UX Con 2025.
-- Memberships: IEEE and TRB member.
+- Advanced programming skills in \faIcon{r-project}, Quarto, Shiny, Git, Python, SQL, Shell, HTML, and CSS.
+- Experienced in data science with survey design, SQL management, data wrangling, and data viz.
+- Software skills in graphic design (Affinity), data analysis (Excel, PostgreSQL, and Power BI), and video editing (Final Cut Pro).
+- AI skills in programming projects with Claude Code CLI, and local LLM deployment with Ollama.
+- Both a team player and a strong individual contributor.
