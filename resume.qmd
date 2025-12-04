@@ -4,19 +4,10 @@ format:
     fontsize: 10pt
     geometry:
       - top=0.5in
-      - bottom=0.5in
-      - left=0.5in
-      - right=0.5in
+      - bottom=0.3in
+      - left=0.6in
+      - right=0.6in
       - includefoot
-    include-in-header:
-      text: |
-        \usepackage{parskip}
-        \setlength{\parskip}{4pt}
-        \setlength{\itemsep}{2pt}
-        \setlength{\parsep}{2pt}
-        \setlength{\topsep}{2pt}
-        \usepackage{enumitem}
-        \setlist{nosep}
 execute:
   warning: false
   echo: false
@@ -24,10 +15,14 @@ execute:
   eval: true
 ---
 
-\par\centering{\LARGE{Pingfan Hu}}
+\par\centering{\Large{\textbf{Pingfan Hu}}}
 \par\centering{Washington, DC | {\large\Letter} \href{mailto:pingfan.hu@gwu.edu}{pingfan.hu@gwu.edu} | {\large\Telefon} (202) 468-1083 | \href{http://www.pingfanhu.com}{pingfanhu.com}}
 
+\vspace{-11pt}
+
 ### EDUCATION
+
+\vspace{-9pt}
 
 \begin{longtable}{lllll}
 
@@ -39,13 +34,23 @@ execute:
 
 \end{longtable}
 
-\vspace{-20pt}
+\vspace{-35pt}
+
+### SKILLS
+
+- Advanced programming skills in \faIcon{r-project}, Quarto, Shiny, Git, Python, SQL, Shell, HTML, and CSS.
+- Experienced in data science with survey design, SQL management, data wrangling, and data viz.
+- Software skills in data (Excel, PostgreSQL, and Power BI), graphics (Affinity), and video (Final Cut Pro).
+- AI skills in programming projects with Claude Code CLI, and local LLM deployment with Ollama.
+- Fast learner, both a team player and a strong individual contributor.
+
+\vspace{-10pt}
 
 ### [PROJECTS](https://pingfanhu.com/projects)
 
-**`surveydown` Survey Platform** - *Helveston Lab, GWU* \hfill 2023-2024
+**`surveydown` Survey Platform** - *Flagship Project of Helveston Lab, GWU* \hfill 2023-2024
 
-- Developed `surveydown`, an open-source, \faIcon{r-project} package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Mainly responsible for UI and SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
+- Developed `surveydown`, an open-source, \faIcon{r-project} package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Mainly responsible for UI & SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
 - Published a journal article in *Plos ONE* with 1000+ views, presented at Posit Conference 2025, awarded 2nd prize and profiled by GW Engineering.
 
 **`sdstudio` Companion Package** - *Individual Project* \hfill 2025
@@ -53,15 +58,17 @@ execute:
 - Developed `sdstudio` as GUI and SQL support to `surveydown`, responsible for the full development of all features and UI/UX design, now having 200+ downloads on CRAN.
 - Proposing a conference presentation at GW OSCON 2026.
 
-**BEV Smart Charging Adoption Project** - *Joint between GWU, UC Davis & UC Irvine* \hfill 2024-2025
+**BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2024-2025
 
 - Performed survey fielding, data wrangling, and discrete choice modeling. Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality. Leveraged mixed logit models to estimate consumer preferences and sensitivities to various smart charging program attributes.
 - Published a journal article in *IOP Science*, 2 conference papers in *IEEE* and *TRB*, with 300+ views altogether.
 
-**Smart Charging Cost-Efficiency Project** - *Joint between GWU, UC Davis & UC Irvine* \hfill 2025-2026
+**Smart Charging Cost-Efficiency Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2025-2026
 
 - Performed Monte Carlo simulation to evaluate the BEV usage status quo. Processed grid supply data from NREL's Cambium model across all 18 grids nationwide, and simulated charging sessions to quantify cost savings with various smart charging strategies.
 - Proposing a journal paper to *Applied Energy*.
+
+\vspace{-10pt}
 
 ### WORK EXPERIENCE
 
@@ -84,11 +91,3 @@ execute:
 *Assistant Process Engineer (Intern)* \hfill 2017
 
 - Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples. Conducted Asian market analysis for Ersa's 2017 marketing strategy. Served as the face of the company by starring in Ersa's first Asian market promotional video.
-
-### SKILLS
-
-- Advanced programming skills in \faIcon{r-project}, Quarto, Shiny, Git, Python, SQL, Shell, HTML, and CSS.
-- Experienced in data science with survey design, SQL management, data wrangling, and data viz.
-- Software skills in graphic design (Affinity), data analysis (Excel, PostgreSQL, and Power BI), and video editing (Final Cut Pro).
-- AI skills in programming projects with Claude Code CLI, and local LLM deployment with Ollama.
-- Both a team player and a strong individual contributor.
