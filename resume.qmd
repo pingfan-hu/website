@@ -40,7 +40,7 @@ execute:
 
 - **Programming Languages**: R, Python, Shell, JS
 - **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
-- **Database**: PostgreSQL, Power BI, Excel
+- **Database**: PostgreSQL, Power BI, Excel, Minitab
 - **Data Science**: Survey design, data wrangling, data visualization, logit modeling, Monte Carlo simulation
 - **AI & Automation**: Claude Code CLI, Ollama, local LLM deployment
 
@@ -50,7 +50,7 @@ execute:
 
 **`surveydown` Survey Platform** - *Flagship Project of the Helveston Lab at GWU* \hfill 2024-2025
 
-- Developed `surveydown`, an open-source, feature-packed R package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Responsible for UI & SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
+- Developed `surveydown`, an open-source, feature-packed R package for programmable and reproducible surveys, combining Quarto, Shiny, and PostgreSQL. Responsible for UI & SQL development and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
 - Published a journal article in *Plos ONE* with 1000+ views. Presented at Posit Conference 2025. Awarded 2nd prize and profiled by GW Engineering.
 
 **`sdstudio` Survey GUI** - *Companion Project of `surveydown`* \hfill 2025
@@ -83,7 +83,7 @@ execute:
 
 *Project Engineer* \hfill 2019 - 2020
 
-- Participated in GE's Edison Engineering program including diverse appliance projects. Managed over 500 components across 9 GE washing machine models from development to production.
+- Participated in GE's Edison Engineering program including diverse appliance projects. Managed 500+ components across 9 GE washing machine models from development to production.
 - Contributed design expertise to various home appliances to enhance product functionality and user experience, showing expertise in PLM management and designs.
 
 **Kurtz Ersa GmbH** \hfill Wertheim, Germany
