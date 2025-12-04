@@ -1,0 +1,93 @@
+---
+format:
+  cv-pdf:
+    fontsize: 10pt
+    geometry:
+      - top=0.5in
+      - bottom=0.3in
+      - left=0.6in
+      - right=0.6in
+      - includefoot
+execute:
+  warning: false
+  echo: false
+  message: false
+  eval: true
+---
+
+\par\centering{\Large{\textbf{Pingfan Hu}}}
+\par\centering{Washington, DC | {\large\Letter} \href{mailto:pingfan.hu@gwu.edu}{pingfan.hu@gwu.edu} | {\large\Telefon} (202) 468-1083 | \href{http://www.pingfanhu.com}{pingfanhu.com}}
+
+\vspace{-11pt}
+
+### EDUCATION
+
+\vspace{-9pt}
+
+\begin{longtable}{lllll}
+
+    2026 & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
+    
+    2018 & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.2\\
+
+    2015 & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
+
+\end{longtable}
+
+\vspace{-35pt}
+
+### SKILLS
+
+- **Programming Languages**: R, Python, Shell, JS
+- **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
+- **Database**: PostgreSQL, Power BI, Excel
+- **Data Science**: Survey design, data wrangling, data visualization, logit modeling, Monte Carlo simulation
+- **AI & Automation**: Claude Code CLI, Ollama, local LLM deployment
+
+\vspace{-10pt}
+
+### [PROJECTS](https://pingfanhu.com/projects)
+
+**`surveydown` Survey Platform** - *Flagship Project of the Helveston Lab at GWU* \hfill 2024-2025
+
+- Developed `surveydown`, an open-source, feature-packed R package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Responsible for UI & SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
+- Published a journal article in *Plos ONE* with 1000+ views. Presented at Posit Conference 2025. Awarded 2nd prize and profiled by GW Engineering.
+
+**`sdstudio` Survey GUI** - *Companion Project of `surveydown`* \hfill 2025
+
+- Developed `sdstudio` as GUI and SQL support to `surveydown`. Responsible for UI/UX design, survey preview embedding, and SQL management, now having 200+ downloads on CRAN.
+- Proposing a conference presentation at GW OSCON 2026.
+
+**BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2023-2024
+
+- Performed survey fielding, data wrangling, and discrete choice modeling. Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality. Leveraged mixed logit models to estimate consumer preferences and sensitivities to various smart charging program attributes.
+- Published a journal article in *IOP Science*, 2 conference papers in *IEEE* and *TRB*, with 300+ views altogether.
+
+**Smart Charging Cost-Efficiency Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2025-2026
+
+- Performed Monte Carlo simulation to evaluate the BEV usage status quo. Processed grid supply data from NREL's Cambium model across all 18 grids nationwide. Simulated charging sessions to quantify cost savings with various smart charging strategies.
+- Proposing a journal paper to *Applied Energy*.
+
+\vspace{-10pt}
+
+### WORK EXPERIENCE
+
+**Harsco Rail** \hfill SC, USA \& Beijing, China
+
+*Project Engineer* \hfill 2021 - 2022
+
+- Led cross-border Switch Undercutter and Grinder projects. Resulted in 25 successful software releases while providing critical on-site technical support.
+- Combined expertise in embedded coding, CAN bus communication systems, and mechanical design with project management skills to track and deliver complex initiatives.
+
+**GE Appliances** \hfill Qingdao, China
+
+*Project Engineer* \hfill 2019 - 2020
+
+- Participated in GE's Edison Engineering program including diverse appliance projects. Managed over 500 components across 9 GE washing machine models from development to production.
+- Contributed design expertise to various home appliances to enhance product functionality and user experience, showing expertise in PLM management and designs.
+
+**Kurtz Ersa GmbH** \hfill Wertheim, Germany
+
+*Assistant Process Engineer (Intern)* \hfill 2017
+
+- Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples. Conducted Asian market analysis for Ersa's 2017 marketing strategy. Served as the face of the company by starring in Ersa's first Asian market promotional video.
