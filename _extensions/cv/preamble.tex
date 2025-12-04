@@ -1,15 +1,30 @@
 \usepackage{marvosym} % Allows the use of symbols
 \usepackage{parskip} % Spacing adjustments
+\usepackage{ragged2e} % Better ragged alignment
+\setlength{\RaggedRightParindent}{0pt}
 
-% Section spacing (using KOMA-Script commands)
+% Global spacing adjustments
+\setlength{\parskip}{3pt} % Space between paragraphs
+\linespread{0.96} % Line spacing
+
+% Section spacing with underline but no extra vertical space
 \RedeclareSectionCommand[
-  beforeskip=7pt,
-  afterskip=5pt
+  beforeskip=4pt,
+  afterskip=3pt
 ]{section}
 \RedeclareSectionCommand[
-  beforeskip=5pt,
-  afterskip=5pt
+  beforeskip=3pt,
+  afterskip=2pt
 ]{subsection}
+
+\makeatletter
+\renewcommand{\sectionlinesformat}[4]{%
+  #3#4\par\nobreak
+  \vspace{-11pt}%
+  \rule{\textwidth}{0.5pt}\par\nobreak
+  \vspace{0pt}%
+}
+\makeatother
 
 % Main font
 
@@ -62,3 +77,8 @@
 \usepackage{color}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+% Force left alignment for all content
+\raggedright
+\let\oldpar\par
+\def\par{\oldpar\raggedright}
