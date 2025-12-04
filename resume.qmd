@@ -48,14 +48,14 @@ execute:
 
 ### [PROJECTS](https://pingfanhu.com/projects)
 
-**`surveydown` Survey Platform** - *Flagship Project of Helveston Lab, GWU* \hfill 2024-2025
+**`surveydown` Survey Platform** - *Flagship Project of the Helveston Lab at GWU* \hfill 2024-2025
 
-- Developed `surveydown`, an open-source, feature-packed R package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Mainly responsible for UI & SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
-- Published a journal article in *Plos ONE* with 1000+ views, presented at Posit Conference 2025, awarded 2nd prize and profiled by GW Engineering.
+- Developed `surveydown`, an open-source, feature-packed R package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Responsible for UI & SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
+- Published a journal article in *Plos ONE* with 1000+ views. Presented at Posit Conference 2025. Awarded 2nd prize and profiled by GW Engineering.
 
-**`sdstudio` Companion Package** - *Individual Project* \hfill 2025
+**`sdstudio` Survey GUI** - *Companion Project of `surveydown`* \hfill 2025
 
-- Developed `sdstudio` as GUI and SQL support to `surveydown`, responsible for the full development of all features and UI/UX design, now having 200+ downloads on CRAN.
+- Developed `sdstudio` as GUI and SQL support to `surveydown`. Responsible for UI/UX design, survey preview embedding, and SQL management, now having 200+ downloads on CRAN.
 - Proposing a conference presentation at GW OSCON 2026.
 
 **BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2023-2024
@@ -65,7 +65,7 @@ execute:
 
 **Smart Charging Cost-Efficiency Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2025-2026
 
-- Performed Monte Carlo simulation to evaluate the BEV usage status quo. Processed grid supply data from NREL's Cambium model across all 18 grids nationwide, and simulated charging sessions to quantify cost savings with various smart charging strategies.
+- Performed Monte Carlo simulation to evaluate the BEV usage status quo. Processed grid supply data from NREL's Cambium model across all 18 grids nationwide. Simulated charging sessions to quantify cost savings with various smart charging strategies.
 - Proposing a journal paper to *Applied Energy*.
 
 \vspace{-10pt}
