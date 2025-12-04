@@ -38,19 +38,19 @@ execute:
 
 ### SKILLS
 
-- Advanced programming skills in \faIcon{r-project}, Quarto, Shiny, Git, Python, SQL, Shell, HTML, and CSS.
-- Experienced in data science with survey design, SQL management, data wrangling, and data viz.
-- Software skills in data (Excel, PostgreSQL, and Power BI), graphics (Affinity), and video (Final Cut Pro).
-- AI skills in programming projects with Claude Code CLI, and local LLM deployment with Ollama.
-- Fast learner, both a team player and a strong individual contributor.
+- **Programming Languages**: R, Python, Shell, JS
+- **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
+- **Database**: PostgreSQL, Power BI, Excel
+- **Data Science**: Survey design, data wrangling, data visualization, logit modeling, Monte Carlo simulation
+- **AI & Automation**: Claude Code CLI, Ollama, local LLM deployment
 
 \vspace{-10pt}
 
 ### [PROJECTS](https://pingfanhu.com/projects)
 
-**`surveydown` Survey Platform** - *Flagship Project of Helveston Lab, GWU* \hfill 2023-2024
+**`surveydown` Survey Platform** - *Flagship Project of Helveston Lab, GWU* \hfill 2024-2025
 
-- Developed `surveydown`, an open-source, \faIcon{r-project} package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Mainly responsible for UI & SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
+- Developed `surveydown`, an open-source, feature-packed R package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Mainly responsible for UI & SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
 - Published a journal article in *Plos ONE* with 1000+ views, presented at Posit Conference 2025, awarded 2nd prize and profiled by GW Engineering.
 
 **`sdstudio` Companion Package** - *Individual Project* \hfill 2025
@@ -58,7 +58,7 @@ execute:
 - Developed `sdstudio` as GUI and SQL support to `surveydown`, responsible for the full development of all features and UI/UX design, now having 200+ downloads on CRAN.
 - Proposing a conference presentation at GW OSCON 2026.
 
-**BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2024-2025
+**BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2023-2024
 
 - Performed survey fielding, data wrangling, and discrete choice modeling. Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality. Leveraged mixed logit models to estimate consumer preferences and sensitivities to various smart charging program attributes.
 - Published a journal article in *IOP Science*, 2 conference papers in *IEEE* and *TRB*, with 300+ views altogether.
