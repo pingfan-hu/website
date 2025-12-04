@@ -54,21 +54,21 @@ execute:
 - Implemented UI/UX design, SQL and templates.
 - Achieved 150+ stars on GitHub and 6000+ downloads on CRAN.
 - Published a journal article in *Plos ONE* with 1000+ views.
-- Presented at Posit Conference 2025.
-- Awarded 2nd prize and profiled by GW Engineering.
+- Presented at Posit Conference, USRSE, and GW OSCON in 2025.
+- Awarded 2nd prize at GW OSPO and profiled by GW Engineering.
 
 **`sdstudio` Survey GUI** - *Companion Project of `surveydown`* \hfill 2025
 
 - Developed `sdstudio` as GUI and SQL support to `surveydown`.
 - Implemented UI/UX design for survey preview and SQL visualization.
 - Achieved 200+ downloads on CRAN.
-- Proposing a conference presentation at GW OSCON 2026.
+- Proposing a presentation at GW OSCON 2026.
 
 **BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2023-2024
 
 - Performed survey fielding, data wrangling, and discrete choice modeling.
 - Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality.
-- Leveraged mixed logit models to estimate consumer preferences and sensitivities to various smart charging program attributes.
+- Leveraged mixed logit models for consumer preferences and sensitivities to various smart charging program attributes.
 - Published a journal article in *IOP Science*, 2 conference papers in *IEEE* and *TRB*, with 300+ views altogether.
 
 **Smart Charging Cost-Efficiency Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2025-2026
@@ -82,17 +82,17 @@ execute:
 
 ### WORK EXPERIENCE
 
-**Harsco Rail** - *Project Engineer* \hfill \faMapMarker* SC, USA \& Beijing, China \hfill 2021 - 2022
+\makebox[0.5\textwidth][l]{\textbf{Harsco Rail} - \textit{Project Engineer}} \faMapMarker* SC, USA \& Beijing, China \hfill 2021 - 2022
 
 - Led cross-border Switch Undercutter and Grinder software projects, achieving 25 software releases while providing critical on-site technical support.
 - Combined expertise in embedded coding, CAN bus communication systems, and mechanical design with project management skills to track and deliver complex initiatives.
 
-**GE Appliances** - *Project Engineer* \hfill \faMapMarker* Qingdao, China \hfill 2019 - 2020
+\makebox[0.5\textwidth][l]{\textbf{GE Appliances} - \textit{Project Engineer}} \faMapMarker* Qingdao, China \hfill 2019 - 2020
 
 - Managed 500+ components across 9 GE washing machine models from development to production.
 - Contributed to various home appliances' engineering design to enhance product functionality and user experience, showing expertise in PLM management and engineering.
 
-**Kurtz Ersa GmbH** - *Assistant Process Engineer (Intern)* \hfill \faMapMarker* Wertheim, Germany \hfill 2017
+\makebox[0.5\textwidth][l]{\textbf{Kurtz Ersa GmbH} - \textit{Assistant Process Engineer (Intern)}} \faMapMarker* Wertheim, Germany \hfill 2017
 
 - Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples.
 - Conducted Asian market analysis for Ersa's 2017 marketing strategy.
