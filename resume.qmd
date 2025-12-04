@@ -1,185 +1,93 @@
 ---
-title: ""
 format:
-  resume-pdf:
-    keep-tex: false
-colorlinks: true
-author: Pingfan Hu
-cvfont: raleway #texlive fonts like raleway,fetamont,gillius,comfortaa
-cvcolor: 
-  main: B22122
-  accent: 5E9EA0
-jobtitle: "Ph.D. Candidate in Systems Engineering \\newline \\faIcon{map-marker-alt} Washington, DC"
-sidebar:
-  image: images/portrait.png
-  bullets:
-    - "{{< var rnolink >}}, Quarto, Shiny"
-    - "Data Science"
-    - "Software Development"
-  sections: 
-    - name: Contact
-      items:
-        - icon: envelope
-          text: pingfan.hu@gwu.edu
-          href: mailto:pingfan.hu@gwu.edu
-        - icon: home
-          text: pingfanhu.com
-          href: https://pingfanhu.com
-        - icon: github
-          text: pingfan-hu
-          href: https://github.com/pingfan-hu
-        - icon: linkedin
-          text: "in/pingfan"
-          href: "https://www.linkedin.com/in/pingfan/"   
-    - name: Skills
-      items:
-        - text: R
-          exp: 
-            num: 1
-        - text: Data Science
-          exp: 
-            num: 1
-        - text: Quarto & Shiny
-          exp: 
-            num: 0.9
-        - text: Software Development
-          exp: 
-            num: 0.8
-        - text: Web Development
-          exp: 
-            num: 0.8
-        - text: SQL
-          exp: 
-            num: 0.5
-        - text: Python
-          exp: 
-            num: 0.5
-        - text: Shell
-          exp: 
-            num: 0.4
-
-    - name: Languages
-      items:
-        - "English: Proficient"
-        - "Chinese: Native"
- 
-execute: 
+  cv-pdf:
+    fontsize: 10pt
+    geometry:
+      - top=0.5in
+      - bottom=0.3in
+      - left=0.6in
+      - right=0.6in
+      - includefoot
+execute:
+  warning: false
   echo: false
+  message: false
+  eval: true
 ---
 
-```{r}
-#| label: functions
+\par\centering{\Large{\textbf{Pingfan Hu}}}
+\par\centering{Washington, DC | {\large\Letter} \href{mailto:pingfan.hu@gwu.edu}{pingfan.hu@gwu.edu} | {\large\Telefon} (202) 468-1083 | \href{http://www.pingfanhu.com}{pingfanhu.com}}
 
-cveducation <- function(tbl, when, what, where) {
-    command_start <- "\\cveducation"
-    tbl[[where]] <- gsub("\n", " \\\\newline ", tbl[[where]])
-    res <- paste0(
-        command_start, "{", tbl[[when]], "}", 
-        "{", tbl[[what]], "}",
-        "{", tbl[[where]], "}"
-        )
-    cat(res, sep = "\n\n\n")
-}
+\vspace{-11pt}
 
-cvevent <- function(tbl, when, what, where, descr) {
-    command_start <- "\\cvevent"
-    tbl[[where]] <- gsub("\n", " \\\\newline ", tbl[[where]])
-    res <- paste0(
-        command_start, "{", tbl[[when]], "}", 
-        "{", tbl[[what]], "}",
-        "{", tbl[[where]], "}",
-        "{", tbl[[descr]], "}"
-        )
-    cat(res, sep = "\n\n\n")
-}
+### EDUCATION
 
-cvproj <- function(tbl, what, role, items){
-    command_start <- "\\cvproj"
-    res <- paste0(
-        command_start, "{", tbl[[what]], "}",
-        "{", tbl[[role]], "}",
-        "{", sapply(tbl[[items]], function(x)paste0(x,collapse = ", ")), "}"
-    )
-    cat(res, sep = "\n\n\n")
-}
-```
+\vspace{-9pt}
 
-# Summary
+\begin{longtable}{lllll}
 
-{{< include /chunks/intro.qmd >}}
-
-# Education
-
-```{r}
-#| label: education
-#| output: asis
-tibble::tribble(
-    ~role, ~institution, ~dates,
+    2026 & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
     
-    "Ph.D. in Systems Engineering",
-    "\\href{https://emse.engineering.gwu.edu}{\\textbf{George Washington University}} \\hfill \\faIcon{map-marker-alt} Washington, DC, USA",
-    "2023 - Present",
+    2018 & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.2\\
 
-    "M.P.E. in Mechanical Engineering",
-    "\\href{https://www.sydney.edu.au/engineering/schools/school-aerospace-mechanical-mechatronic-engineering.html}{\\textbf{University of Sydney}} \\hfill \\faIcon{map-marker-alt} Sydney, NSW, Australia",
-    "2016 - 2018",
+    2015 & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
 
-    "B.S. in Industrial Engineering, with Minor in Six Sigma",
-    "\\href{https://www.ime.psu.edu/index.aspx}{\\textbf{Pennsylvania State University}} \\hfill \\faIcon{map-marker-alt} State College, PA, USA",
-    "2011 - 2015"    
-) |>
-    cveducation(when = "dates", what = "role", where = "institution")
-```
-\vspace{-8pt}
+\end{longtable}
 
-# Projects
+\vspace{-35pt}
 
-```{r}
-#| label: proj
-#| output: asis
-tibble::tribble(
-    ~what, ~role, ~items,
-    "surveydown \\& sdstudio",
-    "Creator, Maintainer, First Author of a Journal Paper",
-    "\\href{https://pingfanhu.com/projects/2024-surveydown/}{\\textbf{surveydown}} is an open-source, feature-packed \\faIcon{r-project} package for programmable survey design \\& deployment, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend.\\\\
-    \\href{https://pingfanhu.com/projects/2025-sdstudio/}{\\textbf{sdstudio}} is a companion \\faIcon{r-project} package as GUI \\& SQL support for surveydown.",
+### SKILLS
 
-    "BEV Smart Charging Researches",
-    "Major Contributor, First Author of 2 Journal Papers",
-    "\\href{https://pingfanhu.com/projects/2024-sc-adoption/}{User adoption research} on BEV smart charging by discrete choice models using survey results, followed by an \\href{https://pingfanhu.com/projects/2025-smc-economy/}{economic analysis} on grid simulations of peak shaving cost-efficiency. These researches provide insights to help policymakers and utilities design better systems that benefit both the grid and EV owners."
-) |>
-    cvproj(what = "what", role = "role", items = "items")
+- **Programming Languages**: R, Python, Shell, JS
+- **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
+- **Database**: PostgreSQL, Power BI, Excel
+- **Data Science**: Survey design, data wrangling, data visualization, logit modeling, Monte Carlo simulation
+- **AI & Automation**: Claude Code CLI, Ollama, local LLM deployment
 
-```
-\vspace{-8pt}
+\vspace{-10pt}
 
-# Experience
+### [PROJECTS](https://pingfanhu.com/projects)
 
-```{r}
-#| label: experience
-#| output: asis
-tibble::tribble(
-    ~role, ~institution, ~dates, ~details,
+**`surveydown` Survey Platform** - *Flagship Project of Helveston Lab, GWU* \hfill 2024-2025
 
-    "Graduate Research Assistant",
-    "\\href{https://emse.engineering.gwu.edu}{\\textbf{George Washington University}} \\hfill \\faIcon{map-marker-alt} Washington, DC, USA",
-    "2023 - Present",
-    "PhD research proposal, design, and implementation in sustainable transportation and survey software invention using data science skills and tools. Teaching assistant for systems engineering classes in data analysis and data viz.",
+- Developed `surveydown`, an open-source, feature-packed R package for programmable survey design, combining Quarto, Shiny, and PostgreSQL. Mainly responsible for UI & SQL development, and template maintenance, now having 150+ stars on GitHub and 6000+ downloads on CRAN.
+- Published a journal article in *Plos ONE* with 1000+ views, presented at Posit Conference 2025, awarded 2nd prize and profiled by GW Engineering.
 
-    "Project Engineer",
-    "\\href{https://www.harscorail.com}{\\textbf{Harsco Rail}} \\hfill \\faIcon{map-marker-alt} SC, USA \\& Beijing, CN",
-    "2021 - 2022",
-    "Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills.",
+**`sdstudio` Companion Package** - *Individual Project* \hfill 2025
 
-    "Project Engineer",
-    "\\href{https://www.haier.com/global/haier_geappliances/}{\\textbf{GE Appliances}} \\hfill \\faIcon{map-marker-alt} Qingdao, CN",
-    "2019 - 2020",
-    "Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs.",
+- Developed `sdstudio` as GUI and SQL support to `surveydown`, responsible for the full development of all features and UI/UX design, now having 200+ downloads on CRAN.
+- Proposing a conference presentation at GW OSCON 2026.
 
-    "Assistant Process Engineer (Intern)",
-    "\\href{https://www.kurtzersa.com}{\\textbf{Kurtz Ersa GmbH}} \\hfill \\faIcon{map-marker-alt} Wertheim, DE",
-    "2017",
-    "Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first \\href{https://www.youtube.com/watch?v=eUE0a_2C6XI}{Asian market promotion video on YouTube}."
-) |>
-    cvevent(when = "dates", what = "role", where = "institution", descr = "details")
-```
+**BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2023-2024
+
+- Performed survey fielding, data wrangling, and discrete choice modeling. Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality. Leveraged mixed logit models to estimate consumer preferences and sensitivities to various smart charging program attributes.
+- Published a journal article in *IOP Science*, 2 conference papers in *IEEE* and *TRB*, with 300+ views altogether.
+
+**Smart Charging Cost-Efficiency Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2025-2026
+
+- Performed Monte Carlo simulation to evaluate the BEV usage status quo. Processed grid supply data from NREL's Cambium model across all 18 grids nationwide, and simulated charging sessions to quantify cost savings with various smart charging strategies.
+- Proposing a journal paper to *Applied Energy*.
+
+\vspace{-10pt}
+
+### WORK EXPERIENCE
+
+**Harsco Rail** \hfill SC, USA \& Beijing, China
+
+*Project Engineer* \hfill 2021 - 2022
+
+- Led cross-border Switch Undercutter and Grinder projects. Resulted in 25 successful software releases while providing critical on-site technical support.
+- Combined expertise in embedded coding, CAN bus communication systems, and mechanical design with project management skills to track and deliver complex initiatives.
+
+**GE Appliances** \hfill Qingdao, China
+
+*Project Engineer* \hfill 2019 - 2020
+
+- Participated in GE's Edison Engineering program including diverse appliance projects. Managed over 500 components across 9 GE washing machine models from development to production.
+- Contributed design expertise to various home appliances to enhance product functionality and user experience, showing expertise in PLM management and designs.
+
+**Kurtz Ersa GmbH** \hfill Wertheim, Germany
+
+*Assistant Process Engineer (Intern)* \hfill 2017
+
+- Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples. Conducted Asian market analysis for Ersa's 2017 marketing strategy. Served as the face of the company by starring in Ersa's first Asian market promotional video.
