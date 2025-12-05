@@ -3,7 +3,7 @@ format:
   cv-pdf:
     fontsize: 10pt
     geometry:
-      - top=0.5in
+      - top=0.4in
       - bottom=0.3in
       - left=0.6in
       - right=0.6in
@@ -42,7 +42,7 @@ execute:
 - **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
 - **Database**: PostgreSQL, Power BI, Excel, Minitab
 - **Data Science**: Survey design, data wrangling, data visualization, logit modeling, Monte Carlo simulation
-- **AI & Automation**: Claude Code CLI, Ollama, local LLM deployment
+- **AI & LLM**: Prompt engineering with Claude Code and ChatGPT, local LLM deployment with Ollama
 
 \vspace{-10pt}
 
@@ -51,9 +51,9 @@ execute:
 **`surveydown` Survey Platform** - *Flagship Project of the Helveston Lab at GWU* \hfill 2024-2025
 
 - Developed `surveydown`, an open-source, feature-packed R package for programmable and reproducible surveys, combining Quarto, Shiny, and PostgreSQL.
-- Implemented UI/UX design, SQL and templates.
+- Implemented UI/UX design, SQL and survey templates.
 - Achieved 150+ stars on GitHub and 6000+ downloads on CRAN.
-- Published a journal article in *Plos ONE* with 1000+ views.
+- Published a journal article in *PLOS One* as 1st author with 1000+ views.
 - Presented at Posit Conference, USRSE, and GW OSCON in 2025.
 - Awarded 2nd prize at GW OSPO and profiled by GW Engineering.
 
@@ -69,7 +69,8 @@ execute:
 - Performed survey fielding, data wrangling, and discrete choice modeling.
 - Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality.
 - Leveraged mixed logit models for consumer preferences and sensitivities to various smart charging program attributes.
-- Published a journal article in *IOP Science*, 2 conference papers in *IEEE* and *TRB*, with 300+ views altogether.
+- Published a journal article in *IOP Science* and a conference paper in *IEEE* as 1st author with 300+ views altogether.
+- Presented at TRB 2024.
 
 **Smart Charging Cost-Efficiency Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2025-2026
 
