@@ -10,7 +10,7 @@ description: "A tutorial of making a personal website using Quarto on RStudio"
 
 |           |                                                                                                                                                                                                                                                                                                                                                                                                             |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| My Repo   | <a href="https://github.com/pingfan0727/My-Website" class="btn btn-primary btn-sm" role="button"> GitHub Repo of My Website </a>                                                                                                                                                                                                                                                                            |
+| My Repo   | <a href="https://github.com/pingfan-hu/website" class="btn btn-primary btn-sm" role="button"> GitHub Repo of My Website </a>                                                                                                                                                                                                                                                                            |
 | Software  | <a href="https://desktop.github.com" class="btn btn-success btn-sm" role="button"> GitHub Desktop </a> <a href="https://www.r-project.org" class="btn btn-success btn-sm" role="button"> R </a> <a href="https://www.rstudio.com/categories/rstudio-ide/" class="btn btn-success btn-sm" role="button"> RStudio </a> <a href="https://quarto.org" class="btn btn-success btn-sm" role="button"> Quarto </a> |
 | Platforms | <a href="https://github.com" class="btn btn-info btn-sm" role="button"> GitHub (Repo) </a> <a href="https://www.namecheap.com" class="btn btn-info btn-sm" role="button"> Namecheap (Domain) </a> <a href="https://www.netlify.com" class="btn btn-info btn-sm" role="button"> Netlify (Server) </a>                                                                                                        |
 
@@ -49,11 +49,11 @@ You can use [Netlify](https://www.netlify.com) or [Namecheap](https://www.namech
 
 ## Step 2 - Website Project
 
-The next step is to create the R project of your website. You can either clone [my website repo](https://github.com/pingfan0727/My-Website) or make from scratch.
+The next step is to create the R project of your website. You can either clone [my website repo](https://github.com/pingfan-hu/website) or make from scratch.
 
 ### 2.1 Clone my repo
 
-If you want to clone my repo, [proceed to the site](https://github.com/pingfan0727/My-Website), and click on the **Code** button or **Use this template** button. Both buttons are in green.
+If you want to clone my repo, [proceed to the site](https://github.com/pingfan-hu/website), and click on the **Code** button or **Use this template** button. Both buttons are in green.
 
 ::: {style="text-align: center;"}
 ![**Figure 2**: *On the top right of the page, either click on the "Code" or the "Use this template" button to clone my repo as your own.*](images/02_clone_my_repo.jpg){width="800"}
