@@ -131,8 +131,5 @@ execute:
 ## SKILLS
 
 - **Languages**: English (*Proficient*), Chinese (*Native*).
-- **Programming Languages**: R, Python, C++, Swift, Shell, JavaScript
-- **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
-- **Database**: PostgreSQL, Tableau, Power BI, Excel, Minitab
-- **Data Science**: Statistics, Conjoint Analysis, Discrete Choice Modeling, Survey design, Data Wrangling, Data Visualization, Logit Modeling, Monte Carlo Simulation
-- **AI & LLM**: Prompt engineering & vibe coding with Claude Code and ChatGPT, local LLM deployment with Ollama
+
+{{< include /chunks/skills.qmd >}}

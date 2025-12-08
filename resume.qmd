@@ -38,11 +38,7 @@ execute:
 
 ### SKILLS
 
-- **Programming Languages**: R, Python, C++, Swift, Shell, JavaScript
-- **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
-- **Database**: PostgreSQL, Tableau, Power BI, Excel, Minitab
-- **Data Science**: Statistics, Survey design, data wrangling, data visualization, logit modeling, Monte Carlo simulation
-- **AI & LLM**: Prompt engineering & vibe coding with Claude Code and ChatGPT, local LLM deployment with Ollama
+{{< include /chunks/skills.qmd >}}
 
 \vspace{-10pt}
 
