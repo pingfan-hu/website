@@ -5,7 +5,7 @@ open-graph:
   image: images/card.png
 toc: false
 grid:
-  body-width: 1200px
+  body-width: 1300px
 about:
   template: trestles
   image-width: 18em
