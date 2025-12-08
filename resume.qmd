@@ -18,7 +18,7 @@ execute:
 \par\centering{\Large{\textbf{Pingfan Hu}}}
 \par\centering{Vienna, VA | {\large\Letter} \href{mailto:pingfan0727@gmail.com}{pingfan0727@gmail.com} | {\large\Telefon} (202) 468-1083 | \href{http://www.pingfanhu.com}{pingfanhu.com}}
 
-\vspace{-11pt}
+\vspace{-15pt}
 
 ### EDUCATION
 
@@ -28,21 +28,25 @@ execute:
 
     2026 & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
     
-    2018 & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.2\\
+    2018 & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.5\\
 
     2015 & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
 
 \end{longtable}
 
-\vspace{-35pt}
+\vspace{-32pt}
 
 ### SKILLS
 
+\vspace{-2pt}
+
 {{< include /chunks/skills.qmd >}}
 
-\vspace{-10pt}
+\vspace{-11pt}
 
 ### [PROJECTS](https://pingfanhu.com/projects)
+
+\vspace{-2pt}
 
 **`surveydown` Survey Platform** - *Flagship Project of the Helveston Lab at GWU* \hfill 2024-2025
 
@@ -75,9 +79,11 @@ execute:
 - Simulated charging sessions to quantify cost savings with 5 smart charging strategies of varied windows.
 - Proposing a journal paper to *Applied Energy*.
 
-\vspace{-10pt}
+\vspace{-11pt}
 
 ### WORK EXPERIENCE
+
+\vspace{-2pt}
 
 \makebox[0.5\textwidth][l]{\textbf{Harsco Rail} - \textit{Project Engineer}} \faMapMarker* SC, USA \& Beijing, China \hfill 2021 - 2022
 
