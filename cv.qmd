@@ -131,8 +131,8 @@ execute:
 ## SKILLS
 
 - **Languages**: English (*Proficient*), Chinese (*Native*).
-- **Modeling & Analysis**: Conjoint Analysis, Discrete Choice Modeling, Monte Carlo Simulation, Consumer Preferences, Regression.
-- **Data Collection**: Survey Design & Fielding, Database Management, Data Wrangling.
-- **Programming**: \faIcon{r-project}, Quarto, Shiny, Git, LaTeX, Typst, Netlify, Python, SQL, Shell, HTML, CSS.
-- **Software**: Affinity, MS Office, Final Cut Pro.
-- **Large Language Models**: Claude Code CLI, Ollama.
+- **Programming Languages**: R, Python, C++, Swift, Shell, JavaScript
+- **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
+- **Database**: PostgreSQL, Tableau, Power BI, Excel, Minitab
+- **Data Science**: Statistics, Conjoint Analysis, Discrete Choice Modeling, Survey design, Data Wrangling, Data Visualization, Logit Modeling, Monte Carlo Simulation
+- **AI & LLM**: Prompt engineering & vibe coding with Claude Code and ChatGPT, local LLM deployment with Ollama
