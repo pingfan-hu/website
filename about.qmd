@@ -42,12 +42,7 @@ I have 2 focuses in my field of study:
 
 #### Skills
 
-- Modeling & Analysis: Conjoint Analysis, Discrete Choice Modeling, Monte Carlo Simulation,
-Consumer Preferences, Regression.
-- Data Science: Survey Design & Fielding, Database Management, Data Wrangling.
-- Programming: {{< var rnolink >}}, Quarto, Shiny, Git, LaTeX, Typst, Netlify, Python, SQL, Shell, HTML, CSS.
-- Software: Affinity, MS Office, Final Cut Pro.
-- Large Language Models: Claude Code CLI, Ollama.
+{{< include /chunks/skills.qmd >}}
 
 #### Languages
 
