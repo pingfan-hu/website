@@ -31,11 +31,16 @@ jobs:
             any::here
             any::surveydown
 
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
       - name: Install TinyTeX
         run: quarto install tinytex
 
-      - name: Setup Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Install LaTeX packages
+        run: |
+          quarto tools install tinytex --update-path
+          tlmgr install marvosym fontspec fancyhdr lastpage parskip ragged2e fontawesome5 koma-script xcolor
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
