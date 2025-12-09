@@ -22,7 +22,7 @@ execute:
 
 ### EDUCATION
 
-\vspace{-8pt}
+\vspace{-9pt}
 
 \begin{longtable}{lllll}
 
