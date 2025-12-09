@@ -39,8 +39,8 @@ jobs:
 
       - name: Install LaTeX packages
         run: |
-          quarto tools install tinytex --update-path
           tlmgr install marvosym fontspec fancyhdr lastpage parskip ragged2e fontawesome5 koma-script xcolor
+        shell: bash
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
