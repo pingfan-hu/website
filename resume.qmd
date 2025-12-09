@@ -38,7 +38,7 @@ execute:
 
 ### SKILLS
 
-\vspace{-2pt}
+\vspace{-3pt}
 
 {{< include /chunks/skills.qmd >}}
 
@@ -46,7 +46,7 @@ execute:
 
 ### [PROJECTS](https://pingfanhu.com/projects)
 
-\vspace{-2pt}
+\vspace{-3pt}
 
 **`surveydown` Survey Platform** - *Flagship Project of the Helveston Lab at GWU* \hfill 2024-2025
 
@@ -83,7 +83,7 @@ execute:
 
 ### WORK EXPERIENCE
 
-\vspace{-2pt}
+\vspace{-3pt}
 
 \makebox[0.5\textwidth][l]{\textbf{Harsco Rail} - \textit{Project Engineer}} \faMapMarker* SC, USA \& Beijing, China \hfill 2021 - 2022
 
