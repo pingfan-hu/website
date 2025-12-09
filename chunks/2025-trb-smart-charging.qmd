@@ -2,7 +2,7 @@
 ::: {.card-body}
 **Conference Paper** - TRB 2025
 
-Hu, P., Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). *Measuring consumer willingness to enroll in battery electric vehicle smart charging programs* (Paper No. TRBAM-25-01317). Paper accepted for presentation at the Transportation Research Board 104th Annual Meeting, Washington, D.C.
+Hu, P., Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. (2025). *Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs*. The 104th Annual Meeting of the Transportation Research Board (TRB 2025). https://doi.org/10.5281/zenodo.17862019
 
 ::: {.d-flex .justify-content-end}
 [<i class="bi bi-journal-bookmark-fill"></i> TRB Decision Letter](/files/2025-trb-decision-letter.pdf){.btn .btn-outline-primary .mx-1}
