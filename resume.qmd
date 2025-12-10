@@ -85,10 +85,10 @@ execute:
 
 \vspace{-3pt}
 
-\makebox[0.5\textwidth][l]{\textbf{Harsco Rail} - \textit{Project Engineer}} \faMapMarker* SC, USA \& Beijing, China \hfill 2021 - 2022
+\makebox[0.5\textwidth][l]{\textbf{Harsco Rail} - \textit{Software Engineer}} \faMapMarker* SC, USA \& Beijing, China \hfill 2021 - 2022
 
 - Led cross-border Switch Undercutter and Grinder software projects, achieving 25 software releases while providing critical on-site technical support.
-- Combined expertise in embedded coding, CAN bus communication systems, and mechanical design with project management skills to track and deliver complex initiatives.
+- Combined expertise in embedded C++ coding, CAN bus communication systems, and mechanical design with project management skills to track and deliver complex initiatives.
 
 \makebox[0.5\textwidth][l]{\textbf{GE Appliances} - \textit{Project Engineer}} \faMapMarker* Qingdao, China \hfill 2019 - 2020
 

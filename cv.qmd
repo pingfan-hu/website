@@ -124,7 +124,7 @@ execute:
 
 ## INDUSTRY EXPERIENCES
 
-- Project Engineer at *Harsco Rail*. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
+- Software Engineer at *Harsco Rail*. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
 - Project Engineer at *GE Appliances*. Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs. Qingdao, China (2019 - 2020).
 - Assistant Process Engineer (Intern) at *Kurtz Ersa GmbH*. Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first Asian market promotion video on YouTube. Wertheim, Germany (Jan. - Mar. 2017).
 
