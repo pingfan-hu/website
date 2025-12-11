@@ -19,7 +19,7 @@ description: "An open-source survey platform using {{< var rnolink >}}, Quarto, 
 [<i class="bi bi-browser-safari"></i> Website](https://surveydown.org){.btn .btn-primary .m-1 style="width: 120px;"}
 [<i class="bi bi-github"></i> GitHub](https://github.com/surveydown-dev/surveydown){.btn .btn-primary .m-1 style="width: 120px;"}
 [<i class="bi bi-award"></i> Award](https://ospo.gwu.edu/2024-student-open-source-award-winners){.btn .btn-primary .m-1 style="width: 120px;"}
-[<i class="bi bi-newspaper"></i> Spotlight](https://engineering.gwu.edu/building-platform-make-survey-research-more-accessible){.btn .btn-primary .m-1 style="width: 120px;"}
+[<i class="bi bi-newspaper"></i> Spotlight](https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible){.btn .btn-primary .m-1 style="width: 120px;"}
 :::
 
 ## Paper
