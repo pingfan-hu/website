@@ -75,7 +75,7 @@ execute:
 
 ### C. WORKING PAPERS & PAPERS UNDER REVIEW
 
-1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys." *Under review at The Journal of Open Source Software*.
+1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys." *Working paper*.
 2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential of electric vehicle supplier-managed charging." *Working paper*.
 
 \vspace{-10pt}
