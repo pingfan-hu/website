@@ -1,0 +1,70 @@
+---
+title: The tidyviz Python Package
+image: "/projects/banners/2025-tidyviz.png"
+author: "Pingfan Hu"
+date: "Dec, 2025"
+categories: [Python, Software, Survey, Data Science]
+description: "A Python package for tidying and visualizing survey data."
+---
+
+::: {.d-flex .justify-content-center .flex-wrap .text-center}
+[<i class="bi bi-browser-safari"></i> PyPI](https://pypi.org/project/tidyviz/){.btn .btn-primary .m-1 style="width: 130px;"}
+[<i class="bi bi-github"></i> GitHub](https://github.com/pingfan-hu/tidyviz){.btn .btn-primary .m-1 style="width: 130px;"}
+[<i class="bi bi-file-earmark-text-fill"></i> Docs](https://github.com/pingfan-hu/tidyviz/tree/main/docs){.btn .btn-primary .m-1 style="width: 130px;"}
+:::
+
+## Overview
+
+Survey researchers spend a disproportionate amount of time on repetitive data cleaning tasks—expanding multiple choice responses, validating answer ranges, flagging suspicious response patterns, and creating standardized visualizations. **tidyviz** streamlines this workflow by providing a unified toolkit for survey data preparation and visualization in Python.
+
+I built this package to address common pain points I encountered working with survey data, where the same cleaning steps and visualization needs appear across nearly every project. Rather than writing custom scripts each time, tidyviz provides tested, reusable functions that handle these tasks consistently.
+
+## Key Features
+
+The package is organized into two main modules:
+
+**Data Cleaning (`tv.tidy`)**
+
+- Expand and collapse multiple choice responses
+- Validate response ranges and handle invalid entries
+- Detect data quality issues (missing patterns, straight-lining, speeders)
+- Check logical consistency with custom rules
+
+**Visualization (`tv.viz`)**
+
+- Single and multiple choice bar charts
+- Survey-appropriate styling and color palettes
+- Built-in percentage labels and sorting options
+- Publication-ready output
+
+## Installation
+
+```bash
+pip install tidyviz
+```
+
+## Example Usage
+
+```python
+import pandas as pd
+import tidyviz as tv
+
+# Load survey data
+df = pd.read_csv('survey.csv')
+
+# Clean: Expand multiple choice responses
+df_expanded = tv.tidy.expand_multiple_choice(df, 'favorite_colors')
+
+# Validate: Check response ranges
+df_clean, invalid = tv.tidy.check_response_range(
+    df, 'satisfaction', min_val=1, max_val=5
+)
+
+# Visualize: Plot responses with custom styling
+tv.viz.set_survey_style(palette='categorical')
+tv.viz.plot_single_choice(
+    df_clean, 'contact_method',
+    title='Preferred Contact Method',
+    show_percentages=True
+)
+```
