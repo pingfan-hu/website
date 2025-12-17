@@ -82,9 +82,10 @@ execute:
 
 ### D. SOFTWARE
 
-1. **Hu, P.** (aut,cre,cph) (2025) "`MiniCalendar`: A free and open-source mini menu bar calendar" macOS application.
-2. **Hu, P.** (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "`sdstudio`: Companion Application for the `surveydown` Survey Platform" \faIcon{r-project} package.
-3. Helveston, J. P. (aut,cre,cph), **Hu, P.** (aut,cre), Bogdan Bunea (aut,cre) (2024) "`surveydown`: Markdown-Based Surveys Using Quarto Shiny Documents" \faIcon{r-project} package.
+1. **Hu, P.** (aut,cre,cph) (2025) "`TidyViz`: A Python package for tidying and visualizing survey data.
+2. **Hu, P.** (aut,cre,cph) (2025) "`MiniCalendar`: A free and open-source mini menu bar calendar" macOS application.
+3. **Hu, P.** (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "`sdstudio`: Companion Application for the `surveydown` Survey Platform" \faIcon{r-project} package.
+4. Helveston, J. P. (aut,cre,cph), **Hu, P.** (aut,cre), Bogdan Bunea (aut,cre) (2024) "`surveydown`: Markdown-Based Surveys Using Quarto Shiny Documents" \faIcon{r-project} package.
 
 ## PRESENTATIONS
 
