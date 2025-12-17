@@ -6,7 +6,7 @@ author:
   - name: "[John Helveston](https://www.jhelvy.com)"
   - name: "[Bogdan Bunea](https://www.linkedin.com/in/bogdanbt/)"
 date: "Mar, 2025"
-categories: [Software, Survey]
+categories: [R, Software, Survey, Data Science]
 execute:
   echo: true
   eval: false
