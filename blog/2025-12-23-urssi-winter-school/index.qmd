@@ -1,6 +1,6 @@
 ---
 title: "From Bootcamp to Better Code: Reflections from the URSSI Winter School 2025"
-image: "/blog/banners/2025-12-20-urssi-winter-school.png"
+image: "/blog/banners/2025-12-23-urssi-winter-school.png"
 description: "Software fundamentals matter more than ever in the age of LLMs."
 date: '2025-12-23'
 categories: [Software]
