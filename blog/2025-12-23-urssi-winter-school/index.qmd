@@ -12,15 +12,15 @@ execute:
 
 ## Motivation
 
-Why do we still need to learn software development now that we have LLMs? This has been a question of many developers. For me, the easy access to AI tools is exactly the reason why development skills are more important than ever.
+Why do we still need to learn software development now that we have LLMs? This has been a question raised by many developers. For me, the easy access to AI tools is exactly the reason why development skills are more important than ever.
 
-The [URSSI](https://urssi.us) Winter School is a 3-day bootcamp hosted by Oregon State University in Portland, OR. I was fortunate to attend this event in December 2025 and enjoyed the great lectures by professor [Kyle Niemeyer](https://engineering.oregonstate.edu/people/kyle-niemeyer), professor [Madicken Munk](https://engineering.oregonstate.edu/people/madicken-munk), and Dr [Joanna Piper Morgan](https://jpmorgan98.github.io).
+The [URSSI](https://urssi.us) Winter School is a 3-day bootcamp hosted by Oregon State University in Portland, OR. I was fortunate to attend this event in December 2025 and benefited from the excellent lectures by professor [Kyle Niemeyer](https://engineering.oregonstate.edu/people/kyle-niemeyer), professor [Madicken Munk](https://engineering.oregonstate.edu/people/madicken-munk), and Dr [Joanna Piper Morgan](https://jpmorgan98.github.io).
 
-The bootcamp focused on the full workflow of Python development, from writing code to testing, documentation, version control, and deployment. I mainly use R for data analysis, thus having R packages as my RSE products, like [`surveydown`](https://pingfanhu.com/projects/2024-surveydown/) and [`sdstudio`](https://pingfanhu.com/projects/2025-sdstudio/). This bootcamp benefits me for 2 reasons: 1) It expands my skills in Python as a popular programming language; 2) RSE for different programming languages shares many common principles.
+The bootcamp focused on the full workflow of Python development, from writing code to testing, documentation, version control, and deployment. I mainly use R for data analysis, thus having R packages as my RSE products, like [`surveydown`](https://pingfanhu.com/projects/2024-surveydown/) and [`sdstudio`](https://pingfanhu.com/projects/2025-sdstudio/). This bootcamp benefited me for two reasons: 1) It expanded my skills in Python as a popular programming language; 2) RSE development for different programming languages shares many common principles.
 
 ## Introduction
 
-With handy LLM tools like ChatGPT, Claude, and Gemini, things seem to be easier than ever. It seems like everyone can do design, write code, sketch images, etc. But the reality is that there is still a big barrier for those who are less professional even with AI tools. For coding, there is a term called "technical debt" which refers to the hidden costs resulted by careless deployment with generative AI in the long run [@anderson_hidden_2025]. Therefore, it's much better to have a solid foundation of software development principles before leveraging AI tools.
+With readily available LLM tools like ChatGPT, Claude, and Gemini, things seem to be easier than ever. It seems like everyone can create designs, write code, generate images, and more. However, the reality is that there remains a significant barrier for those without professional training, even with AI tools at their disposal. In software development, there is a term called "technical debt" which refers to the hidden costs resulting from careless deployment with generative AI in the long run [@anderson_hidden_2025]. Therefore, it is essential to establish a solid foundation of software development principles before leveraging AI tools.
 
 ::: {.callout-note}
 This blog post is based on macOS showcasing both Python and R coding examples.
@@ -35,7 +35,7 @@ The working environment is the first thing to consider. A good IDE (Integrated D
 - [RStudio](https://posit.co/download/rstudio-desktop/): Mature IDE for R programming.
 - [PyCharm](https://www.jetbrains.com/pycharm/): Mature IDE for Python programming.
 
-Other than IDEs, you can also use text editors like [Sublime Text](https://www.sublimetext.com) or [Vim](https://www.vim.org), in which case you need to have a seperated Terminal session ready. One good reason for using IDEs is that they often have integrated terminal support, so you don't need to switch between windows.
+Other than IDEs, you can also use text editors like [Sublime Text](https://www.sublimetext.com) or [Vim](https://www.vim.org), in which case you need to have a separated Terminal session ready. One good reason for using IDEs is that they often have integrated terminal support, so you don't need to switch between windows.
 
 ## Language Installation
 
@@ -45,7 +45,7 @@ Python can be directly installed through homebrew:
 brew install python
 ```
 
-After installation, you can set `python` and `pip` as aliases for `python3` and `pip3`, respectively. This is when LLMs do their best job.
+After installation, you can set `python` and `pip` as aliases for `python3` and `pip3`, respectively.
 
 R can be installed through CRAN using [this link](https://cran.rstudio.com).
 
@@ -61,7 +61,7 @@ Both Python and R can be directly executed in Terminal with commands `python` an
 Every Python project should have its own **virtual environment** to manage dependencies.
 :::
 
-The latest Python version as of this blog post is `3.14.2`, which prevents from global package installation due to version conflicts -- a common issue in Python development. Therefore, **virtual environment** is needed for each project. The simplest way is to leverage the built-in `venv` module.
+Recent Python versions prevent global package installation due to version conflicts -- a common issue in Python development. Therefore, a **virtual environment** is needed for each project. The simplest way is to leverage the built-in `venv` module.
 
 Open your Python project root directory in your IDE and get started.
 
@@ -112,7 +112,7 @@ pak::pak("surveydown-dev/surveydown", ask = FALSE)
 
 ## The Development
 
-In the pre-LLM era, the actual development is the most time-consuming part. It is still true for now with the help of LLMs, but it's slighly different since developers now can focus on higher-level design and logic, while leaving the repetitive coding tasks to AI tools.
+In the pre-LLM era, the actual development was the most time-consuming part. This remains true with the help of LLMs, but it is slightly different since developers can now focus on higher-level design and logic, while leaving the repetitive coding tasks to AI tools.
 
 Therefore, having a solid understanding of the development workflow is crucial, including the directories structure, testing, documentation, version control, and deployment.
 
@@ -194,21 +194,21 @@ surveydown
 └── README.md
 ```
 
-The main code directory for an R package is `R/`. The `inst/` directory contaisn additional resources like CSS and JS files, as well as examples, templates, etc. The `pkgdown/` directory is used for building the package website with the `pkgdown` package. The `man/` directory is auto-generated during the building process, extracting the `roxygen2` documentation from the R scripts. The `tests/` directory contains the test scripts, and `vignettes/` contains long-form documentation.
+The main code directory for an R package is `R/`. The `inst/` directory contains additional resources like CSS and JS files, as well as examples, templates, etc. The `pkgdown/` directory is used for building the package website with the `pkgdown` package. The `man/` directory is auto-generated during the building process, extracting the `roxygen2` documentation from the R scripts. The `tests/` directory contains the test scripts, and `vignettes/` contains long-form documentation.
 
 ## Version Control
 
-Speaking of version control, **Git** is the de facto standard. Pro developers always emphasize that Git is different from GitHub, and will usually start from the `git` commands. This is beneficial for CLI lovers, but it doesn't hurt to have a GUI if you wanna have a quicker start.
+Speaking of version control, **Git** is the de facto standard. Professional developers emphasize that Git is different from GitHub, and will usually start from the `git` commands. This is beneficial for CLI lovers, but it doesn't hurt to have a GUI if you want to have a quicker start.
 
 So, yes, these 3 are different:
 
-1. [Git](https://git-scm.com): The version control system, starting with the `git` command in your Terminal, whose common commands are like `git init`, `git add`, `git commit`, `git push`, etc.
-2. [GitHub](https://github.com): A web-based platform for hosting Git repositories, owned by Microsoft. An anecdote of GitHub as the larget open-source platform is that GitHub itself is not open-source.
+1. [Git](https://git-scm.com): The version control system, starting with the `git` command in your Terminal, whose common commands include `git init`, `git add`, `git commit`, `git push`, etc.
+2. [GitHub](https://github.com): A web-based platform for hosting Git repositories, owned by Microsoft. An interesting fact about GitHub as the largest open-source platform is that GitHub itself is not open-source.
 3. [GitHub Desktop](https://github.com/apps/desktop): A GUI application for managing Git repositories hosted on GitHub.
 
-My take is that: The truth of all these 3 things are different is less important for you as a developer. I recommend starting with GitHub Desktop if you are new to version control, and then gradually learn the `git` commands in Terminal as you get more familiar with the workflow. For me, I've been doing RSE development for 3 years mainly using GitHub Desktop.
+My take is that understanding the differences between these three tools is less critical when you are starting out. I recommend beginning with GitHub Desktop if you are new to version control, and then gradually learning the `git` commands in Terminal as you become more familiar with the workflow. I have been doing RSE development for three years primarily using GitHub Desktop.
 
-Start by using GitHub as a "manual" iCloud or OneDrive: it is an online backup of your code, which is one of the primary benefits of using GitHub. Every time you reach to a milestone, just commit and push your code to GitHub. You can always go back to previous versions if needed. Till now you mostly use the `main` branch.
+Start by using GitHub as a "manual" iCloud or OneDrive: it is an online backup of your code, which is one of the primary benefits of using GitHub. Every time you reach a milestone, just commit and push your code to GitHub. You can always go back to previous versions if needed. At this point, you mostly use the `main` branch.
 
 When you are more comfortable, you can start exploring branching and pull requests. This is especially useful when you are collaborating with others. The typical workflow is to create a new branch for each feature or bug fix, make changes in that branch, and then create a pull request to merge the changes back into the `main` branch after review.
 
@@ -246,7 +246,7 @@ The secondary side bar has both Console and Terminal:
 
 ### LLM Settings
 
-I mainly use Claude Code but I heard Codex and Gemini are also good. Here I show Claude Code as an example. Vibe Coding is now much easier with these CLI tools integrated into IDEs. It's an assistant to your coding experience, so you can focus more on the high-level design and logic, leaving the coding details to AI, which what they are good at.
+I mainly use Claude Code but I have heard Codex and Gemini are also good options. Here I demonstrate Claude Code as an example. Vibe Coding is now much easier with these CLI tools integrated into IDEs. They serve as assistants to your coding experience, so you can focus more on high-level design and logic, leaving the coding details to AI, which is what they excel at.
 
 Simply call `claude` in a Terminal session within your IDE to start a conversation:
 
@@ -260,7 +260,7 @@ Simply call `claude` in a Terminal session within your IDE to start a conversati
 
 **The `WORKFLOW.md` file**
 
-I'd like to have a `WORKFLOW.md` file in the root direcotry of every project I'm working on. For example, a Python project might have the following workflow:
+I recommend having a `WORKFLOW.md` file in the root directory of every project. For example, a Python project might have the following workflow:
 
 1. Virtual environment setup
 2. Virtual environment activation/deactivation
@@ -278,11 +278,11 @@ Most of these steps are repetitive, thus the `WORKFLOW.md` file. This is both fo
 
 Starting with "You are a professional in Python/R development who knows the industry standard RSE development workflow..." usually helps set the context for LLMs to better assist you.
 
-LLMs tend to be verbose, so you can write down your requirements in your `WORKFLOW.md` file, something like: "If the function self-explains, don't leave comment."
+LLMs tend to be verbose, so you can write down your requirements in your `WORKFLOW.md` file, something like: "If the function is self-explanatory, don't leave comments."
 
 **Fonts, Themes and Cosmetics**
 
-These are less important but they improve your overall experience. Here are the resources I've been using and feel good with:
+These are less important but they improve your overall experience. Here are the resources I have been using and found effective:
 
 1. Font: [Maple Mono](https://font.subf.dev/en/)
 2. Theme (as extension): [GitHub Theme](https://open-vsx.org/extension/GitHub/github-vscode-theme)
