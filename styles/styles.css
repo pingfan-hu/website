@@ -110,6 +110,13 @@ thead {
 
 /* ---- Images ---- */
 
+/* About page entity images - mobile only */
+@media (max-width: 991.98px) {
+  div.quarto-about-trestles .about-entity .about-image {
+    margin-top: 1em;
+  }
+}
+
 /* Slide embedding */
 .golden-ratio-wrapper {
   position: relative;
