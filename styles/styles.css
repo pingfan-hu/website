@@ -4,7 +4,7 @@
 /* Custom font - TsangerJinKai */
 @font-face {
   font-family: 'TsangerJinKai';
-  src: url('../fonts/TsangerJinKai02-W04.ttf') format('truetype');
+  src: url('https://raw.githubusercontent.com/pingfan-hu/resources/main/fonts/TsangerJinKai02-W04.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
