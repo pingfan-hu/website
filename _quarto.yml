@@ -6,6 +6,7 @@ project:
     - images/
     - projects/banners/
     - blog/banners/
+    - fonts/
 
 website:
   title: Pingfan Hu
