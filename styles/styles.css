@@ -1,6 +1,19 @@
 /* ---- Fonts ---- */
 @import url('https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css');
 
+/* Custom font - TsangerJinKai */
+@font-face {
+  font-family: 'TsangerJinKai';
+  src: url('../fonts/TsangerJinKai02-W04.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply TsangerJinKai to all normal text */
+body {
+  font-family: 'TsangerJinKai', serif;
+}
+
 /* ---- Typography ---- */
 
 /* All links - remove underlines but keep color */
