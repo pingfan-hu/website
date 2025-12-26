@@ -321,3 +321,46 @@ footer.footer .nav-footer {
     margin-bottom: 0em;
   }
 }
+
+/* ---- About Page Social Links ---- */
+
+/* Make social links square on all screen sizes */
+.about-links {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 0.75rem !important;
+}
+
+.about-link {
+  width: 2rem !important;
+  height: 2rem !important;
+  min-width: 2rem !important;
+  max-width: 2rem !important;
+  flex: 0 0 2rem !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.about-link:hover {
+  transform: scale(1.10) !important;
+}
+
+.about-link i,
+.about-link .bi,
+.about-link-text i {
+  font-size: 1.2rem !important;
+  margin: 0 !important;
+}
+
+.about-link-text {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
