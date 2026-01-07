@@ -1,5 +1,5 @@
 - **Programming Languages**: R, Python, C++, Swift, Shell, JavaScript
 - **Web Development**: Quarto, Shiny, Git, Netlify, HTML, CSS
 - **Database**: PostgreSQL, Excel, Minitab, Tableau, Power BI
-- **Data Science**: Statistics, Data Wrangling, Data Visualization, Survey design, Conjoint Analysis, Discrete Choice Modeling, Logit Modeling, Monte Carlo Simulation
-- **AI & LLM**: Machine Learning, Prompt engineering with Claude & ChatGPT, LLM deployment with Ollama
+- **Data Science**: Statistics, Data Wrangling, Data Visualization, Survey Design, Conjoint Analysis, Discrete Choice Modeling, Logit Modeling, Monte Carlo Simulation
+- **AI & LLM**: Machine Learning, Prompt Engineering, LLM Deployment
