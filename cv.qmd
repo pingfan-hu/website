@@ -18,7 +18,7 @@ execute:
 \vspace{-5pt}
 \par\centering{ {\large\Telefon} +1 (202) 468-1083}
 \vspace{-5pt}
-\par\centering{ {\large\Letter} \href{mailto:pingfan.hu@gwu.edu}{pingfan.hu@gwu.edu}}
+\par\centering{ {\large\Letter} \href{mailto:pingfan0727@gmail.com}{pingfan0727@gmail.com}}
 \vspace{-5pt}
 \par\centering{\href{http://www.pingfanhu.com}{www.pingfanhu.com}}
 
@@ -26,7 +26,7 @@ execute:
 
 \begin{longtable}{lll}
 
-    2025 & \textbf{George Washington University}, Washington, D.C. & Ph.D. Systems Engineering\\
+    2026 & \textbf{George Washington University}, Washington, D.C. & Ph.D. Systems Engineering\\
 
     \multicolumn{3}{l}{Proposal: \emph{Electric Vehicle Smart Charging Adoption, Grid Peak-Shaving Quantification, and}}\\
 
