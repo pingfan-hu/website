@@ -24,13 +24,13 @@ execute:
 
 \vspace{-10pt}
 
-\begin{longtable}{lllll}
+\begin{longtable}{l@{\hspace{2pt}}lllll}
 
-    2026 Dec & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
-    
-    2018 Oct & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.5\\
+    Dec & 2026 & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
 
-    2015 May & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
+    Oct & 2018 & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.5\\
+
+    May & 2015 & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
 
 \end{longtable}
 
