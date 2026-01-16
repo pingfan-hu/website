@@ -26,11 +26,11 @@ execute:
 
 \begin{longtable}{lllll}
 
-    2026 & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
+    2026 Dec & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
     
-    2018 & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.5\\
+    2018 Oct & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.5\\
 
-    2015 & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
+    2015 May & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
 
 \end{longtable}
 
