@@ -26,15 +26,15 @@ execute:
 
 \begin{longtable}{l@{\hspace{2pt}}lll}
 
-    Dec & 2026 & \textbf{George Washington University}, Washington, D.C. & Ph.D. Systems Engineering\\
+    & 2026 & \textbf{George Washington University}, Washington, D.C. & Ph.D. Systems Engineering\\
 
     \multicolumn{4}{l}{\hspace{1em}\small Proposal: \emph{EV Smart Charging Adoption, Grid Peak-Shaving, \& the \texttt{surveydown} Survey Platform}}\\
 
     \multicolumn{4}{l}{\hspace{1em}\small Doctoral Committee: \emph{John Paul Helveston, Caitlin Grady, Johan René van Dorp, \& Eric Hittinger}}\\[5pt]
 
-    Oct & 2018 & \textbf{University of Sydney}, Sydney, NSW, Australia & M.P.E. Mechanical Engineering\\
+    & 2018 & \textbf{University of Sydney}, Sydney, NSW, Australia & M.P.E. Mechanical Engineering\\
 
-    May & 2015 & \textbf{Pennsylvania State University}, State College, PA & B.S. Industrial Engineering\\
+    & 2015 & \textbf{Pennsylvania State University}, State College, PA & B.S. Industrial Engineering\\
 
 \end{longtable}
 
