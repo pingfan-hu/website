@@ -70,7 +70,6 @@ format:
     toc-depth: 5
     toc-location: right
     lightbox: true
-    css: styles/styles.css
     theme:
       light: [flatly, styles/theme.scss]
       dark: [darkly, styles/theme.scss]
