@@ -1,5 +1,5 @@
 ---
-title: "🔒Dynata Link Embedding with surveydown"
+title: "Dynata Link Embedding with surveydown"
 image: "/blog/banners/2025-07-07-dynata-tutorial.png"
 date: "2025-07-07"
 categories: [Tutorial, Survey]

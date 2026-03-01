@@ -4,7 +4,7 @@
 /* Custom font - TsangerJinKai */
 @font-face {
   font-family: 'TsangerJinKai';
-  src: url('https://raw.githubusercontent.com/pingfan-hu/resources/main/fonts/TsangerJinKai02-W04.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/gh/pingfan-hu/resources@main/fonts/TsangerJinKai02-W04.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -12,6 +12,13 @@
 /* Apply TsangerJinKai to all normal text */
 body {
   font-family: 'TsangerJinKai', serif;
+  line-height: 1.65;
+  background-color: #F8F7F0;
+}
+
+/* Compensate for fixed footer */
+main.content {
+  padding-bottom: 3rem;
 }
 
 /* ---- Typography ---- */
@@ -61,10 +68,16 @@ code, pre, .sourceCode {
   font-family: 'Maple Mono', monospace !important;
 }
 
+/* Inline code background (light mode default) */
+:not(pre) > code {
+  background-color: #EDEDED;
+}
+
 /* Default height limit */
 pre.sourceCode {
-  max-height: 300px;
+  max-height: 500px;
   overflow-y: auto !important;
+  background-color: #E8F0F5;
 }
 
 /* Unlimited height override */
@@ -144,6 +157,13 @@ thead {
 /* Publication cards */
 .custom-card {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-color: #E5DFD5;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.custom-card:hover {
+  box-shadow: 0 4px 12px rgba(86, 84, 162, 0.15);
+  border-color: #5654A2;
 }
 
 /* Callout styling */
@@ -165,6 +185,12 @@ thead {
   border-radius: 8px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.presentation-box:hover {
+  box-shadow: 0 4px 12px rgba(86, 84, 162, 0.15);
+  border-color: #5654A2;
 }
 
 .presentation-content {
@@ -200,7 +226,7 @@ thead {
 }
 
 .presentation-date {
-  color: #888;
+  color: #666;
 }
 
 .presentation-icons {
@@ -251,8 +277,8 @@ thead {
 }
 
 .round-button {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   padding: 0;
   display: flex;
@@ -341,20 +367,23 @@ footer.footer .nav-footer {
 }
 
 .about-link {
-  width: 2rem !important;
-  height: 2rem !important;
-  min-width: 2rem !important;
-  max-width: 2rem !important;
-  flex: 0 0 2rem !important;
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  min-width: 2.75rem !important;
+  max-width: 2.75rem !important;
+  flex: 0 0 2.75rem !important;
   padding: 0 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: transform 0.2s ease !important;
+  border-radius: 50% !important;
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease !important;
 }
 
 .about-link:hover {
   transform: scale(1.10) !important;
+  color: #5654A2 !important;
+  background-color: rgba(86, 84, 162, 0.1) !important;
 }
 
 .about-link i,
@@ -370,4 +399,96 @@ footer.footer .nav-footer {
   justify-content: center !important;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+/* ---- Scroll Animations ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease var(--anim-delay, 0ms),
+                transform 0.4s ease var(--anim-delay, 0ms);
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Dark Mode ---- */
+
+body.quarto-dark {
+  background-color: #1a1f2e;
+}
+
+body.quarto-dark :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.quarto-dark pre.sourceCode {
+  background-color: #1b2838;
+}
+
+body.quarto-dark blockquote {
+  background-color: #292746;
+  border-color: #7c7ac4;
+}
+
+body.quarto-dark thead {
+  border-top: solid var(--bs-border-color);
+  border-bottom: solid var(--bs-border-color);
+}
+
+body.quarto-dark .custom-card {
+  background-color: #232b3e;
+  border-color: var(--bs-border-color);
+}
+
+body.quarto-dark .custom-card:hover {
+  box-shadow: 0 4px 12px rgba(124, 122, 196, 0.2);
+  border-color: #7c7ac4;
+}
+
+body.quarto-dark .callout.callout-style-default {
+  background-color: #192b19 !important;
+}
+
+body.quarto-dark .callout.callout-style-default .callout-header {
+  background-color: #1f3b1f !important;
+}
+
+body.quarto-dark .presentation-box {
+  background-color: #232b3e;
+  border-color: var(--bs-border-color);
+}
+
+body.quarto-dark .presentation-box:hover {
+  box-shadow: 0 4px 12px rgba(124, 122, 196, 0.2);
+  border-color: #7c7ac4;
+}
+
+body.quarto-dark .presentation-title {
+  color: var(--bs-body-color);
+}
+
+body.quarto-dark .presentation-details,
+body.quarto-dark .presentation-date {
+  color: var(--bs-secondary-color);
+}
+
+body.quarto-dark .presentation-icons {
+  border-left-color: var(--bs-border-color);
+}
+
+body.quarto-dark .presentation-button {
+  background-color: transparent;
+  border-color: #7c7ac4;
+  color: #7c7ac4;
+}
+
+body.quarto-dark .presentation-button:hover {
+  background-color: #7c7ac4;
+  color: #111;
 }
