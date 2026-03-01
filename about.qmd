@@ -8,7 +8,7 @@ open-graph:
 
 {{< include /chunks/intro.qmd >}}
 
-Check out my **Resume** and **CV** here:
+Check out my **Resume** and **CV** her e:
 
 <center>
 <a href="resume.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 140px; margin: 5px;"><i class="bi bi-person-badge"></i> Resume </a>
