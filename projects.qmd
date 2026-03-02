@@ -1,7 +1,6 @@
 ---
 title: "Projects"
-open-graph:
-  description: "Research projects by Pingfan Hu"
+description: "Research projects by Pingfan Hu"
 toc: false
 listing:
   contents: projects
