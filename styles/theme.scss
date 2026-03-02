@@ -296,6 +296,13 @@ footer.footer .nav-footer { padding: 0 !important; }
   order: unset !important;
 }
 
+// ---- Hide page descriptions (kept in metadata for SEO) ----
+
+#title-block-header:not(:has(.quarto-title-meta-heading)) .description,
+div.quarto-about-trestles .about-entity .description {
+  display: none;
+}
+
 // ---- About Page Social Links ----
 
 .about-links {
