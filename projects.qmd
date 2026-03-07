@@ -1,6 +1,8 @@
 ---
 title: "Projects"
 description: "Research projects by Pingfan Hu"
+open-graph:
+  image: images/card-projects.png
 toc: false
 listing:
   contents: projects

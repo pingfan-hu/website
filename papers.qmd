@@ -1,6 +1,8 @@
 ---
 title: "Papers"
 description: "Research publications by Pingfan Hu"
+open-graph:
+  image: images/card-papers.png
 echo: false
 toc: false
 ---

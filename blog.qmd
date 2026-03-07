@@ -1,6 +1,8 @@
 ---
 title: "Blog"
 description: "Blog posts and tutorials by Pingfan Hu"
+open-graph:
+  image: images/card-blog.png
 listing:
   contents: blog
   sort: "date desc"
