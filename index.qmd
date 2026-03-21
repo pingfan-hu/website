@@ -12,10 +12,10 @@ about:
   image-width: 18em
   image-shape: round
   links:
-    - icon: linkedin
+    - text: "<i class='fa-brands fa-linkedin'></i>"
       href: https://www.linkedin.com/in/pingfan/
       target: _blank
-    - icon: github
+    - text: "<i class='fa-brands fa-github'></i>"
       href: https://github.com/pingfan-hu
       target: _blank
     - text: "<i class='fa-brands fa-orcid'></i>"

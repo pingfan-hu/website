@@ -263,7 +263,10 @@ table {
 .navbar-nav {
   a {
     text-decoration: none;
-    &:hover { text-decoration: none; color: #ffffffff; }
+    transition: transform 0.2s ease;
+    will-change: transform;
+    backface-visibility: hidden;
+    &:hover { text-decoration: none; color: #ffffffff; transform: scale(1.15); }
   }
 
   @media (min-width: 768px) {
@@ -369,6 +372,8 @@ div.quarto-about-trestles .about-entity .description {
 
 body.quarto-dark {
   background-color: #1a1f2e;
+
+  .navbar-nav a { color: #ffffff; }
 
   :not(pre) > code { background-color: rgba(255, 255, 255, 0.1); }
   pre.sourceCode    { background-color: #1b2838; }
