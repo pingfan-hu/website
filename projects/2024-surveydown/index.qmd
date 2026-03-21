@@ -27,12 +27,18 @@ description: "An open-source survey platform using {{< var rnolink >}}, Quarto, 
 
 {{< include /chunks/2025-plosone-surveydown.qmd >}}
 
+## Slides
+
+Presentation of `surveydown` in [Quant UX Con 2025](https://www.quantuxa.org/quant-ux-con/quant-ux-con-2025):
+
+<iframe src="https://pingfan-hu.github.io/2025-quant-ux-con-surveydown" width="100%" height="500px" style="border:2px solid #5654A2;"></iframe>
+
 ## Video
 
-Below is an intro video of `surveydown` by my advisor, professor [John Helveston](https://www.jhelvy.com), in [posit::conf 2025](https://posit.co/conference/):
+Intro video of `surveydown` by my advisor, professor [John Helveston](https://www.jhelvy.com), in [posit::conf 2025](https://posit.co/conference/):
 
-::: {style="width:100%; text-align:center;"}
-{{< video https://www.youtube.com/watch?v=VwoeFKNvN5k >}} ***Intro to surveydown***
+::: {style="width:100%; text-align:center; border:2px solid #5654A2;"}
+{{< video https://www.youtube.com/watch?v=VwoeFKNvN5k >}}
 :::
 
 ## Overview

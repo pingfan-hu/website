@@ -22,12 +22,16 @@ description: A companion {{< var rnolink >}} package as GUI support for surveydo
 [<i class="bi bi-r-square-fill"></i> R-univ](https://surveydown-dev.r-universe.dev/sdstudio){.btn .btn-primary .m-1 style="width: 120px;"}
 :::
 
+## Slides
+
+Presentation of `sdstudio` in [GW OSCON 2026](https://ospo.gwu.edu/open-source-conference-gw-oscon):
+
+<iframe src="https://pingfan-hu.github.io/2026-gwoscon-sdstudio" width="100%" height="500px" style="border:2px solid #5654A2;"></iframe>
+
 ## Video
 
-Below is a brief walkthrough video of the `sdstudio` package:
-
-::: {style="width:100%; text-align:center;"}
-{{< video https://www.youtube.com/watch?v=p00ivfg1B1M >}} ***Intro to sdstudio***
+::: {style="width:100%; text-align:center; border:2px solid #5654A2;"}
+{{< video https://www.youtube.com/watch?v=p00ivfg1B1M >}}
 :::
 
 <br>
