@@ -1,0 +1,11 @@
+---
+title: "AI: Pipeline vs SaaS"
+image: "/blog/banners/2026-03-24-ai-pipeline-vs-saas.png"
+description: "Use AI as an enhancement to your pipelines and replace SaaS"
+date: '2026-03-24'
+categories: [LLM]
+execute: 
+  echo: true
+  eval: false
+---
+
