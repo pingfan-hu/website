@@ -1,0 +1,80 @@
+---
+title: "How to Use AI Effectively"
+image: "/blog/banners/2026-03-24-ai-pipeline-vs-saas.png"
+description: "The real edge isn't building apps for others — it's building workflows for yourself."
+date: '2026-03-24'
+categories: [LLM]
+bibliography: references.bib
+execute:
+  echo: true
+  eval: false
+---
+
+## Motivation
+
+Not long ago, professional-grade work required professional-grade software. Photoshop for images, Tableau for data, a suite of subscriptions for everything in between. The tools you could afford set a ceiling on what you could produce. That ceiling is gone.
+
+AI has dissolved the value of an entire category of SaaS. Writing, editing, image generation, code, data analysis — tasks that once required specialized tools can now be described in plain language and done in seconds. What is dying is software whose primary value was translating human intent into a hard-to-produce output. When AI does the translation, the software in between becomes optional.
+
+If AI can replace tools, it can also build them. Vibe coding has made software creation accessible to nearly everyone, and the temptation is to build something and ship it. But here is the problem: if anyone can build software, then software built by others is less likely to fit you. A vibe-coded app is someone else's solution to their version of the problem. The more accessible creation becomes, the weaker the case for using someone else's tool over building your own. Democratization makes personalization more valuable, not products.
+
+## AI Architecture
+
+LLM tools like ChatGPT or Claude are more than just chat bots. They can do a lot more. I'll use Claude Code as an example. Claude Code usually works under a directory and access to all files within it. You can understand it as a mini operating system with its own file system, command line, and API. You can write scripts that read and write files, execute commands, and even call external APIs. This architecture allows you to build complex workflows that go beyond simple prompts.
+
+Claude Code works in 6 layers [@tw93_claude_2026]:
+
+{{< include resources/claude-code-layers.qmd >}}
+
+A typical Claude Code setup might look like this [@tw93_claude_2026]:
+
+```bash
+Project/
+├── CLAUDE.md
+├── .claude/
+│   ├── rules/
+│   │   ├── core.md
+│   │   ├── config.md
+│   │   └── release.md
+│   ├── skills/
+│   │   ├── runtime-diagnosis/     # Uniformly collect logs, state, dependencies
+│   │   ├── config-migration/      # Config migration rollback protection
+│   │   ├── release-check/         # Pre-release validation, smoke test
+│   │   └── incident-triage/       # Production incident triage
+│   ├── agents/
+│   │   ├── reviewer.md
+│   │   └── explorer.md
+│   └── settings.json
+└── docs/
+    └── ai/
+        ├── architecture.md
+        └── release-runbook.md
+```
+
+## AI for Workflows
+
+The real opportunity is less glamorous than shipping an app. It is building workflows for yourself — repeatable sequences where AI handles the hard parts. A prompt template that turns raw notes into a report. A script that automates the task you do every week. The output is not a product; it is personal leverage. A workflow is tuned to your data, your terminology, your standards. Once it exists, the gap between "I need to do this" and "it is done" shrinks to almost nothing. That compression, repeated across many tasks, compounds in a way no off-the-shelf subscription can match.
+
+### Scheduled Commands
+
+A concrete example is a set of shell commands I prefixed with `q-` to handle routine maintenance. `q-brew` runs `brew update`, `brew upgrade`, and `brew cleanup` in sequence — a three-step chore I used to do manually whenever I remembered. `q-pull` is more involved: it iterates over all my GitHub repositories and pulls the latest changes, with logic that handles branching automatically. If a repo is on `main`, it pulls `main`. If I am on a feature branch, it pulls both the branch and `main`. I then set both commands to trigger automatically at 9 AM every day via a cron job, and each run appends a log entry so I can check the last execution at a glance. What used to be a scattered, easy-to-forget ritual is now a zero-effort background task I never think about.
+
+Here are examples of my custom commands:
+
+```bash
+# Update my homebrew packages
+q-brew
+
+# Pull my GitHub repositories
+q-pull
+
+# Hide all windows
+q-hide
+
+# Close all apps
+q-close
+```
+
+### Navigation Shortcuts
+
+A smaller but equally useful example is a set of `cd-` commands for directory navigation. Jumping to deeply nested paths — like my Obsidian vault buried inside iCloud at `/Users/pingfan/Library/Mobile Documents/iCloud~md~obsidian/Documents` — meant either remembering the full path or hunting for it to copy and paste. I stored my frequently used paths and their shorthand names in a CSV file, then wrote a shell function that reads from it. Now `cd-obsidian` takes me there instantly. Adding a new shortcut is just adding a row to the CSV. The mechanics are simple; the daily friction saved is real.

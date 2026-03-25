@@ -57,3 +57,4 @@ Partial `.qmd` files included via `{{< include /chunks/filename.qmd >}}`:
 - **Banners**: Project/blog banner images live in `projects/banners/` and `blog/banners/` (referenced in listing configs).
 - **External links**: `link-external-newwindow: true` is global; internal links are filtered by `pingfanhu.com` domain.
 - **`{{< include >}}`** paths are always absolute from project root (e.g., `/chunks/intro.qmd`).
+- **Styled HTML components in blog posts**: Use `{{< include resources/filename.qmd >}}` to embed styled HTML tables or visuals. The included file must be a `.qmd` (not `.html`) with content wrapped in a ```` ```{=html} ```` fence. Store these files in a `resources/` subdirectory within the post folder. Scope all CSS with a unique class prefix to avoid bleeding into the page. Do NOT use iframes — they cause height and responsiveness issues.
