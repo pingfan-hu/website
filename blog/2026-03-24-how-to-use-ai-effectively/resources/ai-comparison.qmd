@@ -1,0 +1,245 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .aac-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .aac-header {
+    display: grid;
+    grid-template-columns: 28% 1fr 1fr;
+    background: #5654A2;
+    padding: 10px 16px;
+    gap: 0;
+  }
+
+  .aac-header-cell {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .aac-header-cell:not(:first-child) {
+    padding-left: 16px;
+    border-left: 1px solid rgba(248, 247, 240, 0.25);
+  }
+
+  .aac-header-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .aac-header-icon svg {
+    width: 12px;
+    height: 12px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .aac-row {
+    display: grid;
+    grid-template-columns: 28% 1fr 1fr;
+    align-items: stretch;
+    border-top: 1px solid #D4D3EE;
+    background: #F8F7F0;
+    transition: background 0.15s ease;
+  }
+
+  .aac-row:hover { background: #F0EFF8; }
+
+  .aac-attr {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #EEEDF8;
+    border-right: 1px solid #D4D3EE;
+  }
+
+  .aac-row:hover .aac-attr { background: #E6E5F4; }
+
+  .aac-attr-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #F8F7F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .aac-row:hover .aac-attr-icon { background: #F8F7F0; }
+
+  .aac-attr-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .aac-attr-name {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    color: #5654A2;
+    line-height: 1.4;
+  }
+
+  .aac-cell {
+    padding: 12px 16px;
+    font-size: 0.92em;
+    color: #564232;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #D4D3EE;
+  }
+
+  .aac-cell:last-child { border-right: none; }
+
+  .aac-cell.aac-examples {
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: center;
+    padding: 10px 16px;
+  }
+
+  .aac-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px 4px 4px;
+    border: 1px solid #D4D3EE;
+    border-radius: 20px;
+    background: #F8F7F0;
+    font-size: 0.85em;
+    color: #564232;
+    white-space: nowrap;
+  }
+
+  .aac-chip-badge {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 560px) {
+    .aac-header { display: none; }
+    .aac-row { grid-template-columns: 1fr; }
+    .aac-attr { border-right: none; border-bottom: 1px solid #D4D3EE; }
+    .aac-cell {
+      border-right: none;
+      border-bottom: 1px solid #D4D3EE;
+      padding: 8px 14px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .aac-cell:last-child { border-bottom: none; }
+    .aac-cell::before {
+      content: attr(data-label);
+      font-family: 'Maple Mono', monospace;
+      font-size: 0.72em;
+      font-weight: bold;
+      color: #5654A2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .aac-cell.aac-examples {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 10px 14px;
+      gap: 8px;
+    }
+    .aac-cell.aac-examples::before {
+      width: 100%;
+      margin-bottom: -2px;
+    }
+  }
+</style>
+
+<div class="aac-outer">
+  <div class="aac-header">
+    <div class="aac-header-cell"></div>
+    <div class="aac-header-cell">
+      <div class="aac-header-icon"><i data-lucide="message-circle"></i></div>
+      AI Assistants
+    </div>
+    <div class="aac-header-cell">
+      <div class="aac-header-icon"><i data-lucide="cpu"></i></div>
+      AI Agents
+    </div>
+  </div>
+
+  <div class="aac-row">
+    <div class="aac-attr">
+      <div class="aac-attr-icon"><i data-lucide="repeat"></i></div>
+      <div class="aac-attr-name">Interaction</div>
+    </div>
+    <div class="aac-cell" data-label="AI Assistants">One-shot prompt → response</div>
+    <div class="aac-cell" data-label="AI Agents">Multiple rounds, ongoing context</div>
+  </div>
+
+  <div class="aac-row">
+    <div class="aac-attr">
+      <div class="aac-attr-icon"><i data-lucide="zap"></i></div>
+      <div class="aac-attr-name">Capabilities</div>
+    </div>
+    <div class="aac-cell" data-label="AI Assistants">Chat only</div>
+    <div class="aac-cell" data-label="AI Agents">Execute commands, read/write files, call APIs</div>
+  </div>
+
+  <div class="aac-row">
+    <div class="aac-attr">
+      <div class="aac-attr-icon"><i data-lucide="layout-grid"></i></div>
+      <div class="aac-attr-name">Examples</div>
+    </div>
+    <div class="aac-cell aac-examples" data-label="AI Assistants">
+      <div class="aac-chip">
+        <svg class="aac-chip-badge" viewBox="0 0 24 24" fill="#10A37F" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>ChatGPT
+      </div>
+      <div class="aac-chip">
+        <svg class="aac-chip-badge" viewBox="0 0 24 24" fill="#CC785C" xmlns="http://www.w3.org/2000/svg"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Claude
+      </div>
+      <div class="aac-chip">
+        <svg class="aac-chip-badge" viewBox="0 0 24 24" fill="#4285F4" xmlns="http://www.w3.org/2000/svg"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg>Gemini
+      </div>
+    </div>
+    <div class="aac-cell aac-examples" data-label="AI Agents">
+      <div class="aac-chip">
+        <svg class="aac-chip-badge" viewBox="0 0 24 24" fill="#10A37F" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>Codex
+      </div>
+      <div class="aac-chip">
+        <svg class="aac-chip-badge" viewBox="0 0 24 24" fill="#CC785C" xmlns="http://www.w3.org/2000/svg"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Claude Code
+      </div>
+      <div class="aac-chip">
+        <svg class="aac-chip-badge" viewBox="0 0 24 24" fill="#4285F4" xmlns="http://www.w3.org/2000/svg"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg>Gemini Code
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

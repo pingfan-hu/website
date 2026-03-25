@@ -155,9 +155,10 @@ div.sourceCode {
     background-color: #1E1C30 !important;
     color: #DDDCF5;
     max-height: 500px;
+    overflow-x: auto;
     overflow-y: auto !important;
 
-    code { white-space: pre-wrap !important; }
+    code { white-space: pre !important; }
   }
 }
 
@@ -192,6 +193,20 @@ table {
   thead {
     border-top: solid #E5DFD5;
     border-bottom: solid #E5DFD5;
+  }
+}
+
+// ---- Categories ----
+
+.quarto-category,
+.listing-category {
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background-color: $primary !important;
+    color: #F8F7F0 !important;
+    border-color: $primary !important;
   }
 }
 
@@ -392,6 +407,11 @@ table {
 }
 
 footer.footer .nav-footer { padding: 0 !important; }
+
+.nav-footer-center a {
+  color: $primary;
+  &:hover { text-decoration: underline; }
+}
 
 .nav-footer-left,
 .nav-footer-center,

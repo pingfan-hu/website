@@ -3,7 +3,7 @@ title: "How to Use AI Effectively"
 image: "/blog/banners/2026-03-24-ai-pipeline-vs-saas.png"
 description: "The real edge isn't building apps for others — it's building workflows for yourself."
 date: '2026-03-24'
-categories: [LLM]
+categories: [AI, LLM]
 bibliography: references.bib
 execute:
   echo: true
@@ -12,11 +12,29 @@ execute:
 
 ## Motivation
 
-Not long ago, professional-grade work required professional-grade software. Photoshop for images, Tableau for data, a suite of subscriptions for everything in between. The tools you could afford set a ceiling on what you could produce. That ceiling is gone.
+The speed of AI development is overwhelming. Every morning I wake up to news of AI improvements and I don't even have the time to learn and catch up.
 
-AI has dissolved the value of an entire category of SaaS. Writing, editing, image generation, code, data analysis — tasks that once required specialized tools can now be described in plain language and done in seconds. What is dying is software whose primary value was translating human intent into a hard-to-produce output. When AI does the translation, the software in between becomes optional.
+{{< include resources/memes.qmd >}}
 
-If AI can replace tools, it can also build them. Vibe coding has made software creation accessible to nearly everyone, and the temptation is to build something and ship it. But here is the problem: if anyone can build software, then software built by others is less likely to fit you. A vibe-coded app is someone else's solution to their version of the problem. The more accessible creation becomes, the weaker the case for using someone else's tool over building your own. Democratization makes personalization more valuable, not products.
+I'm both panic and excited about AI: for how it overthrows the current software landscape, and how we could use it more efficiently. After a lot of struggling and experimenting, I have come to a conclusion: the real edge isn't building apps for others — it's building workflows for yourself. I'm not sure how AI changes the tech market in the future, but at least for now, I can definitely leverage AI for a workflow tuned to my own needs.
+
+With this mindset, I started to use less SaaS products, polish my own workflows, and build my own tools in favor of my needs. This blog post is a summary of my experience and learnings. I hope it can be helpful for you to think about how to use AI effectively.
+
+{{< include resources/ai-mindset-shift.qmd >}}
+
+## AI Assistants vs AI Agents
+
+New terms emerge quickly: Vibe Coding, Agentic Engineering, and now Harness Design. These are all trending terms that appear for solid reasons, but before everything, I wanna talk about "AI Assistants" and "AI Agents" since they are the most basic and fundamental concepts.
+
+**AI Assistants** are limited to a single prompt and response. The best example is your conversation with **ChatGPT**, **Claude**, or **Gemini**. You ask a question, it gives you an answer. It is a one-shot interaction.
+
+**AI Agents**, on the other hand, can have multiple rounds of interaction, and they can also execute commands, read and write files, call APIs, and so on. They are more like mini operating systems that can run scripts and workflows. Examples include **Codex**, **Claude Code**, and **Gemini Code**.
+
+In short, AI Assistants are better for one-off questions and tasks. It's your daily companion that can replace Google search. AI Agents are better for complex workflows that require multiple steps, decision making, and integration with other tools. They are your personal assistant that can handle projects-level tasks.
+
+{{< include resources/ai-comparison.qmd >}}
+
+In this blog post, I am more focused on AI Agents due to their flexibility and power. **Claude Code** is the one that I've been heavily using since its release, and it has become an essential part of my workflow. It allows me to automate tasks, manage projects, and even handle incidents in production.
 
 ## AI Architecture
 

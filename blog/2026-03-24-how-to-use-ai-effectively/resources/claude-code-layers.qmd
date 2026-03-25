@@ -88,21 +88,11 @@
   }
 
   @media (max-width: 520px) {
-    .ccl-header { grid-template-columns: 1fr; }
+    .ccl-header { grid-template-columns: 1fr; justify-items: center; }
     .ccl-header-cell:last-child { display: none; }
-
     .ccl-row { grid-template-columns: 1fr; }
-
-    .ccl-layer {
-      border-right: none;
-      border-bottom: 1px solid #D4D3EE;
-      padding: 10px 14px;
-    }
-
-    .ccl-resp {
-      padding: 10px 14px;
-      font-size: 0.9em;
-    }
+    .ccl-layer { border-right: none; border-bottom: 1px solid #D4D3EE; padding: 10px 14px; }
+    .ccl-resp { padding: 10px 14px; font-size: 0.9em; }
   }
 </style>
 

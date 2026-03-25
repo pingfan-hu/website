@@ -24,7 +24,7 @@ website:
     locale: en_US
     image: images/card.png
   page-footer:
-    center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
+    center: "© <span id='footer-year'></span> [Pingfan Hu](https://pingfanhu.com)"
     border: true
     background: light
   search:
