@@ -48,8 +48,13 @@ blockquote {
 }
 
 // Keep separate — combined selector breaks in some browsers
-::selection      { background-color: #D6C2DD !important; color: #694696 !important; }
-::-moz-selection { background-color: #D6C2DD !important; color: #694696 !important; }
+::selection      { background-color: #D6C2DD; color: #694696; }
+::-moz-selection { background-color: #D6C2DD; color: #694696; }
+
+// Dracula selection color inside code blocks — explicit color prevents Chrome
+// from inheriting the body ::selection color and overriding token colors
+pre.sourceCode ::selection      { background-color: rgba(189, 147, 249, 0.35); color: #DDDCF5; }
+pre.sourceCode ::-moz-selection { background-color: rgba(189, 147, 249, 0.35); color: #DDDCF5; }
 
 // ---- Code ----
 
