@@ -4,24 +4,25 @@
 
 <style>
   .ccl-outer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     width: 100%;
     margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
   }
 
   .ccl-header {
     display: grid;
     grid-template-columns: 30% 1fr;
-    padding: 4px 16px;
+    background: #5654A2;
+    padding: 10px 16px;
   }
 
   .ccl-header-cell {
     font-family: 'Maple Mono', monospace;
     font-size: 0.85em;
     font-weight: bold;
-    color: #5654A2;
+    color: #F8F7F0;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
@@ -29,33 +30,33 @@
   .ccl-row {
     display: grid;
     grid-template-columns: 30% 1fr;
-    align-items: center;
-    border: 1.5px solid #5654A2;
-    border-radius: 12px;
+    align-items: stretch;
+    border-top: 1px solid #D4D3EE;
     background: #F8F7F0;
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background 0.15s ease;
   }
 
   .ccl-row:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 18px rgba(86, 84, 162, 0.14);
+    background: #F0EFF8;
   }
 
   .ccl-layer {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 14px 16px;
-    border-right: 1.5px solid #D4D3EE;
+    padding: 12px 16px;
+    border-right: 1px solid #D4D3EE;
     background: #EEEDF8;
-    align-self: stretch;
+  }
+
+  .ccl-row:hover .ccl-layer {
+    background: #E6E5F4;
   }
 
   .ccl-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 7px;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
     background: #F8F7F0;
     display: flex;
     align-items: center;
@@ -64,8 +65,8 @@
   }
 
   .ccl-icon svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     color: #5654A2;
     stroke-width: 1.8;
   }
@@ -78,20 +79,23 @@
   }
 
   .ccl-resp {
-    padding: 14px 20px;
+    padding: 12px 20px;
     font-size: 0.95em;
     color: #564232;
     line-height: 1.5;
+    display: flex;
+    align-items: center;
   }
 
   @media (max-width: 520px) {
-    .ccl-header { display: none; }
+    .ccl-header { grid-template-columns: 1fr; }
+    .ccl-header-cell:last-child { display: none; }
 
     .ccl-row { grid-template-columns: 1fr; }
 
     .ccl-layer {
       border-right: none;
-      border-bottom: 1.5px solid #D4D3EE;
+      border-bottom: 1px solid #D4D3EE;
       padding: 10px 14px;
     }
 
@@ -151,5 +155,7 @@
   </div>
 </div>
 
-<script>lucide.createIcons();</script>
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
 ```
