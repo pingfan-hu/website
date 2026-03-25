@@ -73,6 +73,8 @@ format:
     toc-depth: 5
     toc-location: right
     lightbox: true
+    highlight-style: dracula
+    code-copy: true
     theme:
       light: [flatly, styles/theme.scss]
       dark: [darkly, styles/theme.scss]
@@ -107,6 +109,30 @@ format:
             init();
           }
         })();
+        (function() {
+          function initCodeWindows() {
+            document.querySelectorAll('div.sourceCode').forEach(function(div) {
+              var pre = div.querySelector('pre.sourceCode');
+              if (!pre) return;
+              var lang = Array.from(pre.classList).find(function(c) { return c !== 'sourceCode'; }) || '';
+              var label = document.createElement('span');
+              label.className = 'code-window-lang';
+              label.textContent = lang.toUpperCase();
+              div.insertBefore(label, div.firstChild);
+            });
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCodeWindows);
+          } else {
+            initCodeWindows();
+          }
+        })();
+        document.addEventListener('show.bs.tooltip', function(e) {
+          if (e.target.classList.contains('code-copy-button')) e.preventDefault();
+        });
+        document.addEventListener('click', function(e) {
+          if (e.target.closest('.code-copy-button')) e.target.closest('.code-copy-button').blur();
+        });
         </script>
 
 knitr: 
