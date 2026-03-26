@@ -18,12 +18,7 @@
       "Read(//Users/pingfan/.claude/skills/**)",
       "Skill(nano-banana)",
       "Bash(git remote:*)",
-      "Bash(git push:*)",
-      "Bash(gemini --yolo \"/edit nanobanana-output/blog_banner_image_for_a_post_tit.png ''''Change the background color from cream/off-white to a soft light lavender purple \\(#E8E6F8\\). Keep everything else exactly the same — the illustration, the person at the desk, the agent cards, the text, the purple accents.''''\")",
-      "Read(//Users/pingfan/.gemini/**)",
-      "Bash(pkill -f \"nanobanana\")",
-      "Bash(pkill -f \"gemini\")",
-      "Bash(pkill -f \"gemini --yolo\")"
+      "Bash(git push:*)"
     ]
   }
 }
