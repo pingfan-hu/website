@@ -1,0 +1,174 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .dt-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .dt-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .dt-header-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .dt-header-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .dt-header-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .dt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #F8F7F0;
+  }
+
+  .dt-card {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 16px;
+    border-right: 1px solid #D4D3EE;
+    transition: background 0.15s ease;
+    gap: 10px;
+  }
+
+  .dt-card:last-child { border-right: none; }
+  .dt-card:hover { background: #F0EFF8; }
+  .dt-card:hover .dt-card-icon { background: #F8F7F0; }
+
+  .dt-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dt-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #EEEDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .dt-card-icon svg {
+    width: 18px;
+    height: 18px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .dt-card-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .dt-label {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #5654A2;
+    line-height: 1.3;
+  }
+
+  .dt-sublabel {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.75em;
+    color: #9896CC;
+    line-height: 1.3;
+  }
+
+  .dt-desc {
+    font-size: 0.88em;
+    color: #564232;
+    line-height: 1.55;
+  }
+
+  .dt-tag {
+    display: inline-block;
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.75em;
+    color: #5654A2;
+    background: #EEEDF8;
+    border: 1px solid #D4D3EE;
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+
+  @media (max-width: 520px) {
+    .dt-grid { grid-template-columns: 1fr; }
+    .dt-card { border-right: none; border-bottom: 1px solid #D4D3EE; padding: 14px; }
+    .dt-card:last-child { border-bottom: none; }
+  }
+</style>
+
+<div class="dt-outer">
+  <div class="dt-header">
+    <div class="dt-header-icon"><i data-lucide="folder-tree"></i></div>
+    <span class="dt-header-text">Claude Code Directory Types</span>
+  </div>
+  <div class="dt-grid">
+    <div class="dt-card">
+      <div class="dt-card-top">
+        <div class="dt-card-icon"><i data-lucide="home"></i></div>
+        <div class="dt-card-titles">
+          <div class="dt-label">Home Directory</div>
+          <div class="dt-sublabel">~ (global)</div>
+        </div>
+      </div>
+      <div class="dt-desc">
+        <span class="dt-tag">CLAUDE.md</span> here applies to all projects globally.
+      </div>
+    </div>
+    <div class="dt-card">
+      <div class="dt-card-top">
+        <div class="dt-card-icon"><i data-lucide="folder-open"></i></div>
+        <div class="dt-card-titles">
+          <div class="dt-label">Project Directory</div>
+          <div class="dt-sublabel">cd project/ (scoped)</div>
+        </div>
+      </div>
+      <div class="dt-desc">
+        <span class="dt-tag">CLAUDE.md</span> here applies only to this project.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```
