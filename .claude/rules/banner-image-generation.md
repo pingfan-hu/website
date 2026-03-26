@@ -2,6 +2,10 @@
 
 When generating a banner image for a blog post, always use the **nano-banana skill** (Gemini CLI). Never use Pillow, HTML/CSS+puppeteer, or any other method.
 
+## API Key Safety
+
+**NEVER** write, echo, export, or reference the Gemini API key as a literal value in any command, file, or permission entry. The key lives exclusively in `~/.zshrc` and is available as `$GEMINI_API_KEY` at shell startup. If the key is not set, tell the user to run `source ~/.zshrc` — do not attempt to set it inline.
+
 ## Workflow
 
 1. **Invoke the skill** via `Skill tool → nano-banana`
