@@ -1,7 +1,7 @@
 ---
-title: "How to Use AI Effectively"
+title: "My Takes of Agentic Engineering - 1"
 image: "/blog/banners/2026-03-24-ai-pipeline-vs-saas.png"
-description: "Take-aways of effectively using AI for personal workflows, with a focus on AI agents like Claude Code."
+description: "Take-aways of effectively using AI for personal workflows, with a focus on Claude Code."
 date: '2026-03-24'
 categories: [AI, LLM]
 bibliography: references.bib
@@ -18,10 +18,6 @@ The speed of AI development is overwhelming. Every morning I wake up to news of 
 
 I'm both panicked and excited about AI: for how it overthrows the current software landscape, and how we could use it more efficiently. After a lot of struggling and experimenting, I have come to a conclusion: the real edge isn't building apps for others — it's building workflows for yourself. I'm not sure how AI changes the tech market in the future, but at least for now, I can definitely leverage AI for a workflow tuned to my own needs.
 
-With this mindset, I started to use less SaaS products, polish my own workflows, and build my own tools in favor of my needs. This blog post is a summary of my experience and learnings. I hope it can be helpful for you to think about how to use AI effectively.
-
-{{< include resources/ai-mindset-shift.qmd >}}
-
 ## AI Assistants vs AI Agents
 
 New terms emerge quickly: Vibe Coding, Agentic Engineering, and now Harness Design. These are all trending terms that appear for solid reasons, but before everything, I wanna talk about "AI Assistants" and "AI Agents" since they are the most basic and fundamental concepts.
@@ -30,7 +26,7 @@ New terms emerge quickly: Vibe Coding, Agentic Engineering, and now Harness Desi
 
 **AI Agents**, on the other hand, can have multiple rounds of interaction, and they can also execute commands, read and write files, call APIs, and so on. They are more like mini operating systems that can run scripts and workflows. Examples include **Codex**, **Claude Code**, and **Gemini Code**.
 
-In short, **AI Assistants** are better for one-off questions and tasks. It's your daily companion that can replace Google search. **AI Agents** are better for complex workflows that require multiple steps, decision making, and integration with other tools. They are your personal assistant that can handle projects-level tasks.
+In short, **AI Assistants** are better for one-off questions and tasks. It's your daily companion that can replace Google search. **AI Agents** are better for complex workflows that require multiple steps, decision making, and integration with other tools. They handle projects-level tasks.
 
 {{< include resources/ai-comparison.qmd >}}
 
@@ -57,6 +53,10 @@ claude
 
 This is never emphasized but I think it's the most important step: Yes, you can literally run Claude Code in any directory, but to make your usage more organized and efficient, designating directories is always the first step.
 
+::: {.callout-tip}
+Yes, it matters where you launch Claude Code.
+:::
+
 From my perspective, there are 2 types of directories for Claude Code:
 
 - 1. Home directory, aka `~`, for your daily use. Since it's the root directory, it's the most convenient place for computer-level tasks (which also makes it dangerous if not used carefully). I don't quite use it, but the `CLAUDE.md` file here is globally effective. Make one to set up your global rules and skills, and it will be applied to all your projects.
@@ -66,9 +66,7 @@ From my perspective, there are 2 types of directories for Claude Code:
 
 ## Launching Claude Code
 
-To launch Claude Code, we need either terminal or IDE. Terminal is more flexible and powerful, while IDE is more convenient and user-friendly. I use both depending on the situation.
-
-There are lots of terminals and IDEs to choose from. The built-in terminal in MacOS is good enough for most cases, and [VS Code](https://code.visualstudio.com) is a commonly used IDE. I personally use [Kaku](https://github.com/tw93/Kaku) and [Positron](https://positron.posit.co).
+To launch Claude Code, we need either terminal or IDE. The built-in terminal in MacOS is good enough for most cases, and [VS Code](https://code.visualstudio.com) is a commonly used IDE. I personally use [Kaku](https://github.com/tw93/Kaku) and [Positron](https://positron.posit.co).
 
 {{< include resources/terminals-ides.qmd >}}
 
@@ -86,7 +84,7 @@ cd /Users/pingfan/Documents/GitHub/website
 claude
 ```
 
-I have a custom command `cd-website`, equivalent to that lengthy `cd` command, so my workflow is even more efficient:
+I use a custom command `cd-website` to make it even simpler:
 
 ```bash
 cd-website
@@ -97,11 +95,15 @@ Another way is to use an IDE. Direct to your desired project directory, and laun
 
 ![](resources/claude-code-ide.png){width=100% fig-align="center"}
 
+::: {.callout-tip}
+Use an IDE when you wanna live-trace your files and make changes on your own.
+:::
+
 ## Architecture of Agentic Engineering
 
-As you launch Claude Code from your desired project directory, you can already start empowering yourself with AI. You are like mostly complete, and it's totally okay to close this blog and start your journey of crafting! But to really get into the details and unleash the full potential of AI agents, it's important to understand their architecture, and wisely design your own system.
+As you launch Claude Code from your desired project directory, you can already start empowering yourself with AI. You are like mostly ready, and it's totally okay to close this blog and start your journey of crafting! But to really get into the details and unleash the full potential of AI agents, it's important to understand their architecture, and wisely design your own system.
 
-Again, Claude Code works under your designated project directory. It has access to all files within it. You can understand it as a mini operating system. This architecture allows you to build complex workflows that go beyond simple prompts. It's both okay either you start from scratch with Claude Code, or use Claude Code on existing projects.
+Again, Claude Code works under your designated project directory. It has access to all files within it. This architecture allows you to build complex workflows that go beyond simple prompts. It's both okay either you start from scratch with Claude Code, or use Claude Code on existing projects.
 
 I came across [\@tw93](https://x.com/HiTw93)'s article of "How to Build an AI Agentic System with Claude Code" [@tw93_claude_2026], which is a great resource that explains the architecture of Claude Code in detail.
 
@@ -142,30 +144,12 @@ npx skills add tw93/claude-health -a claude-code -s health -g -y
 
 I recommend you read the article to improve your understanding of the architecture, and install this skill, or just install this skill.
 
-## AI for Workflows
+## Vibe Coding, Agentic Engineering, and Harness Design
 
-The real opportunity is less glamorous than shipping an app. It is building workflows for yourself — repeatable sequences where AI handles the hard parts. A prompt template that turns raw notes into a report. A script that automates the task you do every week. The output is not a product; it is personal leverage. A workflow is tuned to your data, your terminology, your standards. Once it exists, the gap between "I need to do this" and "it is done" shrinks to almost nothing. That compression, repeated across many tasks, compounds in a way no off-the-shelf subscription can match.
+Workflows changed dramatically ever since LLMs came out. At first we called it "Vibe Coding" — you just vibe with the model, and it gives you code. The problem with "vibe" is that it's more like drawing a card: it random, and the quality is not guaranteed. Even there is a successful outcome, there's no way to reproduce.
 
-### Scheduled Commands
+"Agentic Engineering" is more systematic and reproducible, and is where I am at right now. You design agents with specific rules and skills, and they can handle complex tasks. "Harness Design" or "Harness Engineering" is the most recent version as of this blog post, and maybe there's more to come. I'm still learning, but Anthropic has a recent article about "Harness Design" [@anthropic_harness_2026] that is worth reading.
 
-A concrete example is a set of shell commands I prefixed with `q-` to handle routine maintenance. `q-brew` runs `brew update`, `brew upgrade`, and `brew cleanup` in sequence — a three-step chore I used to do manually whenever I remembered. `q-pull` is more involved: it iterates over all my GitHub repositories and pulls the latest changes, with logic that handles branching automatically. If a repo is on `main`, it pulls `main`. If I am on a feature branch, it pulls both the branch and `main`. I then set both commands to trigger automatically at 9 AM every day via a cron job, and each run appends a log entry so I can check the last execution at a glance. What used to be a scattered, easy-to-forget ritual is now a zero-effort background task I never think about.
+Whatever the name is, the core idea is that you become the leader of an **orchestra**. You don't "handcraft" your project anymore. You "conduct" it with a high-level design by setting rules, building skills, and orchestrating agents.
 
-Here are examples of my custom commands:
-
-```bash
-# Update my homebrew packages
-q-brew
-
-# Pull my GitHub repositories
-q-pull
-
-# Hide all windows
-q-hide
-
-# Close all apps
-q-close
-```
-
-### Navigation Shortcuts
-
-A smaller but equally useful example is a set of `cd-` commands for directory navigation. Jumping to deeply nested paths — like my Obsidian vault buried inside iCloud at `/Users/pingfan/Library/Mobile Documents/iCloud~md~obsidian/Documents` — meant either remembering the full path or hunting for it to copy and paste. I stored my frequently used paths and their shorthand names in a CSV file, then wrote a shell function that reads from it. Now `cd-obsidian` takes me there instantly. Adding a new shortcut is just adding a row to the CSV. The mechanics are simple; the daily friction saved is real.
+{{< include resources/workflow-evolution.qmd >}}
