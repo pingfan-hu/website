@@ -48,8 +48,13 @@ blockquote {
 }
 
 // Keep separate — combined selector breaks in some browsers
-::selection      { background-color: #D6C2DD !important; color: #694696 !important; }
-::-moz-selection { background-color: #D6C2DD !important; color: #694696 !important; }
+::selection      { background-color: #D6C2DD; color: #694696; }
+::-moz-selection { background-color: #D6C2DD; color: #694696; }
+
+// Dracula selection color inside code blocks — explicit color prevents Chrome
+// from inheriting the body ::selection color and overriding token colors
+pre.sourceCode ::selection      { background-color: rgba(189, 147, 249, 0.35); color: #DDDCF5; }
+pre.sourceCode ::-moz-selection { background-color: rgba(189, 147, 249, 0.35); color: #DDDCF5; }
 
 // ---- Code ----
 
@@ -58,24 +63,111 @@ code, pre, .sourceCode {
 }
 
 :not(pre) > code {
-  background-color: #EDEDED;
+  background-color: #EEEDF8 !important;
+  color: #5654A2 !important;
+  border: 1px solid #D4D3EE !important;
+  border-radius: 5px !important;
+  padding: 0.1em 0.4em !important;
+  font-size: 0.88em !important;
 }
 
-pre.sourceCode {
-  max-height: 500px;
-  overflow-y: auto !important;
-  background-color: #E8F0F5;
+// macOS window-style code blocks
+div.sourceCode {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #3A3858;
+  margin: 1.2em 0;
 
-  code { white-space: pre-wrap !important; }
-}
+  // Header bar with traffic lights
+  &::before {
+    content: '';
+    display: block;
+    height: 36px;
+    background-color: #2D2B45;
+    background-image:
+      radial-gradient(circle, #FF5F57 50%, transparent 50%),
+      radial-gradient(circle, #FEBC2E 50%, transparent 50%),
+      radial-gradient(circle, #28C840 50%, transparent 50%);
+    background-size: 12px 12px, 12px 12px, 12px 12px;
+    background-position: 16px center, 34px center, 52px center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #3A3858;
+    flex-shrink: 0;
+  }
 
-.full-height {
+  // Language label injected by JS
+  .code-window-lang {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 36px;
+    line-height: 36px;
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.75em;
+    color: #9896CC;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  // Hide "Copied!" tooltip — checkmark icon is sufficient feedback
+  .code-copy-button-tooltip {
+    display: none !important;
+  }
+
+  // Copy button floated into the header bar
+  .code-copy-button {
+    position: absolute !important;
+    top: 0 !important;
+    right: 8px !important;
+    height: 36px !important;
+    padding: 0 10px !important;
+    background: transparent !important;
+    border: none !important;
+    color: #9896CC !important;
+    font-family: 'Maple Mono', monospace !important;
+    font-size: 0.75em !important;
+    letter-spacing: 0.06em !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    transition: color 0.15s ease !important;
+
+    &:hover { color: #F8F7F0 !important; }
+
+    // Hide Bootstrap icon; Quarto also adds tooltip text we keep
+    i.bi { display: none !important; }
+
+    &::after {
+      content: 'COPY';
+      font-family: 'Maple Mono', monospace;
+      font-size: 0.75em;
+      letter-spacing: 0.1em;
+    }
+  }
+
   pre.sourceCode {
-    max-height: none !important;
-    overflow-y: visible !important;
+    border-radius: 0;
+    margin: 0;
+    padding: 1em 1.2em !important;
+    background-color: #1E1C30 !important;
+    color: #DDDCF5;
+    max-height: 500px;
+    overflow-x: auto;
+    overflow-y: auto !important;
+
+    code { white-space: pre !important; }
   }
 }
 
+.full-height div.sourceCode pre.sourceCode {
+  max-height: none !important;
+  overflow-y: visible !important;
+}
+
+// Line numbers
 pre > code.sourceCode > span {
   counter-increment: line;
   text-indent: -2.8em;
@@ -83,13 +175,13 @@ pre > code.sourceCode > span {
 
   &:before {
     content: counter(line) " ";
-    color: #999;
+    color: #5A577A;
     display: inline-block;
     width: 2em;
     text-align: right;
     margin-right: 0.8em;
     padding-right: 0.5em;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #3A3858;
   }
 }
 
@@ -102,6 +194,28 @@ table {
     border-top: solid #E5DFD5;
     border-bottom: solid #E5DFD5;
   }
+}
+
+// ---- Categories ----
+
+.quarto-category,
+.listing-category {
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background-color: $primary !important;
+    color: #F8F7F0 !important;
+    border-color: $primary !important;
+  }
+}
+
+// ---- References ----
+
+#quarto-appendix {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 // ---- Video ----
@@ -293,6 +407,11 @@ table {
 }
 
 footer.footer .nav-footer { padding: 0 !important; }
+
+.nav-footer-center a {
+  color: $primary;
+  &:hover { text-decoration: underline; }
+}
 
 .nav-footer-left,
 .nav-footer-center,

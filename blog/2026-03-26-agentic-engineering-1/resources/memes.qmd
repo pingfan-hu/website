@@ -1,0 +1,30 @@
+```{=html}
+<style>
+  .mm-row {
+    display: flex;
+    gap: 16px;
+    margin: 1em 0;
+  }
+
+  .mm-row img {
+    flex: 1;
+    min-width: 0;
+    width: 50%;
+    height: 340px;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (max-width: 520px) {
+    .mm-row { flex-direction: column; }
+    .mm-row img { width: 100%; }
+  }
+</style>
+
+<div class="mm-row">
+  <img src="resources/cat-meme.png" alt="Cat meme about waking up to new AI advancements">
+  <img src="resources/claude-meme.png" alt="Claude meme">
+</div>
+```

@@ -1,5 +1,8 @@
 project:
   type: website
+  render:
+    - "**/*.qmd"
+    - "!**/resources/*.qmd"
   resources:
     - files/
     - talks/
@@ -21,7 +24,7 @@ website:
     locale: en_US
     image: images/card.png
   page-footer:
-    center: "© 2025 [Pingfan Hu](https://pingfanhu.com)"
+    center: "© <span id='footer-year'></span> [Pingfan Hu](https://pingfanhu.com)"
     border: true
     background: light
   search:
@@ -70,6 +73,8 @@ format:
     toc-depth: 5
     toc-location: right
     lightbox: true
+    highlight-style: dracula
+    code-copy: true
     theme:
       light: [flatly, styles/theme.scss]
       dark: [darkly, styles/theme.scss]
@@ -79,32 +84,7 @@ format:
     link-external-filter: '^(?:http:|https:)\/\/(?:www\.)?pingfanhu\.com'
     include-after-body:
       text: |
-        <script>
-        (function() {
-          function init() {
-            var targets = document.querySelectorAll('.quarto-post, .quarto-grid-item, .presentation-box');
-            if (!targets.length || !window.IntersectionObserver) return;
-            targets.forEach(function(el, i) {
-              el.classList.add('animate-on-scroll');
-              el.style.setProperty('--anim-delay', Math.min(i * 60, 300) + 'ms');
-            });
-            var obs = new IntersectionObserver(function(entries) {
-              entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('is-visible');
-                  obs.unobserve(entry.target);
-                }
-              });
-            }, { threshold: 0.08 });
-            targets.forEach(function(el) { obs.observe(el); });
-          }
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
-          } else {
-            init();
-          }
-        })();
-        </script>
+        <script src="/styles/site.js"></script>
 
 knitr: 
   opts_chunk: 

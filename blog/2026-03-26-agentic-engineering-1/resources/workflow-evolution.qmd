@@ -1,0 +1,179 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .evo-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .evo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .evo-header-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .evo-header-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .evo-header-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .evo-flow {
+    display: flex;
+    align-items: stretch;
+    background: #F8F7F0;
+  }
+
+  .evo-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 14px;
+    gap: 10px;
+    transition: background 0.15s ease;
+  }
+
+  .evo-card:hover { background: #F0EFF8; }
+  .evo-card:hover .evo-icon { background: #F8F7F0; }
+
+  .evo-card.evo-current { background: #EEEDF8; }
+  .evo-card.evo-current:hover { background: #E6E5F4; }
+  .evo-card.evo-current .evo-icon { background: #5654A2; }
+  .evo-card.evo-current .evo-icon svg { color: #F8F7F0; }
+  .evo-card.evo-current:hover .evo-icon { background: #4745A0; }
+
+  .evo-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2px;
+    color: #9896CC;
+    flex-shrink: 0;
+  }
+
+  .evo-arrow svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.8;
+  }
+
+  .evo-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #EEEDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .evo-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .evo-badge {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.7em;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid #D4D3EE;
+    color: #9896CC;
+    background: #F8F7F0;
+  }
+
+  .evo-badge.evo-badge-now {
+    color: #F8F7F0;
+    background: #5654A2;
+    border-color: #5654A2;
+  }
+
+  .evo-label {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #5654A2;
+    line-height: 1.3;
+  }
+
+  .evo-desc {
+    font-size: 0.85em;
+    color: #564232;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 520px) {
+    .evo-flow { flex-direction: column; }
+    .evo-arrow { transform: rotate(90deg); padding: 2px 0; }
+    .evo-card { border-bottom: 1px solid #D4D3EE; }
+    .evo-card:last-child { border-bottom: none; }
+  }
+</style>
+
+<div class="evo-outer">
+  <div class="evo-header">
+    <div class="evo-header-icon"><i data-lucide="trending-up"></i></div>
+    <span class="evo-header-text">Evolution of AI Workflows</span>
+  </div>
+  <div class="evo-flow">
+    <div class="evo-card">
+      <div class="evo-badge">Past</div>
+      <div class="evo-icon"><i data-lucide="shuffle"></i></div>
+      <div class="evo-label">Vibe Coding</div>
+      <div class="evo-desc">Random, not reproducible</div>
+    </div>
+    <div class="evo-arrow"><i data-lucide="arrow-right"></i></div>
+    <div class="evo-card evo-current">
+      <div class="evo-badge evo-badge-now">Now</div>
+      <div class="evo-icon"><i data-lucide="git-branch"></i></div>
+      <div class="evo-label">Agentic Engineering</div>
+      <div class="evo-desc">Systematic, reproducible</div>
+    </div>
+    <div class="evo-arrow"><i data-lucide="arrow-right"></i></div>
+    <div class="evo-card">
+      <div class="evo-badge">Emerging</div>
+      <div class="evo-icon"><i data-lucide="layers"></i></div>
+      <div class="evo-label">Harness Design</div>
+      <div class="evo-desc">Most recent, still evolving</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```
