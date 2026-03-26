@@ -10,27 +10,13 @@
       "WebFetch(domain:cdn.jsdelivr.net)",
       "WebFetch(domain:www.anthropic.com)",
       "Bash(python3:*)",
-      "Bash(/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --version)",
       "Bash(brew list:*)",
-      "Bash(mdfind \"kMDItemCFBundleIdentifier == ''''com.google.Chrome''''\")",
-      "Bash(node -e \"require\\(''''puppeteer''''\\)\")",
-      "Bash(npm list:*)",
-      "Bash(npx --yes puppeteer@latest --version)",
-      "Bash(npm init:*)",
-      "Bash(npm install:*)",
-      "Bash(node render-banner.mjs)",
-      "WebFetch(domain:replicate.com)",
-      "WebFetch(domain:www.builder.io)",
       "Bash(curl:*)",
       "Bash(gemini --version)",
-      "Read(//Users/pingfan/.claude/skills/**)",
-      "Skill(nano-banana)",
-      "Bash(export NANOBANANA_GEMINI_API_KEY=\"REDACTED\")",
-      "Bash(gemini --yolo \"/generate ''wide blog banner 1200x630, agentic engineering and AI coding agents, abstract illustration of a developer orchestrating autonomous AI agents as glowing robotic workers on a digital circuit board, deep purple and dark navy background, neon cyan and violet accents, clean modern flat design, no text, no letters''\")",
       "Bash(gemini extensions:*)",
-      "Bash(export GEMINI_API_KEY=\"$NANOBANANA_GEMINI_API_KEY\")",
-      "Bash(gemini --yolo \"/generate ''Blog banner image for a post titled My Take on Agentic Engineering Part 1. Clean modern flat illustration style. Warm cream off-white background \\(#F8F7F0\\). A person sitting at a desk orchestrating multiple floating AI agent cards connected by thin lines — like a conductor and orchestra. Each agent card has a simple line icon \\(file, code, terminal, search\\). Muted purple \\(#5654A2\\) as the dominant accent color for cards, lines, and UI elements. Text overlaid: small label My Take on above large bold Agentic Engineering and a small purple pill badge saying Part 1. Minimal, academic, professional tech blog aesthetic. Flat design, subtle depth, no dark backgrounds, no neon, no sci-fi.'' --preview\")",
-      "Bash(gemini --yolo \"/generate ''Blog banner image for a post titled My Take on Agentic Engineering Part 1. Clean modern flat illustration style. Dark navy/indigo background \\(#1E1B4B deep purple-navy\\). A person sitting at a desk orchestrating multiple floating AI agent cards connected by thin lines. Each agent card has a simple line icon \\(file, code, terminal, search\\). Agent cards and icons in light lavender and white to contrast the dark background. Text overlaid: small light label My Take on above large bold white Agentic Engineering and a small lavender pill badge saying Part 1. Professional tech blog aesthetic. Flat illustration, no neon, no sci-fi.''\")"
+      "Bash(gemini --yolo:*)",
+      "Read(//Users/pingfan/.claude/skills/**)",
+      "Skill(nano-banana)"
     ]
   }
 }
