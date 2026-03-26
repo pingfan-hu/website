@@ -16,7 +16,9 @@
       "Bash(gemini extensions:*)",
       "Bash(gemini --yolo:*)",
       "Read(//Users/pingfan/.claude/skills/**)",
-      "Skill(nano-banana)"
+      "Skill(nano-banana)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)"
     ]
   }
 }
