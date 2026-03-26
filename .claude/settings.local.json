@@ -18,7 +18,8 @@
       "Read(//Users/pingfan/.claude/skills/**)",
       "Skill(nano-banana)",
       "Bash(git remote:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(gh cache:*)"
     ]
   }
 }
