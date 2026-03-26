@@ -1,7 +1,7 @@
 ---
 title: "My Take on Agentic Engineering - Part 1"
 image: "/blog/banners/2026-03-26-agentic-engineering-1.png"
-description: "Takeaways of effectively using AI for personal workflows, with a focus on Claude Code."
+description: "Takeaways from effectively using AI for personal workflows, with a focus on Claude Code."
 date: '2026-03-26'
 categories: [Tutorial, Agentic Engineering]
 bibliography: references.bib
@@ -16,15 +16,15 @@ The speed of AI development is overwhelming. Every morning I wake up to news of 
 
 {{< include resources/memes.qmd >}}
 
-I'm both panicked and excited about AI: for how it overthrows the current software landscape, and how we could use it more efficiently. After a lot of struggling and experimenting, I have come to a conclusion: the real edge isn't building apps for others — it's building workflows for yourself. I'm not sure how AI changes the tech market in the future, but at least for now, I can definitely leverage AI for a workflow tuned to my own needs.
+I'm both panicked and excited about AI: about how it upends the current software landscape, and how we can use it more efficiently. After a lot of struggling and experimenting, I have come to a conclusion: the real edge isn't building apps for others — it's building workflows for yourself. I'm not sure how AI changes the tech market in the future, but at least for now, I can definitely leverage AI for a workflow tuned to my own needs.
 
 ## AI Assistants vs AI Agents
 
-New terms emerge quickly: Vibe Coding, Agentic Engineering, and now Harness Design. These are all trending terms that appear for solid reasons, but before everything, I wanna talk about "AI Assistants" and "AI Agents" since they are the most basic and fundamental concepts.
+New terms emerge quickly: Vibe Coding, Agentic Engineering, and now Harness Design. These are all trending terms that exist for solid reasons, but before anything else, I want to talk about "AI Assistants" and "AI Agents" since they are the most basic and fundamental concepts.
 
 **AI Assistants** are limited to a single prompt and response. The best example is your conversation with **ChatGPT**, **Claude**, or **Gemini**. You ask a question, it gives you an answer. It is a one-shot interaction.
 
-**AI Agents**, on the other hand, can have multiple rounds of interaction, and they can also execute commands, read and write files, call APIs, and so on. They are more like mini operating systems that can run scripts and workflows. Examples include **Codex**, **Claude Code**, and **Gemini Code**.
+**AI Agents**, on the other hand, can have multiple rounds of interaction, and they can also execute commands, read and write files, call APIs, and so on. They are more like mini operating systems that can run scripts and workflows. Examples include **Codex**, **Claude Code**, and **Gemini CLI**.
 
 In short, **AI Assistants** are better for one-off questions and tasks. It's your daily companion that can replace Google search. **AI Agents** are better for complex workflows that require multiple steps, decision making, and integration with other tools. They handle project-level tasks.
 
@@ -41,7 +41,7 @@ In this blog post, I am more focused on AI Agents due to their flexibility and p
 brew install --cask claude-code
 ```
 
-The official instructions said that you need to `cd` (change directory, a common `bash` command) to your project directory before using Claude Code:
+The official instructions say that you need to `cd` (change directory, a common `bash` command) to your project directory before using Claude Code:
 
 ```bash
 # Change to your project directory
@@ -66,7 +66,9 @@ From my perspective, there are 2 types of directories for Claude Code:
 
 ## Launching Claude Code
 
-To launch Claude Code, we need either terminal or IDE. The built-in terminal in MacOS is good enough for most cases, and [VS Code](https://code.visualstudio.com) is a commonly used IDE. I personally use [Kaku](https://github.com/tw93/Kaku) and [Positron](https://positron.posit.co).
+To launch Claude Code, you need either a terminal or an IDE. Use an IDE when you want to live-trace your files and make changes on your own. Otherwise, use terminal.
+
+The built-in terminal in MacOS is good enough for most cases, and [VS Code](https://code.visualstudio.com) is a commonly used IDE. I personally use [Kaku](https://github.com/tw93/Kaku) and [Positron](https://positron.posit.co).
 
 {{< include resources/terminals-ides.qmd >}}
 
@@ -95,15 +97,11 @@ Another way is to use an IDE. Navigate to your desired project directory, and la
 
 ![](resources/claude-code-ide.png){width=100% fig-align="center"}
 
-::: {.callout-tip}
-Use an IDE when you wanna live-trace your files and make changes on your own.
-:::
-
 ## Architecture of Agentic Engineering
 
 As you launch Claude Code from your desired project directory, you can already start empowering yourself with AI. You are mostly ready, and it's totally okay to close this blog and start your journey of crafting! But to really get into the details and unleash the full potential of AI agents, it's important to understand their architecture, and wisely design your own system.
 
-Again, Claude Code works under your designated project directory. It has access to all files within it. This architecture allows you to build complex workflows that go beyond simple prompts. It works whether you start from scratch or pick up an existing project.
+Again, Claude Code works under your designated project directory and has access to all files within it. This architecture allows you to build complex workflows that go beyond simple prompts. It works whether you start from scratch or pick up an existing project.
 
 I came across [\@tw93](https://x.com/HiTw93)'s article on "How to Build an AI Agentic System with Claude Code" [@tw93_claude_2026], which is a great resource that explains the architecture of Claude Code in detail.
 
@@ -142,11 +140,11 @@ Project/
 npx skills add tw93/claude-health -a claude-code -s health -g -y
 ```
 
-I recommend you read the article to improve your understanding of the architecture, and install this skill, or just install this skill.
+I recommend reading the article to better understand the architecture — or just skip ahead and install the skill.
 
 ## Vibe Coding, Agentic Engineering, and Harness Design
 
-Workflows changed dramatically ever since LLMs came out. At first we called it "Vibe Coding" — you just vibe with the model, and it gives you code. The problem with "vibe" is that it's more like drawing a card: it's random, and the quality is not guaranteed. Even if there is a successful outcome, there's no way to reproduce it.
+Workflows have changed dramatically ever since LLMs came out. At first we called it "Vibe Coding" — you just vibe with the model, and it gives you code. The problem with "vibe" is that it's more like drawing a card: it's random, and the quality is not guaranteed. Even if there is a successful outcome, there's no way to reproduce it.
 
 "Agentic Engineering" is more systematic and reproducible, and is where I am at right now. You design agents with specific rules and skills, and they can handle complex tasks. "Harness Design" or "Harness Engineering" is the most recent version as of this blog post, and maybe there's more to come. I'm still learning, but Anthropic has a recent article about "Harness Design" [@anthropic_harness_2026] that is worth reading.
 
