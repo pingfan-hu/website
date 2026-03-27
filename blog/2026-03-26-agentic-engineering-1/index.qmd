@@ -12,25 +12,25 @@ execute:
 
 ## Motivation
 
-The speed of AI development is overwhelming. I wake up every morning to new announcements and can't keep up.
+The speed of AI development is overwhelming. Every morning I wake up to news of AI improvements and I don't even have the time to learn and catch up.
 
 {{< include resources/memes.qmd >}}
 
-I'm both panicked and excited: panicked about how it reshapes the software industry, excited about what I can do with it. After a lot of experimenting, I've settled on one thing: build workflows for yourself, not apps for others. I don't know how AI changes the tech market, but I can use it to build something tuned to exactly how I work.
+I'm both panicked and excited about AI: about how it upends the current software landscape, and how we can use it more efficiently. After a lot of struggling and experimenting, I have come to a conclusion: the real edge isn't building apps for others — it's building workflows for yourself. I'm not sure how AI changes the tech market in the future, but at least for now, I can definitely leverage AI for a workflow tuned to my own needs.
 
 ## AI Assistants vs AI Agents
 
-New terms keep appearing: Vibe Coding, Agentic Engineering, Harness Design. They all make more sense once you understand the difference between AI Assistants and AI Agents.
+New terms emerge quickly: Vibe Coding, Agentic Engineering, and now Harness Design. These are all trending terms that exist for solid reasons, but before anything else, I want to talk about "AI Assistants" and "AI Agents" since they are the most basic and fundamental concepts.
 
-**AI Assistants** handle a single prompt and response. ChatGPT, Claude, Gemini are the obvious examples: you ask, they answer, and the conversation ends there.
+**AI Assistants** are limited to a single prompt and response. The best example is your conversation with **ChatGPT**, **Claude**, or **Gemini**. You ask a question, it gives you an answer. It is a one-shot interaction.
 
-**AI Agents** go beyond single exchanges. They can execute commands, read and write files, call APIs, and run multi-step workflows across a session. Codex, Claude Code, and Gemini CLI are examples.
+**AI Agents**, on the other hand, can have multiple rounds of interaction, and they can also execute commands, read and write files, call APIs, and so on. They are more like mini operating systems that can run scripts and workflows. Examples include **Codex**, **Claude Code**, and **Gemini CLI**.
 
-Use AI Assistants for one-off questions, the way you'd use Google. Use AI Agents when the work spans multiple steps, files, and tools.
+In short, **AI Assistants** are better for one-off questions and tasks. It's your daily companion that can replace Google search. **AI Agents** are better for complex workflows that require multiple steps, decision making, and integration with other tools. They handle project-level tasks.
 
 {{< include resources/ai-comparison.qmd >}}
 
-This post focuses on AI Agents. **Claude Code** is what I've been using heavily since it launched. I use it to automate tasks, manage projects, and handle production incidents.
+In this blog post, I am more focused on AI Agents due to their flexibility and power. **Claude Code** is the one that I've been heavily using since its release, and it has become an essential part of my workflow. It allows me to automate tasks, manage projects, and even handle incidents in production.
 
 ## Claude Code Basics
 
@@ -51,7 +51,7 @@ cd your-project
 claude
 ```
 
-Nobody really emphasizes this, but where you launch Claude Code matters. You can run it from any directory, but picking the right one is the first thing worth getting right.
+This is never emphasized but I think it's the most important step: Yes, you can literally run Claude Code in any directory, but to make your usage more organized and efficient, designating directories is always the first step.
 
 ::: {.callout-tip}
 Yes, it matters where you launch Claude Code.
@@ -99,11 +99,11 @@ You can also use an IDE: navigate to your project directory and launch Claude Co
 
 ## Architecture of Agentic Engineering
 
-At this point you can already start using Claude Code. If you want to stop here and start experimenting, that's totally fine. But if you want to get more out of it, understanding how it's structured helps you set it up in a way that actually scales.
+As you launch Claude Code from your desired project directory, you can already start empowering yourself with AI. You are mostly ready, and it's totally okay to close this blog and start your journey of crafting! But to really get into the details and unleash the full potential of AI agents, it's important to understand their architecture, and wisely design your own system.
 
-Claude Code has access to all files in your project directory, which is what makes it useful for real work rather than just one-off questions. It doesn't care whether you're starting from scratch or jumping into an existing codebase.
+Again, Claude Code works under your designated project directory and has access to all files within it. This architecture allows you to build complex workflows that go beyond simple prompts. It works whether you start from scratch or pick up an existing project.
 
-[\@tw93](https://x.com/HiTw93)'s article "How to Build an AI Agentic System with Claude Code" [@tw93_claude_2026] goes into this architecture in detail.
+I came across [\@tw93](https://x.com/HiTw93)'s article on "How to Build an AI Agentic System with Claude Code" [@tw93_claude_2026], which is a great resource that explains the architecture of Claude Code in detail.
 
 Claude Code works in 6 layers:
 
