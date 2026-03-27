@@ -16,7 +16,7 @@ The speed of AI development is overwhelming. Every morning I wake up to news of 
 
 {{< include resources/memes.qmd >}}
 
-I'm both panicked and excited about AI: about how it upends the current software landscape, and how we can use it more efficiently. After a lot of struggling and experimenting, I have come to a conclusion: the real edge isn't building apps for others — it's building workflows for yourself. I'm not sure how AI changes the tech market in the future, but at least for now, I can definitely leverage AI for a workflow tuned to my own needs.
+I'm both panicked and excited about AI: about how it upends the current software landscape, and how we can use it more efficiently. I'm not sure how AI changes the tech market in the future, but at least for now, I can definitely leverage AI for a workflow tuned to my own needs.
 
 ## AI Assistants vs AI Agents
 
