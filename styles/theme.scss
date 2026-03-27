@@ -76,6 +76,7 @@ div.sourceCode {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
+  overflow-x: auto;
   border: 1px solid #3A3858;
   margin: 1.2em 0;
 
@@ -155,10 +156,13 @@ div.sourceCode {
     background-color: #1E1C30 !important;
     color: #DDDCF5;
     max-height: 500px;
-    overflow-x: auto;
+    overflow-x: visible;
     overflow-y: auto !important;
 
-    code { white-space: pre !important; }
+    code {
+      display: block;
+      white-space: normal; // collapse \n text nodes between line spans
+    }
   }
 }
 
@@ -172,6 +176,8 @@ pre > code.sourceCode > span {
   counter-increment: line;
   text-indent: -2.8em;
   padding-left: 2.8em;
+  display: block;      // full-width block fixes Safari text selection on non-last lines
+  white-space: pre;    // preserve whitespace within each line
 
   &:before {
     content: counter(line) " ";

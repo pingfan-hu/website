@@ -19,7 +19,17 @@
       "Skill(nano-banana)",
       "Bash(git remote:*)",
       "Bash(git push:*)",
-      "Bash(gh cache:*)"
+      "Bash(gh cache:*)",
+      "Bash(export GEMINI_API_KEY=\"$NANOBANANA_GEMINI_API_KEY\")",
+      "Bash(export NANOBANANA_MODEL=\"gemini-2.5-flash-image\")",
+      "Bash(gh api:*)",
+      "Bash(gh release:*)",
+      "Read(//private/tmp/claude-image-gen/mcp-server/**)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(GEMINI_API_KEY=\"$NANOBANANA_GEMINI_API_KEY\" node /tmp/claude-image-gen/mcp-server/build/cli.bundle.js:*)",
+      "WebFetch(domain:json.schemastore.org)",
+      "WebFetch(domain:www.schemastore.org)"
     ]
   }
 }
