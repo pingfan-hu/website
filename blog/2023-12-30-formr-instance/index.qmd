@@ -8,11 +8,7 @@ description: "A tutorial of deploying the formr instance using Ubuntu 22.04 on A
 
 ## Useful Links
 
-|             |                                                                                                                                                                                                                                                                                                                |
-|------------|------------------------------------------------------------|
-| Showcase    | <a href="http://172.233.238.100" class="btn btn-primary btn-sm" role="button">My formr Instance</a> <a href="https://formr.org" class="btn btn-primary btn-sm" role="button">Official formr</a>                                                                                                                |
-| Preparation | <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04" class="btn btn-info btn-sm" role="button"> Initial Setup with Ubuntu </a> <a href="https://docs.docker.com/desktop/install/ubuntu/" class="btn btn-info btn-sm" role="button"> Install Docker on Ubuntu </a> |
-| Deployment  | <a href="https://github.com/rubenarslan/formr.org/blob/master/INSTALLATION.md" class="btn btn-success btn-sm" role="button"> Deploy formr (Docker Version) </a>                                                                                                                                                |
+{{< include resources/useful-links.qmd >}}
 
 ## Abstract
 

@@ -18,11 +18,7 @@ library(here)
 
 ## Useful Links
 
-|                |                                                                                                                                                                       |
-|-------------------|-----------------------------------------------------|
-| Research Paper | <a href="https://papers.tinbergen.nl/02119.pdf" class="btn btn-primary btn-sm" role="button"> The Origins of Logit Regression </a>                                    |
-| Lecture Slides | <a href="https://hw.pingfanhu.com/emse_6035_hw/choice_modeling_slides/1_choice_modeling.pdf" class="btn btn-info btn-sm" role="button"> Intro to Choice Modeling </a> |
-| Online Article | <a href="https://zhuanlan.zhihu.com/p/27188729" class="btn btn-success btn-sm" role="button"> What is Logit (Chinese) </a>                                            |
+{{< include resources/useful-links.qmd >}}
 
 ## Abstract
 

@@ -9,12 +9,7 @@ description: "An overview of my research methodologies"
 
 ## Useful Links
 
-|               |                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|----------------:|-------------------------------------------------------|
-|     Research: | <a href="https://scholar.google.com" class="btn btn-primary btn-sm" role="button"> Google Scholar </a> <a href="https://library.gwu.edu" class="btn btn-primary btn-sm" role="button"> GWU Library </a> <a href="https://www.connectedpapers.com" class="btn btn-primary btn-sm" role="button"> Connected Papers </a> <a href="https://www.zotero.org" class="btn btn-primary btn-sm" role="button"> Zotero </a> |
-|       Coding: | <a href="https://github.com" class="btn btn-info btn-sm" role="button">GitHub</a> <a href="https://desktop.github.com" class="btn btn-info btn-sm" role="button">GitHub Desktop</a> <a href="https://posit.co" class="btn btn-info btn-sm" role="button">RStudio</a>                                                                                                                                             |
-|  Note Taking: | <a href="https://quarto.org" class="btn btn-success btn-sm" role="button">Quarto</a> <a href="https://www.craft.do" class="btn btn-success btn-sm" role="button"> Craft Doc </a> <a href="https://www.notion.so" class="btn btn-success btn-sm" role="button"> Notion </a>                                                                                                                                       |
-| Related Blog: | <a href="https://pingfanhu.com/blogs/01_how_to_make_a_personal_website/" class="btn btn-warning btn-sm" role="button"> How to Make a Personal Website </a>                                                                                                                                                                                                                                                       |
+{{< include resources/useful-links.qmd >}}
 
 ## Abstract
 

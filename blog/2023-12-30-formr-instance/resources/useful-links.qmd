@@ -1,0 +1,83 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+
+<style>
+.lnk-outer {
+  width: 100%;
+  margin: 1em 0;
+  border: 1.5px solid #5654A2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.lnk-row {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  border-top: 1px solid #D4D3EE;
+  background: #F8F7F0;
+}
+.lnk-row:first-child { border-top: none; }
+.lnk-label {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.85em;
+  border-right: 1px solid #D4D3EE;
+}
+.lnk-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px;
+  align-items: center;
+}
+.lnk-btn {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1.5px solid;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lnk-purple .lnk-label { color: #5654A2; background: #EEEDF8; }
+.lnk-purple .lnk-btn   { border-color: #5654A2; color: #5654A2; background: #EEEDF8; }
+.lnk-purple .lnk-btn:hover { background: #5654A2; color: #F8F7F0; text-decoration: none; }
+.lnk-blue .lnk-label { color: #2471A3; background: #EBF5FB; }
+.lnk-blue .lnk-btn   { border-color: #2471A3; color: #2471A3; background: #EBF5FB; }
+.lnk-blue .lnk-btn:hover { background: #2471A3; color: #F8F7F0; text-decoration: none; }
+.lnk-green .lnk-label { color: #1E8449; background: #E9F7EF; }
+.lnk-green .lnk-btn   { border-color: #1E8449; color: #1E8449; background: #E9F7EF; }
+.lnk-green .lnk-btn:hover { background: #1E8449; color: #F8F7F0; text-decoration: none; }
+@media (max-width: 520px) {
+  .lnk-row { grid-template-columns: 1fr; }
+  .lnk-label { border-right: none; border-bottom: 1px solid #D4D3EE; padding: 8px 14px; }
+  .lnk-chips { padding: 10px 14px; }
+}
+</style>
+
+<div class="lnk-outer">
+  <div class="lnk-row lnk-purple">
+    <div class="lnk-label">Showcase</div>
+    <div class="lnk-chips">
+      <a href="http://172.233.238.100" class="lnk-btn" target="_blank">My formr Instance</a>
+      <a href="https://formr.org" class="lnk-btn" target="_blank">Official formr</a>
+    </div>
+  </div>
+  <div class="lnk-row lnk-blue">
+    <div class="lnk-label">Preparation</div>
+    <div class="lnk-chips">
+      <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04" class="lnk-btn" target="_blank">Initial Setup with Ubuntu</a>
+      <a href="https://docs.docker.com/desktop/install/ubuntu/" class="lnk-btn" target="_blank">Install Docker on Ubuntu</a>
+    </div>
+  </div>
+  <div class="lnk-row lnk-green">
+    <div class="lnk-label">Deployment</div>
+    <div class="lnk-chips">
+      <a href="https://github.com/rubenarslan/formr.org/blob/master/INSTALLATION.md" class="lnk-btn" target="_blank">Deploy formr (Docker Version)</a>
+    </div>
+  </div>
+</div>
+```

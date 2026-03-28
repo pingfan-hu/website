@@ -8,11 +8,7 @@ description: "A tutorial of making a personal website using Quarto on RStudio"
 
 ## Useful Links
 
-|           |                                                                                                                                                                                                                                                                                                                                                                                                             |
-|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| My Repo   | <a href="https://github.com/pingfan-hu/website" class="btn btn-primary btn-sm" role="button"> GitHub Repo of My Website </a>                                                                                                                                                                                                                                                                            |
-| Software  | <a href="https://desktop.github.com" class="btn btn-success btn-sm" role="button"> GitHub Desktop </a> <a href="https://www.r-project.org" class="btn btn-success btn-sm" role="button"> R </a> <a href="https://www.rstudio.com/categories/rstudio-ide/" class="btn btn-success btn-sm" role="button"> RStudio </a> <a href="https://quarto.org" class="btn btn-success btn-sm" role="button"> Quarto </a> |
-| Platforms | <a href="https://github.com" class="btn btn-info btn-sm" role="button"> GitHub (Repo) </a> <a href="https://www.namecheap.com" class="btn btn-info btn-sm" role="button"> Namecheap (Domain) </a> <a href="https://www.netlify.com" class="btn btn-info btn-sm" role="button"> Netlify (Server) </a>                                                                                                        |
+{{< include resources/useful-links.qmd >}}
 
 ## Abstract
 
