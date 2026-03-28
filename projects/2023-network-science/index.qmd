@@ -6,9 +6,7 @@ categories: [Python, Research, Data Science, Transportation]
 description: "A master-level multi-layer network analysis."
 ---
 
-::: {.d-flex .justify-content-center .flex-wrap .text-center}
-[<i class="bi bi-file-richtext"></i> Documentation](https://pingfan.craft.me/2023-network-science){.btn .btn-primary .m-1}
-:::
+{{< include resources/useful-links.qmd >}}
 
 This project is a multi-layer network science study on the Mid-Atlantic region. It is a student research project for [the FEW's Lab](https://fewslab.org) managed by Prof Caitlin Grady.
 

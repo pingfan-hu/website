@@ -7,11 +7,7 @@ categories: [Python, Software, Survey, Data Science]
 description: "A Python package for tidying and visualizing survey data."
 ---
 
-::: {.d-flex .justify-content-center .flex-wrap .text-center}
-[<i class="bi bi-browser-safari"></i> PyPI](https://pypi.org/project/tidyviz/){.btn .btn-primary .m-1 style="width: 130px;"}
-[<i class="bi bi-github"></i> GitHub](https://github.com/pingfan-hu/tidyviz){.btn .btn-primary .m-1 style="width: 130px;"}
-[<i class="bi bi-file-earmark-text-fill"></i> Docs](https://github.com/pingfan-hu/tidyviz/tree/main/docs){.btn .btn-primary .m-1 style="width: 130px;"}
-:::
+{{< include resources/useful-links.qmd >}}
 
 ## Overview
 

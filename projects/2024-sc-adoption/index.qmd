@@ -7,11 +7,7 @@ categories: [R, Research, Survey, Transportation]
 description: "EV owner preferences for smart charging programs."
 ---
 
-::: {.d-flex .justify-content-center .flex-wrap .text-center}
-[<i class="bi bi-file-text"></i> Showcase](https://sc.pingfanhu.com){.btn .btn-primary .m-1 style="width: 170px;"}
-[<i class="bi bi-file-richtext"></i> Documentation](https://bev.pingfanhu.com){.btn .btn-primary .m-1 style="width: 170px;"}
-[<i class="bi bi-calculator"></i> Simulator](https://gwuvehicle.shinyapps.io/enrollment_simulator/){.btn .btn-primary .m-1 style="width: 170px;"}
-:::
+{{< include resources/useful-links.qmd >}}
 
 ## Papers
 
