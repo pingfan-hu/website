@@ -149,7 +149,7 @@
 .url3-badge-quotafull { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
 </style>
 
-<div class="url3-outer">
+<div class="url3-outer url3-stacked">
   <div class="url3-header">URL Anatomy</div>
 
   <!-- Desktop: plain text -->
@@ -231,9 +231,14 @@
   var outer = document.currentScript.previousElementSibling;
   var breakdown = outer.querySelector('.url3-breakdown');
   var observer = new ResizeObserver(function() {
-    outer.classList.remove('url3-stacked');
-    if (breakdown.scrollWidth > breakdown.clientWidth + 1) {
+    var w = outer.clientWidth;
+    breakdown.style.cssText = 'display:flex;position:fixed;top:-9999px;left:0;visibility:hidden;width:' + w + 'px;';
+    var overflows = breakdown.scrollWidth > w + 1;
+    breakdown.style.cssText = '';
+    if (overflows) {
       outer.classList.add('url3-stacked');
+    } else {
+      outer.classList.remove('url3-stacked');
     }
   });
   observer.observe(outer);
