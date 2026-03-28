@@ -61,6 +61,7 @@ Always include these constraints in the prompt:
   - **Subtitle / secondary label** (e.g. "Statistical Modeling", "URSSI Winter School 2025"): small, light gray, quiet monospace — a whisper beneath the title
   - The overall effect: eye lands on the dark near-black content word first, reads the purple function words second, notices the gray subtitle last
   - **Text size**: content words large and prominent but NOT oversized — title occupies roughly the left half of the banner, right half stays clean for the illustration. Good breathing room around all elements.
+  - **Capitalization**: NEVER use all-capitals or all-uppercase for any word in the title or subtitle. Always use title case (e.g. "Smart Charging Adoption", not "SMART CHARGING ADOPTION"). This applies to every word, including single-word package names like "surveydown" or "sdstudio" — render them exactly as written (lowercase), never uppercased.
   - **Illustration style**: the illustration can include subtle decorative scatter elements (small dots, short dashes) floating around it to add visual depth without busyness.
 
 ## Ideal Layout Reference
