@@ -20,13 +20,13 @@ I'm both panicked and excited about AI: about how it upends the current software
 
 ## AI Assistants vs AI Agents
 
-New terms emerge quickly: Vibe Coding, Agentic Engineering, and now Harness Design. These are all trending terms that exist for solid reasons, but before anything else, I want to talk about "AI Assistants" and "AI Agents" since they are the most basic and fundamental concepts.
+Before diving into workflows and tools, it helps to understand the most basic distinction: AI Assistants vs AI Agents.
 
-**AI Assistants** are limited to a single prompt and response. The best example is your conversation with **ChatGPT**, **Claude**, or **Gemini**. You ask a question, it gives you an answer. It is a one-shot interaction.
+**AI Assistants** are conversational interfaces where you ask a question and get a response. Examples include **ChatGPT**, **Claude**, and **Gemini**. Modern assistants can also do things like browse the web, run code, and remember context — but they still respond to your prompts rather than act on your behalf.
 
-**AI Agents**, on the other hand, can have multiple rounds of interaction, and they can also execute commands, read and write files, call APIs, and so on. They are more like mini operating systems that can run scripts and workflows. Examples include **Codex**, **Claude Code**, and **Gemini CLI**.
+**AI Agents**, on the other hand, can autonomously execute multi-step tasks in your environment: run shell commands, read and write files, call APIs, and loop through decisions without waiting for you at each step. Examples include **Codex**, **Claude Code**, and **Gemini CLI**. The key differentiator is not just multi-turn conversation — it's the ability to act independently in an environment.
 
-In short, **AI Assistants** are better for one-off questions and tasks. It's your daily companion that can replace Google search. **AI Agents** are better for complex workflows that require multiple steps, decision making, and integration with other tools. They handle project-level tasks.
+In short, **AI Assistants** are better for one-off questions and tasks. **AI Agents** are better for complex workflows that require multiple steps, decision making, and integration with other tools. They handle project-level tasks.
 
 {{< include resources/ai-comparison.qmd >}}
 
@@ -144,9 +144,9 @@ Worth reading if you want to understand the architecture. Or just install the sk
 
 ## Vibe Coding, Agentic Engineering, and Harness Design
 
-Workflows have changed since LLMs arrived. The first wave was Vibe Coding: you describe what you want, the model generates code, you hope it works. The outputs were unpredictable, and even when something came out right, you couldn't reliably get there again.
+Workflows have evolved since LLMs arrived, and these terms describe different levels of maturity — they coexist, not replace each other. Vibe Coding is the starting point: you describe what you want, the model generates code, you hope it works. The outputs are unpredictable, and even when something comes out right, you can't reliably get there again.
 
-Agentic Engineering is where I am now. It's more structured: you design agents with specific rules and skills, and they handle complex tasks in a reproducible way. Harness Design or Harness Engineering is the latest framing, and Anthropic wrote about it recently [@anthropic_harness_2026].
+Agentic Engineering is more structured: you design agents with specific rules and skills, and they handle complex tasks in a reproducible way. This is where I am now. Harness Design or Harness Engineering is the latest framing, and Anthropic wrote about it recently [@anthropic_harness_2026].
 
 The name keeps changing, but the shift is the same. You stop handcrafting every piece and start conducting: set the rules, build the skills, let the agents handle the execution.
 
