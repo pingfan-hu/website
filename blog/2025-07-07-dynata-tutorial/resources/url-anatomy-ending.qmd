@@ -1,0 +1,242 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+
+<style>
+.url3-outer {
+  width: 100%;
+  margin: 1em 0;
+  border: 1.5px solid #5654A2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.url3-header {
+  background: #5654A2;
+  padding: 10px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #F8F7F0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.url3-full-bar {
+  padding: 12px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.88em;
+  color: #564232;
+  background: #F8F7F0;
+  border-bottom: 1px solid #D4D3EE;
+  word-break: break-all;
+}
+.url3-full-bar-chips {
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 16px;
+  background: #F8F7F0;
+  border-bottom: 1px solid #D4D3EE;
+}
+.url3-full-chip {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  padding: 3px 9px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.url3-full-chip-base  { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
+.url3-full-chip-param { background: #EBF5FB; color: #2471A3; border: 1px solid #A9CCE3; }
+.url3-full-chip-rst   { background: #FEF5E7; color: #CA6F1E; border: 1px solid #F5CBA7; }
+.url3-full-sep {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  color: #B0A8C0;
+  padding: 0 1px;
+  flex-shrink: 0;
+}
+.url3-breakdown {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 16px 16px 12px;
+  background: #F8F7F0;
+}
+.url3-mobile { display: none; }
+.url3-stacked .url3-full-bar { display: none; }
+.url3-stacked .url3-full-bar-chips { display: flex; }
+.url3-stacked .url3-breakdown { display: none; }
+.url3-stacked .url3-mobile { display: block; }
+.url3-chunk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.url3-chip {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  padding: 4px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.url3-chip-base  { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
+.url3-chip-param { background: #EBF5FB; color: #2471A3; border: 1px solid #A9CCE3; }
+.url3-chip-rst   { background: #FEF5E7; color: #CA6F1E; border: 1px solid #F5CBA7; }
+.url3-lbl {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9B8EA0;
+  white-space: nowrap;
+}
+.url3-sep {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.88em;
+  color: #B0A8C0;
+  padding: 4px 2px 0;
+  flex-shrink: 0;
+}
+.url3-m-row {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  border-top: 1px solid #D4D3EE;
+  background: #F8F7F0;
+}
+.url3-m-label {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.8em;
+  color: #5654A2;
+  background: #EEEDF8;
+  border-right: 1px solid #D4D3EE;
+}
+.url3-m-val {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+}
+.url3-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px 14px;
+  background: #F8F7F0;
+  border-top: 1px solid #D4D3EE;
+}
+.url3-legend-label {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.75em;
+  color: #9B8EA0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  align-self: center;
+  margin-right: 4px;
+}
+.url3-badge {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.75em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.url3-badge-complete  { background: #E9F7EF; color: #1E8449; border: 1px solid #A9DFBF; }
+.url3-badge-screenout { background: #FEF5E7; color: #CA6F1E; border: 1px solid #F5CBA7; }
+.url3-badge-quotafull { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
+</style>
+
+<div class="url3-outer">
+  <div class="url3-header">URL Anatomy</div>
+
+  <!-- Desktop: plain text -->
+  <div class="url3-full-bar">https://dkr1.ssisurveys.com/projects/end?rst=1&amp;psid=xxx&amp;_k=xxx&amp;_s=xxx</div>
+
+  <!-- Stacked: chips + separators -->
+  <div class="url3-full-bar-chips">
+    <span class="url3-full-chip url3-full-chip-base">https://dkr1.ssisurveys.com/projects/end</span>
+    <span class="url3-full-sep">?</span>
+    <span class="url3-full-chip url3-full-chip-rst">rst=1</span>
+    <span class="url3-full-sep">&amp;</span>
+    <span class="url3-full-chip url3-full-chip-param">psid=xxx</span>
+    <span class="url3-full-sep">&amp;</span>
+    <span class="url3-full-chip url3-full-chip-param">_k=xxx</span>
+    <span class="url3-full-sep">&amp;</span>
+    <span class="url3-full-chip url3-full-chip-param">_s=xxx</span>
+  </div>
+
+  <div class="url3-breakdown">
+    <div class="url3-chunk">
+      <div class="url3-chip url3-chip-base">https://dkr1.ssisurveys.com/projects/end</div>
+      <div class="url3-lbl">Dynata Base URL</div>
+    </div>
+    <div class="url3-sep">?</div>
+    <div class="url3-chunk">
+      <div class="url3-chip url3-chip-rst">rst=1</div>
+      <div class="url3-lbl">Completion Status</div>
+    </div>
+    <div class="url3-sep">&amp;</div>
+    <div class="url3-chunk">
+      <div class="url3-chip url3-chip-param">psid=xxx</div>
+      <div class="url3-lbl">Respondent ID</div>
+    </div>
+    <div class="url3-sep">&amp;</div>
+    <div class="url3-chunk">
+      <div class="url3-chip url3-chip-param">_k=xxx</div>
+      <div class="url3-lbl">Survey Key</div>
+    </div>
+    <div class="url3-sep">&amp;</div>
+    <div class="url3-chunk">
+      <div class="url3-chip url3-chip-param">_s=xxx</div>
+      <div class="url3-lbl">End Signature</div>
+    </div>
+  </div>
+
+  <div class="url3-mobile">
+    <div class="url3-m-row">
+      <div class="url3-m-label">Dynata Base URL</div>
+      <div class="url3-m-val"><span class="url3-chip url3-chip-base" style="white-space:normal;word-break:break-all;">https://dkr1.ssisurveys.com/projects/end</span></div>
+    </div>
+    <div class="url3-m-row">
+      <div class="url3-m-label">Completion Status</div>
+      <div class="url3-m-val"><span class="url3-chip url3-chip-rst">rst=1</span></div>
+    </div>
+    <div class="url3-m-row">
+      <div class="url3-m-label">Respondent ID</div>
+      <div class="url3-m-val"><span class="url3-chip url3-chip-param">psid=xxx</span></div>
+    </div>
+    <div class="url3-m-row">
+      <div class="url3-m-label">Survey Key</div>
+      <div class="url3-m-val"><span class="url3-chip url3-chip-param">_k=xxx</span></div>
+    </div>
+    <div class="url3-m-row">
+      <div class="url3-m-label">End Signature</div>
+      <div class="url3-m-val"><span class="url3-chip url3-chip-param">_s=xxx</span></div>
+    </div>
+  </div>
+
+  <div class="url3-legend">
+    <span class="url3-legend-label">rst:</span>
+    <span class="url3-badge url3-badge-complete">1 = Complete</span>
+    <span class="url3-badge url3-badge-screenout">2 = Screenout</span>
+    <span class="url3-badge url3-badge-quotafull">3 = Quotafull</span>
+  </div>
+</div>
+
+<script>
+(function() {
+  var outer = document.currentScript.previousElementSibling;
+  var breakdown = outer.querySelector('.url3-breakdown');
+  var observer = new ResizeObserver(function() {
+    outer.classList.remove('url3-stacked');
+    if (breakdown.scrollWidth > breakdown.clientWidth + 1) {
+      outer.classList.add('url3-stacked');
+    }
+  });
+  observer.observe(outer);
+})();
+</script>
+```

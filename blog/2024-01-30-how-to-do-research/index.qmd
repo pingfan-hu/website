@@ -210,7 +210,7 @@ There are many ways to do personal websites. In fact, any software or platform t
 4.  **Namecheap** is used to buy and manage domains. It also lets you to manage DNS, which is important for linking your domain to Netlify. In fact, I bought [my domain](https://pingfanhu.com) at Namecheap.
 5.  **Netlify** deploys your site. You may log in using your GitHub credential. Netlify also sells domains, by doing which can speed up your website deployment, since you'll have DNS settings automatically taken care of.
 
-> Above is just a brief introduction of which is which. If you are interested in building a website in this way, please go to another blog of mine: [How to Make a Personal Website](https://pingfanhu.com/blogs/01_how_to_make_a_personal_website/).
+> Above is just a brief introduction of which is which. If you are interested in building a website in this way, please go to another blog of mine: [How to Make a Personal Website](https://pingfanhu.com/blog/2023-12-09-personal-website/).
 
 ## Summary
 

@@ -26,12 +26,7 @@ This tutorial consists of the following:
 
 ## My Customization
 
-|                       |                                                            |
-|---------------------|---------------------------------------------------|
-| Server IP             | `172.233.238.100`                                          |
-| User Name             | `pingfan`                                                  |
-| SQL Database Password | `0727`                                                     |
-| Host Email            | [formrcloudgwu\@gmail.com](mailto:formrcloudgwu@gmail.com) |
+{{< include resources/my-customization.qmd >}}
 
 ## Step 1 - Create the Server
 

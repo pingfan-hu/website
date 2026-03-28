@@ -1,0 +1,198 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+
+<style>
+.url1-outer {
+  width: 100%;
+  margin: 1em 0;
+  border: 1.5px solid #5654A2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.url1-header {
+  background: #5654A2;
+  padding: 10px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #F8F7F0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+/* Desktop: plain text full-bar */
+.url1-full-bar {
+  padding: 12px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.88em;
+  color: #564232;
+  background: #F8F7F0;
+  border-bottom: 1px solid #D4D3EE;
+  word-break: break-all;
+}
+/* Stacked: chip+separator full-bar */
+.url1-full-bar-chips {
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 16px;
+  background: #F8F7F0;
+  border-bottom: 1px solid #D4D3EE;
+}
+.url1-full-chip {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  padding: 3px 9px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.url1-full-chip-base  { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
+.url1-full-chip-param { background: #EBF5FB; color: #2471A3; border: 1px solid #A9CCE3; }
+.url1-full-sep {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  color: #B0A8C0;
+  padding: 0 1px;
+  flex-shrink: 0;
+}
+.url1-breakdown {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 16px;
+  background: #F8F7F0;
+}
+.url1-mobile { display: none; }
+.url1-stacked .url1-full-bar { display: none; }
+.url1-stacked .url1-full-bar-chips { display: flex; }
+.url1-stacked .url1-breakdown { display: none; }
+.url1-stacked .url1-mobile { display: block; }
+.url1-chunk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.url1-chip {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  padding: 4px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.url1-chip-base  { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
+.url1-chip-param { background: #EBF5FB; color: #2471A3; border: 1px solid #A9CCE3; }
+.url1-lbl {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9B8EA0;
+  white-space: nowrap;
+}
+.url1-sep {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.88em;
+  color: #B0A8C0;
+  padding: 4px 2px 0;
+  flex-shrink: 0;
+}
+/* Mobile vertical table */
+.url1-m-row {
+  display: grid;
+  grid-template-columns: 36% 1fr;
+  border-top: 1px solid #D4D3EE;
+  background: #F8F7F0;
+}
+.url1-m-label {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.8em;
+  color: #5654A2;
+  background: #EEEDF8;
+  border-right: 1px solid #D4D3EE;
+}
+.url1-m-val {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+}
+</style>
+
+<div class="url1-outer">
+  <div class="url1-header">URL Anatomy</div>
+
+  <!-- Desktop: plain text -->
+  <div class="url1-full-bar">https://www.google.com/?id_a=xxx&amp;id_b=xxx&amp;id_c=xxx</div>
+
+  <!-- Stacked: chips + separators -->
+  <div class="url1-full-bar-chips">
+    <span class="url1-full-chip url1-full-chip-base">https://www.google.com</span>
+    <span class="url1-full-sep">/?</span>
+    <span class="url1-full-chip url1-full-chip-param">id_a=xxx</span>
+    <span class="url1-full-sep">&amp;</span>
+    <span class="url1-full-chip url1-full-chip-param">id_b=xxx</span>
+    <span class="url1-full-sep">&amp;</span>
+    <span class="url1-full-chip url1-full-chip-param">id_c=xxx</span>
+  </div>
+
+  <div class="url1-breakdown">
+    <div class="url1-chunk">
+      <div class="url1-chip url1-chip-base">https://www.google.com</div>
+      <div class="url1-lbl">Base URL</div>
+    </div>
+    <div class="url1-sep">/?</div>
+    <div class="url1-chunk">
+      <div class="url1-chip url1-chip-param">id_a=xxx</div>
+      <div class="url1-lbl">Parameter</div>
+    </div>
+    <div class="url1-sep">&amp;</div>
+    <div class="url1-chunk">
+      <div class="url1-chip url1-chip-param">id_b=xxx</div>
+      <div class="url1-lbl">Parameter</div>
+    </div>
+    <div class="url1-sep">&amp;</div>
+    <div class="url1-chunk">
+      <div class="url1-chip url1-chip-param">id_c=xxx</div>
+      <div class="url1-lbl">Parameter</div>
+    </div>
+  </div>
+
+  <div class="url1-mobile">
+    <div class="url1-m-row">
+      <div class="url1-m-label">Base URL</div>
+      <div class="url1-m-val"><span class="url1-chip url1-chip-base" style="white-space:normal;word-break:break-all;">https://www.google.com</span></div>
+    </div>
+    <div class="url1-m-row">
+      <div class="url1-m-label">Parameter</div>
+      <div class="url1-m-val"><span class="url1-chip url1-chip-param">id_a=xxx</span></div>
+    </div>
+    <div class="url1-m-row">
+      <div class="url1-m-label">Parameter</div>
+      <div class="url1-m-val"><span class="url1-chip url1-chip-param">id_b=xxx</span></div>
+    </div>
+    <div class="url1-m-row">
+      <div class="url1-m-label">Parameter</div>
+      <div class="url1-m-val"><span class="url1-chip url1-chip-param">id_c=xxx</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var outer = document.currentScript.previousElementSibling;
+  var breakdown = outer.querySelector('.url1-breakdown');
+  var observer = new ResizeObserver(function() {
+    outer.classList.remove('url1-stacked');
+    if (breakdown.scrollWidth > breakdown.clientWidth + 1) {
+      outer.classList.add('url1-stacked');
+    }
+  });
+  observer.observe(outer);
+})();
+</script>
+```

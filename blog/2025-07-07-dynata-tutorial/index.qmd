@@ -8,19 +8,6 @@ eval: false
 description: "A brief tutorial on how to embed Dynata links in your surveydown survey."
 ---
 
-<script>
-// Hide content immediately if not authenticated
-if (sessionStorage.getItem('auth') !== 'true') {
-  document.documentElement.style.display = 'none';
-  window.location.href = '/blog.html';
-} else {
-  document.addEventListener('DOMContentLoaded', function() {
-    // Show content if authenticated
-    document.documentElement.style.display = 'block';
-  });
-}
-</script>
-
 ## Motivation
 
 When you have your survey link ready, you might want to cooperate with Dynata to recruit your survey. Dynata has 2 link checkpoints:
@@ -42,17 +29,11 @@ This tutorial is based on my previous experience of cooperating with Dynata, in 
 
 Say you have an original survey link, how about the Google official website: [https://www.google.com](https://www.google.com). Say we have 3 IDs and let's call them `id_a=xxx`, `id_b=xxx`, and `id_c=xxx`. Then let's assign them as parameters in the URL, like this:
 
-[https://www.google.com/?id_a=xxx&id_b=xxx&id_c=xxx](https://www.google.com/?id_a=xxx&id_b=xxx&id_c=xxx)
+<div style="background:#E9F7EF;border:1.5px solid #A9DFBF;border-radius:10px;padding:10px 16px;text-align:center;font-family:'Maple Mono',monospace;font-size:0.88em;margin:1em 0;word-break:break-all;"><a href="https://www.google.com/?id_a=xxx&id_b=xxx&id_c=xxx">https://www.google.com/?id_a=xxx&amp;id_b=xxx&amp;id_c=xxx</a></div>
 
 Let's break down the link:
 
-- `https://www.google.com`
-- `/?`
-- `id_a=xxx`
-- `&`
-- `id_b=xxx`
-- `&`
-- `id_c=xxx`
+{{< include resources/url-anatomy.qmd >}}
 
 Actually you can click on this link. You'll see this exact link in your browser's URL part, and it is no different from the original [https://www.google.com](https://www.google.com) link.
 
@@ -79,13 +60,7 @@ https://www.mysurvey.com/?psid=xxx&_k=xxx&_s=xxx
 
 Let's break down the link:
 
-- `https://www.mysurvey.com`
-- `/?`
-- `psid=xxx`
-- `&`
-- `_k=xxx`
-- `&`
-- `_s=xxx`
+{{< include resources/url-anatomy-dynata.qmd >}}
 
 ### Starting Signature (`_s`)
 
@@ -126,14 +101,7 @@ Dynata has a URL structure for the ending link: `https://dkr1.ssisurveys.com/pro
 
 Let’s break down the link:
 
-- `https://dkr1.ssisurveys.com/projects/end` (This is the base URL for Dynata's ending link. Don't change this part.)
-- `?rst=1` (This is the indicator of completion, in which `1` means complete, `2` means screenout, and `3` means quotafull.)
-- `&`
-- `psid=xxx`
-- `&`
-- `_k=xxx`
-- `&`
-- `_s=xxx` (This is the ending signature, which is also HMAC-SHA256 encrypted.)
+{{< include resources/url-anatomy-ending.qmd >}}
 
 ### Ending Signature (`_s`)
 

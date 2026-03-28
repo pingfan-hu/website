@@ -1,0 +1,101 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+
+<style>
+.sct-outer {
+  width: fit-content;
+  margin: 1em auto;
+  border: 1.5px solid #5654A2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.sct-header {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  background: #5654A2;
+  text-align: center;
+}
+.sct-header-cell {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #F8F7F0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+}
+.sct-row {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  align-items: stretch;
+  border-top: 1px solid #D4D3EE;
+  text-align: center;
+}
+.sct-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.88em;
+  border-right: 1px solid;
+}
+.sct-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.88em;
+}
+/* Light Blue row */
+.sct-row-blue .sct-label {
+  background: #D6EAF8;
+  color: #1A5276;
+  border-right-color: #A9CCE3;
+}
+.sct-row-blue .sct-value {
+  background: #EBF5FB;
+  color: #2471A3;
+}
+/* Dark Green row */
+.sct-row-green .sct-label {
+  background: #D5F5E3;
+  color: #1D6A3A;
+  border-right-color: #A9DFBF;
+}
+.sct-row-green .sct-value {
+  background: #E9F7EF;
+  color: #1E8449;
+}
+/* Bright Red row */
+.sct-row-red .sct-label {
+  background: #FADBD8;
+  color: #922B21;
+  border-right-color: #F1948A;
+}
+.sct-row-red .sct-value {
+  background: #FDEDEC;
+  color: #C0392B;
+}
+</style>
+
+<div class="sct-outer">
+  <div class="sct-header">
+    <div class="sct-header-cell">Display Label</div>
+    <div class="sct-header-cell">Database Value</div>
+  </div>
+  <div class="sct-row sct-row-blue">
+    <div class="sct-label">Light Blue</div>
+    <div class="sct-value">light_blue</div>
+  </div>
+  <div class="sct-row sct-row-green">
+    <div class="sct-label">Dark Green</div>
+    <div class="sct-value">dark_green</div>
+  </div>
+  <div class="sct-row sct-row-red">
+    <div class="sct-label">Bright Red</div>
+    <div class="sct-value">bright_red</div>
+  </div>
+</div>
+```

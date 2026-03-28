@@ -14,10 +14,7 @@ execute:
 
 <a href='https://surveydown.org'><img src='images/surveydown.png' align="right" style="height:139px;"/></a>
 
-::: {.d-flex .justify-content-center .flex-wrap .text-center}
-[<i class="bi bi-browser-safari"></i> Website](https://surveydown.org){.btn .btn-primary .m-1 style="width: 120px;"}
-[<i class="bi bi-github"></i> GitHub](https://github.com/surveydown-dev/surveydown){.btn .btn-primary .m-1 style="width: 120px;"}
-:::
+{{< include resources/useful-links.qmd >}}
 
 We are thrilled to announce the `v1.0.0` release of `surveydown`, a stable release with improvements to YAML settings, page navigation, question creation, and a smoother overall developer experience.
 
@@ -248,11 +245,7 @@ sd_question(
 
 In this case, the value stored in the data will be automatically converted to snake case. In this example, the above question will store the following values in the database:
 
-| Display Label | Database Value |
-|--------------|----------------|
-| Light Blue   | `light_blue`   |
-| Dark Green   | `dark_green`   |
-| Bright Red   | `bright_red`   |
+{{< include resources/snake-case-table.qmd >}}
 
 ## What's Next?
 
