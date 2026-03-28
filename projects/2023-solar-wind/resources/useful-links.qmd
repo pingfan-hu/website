@@ -26,6 +26,10 @@
   color: #F8F7F0;
   text-decoration: none;
 }
+@media (max-width: 520px) {
+  .sw-links { flex-direction: column; align-items: center; }
+  .sw-btn { width: 150px; text-align: center; }
+}
 </style>
 <div class="sw-links">
   <a href="https://rr.pingfanhu.com" class="sw-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> Documentation</a>

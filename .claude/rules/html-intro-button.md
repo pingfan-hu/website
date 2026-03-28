@@ -67,9 +67,18 @@ Only the Maple Mono font import is needed (no Lucide):
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
 ```
 
-## Notes
+## Mobile Responsiveness (Required)
 
-- No responsive breakpoint needed — the flex-wrap handles narrow screens naturally.
+On narrow screens, buttons wrap at different widths and look uneven. Fix by stacking vertically with a fixed width:
+
+```css
+@media (max-width: 520px) {
+  .xyz-links { flex-direction: column; align-items: center; }
+  .xyz-btn { width: 150px; text-align: center; }
+}
+```
+
+## Notes
 - Use scoped class names per post (e.g. `.sd-links` / `.sd-btn`) to avoid collisions if multiple components appear on the same page.
 
 ## Reference Implementation

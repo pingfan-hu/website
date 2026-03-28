@@ -26,6 +26,10 @@
   color: #F8F7F0;
   text-decoration: none;
 }
+@media (max-width: 520px) {
+  .sds-links { flex-direction: column; align-items: center; }
+  .sds-btn { width: 150px; text-align: center; }
+}
 </style>
 <div class="sds-links">
   <a href="https://sdstudio.surveydown.org" class="sds-btn" target="_blank"><i class="bi bi-browser-safari"></i> Website</a>

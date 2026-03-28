@@ -26,6 +26,10 @@
   color: #F8F7F0;
   text-decoration: none;
 }
+@media (max-width: 520px) {
+  .sca-links { flex-direction: column; align-items: center; }
+  .sca-btn { width: 150px; text-align: center; }
+}
 </style>
 <div class="sca-links">
   <a href="https://sc.pingfanhu.com" class="sca-btn" target="_blank"><i class="bi bi-file-text"></i> Showcase</a>

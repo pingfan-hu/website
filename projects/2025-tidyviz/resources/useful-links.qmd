@@ -26,6 +26,10 @@
   color: #F8F7F0;
   text-decoration: none;
 }
+@media (max-width: 520px) {
+  .tv-links { flex-direction: column; align-items: center; }
+  .tv-btn { width: 150px; text-align: center; }
+}
 </style>
 <div class="tv-links">
   <a href="https://pypi.org/project/tidyviz/" class="tv-btn" target="_blank"><i class="bi bi-box-seam"></i> PyPI</a>

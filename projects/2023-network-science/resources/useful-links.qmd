@@ -26,6 +26,10 @@
   color: #F8F7F0;
   text-decoration: none;
 }
+@media (max-width: 520px) {
+  .ns-links { flex-direction: column; align-items: center; }
+  .ns-btn { width: 150px; text-align: center; }
+}
 </style>
 <div class="ns-links">
   <a href="https://pingfan.craft.me/2023-network-science" class="ns-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> Documentation</a>

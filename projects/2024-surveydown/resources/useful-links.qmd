@@ -26,6 +26,10 @@
   color: #F8F7F0;
   text-decoration: none;
 }
+@media (max-width: 520px) {
+  .sd-links { flex-direction: column; align-items: center; }
+  .sd-btn { width: 150px; text-align: center; }
+}
 </style>
 <div class="sd-links">
   <a href="https://surveydown.org" class="sd-btn" target="_blank"><i class="bi bi-browser-safari"></i> Website</a>
