@@ -69,6 +69,8 @@ code, pre, .sourceCode {
   border-radius: 5px !important;
   padding: 0.1em 0.4em !important;
   font-size: 0.88em !important;
+  word-break: break-all !important;
+  white-space: normal !important;
 }
 
 // macOS window-style code blocks
