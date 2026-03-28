@@ -99,6 +99,7 @@
   padding: 4px 2px 0;
   flex-shrink: 0;
 }
+/* Mobile vertical table */
 .url1-m-row {
   display: grid;
   grid-template-columns: 36% 1fr;
@@ -122,7 +123,7 @@
 }
 </style>
 
-<div class="url1-outer url1-stacked">
+<div class="url1-outer">
   <div class="url1-header">URL Anatomy</div>
 
   <!-- Desktop: plain text -->
@@ -186,16 +187,9 @@
   var outer = document.currentScript.previousElementSibling;
   var breakdown = outer.querySelector('.url1-breakdown');
   var observer = new ResizeObserver(function() {
-    var w = outer.clientWidth;
-    // Measure breakdown's natural width off-screen with position:fixed
-    // so it never affects page layout or triggers horizontal scroll
-    breakdown.style.cssText = 'display:flex;position:fixed;top:-9999px;left:0;visibility:hidden;width:' + w + 'px;';
-    var overflows = breakdown.scrollWidth > w + 1;
-    breakdown.style.cssText = '';
-    if (overflows) {
+    outer.classList.remove('url1-stacked');
+    if (breakdown.scrollWidth > breakdown.clientWidth + 1) {
       outer.classList.add('url1-stacked');
-    } else {
-      outer.classList.remove('url1-stacked');
     }
   });
   observer.observe(outer);

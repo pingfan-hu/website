@@ -238,8 +238,8 @@ Badge colors: green for complete, orange for screenout, purple for quotafull.
 
 **Key rules:**
 - Never set `overflow: hidden` on `.urlN-breakdown` — it makes `scrollWidth` unreliable
-- **Never remove the stacked class before measuring** — it briefly puts the `flex-wrap:nowrap` breakdown into page flow, causing the browser body to register horizontal overflow and triggering a scrollable page. Measure via `position:fixed` instead (see script above).
-- **Start the outer with the stacked class in HTML** (`class="urlN-outer urlN-stacked"`) — safe default prevents any flash of wide content on initial load before the observer fires.
+- Never do a synchronous check before `observer.observe()` — layout isn't ready yet
+- Always remove the stacked class before measuring (measure in desktop context)
 - No `disconnect()` — keep observing so switching back on widen also works
 
 ## Required Boilerplate

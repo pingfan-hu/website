@@ -120,7 +120,7 @@
 }
 </style>
 
-<div class="url2-outer url2-stacked">
+<div class="url2-outer">
   <div class="url2-header">URL Anatomy</div>
 
   <!-- Desktop: plain text -->
@@ -184,14 +184,9 @@
   var outer = document.currentScript.previousElementSibling;
   var breakdown = outer.querySelector('.url2-breakdown');
   var observer = new ResizeObserver(function() {
-    var w = outer.clientWidth;
-    breakdown.style.cssText = 'display:flex;position:fixed;top:-9999px;left:0;visibility:hidden;width:' + w + 'px;';
-    var overflows = breakdown.scrollWidth > w + 1;
-    breakdown.style.cssText = '';
-    if (overflows) {
+    outer.classList.remove('url2-stacked');
+    if (breakdown.scrollWidth > breakdown.clientWidth + 1) {
       outer.classList.add('url2-stacked');
-    } else {
-      outer.classList.remove('url2-stacked');
     }
   });
   observer.observe(outer);
