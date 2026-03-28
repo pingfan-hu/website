@@ -44,7 +44,7 @@
   border-radius: 8px;
   white-space: nowrap;
 }
-.url2-full-chip-base  { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
+.url2-full-chip-base  { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; white-space: normal; word-break: break-all; }
 .url2-full-chip-param { background: #EBF5FB; color: #2471A3; border: 1px solid #A9CCE3; }
 .url2-full-sep {
   font-family: 'Maple Mono', monospace;

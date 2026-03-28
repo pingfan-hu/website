@@ -74,7 +74,7 @@ Use a unique prefix per component on the same page (e.g. `url1-`, `url2-`, `url3
 |-------|-------|---------|
 | `urlN-chip-base` | Purple `#5654A2` / `#EEEDF8` bg | Base URL |
 | `urlN-chip-param` | Blue `#2471A3` / `#EBF5FB` bg | Standard query parameters |
-| `urlN-chip-rst` | Orange `#CA6F1E` / `#FEF5E7` bg | Special status parameters (e.g. `rst=1`) |
+| `urlN-chip-rst` | Green `#1E8449` / `#E9F7EF` bg | Status parameter shown as its actual value (e.g. `rst=1` = Complete = green) |
 
 ## Optional: Legend Row
 
@@ -138,7 +138,7 @@ Badge colors: green for complete, orange for screenout, purple for quotafull.
   border-radius: 8px;
   white-space: nowrap;
 }
-.urlN-full-chip-base  { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
+.urlN-full-chip-base  { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; white-space: normal; word-break: break-all; }
 .urlN-full-chip-param { background: #EBF5FB; color: #2471A3; border: 1px solid #A9CCE3; }
 .urlN-full-chip-rst   { background: #FEF5E7; color: #CA6F1E; border: 1px solid #F5CBA7; }
 .urlN-full-sep {

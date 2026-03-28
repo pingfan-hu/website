@@ -1,0 +1,151 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+
+<style>
+.es-outer {
+  width: 100%;
+  margin: 1em 0;
+  border: 1.5px solid #5654A2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.es-header {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  background: #5654A2;
+}
+.es-header-cell {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #F8F7F0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+}
+/* Section divider row */
+.es-section {
+  padding: 7px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #5654A2;
+  background: #DDDCF0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-top: 1px solid #C4C3E8;
+}
+/* Data rows */
+.es-row {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  align-items: stretch;
+  border-top: 1px solid;
+}
+.es-label {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.88em;
+  font-weight: bold;
+  border-right: 1px solid;
+}
+.es-val {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.85em;
+  word-break: break-all;
+}
+/* Complete — green */
+.es-row-complete { border-color: #A9DFBF; background: #F2FCF6; }
+.es-row-complete .es-label { color: #1E8449; background: #D5F5E3; border-color: #A9DFBF; }
+.es-row-complete .es-val  { color: #1D6A3A; }
+/* Screenout — orange */
+.es-row-screenout { border-color: #F5CBA7; background: #FFFAF4; }
+.es-row-screenout .es-label { color: #CA6F1E; background: #FEF5E7; border-color: #F5CBA7; }
+.es-row-screenout .es-val  { color: #A04000; }
+/* Quotafull — purple */
+.es-row-quotafull { border-color: #D4D3EE; background: #F8F7F0; }
+.es-row-quotafull .es-label { color: #5654A2; background: #EEEDF8; border-color: #D4D3EE; }
+.es-row-quotafull .es-val  { color: #3D3B7A; }
+/* Neutral rows */
+.es-row-neutral { border-color: #D4D3EE; background: #F8F7F0; }
+.es-row-neutral .es-label { color: #564232; background: #EEEDF8; border-color: #D4D3EE; }
+.es-row-neutral .es-val  { color: #564232; }
+/* Legend */
+.es-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 16px 10px;
+  background: #F2FCF6;
+  border-top: 1px solid #A9DFBF;
+}
+.es-legend-label {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.75em;
+  color: #9B8EA0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  align-self: center;
+  margin-right: 4px;
+}
+.es-badge {
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.75em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.es-badge-complete  { background: #E9F7EF; color: #1E8449; border: 1px solid #A9DFBF; }
+.es-badge-screenout { background: #FEF5E7; color: #CA6F1E; border: 1px solid #F5CBA7; }
+.es-badge-quotafull { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
+@media (max-width: 520px) {
+  .es-header { grid-template-columns: 1fr; justify-items: center; }
+  .es-header-cell:last-child { display: none; }
+  .es-row { grid-template-columns: 1fr; }
+  .es-label { border-right: none; border-bottom: 1px solid; padding: 8px 14px; }
+  .es-val { padding: 8px 14px; }
+}
+</style>
+
+<div class="es-outer">
+  <div class="es-header">
+    <div class="es-header-cell">Input</div>
+    <div class="es-header-cell">Value</div>
+  </div>
+
+  <div class="es-section">① Ending URL Templates</div>
+  <div class="es-row es-row-complete">
+    <div class="es-label">Complete</div>
+    <div class="es-val">/projects/end?rst=1&amp;psid=xxx&amp;_k=xxx</div>
+  </div>
+  <div class="es-row es-row-screenout">
+    <div class="es-label">Screenout</div>
+    <div class="es-val">/projects/end?rst=2&amp;psid=xxx&amp;_k=xxx</div>
+  </div>
+  <div class="es-row es-row-quotafull">
+    <div class="es-label">Quotafull</div>
+    <div class="es-val">/projects/end?rst=3&amp;psid=xxx&amp;_k=xxx</div>
+  </div>
+  <div class="es-legend">
+    <span class="es-legend-label">RST:</span>
+    <span class="es-badge es-badge-complete">1 = Complete</span>
+    <span class="es-badge es-badge-screenout">2 = Screenout</span>
+    <span class="es-badge es-badge-quotafull">3 = Quotafull</span>
+  </div>
+
+  <div class="es-section">② Additional Inputs</div>
+  <div class="es-row es-row-neutral">
+    <div class="es-label">Secret Key</div>
+    <div class="es-val">Provided by Dynata</div>
+  </div>
+  <div class="es-row es-row-neutral">
+    <div class="es-label">Algorithm</div>
+    <div class="es-val">HMAC-SHA256</div>
+  </div>
+</div>
+```
