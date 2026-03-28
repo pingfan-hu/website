@@ -96,6 +96,48 @@ When filling in the template:
 - Design `[ILLUSTRATION CONCEPT]` to visually represent the post's core idea, not a generic desk scene.
 - Identify `[KEY WORDS]` (the nouns/verbs that carry meaning) and `[PREPOSITIONS/ARTICLES]` (the connective words that should recede).
 
+## Package Logo Lockup (for software project banners)
+
+When the post or project page is about an R or Python package that has a hex sticker logo, include the logo as part of the **left-side layout** — to the left of the title text, forming a horizontal lockup. Do **not** use external PNG compositing; instead describe the logo precisely in the prompt so Gemini renders it natively.
+
+### Rules
+
+- **Do not composite**: Never try to overlay the real logo PNG with Pillow after generation. Describe it in the prompt — Gemini renders it accurately when the description is precise.
+- **Position**: logo icon on the far left, title text immediately to its right in the same horizontal row, subtitle below both. The entire left-side block must be **vertically centered** — not at the bottom, not at the top.
+- **Size**: logo should be roughly the same height as 1–2 lines of title text — visible but not oversized.
+- **Right side**: keep a real visualization/illustration on the right (workflow, pipeline, etc.) — do not use the logo as the right-side illustration for project page banners.
+
+### How to describe a hex sticker logo in the prompt
+
+Read the actual logo image (e.g. `projects/{slug}/images/{pkg}.png`) before writing the prompt. Then describe it with:
+1. **Shape**: hex sticker (hexagonal, flat)
+2. **Fill color and border**: e.g. "gray-blue fill with thick black border"
+3. **Contents**: exactly what is inside the hex — icon, symbol, text
+4. **Text below**: the package name as it appears inside the hex
+
+**Example description for surveydown**:
+> a small gray-blue hexagonal sticker icon (hex with thick black border, gray-blue fill; inside a white rounded rectangle containing a bold black 'S' and a bold black downward arrow '↓'; below the rectangle the word 'surveydown' in small white text on the gray-blue hex fill)
+
+**Example description for sdstudio**:
+> a small pale gray-blue hexagonal sticker icon (light gray-blue hex with thin gray border; inside a flat browser window illustration with a red-checked checkbox, horizontal line elements, and a cursor arrow; below the window 'sdstudio' in small dark text on the light hex fill)
+
+### Prompt template for logo lockup
+
+```
+Left side, vertically centered in the middle of the left half:
+[LOGO DESCRIPTION] placed to the left, immediately followed to its right in the same row
+by the title '[PACKAGE NAME]' large bold dark near-black in bold sans-serif
+(all lowercase, NOT all capitals, NOT uppercase).
+Below the icon+title row: a small light gray label '[SUBTITLE]' in a monospace font.
+The entire left-side content must be vertically centered — NOT at the bottom, NOT at the top.
+```
+
+### Approved references
+- `projects/banners/2024-surveydown.png` — surveydown logo + Quarto→survey→PostgreSQL pipeline
+- `projects/banners/2025-sdstudio.png` — sdstudio logo + Build→Preview→Responses workflow
+
+---
+
 ## Reference
 
 - Approved example: `blog/banners/2026-03-26-agentic-engineering-1.png`
