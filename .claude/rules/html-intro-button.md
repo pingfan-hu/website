@@ -74,7 +74,7 @@ On narrow screens, buttons wrap at different widths and look uneven. Fix by stac
 ```css
 @media (max-width: 520px) {
   .xyz-links { flex-direction: column; align-items: center; }
-  .xyz-btn { width: 150px; text-align: center; }
+  .xyz-btn { width: fit-content; min-width: 120px; text-align: center; }
 }
 ```
 

@@ -28,10 +28,24 @@
 }
 @media (max-width: 520px) {
   .sw-links { flex-direction: column; align-items: center; }
-  .sw-btn { width: 150px; text-align: center; }
+  .sw-btn { min-width: 120px; text-align: center; }
 }
 </style>
 <div class="sw-links">
   <a href="https://rr.pingfanhu.com" class="sw-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> Documentation</a>
 </div>
+<script>
+(function() {
+  var btns = Array.from(document.querySelectorAll('.sw-btn'));
+  function equalize() {
+    btns.forEach(function(b) { b.style.width = ''; });
+    if (window.innerWidth <= 520) {
+      var maxW = Math.max.apply(null, btns.map(function(b) { return b.offsetWidth; }));
+      btns.forEach(function(b) { b.style.width = maxW + 'px'; });
+    }
+  }
+  document.fonts.ready.then(equalize);
+  window.addEventListener('resize', equalize);
+})();
+</script>
 ```

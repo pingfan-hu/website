@@ -28,7 +28,7 @@
 }
 @media (max-width: 520px) {
   .sca-links { flex-direction: column; align-items: center; }
-  .sca-btn { width: 150px; text-align: center; }
+  .sca-btn { min-width: 120px; text-align: center; }
 }
 </style>
 <div class="sca-links">
@@ -36,4 +36,18 @@
   <a href="https://bev.pingfanhu.com" class="sca-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> Documentation</a>
   <a href="https://gwuvehicle.shinyapps.io/enrollment_simulator/" class="sca-btn" target="_blank"><i class="bi bi-calculator"></i> Simulator</a>
 </div>
+<script>
+(function() {
+  var btns = Array.from(document.querySelectorAll('.sca-btn'));
+  function equalize() {
+    btns.forEach(function(b) { b.style.width = ''; });
+    if (window.innerWidth <= 520) {
+      var maxW = Math.max.apply(null, btns.map(function(b) { return b.offsetWidth; }));
+      btns.forEach(function(b) { b.style.width = maxW + 'px'; });
+    }
+  }
+  document.fonts.ready.then(equalize);
+  window.addEventListener('resize', equalize);
+})();
+</script>
 ```

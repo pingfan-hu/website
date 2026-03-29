@@ -28,7 +28,7 @@
 }
 @media (max-width: 520px) {
   .tv-links { flex-direction: column; align-items: center; }
-  .tv-btn { width: 150px; text-align: center; }
+  .tv-btn { min-width: 120px; text-align: center; }
 }
 </style>
 <div class="tv-links">
@@ -36,4 +36,18 @@
   <a href="https://github.com/pingfan-hu/tidyviz" class="tv-btn" target="_blank"><i class="bi bi-github"></i> GitHub</a>
   <a href="https://github.com/pingfan-hu/tidyviz/tree/main/docs" class="tv-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> Docs</a>
 </div>
+<script>
+(function() {
+  var btns = Array.from(document.querySelectorAll('.tv-btn'));
+  function equalize() {
+    btns.forEach(function(b) { b.style.width = ''; });
+    if (window.innerWidth <= 520) {
+      var maxW = Math.max.apply(null, btns.map(function(b) { return b.offsetWidth; }));
+      btns.forEach(function(b) { b.style.width = maxW + 'px'; });
+    }
+  }
+  document.fonts.ready.then(equalize);
+  window.addEventListener('resize', equalize);
+})();
+</script>
 ```
