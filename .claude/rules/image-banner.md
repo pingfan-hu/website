@@ -98,14 +98,15 @@ When filling in the template:
 
 ## Package Logo Lockup (for software project banners)
 
-When the post or project page is about an R or Python package that has a hex sticker logo, include the logo as part of the **left-side layout** — to the left of the title text, forming a horizontal lockup. Do **not** use external PNG compositing; instead describe the logo precisely in the prompt so Gemini renders it natively.
+When the post or project page is about an R or Python package that has a hex sticker logo, use the **top-left / bottom-right diagonal layout**. The logo lockup sits compactly in the top-left corner; the visualization fills the bottom-right. Do **not** use external PNG compositing; describe the logo precisely in the prompt so Gemini renders it natively.
 
-### Rules
+### Layout Rules
 
-- **Do not composite**: Never try to overlay the real logo PNG with Pillow after generation. Describe it in the prompt — Gemini renders it accurately when the description is precise.
-- **Position**: logo icon on the far left, title text immediately to its right in the same horizontal row, subtitle below both. The entire left-side block must be **vertically centered** — not at the bottom, not at the top.
-- **Size**: logo should be roughly the same height as 1–2 lines of title text — visible but not oversized.
-- **Right side**: keep a real visualization/illustration on the right (workflow, pipeline, etc.) — do not use the logo as the right-side illustration for project page banners.
+- **Top left**: small hex sticker + package name + subtitle, as a compact corner badge. The entire lockup should occupy only the top-left ~30% of the image — **not** dominant, similar in scale to a small app icon next to a readable title.
+- **Bottom right**: large visualization (pipeline, workflow, UI screenshot, etc.) occupying roughly the **bottom-right 55–60%** of the image. This is the visual focus.
+- **Size**: hex logo should be roughly 2 lines of text tall — compact, not oversized. Package name at moderate readable size. Both should feel like a label, not a hero element.
+- **Empty space**: top-right and bottom-left corners remain as breathing room.
+- **Do not composite**: Describe the logo in the prompt — Gemini renders it accurately when the description is precise.
 
 ### How to describe a hex sticker logo in the prompt
 
@@ -116,25 +117,43 @@ Read the actual logo image (e.g. `projects/{slug}/images/{pkg}.png`) before writ
 4. **Text below**: the package name as it appears inside the hex
 
 **Example description for surveydown**:
-> a small gray-blue hexagonal sticker icon (hex with thick black border, gray-blue fill; inside a white rounded rectangle containing a bold black 'S' and a bold black downward arrow '↓'; below the rectangle the word 'surveydown' in small white text on the gray-blue hex fill)
+> a small gray-blue hexagonal sticker (thick black border, gray-blue fill, white outer glow; inside a single white rounded rectangle containing BOTH a bold black 'S' on the left AND a bold black downward arrow '↓' on the right, side by side as S↓ together inside the rectangle — the arrow is NOT outside the rectangle; below the rectangle 'surveydown' in tiny white text on the gray-blue hex fill)
+
+> **Critical**: the S and ↓ must both be INSIDE the white rectangle. Do not let the arrow appear outside or on the border.
 
 **Example description for sdstudio**:
-> a small pale gray-blue hexagonal sticker icon (light gray-blue hex with thin gray border; inside a flat browser window illustration with a red-checked checkbox, horizontal line elements, and a cursor arrow; below the window 'sdstudio' in small dark text on the light hex fill)
+> a small pale gray-blue hexagonal sticker (light gray-blue hex with thin gray border; inside a flat browser window illustration with a red-checked checkbox, horizontal line elements, and a cursor arrow; below the window 'sdstudio' in small dark text on the light hex fill)
 
 ### Prompt template for logo lockup
 
 ```
-Left side, vertically centered in the middle of the left half:
-[LOGO DESCRIPTION] placed to the left, immediately followed to its right in the same row
-by the title '[PACKAGE NAME]' large bold dark near-black in bold sans-serif
-(all lowercase, NOT all capitals, NOT uppercase).
-Below the icon+title row: a small light gray label '[SUBTITLE]' in a monospace font.
-The entire left-side content must be vertically centered — NOT at the bottom, NOT at the top.
+[BACKGROUND COLOR] background, fills edge to edge, no border.
+Top left corner: [LOGO DESCRIPTION] — compact, roughly 2 lines of text tall.
+Immediately to its right: the package name '[NAME]' in bold dark near-black sans-serif
+at a MODERATE size — readable but not dominant. Below the name: a small light gray
+label '[SUBTITLE]' in quiet monospace. The entire top-left lockup should be compact,
+occupying only the top-left corner.
+Bottom right corner — LARGE illustration occupying roughly the bottom-right 55-60%
+of the image: [VISUALIZATION DESCRIPTION].
+Scatter dots and small geometric shapes around the illustration for depth.
+Clean flat design, academic, no neon, no dark backgrounds.
 ```
 
+### Visualization patterns by package type
+
+**Pipeline packages** (e.g. surveydown): flat pipeline with 3 elements connected by bold arrows:
+- Element 1: a light-background code editor panel showing the `.qmd` file with line numbers and syntax-highlighted Quarto code
+- Element 2: a macOS-style browser window at `localhost` showing the rendered survey UI
+- Element 3: a database cylinder with the relevant logo (e.g. PostgreSQL elephant) above it
+
+**GUI tool packages** (e.g. sdstudio): three flat browser window cards at staggered perspective, all light theme (white/light card bodies, blue title bars with traffic-light dots):
+- Build card: split-pane — left is a light blue "Structure" panel with page sections (T/Q block rows with green/red edit/delete buttons); right is a light green "Code" panel with file tabs and line-numbered Quarto code. NO dark backgrounds.
+- Preview card: rendered survey form with question, radio options, Submit button
+- Responses card: data table with column headers and rows
+
 ### Approved references
-- `projects/banners/2024-surveydown.png` — surveydown logo + Quarto→survey→PostgreSQL pipeline
-- `projects/banners/2025-sdstudio.png` — sdstudio logo + Build→Preview→Responses workflow
+- `projects/banners/2024-surveydown.png` — surveydown logo (S↓ in white rect) + survey.qmd → browser survey → PostgreSQL with elephant logo
+- `projects/banners/2025-sdstudio.png` — sdstudio logo + Build (Structure+Code split) / Preview / Responses cards, all light theme, lavender background
 
 ---
 

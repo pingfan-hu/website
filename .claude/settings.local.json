@@ -34,7 +34,8 @@
       "Bash(mv .claude/rules/html-button-style.md .claude/rules/html-button.md)",
       "Bash(mv .claude/rules/html-table-style.md .claude/rules/html-table.md)",
       "Bash(head:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(cd:*)"
     ]
   }
 }
