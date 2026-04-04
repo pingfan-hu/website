@@ -1,0 +1,185 @@
+---
+title: "Agentic Engineering Basics - Part 2"
+image: "/blog/banners/2026-04-02-agentic-engineering-2.png"
+description: ""
+date: '2026-04-02'
+categories: [Tutorial, Agentic Engineering]
+bibliography: references.bib
+execute:
+  echo: true
+  eval: false
+---
+
+## Don't Panic
+
+"Here are 10 skills that the Anthropic official team has been using!" "Here are 5 AI tools that you can use to boost your productivity!" If you have been following the AI space, you have probably seen a lot of content like this. You followed the instructions, inatalled them, and they just disappeared from your life after a few days.
+
+The skills, tools, and even software developed by active AI users and teams are of course useful. Some are already super popular and have many GitHub stars. But there's no "must-install" tool for your agentic engineering. It's true that some general-purpose tools can be helpful, but even in that case it's not hard to construct on your own. Andrej Karpathy once said on [his X post](https://x.com/karpathy/status/2015883857489522876) that "everyone has their developing flow".
+
+So my opening advice for this blog post is: **Don't panic!** Start building your AI workflows whenever you need them. If you come across some general-purpose skills, try to use them. You can also build your own workflow from scratch or start from a mature existing workflow of others.
+
+## Learn to Speak
+
+In the AI era, being able to use natural language to express your ideas in a structured way is more important than knowing a new coding language. There's a lecture recording by professor Patrick Winston, former directory of the MIT AI Lab, called *How to Speak* [@winston2019howtospeak]. He started his speech with *"Your success in life will be determined largely by your ability to speak, your ability to write, and the quality of your ideas, in that order."*
+
+Simply being able to precisely describe what you want to do in a structured way so that AI can follow step by step, already makes you distinguished from most people. In this case, using AI is a more humanistic matter rather than a technical matter.
+
+## Use Claude Code Efficiently
+
+With this mindset of not panicking and knowing how to speak, let's talk about how to use Claude code efficiently. I restructured the 6 layers of Claude Code [@tw93_claude_2026] by [\@tw93](https://x.com/HiTw93) into 4 components:
+
+{{< include resources/claude-code-components.qmd >}}
+
+### The `CLAUDE.md` Files
+
+Once your project has its basic structure of files, directories, source code, data, output, etc., You can start building the `CLAUDE.md` file. This can be done with the `/init` command while in Claude Code. Update it while you have major progresses. Other than the one in your project root directory, each sub-directory can optionally have its own `CLAUDE.md` file. The `CLAUDE.md` file is always respected by Claude Code. No need to specify it in the prompt.
+
+Other than your project-level `CLAUDE.md` file, you can also have a global file which lives in the `.claude/` directory under your home directory (`~`), so the full path is `~/.claude/CLAUDE.md`. This file is even higher-level because it's respected by all of your Claude Code sessions wherever you launch your Claude Code.
+
+Here's my global `CLAUDE.md` file for your reference:
+
+```markdown
+## Workflow Orchestration
+
+### 1. Plan Node Default
+
+- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
+- If something goes sideways, STOP and re-plan immediately — don't keep pushing
+- Use plan mode for verification steps, not just building
+- Write detailed specs upfront to reduce ambiguity
+
+### 2. Subagent Strategy
+
+- Use subagents liberally to keep main context window clean
+- Offload research, exploration, and parallel analysis to subagents
+- For complex problems, throw more compute at it via subagents
+- One task per subagent for focused execution
+
+### 3. Self-Improvement Loop
+
+- After ANY correction from the user: update `tasks/lessons.md` with the pattern
+- Write rules for yourself that prevent the same mistake
+- Ruthlessly iterate on these lessons until mistake rate drops
+- Review lessons at session start for relevant project
+
+### 4. Verification Before Done
+
+- Never mark a task complete without proving it works
+- Diff behavior between main and your changes when relevant
+- Ask yourself: "Would a staff engineer approve this?"
+- Run tests, check logs, demonstrate correctness
+
+### 5. Demand Elegance (Balanced)
+
+- For non-trivial changes: pause and ask "is there a more elegant way?"
+- If a fix feels hacky: "Knowing everything I know now, implement the elegant solution"
+- Skip this for simple, obvious fixes — don't over-engineer
+- Challenge your own work before presenting it
+
+### 6. Autonomous Bug Fixing
+
+- When given a bug report: just fix it. Don't ask for hand-holding
+- Point at logs, errors, failing tests — then resolve them
+- Zero context switching required from the user
+- Go fix failing CI tests without being told how
+
+## Task Management
+
+1. **Plan First**: Write plan to `tasks/todo.md` with checkable items
+2. **Verify Plan**: Check in before starting implementation
+3. **Track Progress**: Mark items complete as you go
+4. **Explain Changes**: High-level summary at each step
+5. **Document Results**: Add review section to `tasks/todo.md`
+6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
+
+## Core Principles
+
+- **Simplicity First**: Make every change as simple as possible. Impact minimal code.
+- **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
+- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+```
+
+### The `rules/` Directory
+
+The `CLAUDE.md` file is for high-level rules and regulations, and it's loaded every time in your Claude Code session, so it's unwise to write everything down in details in it. A good solution is to have `rules/` under your project-level `.claude/` directory, and write detailed rules in separate markdown files there. For example, my `.claude/rules/` directory looks like this:
+
+```bash
+.claude/
+├── rules/
+│   ├── html-intro-button.md
+│   ├── html-table-button.md
+│   ├── html-table.md
+│   ├── html-url.md
+│   ├── image-banner.md
+│   └── image-nav.md
+```
+
+Each markdown file contains detailed rules for a specific topic. I used them to have stable and streamlined production of the HTML content and images on my website. There is no unique answer for when to make a rule, but for me, if I want to repeatedly reproduce something, I make a rule for it.
+
+It's hard to start building a rule from scratch because there are many details you do not know beforehand. I usually start by completing a full output, and then I ask Claude Code in the same session to make a rule out of this output. The rule can later be reused and polished to better fit my needs.
+
+::: {.callout-tip}
+The image rules are worth noting: They call the `claude-image-gen` CLI tool using my Google API to summon the Nano Banana model, one of the best image generation models.
+
+...and recently, Claude Code started to support `codex-plugin-cc` as a plugin, which enables Codex, the AI agent of OpenAI, to work as a reviewer.
+
+These 2 examples bring Claude Code, Codex, and Gemini CLI together, as a demonstration of how you can mix and match different AI agents and tools in your workflow.
+:::
+
+The good thing about making a rule is that it is not always loaded. It is loaded based on your need. The existence of all these rules can be reflected in your root cloud file so that your cloud code knows them, and the related rule file can be fetched whenever needed. This saves your token and makes your production consistent.
+
+### The Other Three Components
+
+The **Context** component — CLAUDE.md files, rules, and memory — forms the foundation for almost every project. The remaining three components are optional and scale to your needs.
+
+**Capabilities** — what Claude can act on:
+
+- **MCP** (Model Context Protocol) lets Claude Code connect to external servers — such as GitHub, Gmail, or Figma — and use their capabilities as structured tools.
+- A **plugin** bundles skills, hooks, and MCP configurations into a single installable package, making it easy to share and reuse workflows across projects.
+
+**Behaviors** — how Claude operates:
+
+- A **skill** is a reusable slash command (e.g., `/commit`) that loads a prompt template into the session to guide Claude through a specific workflow.
+- A **hook** is a shell command that fires automatically on a Claude Code event — for example, running a linter after every file edit.
+
+**Agents** — delegated execution:
+
+- A **subagent** is a spawned child Claude instance that handles a focused subtask in parallel, keeping the main session's context clean.
+- A **verifier** is a post-execution check — a test, a diff, or a log review — that confirms the output is actually correct before the task is marked done.
+
+### Build on Your Own
+
+This is when the power of natural language emerges: You can literally use natural language to talk with Claude Code to build any component based on your need. As the conversation goes on, your Claude Code setup becomes mature.
+
+
+With this mindset, I started to use less SaaS products, polish my own workflows, and build my own tools in favor of my needs. This blog post is a summary of my experience and learnings. I hope it can be helpful for you to think about how to use AI effectively.
+
+{{< include resources/ai-mindset-shift.qmd >}}
+
+## AI for Workflows
+
+The real opportunity is less glamorous than shipping an app. It is building workflows for yourself — repeatable sequences where AI handles the hard parts. A prompt template that turns raw notes into a report. A script that automates the task you do every week. The output is not a product; it is personal leverage. A workflow is tuned to your data, your terminology, your standards. Once it exists, the gap between "I need to do this" and "it is done" shrinks to almost nothing. That compression, repeated across many tasks, compounds in a way no off-the-shelf subscription can match.
+
+### Scheduled Commands
+
+A concrete example is a set of shell commands I prefixed with `q-` to handle routine maintenance. `q-brew` runs `brew update`, `brew upgrade`, and `brew cleanup` in sequence — a three-step chore I used to do manually whenever I remembered. `q-pull` is more involved: it iterates over all my GitHub repositories and pulls the latest changes, with logic that handles branching automatically. If a repo is on `main`, it pulls `main`. If I am on a feature branch, it pulls both the branch and `main`. I then set both commands to trigger automatically at 9 AM every day via a cron job, and each run appends a log entry so I can check the last execution at a glance. What used to be a scattered, easy-to-forget ritual is now a zero-effort background task I never think about.
+
+Here are examples of my custom commands:
+
+```bash
+# Update my homebrew packages
+q-brew
+
+# Pull my GitHub repositories
+q-pull
+
+# Hide all windows
+q-hide
+
+# Close all apps
+q-close
+```
+
+### Navigation Shortcuts
+
+A smaller but equally useful example is a set of `cd-` commands for directory navigation. Jumping to deeply nested paths — like my Obsidian vault buried inside iCloud at `/Users/pingfan/Library/Mobile Documents/iCloud~md~obsidian/Documents` — meant either remembering the full path or hunting for it to copy and paste. I stored my frequently used paths and their shorthand names in a CSV file, then wrote a shell function that reads from it. Now `cd-obsidian` takes me there instantly. Adding a new shortcut is just adding a row to the CSV. The mechanics are simple; the daily friction saved is real.

@@ -1,0 +1,199 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .ccl-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .ccl-header {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .ccl-header-cell {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .ccl-row {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    align-items: stretch;
+    border-top: 1px solid #D4D3EE;
+    background: #F8F7F0;
+    transition: background 0.15s ease;
+  }
+
+  .ccl-row:hover {
+    background: #F0EFF8;
+  }
+
+  .ccl-layer {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border-right: 1px solid #D4D3EE;
+    background: #EEEDF8;
+  }
+
+  .ccl-row:hover .ccl-layer {
+    background: #E6E5F4;
+  }
+
+  .ccl-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #F8F7F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .ccl-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .ccl-name-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .ccl-name {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    color: #5654A2;
+    line-height: 1.4;
+  }
+
+  .ccl-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .ccl-tree-item {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.75em;
+    color: #9B96D0;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .ccl-flat {
+    display: none;
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.75em;
+    color: #9B96D0;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  .ccl-resp {
+    padding: 12px 20px;
+    font-size: 0.95em;
+    color: #564232;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 520px) {
+    .ccl-header { grid-template-columns: 1fr; justify-items: center; }
+    .ccl-header-cell:last-child { display: none; }
+    .ccl-row { grid-template-columns: 1fr; }
+    .ccl-layer { border-right: none; border-bottom: 1px solid #D4D3EE; padding: 10px 14px; }
+    .ccl-resp { padding: 10px 14px; font-size: 0.9em; }
+    .ccl-tree { display: none; }
+    .ccl-flat { display: block; }
+  }
+</style>
+
+<div class="ccl-outer">
+  <div class="ccl-header">
+    <div class="ccl-header-cell">Component</div>
+    <div class="ccl-header-cell">Responsibility</div>
+  </div>
+  <div class="ccl-row">
+    <div class="ccl-layer">
+      <div class="ccl-icon"><i data-lucide="file-text"></i></div>
+      <div class="ccl-name-group">
+        <div class="ccl-name">Context</div>
+        <div class="ccl-tree">
+          <div class="ccl-tree-item">├─ CLAUDE.md</div>
+          <div class="ccl-tree-item">├─ rules</div>
+          <div class="ccl-tree-item">└─ memory</div>
+        </div>
+        <div class="ccl-flat">— CLAUDE.md, rules, memory</div>
+      </div>
+    </div>
+    <div class="ccl-resp">Persistent knowledge and project conventions that survive across sessions</div>
+  </div>
+  <div class="ccl-row">
+    <div class="ccl-layer">
+      <div class="ccl-icon"><i data-lucide="wrench"></i></div>
+      <div class="ccl-name-group">
+        <div class="ccl-name">Capabilities</div>
+        <div class="ccl-tree">
+          <div class="ccl-tree-item">├─ tools</div>
+          <div class="ccl-tree-item">├─ MCP</div>
+          <div class="ccl-tree-item">└─ plugins</div>
+        </div>
+        <div class="ccl-flat">— tools, MCP, plugins</div>
+      </div>
+    </div>
+    <div class="ccl-resp">What Claude can act on: files, browsers, APIs, services, and custom integrations</div>
+  </div>
+  <div class="ccl-row">
+    <div class="ccl-layer">
+      <div class="ccl-icon"><i data-lucide="zap"></i></div>
+      <div class="ccl-name-group">
+        <div class="ccl-name">Behaviors</div>
+        <div class="ccl-tree">
+          <div class="ccl-tree-item">├─ skills</div>
+          <div class="ccl-tree-item">└─ hooks</div>
+        </div>
+        <div class="ccl-flat">— skills, hooks</div>
+      </div>
+    </div>
+    <div class="ccl-resp">Skills define methodology on demand; Hooks enforce rules automatically, bypassing judgment</div>
+  </div>
+  <div class="ccl-row">
+    <div class="ccl-layer">
+      <div class="ccl-icon"><i data-lucide="cpu"></i></div>
+      <div class="ccl-name-group">
+        <div class="ccl-name">Agents</div>
+        <div class="ccl-tree">
+          <div class="ccl-tree-item">├─ subagents</div>
+          <div class="ccl-tree-item">└─ verifiers</div>
+        </div>
+        <div class="ccl-flat">— subagents, verifiers</div>
+      </div>
+    </div>
+    <div class="ccl-resp">Delegated execution in isolated contexts, for parallelism, scope control, and auditable output</div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```
