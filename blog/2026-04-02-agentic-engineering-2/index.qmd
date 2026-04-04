@@ -529,7 +529,7 @@ The `q-` commands handle routine maintenance:
 - `q-pull` helps me pull all my GitHub repos, both the current branch, and the `main` branch. Likewise, it's triggered every morning, and I can manually run it.
 - I also have `q-hide` to hide all windows, and `q-close` to close all apps, which are super useful when I wanna focus or quickly clean up my desktop.
 
-
+{{< include resources/q-commands.qmd >}}
 
 ### Navigation Shortcuts
 
