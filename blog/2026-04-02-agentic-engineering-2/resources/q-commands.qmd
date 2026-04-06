@@ -121,7 +121,7 @@
       <div class="qcmd-name">q-brew</div>
     </div>
     <div class="qcmd-right">
-      Runs <code>update</code>, <code>upgrade</code>, and <code>cleanup</code> in sequence — keeps Homebrew packages fresh<br><span class="qcmd-tag">scheduled · manual</span>
+      Runs <code>update</code>, <code>upgrade</code>, and <code>cleanup</code> in sequence to keep Homebrew packages fresh<br><span class="qcmd-tag">scheduled · manual</span>
     </div>
   </div>
 
@@ -131,7 +131,7 @@
       <div class="qcmd-name">q-pull</div>
     </div>
     <div class="qcmd-right">
-      Pulls all GitHub repos — current branch and <code>main</code><br><span class="qcmd-tag">scheduled · manual</span>
+      Pulls all GitHub repos, current branch and <code>main</code><br><span class="qcmd-tag">scheduled · manual</span>
     </div>
   </div>
 
@@ -151,7 +151,7 @@
       <div class="qcmd-name">q-close</div>
     </div>
     <div class="qcmd-right">
-      Closes all running apps to free up focus<br><span class="qcmd-tag">manual</span>
+      Closes all running apps<br><span class="qcmd-tag">manual</span>
     </div>
   </div>
 </div>

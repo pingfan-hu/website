@@ -130,7 +130,7 @@ The **Context** component (`CLAUDE.md` files, rules, and memory) forms the found
 
 **Capabilities** — what Claude can act on:
 
-- **MCP** (Model Context Protocol) lets Claude Code connect to external servers — such as GitHub, Gmail, or Figma — and use their capabilities as structured tools.
+- **MCP** (Model Context Protocol) lets Claude Code connect to external servers — such as GitHub, Gmail, or Figma — and use their capabilities as structured tools. Note that MCPs consume your tokens faster, so use them wisely.
 - A **plugin** bundles skills, hooks, and MCP configurations into a single installable package, making it easy to share and reuse workflows across projects.
 
 **Behaviors** — how Claude operates:
@@ -506,18 +506,9 @@ Use multi-column grid: newspaper-style layout, split content into 2–3 columns 
 Combining the rigorous structure of Swiss International Style with the visual impact of modern magazines — within the fixed A4 canvas, trading restrained spacing for information density, ensuring readability and visual tension coexist.
 ````
 
-Here is one example of the output showcasing my profile. It supports both desktop and mobile layouts but content is the same.
+Here is one example of an information card showcasing my own profile.
 
-<style>
-  .profile-desktop { display: block; }
-  .profile-mobile  { display: none; }
-  @media (max-width: 600px) {
-    .profile-desktop { display: none; }
-    .profile-mobile  { display: block; }
-  }
-</style>
-<iframe class="profile-desktop" src="resources/pingfan-profile-en.html" width="100%" height="680px" style="border: 1.5px solid #D4D3EE; border-radius: 8px;"></iframe>
-<iframe class="profile-mobile" src="resources/pingfan-profile-en-mobile.html" width="100%" height="900px" style="border: 1.5px solid #D4D3EE; border-radius: 8px;"></iframe>
+{{< include resources/pingfan-profile.qmd >}}
 
 ### Bash Commands
 
@@ -531,6 +522,28 @@ The `q-` commands handle routine maintenance:
 
 {{< include resources/q-commands.qmd >}}
 
-### Navigation Shortcuts
+The `cd-` commands handle directory navigation and replaces the `cd` commands. My examples are:
 
-A smaller but equally useful example is a set of `cd-` commands for directory navigation. Jumping to deeply nested paths — like my Obsidian vault buried inside iCloud at `/Users/pingfan/Library/Mobile Documents/iCloud~md~obsidian/Documents` — meant either remembering the full path or hunting for it to copy and paste. I stored my frequently used paths and their shorthand names in a CSV file, then wrote a shell function that reads from it. Now `cd-obsidian` takes me there instantly. Adding a new shortcut is just adding a row to the CSV. The mechanics are simple; the daily friction saved is real.
+```bash
+cd-obsidian  # jump to my Obsidian vault
+cd-website   # jump to my website project
+cd-github    # jump to my GitHub repos root directory
+```
+
+This is easier to implement since it's just an alias to `cd <some-path>`, but it saves me a lot of time and mental energy from pasting or remembering long paths, and I can create more whenever I need.
+
+### Your Turn
+
+Note that I didn't share any code script to implement these customized commands. If you find these commands useful, here is a homework for you: implement them on your own, and customize to fit your own needs!
+
+Follow these rough steps:
+
+1. Create a new repo and push to GitHub.
+2. Set up the workflow with Claude Code.
+3. Structure your subdirectories and when you are started, create your `CLAUDE.md` file. Remember to constantly update it as you go.
+4. Work with Claude Code to build one customized command. When you are satisfied, construct your **rules**.
+5. Finish the rest implementation and push to GitHub.
+
+::: {.callout-tip}
+We used to say "Talk is cheap, show me the code." But now a newer saying could be "Code is cheap, show me the prompt." The code and the coding language are less important in the AI era, compared with your AI prompt and your workflow design. Start with an idea, structure it into a clear project, and work together with your AI agent to build it out!
+:::
