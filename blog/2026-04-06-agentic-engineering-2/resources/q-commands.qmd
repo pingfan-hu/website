@@ -1,0 +1,162 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .qcmd-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .qcmd-header {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .qcmd-header-cell {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .qcmd-row {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    align-items: stretch;
+    border-top: 1px solid #D4D3EE;
+    background: #F8F7F0;
+    transition: background 0.15s ease;
+  }
+
+  .qcmd-row:hover { background: #F0EFF8; }
+
+  .qcmd-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-right: 1px solid #D4D3EE;
+    background: #EEEDF8;
+  }
+
+  .qcmd-row:hover .qcmd-left { background: #E6E5F4; }
+
+  .qcmd-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #F8F7F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .qcmd-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .qcmd-name-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 1px;
+  }
+
+  .qcmd-name {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    color: #5654A2;
+    line-height: 1.4;
+  }
+
+  .qcmd-right {
+    padding: 12px 20px;
+    font-size: 0.95em;
+    color: #564232;
+    line-height: 1.5;
+  }
+
+  .qcmd-tag {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 0.72em;
+    font-family: 'Maple Mono', monospace;
+    padding: 1px 8px;
+    border-radius: 8px;
+    background: #F8F7F0;
+    border: 1px solid #C4C3E8;
+    color: #9B8EA0;
+  }
+
+  @media (max-width: 520px) {
+    .qcmd-header { grid-template-columns: 1fr; justify-items: center; }
+    .qcmd-header-cell:last-child { display: none; }
+    .qcmd-row { grid-template-columns: 1fr; }
+    .qcmd-left { border-right: none; border-bottom: 1px solid #D4D3EE; padding: 10px 14px; }
+    .qcmd-right { padding: 10px 14px; font-size: 0.9em; }
+  }
+</style>
+
+<div class="qcmd-outer">
+  <div class="qcmd-header">
+    <div class="qcmd-header-cell">Command</div>
+    <div class="qcmd-header-cell">What It Does</div>
+  </div>
+
+  <div class="qcmd-row">
+    <div class="qcmd-left">
+      <div class="qcmd-icon"><i data-lucide="package"></i></div>
+      <div class="qcmd-name">q-brew</div>
+    </div>
+    <div class="qcmd-right">
+      Runs <code>update</code>, <code>upgrade</code>, and <code>cleanup</code> in sequence to keep Homebrew packages fresh<br><span class="qcmd-tag">scheduled · manual</span>
+    </div>
+  </div>
+
+  <div class="qcmd-row">
+    <div class="qcmd-left">
+      <div class="qcmd-icon"><i data-lucide="git-pull-request"></i></div>
+      <div class="qcmd-name">q-pull</div>
+    </div>
+    <div class="qcmd-right">
+      Pulls all GitHub repos, current branch and <code>main</code><br><span class="qcmd-tag">scheduled · manual</span>
+    </div>
+  </div>
+
+  <div class="qcmd-row">
+    <div class="qcmd-left">
+      <div class="qcmd-icon"><i data-lucide="eye-off"></i></div>
+      <div class="qcmd-name">q-hide</div>
+    </div>
+    <div class="qcmd-right">
+      Hides all open windows for a clean desktop<br><span class="qcmd-tag">startup · manual</span>
+    </div>
+  </div>
+
+  <div class="qcmd-row">
+    <div class="qcmd-left">
+      <div class="qcmd-icon"><i data-lucide="x-circle"></i></div>
+      <div class="qcmd-name">q-close</div>
+    </div>
+    <div class="qcmd-right">
+      Closes all running apps<br><span class="qcmd-tag">manual</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

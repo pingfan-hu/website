@@ -1,0 +1,553 @@
+---
+title: "Agentic Engineering Basics - Part 2"
+image: "/blog/banners/2026-04-06-agentic-engineering-2.png"
+description: "Claude Code workflow construction and practical examples."
+date: '2026-04-06'
+categories: [Tutorial, Agentic Engineering]
+bibliography: references.bib
+execute:
+  echo: true
+  eval: false
+---
+
+## Don't Panic
+
+"Here are 10 skills that the Anthropic team has been using!" "Here are 5 AI tools to boost your productivity!" If you've been following the AI space, you've probably seen a lot of content like this. You followed the instructions, installed them, and they quietly disappeared from your life a few days later.
+
+The skills, tools, and software built by active AI users and teams are genuinely useful, and some have thousands of GitHub stars. But there's no "must-install" tool for agentic engineering. General-purpose tools can help, but even then it's not hard to build your own. Andrej Karpathy once said on [his X post](https://x.com/karpathy/status/2015883857489522876) that "everyone has their developing flow".
+
+So my opening advice is: **Don't panic!** Build your own AI workflows whenever you need them. Adapt the general-purpose skills that catch your eye, or build from scratch.
+
+## Learn to Speak
+
+In the AI era, being able to use natural language to express your ideas is more important than knowing a new coding language. There's a lecture recording of professor Patrick Winston, former director of the MIT AI Lab, called *How to Speak* [@winston2019howtospeak]. He started his speech with *"Your success in life will be determined largely by your ability to speak, your ability to write, and the quality of your ideas, in that order."*
+
+Simply being able to describe what you want in a clear, structured way already sets you apart from most people. In that sense, using AI effectively is more a humanistic skill than a technical one.
+
+## Use Claude Code Efficiently
+
+With that mindset in place, let's talk about how to use Claude Code efficiently. I reorganized the 6 layers of Claude Code [@tw93_claude_2026] by [\@tw93](https://x.com/HiTw93) into 4 components:
+
+{{< include resources/claude-code-components.qmd >}}
+
+### The `CLAUDE.md` Files
+
+Once your project has a basic structure (files, directories, source code, data, output), you can start building the `CLAUDE.md` file. The `/init` command inside Claude Code will generate a starting version for you. Update it as your project grows. Beyond the one in your project root, each subdirectory can optionally have its own `CLAUDE.md`. Claude Code always reads these files automatically; no need to mention them in your prompt.
+
+You can also have a global `CLAUDE.md` that lives at `~/.claude/CLAUDE.md`. This file is even more powerful because it applies to every Claude Code session, regardless of which project you're in.
+
+Here's my global `CLAUDE.md` file for your reference:
+
+```markdown
+## Workflow Orchestration
+
+### 1. Plan Node Default
+
+- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
+- If something goes sideways, STOP and re-plan immediately — don't keep pushing
+- Use plan mode for verification steps, not just building
+- Write detailed specs upfront to reduce ambiguity
+
+### 2. Subagent Strategy
+
+- Use subagents liberally to keep main context window clean
+- Offload research, exploration, and parallel analysis to subagents
+- For complex problems, throw more compute at it via subagents
+- One task per subagent for focused execution
+
+### 3. Self-Improvement Loop
+
+- After ANY correction from the user: update `tasks/lessons.md` with the pattern
+- Write rules for yourself that prevent the same mistake
+- Ruthlessly iterate on these lessons until mistake rate drops
+- Review lessons at session start for relevant project
+
+### 4. Verification Before Done
+
+- Never mark a task complete without proving it works
+- Diff behavior between main and your changes when relevant
+- Ask yourself: "Would a staff engineer approve this?"
+- Run tests, check logs, demonstrate correctness
+
+### 5. Demand Elegance (Balanced)
+
+- For non-trivial changes: pause and ask "is there a more elegant way?"
+- If a fix feels hacky: "Knowing everything I know now, implement the elegant solution"
+- Skip this for simple, obvious fixes — don't over-engineer
+- Challenge your own work before presenting it
+
+### 6. Autonomous Bug Fixing
+
+- When given a bug report: just fix it. Don't ask for hand-holding
+- Point at logs, errors, failing tests — then resolve them
+- Zero context switching required from the user
+- Go fix failing CI tests without being told how
+
+## Task Management
+
+1. **Plan First**: Write plan to `tasks/todo.md` with checkable items
+2. **Verify Plan**: Check in before starting implementation
+3. **Track Progress**: Mark items complete as you go
+4. **Explain Changes**: High-level summary at each step
+5. **Document Results**: Add review section to `tasks/todo.md`
+6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
+
+## Core Principles
+
+- **Simplicity First**: Make every change as simple as possible. Impact minimal code.
+- **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
+- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+
+## Writing Style
+
+- **No em dashes**: Never use em dashes (—) in prose or written expressions. Use commas, periods, parentheses, semicolons, or colons instead.
+```
+
+### The `rules/` Directory
+
+`CLAUDE.md` is for high-level directives, and it loads on every session, so stuffing it with long detailed rules is wasteful. A better approach is a `rules/` directory under `.claude/`, with detailed rules split into separate markdown files by topic. For example, my `.claude/rules/` directory looks like this:
+
+```bash
+.claude/
+├── rules/
+│   ├── html-intro-button.md
+│   ├── html-table-button.md
+│   ├── html-table.md
+│   ├── html-url.md
+│   ├── image-banner.md
+│   └── image-nav.md
+```
+
+Each file contains detailed rules for a specific topic. I use them to keep my HTML components and image generation consistent across the website. There's no single right answer for when to write a rule. For me, the trigger is wanting to reproduce something reliably.
+
+Starting from scratch is hard because you don't know all the details upfront. My approach: complete a full output first, then ask Claude Code in the same session to extract a rule from it. The rule can be reused and refined over time.
+
+The key benefit is that rules are loaded on demand, not upfront. Your `CLAUDE.md` can reference which rule files exist, so Claude Code knows to fetch the relevant one when needed. This keeps token usage lean and output consistent.
+
+### The Other Three Components
+
+The **Context** component (`CLAUDE.md` files, rules, and memory) forms the foundation for almost every project. The remaining three components are optional and scale to your needs.
+
+::: {.callout-tip}
+`memory/` is sort of special. It lives under each project in your `~/.claude/project/` directory, along with your conversation history. Claude Code designed it so that it is NEVER pushed to the cloud, but `rules/` can be. You don't usually need to worry about `memory/` since it's automatically managed. It contains take-aways from your conversations that Claude Code thinks are important to remember for the future.
+:::
+
+**Capabilities** (what Claude can act on):
+
+- **MCP** (Model Context Protocol) lets Claude Code connect to external servers (such as GitHub, Gmail, or Figma) and use their capabilities as structured tools. Note that MCPs consume your tokens faster, so use them wisely.
+- A **plugin** bundles skills, hooks, and MCP configurations into a single installable package, making it easy to share and reuse workflows across projects.
+
+**Behaviors** (how Claude operates):
+
+- A **skill** is a reusable slash command (e.g., `/commit`) that loads a prompt template into the session to guide Claude through a specific workflow.
+- A **hook** is a shell command that fires automatically on a Claude Code event, for example running a linter after every file edit.
+
+**Agents** (delegated execution):
+
+- A **subagent** is a spawned child Claude instance that handles a focused subtask in parallel, keeping the main session's context clean.
+- A **verifier** is a post-execution check (a test, a diff, or a log review) that confirms the output is actually correct before the task is marked done.
+
+### Build on Your Own
+
+This is where the power of natural language really shows: just describe what you need, and Claude Code helps you build it. As conversations accumulate, your setup matures.
+
+Take my website project as an example, aka where this blog post lives. Every `rules/` file, API integration, and plugin in this project came out of conversations with Claude Code, shaped and polished to fit the specific needs of this site.
+
+The image rules are worth highlighting: they invoke the `claude-image-gen` CLI using my Google API key to call Gemini, one of the best image generation models available.
+
+More recently, Claude Code gained support for the `codex-plugin-cc` plugin, which brings in Codex (OpenAI's agent) as a code reviewer.
+
+Together, these two examples show Claude Code, Codex, and Gemini CLI working side by side: a practical demonstration of mixing and matching AI agents from different providers in a single workflow.
+
+{{< include resources/workflow-examples.qmd >}}
+
+## My Examples
+
+I want to share two workflows I've built with Claude Code. They're not complex, but they eliminate a lot of manual, repetitive work, and I hope they inspire you to build something for your own needs.
+
+- **Information Card Design**: Inspired by [\@shao__meng](https://x.com/shao__meng) and extended further. It takes structured text input and produces HTML, PNG, and PDF information cards in both A4 and mobile layouts, great for presenting dense, structured information in a way that's far more readable than plain text.
+- **Bash Commands**: Two sets of custom shell commands that can be triggered automatically or run on demand. I have `q-` commands (short for "quick") for routine maintenance, and `cd-` commands for directory navigation.
+
+### Information Card Design
+
+Here is my design specification file:
+
+````markdown
+# Advanced Information Card Visual Design Specification
+
+## Role
+Professional editorial visual designer, specializing in transforming complex information into modern magazine-quality HTML information cards.
+
+---
+
+# I. Page Specifications (Hard Constraints)
+
+## A4 Card (HTML + PDF)
+
+**All A4 information cards strictly output at A4 dimensions; HTML and PDF must match exactly.**
+
+| Property | Value |
+|----------|-------|
+| Standard size | A4 (210mm × 297mm) |
+| HTML pixel size (96dpi) | 794px × 1122px (297mm exact conversion, rounded down) |
+| overflow | hidden (content must not exceed boundaries) |
+| Background color | #f5f3ed |
+
+The card container must have a fixed width and height — never stretched by content:
+
+```css
+.card {
+  width: 794px;
+  height: 1122px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@page { size: A4; margin: 0; }
+
+@media print {
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background: none;
+  }
+  .card {
+    width: 210mm;
+    height: 297mm;
+  }
+}
+```
+
+Center the card in the browser:
+
+```css
+body {
+  background: #dddad3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+}
+```
+
+For PDF generation, use puppeteer with viewport set to 794×1122, format A4, all margins 0.
+
+## Mobile Card (PNG)
+
+**Mobile cards are width-constrained only — height grows with content for scrollable viewing.**
+
+| Property | Value |
+|----------|-------|
+| Width | 390px (standard iPhone logical width) |
+| Height | unconstrained — content determines height |
+| overflow | visible (content scrolls freely) |
+| Background color | #f5f3ed |
+| Padding | 24px on all sides |
+| Base font size | 13px (fixed, no auto-scaling) |
+
+No fixed height, no auto-scaling JS, no `.spacer`. Content flows naturally.
+
+```css
+.card {
+  width: 390px;
+  background: #f5f3ed;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+html, body { margin: 0; padding: 0; background: #f5f3ed; }
+```
+
+For PNG generation, use puppeteer with `page.screenshot({ fullPage: true })` and `deviceScaleFactor: 3` (3x retina, 1170px physical width) to capture the entire scrollable content at high resolution.
+
+### Mobile Layout Rules (Mandatory)
+
+These rules apply to every mobile HTML card and are non-negotiable:
+
+1. **Single column only**: No `grid-template-columns` with more than one column. No side-by-side sections of any kind. Every section spans full width.
+
+2. **Header is always stacked vertically**: Name on top, then English name, then role/institution, then contact, then badge. Never split header into left/right halves.
+
+3. **Display title max 32–36px**: The name / main title must fit on **one line** at 342px content width (390 − 2×24px). Chinese names of 3–4 characters are safe at 36px. Longer titles use 28–32px.
+
+4. **No A4 auto-scaling JS**: Remove the binary-search scaling script entirely. Font size is fixed at 13px.
+
+5. **No `.spacer`**: Since height is unconstrained, the spacer div is not needed.
+
+6. **Footer is always centered column**:
+   ```css
+   .footer {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     gap: 4px;
+   }
+   ```
+   Never use `justify-content: space-between` in the mobile footer — it causes uneven wrapping at narrow widths.
+
+7. **Skill / attribute rows are column-direction**: Label stacks above its tags, not beside them.
+   ```css
+   .skill-row { display: flex; flex-direction: column; gap: 4px; }
+   ```
+
+8. **Separate file**: The mobile card lives in `{name}-mobile.html` — never repurpose the A4 HTML. The A4 HTML is the source for PDF; the mobile HTML is the source for PNG.
+
+9. **Content width awareness**: At 342px, Chinese text at 13px fits ~18–20 characters per line. Long labels, URLs, and English strings should be checked for wrapping.
+
+10. **No `white-space: nowrap` on wide content**: In a narrow column, forced no-wrap causes horizontal overflow. Only use on elements guaranteed to be short (e.g., 2–3 character labels).
+
+---
+
+# II. Font Auto-Scaling (Core Mechanism — A4 only)
+
+**All A4 HTML cards must implement content auto-scaling to fill the A4 canvas as fully as possible.**
+
+## How It Works
+
+- The `.card` `font-size` serves as the unified scaling base (default 12px)
+- All font sizes, padding, and spacing inside the card use `em` units (relative to `.card` font-size)
+- JS binary-searches the optimal base font size so content fills the card without overflowing
+
+## Allowed Range
+
+| Parameter | Value | Note |
+|-----------|-------|------|
+| MIN_FS | 10px | Minimum base — below this is unreadable |
+| MAX_FS | 16px | Maximum base — above this is too sparse |
+| Default base | 12px | Reference value for 1em |
+
+## JS Implementation (required in every A4 card)
+
+```html
+<script>
+(function () {
+  const card   = document.querySelector('.card');
+  const spacer = document.querySelector('.spacer');
+  const MIN = 10, MAX = 16, TARGET = 1122;
+
+  function naturalHeight(fs) {
+    card.style.fontSize = fs + 'px';
+    card.style.height   = 'auto';   // release fixed height to get true content height
+    spacer.style.flex   = 'none';
+    spacer.style.height = '0';
+    const h = card.scrollHeight;
+    card.style.height   = TARGET + 'px';
+    spacer.style.flex   = '1';
+    spacer.style.height = '';
+    return h;
+  }
+
+  let lo = MIN, hi = MAX;
+  while (hi - lo > 0.05) {
+    const mid = (lo + hi) / 2;
+    naturalHeight(mid) <= TARGET ? (lo = mid) : (hi = mid);
+  }
+  // Apply font size, then explicitly set spacer to fill remaining space
+  card.style.fontSize = lo + 'px';
+  card.style.height   = 'auto';
+  spacer.style.flex   = 'none';
+  spacer.style.height = '0';
+  const contentH      = card.scrollHeight;
+  spacer.style.height = Math.max(0, TARGET - contentH) + 'px';
+  card.style.height   = TARGET + 'px';
+  window._scalingDone = true;
+})();
+</script>
+```
+
+## em Conversion Reference (base: 12px = 1em)
+
+| px | em |
+|----|----|
+| 56 | 4.667em |
+| 18 | 1.5em |
+| 13 | 1.083em |
+| 12 | 1em |
+| 11 | 0.917em |
+| 10.5 | 0.875em |
+| 10 | 0.833em |
+| 9.5 | 0.792em |
+| 30 (padding) | 2.5em |
+| 12 (gap) | 1em |
+| 9 (gap) | 0.75em |
+
+> **Note**: Card width/height (794px × 1122px) and border widths stay in px — they do not participate in scaling.
+
+---
+
+# III. Core Design Principles
+
+- **Fixed canvas**: All content must be fully presented within the A4 boundaries — no pagination
+- **Compact layout**: The A4 canvas is limited; spacing and font sizes must be restrained to maximize information density
+- **Strong structure**: Use thick rules, color blocks, and large numbers to create visual hierarchy
+
+---
+
+# IV. Typography System
+
+## Font Import
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&family=Oswald:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+```
+
+## Type Scale (A4 version)
+
+| Level | Size | Properties | Use |
+|-------|------|------------|-----|
+| **Display** | 48–56px | line-height: 1.0, weight: 900, letter-spacing: -0.04em | Core visual hook |
+| **Heading 1** | 36px | line-height: 1.1, weight: 700 | Major section titles |
+| **Heading 2** | 20–22px | line-height: 1.2, weight: 700 | Secondary headings |
+| **Body** | 13–14px | line-height: 1.55, color: #1a1a1a | Main content |
+| **Caption** | 11–12px | line-height: 1.5, color: #555 | Supporting text |
+| **Label / Tag** | 10px | letter-spacing: 0.12em, weight: 700, uppercase | Category labels |
+
+---
+
+# V. Spacing Logic
+
+- **Container padding**: 30px (equal top and bottom for visual balance)
+- **Component gap**: 10–14px
+- **Line height**: 1.5–1.6
+- **Accent bar height**: 4px
+
+---
+
+# VI. Visual Decoration
+
+- **Noise texture**: 3–4% opacity, adds paper-like tactile quality
+- **Heavy dividers**: 4–5px solid rules (accent color), reinforces visual weight
+- **Background blocks**: `rgba(0,0,0,0.025)` light grey, used to define zones
+
+---
+
+# VII. Layout Strategy
+
+## Low content density
+
+Use "big type" approach: stretch headline font size to fill the canvas, enlarge key data into the visual centerpiece, numbers can serve as decorative background elements.
+
+## High content density
+
+Use multi-column grid: newspaper-style layout, split content into 2–3 columns with vertical rules for structure. When content is excessive, trim copy first — never compress font size to unreadable levels.
+
+---
+
+# VIII. Core Style Reference
+
+```css
+.card {
+  width: 794px;
+  height: 1122px;
+  overflow: hidden;
+  background: #f5f3ed;
+  padding: 30px;        /* equal top and bottom for visual balance */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Display title: 2-line layout, height controlled */
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: #0a0a0a;
+}
+
+.content-body {
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  font-size: 11–13px;
+  line-height: 1.55;
+  color: #1a1a1a;
+}
+
+.accent-bar {
+  height: 4px;
+  background: var(--color-accent);
+  width: 44–48px;
+}
+
+/* Decorative number: absolute positioned, does not occupy document flow height */
+.opp-num {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 28–34px;
+  color: rgba(accent, 0.10);
+  pointer-events: none;
+}
+
+/* Spacer: absorbs remaining space, pushes footer to bottom */
+.spacer { flex: 1; min-height: 0; }
+```
+
+---
+
+# IX. Output Workflow
+
+1. **Analyze**: One sentence to assess content density (high / medium / low)
+2. **Layout decision**: High density → multi-column grid; low density → big type
+3. **Code**: Output complete HTML (with CSS); A4 card fixed at 794×1122px
+4. **Height validation**: In puppeteer, `await page.evaluate(() => window._scalingDone)` waits for font load + JS scaling; verify `card.scrollHeight === 1122`
+5. **Whitespace check**: Place `.spacer { flex: 1 }` before the footer to ensure the footer sits at the bottom with balanced top/bottom whitespace
+
+---
+
+# X. Design Philosophy
+
+Combining the rigorous structure of Swiss International Style with the visual impact of modern magazines — within the fixed A4 canvas, trading restrained spacing for information density, ensuring readability and visual tension coexist.
+````
+
+Here is one example of an information card showcasing my own profile.
+
+{{< include resources/pingfan-profile.qmd >}}
+
+### Bash Commands
+
+I have two sets of custom shell commands: `q-` commands for routine maintenance and `cd-` commands for directory navigation.
+
+The `q-` commands handle routine maintenance:
+
+- `q-brew` runs `brew update`, `brew upgrade`, and `brew cleanup` in sequence, a three-step chore for keeping my homebrew packages up-to-date. It is triggered every morning and can also be manually summoned, leaving the most recent log in my selected directory.
+- `q-pull` helps me pull all my GitHub repos, both the current branch, and the `main` branch. Likewise, it's triggered every morning, and I can manually run it.
+- I also have `q-hide` to hide all windows, and `q-close` to close all apps, which are super useful when I wanna focus or quickly clean up my desktop.
+
+{{< include resources/q-commands.qmd >}}
+
+The `cd-` commands handle directory navigation and replace the standard `cd` command. My examples:
+
+```bash
+cd-obsidian  # jump to my Obsidian vault
+cd-website   # jump to my website project
+cd-github    # jump to my GitHub repos root directory
+```
+
+Each one is just an alias for `cd <some-path>`, so it's easy to implement, and it saves real time and mental overhead from typing or remembering long paths. Adding a new shortcut takes seconds.
+
+### Your Turn
+
+I haven't shared any implementation code here, and that's intentional. If you find these commands useful, here's your challenge: build them yourself, and tailor them to your own needs.
+
+A rough outline:
+
+1. Create a new repo and push it to GitHub.
+2. Set up your project with Claude Code.
+3. Organize your subdirectories, then create a `CLAUDE.md` file. Keep updating it as the project evolves.
+4. Work with Claude Code to build one custom command. Once you're happy with it, write a **rule** to capture the pattern.
+5. Implement the rest and push to GitHub.
+
+::: {.callout-tip}
+We used to say "Talk is cheap, show me the code." In the AI era, the saying might be: "Code is cheap, show me the prompt." The coding language matters less; your ability to articulate ideas clearly and design workflows well matters more. Start with an idea, structure it into a clear project, and build it together with your AI agent.
+:::
