@@ -1,8 +1,8 @@
 ---
 title: "Agentic Engineering Basics - Part 2"
-image: "/blog/banners/2026-04-02-agentic-engineering-2.png"
+image: "/blog/banners/2026-04-06-agentic-engineering-2.png"
 description: ""
-date: '2026-04-02'
+date: '2026-04-06'
 categories: [Tutorial, Agentic Engineering]
 bibliography: references.bib
 execute:
