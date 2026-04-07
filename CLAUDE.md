@@ -48,6 +48,19 @@ Partial `.qmd` files included via `{{< include /chunks/filename.qmd >}}`:
 - `cv/` — custom LaTeX format for PDF CV generation
 - `quarto-ext/` — additional Quarto extensions (e.g., fontawesome icons used as `{{< fa brands r-project >}}`)
 
+## Standards and Rules
+
+All component design standards live in `.claude/rules/`. Always consult the relevant rule before creating or modifying a styled HTML component or image:
+
+| Rule file | Covers |
+|-----------|--------|
+| `html-table.md` | Styled data tables with icons, mobile stacking |
+| `html-table-button.md` | Label + pill button rows (`.lnk-*` classes) |
+| `html-intro-button.md` | Centered intro pill buttons (`.intro-links` / `.intro-btn`) |
+| `html-url.md` | URL anatomy diagrams with overflow detection |
+| `image-banner.md` | Blog/project banner generation via claude-image-gen |
+| `image-nav.md` | Section nav card images |
+
 ## Key Conventions
 
 - **Project pages**: Each project lives in `projects/{year}-{slug}/index.qmd`. Front matter includes `title`, `image`, `author`, `date`, `categories`, and `description`.
@@ -55,11 +68,18 @@ Partial `.qmd` files included via `{{< include /chunks/filename.qmd >}}`:
 - **Banners**: Project/blog banner images live in `projects/banners/` and `blog/banners/` (referenced in listing configs).
 - **External links**: `link-external-newwindow: true` is global; internal links are filtered by `pingfanhu.com` domain.
 - **`{{< include >}}`** paths are always absolute from project root (e.g., `/chunks/intro.qmd`).
+- **Intro buttons** (2–4 project links at the top of a post): write HTML directly in the `.qmd` using `.intro-links` / `.intro-btn` classes — CSS is global in `theme.scss`, no `<style>` block needed. See `.claude/rules/html-intro-button.md`.
+- **Link tables** (label + multiple buttons): use `.lnk-outer` / `.lnk-row` / `.lnk-btn` with color variants `lnk-purple`, `lnk-blue`, `lnk-green`, `lnk-orange`. CSS is global in `theme.scss`. See `.claude/rules/html-table-button.md`.
 - **Styled HTML components in blog posts**: Use `{{< include resources/filename.qmd >}}` to embed styled HTML tables or visuals. The included file must be a `.qmd` (not `.html`) with content wrapped in a ```` ```{=html} ```` fence. Store these files in a `resources/` subdirectory within the post folder. Do NOT use iframes. See `.claude/rules/html-table.md` for the full design standard.
 - **Banner image generation**: Always use the claude-image-gen CLI to generate banner images. Never use Pillow or HTML/CSS rendering. See `.claude/rules/image-banner.md` for the full workflow, prompt template, and style standard. **Never write the Gemini API key as a literal value anywhere** — it lives in `~/.zshrc` as `$NANOBANANA_GEMINI_API_KEY`.
 - **`resources/` subdirectory**: Every `resources/` folder inside a blog post must contain a `_metadata.yml` with `draft: true` to prevent Quarto's listing from picking up the component `.qmd` files as blog posts. (The project-level `_quarto.yml` also globally excludes `**/resources/*.qmd` from rendering as a second guard.)
 - **`projects/_metadata.yml`**: Hides the title metadata block for all project pages via injected CSS.
 - **Blog post citations**: Posts can include a `references.bib` file in the post folder for Quarto-rendered citations.
+- **Theme**: supports light (`flatly`) and dark (`darkly`) modes — both share `styles/theme.scss`. Test SCSS changes in both modes.
+
+## Session Notes
+
+`tasks/lessons.md` captures corrections and patterns from past sessions. Review it when working on areas that have been corrected before.
 
 ## Deployment
 

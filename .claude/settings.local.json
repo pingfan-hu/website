@@ -28,14 +28,19 @@
       "Bash(npm run:*)",
       "Bash(GEMINI_API_KEY=\"$NANOBANANA_GEMINI_API_KEY\" node /tmp/claude-image-gen/mcp-server/build/cli.bundle.js:*)",
       "WebFetch(domain:json.schemastore.org)",
-      "WebFetch(domain:www.schemastore.org)",
-      "Bash(mv .claude/rules/banner-image-generation.md .claude/rules/image-banner.md)",
-      "Bash(mv .claude/rules/nav-image-generation.md .claude/rules/image-nav.md)",
-      "Bash(mv .claude/rules/html-button-style.md .claude/rules/html-button.md)",
-      "Bash(mv .claude/rules/html-table-style.md .claude/rules/html-table.md)",
-      "Bash(head:*)",
-      "Bash(wc:*)",
-      "Bash(cd:*)"
+      "WebFetch(domain:www.schemastore.org)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '\n📓 Session ending — did you update tasks/lessons.md if any corrections were made?'"
+          }
+        ]
+      }
     ]
   }
 }

@@ -11,6 +11,7 @@ description: "EV owner preferences for smart charging programs."
   <a href="https://sc.pingfanhu.com" class="intro-btn" target="_blank"><i class="bi bi-file-text"></i> Showcase</a>
   <a href="https://bev.pingfanhu.com" class="intro-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> Documentation</a>
   <a href="https://gwuvehicle.shinyapps.io/enrollment_simulator/" class="intro-btn" target="_blank"><i class="bi bi-calculator"></i> Simulator</a>
+  <a href="https://engineering.gwu.edu/investigating-ev-owners-willingness-participate-smart-charging-programs" class="intro-btn" target="_blank"><i class="bi bi-newspaper"></i> Spotlight</a>
 </div>
 
 ## Papers
