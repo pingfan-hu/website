@@ -30,7 +30,8 @@
       "WebFetch(domain:json.schemastore.org)",
       "WebFetch(domain:www.schemastore.org)",
       "Skill(design)",
-      "Bash(quarto render:*)"
+      "Bash(quarto render:*)",
+      "Skill(read)"
     ]
   },
   "hooks": {

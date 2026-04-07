@@ -1,24 +1,23 @@
 ---
-title: "SMC Economy"
+title: "SMC Peak-shaving Economy"
 image: "/projects/banners/2025-smc-economy.png"
 author: "Pingfan Hu et al."
 date: "Jan, 2025"
 categories: [R, Research, Data Science, Sustainability]
-description: "Cost-effectiveness of Supplier-managed Charging programs."
+description: "Peak-shaving and cost-effectiveness of Supplier-managed Charging programs."
 ---
 
-## Background
+## Abstract
 
-Grid integration of light-duty battery electric vehicles (BEVs) presents significant opportunities for peak load management through demand response and managed charging strategies. Previous research has extensively documented the technical potential of supplier-managed charging (SMC) capabilities, but has largely overlooked the practical barriers of enrollment costs and participation rates, creating potentially unrealistic expectations of grid benefits.
+Unmanaged battery electric vehicle (BEV) charging amplifies evening grid peaks, and supplier-managed charging (SMC) programs address this by shifting load to off-peak hours while reducing consumer charging costs. Whether SMC is cost-effective at scale depends on realistic enrollment rates and regional grid conditions, which prior analyses have not addressed jointly. We integrate empirical consumer enrollment curves from a discrete choice experiment with 1,356 BEV owners into a scenario-based grid simulation for CAISO and NYISO, two regions with contrasting generation mixes and climates. CAISO achieves larger absolute peak reductions (up to 5.6 GW) while NYISO shows more favorable per-household cost efficiency. Cost efficiency is season-invariant in CAISO but deteriorates in NYISO winters when elevated overnight load compresses the off-peak valley window. Diminishing returns to enrollment are sharp in both regions, and enrollment beyond a certain threshold can reconstitute a new overnight peak, which occurs on approximately 15.0\% of CAISO days. These results demonstrate that moderate enrollment, not maximum participation, is the cost-effective operating target for SMC programs.
 
-## Motivation
+## Keywords
 
-1. Enrollment in managed charging programs involves significant costs (hardware installation, software integration, customer acquisition, program management) that impact overall cost-effectiveness.
-2. Participation rates are unlikely to reach 100% due to customer awareness, willingness, vehicle compatibility, and technical limitations.
-3. Peak shaving benefits must be accurately compared against program implementation costs for realistic assessment of grid support strategies.
+Electric vehicles, Supplier-managed charging, Peak-shaving, Demand response, Grid integration, Cost efficiency analysis
 
-## Expected Outcomes
+## Highlights
 
-1. A comprehensive framework for evaluating the true cost-effectiveness of BEV grid support programs considering enrollment costs and participation rates.
-2. Quantitative assessment of peak load reduction potential under various enrollment cost and participation rate scenarios.
-3. Policy recommendations for designing more cost-effective and realistic BEV grid support programs that acknowledge implementation barriers.
+- CAISO and NYISO are analyzed as contrasting grid regions with high BEV adoption.
+- Consumer enrollment curves are estimated from a survey of 1,356 BEV owners.
+- All inputs use official government data: U.S. Census, NHTS, and grid records.
+- Moderate SMC enrollment delivers meaningful peak shaving at low program cost.
