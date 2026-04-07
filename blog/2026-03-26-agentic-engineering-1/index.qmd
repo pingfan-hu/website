@@ -1,5 +1,5 @@
 ---
-title: "Agentic Engineering Basics - Part 1"
+title: "Agentic Engineering - Part 1"
 image: "/blog/banners/2026-03-26-agentic-engineering-1.png"
 description: "My experiences of effectively using AI for personal workflows, with a focus on Claude Code."
 date: '2026-03-26'

@@ -365,11 +365,53 @@ table {
   .lnk-chips { padding: 10px 14px; }
 }
 
+// ---- Blog Listing Cards ----
+
+.quarto-post {
+  border: 1.5px solid #D4D3EE !important;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  background: #F8F7F0;
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease,
+              transform 0.2s ease;
+
+  &:hover {
+    border-color: #5654A2 !important;
+    box-shadow: 0 8px 24px rgba(86, 84, 162, 0.13);
+    transform: translateY(-4px);
+  }
+
+  // Vertically center the thumbnail within the card
+  .thumbnail {
+    align-self: center;
+  }
+
+  // Round the banner image to match card corners
+  .thumbnail img {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
 // ---- Cards ----
 
 .card {
   --bs-card-spacer-y: 0.6rem;
   --bs-card-spacer-x: 0.8rem;
+}
+
+.quarto-grid-item {
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease,
+              transform 0.2s ease;
+
+  &:hover {
+    border-color: #5654A2 !important;
+    box-shadow: 0 8px 24px rgba(86, 84, 162, 0.13);
+    transform: translateY(-4px);
+  }
 }
 
 .custom-card {
@@ -665,6 +707,21 @@ body.quarto-dark {
     &:hover {
       background-color: #7c7ac4;
       color: #111;
+    }
+  }
+
+  .quarto-grid-item:hover {
+    border-color: #7c7ac4 !important;
+    box-shadow: 0 8px 24px rgba(124, 122, 196, 0.2);
+  }
+
+  .quarto-post {
+    background-color: #1e2433;
+    border-color: #3a3858 !important;
+
+    &:hover {
+      border-color: #7c7ac4 !important;
+      box-shadow: 0 8px 24px rgba(124, 122, 196, 0.2);
     }
   }
 }

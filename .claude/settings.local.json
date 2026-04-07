@@ -28,7 +28,9 @@
       "Bash(npm run:*)",
       "Bash(GEMINI_API_KEY=\"$NANOBANANA_GEMINI_API_KEY\" node /tmp/claude-image-gen/mcp-server/build/cli.bundle.js:*)",
       "WebFetch(domain:json.schemastore.org)",
-      "WebFetch(domain:www.schemastore.org)"
+      "WebFetch(domain:www.schemastore.org)",
+      "Skill(design)",
+      "Bash(quarto render:*)"
     ]
   },
   "hooks": {

@@ -1,5 +1,5 @@
 ---
-title: "Agentic Engineering Basics - Part 2"
+title: "Agentic Engineering - Part 2"
 image: "/blog/banners/2026-04-06-agentic-engineering-2.png"
 description: "Claude Code workflow construction and practical examples."
 date: '2026-04-06'
