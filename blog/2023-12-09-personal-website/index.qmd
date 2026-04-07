@@ -8,7 +8,31 @@ description: "A tutorial of making a personal website using Quarto on RStudio"
 
 ## Useful Links
 
-{{< include resources/useful-links.qmd >}}
+<div class="lnk-outer">
+  <div class="lnk-row lnk-purple">
+    <div class="lnk-label">My Repo</div>
+    <div class="lnk-chips">
+      <a href="https://github.com/pingfan-hu/website" class="lnk-btn" target="_blank">GitHub Repo of My Website</a>
+    </div>
+  </div>
+  <div class="lnk-row lnk-green">
+    <div class="lnk-label">Software</div>
+    <div class="lnk-chips">
+      <a href="https://desktop.github.com" class="lnk-btn" target="_blank">GitHub Desktop</a>
+      <a href="https://www.r-project.org" class="lnk-btn" target="_blank">R</a>
+      <a href="https://www.rstudio.com/categories/rstudio-ide/" class="lnk-btn" target="_blank">RStudio</a>
+      <a href="https://quarto.org" class="lnk-btn" target="_blank">Quarto</a>
+    </div>
+  </div>
+  <div class="lnk-row lnk-blue">
+    <div class="lnk-label">Platforms</div>
+    <div class="lnk-chips">
+      <a href="https://github.com" class="lnk-btn" target="_blank">GitHub (Repo)</a>
+      <a href="https://www.namecheap.com" class="lnk-btn" target="_blank">Namecheap (Domain)</a>
+      <a href="https://www.netlify.com" class="lnk-btn" target="_blank">Netlify (Server)</a>
+    </div>
+  </div>
+</div>
 
 ## Abstract
 

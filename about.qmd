@@ -9,10 +9,10 @@ description: "Short bio and expertise of Pingfan Hu"
 
 Check out my **Resume** and **CV** here:
 
-<center>
-<a href="resume.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 140px; margin: 5px;"><i class="bi bi-person-badge"></i> Resume </a>
-<a href="cv.pdf" class="btn btn-primary" role="button" target="_blank" style="width: 140px; margin: 5px;"><i class="bi bi-file-earmark-text"></i> CV </a>
-</center>
+<div class="intro-links">
+  <a href="resume.pdf" class="intro-btn" target="_blank"><i class="bi bi-person-badge"></i> Resume</a>
+  <a href="cv.pdf" class="intro-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> CV</a>
+</div>
 
 ### [**Projects**](projects.qmd)
 

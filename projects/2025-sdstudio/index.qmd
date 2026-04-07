@@ -15,7 +15,12 @@ description: A companion {{< var rnolink >}} package as GUI support for surveydo
 
 <a href='https://sdstudio.surveydown.org'><img src='images/sdstudio.png' align="right" style="height:139px;"/></a>
 
-{{< include resources/useful-links.qmd >}}
+<div class="intro-links">
+  <a href="https://sdstudio.surveydown.org" class="intro-btn" target="_blank"><i class="bi bi-browser-safari"></i> Website</a>
+  <a href="https://github.com/surveydown-dev/sdstudio" class="intro-btn" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+  <a href="https://cran.r-project.org/web/packages/sdstudio/" class="intro-btn" target="_blank"><i class="bi bi-r-circle-fill"></i> CRAN</a>
+  <a href="https://surveydown-dev.r-universe.dev/sdstudio" class="intro-btn" target="_blank"><i class="bi bi-r-square-fill"></i> R-univ</a>
+</div>
 
 ## Slides
 

@@ -512,7 +512,9 @@ Combining the rigorous structure of Swiss International Style with the visual im
 
 Here is one example of an information card showcasing my own profile.
 
-{{< include resources/pingfan-profile.qmd >}}
+<div class="intro-links">
+  <a href="resources/pingfan-profile.pdf" class="intro-btn" target="_blank"><i class="bi bi-file-earmark-person"></i> Pingfan's Profile</a>
+</div>
 
 ### Bash Commands
 

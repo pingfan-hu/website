@@ -6,7 +6,9 @@ categories: [R, Research, Data Science, Sustainability]
 description: "A master-level renewable energy data viz."
 ---
 
-{{< include resources/useful-links.qmd >}}
+<div class="intro-links">
+  <a href="https://rr.pingfanhu.com" class="intro-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> Documentation</a>
+</div>
 
 This project studies the driving effects of ***solar*** and ***wind*** energy advancements. It is a Master-level project for [EMSE 6572](https://eda.seas.gwu.edu) instructed by [Prof John Helveston](https://www.jhelvy.com).
 

@@ -254,6 +254,117 @@ table {
   border: 2px solid #5654A2;
 }
 
+// ---- Intro Links ----
+
+.intro-links {
+  text-align: center;
+  margin: 1em 0;
+}
+
+.intro-btn {
+  display: inline-block;
+  margin: 5px 4px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1.5px solid #5654A2;
+  background: #EEEDF8;
+  color: #5654A2;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  text-decoration: none;
+  white-space: nowrap;
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: #5654A2;
+    color: #F8F7F0;
+    text-decoration: none;
+  }
+}
+
+// ---- Link Table ----
+
+.lnk-outer {
+  width: 100%;
+  margin: 1em 0;
+  border: 1.5px solid #5654A2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.lnk-row {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  border-top: 1px solid #D4D3EE;
+  background: #F8F7F0;
+
+  &:first-child { border-top: none; }
+}
+
+.lnk-label {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.85em;
+  border-right: 1px solid #D4D3EE;
+}
+
+.lnk-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px;
+  align-items: center;
+}
+
+.lnk-btn {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1.5px solid;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.82em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lnk-purple {
+  .lnk-label { color: #5654A2; background: #EEEDF8; }
+  .lnk-btn   { border-color: #5654A2; color: #5654A2; background: #EEEDF8; }
+  .lnk-btn:hover { background: #5654A2; color: #F8F7F0; text-decoration: none; }
+}
+
+.lnk-blue {
+  .lnk-label { color: #2471A3; background: #EBF5FB; }
+  .lnk-btn   { border-color: #2471A3; color: #2471A3; background: #EBF5FB; }
+  .lnk-btn:hover { background: #2471A3; color: #F8F7F0; text-decoration: none; }
+}
+
+.lnk-green {
+  .lnk-label { color: #1E8449; background: #E9F7EF; }
+  .lnk-btn   { border-color: #1E8449; color: #1E8449; background: #E9F7EF; }
+  .lnk-btn:hover { background: #1E8449; color: #F8F7F0; text-decoration: none; }
+}
+
+.lnk-orange {
+  .lnk-label { color: #CA6F1E; background: #FEF5E7; }
+  .lnk-btn   { border-color: #CA6F1E; color: #CA6F1E; background: #FEF5E7; }
+  .lnk-btn:hover { background: #CA6F1E; color: #F8F7F0; text-decoration: none; }
+}
+
+@media (max-width: 520px) {
+  .lnk-row { grid-template-columns: 1fr; }
+  .lnk-label {
+    border-right: none;
+    border-bottom: 1px solid #D4D3EE;
+    padding: 8px 14px;
+  }
+  .lnk-chips { padding: 10px 14px; }
+}
+
 // ---- Cards ----
 
 .card {

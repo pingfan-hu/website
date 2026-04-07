@@ -9,7 +9,39 @@ description: "An overview of my research methodologies"
 
 ## Useful Links
 
-{{< include resources/useful-links.qmd >}}
+<div class="lnk-outer">
+  <div class="lnk-row lnk-purple">
+    <div class="lnk-label">Research</div>
+    <div class="lnk-chips">
+      <a href="https://scholar.google.com" class="lnk-btn" target="_blank">Google Scholar</a>
+      <a href="https://library.gwu.edu" class="lnk-btn" target="_blank">GWU Library</a>
+      <a href="https://www.connectedpapers.com" class="lnk-btn" target="_blank">Connected Papers</a>
+      <a href="https://www.zotero.org" class="lnk-btn" target="_blank">Zotero</a>
+    </div>
+  </div>
+  <div class="lnk-row lnk-blue">
+    <div class="lnk-label">Coding</div>
+    <div class="lnk-chips">
+      <a href="https://github.com" class="lnk-btn" target="_blank">GitHub</a>
+      <a href="https://desktop.github.com" class="lnk-btn" target="_blank">GitHub Desktop</a>
+      <a href="https://posit.co" class="lnk-btn" target="_blank">RStudio</a>
+    </div>
+  </div>
+  <div class="lnk-row lnk-green">
+    <div class="lnk-label">Note Taking</div>
+    <div class="lnk-chips">
+      <a href="https://quarto.org" class="lnk-btn" target="_blank">Quarto</a>
+      <a href="https://www.craft.do" class="lnk-btn" target="_blank">Craft Doc</a>
+      <a href="https://www.notion.so" class="lnk-btn" target="_blank">Notion</a>
+    </div>
+  </div>
+  <div class="lnk-row lnk-orange">
+    <div class="lnk-label">Related Blog</div>
+    <div class="lnk-chips">
+      <a href="https://pingfanhu.com/blog/2023-12-09-personal-website/" class="lnk-btn" target="_blank">How to Make a Personal Website</a>
+    </div>
+  </div>
+</div>
 
 ## Abstract
 

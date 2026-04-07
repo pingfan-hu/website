@@ -14,7 +14,10 @@ execute:
 
 <a href='https://surveydown.org'><img src='images/surveydown.png' align="right" style="height:139px;"/></a>
 
-{{< include resources/useful-links.qmd >}}
+<div class="intro-links">
+  <a href="https://surveydown.org" class="intro-btn" target="_blank"><i class="bi bi-browser-safari"></i> Website</a>
+  <a href="https://github.com/surveydown-dev/surveydown" class="intro-btn" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+</div>
 
 We are thrilled to announce the `v1.0.0` release of `surveydown`, a stable release with improvements to YAML settings, page navigation, question creation, and a smoother overall developer experience.
 

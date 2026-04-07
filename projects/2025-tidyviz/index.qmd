@@ -7,7 +7,11 @@ categories: [Python, Software, Survey, Data Science]
 description: "A Python package for tidying and visualizing survey data."
 ---
 
-{{< include resources/useful-links.qmd >}}
+<div class="intro-links">
+  <a href="https://pypi.org/project/tidyviz/" class="intro-btn" target="_blank"><i class="bi bi-box-seam"></i> PyPI</a>
+  <a href="https://github.com/pingfan-hu/tidyviz" class="intro-btn" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+  <a href="https://github.com/pingfan-hu/tidyviz/tree/main/docs" class="intro-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> Docs</a>
+</div>
 
 ## Overview
 

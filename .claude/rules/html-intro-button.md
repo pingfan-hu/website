@@ -8,7 +8,7 @@ Use when a post has only a handful of top-level links (2–4) that don't need ca
 
 ## Structure
 
-A single `div` wrapper with flex centering, containing `<a>` tags with Bootstrap Icons:
+Write the HTML directly in the main `.qmd` file — no `{=html}` fence, no separate component file.
 
 ```html
 <div class="intro-links">
@@ -17,35 +17,9 @@ A single `div` wrapper with flex centering, containing `<a>` tags with Bootstrap
 </div>
 ```
 
-## CSS Specifications
+## CSS
 
-```css
-.intro-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 1em 0;
-  justify-content: center;
-}
-.intro-btn {
-  display: inline-block;
-  padding: 5px 14px;
-  border-radius: 20px;
-  border: 1.5px solid #5654A2;
-  background: #EEEDF8;
-  color: #5654A2;
-  font-family: 'Maple Mono', monospace;
-  font-size: 0.82em;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-.intro-btn:hover {
-  background: #5654A2;
-  color: #F8F7F0;
-  text-decoration: none;
-}
-```
+All styles live in `styles/theme.scss` under `// ---- Intro Links ----`. The equalize-width script (mobile button sizing) lives in `styles/site.js`. **Do not add `<style>` blocks or `<link>` tags to component files.**
 
 ## Icons
 
@@ -61,26 +35,16 @@ Use Bootstrap Icons (`bi` classes) — already loaded by Quarto's Bootstrap them
 
 ## Required Boilerplate
 
-Only the Maple Mono font import is needed (no Lucide):
+None. CSS and JS are already in `theme.scss` and `site.js`. Component files need only the HTML content inside a `{=html}` fence.
 
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
-```
+## Mobile Responsiveness
 
-## Mobile Responsiveness (Required)
-
-On narrow screens, buttons wrap at different widths and look uneven. Fix by stacking vertically with a fixed width:
-
-```css
-@media (max-width: 520px) {
-  .xyz-links { flex-direction: column; align-items: center; }
-  .xyz-btn { width: fit-content; min-width: 120px; text-align: center; }
-}
-```
+Already handled in `theme.scss` and `site.js` — stacks vertically at 520px and equalizes button widths.
 
 ## Notes
-- Use scoped class names per post (e.g. `.sd-links` / `.sd-btn`) to avoid collisions if multiple components appear on the same page.
+- Use the shared `.intro-links` / `.intro-btn` class names — CSS is global in `theme.scss`, no scoped names needed.
+- If two intro-link components on the same page need different styles, create a modifier class in `theme.scss`.
 
 ## Reference Implementation
 
-- `blog/2025-11-21-surveydown-version-1/resources/useful-links.qmd`
+- `blog/2025-11-21-surveydown-version-1/index.qmd` (line 17)

@@ -13,9 +13,15 @@ execute:
 description: "An open-source survey platform using {{< var rnolink >}}, Quarto, Shiny, and PostgreSQL."
 ---
 
-<a href='https://surveydown.org'><img src='surveydown.png' align="right" style="height:139px;"/></a>
+<a href='https://surveydown.org'><img src='resources/surveydown.png' align="right" style="height:139px;"/></a>
 
-{{< include resources/useful-links.qmd >}}
+<div class="intro-links">
+  <a href="https://surveydown.org" class="intro-btn" target="_blank"><i class="bi bi-browser-safari"></i> Website</a>
+  <a href="https://github.com/surveydown-dev/surveydown" class="intro-btn" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+  <a href="https://ospo.gwu.edu/2024-student-open-source-award-winners" class="intro-btn" target="_blank"><i class="bi bi-award"></i> Award</a>
+  <a href="https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible" class="intro-btn" target="_blank"><i class="bi bi-newspaper"></i> Spotlight</a>
+  <a href="https://surveydown-dev.r-universe.dev/surveydown" class="intro-btn" target="_blank"><i class="bi bi-r-square-fill"></i> R-univ</a>
+</div>
 
 ## Paper
 
@@ -37,7 +43,7 @@ Intro video of `surveydown` by my advisor, professor [John Helveston](https://ww
 
 ## Overview
 
-![](technologies.svg){fig-align="center" width="550"}
+![](resources/technologies.svg){fig-align="center" width="550"}
 
 **surveydown** is a flexible, open-source platform for making programmable, markdown-based surveys with {{< var rlink >}}, {{< var quarto >}}, {{< var shiny >}}, and {{< var postgres >}}.
 

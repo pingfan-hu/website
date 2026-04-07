@@ -30,6 +30,34 @@
   }
 })();
 
+// ---- Intro Button Equalize ----
+// When buttons stack (each on its own row), equalizes all to the widest width.
+// text-align: center on the container handles centering in all layout contexts.
+(function () {
+  function updateIntroBtns() {
+    document.querySelectorAll('.intro-links').forEach(function (container) {
+      var btns = Array.from(container.querySelectorAll('.intro-btn'));
+      if (btns.length < 2) return;
+
+      // Reset for fresh measurement
+      btns.forEach(function (b) { b.style.width = ''; });
+
+      // Detect stacking: any button below the first row
+      var firstTop = btns[0].getBoundingClientRect().top;
+      var isStacked = btns.some(function (b) {
+        return b.getBoundingClientRect().top > firstTop + 2;
+      });
+
+      if (isStacked) {
+        var maxW = Math.max.apply(null, btns.map(function (b) { return b.offsetWidth; }));
+        btns.forEach(function (b) { b.style.width = maxW + 'px'; });
+      }
+    });
+  }
+  document.fonts.ready.then(updateIntroBtns);
+  window.addEventListener('resize', updateIntroBtns);
+})();
+
 // ---- Code Window Language Labels ----
 (function () {
   function initCodeWindows() {
