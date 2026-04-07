@@ -31,8 +31,8 @@
 })();
 
 // ---- Intro Button Equalize ----
-// When buttons stack (each on its own row), equalizes all to the widest width.
-// text-align: center on the container handles centering in all layout contexts.
+// When buttons stack, equalizes widths and pins all to the first button's
+// left position — so floated images don't shift the lower buttons.
 (function () {
   function updateIntroBtns() {
     document.querySelectorAll('.intro-links').forEach(function (container) {
@@ -40,17 +40,25 @@
       if (btns.length < 2) return;
 
       // Reset for fresh measurement
-      btns.forEach(function (b) { b.style.width = ''; });
+      container.style.textAlign = '';
+      btns.forEach(function (b) { b.style.width = ''; b.style.marginLeft = ''; });
 
-      // Detect stacking: any button below the first row
-      var firstTop = btns[0].getBoundingClientRect().top;
-      var isStacked = btns.some(function (b) {
-        return b.getBoundingClientRect().top > firstTop + 2;
-      });
+      // Detect full stacking: every button is on its own row
+      var tops = btns.map(function (b) { return Math.round(b.getBoundingClientRect().top); });
+      var uniqueTops = tops.filter(function (t, i) { return tops.indexOf(t) === i; });
+      var isFullyStacked = uniqueTops.length === btns.length;
 
-      if (isStacked) {
+      if (isFullyStacked) {
+        // Equalize widths
         var maxW = Math.max.apply(null, btns.map(function (b) { return b.offsetWidth; }));
         btns.forEach(function (b) { b.style.width = maxW + 'px'; });
+
+        // Pin all buttons to the first button's left position so they align
+        // consistently even when a floated image narrows the container above
+        var containerLeft = container.getBoundingClientRect().left;
+        var targetLeft = btns[0].getBoundingClientRect().left - containerLeft;
+        container.style.textAlign = 'left';
+        btns.forEach(function (b) { b.style.marginLeft = targetLeft + 'px'; });
       }
     });
   }
