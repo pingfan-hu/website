@@ -54,9 +54,10 @@ All component design standards live in `.claude/rules/`. Always consult the rele
 
 | Rule file | Covers |
 |-----------|--------|
-| `html-table.md` | Styled data tables with icons, mobile stacking |
-| `html-table-button.md` | Label + pill button rows (`.lnk-*` classes) |
-| `html-intro-button.md` | Centered intro pill buttons (`.intro-links` / `.intro-btn`) |
+| `html-table-description.md` | 2-column label → value tables with icons, mobile stacking |
+| `html-table-icon.md` | Icon card grid with centered header and optional section bars |
+| `html-button-table.md` | Label + pill button rows (`.lnk-*` classes) |
+| `html-button-intro.md` | Centered intro pill buttons (`.intro-links` / `.intro-btn`) |
 | `html-url.md` | URL anatomy diagrams with overflow detection |
 | `image-banner.md` | Blog/project banner generation via claude-image-gen |
 | `image-nav.md` | Section nav card images |
@@ -69,9 +70,9 @@ All component design standards live in `.claude/rules/`. Always consult the rele
 - **Banners**: Project/blog banner images live in `projects/banners/` and `blog/banners/` (referenced in listing configs).
 - **External links**: `link-external-newwindow: true` is global; internal links are filtered by `pingfanhu.com` domain.
 - **`{{< include >}}`** paths are always absolute from project root (e.g., `/chunks/intro.qmd`).
-- **Intro buttons** (2–4 project links at the top of a post): write HTML directly in the `.qmd` using `.intro-links` / `.intro-btn` classes — CSS is global in `styles.scss`, no `<style>` block needed. See `.claude/rules/html-intro-button.md`.
-- **Link tables** (label + multiple buttons): use `.lnk-outer` / `.lnk-row` / `.lnk-btn` with color variants `lnk-purple`, `lnk-blue`, `lnk-green`, `lnk-orange`. CSS is global in `styles.scss`. See `.claude/rules/html-table-button.md`.
-- **Styled HTML components in blog posts**: Use `{{< include resources/filename.qmd >}}` to embed styled HTML tables or visuals. The included file must be a `.qmd` (not `.html`) with content wrapped in a ```` ```{=html} ```` fence. Store these files in a `resources/` subdirectory within the post folder. Do NOT use iframes. See `.claude/rules/html-table.md` for the full design standard.
+- **Intro buttons** (2–4 project links at the top of a post): write HTML directly in the `.qmd` using `.intro-links` / `.intro-btn` classes — CSS is global in `styles.scss`, no `<style>` block needed. See `.claude/rules/html-button-intro.md`.
+- **Link tables** (label + multiple buttons): use `.lnk-outer` / `.lnk-row` / `.lnk-btn` with color variants `lnk-purple`, `lnk-blue`, `lnk-green`, `lnk-orange`. CSS is global in `styles.scss`. See `.claude/rules/html-button-table.md`.
+- **Styled HTML components in blog posts**: Use `{{< include resources/filename.qmd >}}` to embed styled HTML tables or visuals. The included file must be a `.qmd` (not `.html`) with content wrapped in a ```` ```{=html} ```` fence. Store these files in a `resources/` subdirectory within the post folder. Do NOT use iframes. See `.claude/rules/html-table-description.md` or `.claude/rules/html-table-icon.md` for the full design standards.
 - **Banner image generation**: Always use the claude-image-gen CLI to generate banner images. Never use Pillow or HTML/CSS rendering. See `.claude/rules/image-banner.md` for the full workflow, prompt template, and style standard. **Never write the Gemini API key as a literal value anywhere** — it lives in `~/.zshrc` as `$NANOBANANA_GEMINI_API_KEY`.
 - **`resources/` subdirectory**: Every `resources/` folder inside a blog post must contain a `_metadata.yml` with `draft: true` to prevent Quarto's listing from picking up the component `.qmd` files as blog posts. (The project-level `_quarto.yml` also globally excludes `**/resources/*.qmd` from rendering as a second guard.)
 - **`projects/_metadata.yml`**: Hides the title metadata block for all project pages via injected CSS.

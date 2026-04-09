@@ -31,7 +31,12 @@
       "WebFetch(domain:www.schemastore.org)",
       "Skill(design)",
       "Bash(quarto render:*)",
-      "Skill(read)"
+      "Skill(read)",
+      "Bash(mv /Users/pingfan/Documents/GitHub/website/.claude/rules/html-intro-button.md /Users/pingfan/Documents/GitHub/website/.claude/rules/html-button-intro.md)",
+      "Bash(mv /Users/pingfan/Documents/GitHub/website/.claude/rules/html-table-button.md /Users/pingfan/Documents/GitHub/website/.claude/rules/html-button-table.md)",
+      "Read(//tmp/**)",
+      "Bash(cp /tmp/spokenly-logo.png /Users/pingfan/Documents/GitHub/website/blog/2026-04-08-agentic-engineering-3/resources/spokenly-logo.png)",
+      "Bash(cp /tmp/kaku-logo.png /Users/pingfan/Documents/GitHub/website/blog/2026-04-08-agentic-engineering-3/resources/kaku-logo.png)"
     ]
   },
   "hooks": {

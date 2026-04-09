@@ -1,6 +1,6 @@
 # HTML Table Button Style Standard
 
-When creating a styled link/button group for a blog post, use this standard. It shares the same visual language as `html-table.md` but is simpler: a label on the left, pill buttons on the right.
+When creating a styled link/button group for a blog post, use this standard. It shares the same visual language as `html-table-description.md` but is simpler: a label on the left, pill buttons on the right.
 
 ## Structure
 
