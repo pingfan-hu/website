@@ -11,6 +11,8 @@ execute:
 
 ## Software
 
+{{< include resources/software-overview.qmd >}}
+
 ### Obsidian
 
 [Obsidian](https://obsidian.md/) is a note-taking app that stores everything as `.md` files with real-time rendering. A free account syncs your vaults to iCloud. I pair it with Claude Code using a `cd-obsidian` quick command. It works for almost anything: knowledge base, quick notes, plans, drafts.
@@ -64,6 +66,8 @@ The screenshot above shows two tabs, Obsidian and GitHub, with three panels open
 
 ## Extensions
 
+{{< include resources/extensions-overview.qmd >}}
+
 There is no official name for the installable contents to LLMs, and I call them extensions. Both Claude and Claude Code support extensions, including **Plugins**, **MCPs** (**connectors**), and **skills**.
 
 - **Plugins**: marketplace bundles that extend Claude Code with new skills, MCP servers, and configuration. You install them via `/plugin` and they are managed locally.
@@ -96,6 +100,8 @@ MCPs are not only limited to LLMs. Obsidian, for example, supports plugins that 
 When you install plugins, you often get skills bundled with them. Claude Code can auto-trigger skills when it detects the right context, or you can invoke them with a slash command. With the `code-review` plugin, for example, `/review` runs a code review, but you can also just ask Claude Code to review your code and it picks up the skill on its own.
 
 [\@tw93](https://tw93.fun) recently released a collection of skills called [Waza](https://github.com/tw93/waza), which includes eight skills: `/think`, `/design`, `/check`, `/hunt`, `/write`, `/learn`, `/read`, and `/health`.
+
+{{< include resources/waza-skills.qmd >}}
 
 From his [blog post](https://tw93.fun/en/2026-04-06/learn.html) and X posts, he describes two design principles:
 

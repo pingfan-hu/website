@@ -1,6 +1,6 @@
 # HTML Intro Button Standard
 
-For blog posts that introduce a software project or package, use this standard to render a small centered row of pill buttons near the top of the post. Unlike `html-table-button.md`, there is no frame, no label column, and no desktop/mobile split — just a uniform centered flex row.
+For blog posts that introduce a software project or package, use this standard to render a small centered row of pill buttons near the top of the post. Unlike `html-button-table.md`, there is no frame, no label column, and no desktop/mobile split — just a uniform centered flex row.
 
 ## When to Use
 

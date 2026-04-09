@@ -1,0 +1,164 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .waza-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .waza-header {
+    display: grid;
+    grid-template-columns: 18% 26% 1fr;
+    background: #5654A2;
+    padding: 10px 16px;
+    gap: 0;
+  }
+
+  .waza-header-cell {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+  }
+
+  .waza-header-cell:not(:first-child) {
+    padding-left: 16px;
+    border-left: 1px solid rgba(248, 247, 240, 0.25);
+  }
+
+  .waza-row {
+    display: grid;
+    grid-template-columns: 18% 26% 1fr;
+    align-items: stretch;
+    border-top: 1px solid #D4D3EE;
+    background: #F8F7F0;
+    transition: background 0.15s ease;
+  }
+
+  .waza-row:hover { background: #F0EFF8; }
+
+  .waza-attr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 12px;
+    background: #EEEDF8;
+    border-right: 1px solid #D4D3EE;
+  }
+
+  .waza-row:hover .waza-attr { background: #E6E5F4; }
+
+  .waza-chip {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.82em;
+    padding: 3px 10px;
+    background: #F8F7F0;
+    color: #5654A2;
+    border: 1px solid #C4C3E8;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .waza-cell {
+    padding: 12px 16px;
+    font-size: 0.92em;
+    color: #564232;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #D4D3EE;
+  }
+
+  .waza-cell:last-child { border-right: none; }
+
+  @media (max-width: 560px) {
+    .waza-header { display: none; }
+    .waza-row { grid-template-columns: 1fr; }
+    .waza-attr {
+      justify-content: flex-start;
+      border-right: none;
+      border-bottom: 1px solid #D4D3EE;
+      padding: 10px 14px;
+    }
+    .waza-cell {
+      border-right: none;
+      border-bottom: 1px solid #D4D3EE;
+      padding: 8px 14px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .waza-cell:last-child { border-bottom: none; }
+    .waza-cell::before {
+      content: attr(data-label);
+      font-family: 'Maple Mono', monospace;
+      font-size: 0.72em;
+      font-weight: bold;
+      color: #5654A2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+  }
+</style>
+
+<div class="waza-outer">
+  <div class="waza-header">
+    <div class="waza-header-cell">Skill</div>
+    <div class="waza-header-cell">When</div>
+    <div class="waza-header-cell">What it does</div>
+  </div>
+  <div class="waza-row">
+    <div class="waza-attr"><span class="waza-chip">/think</span></div>
+    <div class="waza-cell" data-label="When">Before building anything new</div>
+    <div class="waza-cell" data-label="What it does">Challenges the problem, pressure-tests the design, validates architecture before any code is written.</div>
+  </div>
+  <div class="waza-row">
+    <div class="waza-attr"><span class="waza-chip">/design</span></div>
+    <div class="waza-cell" data-label="When">Building frontend interfaces</div>
+    <div class="waza-cell" data-label="What it does">Produces distinctive UI with a committed aesthetic direction, not generic defaults.</div>
+  </div>
+  <div class="waza-row">
+    <div class="waza-attr"><span class="waza-chip">/check</span></div>
+    <div class="waza-cell" data-label="When">After a task, before merging</div>
+    <div class="waza-cell" data-label="What it does">Reviews the diff, auto-fixes safe issues, blocks destructive commands, verifies with evidence.</div>
+  </div>
+  <div class="waza-row">
+    <div class="waza-attr"><span class="waza-chip">/hunt</span></div>
+    <div class="waza-cell" data-label="When">Any bug or unexpected behavior</div>
+    <div class="waza-cell" data-label="What it does">Systematic debugging. Root cause confirmed before any fix is applied.</div>
+  </div>
+  <div class="waza-row">
+    <div class="waza-attr"><span class="waza-chip">/write</span></div>
+    <div class="waza-cell" data-label="When">Writing or editing prose</div>
+    <div class="waza-cell" data-label="What it does">Rewrites prose to sound natural in Chinese and English. Cuts stiff, formulaic phrasing.</div>
+  </div>
+  <div class="waza-row">
+    <div class="waza-attr"><span class="waza-chip">/learn</span></div>
+    <div class="waza-cell" data-label="When">Diving into an unfamiliar domain</div>
+    <div class="waza-cell" data-label="What it does">Six-phase research workflow: collect, digest, outline, fill in, refine, then self-review and publish.</div>
+  </div>
+  <div class="waza-row">
+    <div class="waza-attr"><span class="waza-chip">/read</span></div>
+    <div class="waza-cell" data-label="When">Any URL or PDF</div>
+    <div class="waza-cell" data-label="What it does">Fetches content as clean Markdown. Special handling for GitHub, PDFs, WeChat, and Feishu.</div>
+  </div>
+  <div class="waza-row">
+    <div class="waza-attr"><span class="waza-chip">/health</span></div>
+    <div class="waza-cell" data-label="When">Auditing Claude Code setup</div>
+    <div class="waza-cell" data-label="What it does">Checks CLAUDE.md, rules, skills, hooks, and MCP config. Flags issues by severity.</div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

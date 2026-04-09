@@ -31,7 +31,9 @@
       "WebFetch(domain:www.schemastore.org)",
       "Skill(design)",
       "Bash(quarto render:*)",
-      "Skill(read)"
+      "Skill(read)",
+      "Bash(mv /Users/pingfan/Documents/GitHub/website/.claude/rules/html-intro-button.md /Users/pingfan/Documents/GitHub/website/.claude/rules/html-button-intro.md)",
+      "Bash(mv /Users/pingfan/Documents/GitHub/website/.claude/rules/html-table-button.md /Users/pingfan/Documents/GitHub/website/.claude/rules/html-button-table.md)"
     ]
   },
   "hooks": {

@@ -1,0 +1,133 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .sw-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .sw-header {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .sw-header-cell {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .sw-row {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    align-items: stretch;
+    border-top: 1px solid #D4D3EE;
+    background: #F8F7F0;
+    transition: background 0.15s ease;
+  }
+
+  .sw-row:hover { background: #F0EFF8; }
+
+  .sw-layer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-right: 1px solid #D4D3EE;
+    background: #EEEDF8;
+  }
+
+  .sw-row:hover .sw-layer { background: #E6E5F4; }
+
+  .sw-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #F8F7F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sw-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .sw-name {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    color: #5654A2;
+    line-height: 1.4;
+  }
+
+  .sw-resp {
+    padding: 12px 20px;
+    font-size: 0.95em;
+    color: #564232;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 520px) {
+    .sw-header { grid-template-columns: 1fr; justify-items: center; }
+    .sw-header-cell:last-child { display: none; }
+    .sw-row { grid-template-columns: 1fr; }
+    .sw-layer { border-right: none; border-bottom: 1px solid #D4D3EE; padding: 10px 14px; }
+    .sw-resp { padding: 10px 14px; font-size: 0.9em; }
+  }
+</style>
+
+<div class="sw-outer">
+  <div class="sw-header">
+    <div class="sw-header-cell">Tool</div>
+    <div class="sw-header-cell">Description</div>
+  </div>
+  <div class="sw-row">
+    <div class="sw-layer">
+      <div class="sw-icon"><i data-lucide="book-open"></i></div>
+      <div class="sw-name">Obsidian</div>
+    </div>
+    <div class="sw-resp">Markdown note-taking with real-time rendering and iCloud sync. Works well as a local knowledge base alongside Claude Code.</div>
+  </div>
+  <div class="sw-row">
+    <div class="sw-layer">
+      <div class="sw-icon"><i data-lucide="volume-2"></i></div>
+      <div class="sw-name">Spokenly</div>
+    </div>
+    <div class="sw-resp">Text-to-speech with multi-language and multi-voice support. Replaces hand-typing for drafting and note-taking.</div>
+  </div>
+  <div class="sw-row">
+    <div class="sw-layer">
+      <div class="sw-icon"><i data-lucide="layout-panel-left"></i></div>
+      <div class="sw-name">Positron</div>
+    </div>
+    <div class="sw-resp">VS Code-based IDE from Posit with a built-in console and data viewer. Good for keeping editor, terminal, and data panels visible at once.</div>
+  </div>
+  <div class="sw-row">
+    <div class="sw-layer">
+      <div class="sw-icon"><i data-lucide="terminal"></i></div>
+      <div class="sw-name">Kaku</div>
+    </div>
+    <div class="sw-resp">Open-source macOS terminal with tabbed panels, file management via Yazi, and customizable shortcuts.</div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

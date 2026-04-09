@@ -1,0 +1,126 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .ext-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .ext-header {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .ext-header-cell {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .ext-row {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    align-items: stretch;
+    border-top: 1px solid #D4D3EE;
+    background: #F8F7F0;
+    transition: background 0.15s ease;
+  }
+
+  .ext-row:hover { background: #F0EFF8; }
+
+  .ext-layer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-right: 1px solid #D4D3EE;
+    background: #EEEDF8;
+  }
+
+  .ext-row:hover .ext-layer { background: #E6E5F4; }
+
+  .ext-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #F8F7F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ext-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .ext-name {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    color: #5654A2;
+    line-height: 1.4;
+  }
+
+  .ext-resp {
+    padding: 12px 20px;
+    font-size: 0.95em;
+    color: #564232;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 520px) {
+    .ext-header { grid-template-columns: 1fr; justify-items: center; }
+    .ext-header-cell:last-child { display: none; }
+    .ext-row { grid-template-columns: 1fr; }
+    .ext-layer { border-right: none; border-bottom: 1px solid #D4D3EE; padding: 10px 14px; }
+    .ext-resp { padding: 10px 14px; font-size: 0.9em; }
+  }
+</style>
+
+<div class="ext-outer">
+  <div class="ext-header">
+    <div class="ext-header-cell">Type</div>
+    <div class="ext-header-cell">Description</div>
+  </div>
+  <div class="ext-row">
+    <div class="ext-layer">
+      <div class="ext-icon"><i data-lucide="package"></i></div>
+      <div class="ext-name">Plugins</div>
+    </div>
+    <div class="ext-resp">Bundles of skills, MCPs, and configuration. Install via <code>/plugin</code> and manage locally.</div>
+  </div>
+  <div class="ext-row">
+    <div class="ext-layer">
+      <div class="ext-icon"><i data-lucide="plug"></i></div>
+      <div class="ext-name">MCPs (Connectors)</div>
+    </div>
+    <div class="ext-resp">External servers that give Claude real-time access to tools and data — web browsing, calendars, databases, and more.</div>
+  </div>
+  <div class="ext-row">
+    <div class="ext-layer">
+      <div class="ext-icon"><i data-lucide="zap"></i></div>
+      <div class="ext-name">Skills</div>
+    </div>
+    <div class="ext-resp">Slash commands (e.g. <code>/commit</code>, <code>/review</code>) that encode reusable workflows as Markdown prompt templates.</div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```
