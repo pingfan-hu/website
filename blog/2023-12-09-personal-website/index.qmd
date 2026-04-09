@@ -9,29 +9,29 @@ description: "A tutorial of making a personal website using Quarto on RStudio"
 ## Useful Links
 
 <div class="lnk-outer">
-  <div class="lnk-row lnk-purple">
-    <div class="lnk-label">My Repo</div>
-    <div class="lnk-chips">
-      <a href="https://github.com/pingfan-hu/website" class="lnk-btn" target="_blank">GitHub Repo of My Website</a>
-    </div>
+ <div class="lnk-row lnk-purple">
+  <div class="lnk-label">My Repo</div>
+  <div class="lnk-chips">
+   <a href="https://github.com/pingfan-hu/website" class="lnk-btn" target="_blank">GitHub Repo of My Website</a>
   </div>
-  <div class="lnk-row lnk-green">
-    <div class="lnk-label">Software</div>
-    <div class="lnk-chips">
-      <a href="https://desktop.github.com" class="lnk-btn" target="_blank">GitHub Desktop</a>
-      <a href="https://www.r-project.org" class="lnk-btn" target="_blank">R</a>
-      <a href="https://www.rstudio.com/categories/rstudio-ide/" class="lnk-btn" target="_blank">RStudio</a>
-      <a href="https://quarto.org" class="lnk-btn" target="_blank">Quarto</a>
-    </div>
+ </div>
+ <div class="lnk-row lnk-green">
+  <div class="lnk-label">Software</div>
+  <div class="lnk-chips">
+   <a href="https://desktop.github.com" class="lnk-btn" target="_blank">GitHub Desktop</a>
+   <a href="https://www.r-project.org" class="lnk-btn" target="_blank">R</a>
+   <a href="https://www.rstudio.com/categories/rstudio-ide/" class="lnk-btn" target="_blank">RStudio</a>
+   <a href="https://quarto.org" class="lnk-btn" target="_blank">Quarto</a>
   </div>
-  <div class="lnk-row lnk-blue">
-    <div class="lnk-label">Platforms</div>
-    <div class="lnk-chips">
-      <a href="https://github.com" class="lnk-btn" target="_blank">GitHub (Repo)</a>
-      <a href="https://www.namecheap.com" class="lnk-btn" target="_blank">Namecheap (Domain)</a>
-      <a href="https://www.netlify.com" class="lnk-btn" target="_blank">Netlify (Server)</a>
-    </div>
+ </div>
+ <div class="lnk-row lnk-blue">
+  <div class="lnk-label">Platforms</div>
+  <div class="lnk-chips">
+   <a href="https://github.com" class="lnk-btn" target="_blank">GitHub (Repo)</a>
+   <a href="https://www.namecheap.com" class="lnk-btn" target="_blank">Namecheap (Domain)</a>
+   <a href="https://www.netlify.com" class="lnk-btn" target="_blank">Netlify (Server)</a>
   </div>
+ </div>
 </div>
 
 ## Abstract
@@ -83,21 +83,20 @@ If you are using my template, there are several things I want to explain to ease
 
 1.  My repo is slightly different from the [Quarto official blog tutorial](https://quarto.org/docs/websites/website-blog.html), since I prefer to show my personal page as default, and make the other pages, including "About", "Blogs", "Projects", etc. as tabs on the nav bar.
 
-2.  I used the [United theme](https://bootswatch.com/united/). This is a free theme made by Bootswatch. There are 25 Bootswatch themes in total, all compatible with Quarto doc. You can access them in the **Themes** drop-down menu.
+2.  I used the [Flatly](https://bootswatch.com/flatly/) and [Darkly](https://bootswatch.com/darkly/) themes for light and dark modes. These are free themes made by Bootswatch. There are 25 Bootswatch themes in total, all compatible with Quarto doc. You can access them in the **Themes** drop-down menu.
 
-3.  I also used a customized `scss` file called `theme.scss` and another css file called `styles.css`. Both `scss` and `css` files are used to define personal page layout settings. The YAML grammar looks like this (You can see the full YAML code in the `_quarto.yml` file):
+3.  I also used a customized `scss` file called `styles.scss` and a JS file called `styles.js`. Both `scss` and `js` files are used to define personal page layout settings and behaviors. The YAML grammar looks like this (You can see the full YAML code in the `_quarto.yml` file):
 
     ``` yaml
     format:
       html:
-        theme: [united, theme.scss]
-        css: styles.css
-        backgroundcolor: "#F8F7F0"
+        theme:
+          light: [flatly, styles/styles.scss]
+          dark: [darkly, styles/styles.scss]
+        include-after-body:
+          text: |
+            <script src="/styles/styles.js"></script>
     ```
-
-    Note that there is a `backgroundcolor: "#F8F7F0"` used to set the page background color. The short reason for it being here and not in `.scss` or `.css` is that, it gives the best compatibility.
-
-    The original **United** theme primary color is orange, but I changed that in my `theme.scss` file.
 
 4.  I manually pasted my `resume.pdf` file to the `_site` -\> `contents` directory, since I failed to find an automatic solution of creating this file upon knitting.
 

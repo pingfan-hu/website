@@ -218,6 +218,11 @@ table {
   }
 }
 
+// Post-page categories have opacity: .6 — reset to full on hover
+.quarto-title .quarto-categories .quarto-category:hover {
+  opacity: 1 !important;
+}
+
 // ---- References ----
 
 #quarto-appendix {
@@ -368,6 +373,7 @@ table {
 // ---- Blog Listing Cards ----
 
 .quarto-post {
+  position: relative;
   border: 1.5px solid #D4D3EE !important;
   border-radius: 14px;
   padding: 1.25rem 1.5rem;
@@ -381,6 +387,26 @@ table {
     border-color: #5654A2 !important;
     box-shadow: 0 8px 24px rgba(86, 84, 162, 0.13);
     transform: translateY(-4px);
+  }
+
+  // Stretch the title link to cover the entire card
+  .listing-title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  // Add space between title and category badges
+  .listing-categories {
+    margin-top: 0.4rem;
+  }
+
+  // Raise category badges above the overlay so they remain clickable
+  .quarto-category,
+  .listing-category {
+    position: relative;
+    z-index: 2;
   }
 
   // Vertically center the thumbnail within the card

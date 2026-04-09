@@ -19,7 +19,7 @@ Write the HTML directly in the main `.qmd` file — no `{=html}` fence, no separ
 
 ## CSS
 
-All styles live in `styles/theme.scss` under `// ---- Intro Links ----`. The equalize-width script (mobile button sizing) lives in `styles/site.js`. **Do not add `<style>` blocks or `<link>` tags to component files.**
+All styles live in `styles/styles.scss` under `// ---- Intro Links ----`. The equalize-width script (mobile button sizing) lives in `styles/styles.js`. **Do not add `<style>` blocks or `<link>` tags to component files.**
 
 ## Icons
 
@@ -35,15 +35,15 @@ Use Bootstrap Icons (`bi` classes) — already loaded by Quarto's Bootstrap them
 
 ## Required Boilerplate
 
-None. CSS and JS are already in `theme.scss` and `site.js`. Component files need only the HTML content inside a `{=html}` fence.
+None. CSS and JS are already in `styles.scss` and `styles.js`. Component files need only the HTML content inside a `{=html}` fence.
 
 ## Mobile Responsiveness
 
-Already handled in `theme.scss` and `site.js` — stacks vertically at 520px and equalizes button widths.
+Already handled in `styles.scss` and `styles.js` — stacks vertically at 520px and equalizes button widths.
 
 ## Notes
-- Use the shared `.intro-links` / `.intro-btn` class names — CSS is global in `theme.scss`, no scoped names needed.
-- If two intro-link components on the same page need different styles, create a modifier class in `theme.scss`.
+- Use the shared `.intro-links` / `.intro-btn` class names — CSS is global in `styles.scss`, no scoped names needed.
+- If two intro-link components on the same page need different styles, create a modifier class in `styles.scss`.
 
 ## Reference Implementation
 

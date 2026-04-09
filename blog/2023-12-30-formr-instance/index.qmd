@@ -9,26 +9,26 @@ description: "A tutorial of deploying the formr instance using Ubuntu 22.04 on A
 ## Useful Links
 
 <div class="lnk-outer">
-  <div class="lnk-row lnk-purple">
-    <div class="lnk-label">Showcase</div>
-    <div class="lnk-chips">
-      <a href="http://172.233.238.100" class="lnk-btn" target="_blank">My formr Instance</a>
-      <a href="https://formr.org" class="lnk-btn" target="_blank">Official formr</a>
-    </div>
+ <div class="lnk-row lnk-purple">
+  <div class="lnk-label">Showcase</div>
+  <div class="lnk-chips">
+   <a href="http://172.233.238.100" class="lnk-btn" target="_blank">My formr Instance</a>
+   <a href="https://formr.org" class="lnk-btn" target="_blank">Official formr</a>
   </div>
-  <div class="lnk-row lnk-blue">
-    <div class="lnk-label">Preparation</div>
-    <div class="lnk-chips">
-      <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04" class="lnk-btn" target="_blank">Initial Setup with Ubuntu</a>
-      <a href="https://docs.docker.com/desktop/install/ubuntu/" class="lnk-btn" target="_blank">Install Docker on Ubuntu</a>
-    </div>
+ </div>
+ <div class="lnk-row lnk-blue">
+  <div class="lnk-label">Preparation</div>
+  <div class="lnk-chips">
+   <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04" class="lnk-btn" target="_blank">Initial Setup with Ubuntu</a>
+   <a href="https://docs.docker.com/desktop/install/ubuntu/" class="lnk-btn" target="_blank">Install Docker on Ubuntu</a>
   </div>
-  <div class="lnk-row lnk-green">
-    <div class="lnk-label">Deployment</div>
-    <div class="lnk-chips">
-      <a href="https://github.com/rubenarslan/formr.org/blob/master/INSTALLATION.md" class="lnk-btn" target="_blank">Deploy formr (Docker Version)</a>
-    </div>
+ </div>
+ <div class="lnk-row lnk-green">
+  <div class="lnk-label">Deployment</div>
+  <div class="lnk-chips">
+   <a href="https://github.com/rubenarslan/formr.org/blob/master/INSTALLATION.md" class="lnk-btn" target="_blank">Deploy formr (Docker Version)</a>
   </div>
+ </div>
 </div>
 
 ## Abstract
