@@ -1,6 +1,5 @@
 ```{=html}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
 <style>
   .sw-outer {
@@ -12,13 +11,33 @@
   }
 
   .sw-header {
-    display: grid;
-    grid-template-columns: 30% 1fr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     background: #5654A2;
     padding: 10px 16px;
   }
 
-  .sw-header-cell {
+  .sw-header-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sw-header-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .sw-header-text {
     font-family: 'Maple Mono', monospace;
     font-size: 0.85em;
     font-weight: bold;
@@ -27,107 +46,131 @@
     text-transform: uppercase;
   }
 
-  .sw-row {
+  .sw-grid {
     display: grid;
-    grid-template-columns: 30% 1fr;
-    align-items: stretch;
-    border-top: 1px solid #D4D3EE;
+    grid-template-columns: repeat(4, 1fr);
     background: #F8F7F0;
+    border-top: 1px solid #D4D3EE;
+  }
+
+  .sw-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px;
+    text-align: center;
+    border-right: 1px solid #D4D3EE;
     transition: background 0.15s ease;
   }
 
-  .sw-row:hover { background: #F0EFF8; }
+  .sw-card:last-child { border-right: none; }
+  .sw-card:hover { background: #F0EFF8; }
+  .sw-card:hover .sw-card-icon { background: #F8F7F0; }
 
-  .sw-layer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    border-right: 1px solid #D4D3EE;
+  .sw-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     background: #EEEDF8;
-  }
-
-  .sw-row:hover .sw-layer { background: #E6E5F4; }
-
-  .sw-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background: #F8F7F0;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 10px;
     flex-shrink: 0;
   }
 
-  .sw-icon svg {
-    width: 14px;
-    height: 14px;
+  .sw-card-icon svg {
+    width: 20px;
+    height: 20px;
     color: #5654A2;
     stroke-width: 1.8;
   }
 
-  .sw-name {
-    font-family: 'Maple Mono', monospace;
-    font-size: 0.85em;
-    color: #5654A2;
-    line-height: 1.4;
+  .sw-card-icon img {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
   }
 
-  .sw-resp {
-    padding: 12px 20px;
-    font-size: 0.95em;
+
+  .sw-label {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #5654A2;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .sw-label a { text-decoration: none; }
+  .sw-label a:hover { text-decoration: underline; }
+
+  .sw-desc {
+    font-size: 0.88em;
     color: #564232;
     line-height: 1.5;
-    display: flex;
-    align-items: center;
+    margin-top: 2px;
   }
 
   @media (max-width: 520px) {
-    .sw-header { grid-template-columns: 1fr; justify-items: center; }
-    .sw-header-cell:last-child { display: none; }
-    .sw-row { grid-template-columns: 1fr; }
-    .sw-layer { border-right: none; border-bottom: 1px solid #D4D3EE; padding: 10px 14px; }
-    .sw-resp { padding: 10px 14px; font-size: 0.9em; }
+    .sw-grid { grid-template-columns: 1fr; }
+    .sw-card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: center;
+      text-align: left;
+      border-right: none;
+      border-bottom: 1px solid #D4D3EE;
+      padding: 14px;
+      gap: 0 12px;
+    }
+    .sw-card:last-child { border-bottom: none; }
+    .sw-card-icon { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; align-self: center; }
+.sw-label { grid-column: 2; margin-bottom: 1px; }
+    .sw-desc  { grid-column: 2; margin-top: 0; }
   }
 </style>
 
 <div class="sw-outer">
   <div class="sw-header">
-    <div class="sw-header-cell">Tool</div>
-    <div class="sw-header-cell">Description</div>
-  </div>
-  <div class="sw-row">
-    <div class="sw-layer">
-      <div class="sw-icon"><i data-lucide="book-open"></i></div>
-      <div class="sw-name">Obsidian</div>
+    <div class="sw-header-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
     </div>
-    <div class="sw-resp">Markdown note-taking with real-time rendering and iCloud sync. Works well as a local knowledge base alongside Claude Code.</div>
+    <span class="sw-header-text">Software</span>
   </div>
-  <div class="sw-row">
-    <div class="sw-layer">
-      <div class="sw-icon"><i data-lucide="volume-2"></i></div>
-      <div class="sw-name">Spokenly</div>
+  <div class="sw-grid">
+    <div class="sw-card">
+      <div class="sw-card-icon">
+        <a href="https://obsidian.md/" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#7C3AED" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.355 18.538a68.967 68.959 0 0 0 1.858-2.954.81.81 0 0 0-.062-.9c-.516-.685-1.504-2.075-2.042-3.362-.553-1.321-.636-3.375-.64-4.377a1.707 1.707 0 0 0-.358-1.05l-3.198-4.064a3.744 3.744 0 0 1-.076.543c-.106.503-.307 1.004-.536 1.5-.134.29-.29.6-.446.914l-.31.626c-.516 1.068-.997 2.227-1.132 3.59-.124 1.26.046 2.73.815 4.481.128.011.257.025.386.044a6.363 6.363 0 0 1 3.326 1.505c.916.79 1.744 1.922 2.415 3.5zM8.199 22.569c.073.012.146.02.22.02.78.024 2.095.092 3.16.29.87.16 2.593.64 4.01 1.055 1.083.316 2.198-.548 2.355-1.664.114-.814.33-1.735.725-2.58l-.01.005c-.67-1.87-1.522-3.078-2.416-3.849a5.295 5.295 0 0 0-2.778-1.257c-1.54-.216-2.952.19-3.84.45.532 2.218.368 4.829-1.425 7.531zM5.533 9.938c-.023.1-.056.197-.098.29L2.82 16.059a1.602 1.602 0 0 0 .313 1.772l4.116 4.24c2.103-3.101 1.796-6.02.836-8.3-.728-1.73-1.832-3.081-2.55-3.831zM9.32 14.01c.615-.183 1.606-.465 2.745-.534-.683-1.725-.848-3.233-.716-4.577.154-1.552.7-2.847 1.235-3.95.113-.235.223-.454.328-.664.149-.297.288-.577.419-.86.217-.47.379-.885.46-1.27.08-.38.08-.72-.014-1.043-.095-.325-.297-.675-.68-1.06a1.6 1.6 0 0 0-1.475.36l-4.95 4.452a1.602 1.602 0 0 0-.513.952l-.427 2.83c.672.59 2.328 2.316 3.335 4.711.09.21.175.43.253.653z"/>
+          </svg>
+        </a>
+      </div>
+      <div class="sw-label"><a href="https://obsidian.md/" target="_blank">Obsidian</a></div>
+      <div class="sw-desc">Markdown notes with iCloud sync.</div>
     </div>
-    <div class="sw-resp">Text-to-speech with multi-language and multi-voice support. Replaces hand-typing for drafting and note-taking.</div>
-  </div>
-  <div class="sw-row">
-    <div class="sw-layer">
-      <div class="sw-icon"><i data-lucide="layout-panel-left"></i></div>
-      <div class="sw-name">Positron</div>
+    <div class="sw-card">
+      <div class="sw-card-icon">
+        <a href="https://spokenly.app" target="_blank"><img src="resources/spokenly-logo.png" /></a>
+      </div>
+      <div class="sw-label"><a href="https://spokenly.app" target="_blank">Spokenly</a></div>
+      <div class="sw-desc">Text-to-speech for Mac and iPhone.</div>
     </div>
-    <div class="sw-resp">VS Code-based IDE from Posit with a built-in console and data viewer. Good for keeping editor, terminal, and data panels visible at once.</div>
-  </div>
-  <div class="sw-row">
-    <div class="sw-layer">
-      <div class="sw-icon"><i data-lucide="terminal"></i></div>
-      <div class="sw-name">Kaku</div>
+    <div class="sw-card">
+      <div class="sw-card-icon">
+        <a href="https://positron.posit.co" target="_blank"><img src="resources/positron-icon.png" /></a>
+      </div>
+      <div class="sw-label"><a href="https://positron.posit.co" target="_blank">Positron</a></div>
+      <div class="sw-desc">VS Code-based IDE for data science.</div>
     </div>
-    <div class="sw-resp">Open-source macOS terminal with tabbed panels, file management via Yazi, and customizable shortcuts.</div>
+    <div class="sw-card">
+      <div class="sw-card-icon">
+        <a href="https://github.com/tw93/Kaku" target="_blank"><img src="resources/kaku-logo.png" /></a>
+      </div>
+      <div class="sw-label"><a href="https://github.com/tw93/Kaku" target="_blank">Kaku</a></div>
+      <div class="sw-desc">macOS terminal with tabs and Yazi.</div>
+    </div>
   </div>
 </div>
-
-<script>
-  if (typeof lucide !== 'undefined') lucide.createIcons();
-</script>
 ```

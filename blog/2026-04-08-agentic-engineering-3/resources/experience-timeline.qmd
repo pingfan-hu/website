@@ -1,0 +1,241 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .exp-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .exp-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .exp-header-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .exp-header-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .exp-header-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: #F8F7F0;
+    border-top: 1px solid #D4D3EE;
+  }
+
+  .exp-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px;
+    text-align: center;
+    transition: background 0.15s ease;
+  }
+
+  .exp-card:hover { background: #F0EFF8; }
+  .exp-card:hover .exp-card-icon { background: #F8F7F0; }
+
+  /* Gapped vertical divider line */
+  .exp-card:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      #D4D3EE 0%,
+      #D4D3EE calc(50% - 12px),
+      transparent calc(50% - 12px),
+      transparent calc(50% + 12px),
+      #D4D3EE calc(50% + 12px),
+      #D4D3EE 100%
+    );
+  }
+
+  /* Right-pointing arrowhead at center of divider */
+  .exp-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #C0BCDA;
+    z-index: 1;
+  }
+
+  .exp-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #EEEDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .exp-card-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .exp-label {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #5654A2;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .exp-sub {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.75em;
+    color: #9B8EA0;
+    margin-bottom: 4px;
+  }
+
+  .exp-desc {
+    font-size: 0.88em;
+    color: #564232;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 520px) {
+    .exp-grid { grid-template-columns: 1fr; }
+
+    .exp-card:not(:last-child) { padding-bottom: 32px; }
+
+    /* Gapped horizontal divider line at bottom */
+    .exp-card:not(:last-child)::before {
+      right: 0;
+      left: 0;
+      bottom: 15px;
+      top: auto;
+      width: auto;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        #D4D3EE 0%,
+        #D4D3EE calc(50% - 12px),
+        transparent calc(50% - 12px),
+        transparent calc(50% + 12px),
+        #D4D3EE calc(50% + 12px),
+        #D4D3EE 100%
+      );
+    }
+
+    /* Downward arrowhead at center */
+    .exp-card:not(:last-child)::after {
+      right: auto;
+      left: 50%;
+      top: auto;
+      bottom: 10px;
+      transform: translateX(-50%);
+      border-top: 7px solid #C0BCDA;
+      border-bottom: none;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+    }
+
+    .exp-card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: center;
+      text-align: left;
+      padding: 14px;
+      gap: 0 12px;
+    }
+
+    .exp-card:not(:last-child) { padding-bottom: 32px; }
+
+    .exp-card-icon { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; align-self: center; }
+    .exp-label { grid-column: 2; margin-bottom: 1px; }
+    .exp-sub   { grid-column: 2; margin-bottom: 1px; }
+    .exp-desc  { grid-column: 2; margin-top: 0; }
+  }
+</style>
+
+<div class="exp-outer">
+  <div class="exp-header">
+    <div class="exp-header-icon"><i data-lucide="history"></i></div>
+    <span class="exp-header-text">My Journey</span>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-card-icon"><i data-lucide="code-2"></i></div>
+      <div class="exp-label">Pre-LLM</div>
+      <div class="exp-sub">Before 2023</div>
+      <div class="exp-desc">Every line by hand. Stack Overflow as the go-to.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-card-icon"><i data-lucide="message-square"></i></div>
+      <div class="exp-label">Early LLMs</div>
+      <div class="exp-sub">2023 – 2024</div>
+      <div class="exp-desc">Chatbots with session restarts. Claude Projects changed that.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-card-icon"><i data-lucide="folder-open"></i></div>
+      <div class="exp-label">Agentic Engineering</div>
+      <div class="exp-sub">2025 – now</div>
+      <div class="exp-desc">Working directory as context. Extensions do the rest.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  function equalizeExpCards() {
+    var cards = document.querySelectorAll('.exp-card');
+    cards.forEach(function(c) { c.style.minHeight = ''; });
+    if (window.innerWidth <= 520) {
+      var maxH = 0;
+      cards.forEach(function(c) { maxH = Math.max(maxH, c.offsetHeight); });
+      cards.forEach(function(c) { c.style.minHeight = maxH + 'px'; });
+    }
+  }
+  equalizeExpCards();
+  window.addEventListener('resize', equalizeExpCards);
+</script>
+```

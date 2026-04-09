@@ -1,7 +1,7 @@
 ---
 title: "Agentic Engineering - Part 3"
 image: "/blog/banners/2026-04-08-agentic-engineering-3.png"
-description: "A tour of software and extensions that I use in agentic engineering"
+description: "A tour of software and extensions that I use in agentic engineering, and a summary of my own journey with LLMs."
 date: '2026-04-08'
 categories: [Tutorial, Agentic Engineering]
 execute:
@@ -26,7 +26,7 @@ I use `cd-obsidian` to jump into my vault and work with Claude Code directly: re
 
 ### Spokenly
 
-[Spokenly](https://spokenly.com/) converts text to speech and supports multiple languages. I use it daily on both my Mac and phone. It largely replaces hand-typing and produces well-structured texts. This blog post, and also the previous ones, are in fact constructed with great help from Spokenly.
+[Spokenly](https://spokenly.app) converts text to speech and supports multiple languages. I use it daily on both my Mac and phone. It largely replaces hand-typing and produces well-structured texts. This blog post, and also the previous ones, are in fact constructed with great help from Spokenly.
 
 ### Positron
 
@@ -82,6 +82,10 @@ The [claude-plugins-official](https://github.com/anthropics/claude-plugins-offic
 
 ### MCPs (Connectors)
 
+::: {.callout-important}
+MCPs consume tokens faster. Use wisely!
+:::
+
 The [Excalidraw](https://excalidraw.com) MCP lets Claude create and edit diagrams in Excalidraw, useful for sketching system designs or flow charts without switching apps.
 
 The [Figma](https://www.figma.com) MCP gives Claude read access to your Figma files, so it can inspect designs, extract layout details, and generate code that matches your UI specs.
@@ -99,7 +103,7 @@ MCPs are not only limited to LLMs. Obsidian, for example, supports plugins that 
 
 When you install plugins, you often get skills bundled with them. Claude Code can auto-trigger skills when it detects the right context, or you can invoke them with a slash command. With the `code-review` plugin, for example, `/review` runs a code review, but you can also just ask Claude Code to review your code and it picks up the skill on its own.
 
-[\@tw93](https://tw93.fun) recently released a collection of skills called [Waza](https://github.com/tw93/waza), which includes eight skills: `/think`, `/design`, `/check`, `/hunt`, `/write`, `/learn`, `/read`, and `/health`.
+[\@tw93](https://tw93.fun) recently released a collection of skills called [Waza](https://github.com/tw93/waza), which includes eight skills: `/think`, `/design`, `/hunt`, `/check`, `/write`, `/learn`, `/read`, and `/health`.
 
 {{< include resources/waza-skills.qmd >}}
 
@@ -108,7 +112,9 @@ From his [blog post](https://tw93.fun/en/2026-04-06/learn.html) and X posts, he 
 1. **Less is more.** Unlike `everything-claude-code`, which aims to cover everything, Waza deliberately leaves room for you to engage. Fewer skills with shorter names means less to memorize and easier recall when you need them.
 2. **Negative examples.** LLMs tend to be broad, which makes many skills "generally useful" but imprecise. Building skills around what they should *not* do cuts false positives and sharpens targeting. Few skill designers use this approach, but I believe this is a great insight.
 
-## My past experiences
+## My Journey
+
+{{< include resources/experience-timeline.qmd >}}
 
 ### Pre-LLM
 
@@ -120,7 +126,7 @@ In 2024, ChatGPT and Claude were useful as chatbots but had a real limitation: e
 
 What kept me leaning to Claude was Projects. You can store files and a fixed prompt inside a project, and they load automatically in every new session. No more re-explaining. That was when "context" became a trending term. Consistent context meant a consistent conversation.
 
-### Agentic engineering now
+### Agentic Engineering
 
 Claude Code launched in 2025. The model is simple: designate a working directory, and your context becomes every file inside it. That makes conversations much more grounded than a blank chatbot session.
 

@@ -12,149 +12,268 @@
   }
 
   .waza-header {
-    display: grid;
-    grid-template-columns: 18% 26% 1fr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     background: #5654A2;
     padding: 10px 16px;
-    gap: 0;
   }
 
-  .waza-header-cell {
+  .waza-header-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .waza-header-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .waza-header-text {
     font-family: 'Maple Mono', monospace;
     font-size: 0.85em;
     font-weight: bold;
     color: #F8F7F0;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    display: flex;
-    align-items: center;
   }
 
-  .waza-header-cell:not(:first-child) {
-    padding-left: 16px;
-    border-left: 1px solid rgba(248, 247, 240, 0.25);
-  }
-
-  .waza-row {
+  /* Outer 2-column group layout */
+  .waza-groups {
     display: grid;
-    grid-template-columns: 18% 26% 1fr;
-    align-items: stretch;
+    grid-template-columns: 1fr 1fr;
     border-top: 1px solid #D4D3EE;
-    background: #F8F7F0;
+  }
+
+  .waza-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .waza-group:nth-child(odd)  { border-right: 1px solid #D4D3EE; }
+  .waza-group:nth-child(-n+2) { border-bottom: 1px solid #D4D3EE; }
+
+  /* Section bars */
+  .waza-section-bar {
+    padding: 7px 16px;
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.75em;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .waza-designing  .waza-section-bar { background: #E8E7F5; color: #7B79BE; }
+  .waza-solving    .waza-section-bar { background: #D8EDD8; color: #527852; }
+  .waza-expressing .waza-section-bar { background: #F0D8D8; color: #906060; }
+  .waza-growing    .waza-section-bar { background: #F0E0C8; color: #906040; }
+
+  /* Card grids — 2 cards per group */
+  .waza-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    border-top: 1px solid;
+  }
+
+  .waza-designing  .waza-grid { background: #F4F3FA; border-color: #D4D3EE; }
+  .waza-solving    .waza-grid { background: #EEF6EE; border-color: #C0DCC0; }
+  .waza-expressing .waza-grid { background: #FAF0F0; border-color: #E0C0C0; }
+  .waza-growing    .waza-grid { background: #FAF4EC; border-color: #E0CCA8; }
+
+  .waza-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px;
+    text-align: center;
+    border-right: 1px solid;
     transition: background 0.15s ease;
   }
 
-  .waza-row:hover { background: #F0EFF8; }
+  .waza-designing  .waza-card { border-color: #D4D3EE; }
+  .waza-solving    .waza-card { border-color: #C0DCC0; }
+  .waza-expressing .waza-card { border-color: #E0C0C0; }
+  .waza-growing    .waza-card { border-color: #E0CCA8; }
 
-  .waza-attr {
+  .waza-card:last-child { border-right: none; }
+
+  .waza-designing  .waza-card:hover { background: #ECEAF5; }
+  .waza-solving    .waza-card:hover { background: #E2F0E2; }
+  .waza-expressing .waza-card:hover { background: #F4E4E4; }
+  .waza-growing    .waza-card:hover { background: #F4EAD8; }
+
+  .waza-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 12px;
-    background: #EEEDF8;
-    border-right: 1px solid #D4D3EE;
+    margin-bottom: 10px;
+    flex-shrink: 0;
   }
 
-  .waza-row:hover .waza-attr { background: #E6E5F4; }
+  .waza-designing  .waza-card-icon { background: #DDDCF0; }
+  .waza-solving    .waza-card-icon { background: #C8E0C8; }
+  .waza-expressing .waza-card-icon { background: #E8CCCC; }
+  .waza-growing    .waza-card-icon { background: #E8D0A8; }
 
-  .waza-chip {
+  .waza-designing  .waza-card:hover .waza-card-icon { background: #F4F3FA; }
+  .waza-solving    .waza-card:hover .waza-card-icon { background: #EEF6EE; }
+  .waza-expressing .waza-card:hover .waza-card-icon { background: #FAF0F0; }
+  .waza-growing    .waza-card:hover .waza-card-icon { background: #FAF4EC; }
+
+  .waza-card-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.8;
+  }
+
+  .waza-designing  .waza-card-icon svg { color: #5654A2; }
+  .waza-solving    .waza-card-icon svg { color: #386038; }
+  .waza-expressing .waza-card-icon svg { color: #904040; }
+  .waza-growing    .waza-card-icon svg { color: #905020; }
+
+  .waza-label {
     font-family: 'Maple Mono', monospace;
-    font-size: 0.82em;
-    padding: 3px 10px;
-    background: #F8F7F0;
-    color: #5654A2;
-    border: 1px solid #C4C3E8;
-    border-radius: 6px;
-    white-space: nowrap;
+    font-size: 0.85em;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 4px;
   }
 
-  .waza-cell {
-    padding: 12px 16px;
-    font-size: 0.92em;
+  .waza-designing  .waza-label { color: #5654A2; }
+  .waza-solving    .waza-label { color: #386038; }
+  .waza-expressing .waza-label { color: #904040; }
+  .waza-growing    .waza-label { color: #905020; }
+
+  .waza-sub {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.75em;
+    color: #9B8EA0;
+    margin-bottom: 4px;
+  }
+
+  .waza-desc {
+    font-size: 0.88em;
     color: #564232;
     line-height: 1.5;
-    display: flex;
-    align-items: center;
-    border-right: 1px solid #D4D3EE;
+    margin-top: 2px;
   }
 
-  .waza-cell:last-child { border-right: none; }
-
-  @media (max-width: 560px) {
-    .waza-header { display: none; }
-    .waza-row { grid-template-columns: 1fr; }
-    .waza-attr {
-      justify-content: flex-start;
+  @media (max-width: 520px) {
+    .waza-groups { grid-template-columns: 1fr; }
+    .waza-group:nth-child(odd)  { border-right: none; }
+    .waza-group:nth-child(-n+2) { border-bottom: 1px solid #D4D3EE; }
+    .waza-group:last-child      { border-bottom: none; }
+    .waza-grid { grid-template-columns: 1fr; }
+    .waza-card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: center;
+      text-align: left;
       border-right: none;
-      border-bottom: 1px solid #D4D3EE;
-      padding: 10px 14px;
+      border-bottom: 1px solid;
+      padding: 14px;
+      gap: 0 12px;
     }
-    .waza-cell {
-      border-right: none;
-      border-bottom: 1px solid #D4D3EE;
-      padding: 8px 14px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-    }
-    .waza-cell:last-child { border-bottom: none; }
-    .waza-cell::before {
-      content: attr(data-label);
-      font-family: 'Maple Mono', monospace;
-      font-size: 0.72em;
-      font-weight: bold;
-      color: #5654A2;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
+    .waza-card:last-child { border-bottom: none; }
+    .waza-card-icon { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; align-self: center; }
+    .waza-label { grid-column: 2; margin-bottom: 1px; }
+    .waza-sub   { grid-column: 2; margin-bottom: 1px; }
+    .waza-desc  { grid-column: 2; margin-top: 0; }
   }
 </style>
 
 <div class="waza-outer">
   <div class="waza-header">
-    <div class="waza-header-cell">Skill</div>
-    <div class="waza-header-cell">When</div>
-    <div class="waza-header-cell">What it does</div>
+    <div class="waza-header-icon"><i data-lucide="wand-2"></i></div>
+    <span class="waza-header-text">Waza Skills</span>
   </div>
-  <div class="waza-row">
-    <div class="waza-attr"><span class="waza-chip">/think</span></div>
-    <div class="waza-cell" data-label="When">Before building anything new</div>
-    <div class="waza-cell" data-label="What it does">Challenges the problem, pressure-tests the design, validates architecture before any code is written.</div>
-  </div>
-  <div class="waza-row">
-    <div class="waza-attr"><span class="waza-chip">/design</span></div>
-    <div class="waza-cell" data-label="When">Building frontend interfaces</div>
-    <div class="waza-cell" data-label="What it does">Produces distinctive UI with a committed aesthetic direction, not generic defaults.</div>
-  </div>
-  <div class="waza-row">
-    <div class="waza-attr"><span class="waza-chip">/check</span></div>
-    <div class="waza-cell" data-label="When">After a task, before merging</div>
-    <div class="waza-cell" data-label="What it does">Reviews the diff, auto-fixes safe issues, blocks destructive commands, verifies with evidence.</div>
-  </div>
-  <div class="waza-row">
-    <div class="waza-attr"><span class="waza-chip">/hunt</span></div>
-    <div class="waza-cell" data-label="When">Any bug or unexpected behavior</div>
-    <div class="waza-cell" data-label="What it does">Systematic debugging. Root cause confirmed before any fix is applied.</div>
-  </div>
-  <div class="waza-row">
-    <div class="waza-attr"><span class="waza-chip">/write</span></div>
-    <div class="waza-cell" data-label="When">Writing or editing prose</div>
-    <div class="waza-cell" data-label="What it does">Rewrites prose to sound natural in Chinese and English. Cuts stiff, formulaic phrasing.</div>
-  </div>
-  <div class="waza-row">
-    <div class="waza-attr"><span class="waza-chip">/learn</span></div>
-    <div class="waza-cell" data-label="When">Diving into an unfamiliar domain</div>
-    <div class="waza-cell" data-label="What it does">Six-phase research workflow: collect, digest, outline, fill in, refine, then self-review and publish.</div>
-  </div>
-  <div class="waza-row">
-    <div class="waza-attr"><span class="waza-chip">/read</span></div>
-    <div class="waza-cell" data-label="When">Any URL or PDF</div>
-    <div class="waza-cell" data-label="What it does">Fetches content as clean Markdown. Special handling for GitHub, PDFs, WeChat, and Feishu.</div>
-  </div>
-  <div class="waza-row">
-    <div class="waza-attr"><span class="waza-chip">/health</span></div>
-    <div class="waza-cell" data-label="When">Auditing Claude Code setup</div>
-    <div class="waza-cell" data-label="What it does">Checks CLAUDE.md, rules, skills, hooks, and MCP config. Flags issues by severity.</div>
+
+  <div class="waza-groups">
+    <div class="waza-group waza-designing">
+      <div class="waza-section-bar">Designing</div>
+      <div class="waza-grid">
+        <div class="waza-card">
+          <div class="waza-card-icon"><i data-lucide="lightbulb"></i></div>
+          <div class="waza-label">/think</div>
+          <div class="waza-sub">Before building</div>
+          <div class="waza-desc">Validates architecture before writing code.</div>
+        </div>
+        <div class="waza-card">
+          <div class="waza-card-icon"><i data-lucide="pen-tool"></i></div>
+          <div class="waza-label">/design</div>
+          <div class="waza-sub">Frontend UI</div>
+          <div class="waza-desc">Builds UI with a committed aesthetic.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="waza-group waza-solving">
+      <div class="waza-section-bar">Solving</div>
+      <div class="waza-grid">
+        <div class="waza-card">
+          <div class="waza-card-icon"><i data-lucide="search"></i></div>
+          <div class="waza-label">/hunt</div>
+          <div class="waza-sub">Any bug</div>
+          <div class="waza-desc">Confirms root cause before any fix.</div>
+        </div>
+        <div class="waza-card">
+          <div class="waza-card-icon"><i data-lucide="shield-check"></i></div>
+          <div class="waza-label">/check</div>
+          <div class="waza-sub">Before merging</div>
+          <div class="waza-desc">Reviews diff and auto-fixes safe issues.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="waza-group waza-expressing">
+      <div class="waza-section-bar">Expressing</div>
+      <div class="waza-grid">
+        <div class="waza-card">
+          <div class="waza-card-icon"><i data-lucide="file-text"></i></div>
+          <div class="waza-label">/read</div>
+          <div class="waza-sub">Any URL or PDF</div>
+          <div class="waza-desc">Fetches any URL or PDF as clean Markdown.</div>
+        </div>
+        <div class="waza-card">
+          <div class="waza-card-icon"><i data-lucide="pencil"></i></div>
+          <div class="waza-label">/write</div>
+          <div class="waza-sub">Editing prose</div>
+          <div class="waza-desc">Rewrites prose to sound natural.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="waza-group waza-growing">
+      <div class="waza-section-bar">Growing</div>
+      <div class="waza-grid">
+        <div class="waza-card">
+          <div class="waza-card-icon"><i data-lucide="book-open"></i></div>
+          <div class="waza-label">/learn</div>
+          <div class="waza-sub">New domain</div>
+          <div class="waza-desc">Six-phase workflow from source to publish.</div>
+        </div>
+        <div class="waza-card">
+          <div class="waza-card-icon"><i data-lucide="activity"></i></div>
+          <div class="waza-label">/health</div>
+          <div class="waza-sub">Audit setup</div>
+          <div class="waza-desc">Audits setup and flags issues by severity.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
