@@ -94,7 +94,35 @@ While you install plugins, you might already have access to lots of skills. Skil
 
 [\@tw93](https://tw93.fun) has recently released a collection of skills called [Waza](https://github.com/tw93/waza), which includes 8 skills: `/think`, `/design`, `/check`, `/hunt`, `/write`, `/learn`, `/read`, and `/health`.
 
-In his [blog post](https://tw93.fun/en/2026-04-06/learn.html) and his X posts, [\@tw93](https://tw93.fun) explained that he has 2 principles for designing these skills:
+From his [blog post](https://tw93.fun/en/2026-04-06/learn.html) and X posts, I summarized that [\@tw93](https://tw93.fun) has 2 principles for designing these skills:
 
-1. Less is more: Different from `everything-claude-code`, which tries to be all-inclusive, Waza leaves more blank space and gives more freedom. Uses have to engage more with Claude Code. Also, since skills should be actively triggered (even though sometimes Claude Code can detect and auto-trigger), keeping the skill names simple, and decreasing the number of skills can make it easier to remember and use them.
+1. Less is more: Different from `everything-claude-code`, which tries to be all-inclusive, Waza leaves more blank space and gives more freedom. Users have to engage more with Claude Code. Also, since skills should be actively triggered (even though sometimes Claude Code can detect and auto-trigger), keeping the skill names simple, and decreasing the number of skills can make it easier to remember and use them.
 2. Negative examples: LLMs usually tend to be broad, which makes lots of skills "generally useful" but lacking precision. A "not to" skill design can eliminate the false positives and make the skill more targeted. This is by far rarely been used in other skill designs, but I believe this is a very sharp insight and will make future skill design more effective.
+
+## My past experiences
+
+I wanna use this section to briefly share my developing experiences throughout the past few years in my PhD career. I started learning programming in the pre-LLM era, did my first PhD project in 2023 during which time LLMs are not so smart and inclusive, and watched my workflow evolved in these years.
+
+### Pre-LLM
+
+At this stage, I have been heavily focusing on handcrafting code and structuring the directories on my own. As there is no AI to ask, I usually go to [Stack Overflow](https://stackoverflow.com) to seek good responses. Since I need to take care of everything on my own, I am also a project manager, which means I must manually allocate the resources, files, data, and output. Because I am reviewing on my own as well, these files should be well allocated in a decent way. I treasure this experience because I learned about project planning, progress tracking, and my own way of allocating resources and files. Throughout the years, my project management ability has grown, and now it is one of the most important abilities I have, even with the LLMs.
+
+### Early LLMs
+
+In 2024, ChatGPT and Claude are already available and have been pretty helpful as chatbots. The problem with them is that they are only chatbots, and every time I open a new session, I need to reiterate everything. I trained myself to precisely describe my needs. Every time I make progress with my projects, I will try to condense it into a hundred words describing what the project is, what has been done, and what I want to do later on.
+
+A strong reason that makes me lean toward Claude is that Claude introduced a new capability called Projects. I am free to open any new project, which includes a set of files and fixed prompts. Every time I open a new session within this project, all the pre‑stored files and prompts are included as well. I do not need to repeatedly describe what I want or repeatedly feed Claude my files. That was also the time the term "context" began to emerge for LLM users and developers. People realized how important it was that context ensures a consistent conversation session with LLMs.
+
+### Agentic engineering now
+
+In 2025, Claude Code was released, and I immediately started using it after I learned how it works: I designate a working directory, and start my conversations with Claude Code. Having a predefined working directory makes it really efficient when talking with LLMs because your context is all the files under your working directory.
+
+Later, Anthropic started to build more capabilities for Claude Code because all we need to do is add the files and regulations under the directory. There are also some global settings under my home folder. That is why I emphasized that there are two types of directories for Claude Code: one, your working directory; two, your home folder.
+
+All the extensions, both for Claude App and Claude Code, including the plugins, skills, MCPs, and hooks, are constructed under the same spirit: your working directory or home directory as the context manager and the designated places for these extensions to fit in.
+
+This is the whole picture of agentic engineering right now. Rather than doing everything on your own, you are a project manager, or you are running an orchestra. You are in control of everything, but there is no need for you to handcraft it because you have a super powerful assistant.
+
+### Conclusion
+
+Thanks to my learning path, I learned the importance of managing directories, files, and resources, and the differences between chat bots and agentic engineering. Even though you do not have to go through all of them right now, it doesn't hurt to know these differences and how important it is to manage your files.
