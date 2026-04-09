@@ -1,0 +1,77 @@
+---
+title: "Agentic Engineering - Part 3"
+image: "/blog/banners/2026-04-08-agentic-engineering-3.png"
+description: "Handy tools and components"
+date: '2026-04-08'
+categories: [Tutorial, Agentic Engineering]
+execute:
+  echo: true
+  eval: false
+---
+
+## Software
+
+### Obsidian
+
+[Obsidian](https://obsidian.md/) is a note-taking app supporting `.md` files and real-time rendering. A free account allows you to store your vaults in your iCloud. I use it in combination with Claude Code (and my `cd-obsidian` quick command). You can use Obsidian for multiple purposes: knowledge base, quick notes, future plans, writing, etc.
+
+<figure style="margin: 1rem 0;">
+  <img src="resources/obsidian-workflow.png" style="width: 100%; border: 1.5px solid #5654A2; border-radius: 14px;" />
+  <figcaption style="text-align: center; color: #6c757d; font-size: 0.875em; margin-top: 0.5rem;">Obsidian (left) with Claude Code in Kaku terminal (right)</figcaption>
+</figure>
+
+Above is a screenshot of my Obsidian workflow with Obsidian on the left and Claude Code on the right (summoned using the [Kaku](https://github.com/tw93/Kaku) terminal). I use `cd-obsidian` to quickly jump into my Obsidian vault, and then I can talk with Claude Code to read my file(s), write new content, or restructure the current content. The `.md` file type is probably the easiest for LLMs to reach and modify, and since it's all local (and no MCPs involved), it saves tokens and is more secure.
+
+### Spokenly
+
+[Spokenly](https://spokenly.com/) is a tool that converts text to speech. It supports multiple languages and voices, making it a versatile choice for creating audio content from written text. I've been heavily using it both on my Mac and my phone. It largely replaces hand-typing and generates well-structured texts even though sometimes my prompts are a little off.
+
+### Positron
+
+[Positron](https://positron.posit.co) is an IDE published by [Posit](https://posit.co). It's especially handy for data science projects, but not limited to that. I write this blog post with Positron as well. It's a [VS Code](https://code.visualstudio.com)-like IDE, supporting all features of VS Code, like extensions, shortcuts, file management, etc. The best part that I like it is that I can easily have my editor and terminal side-by-side, plus a few more functional pabels like console and data viewer.
+
+<figure style="margin: 1rem 0;">
+  <img src="resources/positron-layout.png" style="width: 100%; border: 1.5px solid #5654A2; border-radius: 14px;" />
+  <figcaption style="text-align: center; color: #6c757d; font-size: 0.875em; margin-top: 0.5rem;">Positron layout: editor and file panel (left) with Claude Code terminal (right)</figcaption>
+</figure>
+
+Above is a screenshot of my Positron layout, in which my file management and working space are on the left, and Claude Code is running in the terminal panel on the right.
+
+### Kaku
+
+[Kaku](https://github.com/tw93/Kaku) is an open-source terminal app for macOS with lots of built-in tools and easy shortcuts. You can easily open several tabs and split to different views in one tab. Once you are familiar with the shortcuts, everything is just a few keystrokes away.
+
+<figure style="margin: 1rem 0;">
+  <img src="resources/kaku-settings.png" style="width: 100%; border: 1.5px solid #5654A2; border-radius: 14px;" />
+  <figcaption style="text-align: center; color: #6c757d; font-size: 0.875em; margin-top: 0.5rem;">Kaku settings</figcaption>
+</figure>
+
+Kaku supports a wide range of settings and can be triggered using the `kaku config` command. You can also cooperate with Claude Code to directly edit the related setting files like `starship.toml` and `yazi.toml`. If you are not familiar with these files just ask Claude Code.
+
+<figure style="margin: 1rem 0;">
+  <img src="resources/kaku-yazi.png" style="width: 100%; border: 1.5px solid #5654A2; border-radius: 14px;" />
+  <figcaption style="text-align: center; color: #6c757d; font-size: 0.875em; margin-top: 0.5rem;">Kaku Yazi plugin for file management</figcaption>
+</figure>
+
+Kaku supports [Yazi](https://yazi-rs.github.io), a TUI for file management, triggered by the `y` command. The original Yazi plugin can only **preview** the directory and files. I did a customized command called `yy` to `cd` to the selected directory upon quitting Yazi. This can be easily done with Claude Code.
+
+<figure style="margin: 1rem 0;">
+  <img src="resources/kaku-tabs-and-panels.png" style="width: 100%; border: 1.5px solid #5654A2; border-radius: 14px;" />
+  <figcaption style="text-align: center; color: #6c757d; font-size: 0.875em; margin-top: 0.5rem;">Kaku with multiple tabs and split panels</figcaption>
+</figure>
+
+Kaku also supports multiple tabs and panels. In the above example, I opened an Obsidian tab and a GitHub tab, and have 3 panels in the Obsidian tab.
+
+## Extensions
+
+Both Claude and Claude Code support extensions, including **Plugins**, **MCPs** (connectors), and **skills**.
+
+- **Plugins**: marketplace bundles that extend Claude Code with new skills, MCP servers, and configuration. You install them via `/plugin` and they are managed locally.
+- **MCPs** (**connectors** as in the Claude app): external servers that give Claude access to real-time tools and data, such as browsing the web, reading a calendar, or querying a database. **MCPs** can be standalone or bundled in **plugins**.
+- **Skills**: slash commands (e.g. `/commit`, `/review`) that encode reusable workflows as prompt templates. They are stored as `.md` files and invoked by name to trigger a structured sequence of steps. Likewise, **skills** can also be standalone or bundled in **plugins**.
+
+### Plugins
+
+The [`everything-claude-code`](https://github.com/affaan-m/everything-claude-code) plugin is perhaps the most popular one in the community. It bundles a lot of useful tools, including MCPs, skills, rules, hooks, etc. - pretty much every layers or components described in my previous posts.
+
+The [claude-plugins-official](https://github.com/anthropics/claude-plugins-official) repo contains all the official plugins released by Anthropic. I installed `claude-md-management`, `code-review`, `code-simplifier`, and `context7`.

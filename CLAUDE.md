@@ -60,6 +60,7 @@ All component design standards live in `.claude/rules/`. Always consult the rele
 | `html-url.md` | URL anatomy diagrams with overflow detection |
 | `image-banner.md` | Blog/project banner generation via claude-image-gen |
 | `image-nav.md` | Section nav card images |
+| `image-embedding.md` | Embedding images in blog posts (bordered, captioned) |
 
 ## Key Conventions
 
