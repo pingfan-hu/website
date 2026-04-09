@@ -19,24 +19,24 @@ library(here)
 ## Useful Links
 
 <div class="lnk-outer">
-  <div class="lnk-row lnk-purple">
-    <div class="lnk-label">Research Paper</div>
-    <div class="lnk-chips">
-      <a href="https://papers.tinbergen.nl/02119.pdf" class="lnk-btn" target="_blank">The Origins of Logit Regression</a>
-    </div>
+ <div class="lnk-row lnk-purple">
+  <div class="lnk-label">Research Paper</div>
+  <div class="lnk-chips">
+   <a href="https://papers.tinbergen.nl/02119.pdf" class="lnk-btn" target="_blank">The Origins of Logit Regression</a>
   </div>
-  <div class="lnk-row lnk-blue">
-    <div class="lnk-label">Lecture Slides</div>
-    <div class="lnk-chips">
-      <a href="https://hw.pingfanhu.com/emse_6035_hw/choice_modeling_slides/1_choice_modeling.pdf" class="lnk-btn" target="_blank">Intro to Choice Modeling</a>
-    </div>
+ </div>
+ <div class="lnk-row lnk-blue">
+  <div class="lnk-label">Lecture Slides</div>
+  <div class="lnk-chips">
+   <a href="https://hw.pingfanhu.com/emse_6035_hw/choice_modeling_slides/1_choice_modeling.pdf" class="lnk-btn" target="_blank">Intro to Choice Modeling</a>
   </div>
-  <div class="lnk-row lnk-green">
-    <div class="lnk-label">Online Article</div>
-    <div class="lnk-chips">
-      <a href="https://zhuanlan.zhihu.com/p/27188729" class="lnk-btn" target="_blank">What is Logit (Chinese)</a>
-    </div>
+ </div>
+ <div class="lnk-row lnk-green">
+  <div class="lnk-label">Online Article</div>
+  <div class="lnk-chips">
+   <a href="https://zhuanlan.zhihu.com/p/27188729" class="lnk-btn" target="_blank">What is Logit (Chinese)</a>
   </div>
+ </div>
 </div>
 
 ## Abstract

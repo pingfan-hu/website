@@ -76,15 +76,15 @@ format:
     highlight-style: dracula
     code-copy: true
     theme:
-      light: [flatly, styles/theme.scss]
-      dark: [darkly, styles/theme.scss]
+      light: [flatly, styles/styles.scss]
+      dark: [darkly, styles/styles.scss]
     embed-resources: false
     link-external-newwindow: true
     link-external-icon: false
     link-external-filter: '^(?:http:|https:)\/\/(?:www\.)?pingfanhu\.com'
     include-after-body:
       text: |
-        <script src="/styles/site.js"></script>
+        <script src="/styles/styles.js"></script>
 
 knitr: 
   opts_chunk: 
