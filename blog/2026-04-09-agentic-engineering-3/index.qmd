@@ -1,8 +1,8 @@
 ---
 title: "Agentic Engineering - Part 3"
-image: "/blog/banners/2026-04-08-agentic-engineering-3.png"
+image: "/blog/banners/2026-04-09-agentic-engineering-3.png"
 description: "A tour of software and extensions that I use in agentic engineering, and a summary of my own journey with LLMs."
-date: '2026-04-08'
+date: '2026-04-09'
 categories: [Tutorial, Agentic Engineering]
 execute:
   echo: true
