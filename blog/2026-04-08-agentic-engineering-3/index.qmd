@@ -1,7 +1,7 @@
 ---
 title: "Agentic Engineering - Part 3"
 image: "/blog/banners/2026-04-08-agentic-engineering-3.png"
-description: "Handy tools and components"
+description: "A tour of software and extensions that I use in agentic engineering"
 date: '2026-04-08'
 categories: [Tutorial, Agentic Engineering]
 execute:
@@ -72,6 +72,29 @@ Both Claude and Claude Code support extensions, including **Plugins**, **MCPs** 
 
 ### Plugins
 
-The [`everything-claude-code`](https://github.com/affaan-m/everything-claude-code) plugin is perhaps the most popular one in the community. It bundles a lot of useful tools, including MCPs, skills, rules, hooks, etc. - pretty much every layers or components described in my previous posts.
+The [everything-claude-code](https://github.com/affaan-m/everything-claude-code) **plugin** is perhaps the most popular one in the community. It bundles a lot of useful tools, including MCPs, skills, rules, hooks, etc. - pretty much every layers or components described in my previous posts.
 
-The [claude-plugins-official](https://github.com/anthropics/claude-plugins-official) repo contains all the official plugins released by Anthropic. I installed `claude-md-management`, `code-review`, `code-simplifier`, and `context7`.
+The [claude-plugins-official](https://github.com/anthropics/claude-plugins-official) **repo** contains all the official plugins released by Anthropic. I installed `claude-md-management`, `code-review`, `code-simplifier`, and `context7`.
+
+### MCPs (Connectors)
+
+The [Excalidraw](https://excalidraw.com) MCP lets Claude create and edit diagrams directly in Excalidraw — useful for quickly sketching system designs or flow charts without leaving your workflow.
+
+The [Figma](https://www.figma.com) MCP gives Claude read access to your Figma files, so it can inspect designs, extract layout details, and generate code that matches your UI specs.
+
+The [TinyFish](https://www.tinyfish.ai) MCP enables Claude to run browser automation tasks — filling forms, scraping pages, or interacting with web UIs — without you needing to write a script.
+
+There are also simpler MCPs like Gmail and Google Calendar provided by Google that help fetch your emails and calendar events. With these MCPs, you can ask Claude Code to check your schedule, summarize your daily emails, make to-do lists, and so on.
+
+These above MCPs are available for both Claude app and Claude Code.
+
+### Skills
+
+While you install plugins, you might already have access to lots of skills. Skills might be auto-triggered when Claude Code detects the related scenario, or you can use the slash command to trigger them. For example, with the `code-review` plugin, you can trigger the `/review` skill to review your code and get suggestions for improvement, or you can just ask Claude Code to review your code and it will automatically trigger the skill.
+
+[\@tw93](https://tw93.fun) has recently released a collection of skills called [Waza](https://github.com/tw93/waza), which includes 8 skills: `/think`, `/design`, `/check`, `/hunt`, `/write`, `/learn`, `/read`, and `/health`.
+
+In his [blog post](https://tw93.fun/en/2026-04-06/learn.html) and his X posts, [\@tw93](https://tw93.fun) explained that he has 2 principles for designing these skills:
+
+1. Less is more: Different from `everything-claude-code`, which tries to be all-inclusive, Waza leaves more blank space and gives more freedom. Uses have to engage more with Claude Code. Also, since skills should be actively triggered (even though sometimes Claude Code can detect and auto-trigger), keeping the skill names simple, and decreasing the number of skills can make it easier to remember and use them.
+2. Negative examples: LLMs usually tend to be broad, which makes lots of skills "generally useful" but lacking precision. A "not to" skill design can eliminate the false positives and make the skill more targeted. This is by far rarely been used in other skill designs, but I believe this is a very sharp insight and will make future skill design more effective.
