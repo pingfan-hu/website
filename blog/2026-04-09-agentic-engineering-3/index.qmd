@@ -118,7 +118,7 @@ From his [blog post](https://tw93.fun/en/2026-04-06/learn.html) and X posts, he 
 
 ### Pre-LLM
 
-Back then, I wrote every line by hand and organized every directory myself. [Stack Overflow](https://stackoverflow.com) was the go-to when I got stuck. Managing everything alone meant thinking like a project manager: track progress, allocate files, plan ahead. That habit stuck. Project management is still one of the more useful skills I have, even now that Claude handles most of the implementation.
+Back then, I wrote every line of code by hand and organized every directory myself. [Stack Overflow](https://stackoverflow.com) was the go-to when I got stuck. Managing everything alone meant thinking like a project manager: track progress, allocate files, plan ahead. This habit stayed with me ever since. Project management is still one of the more useful skills I have, even now that Claude handles most of the implementation.
 
 ### Early LLMs
 
@@ -128,11 +128,9 @@ What kept me leaning to Claude was Projects. You can store files and a fixed pro
 
 ### Agentic Engineering
 
-Claude Code launched in 2025. The model is simple: designate a working directory, and your context becomes every file inside it. That makes conversations much more grounded than a blank chatbot session.
+Claude Code launched in 2025. The largest difference is not the model itself, and in fact, Claude Code uses the same models as the Claude app. The difference is that designating a working directory becomes a primary step, so your context becomes every file inside it. That makes conversations much more grounded than a blank chatbot session.
 
-Anthropic kept adding capabilities because the model scales naturally: add files and configuration to the directory, and Claude Code picks them up. Two directories matter: your working directory for the current project, and your home folder for global settings.
-
-Every extension, whether plugins, skills, MCPs, or hooks, follows the same logic: files live in either your working directory or your home folder, and Claude Code picks them up from there.
+With this mindset, Anthropic kept adding capabilities onto Claude Code. Every extension, whether plugins, skills, MCPs, or hooks, follows the same logic: files live in either your working directory or your home folder, and Claude Code picks them up from there.
 
 That is agentic engineering in practice. You are the project manager: setting direction, reviewing output, deciding what comes next. Claude handles the implementation.
 
