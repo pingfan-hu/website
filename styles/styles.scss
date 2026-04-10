@@ -559,6 +559,9 @@ table {
 
 // ---- Layout ----
 
+#quarto-sidebar-toc-left,
+nav.sidebar.sidebar-navigation:not(.rollup) { background-color: #F8F7F0 !important; }
+
 .sidebar-title { color: #ECF0F1; }
 
 .navbar-nav {
