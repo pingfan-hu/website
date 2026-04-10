@@ -15,7 +15,7 @@ execute:
 
 ### Obsidian
 
-[Obsidian](https://obsidian.md/) is a note-taking app that stores everything as `.md` files with real-time rendering. A free account syncs your vaults to iCloud. I pair it with Claude Code using a `cd-obsidian` quick command. It works for almost anything: knowledge base, quick notes, plans, drafts.
+[Obsidian](https://obsidian.md/) is a note-taking app that stores everything as `.md` files with real-time rendering. A free account is sufficient enough to sync your vaults to iCloud. I pair it with Claude Code using a `cd-obsidian` quick command. It works for almost anything: knowledge base, quick notes, plans, drafts.
 
 <figure style="margin: 1rem 0;">
   <img src="resources/obsidian-workflow.png" style="width: 100%; border: 1.5px solid #5654A2; border-radius: 14px;" />
@@ -138,4 +138,6 @@ That is agentic engineering in practice. You are the project manager: setting di
 
 ### Conclusion
 
-That path taught me two things that still shape how I work: file management matters more than it looks, and there is a real difference between chatting with an AI and building a workflow around one. Understanding both will make you more effective with any AI tool.
+Throughout this path, I learned to actively plan my work, and build a workflow around it and boost up my efficiency together with LLM agents. However, the ultimate takeaway is that no matter how strong the LLMs are, it's always good to think on your own. Again, as said by professor Patrick Winston in his *How to Speak* lecture, "Your success in life will be determined largely by your ability to speak, your ability to write, and the quality of your ideas, in that order." Can you see it? It's **YOUR** ability to speak, to write, and the quality of **YOUR** ideas.
+
+So my last takeaway is: Never let the LLMs take over "thinking", which is your responsibility. Cheers~
