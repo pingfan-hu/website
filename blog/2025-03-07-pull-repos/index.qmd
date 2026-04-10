@@ -2,7 +2,7 @@
 title: "Shortcut to Pull GitHub Repos"
 image: "/blog/banners/2025-03-07-pull-repos.png"
 date: "2025-03-07"
-categories: [Tutorial, Web Development]
+categories: [Tutorial]
 echo: true
 eval: false
 description: "A MacOS tutorial of a shortcut to pull all local GitHub repositories"

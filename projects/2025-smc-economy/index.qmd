@@ -3,7 +3,7 @@ title: "SMC Peak-shaving Economy"
 image: "/projects/banners/2025-smc-economy.png"
 author: "Pingfan Hu et al."
 date: "Jan, 2025"
-categories: [R, Research, Data Science, Sustainability]
+categories: [R, EV]
 description: "Peak-shaving and cost-effectiveness of Supplier-managed Charging programs."
 ---
 

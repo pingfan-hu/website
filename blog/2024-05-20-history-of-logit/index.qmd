@@ -2,7 +2,7 @@
 title: "The History of Logit"
 image: "/blog/banners/2024-05-20-history-of-logit.png"
 date: "2024-05-20"
-categories: [Modeling]
+categories: [Data Science]
 code-fold: true
 code-tools: true
 description: "A brief history of the Logit Model"

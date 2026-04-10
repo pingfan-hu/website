@@ -1,9 +1,9 @@
 ---
 title: The tidyviz Python Package
-image: "/projects/banners/2025-tidyviz.png"
+image: "/blog/banners/2025-12-16-tidyviz.png"
 author: "Pingfan Hu"
-date: "Dec, 2025"
-categories: [Python, Software, Survey, Data Science]
+date: '2025-12-16'
+categories: [Software, Data Science]
 description: "A Python package for tidying and visualizing survey data."
 ---
 
