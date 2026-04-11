@@ -110,11 +110,12 @@ Here's my global `CLAUDE.md` file for your reference:
 ```bash
 .claude/
 ├── rules/
-│   ├── html-intro-button.md
-│   ├── html-table-button.md
-│   ├── html-table.md
-│   ├── html-url.md
+│   ├── html-button-intro.md
+│   ├── html-button-table.md
+│   ├── html-table-description.md
+│   ├── html-table-icon.md
 │   ├── image-banner.md
+│   ├── image-embedding.md
 │   └── image-nav.md
 ```
 
