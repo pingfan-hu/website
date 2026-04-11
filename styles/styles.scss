@@ -562,6 +562,9 @@ table {
 #quarto-sidebar-toc-left,
 nav.sidebar.sidebar-navigation:not(.rollup) { background-color: #F8F7F0 !important; }
 
+body.quarto-dark #quarto-sidebar-toc-left,
+body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color: #1a1f2e !important; }
+
 .sidebar-title { color: #ECF0F1; }
 
 .navbar-nav {

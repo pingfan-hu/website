@@ -40,7 +40,8 @@
       "Bash(grep -n \"^categories:\" /Users/pingfan/Documents/GitHub/website/blog/*/index.qmd)",
       "Bash(grep:*)",
       "Bash(pip install:*)",
-      "Bash(sips:*)"
+      "Bash(sips:*)",
+      "Bash(ls:*)"
     ]
   },
   "hooks": {
