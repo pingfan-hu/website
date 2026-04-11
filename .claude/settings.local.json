@@ -41,7 +41,8 @@
       "Bash(grep:*)",
       "Bash(pip install:*)",
       "Bash(sips:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Skill(think)"
     ]
   },
   "hooks": {

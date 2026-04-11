@@ -73,7 +73,9 @@ format:
     toc-depth: 5
     toc-location: left
     lightbox: true
-    highlight-style: dracula
+    highlight-style:
+      light: styles/code-dark.theme
+      dark: styles/code-light.theme
     code-copy: true
     theme:
       light: [flatly, styles/styles.scss]

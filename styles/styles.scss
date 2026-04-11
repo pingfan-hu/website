@@ -51,10 +51,12 @@ blockquote {
 ::selection      { background-color: #D6C2DD; color: #694696; }
 ::-moz-selection { background-color: #D6C2DD; color: #694696; }
 
-// Dracula selection color inside code blocks — explicit color prevents Chrome
-// from inheriting the body ::selection color and overriding token colors
-pre.sourceCode ::selection      { background-color: rgba(189, 147, 249, 0.35); color: #DDDCF5; }
-pre.sourceCode ::-moz-selection { background-color: rgba(189, 147, 249, 0.35); color: #DDDCF5; }
+// Selection color inside code blocks — prevents Chrome from inheriting body selection color
+// Light mode uses token-dark palette; dark mode uses token-light palette
+pre.sourceCode ::selection      { background-color: #4a4030; color: #e8e4dc; }
+pre.sourceCode ::-moz-selection { background-color: #4a4030; color: #e8e4dc; }
+body.quarto-dark pre.sourceCode ::selection      { background-color: #dddcd6; color: #2a2920; }
+body.quarto-dark pre.sourceCode ::-moz-selection { background-color: #dddcd6; color: #2a2920; }
 
 // ---- Code ----
 
@@ -79,15 +81,15 @@ div.sourceCode {
   border-radius: 10px;
   overflow: hidden;
   overflow-x: auto;
-  border: 1px solid #3A3858;
+  border: 1px solid #383835;
   margin: 1.2em 0;
 
-  // Header bar with traffic lights
+  // Header bar with traffic lights — token-dark colors (light mode)
   &::before {
     content: '';
     display: block;
     height: 36px;
-    background-color: #2D2B45;
+    background-color: #212120;
     background-image:
       radial-gradient(circle, #FF5F57 50%, transparent 50%),
       radial-gradient(circle, #FEBC2E 50%, transparent 50%),
@@ -95,7 +97,7 @@ div.sourceCode {
     background-size: 12px 12px, 12px 12px, 12px 12px;
     background-position: 16px center, 34px center, 52px center;
     background-repeat: no-repeat;
-    border-bottom: 1px solid #3A3858;
+    border-bottom: 1px solid #383835;
     flex-shrink: 0;
   }
 
@@ -109,7 +111,7 @@ div.sourceCode {
     line-height: 36px;
     font-family: 'Maple Mono', monospace;
     font-size: 0.75em;
-    color: #9896CC;
+    color: #938e87;
     letter-spacing: 0.1em;
     pointer-events: none;
     white-space: nowrap;
@@ -129,7 +131,7 @@ div.sourceCode {
     padding: 0 10px !important;
     background: transparent !important;
     border: none !important;
-    color: #9896CC !important;
+    color: #938e87 !important;
     font-family: 'Maple Mono', monospace !important;
     font-size: 0.75em !important;
     letter-spacing: 0.06em !important;
@@ -138,7 +140,7 @@ div.sourceCode {
     align-items: center !important;
     transition: color 0.15s ease !important;
 
-    &:hover { color: #F8F7F0 !important; }
+    &:hover { color: #e8e4dc !important; }
 
     // Hide Bootstrap icon; Quarto also adds tooltip text we keep
     i.bi { display: none !important; }
@@ -155,8 +157,8 @@ div.sourceCode {
     border-radius: 0;
     margin: 0;
     padding: 1em 1.2em !important;
-    background-color: #1E1C30 !important;
-    color: #DDDCF5;
+    background-color: #262624 !important;
+    color: #e8e4dc;
     max-height: 500px;
     overflow-x: visible;
     overflow-y: auto !important;
@@ -165,6 +167,28 @@ div.sourceCode {
       display: block;
       white-space: normal; // collapse \n text nodes between line spans
     }
+  }
+}
+
+// Dark mode: flip to token-light (light code on dark page)
+body.quarto-dark div.sourceCode {
+  border-color: #e6e5e1;
+
+  &::before {
+    background-color: #ecebe7;
+    border-bottom-color: #e6e5e1;
+  }
+
+  .code-window-lang { color: #6c675f; }
+
+  .code-copy-button {
+    color: #6c675f !important;
+    &:hover { color: #2a2920 !important; }
+  }
+
+  pre.sourceCode {
+    background-color: #faf9f5 !important;
+    color: #2a2920;
   }
 }
 
@@ -183,14 +207,20 @@ pre > code.sourceCode > span {
 
   &:before {
     content: counter(line) " ";
-    color: #5A577A;
+    color: #5a5955;
     display: inline-block;
     width: 2em;
     text-align: right;
     margin-right: 0.8em;
     padding-right: 0.5em;
-    border-right: 1px solid #3A3858;
+    border-right: 1px solid #383835;
   }
+}
+
+// Dark mode line numbers — token-light palette
+body.quarto-dark pre > code.sourceCode > span::before {
+  color: #b5b2ab;
+  border-right-color: #e6e5e1;
 }
 
 // ---- Tables ----
@@ -689,7 +719,6 @@ body.quarto-dark {
   .navbar-nav a { color: #ffffff; }
 
   :not(pre) > code { background-color: rgba(255, 255, 255, 0.1); }
-  pre.sourceCode    { background-color: #1b2838; }
 
   blockquote {
     background-color: #292746;
