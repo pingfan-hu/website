@@ -1,5 +1,4 @@
-- **Programming Languages**: R, Python, C++, SQL, tidyverse, ggplot, Shell, JavaScript
-- **Web Development**: Quarto, R Shiny, Git, GitHub, Netlify, HTML, CSS
-- **Database**: PostgreSQL, Excel, Minitab, Tableau, Power BI
-- **Data Science**: Statistics, Data ETL, Data Viz, Data Analysis, Survey Design, Conjoint Analysis, Discrete Choice Modeling, Logit Modeling, Monte Carlo Simulation
-- **AI & LLM**: Agentic Engineering, Machine Learning, LLM Deployment
+- **Agentic Engineering**: Claude Code Workflows, AI Skill Authoring, AI-driven Research & App Development
+- **Data Science**: PostgreSQL, tidyverse, ggplot, Survey Design, Discrete Choice Modeling, Logit Modeling
+- **Programming**: R, Python, Git, SQL, Shell, JavaScript
+- **Web Development**: Quarto, R Shiny, HTML, CSS

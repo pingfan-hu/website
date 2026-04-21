@@ -48,17 +48,17 @@ execute:
 
 - Developed `surveydown`, an open-source, feature-packed R package for programmable and reproducible surveys, combining Quarto, Shiny, and PostgreSQL.
 - Implemented UI/UX design, SQL and survey templates.
-- Achieved 150+ stars on GitHub and 6000+ downloads on CRAN.
+- Achieved 170+ stars on GitHub and 8000+ downloads on CRAN.
 - Published a journal article in *PLOS One* as 1st author with 1000+ views.
 - Presented at Posit Conference, USRSE, and GW OSCON in 2025.
 - Awarded 2nd prize at GW OSPO and profiled by GW Engineering.
 
-**`sdstudio` Survey GUI** - *Companion Project of `surveydown`* \hfill 2025
+**`sdstudio` Survey GUI** - *Companion Project of `surveydown`* \hfill 2025-2026
 
 - Developed `sdstudio` as GUI and SQL support to `surveydown`.
 - Implemented UI/UX design for survey preview and SQL visualization.
-- Achieved 200+ downloads on CRAN.
-- Proposing a presentation at GW OSCON 2026.
+- Achieved 1200+ downloads on CRAN.
+- Presented at GW OSCON 2026.
 
 **BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2023-2024
 
@@ -70,10 +70,11 @@ execute:
 
 **Smart Charging Cost-Efficiency Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2025-2026
 
-- Performed Monte Carlo simulation to evaluate the BEV usage status quo.
-- Processed grid supply data from NREL's household consumption model across all 18 grids nationwide.
-- Simulated charging sessions to quantify cost savings with 5 smart charging strategies of varied windows.
-- Proposing a journal paper to *Applied Energy*.
+- Built a scenario-based simulation of 10,000 BEVs with travel patterns from the National Household Travel Survey.
+- Processed time series grid net load data from GridStatus.io for CAISO and NYISO to construct regional baselines.
+- Swept across 5 TOU windows and 11 enrollment levels to quantify peak-shaving potential and cost efficiency.
+- Proposing a journal paper to Nature Energy.
+- Presented at GW 2026 R\&D and Senior Design Showcase.
 
 \vspace{-11pt}
 
