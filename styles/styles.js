@@ -4,6 +4,39 @@
   if (el) el.textContent = new Date().getFullYear();
 })();
 
+// ---- Brand Icon Swap ----
+// Quarto's `tools:` (navbar) and `about: links:` (homepage) only accept
+// Bootstrap icon names, but Bootstrap has no brand icons for ORCID /
+// ResearchGate / Google Scholar. Match each link by href and swap its
+// <i class="bi ..."> for the FontAwesome brand equivalent.
+(function () {
+  var ICON_MAP = [
+    { match: 'linkedin.com',     cls: 'fa-brands fa-linkedin' },
+    { match: 'github.com',       cls: 'fa-brands fa-github' },
+    { match: 'orcid.org',        cls: 'fa-brands fa-orcid' },
+    { match: 'researchgate.net', cls: 'fa-brands fa-researchgate' },
+    { match: 'scholar.google',   cls: 'fa-brands fa-google-scholar' }
+  ];
+  var SELECTOR = '.quarto-navbar-tools a, .about-link, .about-links a';
+  function swapBrandIcons() {
+    document.querySelectorAll(SELECTOR).forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      var hit = null;
+      for (var i = 0; i < ICON_MAP.length; i++) {
+        if (href.indexOf(ICON_MAP[i].match) !== -1) { hit = ICON_MAP[i]; break; }
+      }
+      if (!hit) return;
+      var icon = a.querySelector('i');
+      if (icon) icon.className = hit.cls;
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', swapBrandIcons);
+  } else {
+    swapBrandIcons();
+  }
+})();
+
 // ---- Scroll Animations ----
 (function () {
   function init() {

@@ -597,28 +597,70 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
 
 .sidebar-title { color: #ECF0F1; }
 
-.navbar-nav {
-  .nav-link {
+.navbar {
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+  min-height: 0;
+}
+
+.navbar-nav .nav-link,
+.quarto-navbar-tools > a,
+.quarto-navbar-tools > .quarto-navbar-tool {
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
     text-decoration: none;
-    border-radius: 6px;
-    padding: 0.2rem 0.55rem !important;
-    transition: background-color 0.15s ease, color 0.15s ease;
+  }
 
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.14);
-      color: #ffffff;
-      text-decoration: none;
-    }
+  &.active {
+    background-color: rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+  }
 
-    &.active {
-      background-color: rgba(255, 255, 255, 0.22);
-      color: #ffffff;
-    }
+  &:active {
+    background-color: rgba(255, 255, 255, 0.30);
+  }
+}
 
-    &:active {
-      background-color: rgba(255, 255, 255, 0.30);
+.navbar-nav .nav-link {
+  padding: 0.2rem 0.55rem !important;
+}
+
+.quarto-navbar-tools > a,
+.quarto-navbar-tools > .quarto-navbar-tool {
+  padding: 0.2rem 0.45rem !important;
+  margin: 0 0.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.quarto-navbar-tools {
+  display: flex !important;
+  align-items: center;
+
+  // Theme toggle (Bootstrap .form-check) inherits margin + baseline from the
+  // form control, which pushes the pill below the icon row. Reset it.
+  .quarto-color-scheme-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    line-height: 1;
+
+    .form-check,
+    .form-check-input {
+      margin: 0;
+      vertical-align: middle;
     }
   }
+}
+
+.navbar-nav {
 
   @media (min-width: 768px) {
     flex-wrap: nowrap !important;
@@ -708,8 +750,14 @@ div.quarto-about-trestles .about-entity .description {
   border-radius: 50% !important;
   transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease !important;
 
+  // Promote to its own compositor layer so the scale-up is interpolated on
+  // the GPU instead of re-rasterized each frame — kills the subpixel shake.
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+
   &:hover {
-    transform: scale(1.10) !important;
+    transform: scale(1.10) translateZ(0) !important;
     color: #5654A2 !important;
     background-color: rgba(86, 84, 162, 0.1) !important;
   }
