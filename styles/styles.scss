@@ -658,6 +658,12 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
       vertical-align: middle;
     }
   }
+
+  // On narrow viewports the brand title + hamburger + tools row wraps to a
+  // second line. Hide the brand-icon links (search + theme toggle remain).
+  @media (max-width: 600px) {
+    > a { display: none !important; }
+  }
 }
 
 .navbar-nav {
