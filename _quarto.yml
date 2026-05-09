@@ -50,7 +50,7 @@ website:
         href: talks.qmd
         text: Talks
 
-    right:
+    tools:
       - text: "<i class='fa-brands fa-linkedin'></i>"
         href: https://www.linkedin.com/in/pingfan/
         target: _blank

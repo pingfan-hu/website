@@ -647,9 +647,6 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
     }
   }
 
-  @media (max-width: 767.98px) {
-    &.ms-auto { display: none !important; }
-  }
 }
 
 .nav-footer {
