@@ -50,7 +50,7 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
     ),
     div(
       class = "presentation-icons",
-      # Conditionally render either 3 round buttons or single PDF button
+      # Conditionally render buttons based on presentation type
       if(presentation_type == "slide") {
         list(
           # Slides button
@@ -78,6 +78,25 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
             tags$i(class = "bi bi-github")
           )
         )
+      } else if(presentation_type == "workshop") {
+        list(
+          # Site link button
+          a(
+            href = make_slides_path(Name),
+            class = "presentation-button round-button",
+            target = "_blank",
+            rel = "noopener noreferrer",
+            tags$i(class = "bi bi-browser-safari")
+          ),
+          # GitHub repo button
+          a(
+            href = make_github_path(Name),
+            class = "presentation-button round-button",
+            target = "_blank",
+            rel = "noopener noreferrer",
+            tags$i(class = "bi bi-github")
+          )
+        )
       } else {
         # Single PDF button for Poster
         a(
@@ -92,6 +111,13 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
   )
 }
 
+# Filter and create workshops
+workshops_data <- talks_data %>%
+  filter(!is.na(Type) & tolower(Type) == "workshop")
+
+workshops_presentations <- workshops_data %>%
+  pmap(create_presentation)
+
 # Filter and create slides
 slides_data <- talks_data %>%
   filter(is.na(Type) | tolower(Type) == "slide")
@@ -105,6 +131,13 @@ posters_data <- talks_data %>%
 
 posters_presentations <- posters_data %>%
   pmap(create_presentation)
+```
+
+## Workshops
+
+```{r}
+#| results: asis
+div(class = "presentations-container", workshops_presentations)
 ```
 
 ## Slides
