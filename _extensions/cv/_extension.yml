@@ -9,7 +9,7 @@ contributes:
       number-sections: false
       colorlinks: true
       documentclass: scrartcl
-      papersize: letter
+      papersize: a4
       pdf-engine: xelatex
       fontsize: 11pt
       geometry:

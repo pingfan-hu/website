@@ -10,17 +10,17 @@ execute:
 \par\centering{\LARGE{Pingfan Hu}}
 \par\centering{Engineering Management and Systems Engineering}
 \vspace{-5pt}
-\par\centering{The George Washington University}
-\vspace{-5pt}
-\par\centering{4581 Science \& Engineering Hall}
-\vspace{-5pt}
-\par\centering{800 22nd St NW, Washington, DC 20052, USA}
-\vspace{-5pt}
-\par\centering{ {\large\Telefon} +1 (202) 468-1083}
-\vspace{-5pt}
-\par\centering{ {\large\Letter} \href{mailto:pingfan0727@gmail.com}{pingfan0727@gmail.com}}
-\vspace{-5pt}
-\par\centering{\href{http://www.pingfanhu.com}{www.pingfanhu.com}}
+\par\centering{The George Washington University, Washington, DC, USA}
+\vspace{5pt}
+\begin{center}
+\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{@{}r@{\hspace{6pt}}l@{}}
+{\large\liMapPin} & Greater Melbourne, Australia \\
+{\large\liPhone}  & +61 431 251 227 \\
+{\large\liMail}   & \href{mailto:pingfan0727@gmail.com}{pingfan0727@gmail.com} \\
+{\large\liCompass}  & \href{http://www.pingfanhu.com}{www.pingfanhu.com} \\
+\end{tabular}
+\end{center}
 
 ## EDUCATION
 

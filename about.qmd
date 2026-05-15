@@ -50,9 +50,9 @@ I have 2 focuses in my field of study:
 
 ## Personal Life
 
-Throughout the past years, I have traveled, lived, and worked in different countries, including China, USA, Australia, and Germany. Now I am located at Virginia USA.
+Throughout the past years, I have traveled, lived, and worked in different countries, including China, USA, Australia, and Germany. I'm currently based in Greater Melbourne, Australia.
 
-I am married and having busy and enjoyable life with my wife. We have a cat named Pinocchio.
+I am married and have a busy and enjoyable life with my wife. We have a cat named Pinocchio.
 
 ::: {style="text-align: center;"}
 ![*Pinocchio*](/images/pinocchio.png){fig-alt="Pinocchio" width="600"}

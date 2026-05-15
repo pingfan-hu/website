@@ -16,7 +16,7 @@ execute:
 ---
 
 \par\centering{\Large{\textbf{Pingfan Hu}}}
-\par\centering{Washington, DC, USA | {\large\Letter} \href{mailto:pingfan0727@gmail.com}{pingfan0727@gmail.com} | {\large\Telefon} +1 (202) 468-1083 | \href{http://www.pingfanhu.com}{pingfanhu.com}}
+\par\centering{\raisebox{-0.05em} {\large\liMapPin} Greater Melbourne, Australia | \raisebox{-0.12em}{\large\liMail} \href{mailto:pingfan0727@gmail.com}{pingfan0727@gmail.com} | \raisebox{-0.12em}{\large\liPhone} +61 431 251 227 | \raisebox{-0.12em}{\large\liCompass} \href{http://www.pingfanhu.com}{pingfanhu.com}}
 
 \vspace{-15pt}
 
@@ -80,17 +80,17 @@ execute:
 
 ### WORK EXPERIENCE
 
-\makebox[0.5\textwidth][l]{\textbf{Harsco Rail} - \textit{Software Engineer}} \faMapMarker* SC, USA \& Beijing, China \hfill 2021 - 2022
+\makebox[0.5\textwidth][l]{\textbf{Harsco Rail} - \textit{Software Engineer}} \mbox{\large\liMapPin}\hspace{4pt}SC, USA \& Beijing, China \hfill 2021 - 2022
 
 - Led cross-border Switch Undercutter and Grinder software projects, achieving 25 software releases while providing critical on-site technical support.
 - Combined expertise in embedded C++ coding, CAN bus communication systems, and mechanical design with project management skills to track and deliver complex initiatives.
 
-\makebox[0.5\textwidth][l]{\textbf{GE Appliances} - \textit{Project Engineer}} \faMapMarker* Qingdao, China \hfill 2019 - 2020
+\makebox[0.5\textwidth][l]{\textbf{GE Appliances} - \textit{Project Engineer}} \mbox{\large\liMapPin}\hspace{4pt}Qingdao, China \hfill 2019 - 2020
 
 - Managed 500+ components across 9 GE washing machine models from development to production.
 - Contributed to various home appliances' engineering design to enhance product functionality and user experience, showing expertise in PLM management and engineering.
 
-\makebox[0.5\textwidth][l]{\textbf{Kurtz Ersa GmbH} - \textit{Assistant Process Engineer (Intern)}} \faMapMarker* Wertheim, Germany \hfill 2017
+\makebox[0.5\textwidth][l]{\textbf{Kurtz Ersa GmbH} - \textit{Assistant Process Engineer (Intern)}} \mbox{\large\liMapPin}\hspace{4pt}Wertheim, Germany \hfill 2017
 
 - Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples.
 - Conducted Asian market analysis for Ersa's 2017 marketing strategy.
