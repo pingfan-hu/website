@@ -35,6 +35,6 @@ about:
 
 #### Research Focus:
 
-1. **Open-Source Software**: I develop open-source tools for survey construction and data science. [surveydown](/projects/2024-surveydown) is an open-source, feature-packed {{< var rnolink >}} package for programmable and reproducible surveys, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend. [sdstudio](/projects/2025-sdstudio) is a companion package as GUI and SQL support for surveydown.
-
-2. **Transportation Research**: I study human behavior in sustainable transportation using discrete choice models. My work focuses on smart charging [adoption](/projects/2024-sc-adoption) and [economy](/projects/2025-smc-economy) analysis, providing insights to help policymakers and utilities design better systems that benefit both the grid and EV owners.
+1. **Open-Source Software**: I develop open-source {{< var rnolink >}} tools for survey research, including [surveydown](/projects/2024-surveydown), a programmable, markdown-based survey platform built on Quarto, Shiny, and PostgreSQL, and its companion GUI [sdstudio](/projects/2025-sdstudio).
+2. **Transportation Research**: I study human behavior in sustainable transportation using discrete choice models, focusing on smart charging [adoption](/projects/2024-sc-adoption) and [economy](/projects/2025-smc-economy) to inform policymakers and utilities.
+3. **Agentic AI Engineering**: I build reproducible workflows around Claude Code with plugins, skills, MCPs, and hooks. I document the [tutorials](/blog/2026-03-26-agentic-engineering-1) and my own [workflows](/blog/2026-05-15-agentic-workflows) in my blog, and run a [workshop](https://pingfan-hu.github.io/2026-agentic-engineering-workshop/) on [GW TAI](https://trustworthyai.gwu.edu) for researchers and developers.
