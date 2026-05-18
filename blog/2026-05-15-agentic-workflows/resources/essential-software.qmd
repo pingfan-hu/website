@@ -186,7 +186,7 @@
         <a href="https://github.com/tw93/Kaku" target="_blank"><img src="resources/kaku-logo.png" /></a>
       </div>
       <div class="sw-label"><a href="https://github.com/tw93/Kaku" target="_blank">Kaku</a></div>
-      <div class="sw-desc">macOS terminal with tabs and Yazi.</div>
+      <div class="sw-desc">A Swiss-Army-knife macOS terminal.</div>
     </div>
   </div>
 </div>

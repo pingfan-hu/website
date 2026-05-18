@@ -113,6 +113,8 @@ Hooks are different. A hook is a shell command tied to an event, and shell comma
 
 ## Essential Software
 
+> Part of these software were already introduced in my [Agentic Engineering Part 3](/blog/2026-04-09-agentic-engineering-3/#software) post, but different from general intro, this section leans to how I engage with them in practice.
+
 {{< include resources/essential-software.qmd >}}
 
 ### Obsidian - The Note-Taking System
