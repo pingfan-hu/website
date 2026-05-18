@@ -733,6 +733,27 @@ div.quarto-about-trestles .about-entity .description {
   display: none;
 }
 
+// ---- Blog post description block (light grey background) ----
+
+#title-block-header:has(.quarto-title-meta-heading) .description {
+  background-color: #EFEEE7;
+  padding: 0.85rem 1.1rem;
+  border-radius: 8px;
+  margin: 0.75rem 0 1.25rem;
+}
+
+#title-block-header:has(.quarto-title-meta-heading) .description p:last-child {
+  margin-bottom: 0;
+}
+
+// ---- Divider between title block and article body ----
+
+#title-block-header:has(.quarto-title-meta-heading) {
+  border-bottom: 1px solid #D4D3CC;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
 // ---- About Page Social Links ----
 
 .about-links {
