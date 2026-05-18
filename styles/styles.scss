@@ -662,7 +662,7 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   // On narrow viewports the brand title + hamburger + tools row wraps to a
   // second line. Hide the brand-icon links (search + theme toggle remain).
   @media (max-width: 600px) {
-    > a { display: none !important; }
+    > a:not(.quarto-color-scheme-toggle) { display: none !important; }
   }
 }
 
@@ -737,13 +737,26 @@ div.quarto-about-trestles .about-entity .description {
 
 #title-block-header:has(.quarto-title-meta-heading) .description {
   background-color: #EFEEE7;
+  color: #1a1a1a;
   padding: 0.85rem 1.1rem;
   border-radius: 8px;
-  margin: 0.75rem 0 1.25rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+// Force dark text on the light grey block even in dark mode
+#title-block-header:has(.quarto-title-meta-heading) .description,
+#title-block-header:has(.quarto-title-meta-heading) .description p {
+  color: #1a1a1a !important;
 }
 
 #title-block-header:has(.quarto-title-meta-heading) .description p:last-child {
   margin-bottom: 0;
+}
+
+// Tighten the gap between the description block and the Author/Published row
+#title-block-header:has(.quarto-title-meta-heading) .quarto-title-meta {
+  margin-top: 0 !important;
+  padding-top: 0.25rem !important;
 }
 
 // ---- Divider between title block and article body ----
