@@ -31,6 +31,8 @@ The catch is that ECC aims to cover everyone, so a lot of what it ships does not
 2. Installs only the modules I want: rules, core agents, core commands, the hooks runtime, the research APIs, and Python-flavored skills.
 3. Prunes the language-irrelevant pieces (cpp, kotlin, rust, go, flutter, gradle, pm2, and so on).
 
+> I intentionally **NOT** paste my `ecc-setup.sh` or the README here for two reasons: 1) It's just so easy to collaborate with an AI agent to work it out; 2) Like I explained, this is a case-by-case tailorship. To quickly work out a version of yours, talk with your AI agent, write down the script and save it to your repo.
+
 The result is a lean install of roughly 32 skills, 58 commands, and 40 agents, all relevant to my data science and research workflow. The script is idempotent: running it again just pulls the latest ECC and re-applies the prune. Because re-installing is cheap, I never hesitate to refresh, and my setup stays clean.
 
 Knowing how to locate, install, and trim community skills is step one. It also teaches you what a *good* skill looks like, which you'll need before writing your own.
