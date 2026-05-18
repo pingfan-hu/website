@@ -1,0 +1,184 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .qrt-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .qrt-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .qrt-header-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .qrt-header-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .qrt-header-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .qrt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: #F8F7F0;
+    border-top: 1px solid #D4D3EE;
+  }
+
+  .qrt-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px;
+    text-align: center;
+    border-right: 1px solid #D4D3EE;
+    transition: background 0.15s ease;
+  }
+
+  .qrt-card:last-child { border-right: none; }
+  .qrt-card:hover { background: #F0EFF8; }
+  .qrt-card:hover .qrt-card-icon { background: #F8F7F0; }
+
+  .qrt-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #EEEDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .qrt-card-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .qrt-label {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #5654A2;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .qrt-desc {
+    font-size: 0.88em;
+    color: #564232;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+
+  .qrt-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #EEEDF8;
+    border-top: 1px solid #D4D3EE;
+  }
+
+  .qrt-footer svg {
+    width: 16px;
+    height: 16px;
+    color: #5654A2;
+    stroke-width: 1.8;
+    flex-shrink: 0;
+  }
+
+  .qrt-footer-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    color: #5654A2;
+  }
+
+  @media (max-width: 520px) {
+    .qrt-grid { grid-template-columns: 1fr; }
+    .qrt-card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: center;
+      text-align: left;
+      border-right: none;
+      border-bottom: 1px solid #D4D3EE;
+      padding: 14px;
+      gap: 0 12px;
+    }
+    .qrt-card:last-child { border-bottom: none; }
+    .qrt-card-icon { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; align-self: center; }
+    .qrt-label { grid-column: 2; margin-bottom: 1px; }
+    .qrt-desc { grid-column: 2; margin-top: 0; }
+  }
+</style>
+
+<div class="qrt-outer">
+  <div class="qrt-header">
+    <div class="qrt-header-icon"><i data-lucide="blocks"></i></div>
+    <span class="qrt-header-text">Quarto at a Glance</span>
+  </div>
+
+  <div class="qrt-grid">
+    <div class="qrt-card">
+      <div class="qrt-card-icon"><i data-lucide="file-text"></i></div>
+      <div class="qrt-label">Four Inputs</div>
+      <div class="qrt-desc">Markdown, code, YAML, and HTML.</div>
+    </div>
+    <div class="qrt-card">
+      <div class="qrt-card-icon"><i data-lucide="code"></i></div>
+      <div class="qrt-label">Four Languages</div>
+      <div class="qrt-desc">Python, R, Julia, and Observable.</div>
+    </div>
+    <div class="qrt-card">
+      <div class="qrt-card-icon"><i data-lucide="file-output"></i></div>
+      <div class="qrt-label">Four Outputs</div>
+      <div class="qrt-desc">HTML, PDF, slides, and Word.</div>
+    </div>
+  </div>
+
+  <div class="qrt-footer">
+    <i data-lucide="book-open"></i>
+    <span class="qrt-footer-text">Further reading: <a href="https://www.jhelvy.com/blog/2026-05-12-quarto-optimal-claude-output/" target="_blank">Dr. Helveston on Quarto formats</a></span>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

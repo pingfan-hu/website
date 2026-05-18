@@ -3,7 +3,7 @@
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
 <style>
-  .ext-outer {
+  .hks-outer {
     width: 100%;
     margin: 1em 0;
     border: 1.5px solid #5654A2;
@@ -11,7 +11,7 @@
     overflow: hidden;
   }
 
-  .ext-header {
+  .hks-header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,7 +20,7 @@
     padding: 10px 16px;
   }
 
-  .ext-header-icon {
+  .hks-header-icon {
     width: 28px;
     height: 28px;
     border-radius: 6px;
@@ -31,14 +31,14 @@
     flex-shrink: 0;
   }
 
-  .ext-header-icon svg {
+  .hks-header-icon svg {
     width: 14px;
     height: 14px;
     color: #F8F7F0;
     stroke-width: 1.8;
   }
 
-  .ext-header-text {
+  .hks-header-text {
     font-family: 'Maple Mono', monospace;
     font-size: 0.85em;
     font-weight: bold;
@@ -47,14 +47,14 @@
     text-transform: uppercase;
   }
 
-  .ext-grid {
+  .hks-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background: #F8F7F0;
     border-top: 1px solid #D4D3EE;
   }
 
-  .ext-card {
+  .hks-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,11 +64,11 @@
     transition: background 0.15s ease;
   }
 
-  .ext-card:last-child { border-right: none; }
-  .ext-card:hover { background: #F0EFF8; }
-  .ext-card:hover .ext-card-icon { background: #F8F7F0; }
+  .hks-card:last-child { border-right: none; }
+  .hks-card:hover { background: #F0EFF8; }
+  .hks-card:hover .hks-card-icon { background: #F8F7F0; }
 
-  .ext-card-icon {
+  .hks-card-icon {
     width: 44px;
     height: 44px;
     border-radius: 10px;
@@ -80,14 +80,14 @@
     flex-shrink: 0;
   }
 
-  .ext-card-icon svg {
+  .hks-card-icon svg {
     width: 20px;
     height: 20px;
     color: #5654A2;
     stroke-width: 1.8;
   }
 
-  .ext-label {
+  .hks-label {
     font-family: 'Maple Mono', monospace;
     font-size: 0.85em;
     font-weight: bold;
@@ -96,16 +96,42 @@
     margin-bottom: 4px;
   }
 
-  .ext-desc {
+  .hks-desc {
     font-size: 0.88em;
     color: #564232;
     line-height: 1.5;
     margin-top: 2px;
   }
 
+  .hks-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #EEEDF8;
+    border-top: 1px solid #D4D3EE;
+  }
+
+  .hks-footer svg {
+    width: 16px;
+    height: 16px;
+    color: #5654A2;
+    stroke-width: 1.8;
+    flex-shrink: 0;
+  }
+
+  .hks-footer-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    color: #5654A2;
+  }
+
   @media (max-width: 520px) {
-    .ext-grid { grid-template-columns: 1fr; }
-    .ext-card {
+    .hks-grid { grid-template-columns: 1fr; }
+    .hks-card {
       display: grid;
       grid-template-columns: 44px 1fr;
       align-items: center;
@@ -115,34 +141,40 @@
       padding: 14px;
       gap: 0 12px;
     }
-    .ext-card:last-child { border-bottom: none; }
-    .ext-card-icon { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; align-self: center; }
-    .ext-label { grid-column: 2; margin-bottom: 1px; }
-    .ext-desc  { grid-column: 2; margin-top: 0; }
+    .hks-card:last-child { border-bottom: none; }
+    .hks-card-icon { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; align-self: center; }
+    .hks-label { grid-column: 2; margin-bottom: 1px; }
+    .hks-desc { grid-column: 2; margin-top: 0; }
   }
 </style>
 
-<div class="ext-outer">
-  <div class="ext-header">
-    <div class="ext-header-icon"><i data-lucide="puzzle"></i></div>
-    <span class="ext-header-text">Extensions</span>
+<div class="hks-outer">
+  <div class="hks-header">
+    <div class="hks-header-icon"><i data-lucide="blocks"></i></div>
+    <span class="hks-header-text">Hooks at a Glance</span>
   </div>
-  <div class="ext-grid">
-    <div class="ext-card">
-      <div class="ext-card-icon"><i data-lucide="package"></i></div>
-      <div class="ext-label">Plugins</div>
-      <div class="ext-desc">Bundles of skills, MCPs, and configurations.</div>
+
+  <div class="hks-grid">
+    <div class="hks-card">
+      <div class="hks-card-icon"><i data-lucide="folder"></i></div>
+      <div class="hks-label">Local</div>
+      <div class="hks-desc">Per-project, in .claude/.</div>
     </div>
-    <div class="ext-card">
-      <div class="ext-card-icon"><i data-lucide="plug"></i></div>
-      <div class="ext-label">MCPs / Connectors</div>
-      <div class="ext-desc">External servers connecting to a variety of services.</div>
+    <div class="hks-card">
+      <div class="hks-card-icon"><i data-lucide="zap"></i></div>
+      <div class="hks-label">Triggered</div>
+      <div class="hks-desc">Fire on file edit or session end.</div>
     </div>
-    <div class="ext-card">
-      <div class="ext-card-icon"><i data-lucide="zap"></i></div>
-      <div class="ext-label">Skills</div>
-      <div class="ext-desc">Slash commands for reusable workflows.</div>
+    <div class="hks-card">
+      <div class="hks-card-icon"><i data-lucide="terminal"></i></div>
+      <div class="hks-label">Scripted</div>
+      <div class="hks-desc">Call into shell for complex chains.</div>
     </div>
+  </div>
+
+  <div class="hks-footer">
+    <i data-lucide="shield-check"></i>
+    <span class="hks-footer-text">Determinism is the advantage.</span>
   </div>
 </div>
 

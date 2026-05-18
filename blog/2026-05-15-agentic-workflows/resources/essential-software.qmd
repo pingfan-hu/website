@@ -48,7 +48,7 @@
 
   .sw-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     background: #F8F7F0;
     border-top: 1px solid #D4D3EE;
   }
@@ -60,10 +60,12 @@
     padding: 18px 16px;
     text-align: center;
     border-right: 1px solid #D4D3EE;
+    border-bottom: 1px solid #D4D3EE;
     transition: background 0.15s ease;
   }
 
-  .sw-card:last-child { border-right: none; }
+  .sw-card:nth-child(3n) { border-right: none; }
+  .sw-card:nth-last-child(-n+3) { border-bottom: none; }
   .sw-card:hover { background: #F0EFF8; }
   .sw-card:hover .sw-card-icon { background: #F8F7F0; }
 
@@ -91,7 +93,6 @@
     height: 28px;
     border-radius: 5px;
   }
-
 
   .sw-label {
     font-family: 'Maple Mono', monospace;
@@ -124,9 +125,11 @@
       padding: 14px;
       gap: 0 12px;
     }
+    .sw-card:nth-child(3n) { border-right: none; }
+    .sw-card:nth-last-child(-n+3) { border-bottom: 1px solid #D4D3EE; }
     .sw-card:last-child { border-bottom: none; }
     .sw-card-icon { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; align-self: center; }
-.sw-label { grid-column: 2; margin-bottom: 1px; }
+    .sw-label { grid-column: 2; margin-bottom: 1px; }
     .sw-desc  { grid-column: 2; margin-top: 0; }
   }
 </style>
@@ -152,10 +155,17 @@
     </div>
     <div class="sw-card">
       <div class="sw-card-icon">
-        <a href="https://spokenly.app" target="_blank"><img src="resources/spokenly-logo.png" /></a>
+        <a href="https://github.com/pingfan-hu/MiniNotes" target="_blank"><img src="resources/mininotes-icon.png" /></a>
       </div>
-      <div class="sw-label"><a href="https://spokenly.app" target="_blank">Spokenly</a></div>
-      <div class="sw-desc">Text-to-speech for Mac and iPhone.</div>
+      <div class="sw-label"><a href="https://github.com/pingfan-hu/MiniNotes" target="_blank">MiniNotes</a></div>
+      <div class="sw-desc">Menu bar companion for Obsidian.</div>
+    </div>
+    <div class="sw-card">
+      <div class="sw-card-icon">
+        <a href="https://quarto.org" target="_blank"><img src="resources/quarto-icon.svg" /></a>
+      </div>
+      <div class="sw-label"><a href="https://quarto.org" target="_blank">Quarto</a></div>
+      <div class="sw-desc">Markdown-based publication system.</div>
     </div>
     <div class="sw-card">
       <div class="sw-card-icon">
@@ -163,6 +173,13 @@
       </div>
       <div class="sw-label"><a href="https://positron.posit.co" target="_blank">Positron</a></div>
       <div class="sw-desc">VS Code-based IDE for data science.</div>
+    </div>
+    <div class="sw-card">
+      <div class="sw-card-icon">
+        <a href="https://spokenly.app" target="_blank"><img src="resources/spokenly-logo.png" /></a>
+      </div>
+      <div class="sw-label"><a href="https://spokenly.app" target="_blank">Spokenly</a></div>
+      <div class="sw-desc">Text-to-speech for Mac and iPhone.</div>
     </div>
     <div class="sw-card">
       <div class="sw-card-icon">

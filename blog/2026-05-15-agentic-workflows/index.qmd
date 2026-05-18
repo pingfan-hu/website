@@ -1,7 +1,7 @@
 ---
 title: "Agentic Workflows"
 image: "/blog/banners/2026-05-15-agentic-workflows.png"
-description: "How I combine Claude Code skills and hooks with a handful of daily tools to make my agentic workflow faster and more reliable."
+description: "How I combine skills and hooks with a handful of daily tools to make my agentic workflow faster and more reliable."
 date: '2026-05-15'
 categories: [Tutorial, Agentic Engineering]
 execute:
@@ -9,48 +9,179 @@ execute:
   eval: false
 ---
 
-The earlier posts in this series walked through the basics of agentic engineering. This one is more personal: a tour of the workflow I actually run day to day. The core idea is simple — **skills** package up a full workflow so I can reuse it, **hooks** automate the small things around it, and a handful of **daily tools** keep input, monitoring, and output fast. Combined, they make my work both more stable and more efficient.
+The earlier posts in this series walked through the basics of agentic engineering. This one is more personal: a tour of the workflow I actually run day to day. The core idea is simple. **Skills** package up reusable workflows so I never explain the same pattern twice, **hooks** wrap deterministic automation around those skills, and a handful of **essential software** keeps input, editing, and output fast. Combined, they make my work both more stable and more efficient.
 
-## Skills: Reusable Workflow Packages
+## Skills - Reusable Agentic Workflows
 
-*What a skill is, why "reusable" matters, and how it compares to a one-off prompt.*
+> Any task that's repetitive or reproducible is worth turning into a skill. The cost of writing one is small; the cost of explaining the same pattern over and over is not.
 
-### How I Structure a Skill
+{{< include resources/skill-stages.qmd >}}
 
-*The anatomy of one of my skills — name, trigger, body. One concrete example walked through end to end.*
+In [Agentic Engineering Part 3](/blog/2026-04-09-agentic-engineering-3), I described **skills** as slash commands that encode reusable workflows. The word that matters here is *reusable*. A one-off prompt solves one problem once. A skill captures the same instructions in a file, so the next time the same workflow comes up, you trigger it by name instead of retyping the prompt. Over time, your skill library becomes a personal toolbox that scales with you.
 
-### Skills I Reach for Daily
+My approach to skills has three stages: install the ones others have built, create my own, and share them back. They map onto three habits I'd recommend to anyone starting out.
 
-*A short list (3–5) of the skills I use most, with one sentence each on what they do for me.*
+### Install Existing Skills
 
-## Hooks: Small Automations That Add Up
+The fastest way to get a feel for skills is to install a popular plugin and use it for a few days. [everything-claude-code](https://github.com/affaan-m/everything-claude-code) (ECC) is where I started. It bundles dozens of skills, agents, and commands, and most of them work right out of the box.
 
-*What a hook is in Claude Code, and why I treat it as the "glue" around skills rather than a workflow on its own.*
+The catch is that ECC aims to cover everyone, so a lot of what it ships does not match my role as a data scientist. Skills you never invoke still sit in the agent's skill registry, and they crowd out the ones you actually want. So I wrote a small shell script, `ecc-setup.sh`, with a README next to it. The script:
 
-### Hooks I Have Set Up
+1. Clones (or pulls) the ECC repo.
+2. Installs only the modules I want: rules, core agents, core commands, the hooks runtime, the research APIs, and Python-flavored skills.
+3. Prunes the language-irrelevant pieces (cpp, kotlin, rust, go, flutter, gradle, pm2, and so on).
 
-*A short list of the hooks I run (e.g., format-on-save, lint-on-stop, custom guards) with one sentence each on what they prevent or accelerate.*
+The result is a lean install of roughly 32 skills, 58 commands, and 40 agents, all relevant to my data science and research workflow. The script is idempotent: running it again just pulls the latest ECC and re-applies the prune. Because re-installing is cheap, I never hesitate to refresh, and my setup stays clean.
 
-## Skills × Hooks: Stability and Efficiency
+Knowing how to locate, install, and trim community skills is step one. It also teaches you what a *good* skill looks like, which you'll need before writing your own.
 
-*The combination effect. Skills give me a repeatable starting point; hooks keep the guardrails on. One short story of a task where the two together saved me from a mistake or a long redo.*
+### Create Your Skills
 
-## Daily Tools
+Once you've used a few community skills, the structure becomes obvious. A skill is just a directory with a `SKILL.md` file inside. The file starts with YAML frontmatter (a `name` and a `description`), followed by the body, which is the prompt that loads into the agent's context when the skill is invoked.
 
-*Software outside Claude Code that supports the loop. Three sub-buckets:*
+Here's a minimal template:
 
-### Faster Input
+```markdown
+---
+name: skill-name
+description: One or two sentences telling the agent when to auto-trigger
+  this skill. Be specific about both the task and the conditions.
+---
 
-*Voice dictation, snippet expanders, custom keyboards — whatever shortens the path from idea to text.*
+# Skill: skill-name
 
-### Progress Monitoring
+Use this skill when [trigger condition].
 
-*How I keep an eye on long-running agents, tasks, or builds without babysitting them.*
+## Rules
 
-### Output Generation
+- The most important rule the agent should follow.
+- Any other constraints worth stating up front.
 
-*Tools that take the agent's output and turn it into something I can ship — formatters, image generators, publishing pipelines.*
+## Template
+
+A concrete example, snippet, or pattern to imitate.
+```
+
+The frontmatter does two jobs. The `name` becomes the slash command (e.g., `/skill-name`). The `description` is what the agent reads to decide whether to auto-trigger the skill when your request matches. The body is freeform: rules, templates, checklists, examples. Anything that helps the agent produce the output the same way every time.
+
+Skills live in two places:
+
+- `.claude/skills/` inside a project, for skills scoped to that repo.
+- `~/.claude/skills/` in your home folder, for skills available across every project.
+
+Creating one is straightforward. Finish a task with your agent, then ask it in the same session to extract the workflow into a skill. Refine the wording, save it as `SKILL.md`, and it's ready to use. My personal trigger is the second time I catch myself explaining the same pattern.
+
+### Skill Symlinks
+
+Once I had a handful of personal skills, I ran into two problems. First, they lived inside `~/.claude/skills/`, which is not under version control. Second, I wanted to share them on GitHub so others could borrow what I'd built.
+
+The fix is symlinks. I keep all my skills in one standalone repo, then symlink each one into `~/.claude/skills/` so the agent picks them up in every project while the source of truth stays in git. Wiring up the symlinks by hand is tedious, but this is exactly the kind of one-shot scripting job an AI agent handles well. Just ask it to scan your skills repo and create the symlinks for you. The benefits stack up:
+
+- **Editing**: I change `SKILL.md` once in the repo, and the new version is live in every project immediately.
+- **Versioning**: Every change goes through git, so I can roll back a regression or trace why a skill behaves differently than before.
+- **Sharing**: The repo can sit on GitHub, and anyone can clone it, set up their own symlinks, and pick up my skills as starting points for their own.
+
+Three stages, one compounding loop. Installing community skills teaches you what good ones look like. Writing your own gives you tools tailored to your work. Symlinking a standalone repo makes those tools portable, versioned, and shareable. Once the loop is closed, every workflow you find yourself doing twice becomes a candidate for the next skill.
+
+## Hooks - Agentic Loop Automations
+
+{{< include resources/hooks-overview.qmd >}}
+
+Hooks differ from skills in a few important ways. Some hooks come bundled when you install a plugin, but in most cases it's easier (and more rewarding) to write your own. Where I keep skills in a standalone repo and symlink them globally, hooks usually live with the project they automate, inside that project's `.claude/` directory. A hook tends to know about *this* repo: its build system, its output directory, its test command.
+
+The hooks I reach for most are post-process hooks, things that fire after the agent finishes editing a file or ends a session, so my next iteration is always grounded in the freshly built output.
+
+### My Use Cases
+
+I lean on hooks in two recurring workflows: rendering Quarto and developing R packages.
+
+**Quarto rendering.** Quarto is a publication system that turns `.qmd` files into web pages, slides, PDFs, and Word documents. Every time a `.qmd` file changes, the render (called *knit*) has to run again to produce the new output. Engagement with AI gets much more efficient when this happens on its own. I have a hook that, at the end of each agent session, clears the old generation and runs a fresh render. Every time I improve a draft with the agent, I immediately see the latest rendered version, with no "did I forget to re-knit?" moment.
+
+**R package development.** R packages follow the same idea. After any change I want a clean state: reinstall the package, verify everything loads correctly, regenerate the roxygen documentation, and run a quick test. Stringing those together by hand is tedious, and forgetting one step has burned me before. A single hook chains them into one trigger, so the moment the agent finishes a change, I see the package in its post-update state, with results either green or red.
+
+When the chain is long, the hook does not need to inline every step. It can call a shell script that lives in the project directory and does the heavy lifting. That keeps the hook config short and the logic versioned alongside the rest of the project.
+
+Hooks are also a strong case for writing your own rather than searching for a generic bundle. My needs are shaped by Quarto rendering and R package builds. Another developer's needs will be shaped by whatever their own project builds, tests, or publishes. Two developers in the same field, even on similar problems, end up with very different hook setups. That is normal, and it is why I always recommend starting from scratch.
+
+### The Advantage of Determinism
+
+Here's the part that surprised me most. Plugins, skills, and prompts all rely on the model picking the right behavior, and AI output is fundamentally a randomized process. Even with strong skills installed and a clear prompt, there is no guarantee that the agent produces exactly what you want every single time.
+
+Hooks are different. A hook is a shell command tied to an event, and shell commands are deterministic. If I write a hook that clears the output and re-knits at session end, that is what runs, every time, without negotiation. In a workflow built mostly on probabilistic agents, hooks are the few pieces I can fully count on. That stability is the real reason I treat hooks as guardrails around my agentic loop, not just convenient automation.
+
+## Essential Software
+
+{{< include resources/essential-software.qmd >}}
+
+### Obsidian - The Note-Taking System
+
+I first engaged with [Obsidian](https://obsidian.md) back in 2021. A close friend of mine, a hardcore programmer who also taught me my first shell commands, sat me down for two hours and walked me through why Obsidian deserved a spot in my workflow. He was right, and five years later it is still where most of my notes live.
+
+Before that I was on [CraftDocs](https://www.craft.do/), another Markdown-based editor that live-renders by default. [Notion](https://www.notion.so/) sits in the same camp. With the rise of AI, the balance is tipping toward pure Markdown editors like Obsidian. The reason is simple: Obsidian saves every note as a plain `.md` file on disk. AI agents can read, edit, and refactor those files the same way they would any other Markdown, with no proprietary database between you and your text.
+
+{{< include resources/obsidian-overview.qmd >}}
+
+Obsidian itself is easy to pick up. Download it, open a folder as a vault, and start writing. There's no real tutorial required. Editing mode is the default and gives you basic live rendering. Clicking into any element reveals the source. You can toggle freely between source mode, edit mode (the in-between), and read mode.
+
+What turns Obsidian into an essential AI tool is the local vault. By default, the vault is just a folder on your computer, which means you can point any AI agent at it. I keep mine in iCloud so it syncs across my machines, and because iCloud supports family sharing, I share one vault with my wife. We use it for travel planning. We take several trips a year, the planning gets tedious, and a single shared Markdown file (often sorted out by an AI agent when we ask) makes the work much lighter. I keep a second, private vault for my research and writing.
+
+Beyond the basics, Obsidian has a large plugin marketplace and its own CLI. Plugins are easy to explore and adapt, so the editor flexes to whatever style of notes you take. With only seven employees, the team punches well above its weight: the user base is huge, and Obsidian is by now one of the most successful lightweight Markdown editors out there.
+
+#### MiniNotes
+
+While we're on the subject, a quick plug for an open-source app of my own: [MiniNotes](https://github.com/pingfan-hu/MiniNotes). It's a menu bar companion for Obsidian. I take a lot of quick, throwaway notes throughout the day, all of which land in a single `.md` file inside my vault. Opening Obsidian every time for a one-line note was overkill, so MiniNotes lets me jot the note straight from the menu bar.
+
+The app mirrors Obsidian's editing experience on purpose. Edit mode is the default, and you can toggle between source mode and read mode just like Obsidian. A one-click button opens the underlying file in Obsidian whenever I want to keep working on it there.
+
+### Quarto - The Publication System
+
+{{< include resources/quarto-overview.qmd >}}
+
+[Quarto](https://quarto.org) is a publication system built on top of Markdown. Its file format is `.qmd`, one letter longer than `.md`, where the `q` stands for *Quarto*. You can rename almost any Markdown file to `.qmd` and Quarto will happily render it. My advisor Dr. John Helveston recently published [a careful comparison of file formats for AI-assisted writing](https://www.jhelvy.com/blog/2026-05-12-quarto-optimal-claude-output/), with numbers showing that `.qmd` costs roughly the same tokens as `.md` in both input and output. That post grew out of many conversations between us, and I'd point any reader curious about the format question to it before continuing. This blog post itself is a Quarto document, and so is everything else on this site.
+
+What makes Quarto more than "Markdown with a different extension" is what you can layer inside a `.qmd` file. The name *Quarto* nods to one of its core features: it supports four programming languages directly in code chunks, namely Python, R, Julia, and Observable. As a data scientist I lean on Python and R the most, and both are first-class citizens. On top of code chunks, a `.qmd` file can carry a YAML header for metadata and raw HTML for finer styling. The full picture is a four-way blend:
+
+- **Markdown** for the prose, which is usually the majority of the file.
+- **Code chunks** in Python, R, Julia, or Observable.
+- **YAML front matter** for title, author, date, output format, and other options.
+- **HTML** when you need precise control over a specific component.
+
+In my own files, Markdown dominates by volume, and that is exactly why Quarto sits so well with AI agentic engineering. The input is mostly plain text, so any coding agent can read it, edit it, and write it back without the friction it would hit on a binary format.
+
+The output side is just as strong. Quarto renders `.qmd` files into HTML pages by default, but the same source can also produce PDFs (via LaTeX or Typst), slide decks (via Reveal.js), and Word documents. All mainstream formats, all from a single text source.
+
+Throughout my PhD, Quarto has been the connective tissue across almost everything I produce: this website, my project documentation, my journal manuscripts, and every slide deck I present. The advantages stack up:
+
+1. **Reproducible.** Output regenerates from the source. I only need to save the `.qmd` files; everything else rebuilds on render.
+2. **AI-friendly.** Because the source is mostly text, any modern coding agent can read, edit, and refactor it as easily as any other Markdown file.
+3. **Solid output pipelines.** Rendering to HTML, PDF, slides, or Word is one command, and I trust the result. I do not fight the formatter; I focus on the content.
+
+### Positron - The Data Science IDE
+
+[Positron](https://positron.posit.co) is an IDE from [Posit](https://posit.co), built on top of VS Code and tailored for data scientists. It is relatively young, a year or two old at this point, and I've been using it since its initial release.
+
+In the same spirit that Kaku polishes the terminal, Positron polishes an already-strong IDE foundation for the kind of work data scientists actually do. I keep it in a three-column layout that handles almost all of my workflow:
+
+- **Left**: directory tree, GitHub source control, and plugin panels.
+- **Middle**: whichever file I'm editing.
+- **Right**: terminal, language console (R or Python), and output viewer.
+
+The right column is the one I lean on most. I can toggle it to show the source of a Quarto file on one side and the rendered output on the other, so the cycle of editing, rendering, and checking stays inside a single window. That side-by-side view is my single most-used workspace setup.
+
+### Spokenly - AI-Assisted Voice Input
+
+[Spokenly](https://spokenly.app) is an AI-assisted voice input app, and most of this very blog post was drafted by speaking into it. Combined with the rest of my toolkit, it is what makes producing a post like this feel fast rather than tedious. Under the hood, Spokenly wires up a roster of AI models (GPT-4o by default) and uses them to transcribe my speech and lightly clean it up. Filler words, false starts, and small slips get smoothed out, but my actual phrasing stays mostly intact. That balance is the real product. Spokenly sits right at the sweet spot of how much AI should intervene between my voice and the final text.
+
+You can also feed Spokenly a prompt so that every utterance gets post-processed into a specific format. The default is plain casual writing, which is what I use most of the time, but I can switch to email, journal-paper prose, or whatever else I need. In effect, it does a first pass of post-processing automatically. If I want more aggressive editing, I can still hand the output to my AI agent afterward.
+
+### Kaku - Terminal
+
+[Kaku](https://github.com/tw93/Kaku) is an open-source terminal that feels like the Swiss army knife of terminals. The layout is clean, light and dark themes look polished out of the box, the default fonts are well-chosen, and both launch and shutdown are fast.
+
+What sets it apart is how much functionality comes pre-loaded. There's a built-in file tree, built-in AI access, and a monitor that tracks the AI tools you have installed and helps you pick a default. You can split any tab into panes or open additional tabs to keep different contexts alive in parallel. One review I came across stuck with me: Kaku feels like someone spent 40 hours fine-tuning a terminal so you don't have to.
 
 ## Closing Thoughts
 
-*One paragraph on what I'd tell someone starting from scratch — pick one skill, write one hook, then grow the system as friction shows up.*
+This post is a personal tour, not a recipe. None of these pieces (skills, hooks, the software around them) needs to land in your setup all at once. If you're starting from scratch, pick one workflow you find yourself repeating, write a skill for it, and use it for a week. Add a hook the first time you forget a render step. Swap a piece of software only when the current one starts creating real friction. The system grows the way a Markdown vault grows: one entry at a time, in whatever direction your actual work pulls it.
+
+Whatever shape your workflow takes, the takeaway is the same as in the previous posts. Keep yourself in the loop, let the agents handle the tedious parts, and never hand off the thinking. Cheers~

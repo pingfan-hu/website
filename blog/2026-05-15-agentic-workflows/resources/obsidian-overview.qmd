@@ -1,0 +1,184 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .obs-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .obs-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .obs-header-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .obs-header-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .obs-header-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .obs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: #F8F7F0;
+    border-top: 1px solid #D4D3EE;
+  }
+
+  .obs-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px;
+    text-align: center;
+    border-right: 1px solid #D4D3EE;
+    transition: background 0.15s ease;
+  }
+
+  .obs-card:last-child { border-right: none; }
+  .obs-card:hover { background: #F0EFF8; }
+  .obs-card:hover .obs-card-icon { background: #F8F7F0; }
+
+  .obs-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #EEEDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .obs-card-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .obs-label {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #5654A2;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .obs-desc {
+    font-size: 0.88em;
+    color: #564232;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+
+  .obs-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #EEEDF8;
+    border-top: 1px solid #D4D3EE;
+  }
+
+  .obs-footer svg {
+    width: 16px;
+    height: 16px;
+    color: #5654A2;
+    stroke-width: 1.8;
+    flex-shrink: 0;
+  }
+
+  .obs-footer-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    color: #5654A2;
+  }
+
+  @media (max-width: 520px) {
+    .obs-grid { grid-template-columns: 1fr; }
+    .obs-card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: center;
+      text-align: left;
+      border-right: none;
+      border-bottom: 1px solid #D4D3EE;
+      padding: 14px;
+      gap: 0 12px;
+    }
+    .obs-card:last-child { border-bottom: none; }
+    .obs-card-icon { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; align-self: center; }
+    .obs-label { grid-column: 2; margin-bottom: 1px; }
+    .obs-desc { grid-column: 2; margin-top: 0; }
+  }
+</style>
+
+<div class="obs-outer">
+  <div class="obs-header">
+    <div class="obs-header-icon"><i data-lucide="blocks"></i></div>
+    <span class="obs-header-text">Obsidian at a Glance</span>
+  </div>
+
+  <div class="obs-grid">
+    <div class="obs-card">
+      <div class="obs-card-icon"><i data-lucide="file-text"></i></div>
+      <div class="obs-label">Plain Markdown</div>
+      <div class="obs-desc">Every note is a plain .md file.</div>
+    </div>
+    <div class="obs-card">
+      <div class="obs-card-icon"><i data-lucide="folder"></i></div>
+      <div class="obs-label">Local Vault</div>
+      <div class="obs-desc">Your folder, your sync, your data.</div>
+    </div>
+    <div class="obs-card">
+      <div class="obs-card-icon"><i data-lucide="puzzle"></i></div>
+      <div class="obs-label">Plugins + CLI</div>
+      <div class="obs-desc">Bend the editor to your style.</div>
+    </div>
+  </div>
+
+  <div class="obs-footer">
+    <i data-lucide="sticky-note"></i>
+    <span class="obs-footer-text">Pair with: <a href="https://github.com/pingfan-hu/MiniNotes" target="_blank">MiniNotes</a></span>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```
