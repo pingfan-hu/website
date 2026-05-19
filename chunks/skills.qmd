@@ -1,4 +1,4 @@
-- **Agentic Engineering**: Claude Code Workflows, AI Skill Authoring, Harness Design
+- **Agentic AI Engineering**: Claude Code Workflows, AI Skill Authoring, Harness Design
 - **Data Science**: PostgreSQL, tidyverse, ggplot, Survey Design, Discrete Choice Modeling, Logit Modeling
-- **Programming**: R, Python, Git, SQL, Shell, JavaScript
-- **Web Development**: Quarto, R Shiny, HTML, CSS
+- **Programming**: R, Python, Git, SQL, Shell, JavaScript, App Development
+- **Web Development**: Quarto, R Shiny, HTML, CSS, Website Design and Deployment
