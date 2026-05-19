@@ -143,16 +143,20 @@ The app mirrors Obsidian's editing experience on purpose. Edit mode is the defau
 
 [Quarto](https://quarto.org) is a publication system built on top of Markdown. Its file format is `.qmd`, one letter longer than `.md`, where the `q` stands for *Quarto*. You can rename almost any Markdown file to `.qmd` and Quarto will happily render it. My advisor Dr. John Helveston recently published [a careful comparison of file formats for AI-assisted writing](https://www.jhelvy.com/blog/2026-05-12-quarto-optimal-claude-output/), with numbers showing that `.qmd` costs roughly the same tokens as `.md` in both input and output. That post grew out of many conversations between us, and I'd point any reader curious about the format question to it before continuing. This blog post itself is a Quarto document, and so is everything else on this site.
 
-What makes Quarto more than "Markdown with a different extension" is what you can layer inside a `.qmd` file. The name *Quarto* nods to one of its core features: it supports four programming languages directly in code chunks, namely Python, R, Julia, and Observable. As a data scientist I lean on Python and R the most, and both are first-class citizens. On top of code chunks, a `.qmd` file can carry a YAML header for metadata and raw HTML for finer styling. The full picture is a four-way blend:
+What makes Quarto more than "Markdown with a different extension" is the name itself. *Quarto* means *four*, and once you start using the format that word lands in three distinct places. A `.qmd` file blends **four inputs** at the source level, runs code in **four languages**, and renders to **four outputs**. The three fours stack into one tool.
+
+**Four inputs.** Inside a single `.qmd` file you can layer four kinds of content:
 
 - **Markdown** for the prose, which is usually the majority of the file.
-- **Code chunks** in Python, R, Julia, or Observable.
-- **YAML front matter** for title, author, date, output format, and other options.
+- **Code chunks** for analysis, figures, and tables.
+- **YAML header** for title, author, date, output format, and other metadata.
 - **HTML** when you need precise control over a specific component.
 
 In my own files, Markdown dominates by volume, and that is exactly why Quarto sits so well with AI agentic engineering. The input is mostly plain text, so any coding agent can read it, edit it, and write it back without the friction it would hit on a binary format.
 
-The output side is just as strong. Quarto renders `.qmd` files into HTML pages by default, but the same source can also produce PDFs (via LaTeX or Typst), slide decks (via Reveal.js), and Word documents. All mainstream formats, all from a single text source.
+**Four languages.** The code chunks themselves accept four programming languages as first-class citizens: Python, R, Julia, and Observable. As a data scientist I lean on Python and R the most, and switching between them inside the same document is as simple as changing the chunk header. Each language runs against its own kernel, so results, plots, and tables flow back into the rendered output without any glue code on my side.
+
+**Four outputs.** From that same source, Quarto renders into four mainstream formats: HTML pages by default, PDFs (via LaTeX or Typst), slide decks (via Reveal.js), and Word documents. One `.qmd`, one render command, four destinations.
 
 Throughout my PhD, Quarto has been the connective tissue across almost everything I produce: this website, my project documentation, my journal manuscripts, and every slide deck I present. The advantages stack up:
 
