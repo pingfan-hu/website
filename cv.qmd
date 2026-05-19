@@ -116,6 +116,7 @@ execute:
 
 ### B. WORKSHOPS
 
+- "Agentic Engineering", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Expected Jul 2026. [pingfan-hu.github.io/2026-agentic-engineering-workshop](https://pingfan-hu.github.io/2026-agentic-engineering-workshop/).
 - "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. [jhelvy.github.io/2025-qux-surveydown-workshop/](https://jhelvy.github.io/2025-qux-surveydown-workshop/).
 - "`surveydown`: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. [jhelvy.github.io/2025-surveydown-workshop](https://jhelvy.github.io/2025-surveydown-workshop/).
 
