@@ -99,6 +99,147 @@
   window.addEventListener('resize', updateIntroBtns);
 })();
 
+// ---- Subpage Back Button ----
+// On any subpage under /<section>/... inject a "Back to <Section>" pill
+// above the page title. Section title and href are read from the navbar
+// entry, so this stays in sync with whatever the navbar says.
+(function () {
+  function findSectionLink(section) {
+    var links = document.querySelectorAll('.navbar-nav .nav-link');
+    for (var i = 0; i < links.length; i++) {
+      var hrefAttr = links[i].getAttribute('href') || '';
+      var basename = hrefAttr.split('/').pop().split('?')[0].split('#')[0].replace(/\.html$/, '');
+      if (basename === section) {
+        var menu = links[i].querySelector('.menu-text');
+        return {
+          href: hrefAttr,
+          title: menu ? menu.textContent.trim() : section
+        };
+      }
+    }
+    return null;
+  }
+  function addBackButton() {
+    var match = window.location.pathname.match(/^\/([^\/]+)\/.+/);
+    if (!match) return;
+    var nav = findSectionLink(match[1]);
+    if (!nav) return;
+    var header = document.getElementById('title-block-header');
+    if (!header || header.previousElementSibling && header.previousElementSibling.classList.contains('subpage-back-btn')) return;
+    var btn = document.createElement('a');
+    btn.className = 'subpage-back-btn';
+    btn.href = nav.href;
+    btn.innerHTML = '<i class="bi bi-arrow-left" aria-hidden="true"></i><span>Back to ' + nav.title + '</span>';
+    header.parentNode.insertBefore(btn, header);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addBackButton);
+  } else {
+    addBackButton();
+  }
+})();
+
+// ---- Subpage Prev / Next Buttons ----
+// For any subpage that appears in /listings.json, append a row of prev/older
+// (left) and next/newer (right) buttons at the end of <main.content>. Items
+// in listings.json are newest-first, so newer = items[idx - 1] and older =
+// items[idx + 1]. Hidden when there is no neighbor on that side.
+(function () {
+  function currentItemPath() {
+    var path = window.location.pathname;
+    if (path.charAt(path.length - 1) === '/') path += 'index.html';
+    return path;
+  }
+  function loadJSON(url) {
+    return fetch(url).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  }
+  function buildTitleMap(searchData) {
+    var map = {};
+    if (!Array.isArray(searchData)) return map;
+    searchData.forEach(function (entry) {
+      if (!entry || !entry.href || entry.href.indexOf('#') !== -1) return;
+      var key = entry.href.charAt(0) === '/' ? entry.href : '/' + entry.href;
+      if (!map[key]) map[key] = entry.title;
+    });
+    return map;
+  }
+  function makeBtn(href, direction, title) {
+    var btn = document.createElement('a');
+    btn.className = 'post-nav-btn post-nav-' + direction;
+    btn.href = href;
+    var arrow = '<i class="bi bi-arrow-' + (direction === 'prev' ? 'left' : 'right') + '" aria-hidden="true"></i>';
+    var titleHtml = '<span class="post-nav-title">' + (title || '') + '</span>';
+    btn.innerHTML = direction === 'prev' ? arrow + titleHtml : titleHtml + arrow;
+    return btn;
+  }
+  function renderNav(olderHref, newerHref, titleMap) {
+    if (!olderHref && !newerHref) return;
+    var main = document.querySelector('main.content');
+    if (!main) return;
+    var nav = document.createElement('nav');
+    nav.className = 'post-nav';
+    nav.setAttribute('aria-label', 'Post navigation');
+    var prevSlot = document.createElement('div');
+    prevSlot.className = 'post-nav-slot post-nav-slot-prev';
+    var nextSlot = document.createElement('div');
+    nextSlot.className = 'post-nav-slot post-nav-slot-next';
+    if (olderHref) prevSlot.appendChild(makeBtn(olderHref, 'prev', titleMap[olderHref]));
+    if (newerHref) nextSlot.appendChild(makeBtn(newerHref, 'next', titleMap[newerHref]));
+    nav.appendChild(prevSlot);
+    nav.appendChild(nextSlot);
+    main.appendChild(nav);
+  }
+  function init() {
+    if (!document.getElementById('title-block-header')) return;
+    if (!document.querySelector('main.content')) return;
+    Promise.all([loadJSON('/listings.json'), loadJSON('/search.json')]).then(function (results) {
+      var listings = results[0];
+      var titleMap = buildTitleMap(results[1]);
+      if (!Array.isArray(listings)) return;
+      var current = currentItemPath();
+      var hit = null;
+      for (var i = 0; i < listings.length; i++) {
+        var idx = listings[i].items ? listings[i].items.indexOf(current) : -1;
+        if (idx !== -1) { hit = { items: listings[i].items, idx: idx }; break; }
+      }
+      if (!hit) return;
+      var newer = hit.idx > 0 ? hit.items[hit.idx - 1] : null;
+      var older = hit.idx < hit.items.length - 1 ? hit.items[hit.idx + 1] : null;
+      renderNav(older, newer, titleMap);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+// ---- Navbar Section Highlighting ----
+// Quarto only marks the navbar link active for top-level pages. For any
+// subpage under /<section>/... mark the navbar link whose href is
+// <section>.html active too. Generic across all navbar entries.
+(function () {
+  function highlightSectionNav() {
+    var match = window.location.pathname.match(/^\/([^\/]+)\/.+/);
+    if (!match) return;
+    var section = match[1];
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+      var basename = href.split('/').pop().split('?')[0].split('#')[0].replace(/\.html$/, '');
+      if (basename === section) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', highlightSectionNav);
+  } else {
+    highlightSectionNav();
+  }
+})();
+
 // ---- Code Window Language Labels ----
 (function () {
   function initCodeWindows() {
