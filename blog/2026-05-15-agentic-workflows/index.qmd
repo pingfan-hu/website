@@ -28,7 +28,7 @@ The fastest way to get a feel for skills is to install a popular plugin and use 
 The catch is that ECC aims to cover everyone, so a lot of what it ships does not match my role as a data scientist. Skills you never invoke still sit in the agent's skill registry, and they crowd out the ones you actually want. So I wrote a small shell script, `ecc-setup.sh`, with a README next to it. The script:
 
 1. Clones (or pulls) the ECC repo.
-2. Installs only the modules I want: rules, core agents, core commands, the hooks runtime, the research APIs, and Python-flavored skills.
+2. Installs only the modules I want: rules, core agents, core commands, the hooks runtime, the research APIs, and general coding skills.
 3. Prunes the language-irrelevant pieces (cpp, kotlin, rust, go, flutter, gradle, pm2, and so on).
 
 > I intentionally **NOT** paste my `ecc-setup.sh` or the README here for two reasons: 1) It's just so easy to collaborate with an AI agent to work it out; 2) Like I explained, this is a case-by-case tailorship. To quickly work out a version of yours, talk with your AI agent, write down the script and save it to your repo.
@@ -154,7 +154,7 @@ What makes Quarto more than "Markdown with a different extension" is the name it
 
 In my own files, Markdown dominates by volume, and that is exactly why Quarto sits so well with AI agentic engineering. The input is mostly plain text, so any coding agent can read it, edit it, and write it back without the friction it would hit on a binary format.
 
-**Four languages.** The code chunks themselves accept four programming languages as first-class citizens: Python, R, Julia, and Observable. As a data scientist I lean on Python and R the most, and switching between them inside the same document is as simple as changing the chunk header. Each language runs against its own kernel, so results, plots, and tables flow back into the rendered output without any glue code on my side.
+**Four languages.** The code chunks themselves accept four programming languages as first-class citizens: R, Python, Julia, and Observable. As a data scientist I lean on R and Python the most, and switching between them inside the same document is as simple as changing the chunk header. Each language runs against its own kernel, so results, plots, and tables flow back into the rendered output without any glue code on my side.
 
 **Four outputs.** From that same source, Quarto renders into four mainstream formats: HTML pages by default, PDFs (via LaTeX or Typst), slide decks (via Reveal.js), and Word documents. One `.qmd`, one render command, four destinations.
 
