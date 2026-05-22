@@ -129,7 +129,7 @@
     var btn = document.createElement('a');
     btn.className = 'subpage-back-btn';
     btn.href = nav.href;
-    btn.innerHTML = '<i class="bi bi-arrow-left" aria-hidden="true"></i><span>Back to ' + nav.title + '</span>';
+    btn.innerHTML = '<i class="nav-arrow" aria-hidden="true">←</i><span>Back to ' + nav.title + '</span>';
     header.parentNode.insertBefore(btn, header);
   }
   if (document.readyState === 'loading') {
@@ -167,7 +167,7 @@
     var btn = document.createElement('a');
     btn.className = 'post-nav-btn post-nav-' + direction;
     btn.href = href;
-    var arrow = '<i class="bi bi-arrow-' + (direction === 'prev' ? 'left' : 'right') + '" aria-hidden="true"></i>';
+    var arrow = '<i class="nav-arrow" aria-hidden="true">' + (direction === 'prev' ? '←' : '→') + '</i>';
     var titleHtml = '<span class="post-nav-title">' + (title || '') + '</span>';
     btn.innerHTML = direction === 'prev' ? arrow + titleHtml : titleHtml + arrow;
     return btn;

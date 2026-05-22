@@ -314,7 +314,7 @@ table {
     transform: translateX(-2px);
   }
 
-  i { font-size: 1em; line-height: 1; flex-shrink: 0; }
+  i { font-size: 1em; line-height: 1; flex-shrink: 0; font-style: normal; }
   > span { min-width: 0; overflow-wrap: break-word; }
 }
 
@@ -358,7 +358,7 @@ table {
   &.post-nav-prev:hover { transform: translateX(-2px); }
   &.post-nav-next:hover { transform: translateX(2px); }
 
-  i { font-size: 1em; line-height: 1; flex-shrink: 0; }
+  i { font-size: 1em; line-height: 1; flex-shrink: 0; font-style: normal; }
 
   .post-nav-title {
     min-width: 0;
