@@ -1,0 +1,62 @@
+```{=html}
+<div class="timeline-outer">
+ <div class="timeline-header">
+  <div class="timeline-header-left">
+   <div class="timeline-header-icon"><i data-lucide="list-ordered"></i></div>
+   <span class="timeline-header-text">流程</span>
+  </div>
+  <span class="timeline-total">总计 约 2.5 小时</span>
+ </div>
+ <div class="timeline-stepper">
+  <a class="timeline-step" href="#step-1">
+   <span class="timeline-step-circle">01</span>
+   <div class="timeline-step-text">
+    <div class="timeline-step-label">处理牛腩</div>
+    <div class="timeline-step-time">40 分</div>
+   </div>
+  </a>
+  <a class="timeline-step" href="#step-2">
+   <span class="timeline-step-circle">02</span>
+   <div class="timeline-step-text">
+    <div class="timeline-step-label">焯水</div>
+    <div class="timeline-step-time">10 分</div>
+   </div>
+  </a>
+  <a class="timeline-step" href="#step-3">
+   <span class="timeline-step-circle">03</span>
+   <div class="timeline-step-text">
+    <div class="timeline-step-label">处理西红柿</div>
+    <div class="timeline-step-time">5 分</div>
+   </div>
+  </a>
+  <a class="timeline-step" href="#step-4">
+   <span class="timeline-step-circle">04</span>
+   <div class="timeline-step-text">
+    <div class="timeline-step-label">准备配料</div>
+    <div class="timeline-step-time">2 分</div>
+   </div>
+  </a>
+  <a class="timeline-step" href="#step-5">
+   <span class="timeline-step-circle">05</span>
+   <div class="timeline-step-text">
+    <div class="timeline-step-label">炒糖煸炒</div>
+    <div class="timeline-step-time">10 分</div>
+   </div>
+  </a>
+  <a class="timeline-step" href="#step-6">
+   <span class="timeline-step-circle">06</span>
+   <div class="timeline-step-text">
+    <div class="timeline-step-label">慢炖</div>
+    <div class="timeline-step-time">90–120 分</div>
+   </div>
+  </a>
+  <a class="timeline-step" href="#step-7">
+   <span class="timeline-step-circle">07</span>
+   <div class="timeline-step-text">
+    <div class="timeline-step-label">收尾装盘</div>
+    <div class="timeline-step-time">15 分</div>
+   </div>
+  </a>
+ </div>
+</div>
+```

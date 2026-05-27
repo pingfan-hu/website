@@ -1,0 +1,128 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/recipes/tomato-beef-brisket/images/prep-beef.png" alt="处理牛腩"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">处理牛腩</span>
+    <span class="step-time"><i data-lucide="clock"></i>40 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>切成 2–3 cm 方块</li>
+    <li>冷水浸泡 30 分钟，中途换 1 次水</li>
+    <li>沥干备用</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>浸泡能彻底去血水，比直接焯水更去腥。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/recipes/tomato-beef-brisket/images/blanching.png" alt="焯水"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">焯水</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>冷水下锅，水没过牛腩 2 cm</li>
+    <li>加 3 片姜、1 汤匙料酒</li>
+    <li>中火煮沸，撇浮沫，续煮 2–3 分钟</li>
+    <li>捞出，用温水冲净，沥干</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>必须冷水下锅、温水冲洗。开水让肉柴，冷水让肉缩。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/recipes/tomato-beef-brisket/images/prep-tomato.png" alt="处理西红柿"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">处理西红柿</span>
+    <span class="step-time"><i data-lucide="clock"></i>5 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>顶部划十字花刀</li>
+    <li>开水烫 30 秒后撕皮</li>
+    <li>一半切丁熬底汤，一半切瓣保口感</li>
+   </ol>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/recipes/tomato-beef-brisket/images/mise-en-place.png" alt="准备配料"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">准备配料</span>
+    <span class="step-time"><i data-lucide="clock"></i>2 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>姜切片</li>
+    <li>葱白切 3 cm 段，葱绿切花备用</li>
+    <li>蒜拍碎去皮</li>
+   </ol>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-5">
+  <div class="step-photo"><img src="/recipes/tomato-beef-brisket/images/caramel-sugar.png" alt="炒糖煸炒"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">05</span>
+    <span class="step-title">炒糖煸炒</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>中小火 2 汤匙油 + 冰糖，慢炒至琥珀色</li>
+    <li>下牛腩翻炒上色</li>
+    <li>加姜、葱白、蒜 + 八角、香叶、桂皮，炒香 30 秒</li>
+    <li>沿锅边淋 2 汤匙料酒</li>
+    <li>加生抽、老抽、番茄酱，翻匀上色</li>
+    <li>倒切丁西红柿，炒 3–5 分钟出沙</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>不想炒糖色？跳过步骤 1，老抽多加 1 茶匙补色即可。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-6">
+  <div class="step-photo"><img src="/recipes/tomato-beef-brisket/images/simmering.png" alt="慢炖"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">06</span>
+    <span class="step-title">慢炖</span>
+    <span class="step-time"><i data-lucide="clock"></i>90–120 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>加 <strong>热水</strong>没过牛腩 2 cm，大火烧开</li>
+    <li>转小火，盖盖慢炖 1.5–2 小时</li>
+    <li>1 小时左右尝咸淡，加盐调味</li>
+    <li>筷子能轻松插入即熟</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>中途绝对不加冷水。要加只能加热水或开水。</span></div>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>高压锅可上汽后压 30–40 分钟，水量减半。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-7">
+  <div class="step-photo"><img src="/recipes/tomato-beef-brisket/images/finishing.png" alt="收尾装盘"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">07</span>
+    <span class="step-title">收尾装盘</span>
+    <span class="step-time"><i data-lucide="clock"></i>15 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>加切瓣西红柿，再炖 10–15 分钟</li>
+    <li>汤多则大火收 3–5 分钟</li>
+    <li>太酸加糖，太淡加盐</li>
+    <li>撒葱花出锅</li>
+   </ol>
+  </div>
+ </article>
+
+</div>
+```

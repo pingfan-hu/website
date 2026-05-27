@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/recipes/banners/tomato-beef-brisket.png" alt="西红柿炖牛腩">
+</div>
+```

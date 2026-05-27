@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="wheat"></i></div>
+  <div class="pairing-label">白米饭</div>
+  <div class="pairing-desc">汤汁拌饭，最经典</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="croissant"></i></div>
+  <div class="pairing-label">面食</div>
+  <div class="pairing-desc">刀削面、馒头、花卷都行</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="salad"></i></div>
+  <div class="pairing-label">蔬菜垫底</div>
+  <div class="pairing-desc">烫几片生菜或菠菜解腻</div>
+ </div>
+</div>
+```

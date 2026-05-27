@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>牛腩咬不动怎么办？</summary>
+  <div class="recipe-faq-answer">炖的时间不够。继续炖，至少 1.5 小时。下次买的时候选肥瘦相间、带筋膜的"坑腩"或"崩沙腩"，更适合慢炖。</div>
+ </details>
+
+ <details>
+  <summary>汤太酸怎么办？</summary>
+  <div class="recipe-faq-answer">番茄品种偏酸。加 1 茶匙糖中和。</div>
+ </details>
+
+ <details>
+  <summary>颜色不够红？</summary>
+  <div class="recipe-faq-answer">番茄酱可以再加 1 汤匙。老抽不能多加，会发黑发苦。</div>
+ </details>
+
+ <details>
+  <summary>炖煮中途水不够了，要不要加水？</summary>
+  <div class="recipe-faq-answer"><strong>绝对不要加冷水</strong>，会让牛肉变硬。要加只能加热水或开水。</div>
+ </details>
+
+ <details>
+  <summary>可以加土豆或胡萝卜吗？</summary>
+  <div class="recipe-faq-answer">可以。在步骤 07 加入切瓣西红柿的同时一起放进去，正好炖 15 分钟到软糯。土豆切滚刀块，胡萝卜切厚片。</div>
+ </details>
+
+</div>
+```
