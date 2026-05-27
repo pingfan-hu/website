@@ -154,10 +154,19 @@
   function buildTitleMap(searchData) {
     var map = {};
     if (!Array.isArray(searchData)) return map;
+    // Recipe pages start with raw HTML (link/script) and have no free prose
+    // before the first ## heading, so Quarto only emits per-section entries
+    // (href like "recipes/foo/index.html#食材"). Strip the anchor to recover
+    // the page-level key; the entry's title is still the page title.
+    // Prefer entries without an anchor when both exist for the same page.
     searchData.forEach(function (entry) {
-      if (!entry || !entry.href || entry.href.indexOf('#') !== -1) return;
-      var key = entry.href.charAt(0) === '/' ? entry.href : '/' + entry.href;
-      if (!map[key]) map[key] = entry.title;
+      if (!entry || !entry.href) return;
+      var hasAnchor = entry.href.indexOf('#') !== -1;
+      var pageHref = hasAnchor ? entry.href.split('#')[0] : entry.href;
+      var key = pageHref.charAt(0) === '/' ? pageHref : '/' + pageHref;
+      if (!map[key] || !hasAnchor) {
+        map[key] = entry.title;
+      }
     });
     return map;
   }
