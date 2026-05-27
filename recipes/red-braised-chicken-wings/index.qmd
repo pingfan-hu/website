@@ -1,10 +1,10 @@
 ---
-title: "菜花炒瘦肉"
-sort-title: "caihuachaoshourou"
-image: "/recipes/banners/cauliflower-pork.png"
+title: "红烧鸡翅"
+sort-title: "hongshaojichi"
+image: "/recipes/banners/red-braised-chicken-wings.png"
 date: "2026-05-27"
-categories: [炒菜, 猪肉]
-description: "干香爽脆、家常下饭的快手小炒。菜花断生入味，瘦肉嫩滑不柴。"
+categories: [红烧, 鸡肉]
+description: "经典家常红烧菜，鸡翅酱香红亮、皮韧肉嫩。一锅出，新手友好。"
 ---
 
 ```{=html}

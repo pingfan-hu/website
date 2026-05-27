@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/recipes/banners/red-braised-chicken-wings.png" alt="红烧鸡翅">
+</div>
+```

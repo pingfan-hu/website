@@ -5,7 +5,7 @@
    <div class="timeline-header-icon"><i data-lucide="list-ordered"></i></div>
    <span class="timeline-header-text">流程</span>
   </div>
-  <span class="timeline-total">总计 约 30 分</span>
+  <span class="timeline-total">总计 约 45 分</span>
  </div>
  <div class="timeline-stepper">
   <a class="timeline-step" href="#step-1">
@@ -18,36 +18,36 @@
   <a class="timeline-step" href="#step-2">
    <span class="timeline-step-circle">02</span>
    <div class="timeline-step-text">
-    <div class="timeline-step-label">腌制肉片</div>
-    <div class="timeline-step-time">10 分</div>
+    <div class="timeline-step-label">焯水鸡翅</div>
+    <div class="timeline-step-time">5 分</div>
    </div>
   </a>
   <a class="timeline-step" href="#step-3">
    <span class="timeline-step-circle">03</span>
    <div class="timeline-step-text">
-    <div class="timeline-step-label">焯水菜花</div>
+    <div class="timeline-step-label">炒糖色</div>
     <div class="timeline-step-time">3 分</div>
    </div>
   </a>
   <a class="timeline-step" href="#step-4">
    <span class="timeline-step-circle">04</span>
    <div class="timeline-step-text">
-    <div class="timeline-step-label">滑炒肉片</div>
-    <div class="timeline-step-time">3 分</div>
+    <div class="timeline-step-label">爆香煸炒</div>
+    <div class="timeline-step-time">4 分</div>
    </div>
   </a>
   <a class="timeline-step" href="#step-5">
    <span class="timeline-step-circle">05</span>
    <div class="timeline-step-text">
-    <div class="timeline-step-label">爆香合炒</div>
-    <div class="timeline-step-time">4 分</div>
+    <div class="timeline-step-label">加水焖煮</div>
+    <div class="timeline-step-time">20 分</div>
    </div>
   </a>
   <a class="timeline-step" href="#step-6">
    <span class="timeline-step-circle">06</span>
    <div class="timeline-step-text">
-    <div class="timeline-step-label">出锅装盘</div>
-    <div class="timeline-step-time">1 分</div>
+    <div class="timeline-step-label">收汁出锅</div>
+    <div class="timeline-step-time">5 分</div>
    </div>
   </a>
  </div>

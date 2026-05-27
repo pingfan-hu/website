@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="wheat"></i></div>
+  <div class="pairing-label">白米饭</div>
+  <div class="pairing-desc">浓稠的红烧酱汁拌饭，下饭神器。</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="salad"></i></div>
+  <div class="pairing-label">蒜蓉炒青菜</div>
+  <div class="pairing-desc">清爽的绿叶菜平衡红烧的咸甜厚重感。</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="soup"></i></div>
+  <div class="pairing-label">番茄鸡蛋汤</div>
+  <div class="pairing-desc">酸鲜的蛋花汤暖胃，整桌饭就齐了。</div>
+ </div>
+</div>
+```

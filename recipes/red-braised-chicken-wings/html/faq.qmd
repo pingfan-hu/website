@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>红烧和卤有什么区别？</summary>
+  <div class="recipe-faq-answer">两者都是"酱油+糖+水"的做法，但操作方式不同：<strong>红烧</strong>是一次性的——每次现做现吃，水量少，最后要收成浓稠酱汁挂在食材上，颜色更鲜亮；<strong>卤</strong>是用一锅"卤水"反复使用，水量多没过食材，长时间浸泡入味，剩下的卤水可以下次再用，越用越香。简单说：红烧像炒菜的延伸，卤像浸泡的延伸。</div>
+ </details>
+
+ <details>
+  <summary>炒糖色总是炒糊怎么办？</summary>
+  <div class="recipe-faq-answer">三个关键：<strong>全程小火</strong>、<strong>不停划动</strong>、<strong>颜色到位立即下一步</strong>。糖色从金黄到糊只有几秒钟，眼睛不能离开锅。如果总是失败，可以直接跳过这一步，焖煮时多加半茶匙老抽，颜色一样漂亮，只是少一点焦糖香气。新手不必为了"完美"逼自己。</div>
+ </details>
+
+ <details>
+  <summary>鸡翅炖久了肉会柴吗？</summary>
+  <div class="recipe-faq-answer">会。鸡翅比鸡腿薄，焖煮 15–18 分钟就够了，超过 25 分钟肉就开始发柴。判断标准：用筷子插进最厚的部位，能轻松穿过即可。如果不放心，第 15 分钟开盖看一眼，鸡皮已经皱起就说明熟了。</div>
+ </details>
+
+ <details>
+  <summary>鸡翅要不要划口子？</summary>
+  <div class="recipe-faq-answer">建议划。鸡皮致密，不划口子的话酱汁只能挂在表面，里面的肉吃起来没什么味道。划两刀（每面各两道、深半厘米）就能让酱汁渗到肉里，特别是骨头边的部分。</div>
+ </details>
+
+ <details>
+  <summary>剩下的酱汁可以怎么用？</summary>
+  <div class="recipe-faq-answer">最简单：拌饭、拌面。如果想升级一下，可以煮一把蔬菜（比如土豆、白萝卜、白菜帮）放进去再炖几分钟，吸饱酱汁就是一道独立的菜。注意红烧的酱汁不像卤汁那样适合长期保存——红烧酱汁含糖高、水少，建议当顿吃完。</div>
+ </details>
+
+</div>
+```

@@ -75,17 +75,31 @@
    <div class="step-head">
     <span class="step-num">05</span>
     <span class="step-title">爆香合炒</span>
-    <span class="step-time"><i data-lucide="clock"></i>5 分</span>
+    <span class="step-time"><i data-lucide="clock"></i>4 分</span>
    </div>
    <ol class="step-list">
     <li>锅中留底油，需要的话再补 1 汤匙食用油。下蒜片和葱白，中小火炒 10 秒。下干辣椒段，再炒 10 秒，闻到香味、辣椒微微发深即可。</li>
     <li>沥干的菜花倒入锅中，转大火翻炒 1 分钟，让菜花裹上油香。</li>
     <li>加入半汤匙生抽、半茶匙老抽和半茶匙盐，继续翻炒 30 秒。</li>
     <li>把之前盛出的肉片倒回锅中，快速翻炒 30 秒，让所有食材均匀混合。</li>
-    <li>关火，撒上葱绿，盛入盘中即可。</li>
    </ol>
    <div class="step-warn"><i data-lucide="triangle-alert"></i><span>干辣椒最怕炒糊，火稍微小一点。糊了会发苦，整道菜都会受影响。</span></div>
    <div class="step-tip"><i data-lucide="lightbulb"></i><span>老抽是上色用的，分量很少就够了。多了颜色会发暗，菜花的清爽感会被压住。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-6">
+  <div class="step-photo"><img src="/recipes/cauliflower-pork/images/plating.png" alt="出锅装盘"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">06</span>
+    <span class="step-title">出锅装盘</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分</span>
+   </div>
+   <ol class="step-list">
+    <li>关火，撒上葱绿，用余温稍微焖一下。</li>
+    <li>盛入盘中即可，趁热吃口感最好。</li>
+   </ol>
   </div>
  </article>
 

@@ -1,13 +1,14 @@
 ---
-title: "食谱"
+title: "菜谱"
 description: "胡平凡的日常食谱收藏"
 open-graph:
   image: images/card-recipes.png
 toc: false
 listing:
   contents: recipes
-  sort: "date desc"
+  sort: "sort-title asc"
   type: grid
+  grid-columns: 4
   categories: true
   sort-ui: false
   filter-ui: false

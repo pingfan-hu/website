@@ -50,6 +50,12 @@ website:
       - icon: file-slides
         href: talks.qmd
         text: Talks
+      - icon: journal-text
+        text: 杂记
+        menu:
+          - icon: cup-hot
+            text: 菜谱
+            href: recipes.qmd
 
     tools:
       - icon: linkedin

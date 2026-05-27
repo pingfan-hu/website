@@ -101,27 +101,21 @@
 
 // ---- Subpage Back Button ----
 // On any subpage under /<section>/... inject a "Back to <Section>" pill
-// above the page title. Section title and href are read from the navbar
-// entry by default. For sections intentionally kept off the navbar
-// (e.g. recipes), fall back to the EXTRA_SECTIONS map below.
+// above the page title. Section title and href are read from the navbar —
+// both top-level nav links and items nested inside a dropdown menu.
 (function () {
-  var EXTRA_SECTIONS = {
-    recipes: { href: '/recipes.html', title: 'Recipes' }
-  };
   function findSectionLink(section) {
-    var links = document.querySelectorAll('.navbar-nav .nav-link');
+    var links = document.querySelectorAll('.navbar-nav .nav-link, .navbar-nav .dropdown-item');
     for (var i = 0; i < links.length; i++) {
       var hrefAttr = links[i].getAttribute('href') || '';
       var basename = hrefAttr.split('/').pop().split('?')[0].split('#')[0].replace(/\.html$/, '');
       if (basename === section) {
         var menu = links[i].querySelector('.menu-text');
-        return {
-          href: hrefAttr,
-          title: menu ? menu.textContent.trim() : section
-        };
+        var title = menu ? menu.textContent.trim() : links[i].textContent.trim();
+        return { href: hrefAttr, title: title };
       }
     }
-    return EXTRA_SECTIONS[section] || null;
+    return null;
   }
   function addBackButton() {
     var match = window.location.pathname.match(/^\/([^\/]+)\/.+/);

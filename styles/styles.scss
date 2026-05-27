@@ -1375,6 +1375,19 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   padding: 0.2rem 0.55rem !important;
 }
 
+// Dropdown menu items inside the navbar: kill the default hover underline,
+// which only spans the text label and stops short of the icon — creating a
+// visual artifact where the line floats next to the icon glyph.
+.navbar .dropdown-menu .dropdown-item {
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &.active {
+    text-decoration: none;
+  }
+}
+
 .quarto-navbar-tools > a,
 .quarto-navbar-tools > .quarto-navbar-tool {
   padding: 0.2rem 0.45rem !important;

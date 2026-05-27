@@ -1,5 +1,6 @@
 ---
 title: "西红柿炖牛腩"
+sort-title: "xihongshidunniunan"
 image: "/recipes/banners/tomato-beef-brisket.png"
 date: "2026-05-27"
 categories: [汤炖, 牛肉]

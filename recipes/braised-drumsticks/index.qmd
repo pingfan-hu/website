@@ -1,5 +1,6 @@
 ---
 title: "卤鸡腿"
+sort-title: "lujitui"
 image: "/recipes/banners/braised-drumsticks.png"
 date: "2026-05-27"
 categories: [卤味, 鸡肉]
