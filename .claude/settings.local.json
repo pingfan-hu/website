@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//private/tmp/claude-image-gen/mcp-server/**)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(python3 -c ' *)",
+      "Bash(rm /Users/pingfan/Documents/GitHub/website/recipe/banners/generated-0cf46d36-9e75-4c2d-b1e4-2b20d5093525.jpg)"
+    ]
+  }
+}
