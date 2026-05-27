@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>菜花要不要焯水？</summary>
+  <div class="recipe-faq-answer">建议焯。直接炒的话需要更长时间，且不容易熟得均匀；焯过的菜花颜色更鲜亮，下锅几十秒就能完成，整道菜更脆嫩。如果赶时间，也可以在锅里加少量水盖盖子焖 1 分钟，效果接近。</div>
+ </details>
+
+ <details>
+  <summary>怎么让肉片嫩滑不柴？</summary>
+  <div class="recipe-faq-answer">三个关键：<strong>切薄</strong>（3 毫米以内）、<strong>淀粉抓码</strong>（让肉表面有一层薄浆锁住水分）、<strong>大火快炒</strong>（肉片下锅时间不要超过 1 分钟）。腌制时滴几滴油，下锅时肉片更容易散开不粘连。</div>
+ </details>
+
+ <details>
+  <summary>菜花炒后出水太多怎么办？</summary>
+  <div class="recipe-faq-answer">大概率是没沥干或者火不够大。焯水后一定要用漏勺充分沥干，最好抖一抖；翻炒时全程大火，水分能很快被蒸发掉。如果还是出水，最后阶段可以推到锅边，让中间的汤汁收一下。</div>
+ </details>
+
+ <details>
+  <summary>没有干辣椒可以省略吗？</summary>
+  <div class="recipe-faq-answer">可以，不影响这道菜的核心味道。喜欢更香一点的，可以换成几粒花椒在爆香阶段提味；做给小孩吃的话直接不放即可。</div>
+ </details>
+
+ <details>
+  <summary>用其他部位的猪肉可以吗？</summary>
+  <div class="recipe-faq-answer">可以，但口感会有差别。<strong>里脊</strong>最嫩；<strong>梅花肉</strong>带一点肥，更香；<strong>后腿肉</strong>纤维较粗，要切得更薄、腌得更久。避免用五花，肥肉太多会盖住菜花的清爽。</div>
+ </details>
+
+</div>
+```

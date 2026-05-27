@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/recipes/banners/cauliflower-pork.png" alt="菜花炒瘦肉">
+</div>
+```

@@ -1,0 +1,44 @@
+---
+title: "卤鸡腿"
+image: "/recipes/banners/braised-drumsticks.png"
+date: "2026-05-27"
+categories: [卤味, 鸡肉]
+description: "经典中式卤味，浓郁酱香、酥嫩入味的家常做法。一锅卤水还能顺手卤个蛋。"
+---
+
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+```
+
+{{< include html/hero.qmd >}}
+
+{{< include html/meta.qmd >}}
+
+## 食材
+
+{{< include html/ingredients.qmd >}}
+
+::: {.callout-note}
+**量勺换算**：1 汤匙 ≈ 15 毫升，1 茶匙 ≈ 5 毫升。
+:::
+
+## 步骤
+
+{{< include html/timeline.qmd >}}
+
+{{< include html/steps.qmd >}}
+
+## 配餐建议
+
+{{< include html/pairings.qmd >}}
+
+## 新手常见问题
+
+{{< include html/faq.qmd >}}
+
+```{=html}
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

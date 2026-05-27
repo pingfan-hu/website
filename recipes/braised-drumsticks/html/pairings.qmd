@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="wheat"></i></div>
+  <div class="pairing-label">白米饭</div>
+  <div class="pairing-desc">浓郁卤汁拌饭，每一口都饱满。</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="egg"></i></div>
+  <div class="pairing-label">卤蛋</div>
+  <div class="pairing-desc">和鸡腿同锅卤，零成本得到一锅两菜。</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="salad"></i></div>
+  <div class="pairing-label">凉拌青瓜</div>
+  <div class="pairing-desc">爽脆酸甜解腻，平衡卤味的甜咸厚重。</div>
+ </div>
+</div>
+```

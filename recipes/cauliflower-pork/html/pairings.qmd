@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="wheat"></i></div>
+  <div class="pairing-label">白米饭</div>
+  <div class="pairing-desc">最经典的搭配。汤汁拌饭，能吃两碗。</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="soup"></i></div>
+  <div class="pairing-label">紫菜蛋花汤</div>
+  <div class="pairing-desc">清淡的汤平衡咸鲜的炒菜，喝一口暖胃。</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="salad"></i></div>
+  <div class="pairing-label">凉拌黄瓜</div>
+  <div class="pairing-desc">爽脆开胃。和这道菜的干香互为补充。</div>
+ </div>
+</div>
+```

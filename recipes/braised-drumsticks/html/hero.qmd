@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/recipes/banners/braised-drumsticks.png" alt="卤鸡腿">
+</div>
+```

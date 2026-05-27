@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>鸡腿要不要焯水？</summary>
+  <div class="recipe-faq-answer">要。鸡腿冷水下锅焯一遍是去腥的关键步骤，能逼出血水和杂质。焯水时<strong>一定用冷水下锅</strong>——热水会让肉表面立刻收紧，血水反而锁在里面，腥味去不掉。</div>
+ </details>
+
+ <details>
+  <summary>炒糖色总是炒糊怎么办？</summary>
+  <div class="recipe-faq-answer">三个关键：<strong>全程小火</strong>、<strong>不停划动</strong>、<strong>颜色到位立即下一步</strong>。糖色从金黄到糊只有几秒钟，眼睛不能离开锅。新手可以把后续的姜葱和香料提前备好放在锅边，糖色一变深就直接下锅。万一炒糊了，整锅倒掉重来，糊味无法挽救。</div>
+ </details>
+
+ <details>
+  <summary>没有冰糖可以用白糖代替吗？</summary>
+  <div class="recipe-faq-answer">可以，但风味会差一点。冰糖炒出的糖色更亮、回味更清甜；白糖容易发苦。如果只有白糖，用量减到 20 克，火更要小心。最理想还是冰糖，普通超市都有，常备一袋。</div>
+ </details>
+
+ <details>
+  <summary>卤了之后颜色太浅怎么办？</summary>
+  <div class="recipe-faq-answer">两个补救：第一，<strong>多焖一会</strong>，颜色会随着时间继续加深；第二，<strong>补一点老抽</strong>（半茶匙起步），翻面让上色均匀。注意老抽是上色用的，不要倒太多，否则会发咸发苦。</div>
+ </details>
+
+ <details>
+  <summary>没吃完的卤汁可以重复使用吗？</summary>
+  <div class="recipe-faq-answer">可以，而且越用越香——这就是所谓的"老卤"。把香料渣过滤掉，汤汁冷藏保存，三五天内用完。再次使用前烧开消毒，可以补一点生抽、糖、盐调味。下次可以卤鸡蛋、豆干、藕片、五花肉等等。如果短期不用，分装冷冻可以保存一两个月。</div>
+ </details>
+
+</div>
+```

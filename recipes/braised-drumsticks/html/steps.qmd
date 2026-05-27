@@ -1,0 +1,108 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/recipes/braised-drumsticks/images/prep.png" alt="准备食材"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">准备食材</span>
+    <span class="step-time"><i data-lucide="clock"></i>5 分</span>
+   </div>
+   <ol class="step-list">
+    <li>鸡小腿用清水冲洗干净，在肉厚的地方用刀划两三道，方便入味。</li>
+    <li>姜切片，葱切段（葱白和葱绿都用上），蒜整瓣拍裂。</li>
+    <li>八角、香叶、桂皮、花椒、干辣椒备好放在一起。</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>划刀很关键。完整的鸡腿表皮太致密，卤汁很难渗进去，划两刀就能彻底入味。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/recipes/braised-drumsticks/images/blanching.png" alt="焯水鸡腿"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">焯水鸡腿</span>
+    <span class="step-time"><i data-lucide="clock"></i>5 分</span>
+   </div>
+   <ol class="step-list">
+    <li>鸡腿冷水下锅，加 2 片姜和 1 汤匙料酒。</li>
+    <li>中火慢慢加热到沸腾，表面会浮起一层灰褐色的浮沫。</li>
+    <li>用勺子撇干净浮沫，再煮 1 分钟。捞出鸡腿用温水冲洗一下，沥干备用。</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>必须冷水下锅。热水会让肉表面立刻收紧，血水反而锁在里面，腥味去不掉。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/recipes/braised-drumsticks/images/caramel-sugar.png" alt="炒糖色"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">炒糖色</span>
+    <span class="step-time"><i data-lucide="clock"></i>3 分</span>
+   </div>
+   <ol class="step-list">
+    <li>锅中倒 1 汤匙食用油，小火加热，下入 30 克冰糖。</li>
+    <li>用铲子不停地划动，让冰糖慢慢融化。</li>
+    <li>糖液会经历：透明 → 浅黄 → 金黄 → 深琥珀色冒小泡。看到颜色变成枣红色、表面起细密小泡时，立刻进入下一步。</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>炒糖色全程小火，眼睛不要离开锅。颜色变化的最后几秒非常快，一愣神就糊了发苦。新手宁可稍浅，老抽可以补色，但糊味救不回来。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/recipes/braised-drumsticks/images/searing.png" alt="爆香煸炒"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">爆香煸炒</span>
+    <span class="step-time"><i data-lucide="clock"></i>4 分</span>
+   </div>
+   <ol class="step-list">
+    <li>糖色一变深，立刻下姜片、葱段、蒜瓣，转中火。翻炒 10 秒，再下八角、香叶、桂皮、花椒和干辣椒。</li>
+    <li>继续翻炒 20–30 秒，闻到浓郁的香料味即可。</li>
+    <li>沥干的鸡腿下锅，转中大火翻炒，让每只鸡腿的表面都裹上糖色和香料。</li>
+    <li>炒到鸡皮表面均匀上色、稍微紧致即可。</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>糖色到位后香料下锅的时机很关键，糖色再煮十几秒就会过焦。先备好香料碟、伸手就能拿到。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-5">
+  <div class="step-photo"><img src="/recipes/braised-drumsticks/images/braising.png" alt="加水焖煮"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">05</span>
+    <span class="step-title">加水焖煮</span>
+    <span class="step-time"><i data-lucide="clock"></i>40 分</span>
+   </div>
+   <ol class="step-list">
+    <li>倒入热水，水量没过鸡腿。</li>
+    <li>加入 3 汤匙生抽、1 汤匙老抽、1 汤匙料酒、1 茶匙盐。</li>
+    <li>大火烧开后转小火，盖上锅盖焖煮 35–40 分钟。期间可以翻一次面，让上色更均匀。</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>必须加热水。冷水会让肉骤然收紧，影响口感和入味。这一步如果想顺手卤个蛋，可以把煮熟剥壳的鸡蛋一起放进去。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-6">
+  <div class="step-photo"><img src="/recipes/braised-drumsticks/images/plating.png" alt="收汁出锅"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">06</span>
+    <span class="step-title">收汁出锅</span>
+    <span class="step-time"><i data-lucide="clock"></i>5 分</span>
+   </div>
+   <ol class="step-list">
+    <li>开盖转大火，让汤汁咕嘟咕嘟地翻滚收浓。</li>
+    <li>不停地用勺子把汤汁淋在鸡腿上，等汤汁变得粘稠、油亮发光时关火。</li>
+    <li>夹出鸡腿装盘，淋上少许卤汁，撒一点葱花点缀。</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>剩下的卤汁千万别倒。过滤掉香料、放凉后冷藏，下次可以再卤鸡蛋、豆干、藕片等等，越用越香。</span></div>
+  </div>
+ </article>
+
+</div>
+```
