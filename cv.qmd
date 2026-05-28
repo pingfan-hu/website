@@ -1,5 +1,7 @@
 ---
-format: cv-pdf
+format:
+  typst:
+    font-paths: fonts
 execute:
   warning: false
   echo: false
@@ -7,131 +9,216 @@ execute:
   eval: true
 ---
 
-\par\centering{\LARGE{Pingfan Hu}}
-\par\centering{Engineering Management and Systems Engineering}
-\vspace{-5pt}
-\par\centering{The George Washington University, Washington, DC, USA}
-\vspace{5pt}
-\begin{center}
-\renewcommand{\arraystretch}{0.9}
-\begin{tabular}{@{}r@{\hspace{6pt}}l@{}}
-{\large\liMapPin} & Greater Melbourne, Australia \\
-{\large\liPhone}  & +61 431 251 227 \\
-{\large\liMail}   & \href{mailto:pingfan0727@gmail.com}{pingfan0727@gmail.com} \\
-{\large\liCompass}  & \href{http://www.pingfanhu.com}{www.pingfanhu.com} \\
-\end{tabular}
-\end{center}
+```{=typst}
+// === PAGE ===
+#set page(
+  paper: "a4",
+  fill: rgb("#F8F7F0"),
+  margin: (top: 0.9in, bottom: 0.5in, left: 1in, right: 1in),
+  footer: context {
+    set text(size: 8pt, fill: rgb("#666"), style: "italic")
+    let updated = datetime.today().display(
+      "Updated [month repr:long] [day padding:none], [year]"
+    )
+    grid(
+      columns: (1fr, 1fr, 1fr),
+      align(left)[#updated],
+      align(center)[Page #counter(page).display() of #counter(page).final().last()],
+      align(right)[#link("https://pingfanhu.com")[pingfanhu.com]],
+    )
+  },
+)
 
-## EDUCATION
+#set text(font: ("Optima", "Helvetica Neue", "Arial"), size: 11pt)
+#set par(leading: 0.55em, justify: false, spacing: 0pt)
+#set block(spacing: 0pt)
 
-\begin{longtable}{l@{\hspace{2pt}}lll}
+// === SPACING KNOBS ===
+#let gap = 6pt
+#let entry-gap = 3pt
 
-    & 2026 & \textbf{George Washington University}, Washington, D.C. & Ph.D. Systems Engineering\\
+// === LISTS & TABLES ===
+#show list: set block(spacing: 0.4em)
+#show list: set par(leading: 0.45em)
+#set list(indent: 1em, body-indent: 0.5em, marker: ([•]), spacing: 0.5em)
 
-    \multicolumn{4}{l}{\hspace{1em}\small Proposal: \emph{EV Smart Charging Adoption, Grid Peak-Shaving, \& the \texttt{surveydown} Survey Platform}}\\
+#show enum: set block(spacing: 0.4em)
+#show enum: set par(leading: 0.45em)
+#set enum(indent: 1em, body-indent: 0.5em, spacing: 0.5em)
 
-    \multicolumn{4}{l}{\hspace{1em}\small Doctoral Committee: \emph{John Paul Helveston, Caitlin Grady, Johan René van Dorp, \& Eric Hittinger}}\\[5pt]
+#show list: it => { it; v(gap) }
+#show enum: it => { it; v(gap) }
+#show table: it => { v(3pt); it; v(gap) }
 
-    & 2018 & \textbf{University of Sydney}, Sydney, NSW, Australia & M.P.E. Mechanical Engineering\\
+// Navy-blue links
+#show link: set text(fill: rgb(0%, 20%, 60%))
 
-    & 2015 & \textbf{Pennsylvania State University}, State College, PA & B.S. Industrial Engineering\\
+// Monospace font for inline code spans
+#show raw: set text(font: "Maple Mono NF", size: 0.92em)
 
-\end{longtable}
+// === LUCIDE ICONS ===
+#let li(code) = box(baseline: 1.1em)[#text(font: "lucide", size: 9pt, code)]
+#let liMapPin = li("\u{E111}")
+#let liMail = li("\u{E10F}")
+#let liPhone = li("\u{E133}")
+#let liCompass = li("\u{E09B}")
 
-\vspace{-10pt}
+// === HELPERS ===
+// Section header with underline rule.
+#let section(name) = {
+  text(size: 12pt, weight: "bold")[#upper[#name]]
+  v(5pt)
+  line(length: 100%, stroke: 0.5pt + rgb("#888"))
+  v(gap)
+}
 
-## RESEARCH INTERESTS
+// Subsection header - bold, no rule.
+#let subsection(name) = {
+  text(size: 11pt, weight: "bold")[#name]
+  v(4pt)
+}
 
-- **Open-source Survey Platform**: Development of `surveydown`, an open-source, feature-packed \faIcon{r-project} package for programmable and reproducible surveys, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend.
-- **Companion Survey Tool**: Development of `sdstudio`, a companion \faIcon{r-project} package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases.
-- **Electric Vehicle Smart Charging Adoption**: Survey fielding and modeling on electric vehicle owners' preferences and sensitivities of smart charging programs, including supplier-managed charging and vehicle-to-grid.
-- **Grid Peak-Shaving Cost Efficiency**: Deterministic simulation of residential BEV charging load on CAISO and NYISO grid baselines, quantifying peak reduction potential and program cost efficiency across TOU configurations, adoption levels, and enrollment scenarios.
+// === HEADER ===
+#align(center)[
+  #text(size: 18pt)[Pingfan Hu]
+]
 
-## HONORS & AWARDS
+#v(6pt)
 
-- [2025](https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible): Profiled by GW Engineering for contributing to the `surveydown` platform.
-- [2024](https://ospo.gwu.edu/2024-student-open-source-award-winners): 2nd Prize in GW's 2024 Student Open Source Awards for the `surveydown` \faIcon{r-project} package.
+#align(center)[
+  Engineering Management and Systems Engineering
+]
 
-## PUBLICATIONS
+#v(2pt)
 
-\par\centering{ORCID: \href{https://orcid.org/0009-0001-4877-4844}{0009-0001-4877-4844} | \href{https://scholar.google.com/citations?hl=en\&user=cHRn7ysAAAAJ}{Google Scholar Profile}}
+#align(center)[
+  The George Washington University, Washington, DC, USA
+]
 
-\vspace{-10pt}
+#v(10pt)
 
-### A. JOURNAL ARTICLES
+#align(center)[
+  #grid(
+    columns: (auto, auto),
+    column-gutter: 6pt,
+    row-gutter: 3pt,
+    align: (right + horizon, left + horizon),
+    liMapPin, [Greater Melbourne, Australia],
+    liPhone, [+61 431 251 227],
+    liMail, [#link("mailto:pingfan0727@gmail.com")[pingfan0727\@gmail.com]],
+    liCompass, [#link("https://www.pingfanhu.com")[www.pingfanhu.com]],
+  )
+]
 
-1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "`surveydown`: An open-source, markdown-based platform for programmable and reproducible surveys" *PLOS ONE*. 20(8). DOI: [10.1371/journal.pone.0331002](https://doi.org/10.1371/journal.pone.0331002)
+#v(10pt)
 
-2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring electric vehicle owners' willingness to participate in smart charging programs". *Environmental Research Letters*. DOI: [10.1088/1748-9326/ae2597](https://doi.org/10.1088/1748-9326/ae2597)
+#section[Education]
 
-### B. CONFERENCE PROCEEDINGS
+#align(center)[
+  #table(
+    columns: (auto, auto, auto, auto),
+    stroke: none,
+    inset: (x: 0pt, y: 2pt),
+    column-gutter: 10pt,
+    align: left,
+    [2026], [*George Washington University*, Washington, D.C.], [Ph.D.], [Systems Engineering],
+    table.cell(colspan: 4)[#h(1em)#text(size: 10pt)[Proposal: _EV Smart Charging Adoption, Grid Peak-Shaving, & the `surveydown` Survey Platform_]],
+    table.cell(colspan: 4)[#h(1em)#text(size: 10pt)[Doctoral Committee: _John Paul Helveston, Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
+    [2018], [*University of Sydney*, Sydney, NSW, Australia], [M.P.E.], [Mechanical Engineering],
+    [2015], [*Pennsylvania State University*, State College, PA], [B.S.], [Industrial Engineering],
+  )
+]
 
-1. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" (Paper No. TRBAM-25-01317). Paper accepted for presentation at the Transportation Research Board 104th Annual Meeting, Washington, D.C.
-2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2024). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" *2024 IEEE Vehicle Power and Propulsion Conference (VPPC)*. 1–17. DOI: [10.1109/VPPC63154.2024.10755299](https://doi.org/10.1109/VPPC63154.2024.10755299)
+#v(5pt)
 
-\vspace{-10pt}
+#section[Research Interests]
 
-### C. WORKING PAPERS & PAPERS UNDER REVIEW
+- *Open-source Survey Platform*: Development of `surveydown`, an open-source, feature-packed R package for programmable and reproducible surveys, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend.
+- *Companion Survey Tool*: Development of `sdstudio`, a companion R package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases.
+- *Electric Vehicle Smart Charging Adoption*: Survey fielding and modeling on electric vehicle owners' preferences and sensitivities of smart charging programs, including supplier-managed charging and vehicle-to-grid.
+- *Grid Peak-Shaving Cost Efficiency*: Deterministic simulation of residential BEV charging load on CAISO and NYISO grid baselines, quantifying peak reduction potential and program cost efficiency across TOU configurations, adoption levels, and enrollment scenarios.
 
-1. **Hu, P.**, Bunea, B., & Helveston, J. P. (2025). "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys." *Working paper*.
-2. **Hu, P.**, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential of electric vehicle supplier-managed charging." *Working paper*.
+#section[Honors & Awards]
 
-\vspace{-10pt}
+- #link("https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible")[2025]: Profiled by GW Engineering for contributing to the `surveydown` platform.
+- #link("https://ospo.gwu.edu/2024-student-open-source-award-winners")[2024]: 2nd Prize in GW's 2024 Student Open Source Awards for the `surveydown` R package.
 
-### D. SOFTWARE
+#section[Publications]
 
-1. **Hu, P.** (aut,cre,cph) (2026) "`MiniNotes`: An Obsidian-compatible macOS menu bar Markdown note app" macOS application.
-2. **Hu, P.** (aut,cre,cph) (2025) "`TidyViz`: A Python package for tidying and visualizing survey data.
-3. **Hu, P.** (aut,cre,cph) (2025) "`MiniCalendar`: A free and open-source mini menu bar calendar" macOS application.
-4. **Hu, P.** (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "`sdstudio`: Companion Application for the `surveydown` Survey Platform" \faIcon{r-project} package.
-5. Helveston, J. P. (aut,cre,cph), **Hu, P.** (aut,cre), Bogdan Bunea (aut,cre) (2024) "`surveydown`: Markdown-Based Surveys Using Quarto Shiny Documents" \faIcon{r-project} package.
+#align(center)[
+  ORCID: #link("https://orcid.org/0009-0001-4877-4844")[0009-0001-4877-4844] | #link("https://scholar.google.com/citations?hl=en&user=cHRn7ysAAAAJ")[Google Scholar Profile]
+]
 
-## PRESENTATIONS
+#v(gap)
 
-### A. CONFERENCES
+#subsection[A. Journal Articles]
 
-1. "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys". GW Open Source Conference 2026. Washington, DC. Mar 23, 2026.
-2. "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys". Quant UX Con 2025. Virtual. Nov 05, 2025.
-3. "`surveydown`: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
-4. "`surveydown`: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny", with John Paul Helveston. Posit Conference 2025 — The \faIcon{r-project} & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
-5. "Grid-Integration of Electric Vehicles: Consumer Preferences for Supplier Managed Charging". Bridging Transportation Researchers 7. Virtual. Aug 06, 2025.
-6. "`surveydown`: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys". GW Open Source Conference 2025. Washington, DC. Mar 24, 2025.
-7. "Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs", with Brian Tarroja Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. 2024 IEEE Vehicle Power and Propulsion Conference (VPPC). Washington, DC. Oct 03, 2024.
++ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "`surveydown`: An open-source, markdown-based platform for programmable and reproducible surveys" _PLOS ONE_. 20(8). DOI: #link("https://doi.org/10.1371/journal.pone.0331002")[10.1371/journal.pone.0331002]
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring electric vehicle owners' willingness to participate in smart charging programs". _Environmental Research Letters_. DOI: #link("https://doi.org/10.1088/1748-9326/ae2597")[10.1088/1748-9326/ae2597]
 
-### B. POSTERS
+#subsection[B. Conference Proceedings]
 
-1. "Peak-Shaving Potential and Cost Efficiency". GW 2026 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 24, 2026.
-2. "`surveydown`: An Open-Source, Markdown-Based Survey Platform". GW 2025 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
-3. "Electric Vehicle Owner Preferences for Smart Charging". GW 2025 R\&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
-4. "The BEV Smart Charging Adoption Project". 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 06, 2025.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" (Paper No. TRBAM-25-01317). Paper accepted for presentation at the Transportation Research Board 104th Annual Meeting, Washington, D.C.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2024). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" _2024 IEEE Vehicle Power and Propulsion Conference (VPPC)_. 1–17. DOI: #link("https://doi.org/10.1109/VPPC63154.2024.10755299")[10.1109/VPPC63154.2024.10755299]
 
-## TEACHING
+#subsection[C. Working Papers & Papers Under Review]
 
-### A. TEACHING ASSISTANTSHIPS
++ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys." _Working paper_.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential of electric vehicle supplier-managed charging." _Working paper_.
+
+#subsection[D. Software]
+
++ *Hu, P.* (aut,cre,cph) (2026) "`MiniNotes`: An Obsidian-compatible macOS menu bar Markdown note app" macOS application.
++ *Hu, P.* (aut,cre,cph) (2025) "`TidyViz`: A Python package for tidying and visualizing survey data."
++ *Hu, P.* (aut,cre,cph) (2025) "`MiniCalendar`: A free and open-source mini menu bar calendar" macOS application.
++ *Hu, P.* (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "`sdstudio`: Companion Application for the `surveydown` Survey Platform" R package.
++ Helveston, J. P. (aut,cre,cph), *Hu, P.* (aut,cre), Bogdan Bunea (aut,cre) (2024) "`surveydown`: Markdown-Based Surveys Using Quarto Shiny Documents" R package.
+
+#section[Presentations]
+
+#subsection[A. Conferences]
+
++ "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys". GW Open Source Conference 2026. Washington, DC. Mar 23, 2026.
++ "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys". Quant UX Con 2025. Virtual. Nov 05, 2025.
++ "`surveydown`: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
++ "`surveydown`: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny", with John Paul Helveston. Posit Conference 2025 - The R & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
++ "Grid-Integration of Electric Vehicles: Consumer Preferences for Supplier Managed Charging". Bridging Transportation Researchers 7. Virtual. Aug 06, 2025.
++ "`surveydown`: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys". GW Open Source Conference 2025. Washington, DC. Mar 24, 2025.
++ "Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs", with Brian Tarroja, Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. 2024 IEEE Vehicle Power and Propulsion Conference (VPPC). Washington, DC. Oct 03, 2024.
+
+#subsection[B. Posters]
+
++ "Peak-Shaving Potential and Cost Efficiency". GW 2026 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 24, 2026.
++ "`surveydown`: An Open-Source, Markdown-Based Survey Platform". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
++ "Electric Vehicle Owner Preferences for Smart Charging". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
++ "The BEV Smart Charging Adoption Project". 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 06, 2025.
+
+#section[Teaching]
+
+#subsection[A. Teaching Assistantships]
 
 - Fall 2025 - EMSE 4572 / 6572: Exploratory Data Analysis
 - Spring 2025 - EMSE 4571: Programming for Analytics
 
-\vspace{-10pt}
+#subsection[B. Workshops]
 
-### B. WORKSHOPS
+- "Agentic Engineering", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Expected Jul 2026. #link("https://pingfan-hu.github.io/2026-agentic-engineering-workshop/")[pingfan-hu.github.io/2026-agentic-engineering-workshop].
+- "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. #link("https://jhelvy.github.io/2025-qux-surveydown-workshop/")[jhelvy.github.io/2025-qux-surveydown-workshop].
+- "`surveydown`: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. #link("https://jhelvy.github.io/2025-surveydown-workshop/")[jhelvy.github.io/2025-surveydown-workshop].
 
-- "Agentic Engineering", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Expected Jul 2026. [pingfan-hu.github.io/2026-agentic-engineering-workshop](https://pingfan-hu.github.io/2026-agentic-engineering-workshop/).
-- "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. [jhelvy.github.io/2025-qux-surveydown-workshop/](https://jhelvy.github.io/2025-qux-surveydown-workshop/).
-- "`surveydown`: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. [jhelvy.github.io/2025-surveydown-workshop](https://jhelvy.github.io/2025-surveydown-workshop/).
-
-## ORGANIZATION MEMBERSHIPS
+#section[Organization Memberships]
 
 - Institute of Electrical and Electronics Engineers (IEEE)
 - Transportation Research Board (TRB)
 
-## INDUSTRY EXPERIENCES
+#section[Industry Experiences]
 
-- Software Engineer at *Harsco Rail*. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
-- Project Engineer at *GE Appliances*. Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs. Qingdao, China (2019 - 2020).
-- Assistant Process Engineer (Intern) at *Kurtz Ersa GmbH*. Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first Asian market promotion video on YouTube. Wertheim, Germany (Jan. - Mar. 2017).
+- Software Engineer at _Harsco Rail_. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
+- Project Engineer at _GE Appliances_. Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs. Qingdao, China (2019 - 2020).
+- Assistant Process Engineer (Intern) at _Kurtz Ersa GmbH_. Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first Asian market promotion video on YouTube. Wertheim, Germany (Jan. - Mar. 2017).
 
-## SKILLS
+#section[Skills]
+```
 
 - **Languages**: English (*Proficient*), Chinese (*Native*).
 

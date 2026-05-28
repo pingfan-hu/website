@@ -54,6 +54,9 @@ execute:
 // Navy-blue links
 #show link: set text(fill: rgb(0%, 20%, 60%))
 
+// Monospace font for inline code spans
+#show raw: set text(font: "Maple Mono NF", size: 0.92em)
+
 // === LUCIDE ICONS ===
 #let li(code) = box(baseline: 0.2em)[#text(font: "lucide", size: 9pt, code)]
 #let liMapPin = li("\u{E111}")
