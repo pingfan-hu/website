@@ -1,6 +1,11 @@
 /*-- scss:defaults --*/
 $primary: #5654A2;
 $code-color: #ED6D46;
+$dropdown-bg: #F8F7F0;
+$dropdown-link-hover-bg: #EEEDF8;
+$dropdown-link-hover-color: #5654A2;
+$dropdown-link-active-bg: #EEEDF8;
+$dropdown-link-active-color: #5654A2;
 
 /*-- scss:rules --*/
 
@@ -1375,11 +1380,30 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   padding: 0.2rem 0.55rem !important;
 }
 
-// Dropdown menu items inside the navbar: kill the default hover underline,
-// which only spans the text label and stops short of the icon — creating a
-// visual artifact where the line floats next to the icon glyph.
+// Dropdown menu inside the navbar. Default Bootstrap dropdowns stretch to a
+// 10rem min-width and left-align items, which looks awkward for short labels
+// like "菜谱". Shrink to fit content and center each item.
+.navbar .dropdown-menu {
+  min-width: 0;
+  width: max-content;
+  padding: 0;
+  // Bootstrap's real 1px border curves at the outer radius while overflow:hidden
+  // clips children at the inner (radius - 1px), so the two curves disagree and
+  // leave white slivers at the corners on hover. Paint the divider as an outset
+  // box-shadow instead. Inset works in Chromium/Gecko but Safari paints child
+  // backgrounds over the inset ring, so use outset — sits outside the element,
+  // unaffected by overflow:hidden, and shares the same border-radius as the fill.
+  border: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
 .navbar .dropdown-menu .dropdown-item {
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.9rem;
 
   &:hover,
   &:focus,
