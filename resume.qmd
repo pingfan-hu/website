@@ -1,13 +1,7 @@
 ---
 format:
-  cv-pdf:
-    fontsize: 10pt
-    geometry:
-      - top=0.4in
-      - bottom=0.2in
-      - left=0.6in
-      - right=0.6in
-      - includefoot
+  typst:
+    font-paths: fonts
 execute:
   warning: false
   echo: false
@@ -15,83 +9,180 @@ execute:
   eval: true
 ---
 
-\par\centering{\Large{\textbf{Pingfan Hu}}}
-\par\centering{\raisebox{-0.05em} {\large\liMapPin} Greater Melbourne, Australia | \raisebox{-0.12em}{\large\liMail} \href{mailto:pingfan0727@gmail.com}{pingfan0727@gmail.com} | \raisebox{-0.12em}{\large\liPhone} +61 431 251 227 | \raisebox{-0.12em}{\large\liCompass} \href{http://www.pingfanhu.com}{pingfanhu.com}}
+```{=typst}
+// === PAGE ===
+#set page(
+  paper: "a4",
+  fill: rgb("#F8F7F0"),
+  margin: (top: 0.3in, bottom: 0.6in, left: 0.6in, right: 0.6in),
+  footer: context {
+    set text(size: 8pt, fill: rgb("#666"), style: "italic")
+    let updated = datetime.today().display(
+      "Updated [month repr:long] [day padding:none], [year]"
+    )
+    grid(
+      columns: (1fr, 1fr, 1fr),
+      align(left)[#updated],
+      align(center)[Page #counter(page).display() of #counter(page).final().last()],
+      align(right)[#link("https://pingfanhu.com")[pingfanhu.com]],
+    )
+  },
+)
 
-\vspace{-15pt}
+#set text(font: ("Optima", "Helvetica Neue", "Arial"), size: 10pt)
+#set par(leading: 0.5em, justify: false, spacing: 0pt)
+#set block(spacing: 0pt)
 
-### EDUCATION
+// === SPACING KNOBS ===
+// `gap` controls every major boundary (above sections, below section rules,
+// between lists/tables/entries). Tune this one value to tighten or loosen
+// the whole resume. `entry-gap` is the tighter gap from an entry title to
+// its first bullet.
+#let gap = 5pt
+#let entry-gap = 2pt
 
-\vspace{-10pt}
+// === LISTS & TABLES ===
+#show list: set block(spacing: 0.25em)
+#show list: set par(leading: 0.35em)
+#set list(indent: 1em, body-indent: 0.4em, marker: ([•]))
 
-\begin{longtable}{l@{\hspace{2pt}}lllll}
+// Lists/tables emit `gap` AFTER themselves so the gap to the next block is
+// always `gap`. Tables also get a small lead-in for breathing room.
+#show list: it => { it; v(gap) }
+#show table: it => { v(3pt); it; v(gap) }
 
-    & 2026 & \textbf{George Washington University} & Ph.D. & Systems Engineering & GPA 4.0\\
+// Navy-blue links
+#show link: set text(fill: rgb(0%, 20%, 60%))
 
-    & 2018 & \textbf{University of Sydney} & M.P.E. & Mechanical Engineering & GPA 3.5\\
+// === LUCIDE ICONS ===
+#let li(code) = box(baseline: 0.2em)[#text(font: "lucide", size: 9pt, code)]
+#let liMapPin = li("\u{E111}")
+#let liMail = li("\u{E10F}")
+#let liPhone = li("\u{E133}")
+#let liCompass = li("\u{E09B}")
 
-    & 2015 & \textbf{Pennsylvania State University} & B.S. & Industrial Engineering & GPA 3.2
+// === HELPERS ===
+// Section header with underline rule.
+#let section(name) = {
+  text(size: 11pt, weight: "bold")[#upper[#name]]
+  v(4pt)
+  line(length: 100%, stroke: 0.5pt + rgb("#888"))
+  v(gap)
+}
 
-\end{longtable}
+// Project/general entry — title left, dates right.
+#let entry(title, dates) = {
+  grid(
+    columns: (1fr, auto),
+    align: (left, right),
+    title, text(weight: "regular")[#dates],
+  )
+  v(entry-gap)
+}
 
-\vspace{-32pt}
+// Work entry — fixed-width left column so locations line up across rows.
+#let work-entry(company-role, location, dates) = {
+  grid(
+    columns: (50%, 1fr, auto),
+    align: (left, left, right),
+    company-role,
+    text(weight: "regular")[#location],
+    text(weight: "regular")[#dates],
+  )
+  v(entry-gap)
+}
 
-### SKILLS
+// === HEADER ===
+#align(center)[
+  #text(size: 14pt, weight: "bold")[Pingfan Hu]
+]
+
+#v(6pt)
+
+#align(center)[
+  #text(size: 9pt)[
+    #liMapPin~Greater Melbourne, Australia
+    ~|~
+    #liMail~#link("mailto:pingfan0727@gmail.com")[pingfan0727\@gmail.com]
+    ~|~
+    #liPhone~+61 431 251 227
+    ~|~
+    #liCompass~#link("https://www.pingfanhu.com")[pingfanhu.com]
+  ]
+]
+
+#v(5pt)
+
+#section[Education]
+
+#align(center)[
+  #table(
+    columns: (auto, auto, auto, auto, auto),
+    stroke: none,
+    inset: (x: 0pt, y: 2pt),
+    column-gutter: 14pt,
+    align: left,
+    [2026], [*George Washington University*], [Ph.D.], [Systems Engineering], [GPA 4.0],
+    [2018], [*University of Sydney*], [M.P.E.], [Mechanical Engineering], [GPA 3.5],
+    [2015], [*Pennsylvania State University*], [B.S.], [Industrial Engineering], [GPA 3.2],
+  )
+]
+
+#section[Skills]
+```
 
 {{< include /chunks/skills.qmd >}}
 
-\vspace{-11pt}
+```{=typst}
+#section[#link("https://pingfanhu.com/projects")[Projects]]
 
-### [PROJECTS](https://pingfanhu.com/projects)
-
-**`surveydown` Survey Platform** - *Flagship Project of the Helveston Lab at GWU* \hfill 2024-2025
+#entry[*`surveydown` Survey Platform* - _Flagship Project of the Helveston Lab at GWU_][2024-2025]
 
 - Developed `surveydown`, an open-source, feature-packed R package for programmable and reproducible surveys, combining Quarto, Shiny, and PostgreSQL.
 - Implemented UI/UX design, SQL and survey templates.
 - Achieved 170+ stars on GitHub and 8000+ downloads on CRAN.
-- Published a journal article in *PLOS One* as 1st author with 1000+ views.
+- Published a journal article in _PLOS One_ as 1st author with 1000+ views.
 - Presented at Posit Conference, USRSE, and GW OSCON in 2025.
 - Awarded 2nd prize at GW OSPO and profiled by GW Engineering.
 
-**`sdstudio` Survey GUI** - *Companion Project of `surveydown`* \hfill 2025-2026
+#entry[*`sdstudio` Survey GUI* - _Companion Project of `surveydown`_][2025-2026]
 
 - Developed `sdstudio` as GUI and SQL support to `surveydown`.
 - Implemented UI/UX design for survey preview and SQL visualization.
 - Achieved 1200+ downloads on CRAN.
 - Presented at GW OSCON 2026.
 
-**BEV Smart Charging Adoption Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2023-2024
+#entry[*BEV Smart Charging Adoption Project* - _Joint Project between GWU, UC Davis & UC Irvine_][2023-2024]
 
 - Performed survey fielding, data wrangling, and discrete choice modeling.
 - Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality.
 - Leveraged mixed logit models for consumer preferences and sensitivities to various smart charging program attributes.
-- Published a journal article in *IOP Science* and a conference paper in *IEEE* as 1st author with 300+ views altogether.
+- Published a journal article in _IOP Science_ and a conference paper in _IEEE_ as 1st author with 300+ views altogether.
 - Presented at TRB 2024.
 
-**Smart Charging Cost-Efficiency Project** - *Joint Project between GWU, UC Davis & UC Irvine* \hfill 2025-2026
+#entry[*Smart Charging Cost-Efficiency Project* - _Joint Project between GWU, UC Davis & UC Irvine_][2025-2026]
 
 - Built a scenario-based simulation of 10,000 BEVs with travel patterns from the National Household Travel Survey.
 - Processed time series grid net load data from GridStatus.io for CAISO and NYISO to construct regional baselines.
 - Swept across 5 TOU windows and 11 enrollment levels to quantify peak-shaving potential and cost efficiency.
 - Proposing a journal paper to Nature Energy.
-- Presented at GW 2026 R\&D and Senior Design Showcase.
+- Presented at GW 2026 R&D and Senior Design Showcase.
 
-\vspace{-11pt}
+#section[Work Experience]
 
-### WORK EXPERIENCE
-
-\makebox[0.5\textwidth][l]{\textbf{Harsco Rail} - \textit{Software Engineer}} \mbox{\large\liMapPin}\hspace{4pt}SC, USA \& Beijing, China \hfill 2021 - 2022
+#work-entry[*Harsco Rail* - _Software Engineer_][#liMapPin~SC, USA & Beijing, China][2021 - 2022]
 
 - Led cross-border Switch Undercutter and Grinder software projects, achieving 25 software releases while providing critical on-site technical support.
 - Combined expertise in embedded C++ coding, CAN bus communication systems, and mechanical design with project management skills to track and deliver complex initiatives.
 
-\makebox[0.5\textwidth][l]{\textbf{GE Appliances} - \textit{Project Engineer}} \mbox{\large\liMapPin}\hspace{4pt}Qingdao, China \hfill 2019 - 2020
+#work-entry[*GE Appliances* - _Project Engineer_][#liMapPin~Qingdao, China][2019 - 2020]
 
 - Managed 500+ components across 9 GE washing machine models from development to production.
 - Contributed to various home appliances' engineering design to enhance product functionality and user experience, showing expertise in PLM management and engineering.
 
-\makebox[0.5\textwidth][l]{\textbf{Kurtz Ersa GmbH} - \textit{Assistant Process Engineer (Intern)}} \mbox{\large\liMapPin}\hspace{4pt}Wertheim, Germany \hfill 2017
+#work-entry[*Kurtz Ersa GmbH* - _Assistant Process Engineer (Intern)_][#liMapPin~Wertheim, Germany][2017]
 
 - Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples.
 - Conducted Asian market analysis for Ersa's 2017 marketing strategy.
 - Served as the face of the company by starring in Ersa's first Asian market promotional video.
+```
