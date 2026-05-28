@@ -1,0 +1,35 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>粉藕和脆藕怎么区分？</summary>
+  <div class="recipe-faq-answer"><strong>粉藕</strong>外皮偏黄褐色、表面粗糙，藕节短粗，藕孔小而密，断面会拉丝，煮久了"起沙起粉"，适合煨汤。<strong>脆藕</strong>外皮白净光滑，藕节细长，藕孔大而稀，断面爽脆，适合凉拌或清炒。湖北 9–11 月的"湖藕"是最经典的汤藕。</div>
+ </details>
+
+ <details>
+  <summary>为什么我的藕汤发黑？</summary>
+  <div class="recipe-faq-answer">十有八九是用了铁锅。藕里的鞣酸遇铁会变色。用<strong>砂锅、瓦罐或不锈钢锅</strong>就不会黑。切好的藕块也要及时泡水隔绝空气。</div>
+ </details>
+
+ <details>
+  <summary>排骨煨不烂怎么办？</summary>
+  <div class="recipe-faq-answer">小火不够小、或者时间不够。湖北煨汤讲究"咕嘟咕嘟"的微沸状态，不是"翻滚"。如果家里灶火最小档还是太旺，垫一个隔热垫降温，或者直接换高压锅 40 分钟。</div>
+ </details>
+
+ <details>
+  <summary>中途水熬干了怎么办？</summary>
+  <div class="recipe-faq-answer">只能加<strong>热水或开水</strong>，绝对不能加冷水。冷水一进锅，肉立刻变柴、汤色发腥。所以一开始水就要加够：没过食材 3–4 cm。</div>
+ </details>
+
+ <details>
+  <summary>需不需要放八角桂皮香料？</summary>
+  <div class="recipe-faq-answer">不需要。莲藕排骨汤的灵魂是<strong>食材本味</strong>——藕的清甜、骨的肉香、姜的去腥。任何香料都会把这股清香盖掉。湖北本地做法连酱油都不放，只用盐和白胡椒。</div>
+ </details>
+
+ <details>
+  <summary>可以加什么让汤更营养？</summary>
+  <div class="recipe-faq-answer">可选添加：5 颗红枣（增甜润色）、10 粒枸杞（最后 5 分钟下，保留鲜味）、几片当归（药膳风，但会盖味，慎用）。不建议加玉米——会把汤味带偏。</div>
+ </details>
+
+</div>
+```

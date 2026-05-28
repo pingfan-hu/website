@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="wheat"></i></div>
+  <div class="pairing-label">白米饭</div>
+  <div class="pairing-desc">汤汁泡饭，湖北人的家常吃法</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="cooking-pot"></i></div>
+  <div class="pairing-label">藕汤面</div>
+  <div class="pairing-desc">挑几块藕加点汤，下一碗细面就是早餐</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="salad"></i></div>
+  <div class="pairing-label">清炒时蔬</div>
+  <div class="pairing-desc">配一盘空心菜或菜薹，荤素平衡</div>
+ </div>
+</div>
+```

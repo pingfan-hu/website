@@ -1,0 +1,113 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/recipes/lotus-root-pork-rib-soup/images/prep-ribs.png" alt="处理排骨"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">处理排骨</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>选肋排或腔骨，剁成 4–5 cm 段</li>
+    <li>冷水浸泡 30 分钟，中途换 1 次水</li>
+    <li>沥干备用</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>浸泡能把骨缝里的血水泡出来，汤色才会清亮。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/recipes/lotus-root-pork-rib-soup/images/blanching.png" alt="焯水"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">焯水</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>冷水下锅，水没过排骨 2 cm</li>
+    <li>加 3 片姜、1 汤匙料酒</li>
+    <li>中火煮沸，撇净浮沫，续煮 2–3 分钟</li>
+    <li>捞出，用温水冲净表面，沥干</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>必须冷水下锅、温水冲洗。开水让肉柴，冷水让肉缩。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/recipes/lotus-root-pork-rib-soup/images/prep-lotus-root.png" alt="处理莲藕"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">处理莲藕</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>选粉藕（外皮粗糙、藕孔小且偏黄）</li>
+    <li>去皮，切滚刀块，约 3 cm 大小</li>
+    <li>切好的藕块用清水浸泡，防止氧化变黑</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>湖北汤藕一定要选粉藕，煨久了才会"沙、糯、起绒"。脆藕怎么炖都脆，做不出粉感。</span></div>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>不要用铁锅切藕、煮藕，藕遇铁会发黑。用砂锅或不锈钢锅最佳。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/recipes/lotus-root-pork-rib-soup/images/combine-pot.png" alt="入锅同炖"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">入锅同炖</span>
+    <span class="step-time"><i data-lucide="clock"></i>5 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>砂锅中放入焯好的排骨、藕块</li>
+    <li>加 3 片姜、1 段葱白、5 颗红枣（可选）</li>
+    <li>一次加足<strong>热水</strong>，没过食材 3–4 cm</li>
+    <li>大火烧开</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>水必须一次加够。中途加水（尤其是冷水）会让汤变腥、肉变柴。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-5">
+  <div class="step-photo"><img src="/recipes/lotus-root-pork-rib-soup/images/simmering.png" alt="小火慢煨"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">05</span>
+    <span class="step-title">小火慢煨</span>
+    <span class="step-time"><i data-lucide="clock"></i>90–120 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>大火烧开后，转<strong>最小火</strong>，盖盖慢煨</li>
+    <li>保持汤面微微冒泡，不要翻滚</li>
+    <li>煨 1.5–2 小时，藕块变粉、排骨脱骨即成</li>
+    <li>中途不要频繁开盖</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>湖北话叫"煨汤"，"煨"字精髓就是小火慢出味。砂锅或瓦罐效果最好，铸铁锅次之，普通不锈钢锅也行。</span></div>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>赶时间用高压锅：上汽后压 40 分钟，水量减为没过食材即可，但风味略逊于慢煨。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-6">
+  <div class="step-photo"><img src="/recipes/lotus-root-pork-rib-soup/images/finishing.png" alt="调味出锅"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">06</span>
+    <span class="step-title">调味出锅</span>
+    <span class="step-time"><i data-lucide="clock"></i>5 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>开盖，加盐调味（一次少加，尝过再补）</li>
+    <li>撒少许白胡椒粉提香</li>
+    <li>挑出葱白和姜片</li>
+    <li>盛碗，撒葱花上桌</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>盐要最后放。早放盐肉里水分会被逼出来，汤反而不浓。</span></div>
+  </div>
+ </article>
+
+</div>
+```

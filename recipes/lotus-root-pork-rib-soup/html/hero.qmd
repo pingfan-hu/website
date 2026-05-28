@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/recipes/banners/lotus-root-pork-rib-soup.png" alt="莲藕排骨汤">
+</div>
+```

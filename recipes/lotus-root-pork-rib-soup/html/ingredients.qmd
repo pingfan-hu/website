@@ -1,0 +1,60 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="apple"></i></div>
+  <span class="ing-header-text">主料</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/main/pork-ribs.png" alt="排骨">
+   <div class="ing-qty">500 克</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/main/lotus-root.png" alt="莲藕">
+   <div class="ing-qty">1 节，约 500 克</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="leaf"></i></div>
+  <span class="ing-header-text">辅料</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/ginger.png" alt="姜">
+   <div class="ing-qty">1 大块</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/scallion.png" alt="葱">
+   <div class="ing-qty">2 根</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/red-dates.png" alt="红枣">
+   <div class="ing-qty">5 颗（可选）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="flask-conical"></i></div>
+  <span class="ing-header-text">调料</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/cooking-wine.png" alt="料酒">
+   <div class="ing-qty">1 汤匙</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/white-pepper.png" alt="白胡椒粉">
+   <div class="ing-qty">少许</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/salt.png" alt="盐">
+   <div class="ing-qty">适量</div>
+  </div>
+ </div>
+</div>
+```
