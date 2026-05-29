@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/recipes/banners/cumin-lamb-ribs.png" alt="孜然羊排">
+</div>
+```

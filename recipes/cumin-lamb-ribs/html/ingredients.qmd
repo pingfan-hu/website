@@ -31,8 +31,8 @@
    <div class="ing-qty">4 瓣</div>
   </div>
   <div class="ing-card">
-   <img class="ing-img" src="/recipes/resources/supportive/sichuan-peppercorn.png" alt="花椒">
-   <div class="ing-qty">10 粒（仅焯水用）</div>
+   <img class="ing-img" src="/recipes/resources/supportive/cumin-seeds.png" alt="孜然粒">
+   <div class="ing-qty">1 汤匙（同煨）</div>
   </div>
  </div>
 </div>
@@ -56,8 +56,8 @@
    <div class="ing-qty">适量</div>
   </div>
   <div class="ing-card">
-   <img class="ing-img" src="/recipes/resources/seasoning/white-pepper.png" alt="白胡椒粉">
-   <div class="ing-qty">少许（可选）</div>
+   <img class="ing-img" src="/recipes/resources/seasoning/cumin-powder.png" alt="孜然粉">
+   <div class="ing-qty">1 茶匙（出锅撒）</div>
   </div>
  </div>
 </div>

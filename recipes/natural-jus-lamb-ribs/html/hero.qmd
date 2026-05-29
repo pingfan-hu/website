@@ -1,5 +1,0 @@
-```{=html}
-<div class="recipe-hero">
- <img src="/recipes/banners/natural-jus-lamb-ribs.png" alt="原汁羊排">
-</div>
-```
