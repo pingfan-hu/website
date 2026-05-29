@@ -1,0 +1,7 @@
+include-in-header:
+  text: |
+    <style>
+    #title-block-header.quarto-title-block.default .quarto-title-meta {
+      display: none;
+    }
+    </style>
