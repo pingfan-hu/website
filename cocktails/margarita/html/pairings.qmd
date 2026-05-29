@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="utensils"></i></div>
+  <div class="pairing-label">墨西哥塔可</div>
+  <div class="pairing-desc">玛格丽特的原生搭档，酸辣绝配</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="cookie"></i></div>
+  <div class="pairing-label">玉米脆片</div>
+  <div class="pairing-desc">配莎莎酱与牛油果，咸香开胃</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="flame"></i></div>
+  <div class="pairing-label">烤肉串</div>
+  <div class="pairing-desc">咸边与青柠解烤肉的厚重</div>
+ </div>
+</div>
+```

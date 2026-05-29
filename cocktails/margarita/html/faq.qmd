@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>君度可以换成别的吗？</summary>
+  <div class="recipe-faq-answer">可以。<strong>君度（Cointreau）</strong>最经典，香气干净。没有的话，任意<strong>白橙皮利口酒（triple sec）</strong>都行，便宜款会偏甜，适当减点糖即可。讲究的可换<strong>金万利（Grand Marnier）</strong>，多一层干邑的醇厚。</div>
+ </details>
+
+ <details>
+  <summary>用什么龙舌兰？</summary>
+  <div class="recipe-faq-answer"><strong>Blanco（银快）</strong>龙舌兰最适合玛格丽特——清新带青草香，凸显青柠。务必认准<strong>100% 龙舌兰（100% Agave）</strong>，混合廉价款喝完容易上头。想要更圆润可用 <strong>Reposado（微陈）</strong>。</div>
+ </details>
+
+ <details>
+  <summary>一定要抹盐边吗？</summary>
+  <div class="recipe-faq-answer">不强制，但<strong>强烈推荐</strong>——盐能压住龙舌兰的青涩、放大酸甜，是经典体验的一部分。怕咸可以<strong>只蘸半圈</strong>，想喝甜口的还能换成糖边。</div>
+ </details>
+
+ <details>
+  <summary>太酸怎么办？</summary>
+  <div class="recipe-faq-answer">加 ¼–½ oz <strong>糖浆或龙舌兰糖浆（agave syrup）</strong>调和，酸度立刻柔顺。经典比例是 <strong>2 : 1 : 1</strong>（龙舌兰 : 君度 : 青柠），偏酸口味可微调。</div>
+ </details>
+
+ <details>
+  <summary>可以做成冰沙版吗？</summary>
+  <div class="recipe-faq-answer">可以，就是<strong>霜冻玛格丽特（Frozen Margarita）</strong>。把所有材料连同一杯冰块倒进搅拌机打成沙冰，倒入抹盐边的杯子即可。夏天尤其爽口。</div>
+ </details>
+
+</div>
+```

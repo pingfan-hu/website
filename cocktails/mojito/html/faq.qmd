@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>没有捣棒怎么办？</summary>
+  <div class="recipe-faq-answer">用一根<strong>擀面杖的一头</strong>，或粗一点的木勺柄代替。只要能轻压出汁就行。实在没有，用手把薄荷在杯里揉两下、青柠直接挤汁也能凑合。</div>
+ </details>
+
+ <details>
+  <summary>用什么朗姆酒？</summary>
+  <div class="recipe-faq-answer"><strong>白朗姆</strong>最经典——清爽干净，不抢薄荷和青柠的味道。想要更有层次，可以加 ½ oz <strong>金朗姆</strong>调味。深色朗姆不建议，味道太重会盖过清新感。</div>
+ </details>
+
+ <details>
+  <summary>太淡或太甜怎么调？</summary>
+  <div class="recipe-faq-answer">嫌淡，少加点苏打水或多加 ½ oz 朗姆；嫌甜，减糖浆、加青柠汁。经典平衡是<strong>2 朗姆 : 1 青柠 : ½ 糖浆</strong>，再按口味微调。</div>
+ </details>
+
+ <details>
+  <summary>薄荷怎么保持翠绿不发黑？</summary>
+  <div class="recipe-faq-answer">关键还是<strong>别捣碎</strong>——破损的薄荷氧化才会发黑。只轻压、用新鲜薄荷、做好尽快喝，颜色就能一直翠绿。</div>
+ </details>
+
+ <details>
+  <summary>可以做无酒精版吗？</summary>
+  <div class="recipe-faq-answer">可以，就是<strong>处女莫吉托（Virgin Mojito）</strong>。省掉朗姆，其余照旧，苏打水多补一些。清爽不输原版，老少咸宜。</div>
+ </details>
+
+</div>
+```

@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>3-2-1 是什么意思？</summary>
+  <div class="recipe-faq-answer">这是阿佩罗气泡的官方黄金比例：<strong>3 份普罗赛克 : 2 份阿佩罗 : 1 份苏打水</strong>。记住这个口诀，用任何容器量都不会错。怕苦可以微调成 3:1.5:1。</div>
+ </details>
+
+ <details>
+  <summary>普罗赛克能换香槟吗？</summary>
+  <div class="recipe-faq-answer">能，但没必要。<strong>普罗赛克（Prosecco）</strong>果香清新、价格亲民，正是这杯的灵魂。香槟太干太贵、风味会抢戏。用便宜的 cava 或其他干型起泡酒也完全可以。</div>
+ </details>
+
+ <details>
+  <summary>阿佩罗和金巴利有什么区别？</summary>
+  <div class="recipe-faq-answer"><strong>阿佩罗（Aperol）</strong>更甜、更柔、酒精度低（11%），微苦带橙香，适合入门。<strong>金巴利（Campari）</strong>更苦更烈（25%）、颜色更红，换上就成了更硬核的 Campari Spritz。</div>
+ </details>
+
+ <details>
+  <summary>没有苏打水可以省略吗？</summary>
+  <div class="recipe-faq-answer">可以省，但少了一点清爽的收尾。苏打水的作用是<strong>稀释、增气、解腻</strong>。没有的话用无味气泡水代替最佳，实在没有就省略，口感会稍甜稍稠。</div>
+ </details>
+
+ <details>
+  <summary>为什么用大红酒杯而不是高球杯？</summary>
+  <div class="recipe-faq-answer">大肚红酒杯是阿佩罗气泡的标准杯——<strong>杯口宽</strong>能聚拢橙香、<strong>容量大</strong>能装足冰块，喝起来更香更冰。没有的话普通大玻璃杯也行，装满冰就好。</div>
+ </details>
+
+</div>
+```

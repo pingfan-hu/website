@@ -1,0 +1,48 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="martini"></i></div>
+  <span class="ing-header-text">基酒</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/gin.png" alt="金酒">
+   <div class="ing-qty">1 oz（30 ml）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="droplet"></i></div>
+  <span class="ing-header-text">调味</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/lemon-juice.png" alt="鲜柠檬汁">
+   <div class="ing-qty">½ oz（15 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/simple-syrup.png" alt="糖浆">
+   <div class="ing-qty">½ oz（15 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/champagne.png" alt="香槟">
+   <div class="ing-qty">3 oz（90 ml）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="citrus"></i></div>
+  <span class="ing-header-text">装饰</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/lemon-twist.png" alt="柠檬皮">
+   <div class="ing-qty">1 条</div>
+  </div>
+ </div>
+</div>
+```

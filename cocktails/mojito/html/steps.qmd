@@ -1,0 +1,69 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/cocktails/mojito/images/muddle.png" alt="捣压出香"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">捣压出香</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>高球杯中放入薄荷叶、青柠角和 ½ oz 糖浆</li>
+    <li>用捣棒<strong>轻轻按压</strong>出汁出香，挤出青柠汁、唤醒薄荷香气</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>薄荷只能<strong>轻压</strong>，千万别捣碎——捣烂会释放叶脉里的苦味，整杯发苦发涩。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/cocktails/mojito/images/add-rum.png" alt="加酒加冰"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">加酒加冰</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>倒入 2 oz 白朗姆，再补 1 oz 鲜青柠汁</li>
+    <li>杯中<strong>填满碎冰</strong>到八分满</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>用<strong>碎冰</strong>而非大冰块——碎冰镇得快、化得匀，是莫吉托清爽透凉的关键。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/cocktails/mojito/images/top-soda.png" alt="注入苏打"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">注入苏打</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>沿杯壁缓缓注入<strong>苏打水</strong>补满</li>
+    <li>用吧勺<strong>轻轻上下提拉</strong>一两下，让薄荷和酒液混匀</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>沿杯壁倒、轻轻搅，都是为了<strong>保住气泡</strong>。大力搅拌会把苏打的气泡搅没。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/cocktails/mojito/images/garnish.png" alt="装饰上桌"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">装饰上桌</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>顶上插一<strong>束拍香的薄荷</strong>，杯口挂一片青柠</li>
+    <li>配一根吸管，趁冰凉气泡正足时享用</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>薄荷装饰前在手心<strong>拍一下</strong>，香气会瞬间释放，凑近就能闻到。</span></div>
+  </div>
+ </article>
+
+</div>
+```

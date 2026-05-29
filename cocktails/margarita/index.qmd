@@ -1,0 +1,45 @@
+---
+title: "玛格丽特"
+sort-title: "majialite"
+image: "/cocktails/banners/margarita.png"
+date: "2026-05-29"
+categories: [龙舌兰, 酸甜]
+description: "龙舌兰、君度橙酒与青柠汁摇出的经典酸酒，杯口抹一圈盐边。咸、酸、甜在舌尖层层展开，是龙舌兰最迷人的打开方式。"
+---
+
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+```
+
+{{< include html/hero.qmd >}}
+
+{{< include html/meta.qmd >}}
+
+## 配料
+
+{{< include html/ingredients.qmd >}}
+
+::: {.callout-note}
+**单位换算**：1 oz ≈ 30 毫升，1 吧勺 ≈ 5 毫升，1 dash（少许）≈ 1 毫升。
+:::
+
+## 调制
+
+{{< include html/timeline.qmd >}}
+
+{{< include html/steps.qmd >}}
+
+## 佐酒小食
+
+{{< include html/pairings.qmd >}}
+
+## 常见问题
+
+{{< include html/faq.qmd >}}
+
+```{=html}
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

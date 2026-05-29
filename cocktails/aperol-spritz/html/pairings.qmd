@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="ham"></i></div>
+  <div class="pairing-label">意式冷切</div>
+  <div class="pairing-desc">火腿、奶酪拼盘，微苦最解咸香</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="cookie"></i></div>
+  <div class="pairing-label">咸味饼干</div>
+  <div class="pairing-desc">橄榄、坚果、薯片，开胃小食首选</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="sunset"></i></div>
+  <div class="pairing-label">餐前微醺</div>
+  <div class="pairing-desc">意式 aperitivo 的黄昏仪式感</div>
+ </div>
+</div>
+```

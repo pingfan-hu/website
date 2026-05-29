@@ -1,0 +1,69 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/cocktails/margarita/images/salt-rim.png" alt="抹盐边"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">抹盐边</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>用青柠角沿玛格丽特杯<strong>杯口外缘</strong>抹一圈，打湿边沿</li>
+    <li>把杯口倒扣在<strong>粗盐</strong>盘里轻转一圈，蘸出均匀的盐边</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>只蘸<strong>杯口外圈</strong>，别让盐掉进杯里，否则整杯会过咸。怕咸可以只蘸半圈，喝的时候自己选择。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/cocktails/margarita/images/shake.png" alt="摇和"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">摇和</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>摇酒壶中加入龙舌兰 2 oz、君度 1 oz、鲜青柠汁 1 oz</li>
+    <li>加满冰块，用力摇 15 秒至壶身结霜</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>一定用<strong>鲜榨青柠汁</strong>。瓶装青柠汁酸得发苦，是玛格丽特好喝与否的分水岭。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/cocktails/margarita/images/strain.png" alt="滤入杯中"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">滤入杯中</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>用滤网把酒液<strong>滤入抹好盐边</strong>的玛格丽特杯</li>
+    <li>经典做法是<strong>纯饮（served up，不加冰）</strong>；想要更冰可加大块冰</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>滤掉碎冰能让酒体清亮、不被过度稀释。纯饮版酒味更集中，加冰版更易入口。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/cocktails/margarita/images/garnish.png" alt="装饰上桌"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">装饰上桌</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>杯口挂一片<strong>青柠</strong>，趁冰凉时享用</li>
+    <li>喝的时候<strong>带一点盐边一起入口</strong>，咸酸甜在舌尖最迷人</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>盐不是装饰——它是配方的一部分，能压住龙舌兰的青涩、放大青柠的酸甜。</span></div>
+  </div>
+ </article>
+
+</div>
+```

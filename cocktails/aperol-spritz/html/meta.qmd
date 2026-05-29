@@ -1,0 +1,20 @@
+```{=html}
+<div class="recipe-meta">
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">难度</div>
+  <div class="recipe-meta-value">简单</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">调制法</div>
+  <div class="recipe-meta-value">兑和</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">口感</div>
+  <div class="recipe-meta-value">微苦清爽</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">酒精度</div>
+  <div class="recipe-meta-value">低 ~11%</div>
+ </div>
+</div>
+```

@@ -1,0 +1,20 @@
+```{=html}
+<div class="recipe-meta">
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">难度</div>
+  <div class="recipe-meta-value">中等</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">调制法</div>
+  <div class="recipe-meta-value">摇和</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">口感</div>
+  <div class="recipe-meta-value">清冽气泡</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">酒精度</div>
+  <div class="recipe-meta-value">中 ~16%</div>
+ </div>
+</div>
+```

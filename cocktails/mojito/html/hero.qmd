@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/cocktails/banners/mojito.png" alt="莫吉托">
+</div>
+```

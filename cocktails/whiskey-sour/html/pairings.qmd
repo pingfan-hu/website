@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="nut"></i></div>
+  <div class="pairing-label">烤坚果</div>
+  <div class="pairing-desc">咸香坚果衬出波本的甜，越喝越顺口</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="drumstick"></i></div>
+  <div class="pairing-label">炸物拼盘</div>
+  <div class="pairing-desc">酸甜正好解炸鸡、薯条的油腻</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="moon"></i></div>
+  <div class="pairing-label">睡前独酌</div>
+  <div class="pairing-desc">收尾的一杯，酸甜微醺、舒缓放松</div>
+ </div>
+</div>
+```

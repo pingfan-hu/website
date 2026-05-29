@@ -1,0 +1,69 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/cocktails/french-75/images/shake.png" alt="摇和"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">摇和</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>摇酒壶中加入金酒 1 oz、鲜柠檬汁 ½ oz、糖浆 ½ oz</li>
+    <li>加满冰块，用力摇 10–15 秒至壶身冰凉</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>只摇<strong>金酒、柠檬、糖浆</strong>这三样——香槟<strong>绝不能</strong>进摇酒壶，否则气泡会瞬间炸开喷得到处都是。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/cocktails/french-75/images/strain.png" alt="滤入笛形杯"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">滤入笛形杯</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>把摇好的酒液<strong>滤入冰镇过的香槟笛形杯</strong></li>
+    <li>只倒约<strong>半杯</strong>，给香槟留出空间</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>笛形杯提前放冰箱或装冰水冰一下。冰杯能让气泡更持久、入口更清冽。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/cocktails/french-75/images/top-champagne.png" alt="注入香槟"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">注入香槟</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>沿杯壁<strong>缓缓注入冰镇香槟</strong>补满，气泡会一路升腾</li>
+    <li>不用搅拌，气泡会自然混合</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>香槟一定要<strong>冰镇</strong>且<strong>沿杯壁慢倒</strong>。温的或猛倒都会让泡沫瞬间溢出杯口。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/cocktails/french-75/images/garnish.png" alt="装饰上桌"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">装饰上桌</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>削一条<strong>柠檬皮</strong>，在杯口<strong>挤一下</strong>喷出皮油，再卷成卷投入杯中</li>
+    <li>趁气泡正盛时举杯</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>柠檬皮在杯口轻轻一挤，皮油的清香会盖在气泡上，是这杯优雅感的点睛之笔。</span></div>
+  </div>
+ </article>
+
+</div>
+```

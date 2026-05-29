@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="beef"></i></div>
+  <div class="pairing-label">烤虾串</div>
+  <div class="pairing-desc">椰香甜润配炭烤海鲜，海岛风味</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="popcorn"></i></div>
+  <div class="pairing-label">炸物零食</div>
+  <div class="pairing-desc">薯条、洋葱圈，甜咸交替不腻</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="sun"></i></div>
+  <div class="pairing-label">泳池派对</div>
+  <div class="pairing-desc">日光、泳池、一杯冰沙，假期感满分</div>
+ </div>
+</div>
+```

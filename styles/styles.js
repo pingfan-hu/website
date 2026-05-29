@@ -138,10 +138,21 @@
 })();
 
 // ---- Subpage Prev / Next Buttons ----
-// For any subpage that appears in /listings.json, append a row of prev/older
-// (left) and next/newer (right) buttons at the end of <main.content>. Items
-// in listings.json are newest-first, so newer = items[idx - 1] and older =
-// items[idx + 1]. Hidden when there is no neighbor on that side.
+// For any subpage that appears in /listings.json, append a row of prev (left)
+// and next (right) buttons at the end of <main.content>. Items in listings.json
+// follow the listing's own sort order.
+//
+// "Next" (right) always means "forward through the listing as displayed", i.e.
+// items[idx + 1], and "prev" (left) means items[idx - 1]. But blog/projects are
+// sorted DESC (newest first), so forward-through-the-list means going to older
+// posts — and the established, desired behavior there is the reverse: next =
+// newer = items[idx - 1]. Recipes/cocktails are sorted ASC, where the intuitive
+// "next" is simply the following item, items[idx + 1].
+//
+// So: ASC sections (recipes, cocktails) map idx-1 -> prev, idx+1 -> next;
+// DESC sections (blog, projects, default) map idx-1 -> next, idx+1 -> prev.
+// Hidden when there is no neighbor on that side.
+var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
 (function () {
   function currentItemPath() {
     var path = window.location.pathname;
@@ -179,8 +190,8 @@
     btn.innerHTML = direction === 'prev' ? arrow + titleHtml : titleHtml + arrow;
     return btn;
   }
-  function renderNav(olderHref, newerHref, titleMap) {
-    if (!olderHref && !newerHref) return;
+  function renderNav(prevHref, nextHref, titleMap) {
+    if (!prevHref && !nextHref) return;
     var main = document.querySelector('main.content');
     if (!main) return;
     var nav = document.createElement('nav');
@@ -190,8 +201,8 @@
     prevSlot.className = 'post-nav-slot post-nav-slot-prev';
     var nextSlot = document.createElement('div');
     nextSlot.className = 'post-nav-slot post-nav-slot-next';
-    if (olderHref) prevSlot.appendChild(makeBtn(olderHref, 'prev', titleMap[olderHref]));
-    if (newerHref) nextSlot.appendChild(makeBtn(newerHref, 'next', titleMap[newerHref]));
+    if (prevHref) prevSlot.appendChild(makeBtn(prevHref, 'prev', titleMap[prevHref]));
+    if (nextHref) nextSlot.appendChild(makeBtn(nextHref, 'next', titleMap[nextHref]));
     nav.appendChild(prevSlot);
     nav.appendChild(nextSlot);
     main.appendChild(nav);
@@ -210,9 +221,15 @@
         if (idx !== -1) { hit = { items: listings[i].items, idx: idx }; break; }
       }
       if (!hit) return;
-      var newer = hit.idx > 0 ? hit.items[hit.idx - 1] : null;
-      var older = hit.idx < hit.items.length - 1 ? hit.items[hit.idx + 1] : null;
-      renderNav(older, newer, titleMap);
+      var earlier = hit.idx > 0 ? hit.items[hit.idx - 1] : null;          // items[idx - 1]
+      var later = hit.idx < hit.items.length - 1 ? hit.items[hit.idx + 1] : null; // items[idx + 1]
+      var prevHref, nextHref;
+      if (ASC_SECTIONS.test(current)) {
+        prevHref = earlier; nextHref = later;   // ascending: next = following item
+      } else {
+        prevHref = later; nextHref = earlier;   // descending: next = newer item
+      }
+      renderNav(prevHref, nextHref, titleMap);
     });
   }
   if (document.readyState === 'loading') {

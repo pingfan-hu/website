@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>香槟可以换成普罗赛克吗？</summary>
+  <div class="recipe-faq-answer">完全可以，而且更省钱。任意<strong>干型（Brut）起泡酒</strong>都行——普罗赛克、cava 都很合适。认准"Brut"（干型），甜型起泡酒会让整杯过甜。</div>
+ </details>
+
+ <details>
+  <summary>为什么香槟不能放进摇酒壶？</summary>
+  <div class="recipe-faq-answer">气泡饮料在密闭摇酒壶里剧烈摇晃会<strong>瞬间爆发</strong>，轻则喷一身、重则崩开壶盖。所以只摇金酒+柠檬+糖浆，香槟永远<strong>最后沿杯壁注入</strong>。</div>
+ </details>
+
+ <details>
+  <summary>用什么金酒？</summary>
+  <div class="recipe-faq-answer"><strong>伦敦干金酒（London Dry）</strong>最经典，杜松子的草本香与柠檬、气泡相得益彰。想要柔和一点可以用花香型金酒。换成<strong>干邑白兰地</strong>就是更古老的原始版本，风味更醇厚。</div>
+ </details>
+
+ <details>
+  <summary>为什么叫"法兰西75"？</summary>
+  <div class="recipe-faq-answer">名字来自一战法军的 <strong>75 毫米速射炮（French 75）</strong>——形容这杯酒"后劲像挨了一炮"。金酒加香槟，清爽好喝但酒精不低，别被气泡骗了，喝快了一样上头。</div>
+ </details>
+
+ <details>
+  <summary>一定要用笛形杯吗？</summary>
+  <div class="recipe-faq-answer">传统用<strong>香槟笛形杯</strong>——细高的杯身能留住气泡、让泡沫成柱升腾。也有人用<strong>古典杯加冰（Tom Collins 风格）</strong>。没有笛形杯，任何细高的杯子都比宽口杯更能锁住气泡。</div>
+ </details>
+
+</div>
+```

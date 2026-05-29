@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/cocktails/banners/whiskey-sour.png" alt="威士忌酸">
+</div>
+```

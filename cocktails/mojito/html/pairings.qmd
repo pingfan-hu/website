@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="drumstick"></i></div>
+  <div class="pairing-label">烤鸡翅</div>
+  <div class="pairing-desc">薄荷气泡解烧烤的焦香油腻</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="fish"></i></div>
+  <div class="pairing-label">海鲜小食</div>
+  <div class="pairing-desc">青柠的清新最配虾蟹贝类</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="sun"></i></div>
+  <div class="pairing-label">夏日露台</div>
+  <div class="pairing-desc">午后阳光下，一杯就透心凉</div>
+ </div>
+</div>
+```

@@ -1,0 +1,44 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="martini"></i></div>
+  <span class="ing-header-text">基酒</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/aperol.png" alt="阿佩罗">
+   <div class="ing-qty">2 oz（60 ml）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="droplet"></i></div>
+  <span class="ing-header-text">调味</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/prosecco.png" alt="普罗赛克">
+   <div class="ing-qty">3 oz（90 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/soda-water.png" alt="苏打水">
+   <div class="ing-qty">1 oz（30 ml）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="citrus"></i></div>
+  <span class="ing-header-text">装饰</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/orange-slice.png" alt="橙片">
+   <div class="ing-qty">1 片</div>
+  </div>
+ </div>
+</div>
+```

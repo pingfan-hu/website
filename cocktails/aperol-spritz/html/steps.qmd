@@ -1,0 +1,67 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/cocktails/aperol-spritz/images/fill-ice.png" alt="杯中加冰"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">杯中加冰</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>取一只大号<strong>红酒杯（高脚杯）</strong>，装满<strong>大块冰</strong></li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>用<strong>大冰块</strong>、而且要装满——冰越多化得越慢，气泡酒不会被稀释，整杯一直冰爽。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/cocktails/aperol-spritz/images/add-prosecco.png" alt="倒普罗赛克"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">倒普罗赛克</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li><strong>先</strong>沿杯壁倒入 3 份普罗赛克（约 3 oz）</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>记住 <strong>3-2-1</strong> 口诀：<strong>3</strong> 普罗赛克、<strong>2</strong> 阿佩罗、<strong>1</strong> 苏打。先倒气泡酒能保住更多气泡。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/cocktails/aperol-spritz/images/add-aperol.png" alt="加阿佩罗与苏打"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">加阿佩罗与苏打</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>倒入 2 份阿佩罗（约 2 oz），酒液变成明亮的橙色</li>
+    <li>最后补 1 份苏打水（约 1 oz），<strong>轻搅一下</strong>混匀</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>苏打水<strong>最后加</strong>、只轻搅一两下。搅太狠气泡全跑光，就失去清爽的灵魂了。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/cocktails/aperol-spritz/images/garnish.png" alt="装饰上桌"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">装饰上桌</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>杯口挂一片<strong>鲜橙</strong>，立刻上桌</li>
+    <li>餐前饮用，开胃又解腻</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>一片鲜橙就是阿佩罗气泡的标志。橙皮的香气会随气泡升腾，喝之前先闻一闻。</span></div>
+  </div>
+ </article>
+
+</div>
+```

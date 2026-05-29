@@ -1,0 +1,48 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="martini"></i></div>
+  <span class="ing-header-text">基酒</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/white-rum.png" alt="白朗姆">
+   <div class="ing-qty">2 oz（60 ml）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="droplet"></i></div>
+  <span class="ing-header-text">调味</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/coconut-cream.png" alt="椰浆">
+   <div class="ing-qty">2 oz（60 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/pineapple-juice.png" alt="菠萝汁">
+   <div class="ing-qty">3 oz（90 ml）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="citrus"></i></div>
+  <span class="ing-header-text">装饰</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/pineapple-wedge.png" alt="菠萝角">
+   <div class="ing-qty">1 块</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/cocktail-cherry.png" alt="酒渍樱桃">
+   <div class="ing-qty">1 颗</div>
+  </div>
+ </div>
+</div>
+```

@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="fish"></i></div>
+  <div class="pairing-label">生蚝海鲜</div>
+  <div class="pairing-desc">气泡与酸度是生蚝的天作之合</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="ham"></i></div>
+  <div class="pairing-label">芝士拼盘</div>
+  <div class="pairing-desc">清冽气泡解软质芝士的奶腻</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="party-popper"></i></div>
+  <div class="pairing-label">庆祝时刻</div>
+  <div class="pairing-desc">香槟打底，节日与派对的开场酒</div>
+ </div>
+</div>
+```

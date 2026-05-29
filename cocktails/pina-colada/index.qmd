@@ -1,0 +1,45 @@
+---
+title: "椰林飘香"
+sort-title: "yelinpiaoxiang"
+image: "/cocktails/banners/pina-colada.png"
+date: "2026-05-29"
+categories: [朗姆, 热带]
+description: "白朗姆、椰浆与菠萝汁打成的冰沙长饮，绵密香甜、椰香扑鼻。一杯下肚就像把整个加勒比海滩端到了面前。"
+---
+
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+```
+
+{{< include html/hero.qmd >}}
+
+{{< include html/meta.qmd >}}
+
+## 配料
+
+{{< include html/ingredients.qmd >}}
+
+::: {.callout-note}
+**单位换算**：1 oz ≈ 30 毫升，1 吧勺 ≈ 5 毫升，1 dash（少许）≈ 1 毫升。
+:::
+
+## 调制
+
+{{< include html/timeline.qmd >}}
+
+{{< include html/steps.qmd >}}
+
+## 佐酒小食
+
+{{< include html/pairings.qmd >}}
+
+## 常见问题
+
+{{< include html/faq.qmd >}}
+
+```{=html}
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

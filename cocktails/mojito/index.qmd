@@ -1,0 +1,45 @@
+---
+title: "莫吉托"
+sort-title: "mojito"
+image: "/cocktails/banners/mojito.png"
+date: "2026-05-29"
+categories: [朗姆, 清爽]
+description: "薄荷、青柠与白朗姆的古巴长饮，碎冰镇得透凉、苏打水带起气泡。清爽解腻，是夏天最不会出错的那一杯。"
+---
+
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+```
+
+{{< include html/hero.qmd >}}
+
+{{< include html/meta.qmd >}}
+
+## 配料
+
+{{< include html/ingredients.qmd >}}
+
+::: {.callout-note}
+**单位换算**：1 oz ≈ 30 毫升，1 吧勺 ≈ 5 毫升，1 dash（少许）≈ 1 毫升。
+:::
+
+## 调制
+
+{{< include html/timeline.qmd >}}
+
+{{< include html/steps.qmd >}}
+
+## 佐酒小食
+
+{{< include html/pairings.qmd >}}
+
+## 常见问题
+
+{{< include html/faq.qmd >}}
+
+```{=html}
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

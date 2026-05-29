@@ -1,0 +1,87 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/cocktails/whiskey-sour/images/chill-glass.png" alt="冰杯备料"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">冰杯备料</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>古典杯里装满冰块冰镇，备一块<strong>大方冰</strong>稍后入杯用</li>
+    <li>柠檬现挤出 1 oz 鲜柠檬汁，滤掉籽和果肉</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>一定用<strong>鲜榨</strong>柠檬汁，瓶装浓缩汁酸得发涩、香气也跑光了。这是威士忌酸好不好喝的关键。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/cocktails/whiskey-sour/images/dry-shake.png" alt="干摇打发"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">干摇打发</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>波本 2 oz、柠檬汁 1 oz、糖浆 ¾ oz、蛋清 1 个倒入摇酒壶</li>
+    <li><strong>不加冰</strong>，盖紧用力摇 15 秒，把蛋清打发出泡沫</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>不加冰的这一步叫"干摇"，是绵密泡沫的来源。先干摇再加冰摇，泡沫又厚又稳。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/cocktails/whiskey-sour/images/shake.png" alt="加冰摇和"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">加冰摇和</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>摇酒壶里加满冰块</li>
+    <li>再次用力摇 15 秒，直到壶身<strong>结霜冰凉</strong></li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>摇够时间、摇到壶壁结霜才算到位。摇得不够，酒不够冰、稀释也不足，会偏烈偏稠。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/cocktails/whiskey-sour/images/strain.png" alt="滤入杯中"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">滤入杯中</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>冰镇好的古典杯倒掉冰水，放入一块大方冰</li>
+    <li><strong>双重过滤</strong>（壶口滤网 + 细网筛）把酒液滤入杯中</li>
+    <li>静置十几秒，泡沫会浮成厚厚一层奶白色</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>双重过滤能滤掉碎冰和柠檬渣，泡沫更细腻干净。家里没细筛，单层过滤也能喝。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-5">
+  <div class="step-photo"><img src="/cocktails/whiskey-sour/images/garnish.png" alt="装饰上桌"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">05</span>
+    <span class="step-title">装饰上桌</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>杯口架一片<strong>柠檬片</strong>，放上一颗<strong>酒渍樱桃</strong></li>
+    <li>讲究的话，在泡沫上滴几滴<strong>苦精</strong>，用牙签划出花纹</li>
+    <li>趁冰凉、泡沫还在时尽快享用</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>柠檬片搭酒渍樱桃是威士忌酸的招牌装饰——一酸一甜，颜色也好看。泡沫上点几滴苦精，香气立刻立体起来。</span></div>
+  </div>
+ </article>
+
+</div>
+```

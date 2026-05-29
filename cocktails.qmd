@@ -1,0 +1,18 @@
+---
+title: "鸡尾酒"
+description: "胡平凡的鸡尾酒手记"
+open-graph:
+  image: images/card-cocktails.png
+toc: false
+listing:
+  contents: cocktails
+  sort: "sort-title asc"
+  type: grid
+  grid-columns: 4
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [title, description, categories, image]
+  image-height: auto
+page-layout: full
+---

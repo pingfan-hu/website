@@ -56,6 +56,9 @@ website:
           - icon: cup-hot
             text: 菜谱
             href: recipes.qmd
+          - icon: cup-straw
+            text: 鸡尾酒
+            href: cocktails.qmd
 
     tools:
       - icon: linkedin

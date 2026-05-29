@@ -1,0 +1,69 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/cocktails/pina-colada/images/add-blender.png" alt="食材入杯"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">食材入杯</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>搅拌机中倒入白朗姆 2 oz、椰浆 2 oz、菠萝汁 3 oz</li>
+    <li>椰浆用前<strong>摇匀</strong>，分层的椰浆要先晃开</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>用<strong>椰浆（coconut cream）</strong>而不是椰子水——浓稠的椰浆才有那股绵密奶香。Coco López 这类含糖椰浆最地道。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/cocktails/pina-colada/images/blend.png" alt="加冰搅打"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">加冰搅打</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>加入<strong>一杯冰块</strong>（约 1 杯量）</li>
+    <li>高速搅打 20–30 秒，直到<strong>绵密顺滑</strong>、没有冰碴</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>冰太多会寡淡、太少不够冰沙感。打到像绵软的奶昔、能挂住吸管最理想。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/cocktails/pina-colada/images/pour.png" alt="倒入杯中"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">倒入杯中</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>把冰沙倒入<strong>飓风杯</strong>（高身曲线杯）</li>
+    <li>倒的时候稍微转动杯子，让杯壁挂上一层均匀的酒体</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>飓风杯是椰林飘香的招牌杯型——高挑的曲线最能展示厚厚的奶白冰沙。没有的话用大高球杯也行。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/cocktails/pina-colada/images/garnish.png" alt="装饰上桌"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">装饰上桌</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>杯口卡一块<strong>菠萝角</strong>，别一颗<strong>酒渍樱桃</strong></li>
+    <li>插上小纸伞和吸管，热带感瞬间拉满</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>菠萝角 + 樱桃 + 小纸伞是椰林飘香的经典三件套——颜值即正义，照片也好看。</span></div>
+  </div>
+ </article>
+
+</div>
+```

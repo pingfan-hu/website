@@ -1381,8 +1381,8 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
 }
 
 // Dropdown menu inside the navbar. Default Bootstrap dropdowns stretch to a
-// 10rem min-width and left-align items, which looks awkward for short labels
-// like "菜谱". Shrink to fit content and center each item.
+// 10rem min-width, which looks awkward for short labels like "菜谱". Shrink to
+// fit content and left-align each item so the icons stay vertically aligned.
 .navbar .dropdown-menu {
   min-width: 0;
   width: max-content;
@@ -1402,7 +1402,7 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   text-decoration: none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 0.45rem 0.9rem;
 
   &:hover,

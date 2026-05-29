@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>椰浆、椰奶、椰子水有什么区别？</summary>
+  <div class="recipe-faq-answer">差别很大。<strong>椰浆（coconut cream）</strong>最浓最稠最香甜，是正宗配方用的；<strong>椰奶（coconut milk）</strong>稀一些、奶味淡，可用但口感单薄；<strong>椰子水</strong>是清澈的汁水，完全不行。认准"cream of coconut"。</div>
+ </details>
+
+ <details>
+  <summary>没有搅拌机怎么办？</summary>
+  <div class="recipe-faq-answer">可以做<strong>摇和版</strong>：所有材料加冰块用力摇匀，滤入装满碎冰的杯子。口感不如冰沙绵密，但同样好喝。或者把材料和碎冰装进密封罐用力摇也行。</div>
+ </details>
+
+ <details>
+  <summary>太甜了怎么调？</summary>
+  <div class="recipe-faq-answer">菠萝汁和椰浆本身都很甜。嫌甜可挤入 <strong>½ oz 鲜青柠汁</strong>提酸平衡，或减少椰浆、多加菠萝汁。用无糖椰浆也能降低甜度。</div>
+ </details>
+
+ <details>
+  <summary>用什么朗姆？</summary>
+  <div class="recipe-faq-answer"><strong>白朗姆</strong>最干净，突出椰香与菠萝。想要更有层次，可用一半白朗姆、一半<strong>金朗姆或深色朗姆</strong>，加一缕焦糖木桶香，风味更立体。</div>
+ </details>
+
+ <details>
+  <summary>可以做无酒精版吗？</summary>
+  <div class="recipe-faq-answer">可以，就是<strong>维珍椰林（Virgin Piña Colada）</strong>。省掉朗姆，椰浆和菠萝汁各加一点补足分量，照样香甜绵密，小朋友也能喝。</div>
+ </details>
+
+</div>
+```

@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>没有摇酒壶怎么办？</summary>
+  <div class="recipe-faq-answer">用一只<strong>带盖能密封的罐子</strong>（梅森罐、保温杯、带盖的大水杯都行）代替。装料后拧紧盖子用力摇，效果很接近。注意盖子一定要盖严，否则会漏。</div>
+ </details>
+
+ <details>
+  <summary>蛋清一定要加吗？会腥吗？</summary>
+  <div class="recipe-faq-answer">不是必须。蛋清只负责打出<strong>绵密泡沫和顺滑口感</strong>，几乎不影响味道，柠檬的酸也会盖住蛋腥。介意生蛋的话，可用 ½ oz <strong>鹰嘴豆水（aquafaba）</strong>替代，一样能打发，还是纯素的。不加也行，就是少了那层奶盖。</div>
+ </details>
+
+ <details>
+  <summary>太酸或太甜怎么调？</summary>
+  <div class="recipe-faq-answer">经典黄金比例是 <strong>2 : 1 : ¾</strong>（波本 : 柠檬汁 : 糖浆）。偏甜就加糖浆，偏酸就加柠檬，每次以 1 吧勺为单位微调。先按标准比例做一杯，再按自己口味往后调。</div>
+ </details>
+
+ <details>
+  <summary>用什么威士忌最好？</summary>
+  <div class="recipe-faq-answer"><strong>波本</strong>最经典——玉米的甜和柠檬最搭，新手不会出错。想换风味：<strong>黑麦威士忌</strong>更辛辣有个性，<strong>苏格兰调和威士忌</strong>带一丝烟熏。不建议用太贵的单一麦芽，摇进鸡尾酒里有点浪费。</div>
+ </details>
+
+ <details>
+  <summary>可以做无酒精版吗？</summary>
+  <div class="recipe-faq-answer">可以。把波本换成<strong>无酒精威士忌</strong>，或用 1.5 oz 冷红茶 + 几滴香草精模拟那股木桶香气，其余照旧。蛋清、柠檬、糖浆都保留，照样酸甜顺滑、泡沫绵密。</div>
+ </details>
+
+</div>
+```
