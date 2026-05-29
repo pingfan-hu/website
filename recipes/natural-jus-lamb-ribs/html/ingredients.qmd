@@ -1,0 +1,64 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="apple"></i></div>
+  <span class="ing-header-text">主料</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/main/lamb-ribs.png" alt="羊排">
+   <div class="ing-qty">800 克</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="leaf"></i></div>
+  <span class="ing-header-text">辅料</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/ginger.png" alt="姜">
+   <div class="ing-qty">1 大块</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/scallion.png" alt="葱">
+   <div class="ing-qty">2 根</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/garlic.png" alt="蒜">
+   <div class="ing-qty">4 瓣</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/sichuan-peppercorn.png" alt="花椒">
+   <div class="ing-qty">10 粒（仅焯水用）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="flask-conical"></i></div>
+  <span class="ing-header-text">调料</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/cooking-wine.png" alt="料酒">
+   <div class="ing-qty">2 汤匙</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/light-soy-sauce.png" alt="生抽">
+   <div class="ing-qty">2 汤匙</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/salt.png" alt="盐">
+   <div class="ing-qty">适量</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/white-pepper.png" alt="白胡椒粉">
+   <div class="ing-qty">少许（可选）</div>
+  </div>
+ </div>
+</div>
+```

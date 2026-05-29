@@ -1,0 +1,115 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/recipes/natural-jus-lamb-ribs/images/prep-lamb.png" alt="处理羊排"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">处理羊排</span>
+    <span class="step-time"><i data-lucide="clock"></i>40 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>选羊肋排，让肉店斩成单根带骨的羊排段，每段约 6–8 cm 长，保留完整的弧形肋骨</li>
+    <li>冷水浸泡 30 分钟，中途换 1 次水</li>
+    <li>沥干备用</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>浸泡是去膻的第一步。换水换得勤，最后的汤汁几乎没有膻味。整根带骨的羊排比剁碎更易出味、卖相也更好。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/recipes/natural-jus-lamb-ribs/images/blanching.png" alt="焯水"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">焯水</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>冷水下锅，水没过羊排 2 cm</li>
+    <li>加 3 片姜、2 汤匙料酒、10 粒花椒</li>
+    <li>中火煮沸，撇净浮沫，续煮 3–5 分钟</li>
+    <li>捞出，温水冲净表面，沥干</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>必须冷水下锅、温水冲洗。开水让肉柴，冷水让肉缩。料酒 + 花椒是去膻的关键组合。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/recipes/natural-jus-lamb-ribs/images/mise-en-place.png" alt="准备配料"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">准备配料</span>
+    <span class="step-time"><i data-lucide="clock"></i>3 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>姜切厚片</li>
+    <li>葱白切 3 cm 段，葱绿切花备用</li>
+    <li>蒜拍碎去皮</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>原汁羊排的辅料就这三样，不放八角桂皮香叶等大料——香料越少，越能尝到羊本身的鲜味。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/recipes/natural-jus-lamb-ribs/images/arrange-pan.png" alt="码锅入味"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">码锅入味</span>
+    <span class="step-time"><i data-lucide="clock"></i>5 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>取一只<strong>宽口平底锅</strong>（铸铁锅或厚底炒锅都行，<strong>不要用炒锅</strong>，肉要平铺不堆叠）</li>
+    <li>羊排<strong>平铺码进锅底</strong>，骨头朝外，肉面贴锅</li>
+    <li>姜片、葱白段、蒜瓣均匀撒在羊排上</li>
+    <li>沿锅边淋 2 汤匙生抽</li>
+    <li>加冷水<strong>刚刚没过羊排</strong>即可，不要加太多</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>平铺是关键。堆叠会让底下的羊排被压烂，上面的不入味。水量少一些，最后才有"汁浓"的效果。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-5">
+  <div class="step-photo"><img src="/recipes/natural-jus-lamb-ribs/images/simmering.png" alt="小火慢煨"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">05</span>
+    <span class="step-title">小火慢煨</span>
+    <span class="step-time"><i data-lucide="clock"></i>60–90 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>大火烧开后，转<strong>最小火</strong>，盖盖慢煨</li>
+    <li>保持汤面微微冒泡，不要翻滚</li>
+    <li>煨 1–1.5 小时，筷子能轻松插入瘦肉部分即熟</li>
+    <li>中途不要频繁开盖</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>中途绝对不加冷水。要加只能加热水或开水。</span></div>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>慢煨过程中羊排会出汁，汤色逐渐变得浓厚。这就是"原汁"——汁是肉自己出来的，不是外面浇上去的。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-6">
+  <div class="step-photo"><img src="/recipes/natural-jus-lamb-ribs/images/finishing.png" alt="收汁装盘"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">06</span>
+    <span class="step-title">收汁装盘</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>开盖转中火收汁，汤汁浓稠挂勺即可</li>
+    <li>尝咸淡，不够再补少许盐</li>
+    <li>挑出葱白和姜片</li>
+    <li>羊排捞出<strong>横向平铺</strong>在大平盘上，骨头朝同一方向码齐</li>
+    <li>把锅里剩下的浓汁均匀淋在羊排上</li>
+    <li>撒少许白胡椒粉提香，撒葱花上桌</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>装盘时把羊排横着码齐、骨头朝同一方向，是这道菜的招牌摆法——既漂亮又方便夹取。</span></div>
+  </div>
+ </article>
+
+</div>
+```

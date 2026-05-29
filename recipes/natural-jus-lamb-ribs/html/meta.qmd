@@ -1,0 +1,20 @@
+```{=html}
+<div class="recipe-meta">
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">总时长</div>
+  <div class="recipe-meta-value">约 2 小时</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">难度</div>
+  <div class="recipe-meta-value">简单</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">分量</div>
+  <div class="recipe-meta-value">3–4 人</div>
+ </div>
+ <div class="recipe-meta-item">
+  <div class="recipe-meta-label">菜系</div>
+  <div class="recipe-meta-value">家常菜</div>
+ </div>
+</div>
+```

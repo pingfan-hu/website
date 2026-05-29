@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="wheat"></i></div>
+  <div class="pairing-label">白米饭</div>
+  <div class="pairing-desc">浓汁拌饭，吃光最后一勺</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="croissant"></i></div>
+  <div class="pairing-label">烙饼或馍</div>
+  <div class="pairing-desc">夹一块羊排、蘸点汁，西北吃法</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="salad"></i></div>
+  <div class="pairing-label">清炒时蔬</div>
+  <div class="pairing-desc">配一盘油麦菜或菠菜解腻</div>
+ </div>
+</div>
+```

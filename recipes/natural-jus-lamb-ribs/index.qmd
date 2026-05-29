@@ -1,0 +1,45 @@
+---
+title: "原汁羊排"
+sort-title: "yuanzhiyangpai"
+image: "/recipes/banners/natural-jus-lamb-ribs.png"
+date: "2026-05-29"
+categories: [炖煮, 羊肉]
+description: "羊排码进平底锅，加水与少许生抽慢煨出汁。一锅干净的好菜，汁浓肉香，吃得到羊本身的味道。"
+---
+
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+```
+
+{{< include html/hero.qmd >}}
+
+{{< include html/meta.qmd >}}
+
+## 食材
+
+{{< include html/ingredients.qmd >}}
+
+::: {.callout-note}
+**量勺换算**：1 汤匙 ≈ 15 毫升，1 茶匙 ≈ 5 毫升。
+:::
+
+## 步骤
+
+{{< include html/timeline.qmd >}}
+
+{{< include html/steps.qmd >}}
+
+## 配餐建议
+
+{{< include html/pairings.qmd >}}
+
+## 新手常见问题
+
+{{< include html/faq.qmd >}}
+
+```{=html}
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```
