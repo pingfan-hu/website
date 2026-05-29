@@ -11,7 +11,7 @@
    </div>
    <ol class="step-list">
     <li>菜花掰成小朵，根部稍粗的可以用刀劈成两半。流水冲洗，再用淡盐水泡 5 分钟，沥干备用。</li>
-    <li>猪里脊先切薄片（约 3 毫米厚），再顺纹理切成大约一指宽的条。</li>
+    <li>猪里脊先<strong>顺纹理</strong>切成约 3 毫米厚的薄片，再叠起来切成 3 毫米粗、4–5 cm 长的<strong>肉丝</strong>。</li>
     <li>蒜切片，干辣椒剪小段去籽，葱白和葱绿分开切。</li>
    </ol>
    <div class="step-tip"><i data-lucide="lightbulb"></i><span>菜花的小朵大小尽量一致，这样下锅炒时熟得均匀。</span></div>
@@ -19,19 +19,19 @@
  </article>
 
  <article class="step-card" id="step-2">
-  <div class="step-photo"><img src="/recipes/cauliflower-pork/images/marinating.png" alt="腌制肉片"></div>
+  <div class="step-photo"><img src="/recipes/cauliflower-pork/images/marinating.png" alt="腌制肉丝"></div>
   <div class="step-body">
    <div class="step-head">
     <span class="step-num">02</span>
-    <span class="step-title">腌制肉片</span>
+    <span class="step-title">腌制肉丝</span>
     <span class="step-time"><i data-lucide="clock"></i>10 分</span>
    </div>
    <ol class="step-list">
-    <li>切好的肉片放入碗中，加入 1 汤匙料酒、半汤匙生抽、1 汤匙淀粉。</li>
-    <li>用手抓匀，让每片肉都裹上一层薄薄的浆。再淋几滴食用油，可以防止肉片下锅时粘连。</li>
+    <li>切好的肉丝放入碗中，加入 1 汤匙料酒、半汤匙生抽、1 汤匙淀粉。</li>
+    <li>用手抓匀，让每根肉丝都裹上一层薄薄的浆。再淋几滴食用油，可以防止肉丝下锅时粘连。</li>
     <li>静置 10 分钟，让淀粉吸收水分，下锅时肉更滑嫩。</li>
    </ol>
-   <div class="step-tip"><i data-lucide="lightbulb"></i><span>淀粉抓码是肉片嫩滑不柴的关键，宁可多一点也不要少。</span></div>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>淀粉抓码是肉丝嫩滑不柴的关键，宁可多一点也不要少。</span></div>
   </div>
  </article>
 
@@ -53,19 +53,19 @@
  </article>
 
  <article class="step-card" id="step-4">
-  <div class="step-photo"><img src="/recipes/cauliflower-pork/images/stir-frying-pork.png" alt="滑炒肉片"></div>
+  <div class="step-photo"><img src="/recipes/cauliflower-pork/images/stir-frying-pork.png" alt="滑炒肉丝"></div>
   <div class="step-body">
    <div class="step-head">
     <span class="step-num">04</span>
-    <span class="step-title">滑炒肉片</span>
+    <span class="step-title">滑炒肉丝</span>
     <span class="step-time"><i data-lucide="clock"></i>3 分</span>
    </div>
    <ol class="step-list">
     <li>锅烧热，倒入 1 汤匙食用油，油温五成热（轻微冒烟前）。</li>
-    <li>把肉片一片片散开下锅，不要一坨倒下去。中火快炒至肉片变白、表面微卷。</li>
+    <li>把肉丝抖散下锅，不要一坨倒下去。中火快炒至肉丝变白、表面微微发亮。</li>
     <li>盛出备用，锅里留底油。</li>
    </ol>
-   <div class="step-tip"><i data-lucide="lightbulb"></i><span>肉片下锅后先别急着翻动，让一面定型 10 秒再划散，颜色会更好看。</span></div>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>肉丝下锅后先别急着翻动，让一面定型 10 秒再划散，根根分明不会粘成一团。</span></div>
   </div>
  </article>
 
@@ -81,7 +81,7 @@
     <li>锅中留底油，需要的话再补 1 汤匙食用油。下蒜片和葱白，中小火炒 10 秒。下干辣椒段，再炒 10 秒，闻到香味、辣椒微微发深即可。</li>
     <li>沥干的菜花倒入锅中，转大火翻炒 1 分钟，让菜花裹上油香。</li>
     <li>加入半汤匙生抽、半茶匙老抽和半茶匙盐，继续翻炒 30 秒。</li>
-    <li>把之前盛出的肉片倒回锅中，快速翻炒 30 秒，让所有食材均匀混合。</li>
+    <li>把之前盛出的肉丝倒回锅中，快速翻炒 30 秒，让所有食材均匀混合。</li>
    </ol>
    <div class="step-warn"><i data-lucide="triangle-alert"></i><span>干辣椒最怕炒糊，火稍微小一点。糊了会发苦，整道菜都会受影响。</span></div>
    <div class="step-tip"><i data-lucide="lightbulb"></i><span>老抽是上色用的，分量很少就够了。多了颜色会发暗，菜花的清爽感会被压住。</span></div>

@@ -18,7 +18,7 @@
   <a class="timeline-step" href="#step-2">
    <span class="timeline-step-circle">02</span>
    <div class="timeline-step-text">
-    <div class="timeline-step-label">腌制肉片</div>
+    <div class="timeline-step-label">腌制肉丝</div>
     <div class="timeline-step-time">10 分</div>
    </div>
   </a>
@@ -32,7 +32,7 @@
   <a class="timeline-step" href="#step-4">
    <span class="timeline-step-circle">04</span>
    <div class="timeline-step-text">
-    <div class="timeline-step-label">滑炒肉片</div>
+    <div class="timeline-step-label">滑炒肉丝</div>
     <div class="timeline-step-time">3 分</div>
    </div>
   </a>
