@@ -1,0 +1,87 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/cocktails/long-island-iced-tea/images/chill-glass.png" alt="冰杯备料"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">冰杯备料</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>取一只高身的<strong>柯林杯</strong>（highball），装满冰块冰镇，摇酒壶里也先备好一壶冰</li>
+    <li>柠檬现挤出约 1 oz 鲜柠檬汁，滤掉籽和果肉</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>长岛冰茶是<strong>长饮</strong>，杯子要够高才装得下五种酒加可乐。冰要多、要满，冰少了化得快，酒一稀就寡淡。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/cocktails/long-island-iced-tea/images/measure-spirits.png" alt="量取五烈酒"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">量取五烈酒</span>
+    <span class="step-time"><i data-lucide="clock"></i>1 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>用量酒器把<strong>伏特加、金酒、白朗姆、龙舌兰各 ½ oz</strong> 依次倒入摇酒壶</li>
+    <li>再加入 <strong>½ oz 君度橙酒</strong>，五种酒合计约 2.5 oz</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>一定要用量酒器，别凭手感乱倒。一杯就有近 2.5 oz 纯烈酒，等于普通鸡尾酒的两三倍，量错了会烈到喝不下去。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/cocktails/long-island-iced-tea/images/shake.png" alt="加酸摇和"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">加酸摇和</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>往摇酒壶里加入 <strong>¾ oz 鲜柠檬汁</strong>和 <strong>½ oz 糖浆</strong>，再加满冰块</li>
+    <li>盖紧用力摇 10–15 秒，直到壶身<strong>结霜冰凉</strong></li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>柠檬和糖是这杯"冰茶"顺口的关键——它把五种烈酒的冲劲压下去，喝起来才像加了柠檬的冰红茶。先摇匀再兑可乐，融合度更高。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/cocktails/long-island-iced-tea/images/top-cola.png" alt="滤酒兑可乐"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">滤酒兑可乐</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>冰镇好的柯林杯倒掉冰水、重新装满冰块，把摇好的酒液<strong>滤入</strong>杯中</li>
+    <li>最后沿杯壁<strong>缓缓兑入可乐补满</strong>，正好把酒液染成红茶般的琥珀色</li>
+    <li>用吧勺轻轻一提一压，让可乐与酒液融合，别搅散气泡</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>可乐<strong>最后加</strong>，加多少决定颜色和甜度——补到红茶色就停。这一步既是上色也是提味，长岛冰茶"像茶"全靠它。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-5">
+  <div class="step-photo"><img src="/cocktails/long-island-iced-tea/images/garnish.png" alt="装饰上桌"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">05</span>
+    <span class="step-title">装饰上桌</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 秒</span>
+   </div>
+   <ol class="step-list">
+    <li>杯口架一片<strong>柠檬片</strong>，插上一根吸管</li>
+    <li>成品是一杯<strong>红茶色的长饮</strong>，盛在装满冰的高身柯林杯里，柠檬片点缀杯沿</li>
+    <li>趁冰凉尽快享用，记得——它顺口归顺口，<strong>后劲很猛</strong></li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>一片柠檬就是长岛冰茶的招牌装饰，朴素却点题。颜色越接近冰红茶越正宗，端上桌常被误以为是真的茶。</span></div>
+  </div>
+ </article>
+
+</div>
+```

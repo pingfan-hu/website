@@ -1,0 +1,64 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="martini"></i></div>
+  <span class="ing-header-text">基酒</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/vodka.png" alt="伏特加">
+   <div class="ing-qty">½ oz（15 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/gin.png" alt="金酒">
+   <div class="ing-qty">½ oz（15 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/white-rum.png" alt="白朗姆">
+   <div class="ing-qty">½ oz（15 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/tequila.png" alt="龙舌兰">
+   <div class="ing-qty">½ oz（15 ml）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="droplet"></i></div>
+  <span class="ing-header-text">调味</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/triple-sec.png" alt="君度橙酒">
+   <div class="ing-qty">½ oz（15 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/lemon-juice.png" alt="鲜柠檬汁">
+   <div class="ing-qty">¾ oz（22 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/simple-syrup.png" alt="糖浆">
+   <div class="ing-qty">½ oz（15 ml）</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/cola.png" alt="可乐">
+   <div class="ing-qty">补满（约 1 oz）</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="citrus"></i></div>
+  <span class="ing-header-text">装饰</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/lemon-wheel.png" alt="柠檬片">
+   <div class="ing-qty">1 片</div>
+  </div>
+ </div>
+</div>
+```

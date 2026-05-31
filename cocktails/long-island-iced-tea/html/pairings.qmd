@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="drumstick"></i></div>
+  <div class="pairing-label">炸鸡翅</div>
+  <div class="pairing-desc">重口炸物配甜润长饮，越喝越停不下来</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="popcorn"></i></div>
+  <div class="pairing-label">薯片爆米花</div>
+  <div class="pairing-desc">咸脆零嘴搭可乐气泡感，看剧小酌正合适</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="party-popper"></i></div>
+  <div class="pairing-label">派对畅饮</div>
+  <div class="pairing-desc">人多热闹时的氛围担当，可惜后劲容易上头</div>
+ </div>
+</div>
+```

@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>长岛冰茶里到底有没有茶？</summary>
+  <div class="recipe-faq-answer">完全<strong>没有茶</strong>。名字只是因为它兑上可乐后，颜色和味道都像加了柠檬的冰红茶。上色提味全靠<strong>可乐</strong>，一片茶叶都没放过。</div>
+ </details>
+
+ <details>
+  <summary>五种酒一定要凑齐吗？少一两种行不行？</summary>
+  <div class="recipe-faq-answer">行。<strong>伏特加和金酒</strong>是骨架，最好保留；白朗姆、龙舌兰缺哪种，就把其余几种补足总量到约 <strong>2.5 oz</strong>，风味会变但依然好喝。<strong>橙酒别省</strong>——它负责那股回甘和层次，少了就单调了。</div>
+ </details>
+
+ <details>
+  <summary>为什么这么烈？怎么喝才不容易上头？</summary>
+  <div class="recipe-faq-answer">一杯就有近 <strong>2.5 oz 纯烈酒</strong>，相当于普通鸡尾酒的两三倍，可乐和糖却把酒味盖得很顺口，最容易不知不觉喝过量。建议<strong>冰要足、慢慢喝、别空腹</strong>，一杯足矣。</div>
+ </details>
+
+ <details>
+  <summary>没有摇酒壶能做吗？</summary>
+  <div class="recipe-faq-answer">能。直接在杯里<strong>兑和（build）</strong>：冰杯里倒入五种酒和柠檬汁、糖浆，搅匀后再缓缓兑入可乐补满即可。只是没有摇出来那么冰凉融合，但味道几乎一样。</div>
+ </details>
+
+ <details>
+  <summary>可以做无酒精版吗？</summary>
+  <div class="recipe-faq-answer">可以。用<strong>冷泡红茶</strong>打底，加一点鲜柠檬汁、几滴橙味糖浆，再兑可乐补满，就是一杯"长岛冰茶味"的无酒精长饮，<strong>颜色和口感都很像</strong>，开车、孕期都能喝。</div>
+ </details>
+
+</div>
+```
