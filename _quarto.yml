@@ -12,6 +12,10 @@ project:
     - blog/banners/
     - fonts/
 
+language:
+  listing-page-filter: "查找"
+  toc-title-website: "Table of contents"
+
 website:
   title: Pingfan Hu
   image: images/card.png

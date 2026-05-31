@@ -11,7 +11,7 @@ listing:
   grid-columns: 4
   categories: true
   sort-ui: false
-  filter-ui: false
+  filter-ui: [title]
   fields: [title, description, categories, image]
   image-height: auto
 page-layout: full

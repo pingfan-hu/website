@@ -117,6 +117,12 @@
     }
     return null;
   }
+  // Per-section back-button label overrides (section slug -> full label).
+  // Sections not listed fall back to "Back to <navbar title>".
+  var BACK_LABELS = {
+    recipes: '菜谱',
+    cocktails: '鸡尾酒'
+  };
   function addBackButton() {
     var match = window.location.pathname.match(/^\/([^\/]+)\/.+/);
     if (!match) return;
@@ -124,10 +130,11 @@
     if (!nav) return;
     var header = document.getElementById('title-block-header');
     if (!header || header.previousElementSibling && header.previousElementSibling.classList.contains('subpage-back-btn')) return;
+    var label = BACK_LABELS[match[1]] || ('Back to ' + nav.title);
     var btn = document.createElement('a');
     btn.className = 'subpage-back-btn';
     btn.href = nav.href;
-    btn.innerHTML = '<i class="nav-arrow" aria-hidden="true">←</i><span>Back to ' + nav.title + '</span>';
+    btn.innerHTML = '<i class="nav-arrow" aria-hidden="true">←</i><span>' + label + '</span>';
     header.parentNode.insertBefore(btn, header);
   }
   if (document.readyState === 'loading') {
