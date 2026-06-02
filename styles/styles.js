@@ -291,6 +291,333 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
   }
 })();
 
+// ---- Step Timer ----
+// Recipe/cocktail step cards show a `.step-time` pill (e.g. "40 分", "30 秒",
+// "60–90 分钟"). Make each pill clickable to launch a single floating countdown
+// timer. Ranges use the larger bound; a beep + flash fire when it reaches zero.
+(function () {
+  // Parse a duration string into seconds. Returns null when no number is found.
+  function parseSeconds(text) {
+    var nums = text.match(/\d+/g);
+    if (!nums || !nums.length) return null;
+    var value = parseInt(nums[nums.length - 1], 10); // larger end of a range
+    var isSeconds = /秒/.test(text) && !/分/.test(text);
+    return isSeconds ? value : value * 60;
+  }
+
+  // Inline lucide-style icons (the page's lucide.createIcons() has already run
+  // by the time this panel is built, so injected <i data-lucide> wouldn't render).
+  function svgIcon(inner) {
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" ' +
+      'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + inner + '</svg>';
+  }
+  var ICON_PLAY = svgIcon('<polygon points="6 3 20 12 6 21 6 3"></polygon>');
+  var ICON_PAUSE = svgIcon('<rect x="14" y="3" width="4" height="18" rx="1"></rect><rect x="6" y="3" width="4" height="18" rx="1"></rect>');
+  var ICON_RESET = svgIcon('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path>');
+
+  function format(totalSeconds) {
+    var s = Math.max(0, Math.round(totalSeconds));
+    var m = Math.floor(s / 60);
+    var sec = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  // One reusable AudioContext, unlocked on the first click (a user gesture) so
+  // the completion beep is allowed to play later.
+  var audioCtx = null;
+  function unlockAudio() {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    } catch (e) { audioCtx = null; }
+  }
+  function beep(times) {
+    if (!audioCtx) return;
+    for (var i = 0; i < times; i++) {
+      var start = audioCtx.currentTime + i * 0.7;
+      var osc = audioCtx.createOscillator();
+      var gain = audioCtx.createGain();
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = 880;
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.3, start + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.5);
+      osc.start(start);
+      osc.stop(start + 0.5);
+    }
+  }
+
+  function init() {
+    // Recipes only. Cocktails share the same step-card markup but are quick to
+    // make, so their time pills stay non-interactive.
+    if (!/^\/recipes\//.test(window.location.pathname)) return;
+    var pills = document.querySelectorAll('.step-card .step-time');
+    if (!pills.length) return;
+
+    // Single shared timer panel.
+    var panel = document.createElement('div');
+    panel.className = 'recipe-timer';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', '计时器');
+    panel.hidden = true;
+    panel.innerHTML =
+      '<div class="recipe-timer-head">' +
+        '<span class="recipe-timer-step"></span>' +
+        '<button class="recipe-timer-close" type="button" aria-label="关闭计时器">&times;</button>' +
+      '</div>' +
+      '<div class="recipe-timer-display" aria-live="polite">00:00</div>' +
+      '<div class="recipe-timer-controls">' +
+        '<button class="recipe-timer-btn rt-toggle" type="button" aria-label="暂停">' + ICON_PAUSE + '</button>' +
+        '<button class="recipe-timer-btn rt-reset" type="button" aria-label="重置">' + ICON_RESET + '</button>' +
+      '</div>' +
+      '<div class="recipe-timer-track" role="slider" tabindex="0" aria-label="调整剩余时间" ' +
+        'aria-valuemin="0" aria-valuenow="0"><div class="recipe-timer-fill"></div></div>';
+    document.body.appendChild(panel);
+
+    var stepEl = panel.querySelector('.recipe-timer-step');
+    var displayEl = panel.querySelector('.recipe-timer-display');
+    var fillEl = panel.querySelector('.recipe-timer-fill');
+    var trackEl = panel.querySelector('.recipe-timer-track');
+    var toggleBtn = panel.querySelector('.rt-toggle');
+    var resetBtn = panel.querySelector('.rt-reset');
+    var closeBtn = panel.querySelector('.recipe-timer-close');
+
+    var STEP = 5; // scrub/keyboard resolution, in seconds
+    function snap(seconds) {
+      var s = Math.round(seconds / STEP) * STEP;
+      return Math.max(0, Math.min(state.total, s));
+    }
+
+    function setToggleIcon(isRunning) {
+      toggleBtn.innerHTML = isRunning ? ICON_PAUSE : ICON_PLAY;
+      toggleBtn.setAttribute('aria-label', isRunning ? '暂停' : '继续');
+    }
+
+    var state = {
+      tick: null,        // interval id
+      endTime: 0,        // ms timestamp when running
+      remaining: 0,      // seconds left when paused
+      total: 0,          // original seconds (for reset)
+      running: false,
+      done: false,
+      pill: null         // the .step-time element currently driving the timer
+    };
+
+    function clearTick() {
+      if (state.tick) { clearInterval(state.tick); state.tick = null; }
+    }
+
+    function setActivePill(pill) {
+      if (state.pill && state.pill !== pill) state.pill.classList.remove('is-timing');
+      state.pill = pill;
+      if (pill) pill.classList.add('is-timing');
+    }
+
+    function render(seconds) {
+      displayEl.textContent = format(seconds);
+      var pct = state.total > 0 ? Math.max(0, Math.min(100, (seconds / state.total) * 100)) : 0;
+      fillEl.style.width = pct + '%';
+      trackEl.setAttribute('aria-valuenow', Math.round(seconds));
+    }
+
+    function finish() {
+      clearTick();
+      state.running = false;
+      state.done = true;
+      state.remaining = 0;
+      panel.classList.remove('is-running');
+      render(0);
+      panel.classList.add('is-done');
+      setToggleIcon(false);
+      beep(3);
+    }
+
+    function loop() {
+      var left = (state.endTime - Date.now()) / 1000;
+      if (left <= 0) { finish(); return; }
+      render(left);
+    }
+
+    function start(seconds) {
+      panel.classList.remove('is-done');
+      panel.classList.add('is-running');
+      state.done = false;
+      state.endTime = Date.now() + seconds * 1000;
+      state.running = true;
+      setToggleIcon(true);
+      render(seconds);
+      clearTick();
+      state.tick = setInterval(loop, 250);
+    }
+
+    function pause() {
+      if (!state.running) return;
+      state.remaining = Math.max(0, (state.endTime - Date.now()) / 1000);
+      state.running = false;
+      clearTick();
+      panel.classList.remove('is-running');
+      render(state.remaining);
+      setToggleIcon(false);
+    }
+
+    function openFor(pill, seconds) {
+      setActivePill(pill);
+      stepEl.textContent = pillStepTitle(pill);
+      state.total = seconds;
+      trackEl.setAttribute('aria-valuemax', seconds);
+      panel.hidden = false;
+      start(seconds);
+      // Bring the whole step into view so the floating/bottom-sheet panel never
+      // covers the content it belongs to. `.step-card` has scroll-margin-top.
+      var card = pill.closest('.step-card');
+      if (card && card.scrollIntoView) {
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      }
+    }
+
+    function pillStepTitle(pill) {
+      var head = pill.closest('.step-head');
+      var title = head ? head.querySelector('.step-title') : null;
+      return title ? title.textContent.trim() : '计时器';
+    }
+
+    toggleBtn.addEventListener('click', function () {
+      unlockAudio();
+      if (state.done) { start(state.total); return; }
+      if (state.running) { pause(); }
+      else { start(state.remaining || state.total); }
+    });
+
+    resetBtn.addEventListener('click', function () {
+      unlockAudio();
+      clearTick();
+      panel.classList.remove('is-done', 'is-running');
+      state.done = false;
+      state.running = false;
+      state.remaining = state.total;
+      render(state.total);
+      setToggleIcon(false);
+    });
+
+    // ---- Scrubbing the progress bar ----
+    // Drag / click / wheel / arrow keys set the remaining time, snapped to STEP
+    // seconds and bounded by the step's total. Works whether running or paused.
+    function liveRemaining() {
+      if (state.running) return Math.max(0, (state.endTime - Date.now()) / 1000);
+      return state.remaining;
+    }
+
+    function setRemaining(seconds) {
+      var snapped = snap(seconds);
+      panel.classList.remove('is-done');
+      state.done = false;
+      if (state.running) {
+        state.endTime = Date.now() + snapped * 1000;
+      } else {
+        state.remaining = snapped;
+      }
+      render(snapped);
+    }
+
+    function seekFromEvent(e) {
+      if (!state.total) return;
+      var rect = trackEl.getBoundingClientRect();
+      var frac = (e.clientX - rect.left) / rect.width;
+      setRemaining(frac * state.total);
+    }
+
+    var dragging = false;
+    var wasRunning = false;
+    trackEl.addEventListener('pointerdown', function (e) {
+      if (!state.total) return;
+      unlockAudio();
+      dragging = true;
+      wasRunning = state.running;
+      state.running = false; // freeze while scrubbing; resume on release
+      clearTick();
+      panel.classList.add('is-scrubbing');
+      document.documentElement.classList.add('rt-scrubbing'); // suppress page text selection
+      try { trackEl.setPointerCapture(e.pointerId); } catch (_) {}
+      seekFromEvent(e);
+    });
+    trackEl.addEventListener('pointermove', function (e) {
+      if (dragging) seekFromEvent(e);
+    });
+    function endDrag(e) {
+      if (!dragging) return;
+      dragging = false;
+      panel.classList.remove('is-scrubbing');
+      document.documentElement.classList.remove('rt-scrubbing');
+      try { trackEl.releasePointerCapture(e.pointerId); } catch (_) {}
+      if (wasRunning && state.remaining > 0) start(state.remaining);
+      else setToggleIcon(false);
+    }
+    trackEl.addEventListener('pointerup', endDrag);
+    trackEl.addEventListener('pointercancel', endDrag);
+
+    trackEl.addEventListener('wheel', function (e) {
+      if (!state.total) return;
+      e.preventDefault();
+      unlockAudio();
+      setRemaining(liveRemaining() + (e.deltaY < 0 ? STEP : -STEP));
+    }, { passive: false });
+
+    trackEl.addEventListener('keydown', function (e) {
+      if (!state.total) return;
+      var step = 0;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') step = STEP;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') step = -STEP;
+      else return;
+      e.preventDefault();
+      unlockAudio();
+      setRemaining(liveRemaining() + step);
+    });
+
+    function close() {
+      clearTick();
+      state.running = false;
+      panel.hidden = true;
+      panel.classList.remove('is-done', 'is-running');
+      setActivePill(null);
+    }
+    closeBtn.addEventListener('click', close);
+
+    // Wire each pill that carries a parseable duration.
+    pills.forEach(function (pill) {
+      var seconds = parseSeconds(pill.textContent);
+      if (!seconds) return;
+      pill.classList.add('timer-enabled');
+      pill.setAttribute('role', 'button');
+      pill.setAttribute('tabindex', '0');
+      pill.setAttribute('aria-label', '开始计时 ' + pill.textContent.trim());
+
+      function activate() {
+        unlockAudio();
+        // Clicking the pill whose timer is already running closes it instead of
+        // restarting; any other case (different pill, paused, closed) (re)starts.
+        if (pill === state.pill && state.running && !panel.hidden) {
+          close();
+        } else {
+          openFor(pill, seconds);
+        }
+      }
+      pill.addEventListener('click', activate);
+      pill.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
 // ---- Code Copy Button ----
 // Suppress "Copied!" tooltip — checkmark icon is sufficient feedback
 document.addEventListener('show.bs.tooltip', function (e) {

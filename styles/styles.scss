@@ -926,18 +926,18 @@ table {
 .step-time {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
+  gap: 6px;
+  padding: 5px 13px;
   border-radius: 999px;
   background: #EEEDF8;
   color: #5654A2;
   font-family: 'Maple Mono', monospace;
-  font-size: 0.78em;
+  font-size: 0.9em;
   white-space: nowrap;
 
   svg {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     stroke-width: 2;
   }
 }
@@ -1003,6 +1003,205 @@ table {
   .step-body  { padding: 14px 16px 16px; }
   .step-num   { font-size: 1.7em; }
   .step-title { font-size: 1.08em; }
+}
+
+// ---- Step Timer ----
+// `.step-time` pills become clickable to launch a floating countdown.
+// JS (styles.js) adds `.timer-enabled` only when a duration can be parsed.
+
+.step-time.timer-enabled {
+  cursor: pointer;
+  border: 1px solid #d6d3ef;
+  box-shadow: 0 1px 2px rgba(86, 84, 162, 0.14);
+  transition: background 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
+
+  // Promote to its own compositor layer so the lift is interpolated on the GPU
+  // instead of re-rasterizing the SVG each frame — kills the icon shake.
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+
+  &:hover,
+  &:focus-visible {
+    background: #5654A2;
+    color: #F8F7F0;
+    border-color: #5654A2;
+    box-shadow: 0 4px 10px rgba(86, 84, 162, 0.28);
+    transform: translate3d(0, -1px, 0);
+  }
+  &:focus-visible { outline: 2px solid #5654A2; outline-offset: 2px; }
+  &:active {
+    transform: translate3d(0, 0, 0) scale(0.97);
+    box-shadow: 0 1px 2px rgba(86, 84, 162, 0.2);
+  }
+}
+
+.step-time.is-timing { background: #5654A2; color: #F8F7F0; }
+
+.recipe-timer {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1050;
+  width: 244px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #e3e1d6;
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(40, 38, 30, 0.18);
+  font-family: 'Maple Mono', monospace;
+  animation: rt-pop 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+
+  // Nothing in the panel needs selecting; this stops drag-scrubbing the bar
+  // from highlighting the title/digits.
+  user-select: none;
+  -webkit-user-select: none;
+
+  &[hidden] { display: none; }
+}
+
+@keyframes rt-pop {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+.recipe-timer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.recipe-timer-step {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #5654A2;
+}
+
+.recipe-timer-close {
+  flex-shrink: 0;
+  padding: 0 2px;
+  border: none;
+  background: transparent;
+  color: #8a8676;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover { color: #2a2920; }
+}
+
+.recipe-timer-display {
+  margin: 2px 0 12px;
+  font-size: 2.6rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #2a2920;
+  font-variant-numeric: tabular-nums;
+}
+
+.recipe-timer.is-done .recipe-timer-display {
+  color: #c0392b;
+  animation: rt-flash 0.8s steps(1) infinite;
+}
+
+@keyframes rt-flash { 50% { opacity: 0.25; } }
+
+.recipe-timer-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.recipe-timer-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border: 1px solid #e3e1d6;
+  border-radius: 9px;
+  background: #F8F7F0;
+  color: #2a2920;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:hover { background: #EEEDF8; border-color: #5654A2; color: #5654A2; }
+
+  svg { width: 18px; height: 18px; }
+}
+
+.recipe-timer-btn.rt-toggle {
+  background: #5654A2;
+  border-color: #5654A2;
+  color: #fff;
+
+  &:hover { background: #45438a; border-color: #45438a; color: #fff; }
+}
+
+.recipe-timer-track {
+  position: relative;
+  height: 8px;
+  margin-top: 16px;
+  border-radius: 999px;
+  background: #EEEDF8;
+  cursor: pointer;
+  touch-action: none; // let pointer-drag scrub instead of scrolling the page
+
+  &:focus-visible { outline: 2px solid #5654A2; outline-offset: 3px; }
+}
+
+.recipe-timer-fill {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: #5654A2;
+  transition: width 0.25s linear, opacity 0.2s ease;
+}
+
+// Draggable thumb at the leading edge of the fill.
+.recipe-timer-fill::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  transform: translate(50%, -50%);
+  border-radius: 50%;
+  background: #5654A2;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(40, 38, 30, 0.25);
+}
+
+// Paused (and not yet started): bar freezes and dims to read as inactive.
+.recipe-timer:not(.is-running) .recipe-timer-fill { opacity: 0.35; }
+
+// While scrubbing: snap to the pointer instantly and stay fully visible.
+.recipe-timer.is-scrubbing .recipe-timer-fill {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+// While a drag is in progress, suppress text selection across the whole page so
+// dragging past the panel edge doesn't highlight the recipe content underneath.
+html.rt-scrubbing,
+html.rt-scrubbing * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+@media (max-width: 575px) {
+  .recipe-timer {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+  }
 }
 
 // ---- Recipe Pairings ----
@@ -1766,5 +1965,47 @@ body.quarto-dark {
       border-top-color: #3a3858;
     }
     .recipe-meta-item:nth-child(even) { border-left-color: #3a3858; }
+  }
+
+  // Step timer
+  .step-time.timer-enabled {
+    border-color: #3f3d6b;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  .step-time.timer-enabled:hover,
+  .step-time.timer-enabled:focus-visible {
+    background: #5654A2;
+    color: #fff;
+    border-color: #6361b5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  .step-time.is-timing { background: #5654A2; color: #fff; }
+
+  .recipe-timer {
+    background: #1e2433;
+    border-color: #3a3858;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+  }
+  .recipe-timer-step    { color: #b5b2e6; }
+  .recipe-timer-display { color: #dddcd6; }
+  .recipe-timer-close   { color: #8a86a8; &:hover { color: #dddcd6; } }
+  .recipe-timer-btn {
+    background: #2a2945;
+    border-color: #3a3858;
+    color: #dddcd6;
+    &:hover { background: #33315a; border-color: #7c7ac4; color: #cfcdf5; }
+  }
+  .recipe-timer-btn.rt-toggle {
+    background: #5654A2;
+    border-color: #5654A2;
+    color: #fff;
+    &:hover { background: #6361b5; border-color: #6361b5; color: #fff; }
+  }
+  .recipe-timer-track { background: #2a2945; }
+  .recipe-timer-fill  { background: #7c7ac4; }
+  .recipe-timer-fill::after {
+    background: #7c7ac4;
+    border-color: #1e2433;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
   }
 }
