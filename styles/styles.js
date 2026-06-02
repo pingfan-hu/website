@@ -332,8 +332,19 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
       if (audioCtx.state === 'suspended') audioCtx.resume();
     } catch (e) { audioCtx = null; }
   }
+  // Oscillators scheduled by the most recent beep(), so stopBeep() can cut the
+  // sound the instant the timer is closed/reset instead of letting the queued
+  // tones play out.
+  var activeBeeps = [];
+  function stopBeep() {
+    for (var i = 0; i < activeBeeps.length; i++) {
+      try { activeBeeps[i].stop(); activeBeeps[i].disconnect(); } catch (e) {}
+    }
+    activeBeeps = [];
+  }
   function beep(times) {
     if (!audioCtx) return;
+    stopBeep();
     for (var i = 0; i < times; i++) {
       var start = audioCtx.currentTime + i * 0.7;
       var osc = audioCtx.createOscillator();
@@ -346,6 +357,7 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
       gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.5);
       osc.start(start);
       osc.stop(start + 0.5);
+      activeBeeps.push(osc);
     }
   }
 
@@ -356,24 +368,41 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
     var pills = document.querySelectorAll('.step-card .step-time');
     if (!pills.length) return;
 
-    // Single shared timer panel.
+    // Wrap each step card in a positioned `.step-row` so the timer can attach to
+    // it: on wide screens it floats out past the card's right edge; on narrow
+    // screens it drops below in normal flow and nudges the next card down. The
+    // card itself has `overflow: hidden`, so the panel can't live inside it.
+    document.querySelectorAll('.step-card').forEach(function (card) {
+      var parent = card.parentElement;
+      if (parent && parent.classList.contains('step-row')) return;
+      var row = document.createElement('div');
+      row.className = 'step-row';
+      card.parentNode.insertBefore(row, card);
+      row.appendChild(card);
+    });
+
+    // Single shared timer panel, moved into the active card's row on open.
+    // `.recipe-timer-clip` masks the inner content during the grow/collapse
+    // animation; `.recipe-timer-inner` carries the visible card so its fixed
+    // size never reflows mid-animation.
     var panel = document.createElement('div');
     panel.className = 'recipe-timer';
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-label', '计时器');
-    panel.hidden = true;
     panel.innerHTML =
-      '<div class="recipe-timer-head">' +
-        '<span class="recipe-timer-step"></span>' +
-        '<button class="recipe-timer-close" type="button" aria-label="关闭计时器">&times;</button>' +
-      '</div>' +
-      '<div class="recipe-timer-display" aria-live="polite">00:00</div>' +
-      '<div class="recipe-timer-controls">' +
-        '<button class="recipe-timer-btn rt-toggle" type="button" aria-label="暂停">' + ICON_PAUSE + '</button>' +
-        '<button class="recipe-timer-btn rt-reset" type="button" aria-label="重置">' + ICON_RESET + '</button>' +
-      '</div>' +
-      '<div class="recipe-timer-track" role="slider" tabindex="0" aria-label="调整剩余时间" ' +
-        'aria-valuemin="0" aria-valuenow="0"><div class="recipe-timer-fill"></div></div>';
+      '<div class="recipe-timer-clip"><div class="recipe-timer-inner">' +
+        '<div class="recipe-timer-head">' +
+          '<span class="recipe-timer-step"></span>' +
+          '<button class="recipe-timer-close" type="button" aria-label="关闭计时器">&times;</button>' +
+        '</div>' +
+        '<div class="recipe-timer-display" aria-live="polite">00:00</div>' +
+        '<div class="recipe-timer-controls">' +
+          '<button class="recipe-timer-btn rt-toggle" type="button" aria-label="暂停">' + ICON_PAUSE + '</button>' +
+          '<button class="recipe-timer-btn rt-reset" type="button" aria-label="重置">' + ICON_RESET + '</button>' +
+        '</div>' +
+        '<div class="recipe-timer-track" role="slider" tabindex="0" aria-label="调整剩余时间" ' +
+          'aria-valuemin="0" aria-valuenow="0"><div class="recipe-timer-fill"></div></div>' +
+      '</div></div>';
     document.body.appendChild(panel);
 
     var stepEl = panel.querySelector('.recipe-timer-step');
@@ -383,6 +412,7 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
     var toggleBtn = panel.querySelector('.rt-toggle');
     var resetBtn = panel.querySelector('.rt-reset');
     var closeBtn = panel.querySelector('.recipe-timer-close');
+    var innerEl = panel.querySelector('.recipe-timer-inner');
 
     var STEP = 5; // scrub/keyboard resolution, in seconds
     function snap(seconds) {
@@ -441,6 +471,7 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
     }
 
     function start(seconds) {
+      stopBeep();
       panel.classList.remove('is-done');
       panel.classList.add('is-running');
       state.done = false;
@@ -467,15 +498,39 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
       stepEl.textContent = pillStepTitle(pill);
       state.total = seconds;
       trackEl.setAttribute('aria-valuemax', seconds);
-      panel.hidden = false;
-      start(seconds);
-      // Bring the whole step into view so the floating/bottom-sheet panel never
-      // covers the content it belongs to. `.step-card` has scroll-margin-top.
+
+      // Mount the panel into this card's row so it extends from the card itself.
       var card = pill.closest('.step-card');
-      if (card && card.scrollIntoView) {
-        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      var row = card ? card.closest('.step-row') : null;
+      if (row && panel.parentElement !== row) row.appendChild(panel);
+
+      // Force a reflow before flipping `.is-open` so the grow animation runs even
+      // when the panel was just moved or is opening for the first time.
+      void panel.offsetWidth;
+      panel.classList.add('is-open');
+
+      start(seconds);
+      centerOnActive(card);
+    }
+
+    // Scroll so the active card plus the timer that expands below it sit centered
+    // in the viewport. The timer starts collapsed, so measure its final height
+    // from `.recipe-timer-inner` (its own offsetHeight is the natural height,
+    // unaffected by the clip) and fold that into the block we center. Doing this
+    // up front lets the scroll and the open animation run together instead of the
+    // scroll target shifting as the panel grows.
+    function centerOnActive(card) {
+      if (!card || !card.getBoundingClientRect) return;
+      var cardRect = card.getBoundingClientRect();
+      var timerHeight = 0;
+      if (innerEl && innerEl.offsetHeight) {
+        var marginTop = parseFloat(getComputedStyle(innerEl).marginTop) || 0;
+        timerHeight = innerEl.offsetHeight + marginTop;
       }
+      var blockCenter = cardRect.top + (cardRect.height + timerHeight) / 2;
+      var delta = blockCenter - window.innerHeight / 2;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollBy({ top: delta, behavior: reduce ? 'auto' : 'smooth' });
     }
 
     function pillStepTitle(pill) {
@@ -494,6 +549,7 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
     resetBtn.addEventListener('click', function () {
       unlockAudio();
       clearTick();
+      stopBeep();
       panel.classList.remove('is-done', 'is-running');
       state.done = false;
       state.running = false;
@@ -578,9 +634,9 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
 
     function close() {
       clearTick();
+      stopBeep();
       state.running = false;
-      panel.hidden = true;
-      panel.classList.remove('is-done', 'is-running');
+      panel.classList.remove('is-open', 'is-done', 'is-running');
       setActivePill(null);
     }
     closeBtn.addEventListener('click', close);
@@ -596,9 +652,10 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
 
       function activate() {
         unlockAudio();
-        // Clicking the pill whose timer is already running closes it instead of
-        // restarting; any other case (different pill, paused, closed) (re)starts.
-        if (pill === state.pill && state.running && !panel.hidden) {
+        // Clicking the pill whose timer is already open closes it — running,
+        // paused, or finished alike. Any other case (different pill, or this
+        // pill while its panel is closed) (re)starts the timer.
+        if (pill === state.pill && panel.classList.contains('is-open')) {
           close();
         } else {
           openFor(pill, seconds);

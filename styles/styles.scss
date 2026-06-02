@@ -871,6 +871,12 @@ table {
   border-radius: 14px;
   overflow: hidden;
   scroll-margin-top: 80px;
+
+  // Paint above the timer drawer (a later sibling) so the card's opaque,
+  // rounded bottom stays on top while the drawer tucks up behind it — the
+  // drawer then appears to embrace the card's rounded corners.
+  position: relative;
+  z-index: 1;
 }
 
 .step-photo {
@@ -1039,36 +1045,71 @@ table {
 
 .step-time.is-timing { background: #5654A2; color: #F8F7F0; }
 
+// The timer drops in right below its `.step-card` as in-flow content (never an
+// overlay), on every screen size. Because it stays in normal flow inside
+// `.steps-list`, expanding it nudges the next card down. JS wraps each card in a
+// `.step-row` so the panel has a flow sibling to mount after.
 .recipe-timer {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 1050;
-  width: 244px;
-  padding: 16px;
-  background: #fff;
-  border: 1px solid #e3e1d6;
-  border-radius: 16px;
-  box-shadow: 0 14px 36px rgba(40, 38, 30, 0.18);
   font-family: 'Maple Mono', monospace;
-  animation: rt-pop 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 
   // Nothing in the panel needs selecting; this stops drag-scrubbing the bar
   // from highlighting the title/digits.
   user-select: none;
   -webkit-user-select: none;
 
-  &[hidden] { display: none; }
+  // Grow from collapsed to the content's natural height. The 0fr → 1fr grid-row
+  // trick animates an auto height; `.recipe-timer-clip` (overflow: hidden,
+  // min-height: 0) is the row that gets clipped while collapsed.
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-bottom 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 0.32s;
+
+  // Tuck up behind the card by its corner radius so the drawer's square top
+  // fills around the card's rounded bottom corners (the embrace). Kept constant
+  // so it never snaps on open/close.
+  margin-top: -14px;
+
+  // A block's auto height is set by its LAST in-flow child's bottom margin edge,
+  // and this drawer is that child. With only the -14px tuck, a collapsed drawer
+  // would pull the row 14px shorter (squeezing the gap to the next card). This
+  // margin-bottom cancels the tuck while collapsed, and animates to 0 as it
+  // opens so the next card ends up flush below the visible drawer.
+  margin-bottom: 14px;
 }
 
-@keyframes rt-pop {
-  from { opacity: 0; transform: translateY(12px) scale(0.96); }
-  to   { opacity: 1; transform: none; }
+.recipe-timer.is-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  margin-bottom: 0;
+  transition: grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-bottom 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.recipe-timer-clip {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.recipe-timer-inner {
+  // Top padding also absorbs the 14px tuck hidden behind the card, so the
+  // visible space above the title is roughly (top - 14)px. 34 → ~20px visible.
+  padding: 24px 16px 16px;
+  background: #fff;
+  border: 1px solid #E5E4DC; // matches `.step-card` so the outline is continuous
+  border-top: none;          // top edge is hidden behind the card
+  border-radius: 0 0 14px 14px; // square top (tucks behind card), round bottom like the card
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recipe-timer { transition: none; }
 }
 
 .recipe-timer-head {
   display: flex;
-  align-items: flex-start;
+  align-items: center; // center the title and the larger × glyph on one axis
   justify-content: space-between;
   gap: 8px;
   margin-bottom: 6px;
@@ -1083,11 +1124,12 @@ table {
 
 .recipe-timer-close {
   flex-shrink: 0;
-  padding: 0 2px;
+  margin-right: -4px; // nudge the glyph toward the corner; vertical handled by the head's centering
+  padding: 0 4px;
   border: none;
   background: transparent;
   color: #8a8676;
-  font-size: 1.25rem;
+  font-size: 1.85rem;
   line-height: 1;
   cursor: pointer;
 
@@ -1193,15 +1235,6 @@ html.rt-scrubbing,
 html.rt-scrubbing * {
   user-select: none !important;
   -webkit-user-select: none !important;
-}
-
-@media (max-width: 575px) {
-  .recipe-timer {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    width: auto;
-  }
 }
 
 // ---- Recipe Pairings ----
@@ -1981,10 +2014,9 @@ body.quarto-dark {
   }
   .step-time.is-timing { background: #5654A2; color: #fff; }
 
-  .recipe-timer {
+  .recipe-timer-inner {
     background: #1e2433;
     border-color: #3a3858;
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
   }
   .recipe-timer-step    { color: #b5b2e6; }
   .recipe-timer-display { color: #dddcd6; }
