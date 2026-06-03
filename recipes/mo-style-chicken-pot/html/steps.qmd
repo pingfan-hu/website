@@ -1,0 +1,108 @@
+```{=html}
+<div class="steps-list">
+
+ <article class="step-card" id="step-1">
+  <div class="step-photo"><img src="/recipes/mo-style-chicken-pot/images/prep-chicken.png" alt="浸豆腌鸡"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">01</span>
+    <span class="step-title">浸豆腌鸡</span>
+    <span class="step-time"><i data-lucide="clock"></i>60 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>黄豆提前用清水浸泡 2–4 小时至膨胀饱满</li>
+    <li>鸡斩成大块，用清水反复冲洗去净血水</li>
+    <li>加 1 勺糖、1 勺盐、少许米酒抓匀</li>
+    <li>表面喷一层薄油封面，腌 1 小时</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>莫氏做法的鸡<strong>不焯水</strong>，靠反复冲洗加腌制去腥，浸熟后肉质更嫩滑。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-2">
+  <div class="step-photo"><img src="/recipes/mo-style-chicken-pot/images/prep-herbs.png" alt="处理药材"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">02</span>
+    <span class="step-title">处理药材</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>陈皮用温水泡软，刮去内层白瓤</li>
+    <li>五指毛桃、土茯苓、茯苓快速冲洗沥干</li>
+    <li>红枣去核洗净，生姜切厚片</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>陈皮刮净白瓤能去苦味，汤更清甜回甘。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-3">
+  <div class="step-photo"><img src="/recipes/mo-style-chicken-pot/images/simmer-base.png" alt="慢炖汤底"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">03</span>
+    <span class="step-title">慢炖汤底</span>
+    <span class="step-time"><i data-lucide="clock"></i>90 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>砂锅放入五指毛桃、土茯苓、茯苓、黄豆、陈皮、红枣、姜片</li>
+    <li>加 2.5–3 升清水，大火烧开</li>
+    <li>转最小火，盖盖慢炖 1.5 小时</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>药材一定要先煮够时间，汤味和药香才出得来，这是整锅的灵魂。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-4">
+  <div class="step-photo"><img src="/recipes/mo-style-chicken-pot/images/poach-chicken.png" alt="浸鸡入味"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">04</span>
+    <span class="step-title">浸鸡入味</span>
+    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>汤底重新烧开，倒入腌好的鸡块</li>
+    <li>中小火浸煮 8–10 分钟</li>
+    <li>加盐调味，关火</li>
+   </ol>
+   <div class="step-warn"><i data-lucide="triangle-alert"></i><span>鸡块只浸 8–10 分钟，久煮会发柴。想更嫩可关火加盖用余温焖几分钟。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-5">
+  <div class="step-photo"><img src="/recipes/mo-style-chicken-pot/images/dipping-sauce.png" alt="调蘸料"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">05</span>
+    <span class="step-title">调蘸料</span>
+    <span class="step-time"><i data-lucide="clock"></i>5 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>红葱头、沙姜切末放入小碗</li>
+    <li>烧一勺热油浇上，激出香味</li>
+    <li>加蚝油、少许糖、蒸鱼豉油拌匀</li>
+    <li>嗜辣可加小米辣圈</li>
+   </ol>
+   <div class="step-tip"><i data-lucide="lightbulb"></i><span>沙姜配红葱头是顺德蘸料的经典组合，热油一激，香气立刻翻倍。</span></div>
+  </div>
+ </article>
+
+ <article class="step-card" id="step-6">
+  <div class="step-photo"><img src="/recipes/mo-style-chicken-pot/images/finishing.png" alt="出锅上桌"></div>
+  <div class="step-body">
+   <div class="step-head">
+    <span class="step-num">06</span>
+    <span class="step-title">出锅上桌</span>
+    <span class="step-time"><i data-lucide="clock"></i>2 分钟</span>
+   </div>
+   <ol class="step-list">
+    <li>鸡块连汤一起盛入砂锅或大汤碗</li>
+    <li>点缀几颗红枣和五指毛桃，让汤色更好看</li>
+    <li>配蘸料趁热上桌，先喝汤、后蘸肉</li>
+   </ol>
+  </div>
+ </article>
+
+</div>
+```

@@ -1,0 +1,19 @@
+```{=html}
+<div class="pairing-grid">
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="wheat"></i></div>
+  <div class="pairing-label">白米饭</div>
+  <div class="pairing-desc">浇一勺鸡汤泡饭，鲜甜暖胃</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="salad"></i></div>
+  <div class="pairing-label">时蔬</div>
+  <div class="pairing-desc">汤里烫几棵青菜、生菜，解腻清口</div>
+ </div>
+ <div class="pairing-card">
+  <div class="pairing-icon"><i data-lucide="cooking-pot"></i></div>
+  <div class="pairing-label">面线</div>
+  <div class="pairing-desc">喝到最后用汤底煮面线，鲜上加鲜</div>
+ </div>
+</div>
+```

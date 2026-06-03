@@ -1,0 +1,5 @@
+```{=html}
+<div class="recipe-hero">
+ <img src="/recipes/banners/mo-style-chicken-pot.png" alt="莫氏鸡煲">
+</div>
+```

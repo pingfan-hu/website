@@ -1,0 +1,45 @@
+---
+title: "莫氏鸡煲"
+sort-title: "moshijibao"
+image: "/recipes/banners/mo-style-chicken-pot.png"
+date: "2026-06-03"
+categories: [汤炖, 鸡肉, 养生]
+description: "顺德爆红的祛湿养生药膳鸡煲，五指毛桃慢炖汤底，鲜鸡浸熟，嫩滑回甘"
+---
+
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+```
+
+{{< include html/hero.qmd >}}
+
+{{< include html/meta.qmd >}}
+
+## 食材
+
+{{< include html/ingredients.qmd >}}
+
+::: {.callout-note}
+**量勺换算**：1 汤匙 ≈ 15 毫升，1 茶匙 ≈ 5 毫升。
+:::
+
+## 步骤
+
+{{< include html/timeline.qmd >}}
+
+{{< include html/steps.qmd >}}
+
+## 配餐建议
+
+{{< include html/pairings.qmd >}}
+
+## 新手常见问题
+
+{{< include html/faq.qmd >}}
+
+```{=html}
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

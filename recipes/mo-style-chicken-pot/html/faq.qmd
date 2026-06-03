@@ -1,0 +1,30 @@
+```{=html}
+<div class="recipe-faq">
+
+ <details>
+  <summary>五指毛桃、土茯苓在哪买？</summary>
+  <div class="recipe-faq-answer">中药店、大型超市的汤料区，或网购都很容易买到。认准<strong>干货</strong>，五指毛桃带椰香、土茯苓是薄片，用前快速冲洗即可，不用久泡。</div>
+ </details>
+
+ <details>
+  <summary>鸡为什么不焯水？</summary>
+  <div class="recipe-faq-answer">莫氏做法靠反复冲洗血水加腌制去腥，鲜鸡现浸最嫩滑。焯水反而会流失鲜味、让肉质变柴，是这道菜和普通炖鸡最大的区别。</div>
+ </details>
+
+ <details>
+  <summary>没有砂锅可以吗？</summary>
+  <div class="recipe-faq-answer">可以，普通汤锅或铸铁锅都行。砂锅只是保温更好、汤更醇厚，受热也更温和。</div>
+ </details>
+
+ <details>
+  <summary>鸡能一直泡在汤里煮吗？</summary>
+  <div class="recipe-faq-answer">不建议。鸡块浸 8–10 分钟刚好嫩滑，久煮发柴。要保温就<strong>关火加盖</strong>用余温焖，吃多少捞多少。</div>
+ </details>
+
+ <details>
+  <summary>哪些人要少喝？</summary>
+  <div class="recipe-faq-answer">鸡性偏温，咳嗽、风热感冒期间不宜。祛湿汤也要分清<strong>寒湿</strong>还是<strong>湿热</strong>体质，不确定先少量尝试，别盲目大量喝。</div>
+ </details>
+
+</div>
+```

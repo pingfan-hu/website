@@ -1,0 +1,84 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="apple"></i></div>
+  <span class="ing-header-text">主料</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/main/chicken.png" alt="走地鸡">
+   <div class="ing-qty">半只，约 1000 克</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="leaf"></i></div>
+  <span class="ing-header-text">辅料（汤底药材）</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/wuzhimaotao.png" alt="五指毛桃">
+   <div class="ing-qty">50 克</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/tu-fuling.png" alt="土茯苓">
+   <div class="ing-qty">50 克</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/fuling.png" alt="茯苓">
+   <div class="ing-qty">20 克</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/dried-tangerine-peel.png" alt="陈皮">
+   <div class="ing-qty">1–2 瓣</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/soybeans.png" alt="黄豆">
+   <div class="ing-qty">50 克</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/red-dates.png" alt="红枣">
+   <div class="ing-qty">30 克，去核</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/supportive/ginger.png" alt="生姜">
+   <div class="ing-qty">3–4 片</div>
+  </div>
+ </div>
+</div>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="flask-conical"></i></div>
+  <span class="ing-header-text">调料（含蘸料）</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/salt.png" alt="盐">
+   <div class="ing-qty">适量</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/shallot.png" alt="红葱头">
+   <div class="ing-qty">3–4 颗</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/sand-ginger.png" alt="沙姜">
+   <div class="ing-qty">1 小块</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/oyster-sauce.png" alt="蚝油">
+   <div class="ing-qty">1 汤匙</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/steamed-fish-soy-sauce.png" alt="蒸鱼豉油">
+   <div class="ing-qty">1 汤匙</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/recipes/resources/seasoning/birds-eye-chili.png" alt="小米辣">
+   <div class="ing-qty">适量，可选</div>
+  </div>
+ </div>
+</div>
+```
