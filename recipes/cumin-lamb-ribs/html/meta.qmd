@@ -2,7 +2,7 @@
 <div class="recipe-meta">
  <div class="recipe-meta-item">
   <div class="recipe-meta-label">总时长</div>
-  <div class="recipe-meta-value">约 2 小时</div>
+  <div class="recipe-meta-value">约 1.5 小时</div>
  </div>
  <div class="recipe-meta-item">
   <div class="recipe-meta-label">难度</div>

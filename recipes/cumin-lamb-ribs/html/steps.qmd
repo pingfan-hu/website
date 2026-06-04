@@ -7,7 +7,7 @@
    <div class="step-head">
     <span class="step-num">01</span>
     <span class="step-title">处理羊排</span>
-    <span class="step-time"><i data-lucide="clock"></i>40 分钟</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 分钟</span>
    </div>
    <ol class="step-list">
     <li>选羊肋排，让肉店斩成单根带骨的羊排段，每段约 6–8 cm 长，保留完整的弧形肋骨</li>
@@ -78,12 +78,12 @@
    <div class="step-head">
     <span class="step-num">05</span>
     <span class="step-title">小火慢煨</span>
-    <span class="step-time"><i data-lucide="clock"></i>60–90 分钟</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 分钟</span>
    </div>
    <ol class="step-list">
     <li>大火烧开后，转<strong>最小火</strong>，盖盖慢煨</li>
     <li>保持汤面微微冒泡，不要翻滚</li>
-    <li>煨 1–1.5 小时，筷子能轻松插入瘦肉部分即熟</li>
+    <li>煨 30 分钟，筷子能轻松插入瘦肉部分即熟</li>
     <li>中途不要频繁开盖</li>
    </ol>
    <div class="step-warn"><i data-lucide="triangle-alert"></i><span>中途绝对不加冷水。要加只能加热水或开水。</span></div>

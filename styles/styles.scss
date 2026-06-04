@@ -1137,6 +1137,49 @@ table {
   .recipe-timer { transition: none; }
 }
 
+// Floating "back to timer" button. JS toggles `.is-visible` only when a timer is
+// open and its drawer has scrolled off-screen. Sits in the bottom-right, above
+// the fixed footer (z-index 1000). Tapping it scrolls back to the active card.
+.recipe-timer-jump {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(2rem + 0.85rem); // clear the 2rem fixed footer
+  z-index: 1001;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid #5654A2;
+  border-radius: 50%;
+  background: #5654A2;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(86, 84, 162, 0.35);
+
+  // Hidden by default; fades + lifts in when active. `visibility` is delayed off
+  // so the fade-out can play before the button stops catching pointer events.
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.9);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease,
+    border-color 0.2s ease, visibility 0s linear 0.25s;
+
+  &:hover { background: #6361b5; border-color: #6361b5; }
+  &:active { transform: translateY(0) scale(0.96); }
+
+  svg { width: 22px; height: 22px; }
+}
+.recipe-timer-jump.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease,
+    border-color 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .recipe-timer-jump { transition: background 0.2s ease, border-color 0.2s ease; }
+}
+
 .recipe-timer-head {
   display: flex;
   align-items: center; // center the title and the larger × glyph on one axis
@@ -2054,6 +2097,13 @@ body.quarto-dark {
   }
   .recipe-timer.is-open .recipe-timer-inner {
     border-color: #7c7ac4;
+  }
+
+  .recipe-timer-jump {
+    border-color: #7c7ac4;
+    background: #5654A2;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    &:hover { background: #6361b5; border-color: #8a88d0; }
   }
 
   .recipe-timer-inner {

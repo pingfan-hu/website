@@ -12,7 +12,7 @@
    <span class="timeline-step-circle">01</span>
    <div class="timeline-step-text">
     <div class="timeline-step-label">处理排骨</div>
-    <div class="timeline-step-time">10 分</div>
+    <div class="timeline-step-time">30 分</div>
    </div>
   </a>
   <a class="timeline-step" href="#step-2">

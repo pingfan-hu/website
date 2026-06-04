@@ -7,7 +7,7 @@
    <div class="step-head">
     <span class="step-num">01</span>
     <span class="step-title">处理排骨</span>
-    <span class="step-time"><i data-lucide="clock"></i>10 分钟</span>
+    <span class="step-time"><i data-lucide="clock"></i>30 分钟</span>
    </div>
    <ol class="step-list">
     <li>选肋排或腔骨，剁成 4–5 cm 段</li>

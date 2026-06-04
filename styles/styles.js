@@ -315,6 +315,7 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
   var ICON_PLAY = svgIcon('<polygon points="6 3 20 12 6 21 6 3"></polygon>');
   var ICON_PAUSE = svgIcon('<rect x="14" y="3" width="4" height="18" rx="1"></rect><rect x="6" y="3" width="4" height="18" rx="1"></rect>');
   var ICON_RESET = svgIcon('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path>');
+  var ICON_TIMER = svgIcon('<line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle>');
 
   function format(totalSeconds) {
     var s = Math.max(0, Math.round(totalSeconds));
@@ -517,6 +518,7 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
 
       start(seconds);
       centerOnActive(card);
+      updateJumpBtn();
     }
 
     // Scroll the active card + the timer that expands below it into view. The
@@ -678,8 +680,43 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
       state.running = false;
       panel.classList.remove('is-open', 'is-done', 'is-running');
       setActivePill(null);
+      updateJumpBtn();
     }
     closeBtn.addEventListener('click', close);
+
+    // ---- Jump-to-timer button ----
+    // A floating control that surfaces only when a timer is open AND its drawer
+    // has scrolled out of view — so a timer set then scrolled past is one tap
+    // away. Clicking it runs the SAME scroll as opening the timer (desktop
+    // centers the active card; mobile pins the drawer's bottom above the footer)
+    // by reusing centerOnActive — no destination is redefined here.
+    var jumpBtn = document.createElement('button');
+    jumpBtn.className = 'recipe-timer-jump';
+    jumpBtn.type = 'button';
+    jumpBtn.setAttribute('aria-label', '回到计时器');
+    jumpBtn.innerHTML = ICON_TIMER;
+    document.body.appendChild(jumpBtn);
+
+    var panelVisible = true; // kept in sync by the observer below
+    function updateJumpBtn() {
+      var show = panel.classList.contains('is-open') && !panelVisible;
+      jumpBtn.classList.toggle('is-visible', show);
+    }
+    jumpBtn.addEventListener('click', function () {
+      var card = state.pill ? state.pill.closest('.step-card') : null;
+      if (card) centerOnActive(card);
+    });
+    // The observer fires on every scroll that crosses the drawer's edges, so the
+    // button's visibility tracks the viewport without a manual scroll listener.
+    // The panel re-parents between rows on open, but the observer follows the
+    // element itself, so this keeps working across cards.
+    if (window.IntersectionObserver) {
+      var jumpObs = new IntersectionObserver(function (entries) {
+        panelVisible = entries[entries.length - 1].isIntersecting;
+        updateJumpBtn();
+      }, { threshold: 0 });
+      jumpObs.observe(panel);
+    }
 
     // Wire each pill that carries a parseable duration.
     pills.forEach(function (pill) {

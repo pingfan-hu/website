@@ -5,14 +5,14 @@
    <div class="timeline-header-icon"><i data-lucide="list-ordered"></i></div>
    <span class="timeline-header-text">流程</span>
   </div>
-  <span class="timeline-total">总计 约 2 小时</span>
+  <span class="timeline-total">总计 约 1.5 小时</span>
  </div>
  <div class="timeline-stepper">
   <a class="timeline-step" href="#step-1">
    <span class="timeline-step-circle">01</span>
    <div class="timeline-step-text">
     <div class="timeline-step-label">处理羊排</div>
-    <div class="timeline-step-time">40 分</div>
+    <div class="timeline-step-time">30 分</div>
    </div>
   </a>
   <a class="timeline-step" href="#step-2">
@@ -40,7 +40,7 @@
    <span class="timeline-step-circle">05</span>
    <div class="timeline-step-text">
     <div class="timeline-step-label">小火慢煨</div>
-    <div class="timeline-step-time">60–90 分</div>
+    <div class="timeline-step-time">30 分</div>
    </div>
   </a>
   <a class="timeline-step" href="#step-6">

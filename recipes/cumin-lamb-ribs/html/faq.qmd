@@ -27,8 +27,8 @@
  </details>
 
  <details>
-  <summary>炖了 1 小时还咬不动怎么办？</summary>
-  <div class="recipe-faq-answer">继续煨。羊排比猪排韧，至少 1 小时起，老一点的羊要 1.5 小时。判断标准是<strong>筷子能轻松插入瘦肉部分</strong>。火候不够就再加 20 分钟，中途只能加热水。</div>
+  <summary>想多煨一会儿、炖满 1 小时可以吗？</summary>
+  <div class="recipe-faq-answer">可以。30 分钟通常已经足够软烂，但羊排段偏大、或喜欢更酥的口感，<strong>延到 1 小时也没问题</strong>，肉会更脱骨。判断标准是<strong>筷子能轻松插入瘦肉部分</strong>。不建议超过 1 小时——再久肉会发柴、香味也煨散了。中途要加水只能加热水。</div>
  </details>
 
  <details>
