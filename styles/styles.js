@@ -440,9 +440,15 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
     }
 
     function setActivePill(pill) {
+      var prevCard = state.pill ? state.pill.closest('.step-card') : null;
       if (state.pill && state.pill !== pill) state.pill.classList.remove('is-timing');
       state.pill = pill;
       if (pill) pill.classList.add('is-timing');
+      // Glow the card whose timer is currently open so the active step is obvious
+      // at a glance. The open drawer carries a matching glow via `.is-open` in CSS.
+      var nextCard = pill ? pill.closest('.step-card') : null;
+      if (prevCard && prevCard !== nextCard) prevCard.classList.remove('is-timing-card');
+      if (nextCard) nextCard.classList.add('is-timing-card');
     }
 
     function render(seconds) {
@@ -513,24 +519,58 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
       centerOnActive(card);
     }
 
-    // Scroll so the active card plus the timer that expands below it sit centered
-    // in the viewport. The timer starts collapsed, so measure its final height
-    // from `.recipe-timer-inner` (its own offsetHeight is the natural height,
-    // unaffected by the clip) and fold that into the block we center. Doing this
-    // up front lets the scroll and the open animation run together instead of the
-    // scroll target shifting as the panel grows.
+    // Scroll the active card + the timer that expands below it into view. The
+    // timer starts collapsed, so measure its final height from `.recipe-timer-inner`
+    // (its own offsetHeight is the natural height, unaffected by the clip) and fold
+    // that into the block we move. Doing this up front lets the scroll and the open
+    // animation run together instead of the scroll target shifting as the panel grows.
+    //
+    // Desktop centers the whole block in the viewport. Mobile instead pins the
+    // bottom of the timer drawer near the bottom of the viewport, so the full
+    // timing window is visible while keeping as much of the step card above it as
+    // fits (on a narrow screen the card is taller, so centering would push the
+    // timer's controls off-screen).
+    var TIMER_MOBILE_BREAKPOINT = 600; // matches the `.step-card` single-column query
+    var TIMER_TUCK = 14;               // `.recipe-timer` margin-top:-14px tuck behind the card
+    var TIMER_BOTTOM_GAP = 12;         // gap between the drawer's bottom and the fixed footer
+    var TIMER_PLACED_SLACK = 12;       // tolerance so re-toggling a placed timer doesn't re-nudge
     function centerOnActive(card) {
       if (!card || !card.getBoundingClientRect) return;
       var cardRect = card.getBoundingClientRect();
-      var timerHeight = 0;
-      if (innerEl && innerEl.offsetHeight) {
-        var marginTop = parseFloat(getComputedStyle(innerEl).marginTop) || 0;
-        timerHeight = innerEl.offsetHeight + marginTop;
-      }
-      var blockCenter = cardRect.top + (cardRect.height + timerHeight) / 2;
-      var delta = blockCenter - window.innerHeight / 2;
+      var viewport = window.innerHeight;
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+      // Work in ABSOLUTE document coordinates, not viewport-relative deltas. `top +
+      // scrollY` and the inner's natural `offsetHeight` are both invariant to an
+      // in-flight smooth scroll or a half-open/half-closed drawer, so every call
+      // aims at the SAME target and rapid re-toggling converges instead of drifting.
+      // The drawer's visible flow height is the inner height minus the 14px it tucks
+      // behind the card.
+      var drawerHeight = (innerEl && innerEl.offsetHeight) ? innerEl.offsetHeight - TIMER_TUCK : 0;
+      var cardTopDoc = cardRect.top + scrollY;
+      var blockBottomDoc = cardTopDoc + cardRect.height + drawerHeight;
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollBy({ top: delta, behavior: reduce ? 'auto' : 'smooth' });
+      var isMobile = window.matchMedia &&
+        window.matchMedia('(max-width: ' + TIMER_MOBILE_BREAKPOINT + 'px)').matches;
+
+      var target;
+      if (isMobile) {
+        // The page footer is fixed to the bottom of the viewport and paints over
+        // content, so the usable bottom edge sits above it. Pin the drawer's bottom
+        // just above the footer so the whole timing window shows.
+        var footer = document.querySelector('.nav-footer');
+        var footerH = (footer && footer.offsetHeight) ? footer.offsetHeight : 0;
+        target = blockBottomDoc - (viewport - footerH - TIMER_BOTTOM_GAP);
+      } else {
+        // Desktop: center the card + timer block in the viewport.
+        target = (cardTopDoc + (cardRect.height + drawerHeight) / 2) - viewport / 2;
+      }
+      if (target < 0) target = 0;
+
+      // Already there (within tolerance)? Do nothing — this is what stops a placed
+      // timer from being re-nudged each time it is toggled.
+      if (Math.abs(target - scrollY) <= TIMER_PLACED_SLACK) return;
+      window.scrollTo({ top: target, behavior: reduce ? 'auto' : 'smooth' });
     }
 
     function pillStepTitle(pill) {

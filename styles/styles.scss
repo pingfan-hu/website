@@ -877,6 +877,9 @@ table {
   // drawer then appears to embrace the card's rounded corners.
   position: relative;
   z-index: 1;
+
+  // Smooth the accent glow in/out when this card's timer opens/closes.
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .step-photo {
@@ -1045,6 +1048,16 @@ table {
 
 .step-time.is-timing { background: #5654A2; color: #F8F7F0; }
 
+// Active-step glow: the card whose timer is open — and the drawer that extends
+// below it — share an accent outline + soft glow, reusing the `.is-timing` purple
+// so the running step reads as one continuous, highlighted unit. JS toggles
+// `.is-timing-card` on the card; the drawer is glowed via its always-active
+// `.is-open` state (only the active card's drawer is ever open).
+.step-card.is-timing-card {
+  border-color: #5654A2;
+  box-shadow: 0 6px 22px rgba(86, 84, 162, 0.20);
+}
+
 // The timer drops in right below its `.step-card` as in-flow content (never an
 // overlay), on every screen size. Because it stays in normal flow inside
 // `.steps-list`, expanding it nudges the next card down. JS wraps each card in a
@@ -1065,6 +1078,7 @@ table {
   visibility: hidden;
   transition: grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1),
     margin-bottom 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease,
     visibility 0s linear 0.32s;
 
   // Tuck up behind the card by its corner radius so the drawer's square top
@@ -1085,7 +1099,8 @@ table {
   visibility: visible;
   margin-bottom: 0;
   transition: grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-    margin-bottom 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease;
 }
 
 .recipe-timer-clip {
@@ -1101,6 +1116,21 @@ table {
   border: 1px solid #E5E4DC; // matches `.step-card` so the outline is continuous
   border-top: none;          // top edge is hidden behind the card
   border-radius: 0 0 14px 14px; // square top (tucks behind card), round bottom like the card
+  transition: border-color 0.25s ease;
+}
+
+// The open drawer always belongs to the active card, so glow it to match the
+// card's accent outline and complete the embrace (purple all the way around).
+// The glow lives on the OUTER `.recipe-timer` (overflow: visible) rather than the
+// inner: a shadow on the inner gets sliced into hard squares at the bottom corners
+// by `.recipe-timer-clip`'s overflow:hidden. The outer carries the matching rounded
+// bottom radius so the halo follows the corners.
+.recipe-timer.is-open {
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 8px 22px rgba(86, 84, 162, 0.18);
+}
+.recipe-timer.is-open .recipe-timer-inner {
+  border-color: #5654A2;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2013,6 +2043,18 @@ body.quarto-dark {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   }
   .step-time.is-timing { background: #5654A2; color: #fff; }
+
+  // Active-step glow (lighter accent + deeper shadow for the dark surface).
+  .step-card.is-timing-card {
+    border-color: #7c7ac4;
+    box-shadow: 0 6px 24px rgba(124, 122, 196, 0.30);
+  }
+  .recipe-timer.is-open {
+    box-shadow: 0 8px 24px rgba(124, 122, 196, 0.28);
+  }
+  .recipe-timer.is-open .recipe-timer-inner {
+    border-color: #7c7ac4;
+  }
 
   .recipe-timer-inner {
     background: #1e2433;
