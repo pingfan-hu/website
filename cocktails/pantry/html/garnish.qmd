@@ -1,0 +1,42 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="citrus"></i></div>
+  <span class="ing-header-text">装饰</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/mint.png" alt="薄荷">
+   <div class="ing-qty">拍打释放清凉</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/lime-wedge.png" alt="青柠角">
+   <div class="ing-qty">挤汁增酸，杯沿点缀</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/lemon-wheel.png" alt="柠檬片">
+   <div class="ing-qty">漂浮装饰提亮</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/lemon-twist.png" alt="柠檬皮">
+   <div class="ing-qty">扭皮出油增香</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/orange-slice.png" alt="橙片">
+   <div class="ing-qty">橙香点缀</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/cocktail-cherry.png" alt="酒渍樱桃">
+   <div class="ing-qty">红艳甜，沉于杯底</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/pineapple-wedge.png" alt="菠萝角">
+   <div class="ing-qty">热带风插饰</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/garnish/salt-rim.png" alt="盐边">
+   <div class="ing-qty">杯沿抹盐增咸鲜</div>
+  </div>
+ </div>
+</div>
+```

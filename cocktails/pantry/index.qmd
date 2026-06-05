@@ -1,0 +1,28 @@
+---
+title: "原料图鉴"
+description: "鸡尾酒的基酒、调味与装饰一览"
+toc: false
+page-layout: full
+---
+
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<div class="pantry-page">
+ <p class="pantry-intro">这里收齐了本站每一杯鸡尾酒会用到的原料，分成基酒、调味、装饰三类。配方页里的小图标都从这里取用，方便照着采买、认料。</p>
+```
+
+{{< include html/base.qmd >}}
+
+{{< include html/mixer.qmd >}}
+
+{{< include html/garnish.qmd >}}
+
+```{=html}
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

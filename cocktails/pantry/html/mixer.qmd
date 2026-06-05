@@ -1,0 +1,54 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="droplet"></i></div>
+  <span class="ing-header-text">调味</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/lime-juice.png" alt="青柠汁">
+   <div class="ing-qty">尖锐酸度，长饮提神</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/lemon-juice.png" alt="鲜柠檬汁">
+   <div class="ing-qty">明亮果酸，平衡甜烈</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/simple-syrup.png" alt="糖浆">
+   <div class="ing-qty">1:1 糖水，统一甜度</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/soda-water.png" alt="苏打水">
+   <div class="ing-qty">无味气泡，拉长酒体</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/cola.png" alt="可乐">
+   <div class="ing-qty">焦糖甜与气泡</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/triple-sec.png" alt="君度橙酒">
+   <div class="ing-qty">橙皮力娇，增甜添香</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/pineapple-juice.png" alt="菠萝汁">
+   <div class="ing-qty">热带果香果甜</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/coconut-cream.png" alt="椰浆">
+   <div class="ing-qty">浓厚椰香奶感</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/egg-white.png" alt="蛋清">
+   <div class="ing-qty">摇出绵密泡沫</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/champagne.png" alt="香槟">
+   <div class="ing-qty">起泡酒，气泡顶料</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/mixer/prosecco.png" alt="普罗赛克">
+   <div class="ing-qty">意式起泡酒</div>
+  </div>
+ </div>
+</div>
+```

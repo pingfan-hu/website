@@ -1,0 +1,14 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+
+<a class="pantry-hero" href="/cocktails/pantry/">
+ <img class="pantry-hero-img" src="/cocktails/banners/pantry-hero.png" alt="">
+ <div class="pantry-hero-overlay">
+  <div class="pantry-hero-text">
+   <span class="pantry-feature-title">原料图鉴</span>
+   <span class="pantry-feature-sub">基酒 · 调味 · 装饰 — 25 种鸡尾酒原料一览</span>
+  </div>
+  <span class="pantry-feature-cta">查看全部 →</span>
+ </div>
+</a>
+```

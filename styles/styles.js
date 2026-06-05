@@ -49,8 +49,21 @@
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
+          var el = entry.target;
+          el.classList.add('is-visible');
+          obs.unobserve(el);
+          // The reveal is one-shot. Once it finishes, drop the animation classes
+          // so they stop owning `transform`/`transition` on the card — otherwise
+          // `.is-visible { transform: translateY(0) }` overrides the hover/active
+          // transforms (the press-shrink never shows) and the animation's
+          // transition list (opacity/transform only) suppresses the glow easing.
+          var cleanup = function () {
+            el.removeEventListener('transitionend', cleanup);
+            el.classList.remove('animate-on-scroll', 'is-visible');
+            el.style.removeProperty('--anim-delay');
+          };
+          el.addEventListener('transitionend', cleanup);
+          setTimeout(cleanup, 1200);
         }
       });
     }, { threshold: 0.08 });

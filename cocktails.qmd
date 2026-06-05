@@ -5,7 +5,9 @@ open-graph:
   image: images/card-cocktails.png
 toc: false
 listing:
-  contents: cocktails
+  contents:
+    - cocktails
+    - "!cocktails/pantry/index.qmd"
   sort: "sort-title asc"
   type: grid
   grid-columns: 4
@@ -16,3 +18,5 @@ listing:
   image-height: auto
 page-layout: full
 ---
+
+{{< include /chunks/cocktails-pantry.qmd >}}

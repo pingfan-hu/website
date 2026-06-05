@@ -1,0 +1,34 @@
+```{=html}
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="martini"></i></div>
+  <span class="ing-header-text">基酒</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/gin.png" alt="金酒">
+   <div class="ing-qty">杜松子干香，金汤力之魂</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/vodka.png" alt="伏特加">
+   <div class="ing-qty">中性纯净，百搭易入口</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/white-rum.png" alt="白朗姆">
+   <div class="ing-qty">甘蔗清甜，莫吉托底子</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/tequila.png" alt="龙舌兰">
+   <div class="ing-qty">龙舌兰草本，玛格丽特主角</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/bourbon.png" alt="波本威士忌">
+   <div class="ing-qty">玉米甜带橡木香</div>
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="/cocktails/resources/base/aperol.png" alt="阿佩罗">
+   <div class="ing-qty">橙红微苦的开胃酒</div>
+  </div>
+ </div>
+</div>
+```

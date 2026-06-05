@@ -318,6 +318,7 @@ table {
     text-decoration: none;
     transform: translateX(-2px);
   }
+  &:active { transform: translateX(-2px) scale(0.96); }
 
   i { font-size: 1em; line-height: 1; flex-shrink: 0; font-style: normal; }
   > span { min-width: 0; overflow-wrap: break-word; }
@@ -362,6 +363,8 @@ table {
 
   &.post-nav-prev:hover { transform: translateX(-2px); }
   &.post-nav-next:hover { transform: translateX(2px); }
+  &.post-nav-prev:active { transform: translateX(-2px) scale(0.96); }
+  &.post-nav-next:active { transform: translateX(2px) scale(0.96); }
 
   i { font-size: 1em; line-height: 1; flex-shrink: 0; font-style: normal; }
 
@@ -398,13 +401,14 @@ table {
   text-decoration: none;
   white-space: nowrap;
   text-align: center;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
 
   &:hover {
     background: #5654A2;
     color: #F8F7F0;
     text-decoration: none;
   }
+  &:active { transform: scale(0.96); }
 }
 
 // ---- Link Table ----
@@ -452,7 +456,9 @@ table {
   font-size: 0.82em;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+
+  &:active { transform: scale(0.96); }
 }
 
 .lnk-purple {
@@ -487,6 +493,16 @@ table {
     padding: 8px 14px;
   }
   .lnk-chips { padding: 10px 14px; }
+}
+
+// Press feedback for the Bootstrap outline buttons used in paper citation blocks
+// (e.g. "PLOS One Webpage" / "PDF"). Transform appended to Bootstrap's transition.
+.btn-outline-primary {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+              transform 0.1s ease;
+
+  &:active { transform: scale(0.96); }
 }
 
 // ---- Recipe Page Components ----
@@ -669,6 +685,138 @@ table {
 
 @media (max-width: 360px) {
   .ing-card { flex: 0 0 100%; }
+}
+
+// ---- Cocktail Pantry: hero banner (cocktails.qmd) + reference page ----
+
+// Hero banner linking the cocktails grid to the 原料图鉴 page.
+// Desktop: painterly art anchored right at its native ratio (never vertically
+// cropped), its calm left edge feathered into a purple panel that holds the text.
+// Mobile: full-bleed cover (crops the sides, keeps full bottle height).
+.pantry-hero {
+  position: relative;
+  display: block;
+  height: 210px;
+  margin: 0 0 2rem;
+  border-radius: 18px;
+  border: 1.5px solid #5654A2;
+  overflow: hidden;
+  text-decoration: none;
+  color: #F8F7F0;
+  background: linear-gradient(90deg, #45437f 0%, #4f4d93 60%, #56548f 100%);
+  box-shadow: 0 6px 18px rgba(86, 84, 162, 0.22);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.12s ease;
+
+  // Glow instead of lift: brighten the rim and cast a luminous lavender halo
+  // (lighter than the card itself, so it reads as a glow rather than a blurry edge).
+  &:hover {
+    border-color: #b4b1e6;
+    box-shadow: 0 0 0 1px rgba(194, 191, 240, 0.4),
+                0 0 18px 1px rgba(150, 146, 224, 0.42),
+                0 5px 14px rgba(86, 84, 162, 0.22);
+    color: #F8F7F0;
+    text-decoration: none;
+  }
+  // Pressed: tighten and dim the glow with a faint inward press (no lift).
+  &:active {
+    border-color: #a7a4dc;
+    box-shadow: 0 0 0 1px rgba(170, 167, 224, 0.4),
+                0 0 9px 0 rgba(150, 146, 224, 0.3),
+                0 3px 8px rgba(86, 84, 162, 0.22);
+    transform: scale(0.992);
+  }
+  &:hover .pantry-feature-cta { gap: 12px; background: rgba(248, 247, 240, 0.28); }
+}
+
+.pantry-hero-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
+}
+
+.pantry-hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 0 30px;
+  max-width: 60%;
+}
+
+.pantry-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
+}
+
+.pantry-feature-title {
+  font-family: 'Maple Mono', monospace;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+.pantry-feature-sub {
+  font-size: 0.92em;
+  opacity: 0.9;
+}
+
+.pantry-feature-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(248, 247, 240, 0.18);
+  border: 1px solid rgba(248, 247, 240, 0.45);
+  white-space: nowrap;
+  transition: gap 0.2s ease, background 0.2s ease;
+}
+
+@media (max-width: 720px) {
+  .pantry-hero { height: 230px; }
+  .pantry-hero-img {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+  .pantry-hero-overlay {
+    justify-content: flex-end;
+    max-width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(40, 32, 70, 0.74) 0%, rgba(40, 32, 70, 0) 55%);
+  }
+  .pantry-feature-title { font-size: 1.3em; }
+}
+
+// 原料图鉴 reference page: centered wrapper + intro line.
+.pantry-page {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.pantry-intro {
+  max-width: 640px;
+  margin: 0.25rem auto 1.5rem;
+  text-align: center;
+  color: #6b6a78;
+  font-size: 0.98em;
+  line-height: 1.6;
 }
 
 // ---- Recipe Timeline Ribbon ----
@@ -1464,14 +1612,21 @@ html.rt-scrubbing * {
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.25rem;
   background: #F8F7F0;
-  transition: border-color 0.2s ease,
-              box-shadow 0.2s ease,
-              transform 0.2s ease;
+  transition: border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.12s ease;
 
+  // Glow instead of lift, matching the listing grid cards and pantry hero.
   &:hover {
     border-color: #5654A2 !important;
-    box-shadow: 0 8px 24px rgba(86, 84, 162, 0.13);
-    transform: translateY(-4px);
+    box-shadow: 0 0 16px 1px rgba(86, 84, 162, 0.22),
+                0 6px 16px rgba(86, 84, 162, 0.16);
+  }
+  &:active {
+    border-color: #45438a !important;
+    box-shadow: 0 0 9px 0 rgba(86, 84, 162, 0.18),
+                0 3px 8px rgba(86, 84, 162, 0.16);
+    transform: scale(0.992);
   }
 
   // Stretch the title link to cover the entire card
@@ -1514,14 +1669,22 @@ html.rt-scrubbing * {
 }
 
 .quarto-grid-item {
-  transition: border-color 0.2s ease,
-              box-shadow 0.2s ease,
-              transform 0.2s ease;
+  transition: border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.12s ease;
 
+  // Glow instead of lift, matching the pantry hero (accent-purple halo for light cards).
   &:hover {
     border-color: #5654A2 !important;
-    box-shadow: 0 8px 24px rgba(86, 84, 162, 0.13);
-    transform: translateY(-4px);
+    box-shadow: 0 0 16px 1px rgba(86, 84, 162, 0.22),
+                0 6px 16px rgba(86, 84, 162, 0.16);
+  }
+  // Pressed: tighter, dimmer glow with a faint inward press (no lift).
+  &:active {
+    border-color: #45438a !important;
+    box-shadow: 0 0 9px 0 rgba(86, 84, 162, 0.18),
+                0 3px 8px rgba(86, 84, 162, 0.16);
+    transform: scale(0.992);
   }
 }
 
@@ -1625,6 +1788,7 @@ html.rt-scrubbing * {
     text-decoration: none;
     color: white;
   }
+  &:active { transform: scale(0.96); }
 
   i { font-size: 1rem; color: inherit; }
 }
@@ -1980,7 +2144,13 @@ body.quarto-dark {
 
   .quarto-grid-item:hover {
     border-color: #7c7ac4 !important;
-    box-shadow: 0 8px 24px rgba(124, 122, 196, 0.2);
+    box-shadow: 0 0 16px 1px rgba(124, 122, 196, 0.3),
+                0 6px 16px rgba(124, 122, 196, 0.2);
+  }
+  .quarto-grid-item:active {
+    border-color: #9694d8 !important;
+    box-shadow: 0 0 9px 0 rgba(124, 122, 196, 0.26),
+                0 3px 8px rgba(124, 122, 196, 0.2);
   }
 
   .quarto-post {
@@ -1989,7 +2159,13 @@ body.quarto-dark {
 
     &:hover {
       border-color: #7c7ac4 !important;
-      box-shadow: 0 8px 24px rgba(124, 122, 196, 0.2);
+      box-shadow: 0 0 16px 1px rgba(124, 122, 196, 0.3),
+                  0 6px 16px rgba(124, 122, 196, 0.2);
+    }
+    &:active {
+      border-color: #9694d8 !important;
+      box-shadow: 0 0 9px 0 rgba(124, 122, 196, 0.26),
+                  0 3px 8px rgba(124, 122, 196, 0.2);
     }
   }
 
@@ -2023,6 +2199,9 @@ body.quarto-dark {
   .ing-card         { background: #1e2433; border-color: #3a3858; }
   .ing-card:hover   { background: #232940; border-color: #7c7ac4; }
   .ing-img          { background: #1e2433; }
+
+  // Cocktail pantry
+  .pantry-intro     { color: #b5b2e6; }
 
   // Timeline ribbon
   .timeline-outer         { background: #1a1f2e; border-color: #7c7ac4; }
