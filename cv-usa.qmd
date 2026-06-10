@@ -12,7 +12,7 @@ execute:
 ```{=typst}
 // === PAGE ===
 #set page(
-  paper: "a4",
+  paper: "us-letter",
   fill: rgb("#F8F7F0"),
   margin: (top: 0.9in, bottom: 0.5in, left: 1in, right: 1in),
   footer: context {
@@ -103,8 +103,8 @@ execute:
     column-gutter: 6pt,
     row-gutter: 3pt,
     align: (right + horizon, left + horizon),
-    liMapPin, [Greater Melbourne, Australia],
-    liPhone, [+61 431 251 227],
+    liMapPin, [Washington, D.C., USA],
+    liPhone, [+1 202 468 1083],
     liMail, [#link("mailto:pingfan0727@gmail.com")[pingfan0727\@gmail.com]],
     liCompass, [#link("https://www.pingfanhu.com")[www.pingfanhu.com]],
   )
