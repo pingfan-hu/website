@@ -56,11 +56,14 @@ blockquote {
 ::selection      { background-color: #D6C2DD; color: #694696; }
 ::-moz-selection { background-color: #D6C2DD; color: #694696; }
 
-// Selection color inside code blocks — prevents Chrome from inheriting body selection color
-// Light mode uses token-dark palette; dark mode uses token-light palette
-pre.sourceCode ::selection      { background-color: #4a4030; color: #e8e4dc; }
-pre.sourceCode ::-moz-selection { background-color: #4a4030; color: #e8e4dc; }
-body.quarto-dark pre.sourceCode ::selection      { background-color: #dddcd6; color: #2a2920; }
+// Selection color inside code blocks. Chromium does not inherit the body ::selection into
+// code, so declare it explicitly to keep the highlight purple and consistent across browsers.
+// `-webkit-text-fill-color` forces Safari to recolor the selected text (it can otherwise keep
+// each token's original color, leaving light code text unreadable on the purple highlight).
+// Dark mode keeps a light-gray highlight on its light chunk background.
+pre.sourceCode ::selection      { background-color: #D6C2DD; color: #694696; -webkit-text-fill-color: #694696; }
+pre.sourceCode ::-moz-selection { background-color: #D6C2DD; color: #694696; }
+body.quarto-dark pre.sourceCode ::selection      { background-color: #dddcd6; color: #2a2920; -webkit-text-fill-color: #2a2920; }
 body.quarto-dark pre.sourceCode ::-moz-selection { background-color: #dddcd6; color: #2a2920; }
 
 // ---- Code ----
@@ -202,30 +205,74 @@ body.quarto-dark div.sourceCode {
   overflow-y: visible !important;
 }
 
-// Line numbers
+// Line numbers — absolutely positioned and non-selectable so the selection
+// highlight covers only the code text, never the gutter. The opaque background
+// (matching the chunk bg) is a safety belt: it hides any selection rectangle that
+// a browser paints behind the left padding on fully-selected intermediate lines.
 pre > code.sourceCode > span {
   counter-increment: line;
-  text-indent: -2.8em;
-  padding-left: 2.8em;
+  position: relative;
   display: block;      // full-width block fixes Safari text selection on non-last lines
   white-space: pre;    // preserve whitespace within each line
+  padding-left: 3em;
+  min-height: 1lh;     // keep empty lines visible — the absolute ::before is out of flow,
+                       // so without this an empty span would collapse to zero height
 
-  &:before {
-    content: counter(line) " ";
-    color: #5a5955;
-    display: inline-block;
-    width: 2em;
+  &::before {
+    content: counter(line);
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3em;                  // covers the ENTIRE left padding so no selection ever
+    box-sizing: border-box;      // shows in the gutter, even on empty lines
+    padding-right: 1.4em;        // right-aligns the number to the left of the divider
     text-align: right;
-    margin-right: 0.8em;
-    padding-right: 0.5em;
-    border-right: 1px solid #383835;
+    color: #5a5955;
+    background-color: #262624;   // opaque, matches chunk bg (light mode)
+    background-image: linear-gradient(#383835, #383835);  // 1px divider, placed via position
+    background-repeat: no-repeat;
+    background-size: 1px 100%;
+    background-position: 2em 0;
+    user-select: none;
+    -webkit-user-select: none;   // Safari needs the prefixed property
+    pointer-events: none;
   }
 }
 
-// Dark mode line numbers — token-light palette
+// Dark mode line numbers — token-light palette, opaque bg + divider match the light chunk
 body.quarto-dark pre > code.sourceCode > span::before {
   color: #b5b2ab;
-  border-right-color: #e6e5e1;
+  background-color: #faf9f5;
+  background-image: linear-gradient(#e6e5e1, #e6e5e1);
+}
+
+// ---- Skill Tree ----
+// File/directory tree component used in blog posts to diagram a skill's layout.
+// Markup lives in resources/*.qmd includes; only Maple Mono + Lucide are loaded there.
+.tree-outer { width: 100%; margin: 1em 0; border: 1.5px solid #5654A2; border-radius: 14px; overflow: hidden; }
+.tree-header { display: flex; align-items: center; gap: 12px; background: #5654A2; padding: 10px 16px; }
+.tree-header-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(248,247,240,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tree-header-icon svg { width: 14px; height: 14px; color: #F8F7F0; stroke-width: 1.8; }
+.tree-header-text { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; min-width: 0; }
+.tree-header-name { font-family: 'Maple Mono', monospace; font-size: 0.9em; font-weight: bold; color: #F8F7F0; letter-spacing: 0.02em; white-space: nowrap; }
+.tree-header-desc { font-family: 'Maple Mono', monospace; font-size: 0.78em; color: rgba(248,247,240,0.7); }
+.tree-body { background: #F8F7F0; padding: 16px 18px; border-top: 1px solid #D4D3EE; }
+.tree-row { display: flex; align-items: center; gap: 8px; font-family: 'Maple Mono', monospace; font-size: 0.9em; line-height: 2; }
+.tree-row svg { width: 16px; height: 16px; stroke-width: 1.8; flex-shrink: 0; }
+.tree-folder svg { color: #5654A2; }
+.tree-file svg { color: #9B8EA0; }
+.tree-name { color: #564232; }
+.tree-folder .tree-name { color: #5654A2; font-weight: bold; }
+.tree-branch { color: #B0A8C0; white-space: pre; }
+
+@media (max-width: 520px) {
+  .tree-header { padding: 10px 14px; gap: 10px; }
+  .tree-header-text { flex-direction: column; gap: 1px; }
+  .tree-header-name { font-size: 0.82em; }
+  .tree-header-desc { font-size: 0.7em; }
+  .tree-body { padding: 14px; }
+  .tree-row { font-size: 0.82em; gap: 6px; }
 }
 
 // ---- Tables ----

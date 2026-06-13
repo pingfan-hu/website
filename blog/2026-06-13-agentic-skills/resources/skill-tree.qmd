@@ -1,0 +1,29 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<div class="tree-outer">
+ <div class="tree-header">
+  <div class="tree-header-icon"><i data-lucide="folder-tree"></i></div>
+  <div class="tree-header-text">
+   <span class="tree-header-name">ph-html</span>
+   <span class="tree-header-desc">Styled HTML Components for Quarto</span>
+  </div>
+ </div>
+ <div class="tree-body">
+  <div class="tree-row tree-folder">
+   <i data-lucide="folder"></i>
+   <span class="tree-name">ph-html/</span>
+  </div>
+  <div class="tree-row tree-file">
+   <span class="tree-branch">└─</span>
+   <i data-lucide="file-text"></i>
+   <span class="tree-name">SKILL.md</span>
+  </div>
+ </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

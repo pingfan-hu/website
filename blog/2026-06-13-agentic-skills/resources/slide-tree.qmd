@@ -1,0 +1,69 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<div class="tree-outer">
+ <div class="tree-header">
+  <div class="tree-header-icon"><i data-lucide="folder-tree"></i></div>
+  <div class="tree-header-text">
+   <span class="tree-header-name">ph-slide</span>
+   <span class="tree-header-desc">Quarto Reveal.js Slide Decks</span>
+  </div>
+ </div>
+ <div class="tree-body">
+  <div class="tree-row tree-folder">
+   <i data-lucide="folder"></i>
+   <span class="tree-name">ph-slide/</span>
+  </div>
+  <div class="tree-row tree-file">
+   <span class="tree-branch">├─</span>
+   <i data-lucide="file-text"></i>
+   <span class="tree-name">SKILL.md</span>
+  </div>
+  <div class="tree-row tree-folder">
+   <span class="tree-branch">├─</span>
+   <i data-lucide="folder"></i>
+   <span class="tree-name">assets/</span>
+  </div>
+  <div class="tree-row tree-file">
+   <span class="tree-branch">│  ├─</span>
+   <i data-lucide="file-text"></i>
+   <span class="tree-name">styles</span>
+  </div>
+  <div class="tree-row tree-file">
+   <span class="tree-branch">│  ├─</span>
+   <i data-lucide="file-text"></i>
+   <span class="tree-name">_shared.yml</span>
+  </div>
+  <div class="tree-row tree-file">
+   <span class="tree-branch">│  └─</span>
+   <i data-lucide="terminal"></i>
+   <span class="tree-name">render.sh</span>
+  </div>
+  <div class="tree-row tree-folder">
+   <span class="tree-branch">└─</span>
+   <i data-lucide="folder"></i>
+   <span class="tree-name">template/</span>
+  </div>
+  <div class="tree-row tree-file">
+   <span class="tree-branch">   ├─</span>
+   <i data-lucide="file-text"></i>
+   <span class="tree-name">index.qmd</span>
+  </div>
+  <div class="tree-row tree-file">
+   <span class="tree-branch">   ├─</span>
+   <i data-lucide="file-text"></i>
+   <span class="tree-name">_quarto.yml</span>
+  </div>
+  <div class="tree-row tree-folder">
+   <span class="tree-branch">   └─</span>
+   <i data-lucide="folder"></i>
+   <span class="tree-name">resources/</span>
+  </div>
+ </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```
