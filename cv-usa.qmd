@@ -164,7 +164,7 @@ execute:
 #subsection[C. Working Papers & Papers Under Review]
 
 + *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys." _Working Paper_.
-+ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the Peak-Shaving Potential and Cost Efficiency of Battery Electric Vehicle Supplier-Managed Charging" _Under Review_.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the Peak-Shaving Potential and Cost Efficiency of Battery Electric Vehicle Supplier-Managed Charging" _Environmental Research: Infrastructure and Sustainability_. Under Review.
 
 #subsection[D. Software]
 
