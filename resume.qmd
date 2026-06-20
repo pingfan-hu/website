@@ -106,7 +106,7 @@ execute:
   #text(size: 9pt)[
     #liMapPin~Greater Melbourne, Australia
     ~|~
-    #liMail~#link("mailto:pingfan0727@gmail.com")[pingfan0727\@gmail.com]
+    #liMail~#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]
     ~|~
     #liPhone~+61 431 251 227
     ~|~

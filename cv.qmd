@@ -105,7 +105,7 @@ execute:
     align: (right + horizon, left + horizon),
     liMapPin, [Greater Melbourne, Australia],
     liPhone, [+61 431 251 227],
-    liMail, [#link("mailto:pingfan0727@gmail.com")[pingfan0727\@gmail.com]],
+    liMail, [#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]],
     liCompass, [#link("https://www.pingfanhu.com")[www.pingfanhu.com]],
   )
 ]
