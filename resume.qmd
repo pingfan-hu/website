@@ -168,7 +168,7 @@ execute:
 - Built a scenario-based simulation of 10,000 BEVs with travel patterns from the National Household Travel Survey.
 - Processed time series grid net load data from GridStatus.io for CAISO and NYISO to construct regional baselines.
 - Swept across 5 TOU windows and 11 enrollment levels to quantify peak-shaving potential and cost efficiency.
-- Proposing a journal paper to Nature Energy.
+- Submitted a journal paper to _Environmental Research: Infrastructure and Sustainability_, under review.
 - Presented at GW 2026 R&D and Senior Design Showcase.
 
 #section[Work Experience]
