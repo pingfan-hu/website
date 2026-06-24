@@ -720,6 +720,17 @@ table {
   line-height: 1.35;
 }
 
+.ing-note {
+  padding: 13px 18px;
+  background: #F8F7F0;
+  border-top: 1px solid #D4D3EE;
+  font-size: 0.9em;
+  color: #564232;
+  line-height: 1.6;
+
+  strong { color: #5654A2; }
+}
+
 @media (max-width: 600px) {
   .ing-grid {
     gap: 8px;
@@ -728,6 +739,7 @@ table {
   .ing-card { flex: 0 0 calc(50% - 5px); }
   .ing-img  { max-width: 110px; }
   .ing-qty  { font-size: 0.76em; }
+  .ing-note { padding: 11px 14px; font-size: 0.86em; }
 }
 
 @media (max-width: 360px) {

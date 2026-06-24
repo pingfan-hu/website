@@ -1,0 +1,148 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .wsl-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .wsl-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .wsl-header-cell {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .wsl-row {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    align-items: stretch;
+    border-top: 1px solid #D4D3EE;
+    background: #F8F7F0;
+  }
+
+  .wsl-card-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    border-right: 1px solid #D4D3EE;
+    background: #EEEDF8;
+  }
+
+  /* Clickable link-grid-style card: icon chip + label, hover-glow + press. */
+  .wsl-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 16px 14px;
+    background: #FBFAF6;
+    border: 1px solid #E5E4DC;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    will-change: transform;
+    transition: background 0.15s ease, border-color 0.15s ease,
+                box-shadow 0.15s ease, transform 0.08s ease;
+  }
+
+  .wsl-card:hover {
+    background: #F0EFF8;
+    border-color: #C4C3E8;
+    box-shadow: 0 2px 12px rgba(86, 84, 162, 0.16);
+    text-decoration: none;
+  }
+
+  .wsl-card:hover .wsl-card-icon { background: #F8F7F0; }
+
+  .wsl-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 5px rgba(86, 84, 162, 0.14);
+  }
+
+  .wsl-card:focus-visible {
+    outline: 2px solid #5654A2;
+    outline-offset: 2px;
+  }
+
+  .wsl-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #EEEDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+    transition: background 0.15s ease;
+  }
+
+  .wsl-card-icon svg { width: 20px; height: 20px; color: #5654A2; stroke-width: 1.8; }
+
+  .wsl-label {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #5654A2;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .wsl-desc {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+  }
+
+  .wsl-desc > div {
+    font-size: 0.95em;
+    color: #564232;
+    line-height: 1.55;
+  }
+
+  .wsl-desc code { white-space: nowrap; }
+
+  @media (max-width: 520px) {
+    .wsl-row { grid-template-columns: 1fr; }
+    .wsl-card-cell { border-right: none; border-bottom: 1px solid #D4D3EE; }
+    .wsl-desc { padding: 12px 16px; }
+  }
+</style>
+
+<div class="wsl-outer">
+  <div class="wsl-header">
+    <div class="wsl-header-cell">My Workshop Slides as an Example of the Output</div>
+  </div>
+  <div class="wsl-row">
+    <div class="wsl-card-cell">
+      <a class="wsl-card" href="https://pingfan-hu.github.io/2026-agentic-engineering-workshop/" target="_blank" rel="noopener">
+        <div class="wsl-card-icon"><i data-lucide="presentation"></i></div>
+        <div class="wsl-label">Visit Site</div>
+      </a>
+    </div>
+    <div class="wsl-desc"><div>My 2026 Summer Workshop on Agentic Engineering. All three slide decks were built with the <code>/ph-slide</code> skill.</div></div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

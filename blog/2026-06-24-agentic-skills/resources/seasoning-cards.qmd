@@ -1,0 +1,26 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<div class="ing-outer">
+ <div class="ing-header">
+  <div class="ing-header-icon"><i data-lucide="git-compare"></i></div>
+  <span class="ing-header-text">Two Icons: Random vs. Deterministic</span>
+ </div>
+ <div class="ing-grid">
+  <div class="ing-card">
+   <img class="ing-img" src="resources/cooking-oil.png" alt="Cooking oil icon">
+  </div>
+  <div class="ing-card">
+   <img class="ing-img" src="resources/light-soy-sauce.png" alt="Light soy sauce icon">
+  </div>
+ </div>
+ <div class="ing-note">
+  Everything <strong>deterministic</strong> is shared: the bottle, the cork, the framing, and the label text composited on afterward. Only the liquid, the part left <strong>random</strong>, differs in color and texture.
+ </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```

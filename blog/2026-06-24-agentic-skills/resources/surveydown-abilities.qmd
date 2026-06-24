@@ -1,0 +1,132 @@
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.2.5/index.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .sds-outer {
+    width: 100%;
+    margin: 1em 0;
+    border: 1.5px solid #5654A2;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .sds-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #5654A2;
+    padding: 10px 16px;
+  }
+
+  .sds-header-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(248, 247, 240, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sds-header-icon svg {
+    width: 14px;
+    height: 14px;
+    color: #F8F7F0;
+    stroke-width: 1.8;
+  }
+
+  .sds-header-text {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #F8F7F0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .sds-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #D4D3EE;
+    border-top: 1px solid #D4D3EE;
+  }
+
+  .sds-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 14px;
+    text-align: center;
+    background: #F8F7F0;
+    transition: background 0.15s ease;
+  }
+
+  .sds-card:hover { background: #F0EFF8; }
+
+  .sds-card:hover .sds-card-icon { background: #F8F7F0; }
+
+  .sds-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #EEEDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .sds-card-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #5654A2;
+    stroke-width: 1.8;
+  }
+
+  .sds-label {
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #5654A2;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 520px) {
+    .sds-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<div class="sds-outer">
+  <div class="sds-header">
+    <div class="sds-header-icon"><i data-lucide="layers"></i></div>
+    <span class="sds-header-text">surveydown-skill</span>
+  </div>
+  <div class="sds-grid">
+    <div class="sds-card">
+      <div class="sds-card-icon"><i data-lucide="square-pen"></i></div>
+      <div class="sds-label">Create Survey</div>
+    </div>
+    <div class="sds-card">
+      <div class="sds-card-icon"><i data-lucide="database"></i></div>
+      <div class="sds-label">Connect Database</div>
+    </div>
+    <div class="sds-card">
+      <div class="sds-card-icon"><i data-lucide="cloud-upload"></i></div>
+      <div class="sds-label">Deploy Online</div>
+    </div>
+    <div class="sds-card">
+      <div class="sds-card-icon"><i data-lucide="video"></i></div>
+      <div class="sds-label">Record Video</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+```
