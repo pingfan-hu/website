@@ -15,7 +15,7 @@ Much of my daily work consists of tasks I perform repeatedly: image generation, 
 
 In my previous blog post of [Agentic Engineering - Part 1](/blog/2026-03-26-agentic-engineering-1/#architecture-of-agentic-engineering), I summarized there were 6 layers in Claude Code (as well as other AI agents), but agentic **skill** is the one that I engage with most often. Having practiced agentic skills for over a month, I decided to write out this blog post to share my experience.
 
-### Skill Usage
+## Skill Usage
 
 When you have a skill installed on your computer, whether you developed it or downloaded it online, you need to invoke the skill using the forward slash (`/`) command. For example, I have a `ph-image` skill that generates images with a consistent style for my blog posts, and I invoke it by typing `/ph-image` in the chat interface (there will be color effect on the command text). The agent then recognizes the command and executes the workflow defined in the skill.
 
@@ -32,7 +32,7 @@ You can see the result across my site: every banner on these pages was generated
 
 {{< include resources/banner-pages.qmd >}}
 
-### Installing vs Authoring Skills
+## Installing Skills
 
 Skills for general purposes, like editing, coding, or reading, are better installed from the open-source market. These 2 sources are what I use the most:
 
@@ -43,7 +43,9 @@ However, other than general purposes, there are many cases where you need to est
 
 In short, everything about a skill can be split into three categories: installing a skill, authoring a skill, and using a skill. That's all. Now, let's talk about skill authoring. By performing skill authoring, you can also better understand how a skill works and how to improve it in the future to better fit your needs. 
 
-## Skill with Minimal Form
+## Authoring Skills
+
+### Skill with Minimal Form
 
 At minimum, a skill is a directory bearing the skill's name and containing a single `SKILL.md` file:
 
@@ -82,7 +84,7 @@ A centered row of pill buttons near the top of a post.
 ```
 ````
 
-## Skill with Complex Structure
+### Skill with Complex Structure
 
 A skill can be more than just a master `SKILL.md` file. It can also carry templates and resources, and the reason is rooted in how language models behave. An LLM is inherently stochastic: given only an instruction file such as `SKILL.md`, the output might have variation each time which might not be what we want. Solidified resource files (code scripts, stylesheets, templates, shell commands, etc.) can be used as supportive artifacts that ensures the consistency of the output.
 
@@ -99,7 +101,7 @@ My "2026 Summer Workshop - Agentic Engineering" slides are made using the `/ph-s
 
 {{< include resources/workshop-link.qmd >}}
 
-## Skill with Nested Agents
+### Skill with Nested Agents
 
 It's impossible for one agent to be good at everything. A good solution is to call another agent that is better at a specific task inside your currently working agent, so that your working scope, including your context and setup environment, is still managed by your master agent, but only the specific task is handled by another agent.
 
@@ -119,7 +121,7 @@ A possible expansion of this skill is that I can also introduce other image gene
 
 We have a main `SKILL.md` file that holds the high-level regulations for the skill, then three independent Python scripts: one for prompt generation, two for Gemini/GPT invocation. 
 
-## The Randomization and Determinism of a Skill
+### The Randomization and Determinism of a Skill
 
 At their core, large language models are probability machines. Every output is sampled rather than computed, so a degree of randomness is baked into everything an agent makes. Ask an image model to draw an apple and you see it plainly: prompt Gemini ten times and you get ten apples, no two alike. That variation is the model working as designed.
 
@@ -133,7 +135,7 @@ Each started as a Gemini generation and then passed through a Python post-proces
 
 The payoff is what the reader never has to notice. On a recipe page the ingredient icons feel like a matched set drawn by one hand, even though each was generated on its own. The randomness stays where it belongs, in the liquid that should differ, while everything that should hold still is pinned down by a template and a script.
 
-## Skill with Bundled Workflows
+### Skill with Bundled Workflows
 
 A good practice when designing a skill for an entire project is to design a single skill that embraces as many aspects of the project as possible. I have two clear reasons for that:
 
