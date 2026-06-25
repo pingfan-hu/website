@@ -291,4 +291,4 @@ Start with the [Extrenal Redirect](https://surveydown.org/templates/external_red
 
 ### Dynata Official Documentation
 
-Check out the full official guidance form Dynata [here](/files/dynata-generic-guide.pdf).
+Check out the full official guidance form Dynata [here](/resources/files/dynata-generic-guide.pdf).

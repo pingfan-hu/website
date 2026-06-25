@@ -2,7 +2,7 @@
 title: "鸡尾酒"
 description: "胡平凡的鸡尾酒手记"
 open-graph:
-  image: images/card-cocktails.png
+  image: resources/images/card-cocktails.png
 toc: false
 listing:
   contents:
@@ -19,4 +19,4 @@ listing:
 page-layout: full
 ---
 
-{{< include /chunks/cocktails-pantry.qmd >}}
+{{< include /resources/chunks/cocktails-pantry.qmd >}}

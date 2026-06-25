@@ -16,9 +16,9 @@ description: "EV owner preferences for smart charging programs."
 
 ## Papers
 
-{{< include /chunks/2025-erl-smart-charging.qmd >}}
-{{< include /chunks/2025-trb-smart-charging.qmd >}}
-{{< include /chunks/2024-ieee-smart-charging.qmd >}}
+{{< include /resources/chunks/2025-erl-smart-charging.qmd >}}
+{{< include /resources/chunks/2025-trb-smart-charging.qmd >}}
+{{< include /resources/chunks/2024-ieee-smart-charging.qmd >}}
 
 ## Abstract
 

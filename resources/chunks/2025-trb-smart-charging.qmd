@@ -5,8 +5,8 @@
 Hu, P., Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. (2025). *Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs*. The 104th Annual Meeting of the Transportation Research Board (TRB 2025).
 
 ::: {.d-flex .justify-content-end}
-[<i class="bi bi-journal-bookmark-fill"></i> TRB Decision Letter](/files/2025-trb-decision-letter.pdf){.btn .btn-outline-primary .mx-1}
-[<i class="bi bi-file-earmark-pdf"></i> PDF](/files/2025-trb-smart-charging.pdf){.btn .btn-outline-primary .mx-1}
+[<i class="bi bi-journal-bookmark-fill"></i> TRB Decision Letter](/resources/files/2025-trb-decision-letter.pdf){.btn .btn-outline-primary .mx-1}
+[<i class="bi bi-file-earmark-pdf"></i> PDF](/resources/files/2025-trb-smart-charging.pdf){.btn .btn-outline-primary .mx-1}
 :::
 :::
 ::::

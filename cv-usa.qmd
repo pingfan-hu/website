@@ -1,7 +1,7 @@
 ---
 format:
   typst:
-    font-paths: fonts
+    font-paths: resources/fonts
 execute:
   warning: false
   echo: false
@@ -222,4 +222,4 @@ execute:
 
 - **Languages**: English (*Proficient*), Chinese (*Native*).
 
-{{< include /chunks/skills.qmd >}}
+{{< include /resources/chunks/skills.qmd >}}

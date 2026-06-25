@@ -25,7 +25,7 @@ description: "An open-source survey platform using {{< var rnolink >}}, Quarto, 
 
 ## Paper
 
-{{< include /chunks/2025-plosone-surveydown.qmd >}}
+{{< include /resources/chunks/2025-plosone-surveydown.qmd >}}
 
 ## Slides
 

@@ -2,11 +2,11 @@
 title: "Papers"
 description: "Research publications by Pingfan Hu"
 open-graph:
-  image: images/card-papers.png
+  image: resources/images/card-papers.png
 echo: false
 ---
 
-{{< include /chunks/2025-erl-smart-charging.qmd >}}
-{{< include /chunks/2025-plosone-surveydown.qmd >}}
-{{< include /chunks/2025-trb-smart-charging.qmd >}}
-{{< include /chunks/2024-ieee-smart-charging.qmd >}}
+{{< include /resources/chunks/2025-erl-smart-charging.qmd >}}
+{{< include /resources/chunks/2025-plosone-surveydown.qmd >}}
+{{< include /resources/chunks/2025-trb-smart-charging.qmd >}}
+{{< include /resources/chunks/2024-ieee-smart-charging.qmd >}}

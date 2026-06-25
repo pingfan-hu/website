@@ -1,9 +1,9 @@
 ---
 title: "Pingfan Hu"
 description: "Pingfan Hu - Data science PhD in sustainable transportation and open-source software."
-image: images/homepage.png
+image: resources/images/homepage.png
 open-graph:
-  image: images/card.png
+  image: resources/images/card.png
 toc: false
 grid:
   body-width: 1300px
@@ -31,7 +31,7 @@ about:
 
 ## Welcome to my website!
 
-{{< include /chunks/intro.qmd >}}
+{{< include /resources/chunks/intro.qmd >}}
 
 #### Research Focus:
 

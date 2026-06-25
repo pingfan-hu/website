@@ -1,7 +1,7 @@
 ---
 format:
   typst:
-    font-paths: fonts
+    font-paths: resources/fonts
 execute:
   warning: false
   echo: false
@@ -134,7 +134,7 @@ execute:
 #section[Skills]
 ```
 
-{{< include /chunks/skills.qmd >}}
+{{< include /resources/chunks/skills.qmd >}}
 
 ```{=typst}
 #section[#link("https://pingfanhu.com/projects")[Projects]]

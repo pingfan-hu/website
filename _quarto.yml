@@ -5,12 +5,12 @@ project:
     - "!**/resources/*.qmd"
     - "!**/html/*.qmd"
   resources:
-    - files/
+    - resources/files/
     - talks/
-    - images/
+    - resources/images/
     - projects/banners/
     - blog/banners/
-    - fonts/
+    - resources/fonts/
 
 language:
   listing-page-filter: "查找"
@@ -18,8 +18,8 @@ language:
 
 website:
   title: Pingfan Hu
-  image: images/card.png
-  favicon: images/favicon.png
+  image: resources/images/card.png
+  favicon: resources/images/favicon.png
   description: Pingfan Hu - Data science PhD in sustainable transportation and open-source software.
   site-url: https://pingfanhu.com
   repo-url: https://github.com/pingfan-hu/website
@@ -27,7 +27,7 @@ website:
   twitter-card: true
   open-graph:
     locale: en_US
-    image: images/card.png
+    image: resources/images/card.png
   page-footer:
     center: "© <span id='footer-year'></span> [Pingfan Hu](https://pingfanhu.com)"
     border: true
@@ -93,19 +93,19 @@ format:
     toc-location: left
     lightbox: true
     highlight-style:
-      light: styles/code-dark.theme
-      dark: styles/code-light.theme
+      light: resources/styles/code-dark.theme
+      dark: resources/styles/code-light.theme
     code-copy: true
     theme:
-      light: [flatly, styles/styles.scss]
-      dark: [darkly, styles/styles.scss]
+      light: [flatly, resources/styles/styles.scss]
+      dark: [darkly, resources/styles/styles.scss]
     embed-resources: false
     link-external-newwindow: true
     link-external-icon: false
     link-external-filter: '^(?:http:|https:)\/\/(?:www\.)?pingfanhu\.com'
     include-after-body:
       text: |
-        <script src="/styles/styles.js"></script>
+        <script src="/resources/styles/styles.js"></script>
 
 knitr: 
   opts_chunk: 

@@ -3,9 +3,9 @@ title: "About"
 description: "Short bio and expertise of Pingfan Hu"
 ---
 
-![](/images/about.png){fig-align="center" width="800"}
+![](/resources/images/about.png){fig-align="center" width="800"}
 
-{{< include /chunks/intro.qmd >}}
+{{< include /resources/chunks/intro.qmd >}}
 
 Check out my **Resume** and **CV** here:
 
@@ -41,7 +41,7 @@ I have 2 focuses in my field of study:
 
 #### Skills
 
-{{< include /chunks/skills.qmd >}}
+{{< include /resources/chunks/skills.qmd >}}
 
 #### Languages
 
@@ -55,5 +55,5 @@ Throughout the past years, I have traveled, lived, and worked in different count
 I am married and have a busy and enjoyable life with my wife. We have a cat named Pinocchio.
 
 ::: {style="text-align: center;"}
-![*Pinocchio*](/images/pinocchio.png){fig-alt="Pinocchio" width="600"}
+![*Pinocchio*](/resources/images/pinocchio.png){fig-alt="Pinocchio" width="600"}
 :::

@@ -2,7 +2,7 @@
 title: "菜谱"
 description: "胡平凡的日常食谱收藏"
 open-graph:
-  image: images/card-recipes.png
+  image: resources/images/card-recipes.png
 toc: false
 listing:
   contents: recipes
