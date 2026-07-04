@@ -1,8 +1,10 @@
 ---
-title: "Talks"
-description: "Talks and presentations by Pingfan Hu"
+title: "Presentations"
+description: "Presentations by Pingfan Hu"
+aliases:
+  - /talks.html
 open-graph:
-  image: resources/images/card-talks.png
+  image: resources/images/card-presentations.png
 echo: false
 ---
 
@@ -12,7 +14,7 @@ library(tidyverse)
 library(htmltools)
 library(commonmark)
 
-talks_data <- read_csv("talks/talks.csv")
+presentations_data <- read_csv("presentations/presentations.csv")
 
 # Function to convert markdown to HTML
 render_markdown <- function(text) {
@@ -25,7 +27,7 @@ make_slides_path <- function(name) {
 }
 
 make_pdf_path <- function(name) {
-  paste0(file.path("/talks", name), ".pdf")
+  paste0(file.path("/presentations", name), ".pdf")
 }
 
 make_github_path <- function(name) {
@@ -45,7 +47,14 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
       div(
         class = "presentation-details",
         div(class = "event-location", render_markdown(Event)),
-        div(class = "presentation-date", format(Date, "%B %d, %Y"))
+        div(
+          class = "presentation-date",
+          if(presentation_type == "storybook") {
+            format(Date, "%B, %Y")
+          } else {
+            format(Date, "%B %d, %Y")
+          }
+        )
       )
     ),
     div(
@@ -78,7 +87,7 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
             tags$i(class = "bi bi-github")
           )
         )
-      } else if(presentation_type == "workshop") {
+      } else if(presentation_type %in% c("workshop", "storybook")) {
         list(
           # Site link button
           a(
@@ -111,26 +120,40 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
   )
 }
 
+# Filter and create storybooks
+storybook_data <- presentations_data %>%
+  filter(!is.na(Type) & tolower(Type) == "storybook")
+
+storybook_presentations <- storybook_data %>%
+  pmap(create_presentation)
+
 # Filter and create workshops
-workshops_data <- talks_data %>%
+workshops_data <- presentations_data %>%
   filter(!is.na(Type) & tolower(Type) == "workshop")
 
 workshops_presentations <- workshops_data %>%
   pmap(create_presentation)
 
 # Filter and create slides
-slides_data <- talks_data %>%
+slides_data <- presentations_data %>%
   filter(is.na(Type) | tolower(Type) == "slide")
 
 slides_presentations <- slides_data %>%
   pmap(create_presentation)
 
 # Filter and create posters
-posters_data <- talks_data %>%
+posters_data <- presentations_data %>%
   filter(!is.na(Type) & tolower(Type) == "poster")
 
 posters_presentations <- posters_data %>%
   pmap(create_presentation)
+```
+
+## Storybooks
+
+```{r}
+#| results: asis
+div(class = "presentations-container", storybook_presentations)
 ```
 
 ## Workshops
