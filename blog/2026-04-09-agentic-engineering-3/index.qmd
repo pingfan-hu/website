@@ -103,7 +103,7 @@ MCPs are not only limited to LLMs. Obsidian, for example, supports plugins that 
 
 When you install plugins, you often get skills bundled with them. Claude Code can auto-trigger skills when it detects the right context, or you can invoke them with a slash command. With the `code-review` plugin, for example, `/review` runs a code review, but you can also just ask Claude Code to review your code and it picks up the skill on its own.
 
-[\@tw93](https://tw93.fun) recently released a collection of skills called [Waza](https://github.com/tw93/waza), which includes eight skills: `/think`, `/design`, `/hunt`, `/check`, `/write`, `/learn`, `/read`, and `/health`.
+[\@tw93](https://tw93.fun) recently released a collection of skills called [Waza](https://github.com/tw93/waza), which includes eight skills: `/think`, `/ui`, `/hunt`, `/check`, `/write`, `/learn`, `/read`, and `/health`.
 
 {{< include resources/waza-skills.qmd >}}
 

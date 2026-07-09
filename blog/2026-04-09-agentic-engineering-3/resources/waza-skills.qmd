@@ -214,7 +214,7 @@
         </div>
         <div class="waza-card">
           <div class="waza-card-icon"><i data-lucide="pen-tool"></i></div>
-          <div class="waza-label">/design</div>
+          <div class="waza-label">/ui</div>
           <div class="waza-sub">Frontend UI</div>
           <div class="waza-desc">Builds UI with a committed aesthetic.</div>
         </div>
