@@ -5,6 +5,8 @@ aliases:
   - /talks.html
 open-graph:
   image: resources/images/card-presentations.png
+toc: false
+page-layout: full
 echo: false
 ---
 
@@ -34,10 +36,39 @@ make_github_path <- function(name) {
   paste0("https://github.com/pingfan-hu/", name)
 }
 
+# A labeled pill action button (icon + text)
+pres_button <- function(href, icon, label) {
+  a(
+    href = href,
+    class = "pres-btn",
+    target = "_blank",
+    rel = "noopener noreferrer",
+    tags$i(class = paste0("bi ", icon)),
+    tags$span(label)
+  )
+}
+
 # Create presentation function
 create_presentation <- function(Date, Title, Event, Location, Name, Type = "slide") {
   # Default to "slide" if Type is not provided
   presentation_type <- if(is.null(Type) || is.na(Type)) "slide" else tolower(Type)
+
+  # Build the action buttons based on presentation type
+  actions <- if(presentation_type == "slide") {
+    list(
+      pres_button(make_slides_path(Name), "bi-easel", "Slides"),
+      pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", "PDF"),
+      pres_button(make_github_path(Name), "bi-github", "GitHub")
+    )
+  } else if(presentation_type %in% c("workshop", "storybook")) {
+    list(
+      pres_button(make_slides_path(Name), "bi-globe", "Website"),
+      pres_button(make_github_path(Name), "bi-github", "GitHub")
+    )
+  } else {
+    # Single PDF button for Poster
+    list(pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", "PDF"))
+  }
 
   div(
     class = "presentation-box",
@@ -49,6 +80,7 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
         div(class = "event-location", render_markdown(Event)),
         div(
           class = "presentation-date",
+          tags$i(class = "bi bi-calendar3"),
           if(presentation_type == "storybook") {
             format(Date, "%B, %Y")
           } else {
@@ -57,122 +89,92 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
         )
       )
     ),
-    div(
-      class = "presentation-icons",
-      # Conditionally render buttons based on presentation type
-      if(presentation_type == "slide") {
-        list(
-          # Slides button
-          a(
-            href = make_slides_path(Name),
-            class = "presentation-button round-button",
-            target = "_blank",
-            rel = "noopener noreferrer",
-            tags$i(class = "bi bi-file-earmark-slides")
-          ),
-          # PDF button
-          a(
-            href = make_pdf_path(Name),
-            class = "presentation-button round-button",
-            target = "_blank",
-            rel = "noopener noreferrer",
-            tags$i(class = "bi bi-file-earmark-pdf")
-          ),
-          # GitHub repo button
-          a(
-            href = make_github_path(Name),
-            class = "presentation-button round-button",
-            target = "_blank",
-            rel = "noopener noreferrer",
-            tags$i(class = "bi bi-github")
-          )
-        )
-      } else if(presentation_type %in% c("workshop", "storybook")) {
-        list(
-          # Site link button
-          a(
-            href = make_slides_path(Name),
-            class = "presentation-button round-button",
-            target = "_blank",
-            rel = "noopener noreferrer",
-            tags$i(class = "bi bi-browser-safari")
-          ),
-          # GitHub repo button
-          a(
-            href = make_github_path(Name),
-            class = "presentation-button round-button",
-            target = "_blank",
-            rel = "noopener noreferrer",
-            tags$i(class = "bi bi-github")
-          )
-        )
-      } else {
-        # Single PDF button for Poster
-        a(
-          href = make_pdf_path(Name),
-          class = "presentation-button round-button",
-          target = "_blank",
-          rel = "noopener noreferrer",
-          tags$i(class = "bi bi-file-earmark-pdf")
-        )
-      }
-    )
+    div(class = "presentation-actions", actions)
   )
 }
 
-# Filter and create storybooks
-storybook_data <- presentations_data %>%
-  filter(!is.na(Type) & tolower(Type) == "storybook")
+# Build the presentation cards for a given type filter
+build_presentations <- function(data) {
+  if (nrow(data) == 0) return(list())
+  pmap(data, create_presentation)
+}
 
-storybook_presentations <- storybook_data %>%
-  pmap(create_presentation)
+storybook_presentations <- presentations_data %>%
+  filter(!is.na(Type) & tolower(Type) == "storybook") %>%
+  build_presentations()
 
-# Filter and create workshops
-workshops_data <- presentations_data %>%
-  filter(!is.na(Type) & tolower(Type) == "workshop")
+workshops_presentations <- presentations_data %>%
+  filter(!is.na(Type) & tolower(Type) == "workshop") %>%
+  build_presentations()
 
-workshops_presentations <- workshops_data %>%
-  pmap(create_presentation)
+slides_presentations <- presentations_data %>%
+  filter(is.na(Type) | tolower(Type) == "slide") %>%
+  build_presentations()
 
-# Filter and create slides
-slides_data <- presentations_data %>%
-  filter(is.na(Type) | tolower(Type) == "slide")
+posters_presentations <- presentations_data %>%
+  filter(!is.na(Type) & tolower(Type) == "poster") %>%
+  build_presentations()
 
-slides_presentations <- slides_data %>%
-  pmap(create_presentation)
+# Wrap a group of cards under an editorial section header:
+# a small icon chip + Maple Mono label + a thin hairline rule. The `variant`
+# class carries the section's soft accent color (see styles.scss). `slug`
+# is the scroll anchor id used by the category locator.
+presentation_section <- function(title, icon, items, variant, slug) {
+  div(
+    class = paste("pres-section", variant),
+    id = slug,
+    div(
+      class = "pres-section-head",
+      span(class = "pres-section-icon", tags$i(class = paste0("bi ", icon))),
+      span(class = "pres-section-title", title),
+      span(class = "pres-section-rule")
+    ),
+    div(class = "pres-section-body", items)
+  )
+}
 
-# Filter and create posters
-posters_data <- presentations_data %>%
-  filter(!is.na(Type) & tolower(Type) == "poster")
+# A category locator link (icon + label): a table-of-contents-style anchor that
+# smooth-scrolls to its section. Carries the section's variant class so it
+# themes with that section's accent color.
+nav_link <- function(label, icon, slug, variant) {
+  a(
+    href = paste0("#", slug),
+    class = paste("pres-filter-btn", variant),
+    `data-target` = slug,
+    tags$i(class = paste0("bi ", icon)),
+    tags$span(label)
+  )
+}
 
-posters_presentations <- posters_data %>%
-  pmap(create_presentation)
+# Single source of truth for the sections — drives both the locator and the
+# rendered sections, and drops any category that has no presentations.
+sections <- list(
+  list(title = "Storybooks", icon = "bi-journal-bookmark", items = storybook_presentations, variant = "pres-violet", slug = "storybooks"),
+  list(title = "Workshops",  icon = "bi-people",           items = workshops_presentations, variant = "pres-teal",   slug = "workshops"),
+  list(title = "Slides",     icon = "bi-easel",            items = slides_presentations,    variant = "pres-blue",   slug = "slides"),
+  list(title = "Posters",    icon = "bi-image",            items = posters_presentations,   variant = "pres-amber",  slug = "posters")
+)
+sections <- Filter(function(s) length(s$items) > 0, sections)
+
+filter_box <- tags$aside(
+  class = "pres-filter",
+  div(class = "pres-filter-title", "Categories"),
+  tags$nav(
+    class = "pres-filter-list",
+    lapply(sections, function(s) nav_link(s$title, s$icon, s$slug, s$variant))
+  )
+)
+
+section_cards <- lapply(sections, function(s) {
+  presentation_section(s$title, s$icon, s$items, s$variant, s$slug)
+})
 ```
-
-## Storybooks
 
 ```{r}
 #| results: asis
-div(class = "presentations-container", storybook_presentations)
-```
-
-## Workshops
-
-```{r}
-#| results: asis
-div(class = "presentations-container", workshops_presentations)
-```
-
-## Slides
-
-```{r}
-#| results: asis
-div(class = "presentations-container", slides_presentations)
-```
-
-## Posters
-
-```{r}
-#| results: asis
-div(class = "presentations-container", posters_presentations)
+div(
+  class = "presentations-page",
+  filter_box,
+  div(class = "pres-main", section_cards)
+)
 ```

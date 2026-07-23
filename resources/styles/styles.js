@@ -44,7 +44,7 @@
     if (!targets.length || !window.IntersectionObserver) return;
     targets.forEach(function (el, i) {
       el.classList.add('animate-on-scroll');
-      el.style.setProperty('--anim-delay', Math.min(i * 60, 300) + 'ms');
+      el.style.setProperty('--anim-delay', Math.min(i * 22, 100) + 'ms');
     });
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -68,6 +68,69 @@
       });
     }, { threshold: 0.08 });
     targets.forEach(function (el) { obs.observe(el); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+// ---- Presentations Category Locator ----
+// Scoped to the Presentations page (only runs when `.pres-filter` exists).
+// Acts like a table of contents: clicking a category smooth-scrolls to its
+// section, and scrolling highlights whichever section is currently in view.
+(function () {
+  function init() {
+    var nav = document.querySelector('.pres-filter');
+    if (!nav) return;
+    var items = Array.prototype.slice.call(nav.querySelectorAll('.pres-filter-btn'))
+      .map(function (link) {
+        return { link: link, el: document.getElementById(link.getAttribute('data-target')) };
+      })
+      .filter(function (it) { return it.el; });
+    if (!items.length) return;
+
+    function navOffset() {
+      var bar = document.querySelector('.navbar');
+      return (bar ? bar.offsetHeight : 60) + 16;
+    }
+
+    function setActive(link) {
+      items.forEach(function (it) { it.link.classList.toggle('is-active', it.link === link); });
+    }
+
+    // Smooth-scroll to the section, accounting for the fixed navbar.
+    items.forEach(function (it) {
+      it.link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var y = it.el.getBoundingClientRect().top + window.pageYOffset - navOffset();
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        setActive(it.link);
+      });
+    });
+
+    // Scroll-spy: highlight the last section whose top has crossed the line
+    // just below the navbar (and the final section once scrolled to the bottom).
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var line = navOffset() + 12;
+      var current = items[0];
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].el.getBoundingClientRect().top <= line) current = items[i];
+      }
+      if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight - 2) {
+        current = items[items.length - 1];
+      }
+      setActive(current.link);
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
