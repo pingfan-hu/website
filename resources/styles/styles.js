@@ -76,8 +76,8 @@
   }
 })();
 
-// ---- Publications Category Locator ----
-// Scoped to the Publications page (only runs when `.pres-filter` exists).
+// ---- Works Category Locator ----
+// Scoped to the Works page (only runs when `.pres-filter` exists).
 // Acts like a table of contents: clicking a category smooth-scrolls to its
 // section, and scrolling highlights whichever section is currently in view.
 (function () {
@@ -291,7 +291,7 @@
   }
 })();
 
-// ---- Publications Reference Copy ----
+// ---- Works Reference Copy ----
 // Copy button inside each paper's APA reference block. Copies the reference's
 // plain text (markdown italics collapse to plain text via textContent) and
 // briefly swaps the icon to a check as confirmation.

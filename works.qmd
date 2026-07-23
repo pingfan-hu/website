@@ -1,6 +1,6 @@
 ---
-title: "Publications"
-description: "Publications by Pingfan Hu"
+title: "Works"
+description: "Works by Pingfan Hu"
 open-graph:
   image: resources/images/card-presentations.png
 toc: false
@@ -14,7 +14,7 @@ library(tidyverse)
 library(htmltools)
 library(commonmark)
 
-publications_data <- read_csv("publications/publications.csv")
+works_data <- read_csv("works/works.csv")
 
 # Function to convert markdown to HTML
 render_markdown <- function(text) {
@@ -27,7 +27,7 @@ make_slides_path <- function(name) {
 }
 
 make_pdf_path <- function(name) {
-  paste0(file.path("/publications", name), ".pdf")
+  paste0(file.path("/works", name), ".pdf")
 }
 
 make_github_path <- function(name) {
@@ -72,8 +72,8 @@ pub_reference <- function(reference) {
   )
 }
 
-# Create a publication card. Buttons and date format depend on the type.
-create_publication <- function(Date, Title, Event, Location, Name, Type = "slide",
+# Create a work card. Buttons and date format depend on the type.
+create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
                                Doc1Label = NA, Doc1URL = NA, Doc2Label = NA, Doc2URL = NA,
                                Reference = NA) {
   pub_type <- if (is.null(Type) || is.na(Type)) "slide" else tolower(Type)
@@ -123,37 +123,37 @@ create_publication <- function(Date, Title, Event, Location, Name, Type = "slide
   )
 }
 
-# Build the publication cards for a filtered data frame
-build_publications <- function(data) {
+# Build the work cards for a filtered data frame
+build_works <- function(data) {
   if (nrow(data) == 0) return(list())
-  pmap(data, create_publication)
+  pmap(data, create_work)
 }
 
-storybook_pubs <- publications_data %>%
+storybook_works <- works_data %>%
   filter(!is.na(Type) & tolower(Type) == "storybook") %>%
-  build_publications()
+  build_works()
 
-workshop_pubs <- publications_data %>%
+workshop_works <- works_data %>%
   filter(!is.na(Type) & tolower(Type) == "workshop") %>%
-  build_publications()
+  build_works()
 
-paper_pubs <- publications_data %>%
+paper_works <- works_data %>%
   filter(!is.na(Type) & tolower(Type) == "paper") %>%
-  build_publications()
+  build_works()
 
-slide_pubs <- publications_data %>%
+slide_works <- works_data %>%
   filter(is.na(Type) | tolower(Type) == "slide") %>%
-  build_publications()
+  build_works()
 
-poster_pubs <- publications_data %>%
+poster_works <- works_data %>%
   filter(!is.na(Type) & tolower(Type) == "poster") %>%
-  build_publications()
+  build_works()
 
 # Wrap a group of cards under an editorial section header:
 # a small icon chip + Maple Mono label + a thin hairline rule. The `variant`
 # class carries the section's soft accent color (see styles.scss). `slug`
 # is the scroll anchor id used by the category locator.
-publication_section <- function(title, icon, items, variant, slug) {
+work_section <- function(title, icon, items, variant, slug) {
   div(
     class = paste("pres-section", variant),
     id = slug,
@@ -183,11 +183,11 @@ nav_link <- function(label, icon, slug, variant) {
 # Single source of truth for the sections — drives both the locator and the
 # rendered sections, and drops any category that has no entries.
 sections <- list(
-  list(title = "Workshops",  icon = "bi-people",            items = workshop_pubs,  variant = "pres-teal",   slug = "workshops"),
-  list(title = "Storybooks", icon = "bi-journal-bookmark",  items = storybook_pubs, variant = "pres-rose",   slug = "storybooks"),
-  list(title = "Papers",     icon = "bi-file-earmark-text", items = paper_pubs,     variant = "pres-violet", slug = "papers"),
-  list(title = "Slides",     icon = "bi-easel",             items = slide_pubs,     variant = "pres-blue",   slug = "slides"),
-  list(title = "Posters",    icon = "bi-image",             items = poster_pubs,    variant = "pres-amber",  slug = "posters")
+  list(title = "Workshops",  icon = "bi-people",            items = workshop_works,  variant = "pres-teal",   slug = "workshops"),
+  list(title = "Storybooks", icon = "bi-journal-bookmark",  items = storybook_works, variant = "pres-rose",   slug = "storybooks"),
+  list(title = "Papers",     icon = "bi-file-earmark-text", items = paper_works,     variant = "pres-violet", slug = "papers"),
+  list(title = "Slides",     icon = "bi-easel",             items = slide_works,     variant = "pres-blue",   slug = "slides"),
+  list(title = "Posters",    icon = "bi-image",             items = poster_works,    variant = "pres-amber",  slug = "posters")
 )
 sections <- Filter(function(s) length(s$items) > 0, sections)
 
@@ -201,7 +201,7 @@ filter_box <- tags$aside(
 )
 
 section_cards <- lapply(sections, function(s) {
-  publication_section(s$title, s$icon, s$items, s$variant, s$slug)
+  work_section(s$title, s$icon, s$items, s$variant, s$slug)
 })
 ```
 

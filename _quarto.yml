@@ -6,7 +6,7 @@ project:
     - "!**/html/*.qmd"
   resources:
     - resources/files/
-    - publications/
+    - works/
     - resources/images/
     - projects/banners/
     - blog/banners/
@@ -49,8 +49,8 @@ website:
         href: projects.qmd
         text: Projects
       - icon: journals
-        href: publications.qmd
-        text: Publications
+        href: works.qmd
+        text: Works
       - icon: journal-text
         text: 杂记
         menu:
