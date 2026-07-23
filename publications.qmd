@@ -1,8 +1,6 @@
 ---
-title: "Presentations"
-description: "Presentations by Pingfan Hu"
-aliases:
-  - /talks.html
+title: "Publications"
+description: "Publications by Pingfan Hu"
 open-graph:
   image: resources/images/card-presentations.png
 toc: false
@@ -16,20 +14,20 @@ library(tidyverse)
 library(htmltools)
 library(commonmark)
 
-presentations_data <- read_csv("presentations/presentations.csv")
+publications_data <- read_csv("publications/publications.csv")
 
 # Function to convert markdown to HTML
 render_markdown <- function(text) {
   HTML(markdown_html(text))
 }
 
-# Functions to construct paths
+# Functions to construct paths (for presentation-type entries)
 make_slides_path <- function(name) {
   paste0("https://pingfan-hu.github.io/", name, "/")
 }
 
 make_pdf_path <- function(name) {
-  paste0(file.path("/presentations", name), ".pdf")
+  paste0(file.path("/publications", name), ".pdf")
 }
 
 make_github_path <- function(name) {
@@ -48,27 +46,62 @@ pres_button <- function(href, icon, label) {
   )
 }
 
-# Create presentation function
-create_presentation <- function(Date, Title, Event, Location, Name, Type = "slide") {
-  # Default to "slide" if Type is not provided
-  presentation_type <- if(is.null(Type) || is.na(Type)) "slide" else tolower(Type)
+# Paper document buttons, built from the explicit link columns in the CSV.
+# The icon is inferred from the label (PDF vs. other document).
+paper_doc_buttons <- function(Doc1Label, Doc1URL, Doc2Label, Doc2URL) {
+  make <- function(label, url) {
+    if (is.na(url) || !nzchar(url)) return(NULL)
+    icon <- if (grepl("pdf", tolower(label))) "bi-file-earmark-pdf" else "bi-file-earmark-text"
+    pres_button(url, icon, label)
+  }
+  Filter(Negate(is.null), list(make(Doc1Label, Doc1URL), make(Doc2Label, Doc2URL)))
+}
 
-  # Build the action buttons based on presentation type
-  actions <- if(presentation_type == "slide") {
+# Nested APA reference block (papers only) with a copy button (top-right).
+pub_reference <- function(reference) {
+  if (is.na(reference) || !nzchar(reference)) return(NULL)
+  div(
+    class = "pub-ref",
+    tags$button(
+      class = "pub-ref-copy",
+      type = "button",
+      `aria-label` = "Copy reference",
+      tags$i(class = "bi bi-clipboard")
+    ),
+    div(class = "pub-ref-text", render_markdown(reference))
+  )
+}
+
+# Create a publication card. Buttons and date format depend on the type.
+create_publication <- function(Date, Title, Event, Location, Name, Type = "slide",
+                               Doc1Label = NA, Doc1URL = NA, Doc2Label = NA, Doc2URL = NA,
+                               Reference = NA) {
+  pub_type <- if (is.null(Type) || is.na(Type)) "slide" else tolower(Type)
+
+  actions <- if (pub_type == "slide") {
     list(
       pres_button(make_slides_path(Name), "bi-easel", "Slides"),
       pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", "PDF"),
       pres_button(make_github_path(Name), "bi-github", "GitHub")
     )
-  } else if(presentation_type %in% c("workshop", "storybook")) {
+  } else if (pub_type %in% c("workshop", "storybook")) {
     list(
       pres_button(make_slides_path(Name), "bi-globe", "Website"),
       pres_button(make_github_path(Name), "bi-github", "GitHub")
     )
+  } else if (pub_type == "paper") {
+    paper_doc_buttons(Doc1Label, Doc1URL, Doc2Label, Doc2URL)
   } else {
     # Single PDF button for Poster
     list(pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", "PDF"))
   }
+
+  # Papers show the year only; storybooks month + year; everything else full.
+  date_fmt <- switch(pub_type,
+    storybook = "%B, %Y",
+    paper     = "%Y",
+    "%B %d, %Y"
+  )
 
   div(
     class = "presentation-box",
@@ -81,45 +114,46 @@ create_presentation <- function(Date, Title, Event, Location, Name, Type = "slid
         div(
           class = "presentation-date",
           tags$i(class = "bi bi-calendar3"),
-          if(presentation_type == "storybook") {
-            format(Date, "%B, %Y")
-          } else {
-            format(Date, "%B %d, %Y")
-          }
+          format(Date, date_fmt)
         )
       )
     ),
+    if (pub_type == "paper") pub_reference(Reference) else NULL,
     div(class = "presentation-actions", actions)
   )
 }
 
-# Build the presentation cards for a given type filter
-build_presentations <- function(data) {
+# Build the publication cards for a filtered data frame
+build_publications <- function(data) {
   if (nrow(data) == 0) return(list())
-  pmap(data, create_presentation)
+  pmap(data, create_publication)
 }
 
-storybook_presentations <- presentations_data %>%
+storybook_pubs <- publications_data %>%
   filter(!is.na(Type) & tolower(Type) == "storybook") %>%
-  build_presentations()
+  build_publications()
 
-workshops_presentations <- presentations_data %>%
+workshop_pubs <- publications_data %>%
   filter(!is.na(Type) & tolower(Type) == "workshop") %>%
-  build_presentations()
+  build_publications()
 
-slides_presentations <- presentations_data %>%
+paper_pubs <- publications_data %>%
+  filter(!is.na(Type) & tolower(Type) == "paper") %>%
+  build_publications()
+
+slide_pubs <- publications_data %>%
   filter(is.na(Type) | tolower(Type) == "slide") %>%
-  build_presentations()
+  build_publications()
 
-posters_presentations <- presentations_data %>%
+poster_pubs <- publications_data %>%
   filter(!is.na(Type) & tolower(Type) == "poster") %>%
-  build_presentations()
+  build_publications()
 
 # Wrap a group of cards under an editorial section header:
 # a small icon chip + Maple Mono label + a thin hairline rule. The `variant`
 # class carries the section's soft accent color (see styles.scss). `slug`
 # is the scroll anchor id used by the category locator.
-presentation_section <- function(title, icon, items, variant, slug) {
+publication_section <- function(title, icon, items, variant, slug) {
   div(
     class = paste("pres-section", variant),
     id = slug,
@@ -147,12 +181,13 @@ nav_link <- function(label, icon, slug, variant) {
 }
 
 # Single source of truth for the sections — drives both the locator and the
-# rendered sections, and drops any category that has no presentations.
+# rendered sections, and drops any category that has no entries.
 sections <- list(
-  list(title = "Storybooks", icon = "bi-journal-bookmark", items = storybook_presentations, variant = "pres-violet", slug = "storybooks"),
-  list(title = "Workshops",  icon = "bi-people",           items = workshops_presentations, variant = "pres-teal",   slug = "workshops"),
-  list(title = "Slides",     icon = "bi-easel",            items = slides_presentations,    variant = "pres-blue",   slug = "slides"),
-  list(title = "Posters",    icon = "bi-image",            items = posters_presentations,   variant = "pres-amber",  slug = "posters")
+  list(title = "Workshops",  icon = "bi-people",            items = workshop_pubs,  variant = "pres-teal",   slug = "workshops"),
+  list(title = "Storybooks", icon = "bi-journal-bookmark",  items = storybook_pubs, variant = "pres-rose",   slug = "storybooks"),
+  list(title = "Papers",     icon = "bi-file-earmark-text", items = paper_pubs,     variant = "pres-violet", slug = "papers"),
+  list(title = "Slides",     icon = "bi-easel",             items = slide_pubs,     variant = "pres-blue",   slug = "slides"),
+  list(title = "Posters",    icon = "bi-image",             items = poster_pubs,    variant = "pres-amber",  slug = "posters")
 )
 sections <- Filter(function(s) length(s$items) > 0, sections)
 
@@ -166,7 +201,7 @@ filter_box <- tags$aside(
 )
 
 section_cards <- lapply(sections, function(s) {
-  presentation_section(s$title, s$icon, s$items, s$variant, s$slug)
+  publication_section(s$title, s$icon, s$items, s$variant, s$slug)
 })
 ```
 

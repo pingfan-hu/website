@@ -76,8 +76,8 @@
   }
 })();
 
-// ---- Presentations Category Locator ----
-// Scoped to the Presentations page (only runs when `.pres-filter` exists).
+// ---- Publications Category Locator ----
+// Scoped to the Publications page (only runs when `.pres-filter` exists).
 // Acts like a table of contents: clicking a category smooth-scrolls to its
 // section, and scrolling highlights whichever section is currently in view.
 (function () {
@@ -131,6 +131,57 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     update();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+// ---- Publications Reference Copy ----
+// Copy button inside each paper's APA reference block. Copies the reference's
+// plain text (markdown italics collapse to plain text via textContent) and
+// briefly swaps the icon to a check as confirmation.
+(function () {
+  function init() {
+    var btns = document.querySelectorAll('.pub-ref-copy');
+    if (!btns.length) return;
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var box = btn.closest('.pub-ref');
+        var textEl = box ? box.querySelector('.pub-ref-text') : null;
+        if (!textEl) return;
+        var text = textEl.textContent.trim().replace(/\s+/g, ' ');
+        var icon = btn.querySelector('i');
+        var confirm = function () {
+          btn.classList.add('is-copied');
+          if (icon) icon.className = 'bi bi-check-lg';
+          setTimeout(function () {
+            btn.classList.remove('is-copied');
+            if (icon) icon.className = 'bi bi-clipboard';
+          }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(confirm).catch(function () { fallbackCopy(text); confirm(); });
+        } else {
+          fallbackCopy(text);
+          confirm();
+        }
+      });
+    });
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

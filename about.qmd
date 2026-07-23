@@ -28,8 +28,7 @@ I have 2 focuses in my field of study:
 ### Other Sections
 
 - [**Blog**](blog.qmd): I write blog posts on this section, mainly for encapsulating my thoughts and ideas during my research. I also write tutorials and guides for the tools and packages I use or develop.
-- [**Papers**](papers.qmd): I collect my publications on this section, including journal papers, conference papers, and preprints.
-- [**Presentations**](presentations.qmd): I collect my presentations on this section, including storybooks, workshops, conference slides, and posters.
+- [**Publications**](publications.qmd): I collect my publications on this section, including journal & conference papers, storybooks, workshops, conference slides, and posters.
 
 ## Expertise
 

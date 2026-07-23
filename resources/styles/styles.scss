@@ -1764,7 +1764,7 @@ html.rt-scrubbing * {
   .callout-header { background-color: #deeede !important; }
 }
 
-// ---- Presentations ----
+// ---- Publications ----
 // Editorial layout: airy section headers (small icon chip + Maple Mono label +
 // hairline rule — no dense purple bars) over cards whose most valuable element,
 // the action links, is a prominent full-width row of labeled pill buttons.
@@ -1916,6 +1916,7 @@ $pres-filter-gap: 26px;
 
 .pres-violet { --pa: #5F57A8; --pa-bg: #EEECF8; --pa-bd: #D7D1EE; --pa-gl: rgba(95, 87, 168, 0.22); }
 .pres-teal   { --pa: #3D8B7A; --pa-bg: #E6F1EE; --pa-bd: #C4E0D9; --pa-gl: rgba(61, 139, 122, 0.22); }
+.pres-rose   { --pa: #BC5A79; --pa-bg: #F9EBEF; --pa-bd: #EFCDD8; --pa-gl: rgba(188, 90, 121, 0.24); }
 .pres-blue   { --pa: #3F72AF; --pa-bg: #E9F0F9; --pa-bd: #C7DBEF; --pa-gl: rgba(63, 114, 175, 0.22); }
 .pres-amber  { --pa: #BE7A4E; --pa-bg: #F7EDE2; --pa-bd: #EACFB6; --pa-gl: rgba(190, 122, 78, 0.24); }
 
@@ -2064,6 +2065,54 @@ $pres-filter-gap: 26px;
   &:focus-visible { outline: 2px solid var(--pa); outline-offset: 2px; }
 
   i { font-size: 1rem; color: inherit; }
+}
+
+// Nested APA reference (papers) — a soft accent-tinted block with a copy
+// button pinned top-right.
+.pub-ref {
+  position: relative;
+  margin-top: 14px;
+  padding: 12px 46px 12px 14px;
+  border: 1px solid var(--pa-bd);
+  border-radius: 9px;
+  // Lighter than the buttons: the section tint washed toward the card surface.
+  background: color-mix(in srgb, var(--pa-bg) 42%, #FBFAF6);
+}
+
+.pub-ref-text {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #514b45;
+
+  p { margin: 0; }
+  em { font-style: italic; }
+}
+
+.pub-ref-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--pa-bd);
+  border-radius: 7px;
+  background: #FBFAF6;
+  color: var(--pa);
+  cursor: pointer;
+  will-change: transform;
+  transition: background 0.14s ease, color 0.14s ease,
+              border-color 0.14s ease, transform 0.08s ease;
+
+  i { font-size: 0.9rem; }
+
+  &:hover { background: var(--pa); border-color: var(--pa); color: #F8F7F0; }
+  &:active { transform: scale(0.9); }
+  &:focus-visible { outline: 2px solid var(--pa); outline-offset: 2px; }
+  &.is-copied { background: var(--pa); border-color: var(--pa); color: #F8F7F0; }
+  &.is-copied i { font-size: 1.15rem; }
 }
 
 @media (max-width: 520px) {
@@ -2387,6 +2436,7 @@ body.quarto-dark {
   // Dark-mode accent sets — lighter accent text, translucent tints.
   .pres-violet { --pa: #b0a8e6; --pa-bg: rgba(124, 122, 196, 0.15); --pa-bd: rgba(124, 122, 196, 0.42); --pa-gl: rgba(124, 122, 196, 0.34); }
   .pres-teal   { --pa: #7fcbb9; --pa-bg: rgba(76, 160, 142, 0.15);  --pa-bd: rgba(76, 160, 142, 0.42);  --pa-gl: rgba(76, 160, 142, 0.34); }
+  .pres-rose   { --pa: #e39db1; --pa-bg: rgba(188, 90, 121, 0.16);  --pa-bd: rgba(188, 90, 121, 0.44);  --pa-gl: rgba(188, 90, 121, 0.34); }
   .pres-blue   { --pa: #8fb6e6; --pa-bg: rgba(74, 130, 190, 0.15);  --pa-bd: rgba(74, 130, 190, 0.42);  --pa-gl: rgba(74, 130, 190, 0.34); }
   .pres-amber  { --pa: #e0aa7d; --pa-bg: rgba(198, 133, 84, 0.15);  --pa-bd: rgba(198, 133, 84, 0.44);  --pa-gl: rgba(198, 133, 84, 0.34); }
 
@@ -2411,6 +2461,12 @@ body.quarto-dark {
   .presentation-actions { border-top-color: rgba(255, 255, 255, 0.08); }
 
   .pres-btn:hover { color: #14151f; }
+
+  .pub-ref { background: color-mix(in srgb, var(--pa-bg) 45%, #232b3e); }
+  .pub-ref-text { color: rgba(255, 255, 255, 0.78); }
+  .pub-ref-copy { background: #232b3e; }
+  .pub-ref-copy:hover,
+  .pub-ref-copy.is-copied { color: #14151f; }
 
   .quarto-grid-item:hover {
     border-color: #7c7ac4 !important;
