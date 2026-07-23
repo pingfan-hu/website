@@ -1834,6 +1834,7 @@ $pres-filter-gap: 26px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  position: relative; // anchor for the glider's translate() coordinates
 }
 
 .pres-filter-btn {
@@ -1853,6 +1854,8 @@ $pres-filter-gap: 26px;
   text-align: left;
   text-decoration: none;
   cursor: pointer;
+  position: relative;
+  z-index: 1; // content rides above the glider
   transition: background 0.14s ease, border-color 0.14s ease,
               color 0.14s ease, transform 0.08s ease;
 
@@ -1862,18 +1865,41 @@ $pres-filter-gap: 26px;
   &:active { transform: scale(0.97); }
   &:focus-visible { outline: 2px solid var(--pa); outline-offset: 2px; }
 
-  &.is-active {
-    background: var(--pa-bg);
-    border-color: var(--pa-bd);
-    color: var(--pa);
-  }
+  // The glider (below) supplies the active highlight surface — the button
+  // itself only shifts its text/icon color.
+  &.is-active { color: var(--pa); }
 }
+
+// The sliding focus pill, used in BOTH layouts (vertical glide on desktop,
+// horizontal on mobile). JS animates its geometry every frame by chasing the
+// active button's live offset/size — which keeps it glued to a pill whose
+// label is mid-expansion on mobile — so CSS only transitions the colors.
+// The accent variant class is swapped by JS, morphing the tint in flight.
+.pres-filter-glider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid var(--pa-bd);
+  border-radius: 8px;
+  background: var(--pa-bg);
+  opacity: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+              opacity 0.2s ease;
+
+  &.is-ready { opacity: 1; }
+}
+
+// Mobile-only name slot (JS-injected): hidden on desktop, where buttons show
+// their own labels.
+.pres-filter-current { display: none; }
 
 // Below the width where a right add-on fits, collapse to a single column: the
 // body spans full width (with side breathing room) and the category filter
-// becomes a compact, sticky bar pinned below the navbar. To save horizontal
-// space only the active item shows its label; the rest are icon-only, and the
-// label expands/collapses with a smooth transition as the active section changes.
+// becomes a compact, sticky bar pinned below the navbar. The bar is
+// [name slot | icon row]: all five pills are icon-only with STATIC geometry
+// (nothing ever reflows), the glider slides behind the active icon, and the
+// active section's name lives in a fixed-width slot on the left — sized to
+// the longest label — where it rolls vertically (ticker-style) on change.
 @media (max-width: 1080px) {
   .presentations-page {
     flex-direction: column;
@@ -1892,6 +1918,9 @@ $pres-filter-gap: 26px;
     order: 1;
     flex: 0 0 auto; // reset the desktop fixed basis (else it forces height in column flow)
     align-self: center;
+    display: flex; // [name slot | icon row]
+    align-items: stretch;
+    gap: 8px;
     width: fit-content;
     max-width: 100%;
     position: sticky;
@@ -1911,27 +1940,56 @@ $pres-filter-gap: 26px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
   }
   .pres-filter-btn {
     width: auto;
     gap: 0;
-    padding: 8px 10px;
+    padding: 8px 9px;
+
+    // Hover is meaningless on touch and would stack a second highlight on
+    // top of the glider — keep the button surface transparent here.
+    &:hover { background: transparent; }
+
+    // Labels never render in the row — the name slot carries the active
+    // section's name, so icon geometry is permanently static.
+    span { display: none; }
+  }
+
+  // Fixed-width slot showing the active section's name. JS sets its width in
+  // `ch` from the longest label (exact for Maple Mono, a monospace face) and
+  // rolls the text vertically on change: up when scrolling forward through
+  // the sections, down when scrolling back. The spans are absolutely
+  // positioned so the outgoing/incoming pair never affects layout.
+  .pres-filter-current {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 auto;
+    border-right: 1px solid #E7E3D7;
+    font-family: 'Maple Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: bold;
 
     span {
-      max-width: 0;
-      margin-left: 0;
-      opacity: 0;
-      overflow: hidden;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 8px; // breathing room off the divider
+      color: var(--pa);
       white-space: nowrap;
-      // Subtler: gentle ease, shorter duration (no springy overshoot).
-      transition: max-width 0.24s ease, margin-left 0.24s ease, opacity 0.18s ease;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.22s ease;
     }
-    &.is-active span {
-      max-width: 160px;
-      margin-left: 7px;
-      opacity: 1;
-    }
+  }
+
+  // Squeeze tier for the narrowest phones (320px viewports): trim paddings
+  // so the [name slot | 5 icons] bar fits without wrapping.
+  @media (max-width: 360px) {
+    .pres-filter { gap: 6px; }
+    .pres-filter-btn { padding: 8px 6px; }
   }
 }
 
@@ -2534,6 +2592,12 @@ body.quarto-dark {
   }
   .pres-filter-title { color: #7d8598; }
   .pres-filter-btn { color: #aeb4c2; }
+  // Re-assert the accent color: the plain dark rule above out-specifies the
+  // base :hover/.is-active color rules, and the button's own color is now
+  // the only active indicator besides the glider.
+  .pres-filter-btn:hover,
+  .pres-filter-btn.is-active { color: var(--pa); }
+  .pres-filter-current { border-right-color: rgba(255, 255, 255, 0.08); }
 
   .presentation-box {
     background: #232b3e;

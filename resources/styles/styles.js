@@ -102,8 +102,150 @@
       return base;
     }
 
+    // Focus glider: a single accent pill that slides behind the active button
+    // (vertically in the desktop sidebar, horizontally in the mobile bar).
+    // Rather than a CSS transition to a fixed endpoint, JS "chases" the active
+    // button's live geometry each frame with an exponential ease — so on
+    // mobile it stays glued to a pill whose label is mid-expansion while the
+    // row reflows around it. The variant class swap morphs its tint via CSS.
+    var list = nav.querySelector('.pres-filter-list');
+    var glider = document.createElement('span');
+    glider.className = 'pres-filter-glider';
+    glider.setAttribute('aria-hidden', 'true');
+    if (list) list.insertBefore(glider, list.firstChild);
+    var VARIANT = /pres-(violet|teal|rose|blue|amber)/;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    var activeLink = null;
+    var pos = null;   // glider's current geometry (animated by the chase loop)
+    var rafId = null;
+
+    function targetOf(link) {
+      return { x: link.offsetLeft, y: link.offsetTop, w: link.offsetWidth, h: link.offsetHeight };
+    }
+    function paint() {
+      glider.style.width = pos.w + 'px';
+      glider.style.height = pos.h + 'px';
+      glider.style.transform = 'translate(' + pos.x + 'px, ' + pos.y + 'px)';
+    }
+    function tint(link) {
+      var m = link.className.match(VARIANT);
+      glider.className = 'pres-filter-glider is-ready' + (m ? ' ' + m[0] : '');
+    }
+    function snap(link) {
+      if (rafId) { window.cancelAnimationFrame(rafId); rafId = null; }
+      tint(link);
+      pos = targetOf(link);
+      paint();
+    }
+    function glide(link) {
+      if (!pos || (reduceMotion && reduceMotion.matches)) { snap(link); return; }
+      tint(link);
+      if (rafId) window.cancelAnimationFrame(rafId);
+      var last = performance.now();
+      function step(now) {
+        var dt = Math.min(now - last, 64); // clamp tab-switch gaps
+        last = now;
+        var t = targetOf(link); // re-read: the pill may still be growing
+        var k = 1 - Math.exp(-dt / 90); // ~95% of the way in ~270ms
+        pos.x += (t.x - pos.x) * k;
+        pos.y += (t.y - pos.y) * k;
+        pos.w += (t.w - pos.w) * k;
+        pos.h += (t.h - pos.h) * k;
+        var settled = Math.abs(t.x - pos.x) < 0.5 && Math.abs(t.y - pos.y) < 0.5 &&
+                      Math.abs(t.w - pos.w) < 0.5 && Math.abs(t.h - pos.h) < 0.5;
+        if (settled) { pos = t; paint(); rafId = null; return; }
+        paint();
+        rafId = window.requestAnimationFrame(step);
+      }
+      rafId = window.requestAnimationFrame(step);
+    }
+    // Layout shifts (viewport resize, icon-font load) invalidate the stored
+    // geometry — re-anchor instantly rather than animating the correction.
+    function resync() {
+      if (list && activeLink) snap(activeLink);
+    }
+
+    // Mobile name slot: a fixed-width box at the left end of the bar showing
+    // the active section's name, so the icon row never has to make room for
+    // a label. Sized in `ch` from the longest label (exact — Maple Mono is
+    // monospace, plus the divider breathing room the spans reserve). The text
+    // rolls vertically on change: up when moving forward through the
+    // sections, down when moving back. Hidden on desktop via CSS, but its
+    // content is kept fresh there so a resize into mobile shows the right name.
+    var slot = document.createElement('div');
+    slot.className = 'pres-filter-current';
+    slot.setAttribute('aria-hidden', 'true');
+    nav.insertBefore(slot, nav.firstChild);
+    var maxChars = 0;
+    items.forEach(function (it) {
+      var s = it.link.querySelector('span');
+      if (s) maxChars = Math.max(maxChars, s.textContent.trim().length);
+    });
+    slot.style.width = 'calc(' + maxChars + 'ch + 9px)';
+
+    var nameSpan = null;
+    var nameIdx = -1;
+    function setName(link, idx) {
+      var label = link.querySelector('span');
+      var m = link.className.match(VARIANT);
+      var span = document.createElement('span');
+      if (m) span.className = m[0];
+      span.textContent = label ? label.textContent.trim() : '';
+      var dir = (nameIdx >= 0 && idx < nameIdx) ? -1 : 1;
+      nameIdx = idx;
+      var old = nameSpan;
+      nameSpan = span;
+      var animate = old && !(reduceMotion && reduceMotion.matches) &&
+                    getComputedStyle(slot).display !== 'none';
+      if (!animate) {
+        slot.textContent = '';
+        slot.appendChild(span);
+        return;
+      }
+      span.style.transform = 'translateY(' + (dir * 100) + '%)';
+      span.style.opacity = '0';
+      slot.appendChild(span);
+      void span.offsetWidth; // commit the start position before releasing it
+      span.style.transform = '';
+      span.style.opacity = '';
+      old.style.transform = 'translateY(' + (-dir * 100) + '%)';
+      old.style.opacity = '0';
+      setTimeout(function () {
+        if (old.parentNode === slot) slot.removeChild(old);
+      }, 360);
+    }
+
     function setActive(link) {
-      items.forEach(function (it) { it.link.classList.toggle('is-active', it.link === link); });
+      if (link === activeLink) return;
+      activeLink = link;
+      var idx = 0;
+      items.forEach(function (it, i) {
+        it.link.classList.toggle('is-active', it.link === link);
+        if (it.link === link) idx = i;
+      });
+      setName(link, idx);
+      if (list) glide(link);
+    }
+
+    // While a click-initiated smooth scroll is in flight, the scroll-spy
+    // would re-highlight every section the viewport passes through — the
+    // name ticker visibly rolled back to the departing section before
+    // rolling to the clicked one. Lock the spy on click and release it once
+    // scroll events go quiet for a beat (which also covers the user
+    // interrupting the glide with their own scroll).
+    var spyLocked = false;
+    var spyLockTimer = null;
+    function bumpSpyLock() {
+      window.clearTimeout(spyLockTimer);
+      spyLockTimer = window.setTimeout(function () {
+        spyLocked = false;
+        update();
+      }, 200);
+    }
+    function lockSpy() {
+      spyLocked = true;
+      bumpSpyLock();
     }
 
     // Smooth-scroll to the section, accounting for the fixed navbar.
@@ -113,6 +255,7 @@
         var y = it.el.getBoundingClientRect().top + window.pageYOffset - navOffset();
         window.scrollTo({ top: y, behavior: 'smooth' });
         setActive(it.link);
+        lockSpy();
       });
     });
 
@@ -132,10 +275,13 @@
       setActive(current.link);
     }
     function onScroll() {
+      if (spyLocked) { bumpSpyLock(); return; } // keep the lock alive while gliding
       if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', function () { resync(); onScroll(); });
+    // Font load changes button widths — re-anchor the glider once settled.
+    window.addEventListener('load', resync);
     update();
   }
   if (document.readyState === 'loading') {
