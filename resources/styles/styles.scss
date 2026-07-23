@@ -2174,7 +2174,11 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
 .navbar {
   padding-top: 0.3rem !important;
   padding-bottom: 0.3rem !important;
-  min-height: 0;
+  // Pin every stage to the desktop navbar height (~56px). The collapsed stages
+  // are naturally shorter (flattened brand + hamburger), so this floors them to
+  // match; the taller open-hamburger dropdown can still grow past it. (px, not
+  // rem — the site's root font is 17px, so 3.5rem would overshoot.)
+  min-height: 56px;
 }
 
 .navbar-nav .nav-link,
@@ -2265,16 +2269,25 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
     }
   }
 
-  // On narrow viewports the brand title + hamburger + tools row wraps to a
-  // second line. Hide the brand-icon links (search + theme toggle remain).
-  @media (max-width: 600px) {
+  // The full tools row (brand + hamburger + 5 icons + toggle + search) fits on one
+  // line down to ~460px. Only below 480px does it wrap to a second row, so hide the
+  // social icons just there (theme toggle + search remain) — everything wider keeps
+  // them.
+  @media (max-width: 479.98px) {
     > a:not(.quarto-color-scheme-toggle) { display: none !important; }
   }
 }
 
-.navbar-nav {
+// ---- Navbar collapse breakpoint (native 992px) ----
+// Quarto's `navbar-expand-lg` collapses the nav to a hamburger below 992px and
+// expands it above. That is the lowest clean point: Quarto only applies the full
+// desktop-nav layout (item order, spacing, flex sizing) at >= 992px, so the nav
+// must not be forced to expand any narrower. Above 992px the content has room to
+// spare, so this is where the expanded desktop nav lives; below it, the hamburger.
 
-  @media (min-width: 768px) {
+// Horizontal nav styling (single row, gaps, vertical dividers) — expanded only.
+@media (min-width: 992px) {
+  .navbar-nav {
     flex-wrap: nowrap !important;
     white-space: nowrap;
     .nav-item { flex-shrink: 1; }
@@ -2300,7 +2313,41 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
       }
     }
   }
+}
 
+// ---- Collapsed navbar: one stable layout across the whole < 992px range ----
+// Pin every top-bar item to an explicit flex order so the layout never reshuffles
+// as width changes (hamburger, brand, then tools + search flush right; nav links
+// wrap onto their own row below).
+@media (max-width: 991.98px) {
+  .navbar-toggler {
+    order: 1 !important;              // hamburger, far left
+    margin-right: 12px !important;
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
+    font-size: 1.1rem !important;
+  }
+  .navbar-brand-container {
+    order: 2 !important;             // brand, right of the hamburger
+    margin: 0 !important;            // override Quarto's `mx-auto` centering
+  }
+  .quarto-navbar-tools {
+    order: 3 !important;             // social tools + theme toggle
+    margin-left: auto !important;    // absorb free space → push tools + search right
+  }
+  .type-overlay {
+    order: 4 !important;             // search, flush after the tools
+    margin-left: 0 !important;       // drop Quarto's own auto margin (was a 2nd gap)
+  }
+  .navbar-container > .navbar-collapse { order: 5 !important; } // nav links wrap below
+
+  // Flatten the brand's vertical padding so the collapsed top bar is as short as
+  // the desktop nav.
+  .navbar-brand-container,
+  .navbar-brand-container .navbar-brand {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }
 
 .nav-footer {
