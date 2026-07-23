@@ -1869,32 +1869,70 @@ $pres-filter-gap: 26px;
   }
 }
 
-// Below the width where a right add-on fits, collapse to a single column —
-// the body spans full width and the filter becomes a chip row pinned on top.
+// Below the width where a right add-on fits, collapse to a single column: the
+// body spans full width (with side breathing room) and the category filter
+// becomes a compact, sticky bar pinned below the navbar. To save horizontal
+// space only the active item shows its label; the rest are icon-only, and the
+// label expands/collapses with a smooth transition as the active section changes.
 @media (max-width: 1080px) {
   .presentations-page {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
+    padding-inline: clamp(1rem, 4vw, 1.5rem);
   }
   .presentations-page::before { display: none; }
   .pres-main {
     order: 2;
     flex: 1 1 auto;
   }
+
+  // Compact, content-width bar centered at the top (not full width).
   .pres-filter {
     order: 1;
-    position: static;
-    width: 100%;
+    flex: 0 0 auto; // reset the desktop fixed basis (else it forces height in column flow)
+    align-self: center;
+    width: fit-content;
+    max-width: 100%;
+    position: sticky;
+    top: 3.5rem; // sits just below the 56px fixed navbar...
+    z-index: 20;
     margin-left: 0;
+    padding: 7px 9px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+    transition: top 0.2s ease;
   }
-  .pres-filter-title { padding-bottom: 8px; }
+  // ...but rises to the very top when the navbar auto-hides on scroll-down,
+  // so it slides up into the space the navbar leaves behind.
+  body:has(#quarto-header.headroom--unpinned) .pres-filter { top: 0; }
+
+  .pres-filter-title { display: none; }
   .pres-filter-list {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 7px;
+    justify-content: center;
+    gap: 6px;
   }
-  .pres-filter-btn { width: auto; }
+  .pres-filter-btn {
+    width: auto;
+    gap: 0;
+    padding: 8px 10px;
+
+    span {
+      max-width: 0;
+      margin-left: 0;
+      opacity: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      // Subtler: gentle ease, shorter duration (no springy overshoot).
+      transition: max-width 0.24s ease, margin-left 0.24s ease, opacity 0.18s ease;
+    }
+    &.is-active span {
+      max-width: 160px;
+      margin-left: 7px;
+      opacity: 1;
+    }
+  }
 }
 
 // Each section carries a soft accent via CSS custom properties. Every accent

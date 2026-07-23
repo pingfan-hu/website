@@ -93,7 +93,13 @@
 
     function navOffset() {
       var bar = document.querySelector('.navbar');
-      return (bar ? bar.offsetHeight : 60) + 16;
+      var base = (bar ? bar.offsetHeight : 60) + 16;
+      // On mobile the filter is a sticky top bar overlapping the content, so its
+      // height must be cleared too (for both scroll-spy and click-scroll).
+      if (window.innerWidth <= 1080 && nav && getComputedStyle(nav).position === 'sticky') {
+        base += nav.offsetHeight;
+      }
+      return base;
     }
 
     function setActive(link) {
