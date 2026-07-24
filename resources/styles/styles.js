@@ -93,11 +93,18 @@
 
     function navOffset() {
       var bar = document.querySelector('.navbar');
-      var base = (bar ? bar.offsetHeight : 60) + 16;
+      var barH = bar ? bar.offsetHeight : 60;
+      var base = barH + 16;
       // On mobile the filter is a sticky top bar overlapping the content, so its
       // height must be cleared too (for both scroll-spy and click-scroll).
       if (window.innerWidth <= 1080 && nav && getComputedStyle(nav).position === 'sticky') {
         base += nav.offsetHeight;
+      }
+      // A hidden navbar stays hidden during a click-glide (headroom is frozen
+      // for its duration), so it occupies no space above the content.
+      var header = document.getElementById('quarto-header');
+      if (header && header.classList.contains('headroom--unpinned')) {
+        base -= barH;
       }
       return base;
     }
@@ -240,6 +247,7 @@
       window.clearTimeout(spyLockTimer);
       spyLockTimer = window.setTimeout(function () {
         spyLocked = false;
+        unfreezeNavbar();
         update();
       }, 200);
     }
@@ -248,10 +256,29 @@
       bumpSpyLock();
     }
 
+    // A click-glide would also pin/unpin the navbar (headroom reads the fake
+    // scroll as hand motion) — two simultaneous animations for one click.
+    // Freeze headroom for the glide's duration so only real scrolling moves
+    // the navbar. quartoToggleHeadroom is Quarto's freeze/unfreeze toggle;
+    // navFrozen mirrors its internal state so the pair always rebalances.
+    var navFrozen = false;
+    function freezeNavbar() {
+      if (navFrozen) return;
+      if (typeof window.quartoToggleHeadroom !== 'function') return;
+      window.quartoToggleHeadroom();
+      navFrozen = true;
+    }
+    function unfreezeNavbar() {
+      if (!navFrozen) return;
+      window.quartoToggleHeadroom();
+      navFrozen = false;
+    }
+
     // Smooth-scroll to the section, accounting for the fixed navbar.
     items.forEach(function (it) {
       it.link.addEventListener('click', function (e) {
         e.preventDefault();
+        freezeNavbar();
         var y = it.el.getBoundingClientRect().top + window.pageYOffset - navOffset();
         window.scrollTo({ top: y, behavior: 'smooth' });
         setActive(it.link);

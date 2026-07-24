@@ -1954,9 +1954,12 @@ $pres-filter-gap: 26px;
 
     i { line-height: 1; }
 
-    // Hover is meaningless on touch and would stack a second highlight on
-    // top of the glider — keep the button surface transparent here.
-    &:hover { background: transparent; }
+    // On touch, "hover" sticks after a tap and stacks a second highlight on
+    // top of the glider — keep the surface transparent there. Real pointers
+    // (a narrow desktop window) keep the sidebar's tint-on-hover.
+    @media (hover: none) {
+      &:hover { background: transparent; }
+    }
 
     // Labels never render in the row — the name slot carries the active
     // section's name, so icon geometry is permanently static.
