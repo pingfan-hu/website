@@ -1924,16 +1924,16 @@ $pres-filter-gap: 26px;
     width: fit-content;
     max-width: 100%;
     position: sticky;
-    top: 3.5rem; // sits just below the 56px fixed navbar...
+    top: calc(56px + 10px); // 10px of breathing room below the fixed navbar...
     z-index: 20;
     margin-left: 0;
-    padding: 7px 9px;
+    padding: 6px 8px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
     transition: top 0.2s ease;
   }
-  // ...but rises to the very top when the navbar auto-hides on scroll-down,
-  // so it slides up into the space the navbar leaves behind.
-  body:has(#quarto-header.headroom--unpinned) .pres-filter { top: 0; }
+  // ...and keeps the same 10px of air off the viewport edge when the navbar
+  // auto-hides on scroll-down.
+  body:has(#quarto-header.headroom--unpinned) .pres-filter { top: 10px; }
 
   .pres-filter-title { display: none; }
   .pres-filter-list {
@@ -1943,9 +1943,16 @@ $pres-filter-gap: 26px;
     gap: 5px;
   }
   .pres-filter-btn {
-    width: auto;
+    // Fixed square pills — the glider chases the button's live geometry, so a
+    // square button is what makes the active highlight square (the default
+    // padding box is taller than wide via the icon's 1.5 line-height).
+    width: 34px;
+    height: 34px;
+    justify-content: center;
     gap: 0;
-    padding: 8px 9px;
+    padding: 0;
+
+    i { line-height: 1; }
 
     // Hover is meaningless on touch and would stack a second highlight on
     // top of the glider — keep the button surface transparent here.
@@ -1985,11 +1992,11 @@ $pres-filter-gap: 26px;
     }
   }
 
-  // Squeeze tier for the narrowest phones (320px viewports): trim paddings
-  // so the [name slot | 5 icons] bar fits without wrapping.
+  // Squeeze tier for the narrowest phones (320px viewports): shrink the
+  // square pills so the [name slot | 5 icons] bar fits without wrapping.
   @media (max-width: 360px) {
     .pres-filter { gap: 6px; }
-    .pres-filter-btn { padding: 8px 6px; }
+    .pres-filter-btn { width: 30px; height: 30px; }
   }
 }
 
@@ -2060,12 +2067,17 @@ $pres-filter-gap: 26px;
 }
 
 // The card is not clickable — no hover / press affordance on the box itself.
+// Background carries a whisper of the section's accent (--pa-bg diluted into
+// the neutral card color) so cards read against the page background; the
+// border gets the same treatment so it doesn't look grey-on-tinted.
 .presentation-box {
   margin: 0;
   padding: 16px 18px;
-  border: 1px solid #E5E4DC;
+  // (a fainter mix than .pub-ref's, so the citation box inside paper cards
+  // still reads as its own deeper layer).
+  border: 1px solid color-mix(in srgb, var(--pa-bd) 40%, #E5E4DC);
   border-radius: 12px;
-  background: #FBFAF6;
+  background: color-mix(in srgb, var(--pa-bg) 45%, #FBFAF6);
 }
 
 .presentation-content { min-width: 0; }
@@ -2171,8 +2183,9 @@ $pres-filter-gap: 26px;
   padding: 12px 46px 12px 14px;
   border: 1px solid var(--pa-bd);
   border-radius: 9px;
-  // Lighter than the buttons: the section tint washed toward the card surface.
-  background: color-mix(in srgb, var(--pa-bg) 42%, #FBFAF6);
+  // Deeper than the card's 45% wash but still lighter than the buttons, so
+  // page → card → citation → button steps stay distinct.
+  background: color-mix(in srgb, var(--pa-bg) 75%, #FBFAF6);
 }
 
 .pub-ref-text {
@@ -2282,6 +2295,70 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   border: 0;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+
+  // Fade + slide the menu open/closed. Bootstrap only flips display: none ⇄
+  // block via .show, so the close animation needs `display ... allow-discrete`
+  // (display holds until the transition ends) and the open animation needs the
+  // @starting-style entry state below. Browsers without support just get the
+  // old instant toggle. Navbar dropdowns are statically positioned (no Popper
+  // inline transform), so animating transform here is safe.
+  opacity: 0;
+  transform: translateY(-0.35rem);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    display 0.18s allow-discrete;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@starting-style {
+  .navbar .dropdown-menu.show {
+    opacity: 0;
+    transform: translateY(-0.35rem);
+  }
+}
+
+// Roll the toggle's caret while the menu is open, matching the menu timing.
+.navbar .dropdown-toggle::after {
+  transition: transform 0.18s ease;
+}
+
+.navbar .dropdown-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar .dropdown-menu,
+  .navbar .dropdown-toggle::after {
+    transition: none;
+  }
+}
+
+// In the collapsed (hamburger) navbar Bootstrap lays the dropdown out in-flow
+// (position: static), so opening it grows the purple navbar background with no
+// way to animate the height. Float it over the page content instead — same
+// overlay behavior as the desktop dropdown — so the background never resizes.
+@media (max-width: 991.98px) {
+  .navbar .nav-item.dropdown {
+    position: relative;
+  }
+
+  .navbar .nav-item.dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  // Bootstrap's .navbar-nav-scroll wraps the nav links in overflow: auto, which
+  // clips the now-overlaying dropdown. The nav is 5 short items and never needs
+  // to scroll, so let the dropdown escape.
+  .navbar .navbar-nav-scroll {
+    overflow: visible;
+  }
 }
 
 .navbar .dropdown-menu .dropdown-item {
@@ -2378,6 +2455,20 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
 // as width changes (hamburger, brand, then tools + search flush right; nav links
 // wrap onto their own row below).
 @media (max-width: 991.98px) {
+  // Zero-width strut pinning the top row's flex line to the navbar's inner
+  // height (56px min-height minus the 2 × 0.3rem vertical padding). Without it
+  // the closed navbar centers the ~37px-tall row inside the 56px floor, but
+  // opening the hamburger removes that slack (content now exceeds 56px) and the
+  // row jumps up ~4px. The strut keeps the first line the same height in both
+  // states. order: 0 keeps it ahead of the toggler; the tools' margin-left: auto
+  // absorbs free space, so the extra flex item never affects justification.
+  .navbar-container::before {
+    content: '';
+    order: 0;
+    width: 0;
+    height: calc(56px - 0.6rem);
+  }
+
   .navbar-toggler {
     order: 1 !important;              // hamburger, far left
     margin-right: 12px !important;
@@ -2600,8 +2691,10 @@ body.quarto-dark {
   .pres-filter-current { border-right-color: rgba(255, 255, 255, 0.08); }
 
   .presentation-box {
-    background: #232b3e;
-    border-color: rgba(255, 255, 255, 0.08);
+    // Same accent wash as light mode, mixed into the dark card color —
+    // fainter than .pub-ref's 75% so the citation box keeps its own layer.
+    background: color-mix(in srgb, var(--pa-bg) 45%, #232b3e);
+    border-color: color-mix(in srgb, var(--pa-bd) 30%, rgba(255, 255, 255, 0.08));
   }
 
   .presentation-title { color: var(--bs-body-color); }
@@ -2611,7 +2704,7 @@ body.quarto-dark {
 
   .pres-btn:hover { color: #14151f; }
 
-  .pub-ref { background: color-mix(in srgb, var(--pa-bg) 45%, #232b3e); }
+  .pub-ref { background: color-mix(in srgb, var(--pa-bg) 75%, #232b3e); }
   .pub-ref-text { color: rgba(255, 255, 255, 0.78); }
   .pub-ref-copy { background: #232b3e; }
   .pub-ref-copy:hover,
