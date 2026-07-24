@@ -47,11 +47,14 @@ pres_button <- function(href, icon, label) {
 }
 
 # Paper document buttons, built from the explicit link columns in the CSV.
-# The icon is inferred from the label (PDF vs. other document).
+# The icon is inferred from the label (website, PDF/paper, or other document).
 paper_doc_buttons <- function(Doc1Label, Doc1URL, Doc2Label, Doc2URL) {
   make <- function(label, url) {
     if (is.na(url) || !nzchar(url)) return(NULL)
-    icon <- if (grepl("pdf", tolower(label))) "bi-file-earmark-pdf" else "bi-file-earmark-text"
+    key <- tolower(label)
+    icon <- if (grepl("website", key)) "bi-globe2"
+      else if (grepl("pdf|paper", key)) "bi-file-earmark-pdf"
+      else "bi-file-earmark-text"
     pres_button(url, icon, label)
   }
   Filter(Negate(is.null), list(make(Doc1Label, Doc1URL), make(Doc2Label, Doc2URL)))

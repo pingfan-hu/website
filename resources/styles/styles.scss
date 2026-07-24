@@ -2144,7 +2144,7 @@ $pres-filter-gap: 26px;
 }
 
 .pres-btn {
-  flex: 1 1 auto;
+  flex: 1 1 0; // zero basis: equal widths regardless of label length
   min-width: 96px;
   display: flex;
   align-items: center;
