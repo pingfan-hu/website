@@ -2,7 +2,7 @@
 title: "Works"
 description: "Works by Pingfan Hu"
 open-graph:
-  image: resources/images/card-presentations.png
+  image: resources/images/card-works.png
 toc: false
 page-layout: full
 echo: false
