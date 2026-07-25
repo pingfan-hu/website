@@ -46,6 +46,12 @@ pres_button <- function(href, icon, label) {
   )
 }
 
+# Button labels live in the CSV (Btn1Label/Btn2Label/Btn3Label); the fallback
+# only guards rows where a label cell is left blank.
+btn_label <- function(label, fallback) {
+  if (is.na(label) || !nzchar(label)) fallback else label
+}
+
 # Paper document buttons, built from the explicit link columns in the CSV.
 # The icon is inferred from the label (website, PDF/paper, or other document).
 paper_doc_buttons <- function(Doc1Label, Doc1URL, Doc2Label, Doc2URL) {
@@ -77,26 +83,27 @@ pub_reference <- function(reference) {
 
 # Create a work card. Buttons and date format depend on the type.
 create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
+                               Btn1Label = NA, Btn2Label = NA, Btn3Label = NA,
                                Doc1Label = NA, Doc1URL = NA, Doc2Label = NA, Doc2URL = NA,
                                Reference = NA) {
   pub_type <- if (is.null(Type) || is.na(Type)) "slide" else tolower(Type)
 
   actions <- if (pub_type == "slide") {
     list(
-      pres_button(make_slides_path(Name), "bi-easel", "Slides"),
-      pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", "PDF"),
-      pres_button(make_github_path(Name), "bi-github", "GitHub")
+      pres_button(make_slides_path(Name), "bi-easel", btn_label(Btn1Label, "Slides")),
+      pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", btn_label(Btn2Label, "PDF")),
+      pres_button(make_github_path(Name), "bi-github", btn_label(Btn3Label, "GitHub"))
     )
   } else if (pub_type %in% c("workshop", "storybook")) {
     list(
-      pres_button(make_slides_path(Name), "bi-globe", "Website"),
-      pres_button(make_github_path(Name), "bi-github", "GitHub")
+      pres_button(make_slides_path(Name), "bi-globe", btn_label(Btn1Label, "Website")),
+      pres_button(make_github_path(Name), "bi-github", btn_label(Btn2Label, "GitHub"))
     )
   } else if (pub_type == "paper") {
     paper_doc_buttons(Doc1Label, Doc1URL, Doc2Label, Doc2URL)
   } else {
     # Single PDF button for Poster
-    list(pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", "PDF"))
+    list(pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", btn_label(Btn1Label, "PDF")))
   }
 
   # Papers show the year only; storybooks month + year; everything else full.
