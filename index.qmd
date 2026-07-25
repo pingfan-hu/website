@@ -33,6 +33,6 @@ about:
 
 {{< include /resources/chunks/intro.qmd >}}
 
-#### Research Focus:
+#### Research Interests:
 
 {{< include /resources/chunks/researches.qmd >}}

@@ -2589,6 +2589,29 @@ div.quarto-about-trestles .about-entity .description {
   margin-bottom: 1.5rem;
 }
 
+// ---- Categories sidebar breathing room on stage 2 (768-991px) ----
+// Quarto's theme gives every `#quarto-content > *` child 14px of top padding
+// on desktop but zeroes it below 992px. The main content doesn't care (the
+// page title brings its own margin), but the margin sidebar (the Categories
+// box on blog.qmd / researches.qmd) ends up flush against the navbar.
+// Restore the same 14px it gets on stage 3.
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #quarto-content > #quarto-margin-sidebar {
+    padding-top: 14px;
+  }
+}
+
+// ---- Center page titles on the narrowest layout (stage 1, <768px) ----
+// Excludes the homepage: its trestles title sits inside .about-entity,
+// not as a direct child of main.content, so this selector never matches it.
+
+@media (max-width: 767.98px) {
+  main.content > #title-block-header .quarto-title .title {
+    text-align: center;
+  }
+}
+
 // ---- About Page Social Links ----
 
 .about-links {
