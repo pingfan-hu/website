@@ -34,7 +34,7 @@ execute:
 #set block(spacing: 0pt)
 
 // === SPACING KNOBS ===
-#let gap = 6pt
+#let gap = 5pt
 #let entry-gap = 3pt
 
 // === LISTS & TABLES ===
@@ -133,10 +133,9 @@ execute:
 
 #section[Research Interests]
 
-- *Open-source Survey Platform*: Development of `surveydown`, an open-source, feature-packed R package for programmable and reproducible surveys, combining a Quarto UI, a Shiny web framework, and a PostgreSQL backend.
-- *Companion Survey Tool*: Development of `sdstudio`, a companion R package of `surveydown` to provide a user-friendly interface as Shiny application for designing surveys and managing databases.
-- *Electric Vehicle Smart Charging Adoption*: Survey fielding and modeling on electric vehicle owners' preferences and sensitivities of smart charging programs, including supplier-managed charging and vehicle-to-grid.
-- *Grid Peak-Shaving Cost Efficiency*: Deterministic simulation of residential BEV charging load on CAISO and NYISO grid baselines, quantifying peak reduction potential and program cost efficiency across TOU configurations, adoption levels, and enrollment scenarios.
+- *Data Science*: Studying human behavior in sustainable transportation with mixed logit and related discrete choice models and large-scale scenario simulation, from survey design and fielding through statistical modeling and visualization, using electric vehicle smart charging as the leading case to generate program design and policy suggestions.
+- *Open-Source Software*: Development of `surveydown`, a programmable, markdown-based survey platform built on Quarto, Shiny, and PostgreSQL, its companion GUI `sdstudio`, and `TidyViz`, a Python package for tidying and visualizing survey data.
+- *Agentic AI Engineering*: Building reproducible research and engineering workflows around Claude Code with plugins, skills, MCPs, and hooks, documented in public tutorials, and taught through a workshop on the GW Trustworthy AI Initiative for researchers and developers.
 
 #section[Honors & Awards]
 
@@ -174,6 +173,20 @@ execute:
 + *Hu, P.* (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "`sdstudio`: Companion Application for the `surveydown` Survey Platform" R package.
 + Helveston, J. P. (aut,cre,cph), *Hu, P.* (aut,cre), Bogdan Bunea (aut,cre) (2024) "`surveydown`: Markdown-Based Surveys Using Quarto Shiny Documents" R package.
 
+#section[Teaching]
+
+#subsection[A. Teaching Assistantships]
+
+- Fall 2025 - EMSE 4572/6572: Exploratory Data Analysis (undergraduate & graduate).
+- Spring 2025 - EMSE 4571: Programming for Analytics (undergraduate).
+- Mentored students through substantial R programming and data analysis projects.
+
+#subsection[B. Workshops]
+
+- "Agentic Engineering", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Expected Aug 2026. #link("https://pingfan-hu.github.io/2026-agentic-engineering-workshop/")[pingfan-hu.github.io/2026-agentic-engineering-workshop].
+- "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. #link("https://jhelvy.github.io/2025-qux-surveydown-workshop/")[jhelvy.github.io/2025-qux-surveydown-workshop].
+- "`surveydown`: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. #link("https://jhelvy.github.io/2025-surveydown-workshop/")[jhelvy.github.io/2025-surveydown-workshop].
+
 #section[Presentations]
 
 #subsection[A. Conferences]
@@ -192,19 +205,6 @@ execute:
 + "`surveydown`: An Open-Source, Markdown-Based Survey Platform". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
 + "Electric Vehicle Owner Preferences for Smart Charging". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
 + "The BEV Smart Charging Adoption Project". 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 06, 2025.
-
-#section[Teaching]
-
-#subsection[A. Teaching Assistantships]
-
-- Fall 2025 - EMSE 4572 / 6572: Exploratory Data Analysis
-- Spring 2025 - EMSE 4571: Programming for Analytics
-
-#subsection[B. Workshops]
-
-- "Agentic Engineering", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Expected Jul 2026. #link("https://pingfan-hu.github.io/2026-agentic-engineering-workshop/")[pingfan-hu.github.io/2026-agentic-engineering-workshop].
-- "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. #link("https://jhelvy.github.io/2025-qux-surveydown-workshop/")[jhelvy.github.io/2025-qux-surveydown-workshop].
-- "`surveydown`: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. #link("https://jhelvy.github.io/2025-surveydown-workshop/")[jhelvy.github.io/2025-surveydown-workshop].
 
 #section[Organization Memberships]
 
