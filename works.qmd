@@ -106,9 +106,10 @@ create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
     list(pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", btn_label(Btn1Label, "PDF")))
   }
 
-  # Papers show the year only; storybooks month + year; everything else full.
+  # Papers show the year only; storybooks and workshops month + year; everything else full.
   date_fmt <- switch(pub_type,
     storybook = "%B, %Y",
+    workshop  = "%B, %Y",
     paper     = "%Y",
     "%B %d, %Y"
   )
