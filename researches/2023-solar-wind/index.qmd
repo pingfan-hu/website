@@ -1,6 +1,6 @@
 ---
 title: "Solar and Wind Energy Advancements"
-image: "/projects/banners/2023-solar-wind.png"
+image: "/researches/banners/2023-solar-wind.png"
 date: "Sept, 2023"
 categories: [R, Sustainability]
 description: "A master-level renewable energy data viz."

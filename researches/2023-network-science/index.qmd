@@ -1,6 +1,6 @@
 ---
 title: "Multi-layer Network Science"
-image: "/projects/banners/2023-network-science.png"
+image: "/researches/banners/2023-network-science.png"
 date: "May, 2023"
 categories: [Python, Transportation]
 description: "A master-level multi-layer network analysis."
