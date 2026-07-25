@@ -203,7 +203,7 @@ sections <- Filter(function(s) length(s$items) > 0, sections)
 
 filter_box <- tags$aside(
   class = "pres-filter",
-  div(class = "pres-filter-title", "Categories"),
+  div(class = "pres-filter-title", "Types"),
   tags$nav(
     class = "pres-filter-list",
     lapply(sections, function(s) nav_link(s$title, s$icon, s$slug, s$variant))
