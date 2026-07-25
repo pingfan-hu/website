@@ -1769,43 +1769,55 @@ html.rt-scrubbing * {
 // hairline rule — no dense purple bars) over cards whose most valuable element,
 // the action links, is a prominent full-width row of labeled pill buttons.
 
-// Centered page title, scoped to this page only via :has().
-body:has(.presentations-page) #title-block-header { text-align: center; }
+// Quarto gives this hand-built page a full-bleed grid main (`page-full
+// column-page`), unlike the listing pages whose main is a plain-block
+// `column-page-left`. Pin the works main to that same grid span and stack
+// its children normally, so the title and cards left-align with every
+// other page.
+// (`!important` needed to beat Quarto's `.page-full { grid-column:
+// screen-start/screen-end !important }`.)
+body:has(.presentations-page) main.content {
+  display: block !important;
+  grid-column: page-start / body-content-end !important;
+}
 
-// The body column is centered on the page as if it were the only content; the
-// category filter hangs off its right edge as an add-on. A left spacer that
-// mirrors the filter's footprint (width + gap) keeps the body optically
-// centered instead of shifting it left. `!important` overrides the
-// `display: grid` Quarto injects via the `page-columns` class on this wrapper.
+// The body column fills the full main width like every other page; the
+// category filter is an add-on that hangs out into the right page margin
+// (negative right margin cancels its footprint in the flex row, mirroring
+// how Quarto listing pages park their Categories in the margin column).
+// `!important` overrides the `display: grid` Quarto injects via the
+// `page-columns` class on this wrapper.
 $pres-filter-w: 208px;
-$pres-filter-gap: 26px;
+// Extra gap on top of .pres-main's 2em right inset (which already separates
+// the cards from the filter); 0 keeps the filter snug at the body's edge.
+$pres-filter-gap: 0px;
 
 .presentations-page {
   display: flex !important;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   max-width: none;
   margin: 0;
 }
 
-// Left spacer = filter width + gap, so .pres-main lands dead-center.
-.presentations-page::before {
-  content: "";
-  order: 0;
-  flex: 0 0 ($pres-filter-w + $pres-filter-gap);
-}
-
 .pres-main {
   order: 1;
-  flex: 0 1 860px;
+  flex: 1 1 auto;
   min-width: 0;
+  // Slightly narrower than the blog listing's cards (which fill the body
+  // column minus this same 2em inset); the filter rides the flex row, so it
+  // stays snug against the cards' right edge.
+  max-width: 900px;
+  margin-right: 2em;
 }
 
 .pres-filter {
   order: 2;
   flex: 0 0 $pres-filter-w;
   margin-left: $pres-filter-gap;
+  // Hang fully outside the body column, into the page margin.
+  margin-right: -($pres-filter-w + $pres-filter-gap);
   position: sticky;
   top: 5rem;
   align-self: flex-start;
@@ -1907,10 +1919,11 @@ $pres-filter-gap: 26px;
     gap: 16px;
     padding-inline: clamp(1rem, 4vw, 1.5rem);
   }
-  .presentations-page::before { display: none; }
   .pres-main {
     order: 2;
     flex: 1 1 auto;
+    max-width: none;
+    margin-right: 0;
   }
 
   // Compact, content-width bar centered at the top (not full width).
@@ -1927,6 +1940,7 @@ $pres-filter-gap: 26px;
     top: calc(56px + 10px); // 10px of breathing room below the fixed navbar...
     z-index: 20;
     margin-left: 0;
+    margin-right: 0; // undo the desktop hang-into-margin offset (it skews centering)
     padding: 6px 8px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
     transition: top 0.2s ease;
