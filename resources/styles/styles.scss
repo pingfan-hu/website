@@ -2165,9 +2165,11 @@ $pres-filter-gap: 0px;
   justify-content: center;
   gap: 8px;
   padding: 11px 14px;
-  border: 1px solid var(--pa-bd);
+  // Denser than the raw --pa-bg tint so the buttons read as solid, clickable
+  // pills at rest — hover still steps up to the full accent fill.
+  border: 1px solid color-mix(in srgb, var(--pa) 22%, var(--pa-bd));
   border-radius: 9px;
-  background: var(--pa-bg);
+  background: color-mix(in srgb, var(--pa) 16%, var(--pa-bg));
   color: var(--pa);
   font-family: 'Maple Mono', monospace;
   font-size: 0.82rem;
