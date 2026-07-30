@@ -133,7 +133,7 @@
   </div>
   <div class="wsl-row">
     <div class="wsl-card-cell">
-      <a class="wsl-card" href="https://pingfan-hu.github.io/2026-agentic-engineering-workshop/" target="_blank" rel="noopener">
+      <a class="wsl-card" href="https://pingfan-hu.github.io/2026-agentic-workshop/" target="_blank" rel="noopener">
         <div class="wsl-card-icon"><i data-lucide="presentation"></i></div>
         <div class="wsl-label">Visit Site</div>
       </a>
