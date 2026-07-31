@@ -97,7 +97,7 @@ My `/ph-slide` skill is built on this principle. Alongside the main `SKILL.md`, 
 
 A Quarto slide project involves several file types: `.qmd` files as main source, `.scss` as styling, `.yml` as configuration, and `.html` as partials. Feed the structure as a template in the skill and configure the skill to understand the entire workflow; then we can invoke the skill to consistently build stable portal slide output.
 
-My "2026 Summer Workshop - Agentic Engineering" slides are made using the `/ph-slide` skill. It is a good example of how to efficiently make slides with consistent theme and taste:
+My "2026 Summer Workshop - Agentic Workflows with Claude Code" slides are made using the `/ph-slide` skill. It is a good example of how to efficiently make slides with consistent theme and taste:
 
 {{< include resources/workshop-link.qmd >}}
 

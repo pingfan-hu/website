@@ -138,7 +138,7 @@
         <div class="wsl-label">Visit Site</div>
       </a>
     </div>
-    <div class="wsl-desc"><div>My 2026 Summer Workshop on Agentic Engineering. All three slide decks were built with the <code>/ph-slide</code> skill.</div></div>
+    <div class="wsl-desc"><div>My 2026 Summer Workshop on Agentic Workflows with Claude Code. All three slide decks were built with the <code>/ph-slide</code> skill.</div></div>
   </div>
 </div>
 
