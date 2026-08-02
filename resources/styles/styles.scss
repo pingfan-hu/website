@@ -2088,6 +2088,8 @@ $pres-filter-gap: 0px;
 // the neutral card color) so cards read against the page background; the
 // border gets the same treatment so it doesn't look grey-on-tinted.
 .presentation-box {
+  // Anchor for the corner index tab.
+  position: relative;
   margin: 0;
   padding: 16px 18px;
   // (a fainter mix than .pub-ref's, so the citation box inside paper cards
@@ -2105,6 +2107,39 @@ $pres-filter-gap: 0px;
   line-height: 1.4;
   color: #2a2438;
   margin-bottom: 0.6rem;
+  // Keep long titles clear of the corner index tab.
+  padding-right: 2.4rem;
+}
+
+// Per-section sequence number (1, 2, …) — a tab tucked flush into the card's
+// top-right corner. Outer radius matches the card's 12px (minus the 1px
+// border); the inner bottom-left corner is softened. Uses the --pa custom
+// properties, which are already re-themed in dark mode, so no dark override
+// is needed.
+.presentation-index {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  min-width: 32px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // Optical centering: the 2px top padding offsets (a) the 1px bottom border,
+  // which border-box carves out of the flex area, and (b) the digit riding
+  // high in its line box (fonts reserve descender space below the baseline
+  // that numerals never use). line-height: 1 removes the extra half-leading.
+  padding: 2px 10px 0;
+  border-left: 1px solid var(--pa-bd);
+  border-bottom: 1px solid var(--pa-bd);
+  border-radius: 0 11px 0 10px;
+  background: color-mix(in srgb, var(--pa) 10%, var(--pa-bg));
+  color: var(--pa);
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .presentation-details {

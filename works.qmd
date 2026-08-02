@@ -82,10 +82,12 @@ pub_reference <- function(reference) {
 }
 
 # Create a work card. Buttons and date format depend on the type.
+# `Index` is the card's 1-based position within its section (top = 1),
+# shown as a corner tab flush with the card's top-right corner.
 create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
                                Btn1Label = NA, Btn2Label = NA, Btn3Label = NA,
                                Doc1Label = NA, Doc1URL = NA, Doc2Label = NA, Doc2URL = NA,
-                               Reference = NA) {
+                               Reference = NA, Index = NA) {
   pub_type <- if (is.null(Type) || is.na(Type)) "slide" else tolower(Type)
 
   actions <- if (pub_type == "slide") {
@@ -116,6 +118,7 @@ create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
 
   div(
     class = "presentation-box",
+    if (!is.na(Index)) span(class = "presentation-index", Index) else NULL,
     div(
       class = "presentation-content",
       div(class = "presentation-title", Title),
@@ -134,10 +137,13 @@ create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
   )
 }
 
-# Build the work cards for a filtered data frame
+# Build the work cards for a filtered data frame, numbering each card by its
+# position within the section (top card = 1).
 build_works <- function(data) {
   if (nrow(data) == 0) return(list())
-  pmap(data, create_work)
+  data %>%
+    mutate(Index = row_number()) %>%
+    pmap(create_work)
 }
 
 storybook_works <- works_data %>%
