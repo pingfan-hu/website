@@ -9,6 +9,18 @@ execute:
   eval: false
 ---
 
+```{=html}
+<a class="featured-ribbon" href="https://rfortherestofus.com/2026/08/whats-new-in-r-august-3-2026" target="_blank" rel="noopener">
+ <span class="featured-ribbon-icon">★</span>
+ <span class="featured-ribbon-label">Featured in</span>
+ <span class="featured-ribbon-org">R for the Rest of Us</span>
+ <span class="featured-ribbon-sep">—</span>
+ <span class="featured-ribbon-title">What's New in R</span>
+ <span class="featured-ribbon-date">August 3, 2026</span>
+ <span class="featured-ribbon-arrow">→</span>
+</a>
+```
+
 ## Motivation
 
 Much of my daily work consists of tasks I perform repeatedly: image generation, document formatting, html content creation, app development, etc. Each repetition re-issues essentially the same instructions to an agent, which is wasteful. A **skill** eliminates that waste by encapsulating the workflow once and invoking it by name thereafter.

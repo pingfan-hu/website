@@ -458,6 +458,108 @@ table {
   &:active { transform: scale(0.96); }
 }
 
+// ---- Featured Ribbon ----
+// Full-width clickable announcement strip at the top of a post
+// (e.g. "Featured in R for the Rest of Us"). Card-style glow on
+// hover, card-style press on :active — no lift.
+
+.featured-ribbon {
+  display: flex;
+  // The row mixes fonts and sizes, so no shared baseline looks right.
+  // Box-center every run with line-height: 1 on the children — each
+  // glyph run then centers on the strip's midline.
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55em;
+  margin: 0 0 1.5rem;
+  padding: 11px 18px;
+  border: 1.5px solid #5654A2;
+  border-radius: 14px;
+  background: #EEEDF8;
+  color: #5654A2;
+  font-family: 'Maple Mono', monospace;
+  font-size: 0.85em;
+  text-decoration: none;
+  transition: box-shadow 0.25s ease, transform 0.12s ease;
+
+  &:hover {
+    color: #5654A2;
+    text-decoration: none;
+    box-shadow: 0 0 16px 1px rgba(86, 84, 162, 0.22),
+                0 6px 16px rgba(86, 84, 162, 0.16);
+
+    .featured-ribbon-arrow { transform: translate(3px, -0.051em); }
+  }
+  &:active {
+    transform: scale(0.992);
+    box-shadow: 0 0 9px 0 rgba(86, 84, 162, 0.18),
+                0 3px 8px rgba(86, 84, 162, 0.16);
+  }
+}
+
+// The translateY nudges below are measured optical corrections
+// (canvas TextMetrics ink/cap-band centers vs the strip midline) —
+// box-centering alone leaves each glyph run sitting slightly low.
+
+.featured-ribbon-icon {
+  flex-shrink: 0;
+  line-height: 1;
+  transform: translateY(-0.115em);
+}
+
+.featured-ribbon-sep {
+  opacity: 0.6;
+  line-height: 1;
+  transform: translateY(-0.051em);
+}
+
+// Quiet mono frame text: "Featured in"
+.featured-ribbon-label {
+  font-size: 0.82em;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  opacity: 0.75;
+}
+
+// The organization — bold, the loudest element
+.featured-ribbon-org {
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateY(-0.048em);
+}
+
+// The post name — italic body font at a larger size, second voice
+.featured-ribbon-title {
+  font-family: 'TsangerJinKai', serif;
+  font-style: italic;
+  font-size: 1.18em;
+  line-height: 1.2;
+  color: #45438a;
+  transform: translateY(-0.066em);
+}
+
+.featured-ribbon-date {
+  font-size: 0.82em;
+  line-height: 1;
+  opacity: 0.65;
+  white-space: nowrap;
+}
+
+.featured-ribbon-arrow {
+  margin-left: auto;
+  padding-left: 0.7em;
+  flex-shrink: 0;
+  line-height: 1;
+  transform: translateY(-0.051em);
+  transition: transform 0.15s ease;
+}
+
+@media (max-width: 520px) {
+  .featured-ribbon { font-size: 0.78em; padding: 10px 14px; }
+}
+
 // ---- Link Table ----
 
 .lnk-outer {
@@ -2818,6 +2920,23 @@ body.quarto-dark {
   }
 
   .post-nav { border-top-color: var(--bs-border-color); }
+
+  .featured-ribbon {
+    border-color: #7c7ac4;
+    background: rgba(124, 122, 196, 0.15);
+    color: #b5b2e6;
+
+    &:hover {
+      color: #b5b2e6;
+      box-shadow: 0 0 16px 1px rgba(124, 122, 196, 0.3),
+                  0 6px 16px rgba(124, 122, 196, 0.2);
+    }
+    &:active {
+      box-shadow: 0 0 9px 0 rgba(124, 122, 196, 0.26),
+                  0 3px 8px rgba(124, 122, 196, 0.2);
+    }
+  }
+  .featured-ribbon-title { color: #cfcdf0; }
 
   .subpage-back-btn,
   .post-nav-btn {
