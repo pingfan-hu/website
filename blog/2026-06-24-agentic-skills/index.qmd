@@ -12,11 +12,13 @@ execute:
 ```{=html}
 <a class="featured-ribbon" href="https://rfortherestofus.com/2026/08/whats-new-in-r-august-3-2026" target="_blank" rel="noopener">
  <span class="featured-ribbon-icon">★</span>
- <span class="featured-ribbon-label">Featured in</span>
- <span class="featured-ribbon-org">R for the Rest of Us</span>
- <span class="featured-ribbon-sep">—</span>
- <span class="featured-ribbon-title">What's New in R</span>
- <span class="featured-ribbon-date">August 3, 2026</span>
+ <span class="featured-ribbon-body">
+  <span class="featured-ribbon-label">Featured in</span>
+  <span class="featured-ribbon-org">R for the Rest of Us</span>
+  <span class="featured-ribbon-sep">—</span>
+  <span class="featured-ribbon-title">What's New in R</span>
+  <span class="featured-ribbon-date">August 3, 2026</span>
+ </span>
  <span class="featured-ribbon-arrow">→</span>
 </a>
 ```

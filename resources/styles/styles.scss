@@ -463,14 +463,13 @@ table {
 // (e.g. "Featured in R for the Rest of Us"). Card-style glow on
 // hover, card-style press on :active — no lift.
 
+// Three-part anatomy: star flank | centered flowing text | arrow flank.
+// The flanks stay vertically centered against the whole text block at
+// every width; the body wraps naturally with each line centered.
 .featured-ribbon {
   display: flex;
-  // The row mixes fonts and sizes, so no shared baseline looks right.
-  // Box-center every run with line-height: 1 on the children — each
-  // glyph run then centers on the strip's midline.
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.55em;
+  gap: 0.7em;
   margin: 0 0 1.5rem;
   padding: 11px 18px;
   border: 1.5px solid #5654A2;
@@ -497,9 +496,19 @@ table {
   }
 }
 
-// The translateY nudges below are measured optical corrections
-// (canvas TextMetrics ink/cap-band centers vs the strip midline) —
-// box-centering alone leaves each glyph run sitting slightly low.
+// The body mixes fonts and sizes, so no shared baseline looks right:
+// box-center every run with line-height: 1, then apply the measured
+// optical corrections below (canvas TextMetrics ink/cap-band centers
+// vs the midline) — box-centering alone leaves runs sitting slightly low.
+.featured-ribbon-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65em 0.55em;
+}
 
 .featured-ribbon-icon {
   flex-shrink: 0;
@@ -548,8 +557,6 @@ table {
 }
 
 .featured-ribbon-arrow {
-  margin-left: auto;
-  padding-left: 0.7em;
   flex-shrink: 0;
   line-height: 1;
   transform: translateY(-0.051em);
