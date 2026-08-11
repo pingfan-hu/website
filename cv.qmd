@@ -122,8 +122,8 @@ execute:
     column-gutter: 10pt,
     align: left,
     [2026], [*George Washington University*, Washington, D.C.], [Ph.D.], [Systems Engineering],
-    table.cell(colspan: 4)[#h(1em)#text(size: 10pt)[Proposal: _EV Smart Charging Adoption, Grid Peak-Shaving, & the `surveydown` Survey Platform_]],
-    table.cell(colspan: 4)[#h(1em)#text(size: 10pt)[Doctoral Committee: _John Paul Helveston, Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
+    table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation: _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the `surveydown` Open-Source Survey Platform_]]],
+    table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Doctoral Committee: _John Paul Helveston, Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
     [2018], [*University of Sydney*, Sydney, NSW, Australia], [M.P.E.], [Mechanical Engineering],
     [2015], [*Pennsylvania State University*, State College, PA], [B.S.], [Industrial Engineering],
   )
