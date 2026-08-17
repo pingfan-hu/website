@@ -14,11 +14,11 @@ Check out my **Resume** and **CV** here:
   <a href="cv.pdf" class="intro-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> CV</a>
 </div>
 
-### [**Researches**](researches.qmd)
+### [**Research**](research.qmd)
 
-My researches are proudly funded by the {{< var sloan >}}.
+My research is proudly funded by the {{< var sloan >}}.
 
-{{< include /resources/chunks/researches.qmd >}}
+{{< include /resources/chunks/research.qmd >}}
 
 
 ### Other Sections

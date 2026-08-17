@@ -8,7 +8,7 @@ project:
     - resources/files/
     - works/
     - resources/images/
-    - researches/banners/
+    - research/banners/
     - blog/banners/
     - resources/fonts/
 
@@ -46,8 +46,8 @@ website:
         href: blog.qmd
         text: Blog
       - icon: file-bar-graph
-        href: researches.qmd
-        text: Researches
+        href: research.qmd
+        text: Research
       - icon: journals
         href: works.qmd
         text: Works

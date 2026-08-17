@@ -1,6 +1,6 @@
 ---
 title: "SMC Peak-shaving Economy"
-image: "/researches/banners/2025-smc-economy.png"
+image: "/research/banners/2025-smc-economy.png"
 author: "Pingfan Hu et al."
 date: "Jan, 2025"
 categories: [R, EV]

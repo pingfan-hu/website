@@ -16,7 +16,7 @@ Why do we still need to learn software development now that we have LLMs? This h
 
 The [URSSI](https://urssi.us) Winter School is a 3-day bootcamp hosted by Oregon State University in Portland, OR. I was fortunate to attend this event in December 2025 and benefited from the excellent lectures by professor [Kyle Niemeyer](https://engineering.oregonstate.edu/people/kyle-niemeyer), professor [Madicken Munk](https://engineering.oregonstate.edu/people/madicken-munk), and Dr [Joanna Piper Morgan](https://jpmorgan98.github.io).
 
-The bootcamp focused on the full workflow of Python development, from writing code to testing, documentation, version control, and deployment. I mainly use R for data analysis, thus having R packages as my RSE products, like [`surveydown`](https://pingfan.org/researches/2024-surveydown/) and [`sdstudio`](https://pingfan.org/researches/2025-sdstudio/). This bootcamp benefited me for two reasons: 1) It expanded my skills in Python as a popular programming language; 2) RSE development for different programming languages shares many common principles.
+The bootcamp focused on the full workflow of Python development, from writing code to testing, documentation, version control, and deployment. I mainly use R for data analysis, thus having R packages as my RSE products, like [`surveydown`](https://pingfan.org/research/2024-surveydown/) and [`sdstudio`](https://pingfan.org/research/2025-sdstudio/). This bootcamp benefited me for two reasons: 1) It expanded my skills in Python as a popular programming language; 2) RSE development for different programming languages shares many common principles.
 
 ## Introduction
 
@@ -162,7 +162,7 @@ The `docs/`, `examples/`, and `tests/` directories are all self-explanatory. The
 
 ### R Package Structure
 
-Our [`surveydown`](https://pingfan.org/researches/2024-surveydown/) R package is well-structured and can be used as an example:
+Our [`surveydown`](https://pingfan.org/research/2024-surveydown/) R package is well-structured and can be used as an example:
 
 ```bash
 surveydown

@@ -137,7 +137,7 @@ execute:
 {{< include /resources/chunks/skills.qmd >}}
 
 ```{=typst}
-#section[#link("https://pingfan.org/researches")[Researches]]
+#section[#link("https://pingfan.org/research")[Research]]
 
 #entry[*`surveydown` Survey Platform* - _Flagship Project of the Helveston Lab at GWU_][2024-2025]
 

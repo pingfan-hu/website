@@ -1,6 +1,6 @@
 ---
 title: surveydown
-image: "/researches/banners/2024-surveydown.png"
+image: "/research/banners/2024-surveydown.png"
 author:
   - name: "[Pingfan Hu](https://pingfan.org)"
   - name: "[John Helveston](https://www.jhelvy.com)"

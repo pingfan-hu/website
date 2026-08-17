@@ -1,11 +1,11 @@
 ---
-title: "Researches"
-description: "Researches by Pingfan Hu"
+title: "Research"
+description: "Research by Pingfan Hu"
 open-graph:
-  image: resources/images/card-researches.png
+  image: resources/images/card-research.png
 toc: false
 listing:
-  contents: researches
+  contents: research
   sort: "date desc"
   type: grid
   categories: true

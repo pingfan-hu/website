@@ -150,9 +150,9 @@
       <div class="bnp-card-icon"><i data-lucide="newspaper"></i></div>
       <div class="bnp-label">Blog Posts</div>
     </a>
-    <a class="bnp-card" href="/researches.html" target="_blank" rel="noopener">
+    <a class="bnp-card" href="/research.html" target="_blank" rel="noopener">
       <div class="bnp-card-icon"><i data-lucide="briefcase"></i></div>
-      <div class="bnp-label">Researches</div>
+      <div class="bnp-label">Research</div>
     </a>
     <a class="bnp-card" href="/cocktails.html" target="_blank" rel="noopener">
       <div class="bnp-card-icon"><i data-lucide="martini"></i></div>

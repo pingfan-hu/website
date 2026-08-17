@@ -2739,7 +2739,7 @@ div.quarto-about-trestles .about-entity .description {
 // Quarto's theme gives every `#quarto-content > *` child 14px of top padding
 // on desktop but zeroes it below 992px. The main content doesn't care (the
 // page title brings its own margin), but the margin sidebar (the Categories
-// box on blog.qmd / researches.qmd) ends up flush against the navbar.
+// box on blog.qmd / research.qmd) ends up flush against the navbar.
 // Restore the same 14px it gets on stage 3.
 
 @media (min-width: 768px) and (max-width: 991.98px) {

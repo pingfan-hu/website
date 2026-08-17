@@ -456,14 +456,14 @@
 // follow the listing's own sort order.
 //
 // "Next" (right) always means "forward through the listing as displayed", i.e.
-// items[idx + 1], and "prev" (left) means items[idx - 1]. But blog/researches are
+// items[idx + 1], and "prev" (left) means items[idx - 1]. But blog/research are
 // sorted DESC (newest first), so forward-through-the-list means going to older
 // posts — and the established, desired behavior there is the reverse: next =
 // newer = items[idx - 1]. Recipes/cocktails are sorted ASC, where the intuitive
 // "next" is simply the following item, items[idx + 1].
 //
 // So: ASC sections (recipes, cocktails) map idx-1 -> prev, idx+1 -> next;
-// DESC sections (blog, researches, default) map idx-1 -> next, idx+1 -> prev.
+// DESC sections (blog, research, default) map idx-1 -> next, idx+1 -> prev.
 // Hidden when there is no neighbor on that side.
 var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
 (function () {

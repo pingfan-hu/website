@@ -35,4 +35,4 @@ about:
 
 #### Research Interests:
 
-{{< include /resources/chunks/researches.qmd >}}
+{{< include /resources/chunks/research.qmd >}}
