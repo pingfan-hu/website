@@ -38,7 +38,7 @@ description: "An overview of my research methodologies"
  <div class="lnk-row lnk-orange">
   <div class="lnk-label">Related Blog</div>
   <div class="lnk-chips">
-   <a href="https://pingfanhu.com/blog/2023-12-09-personal-website/" class="lnk-btn" target="_blank">How to Make a Personal Website</a>
+   <a href="https://pingfan.org/blog/2023-12-09-personal-website/" class="lnk-btn" target="_blank">How to Make a Personal Website</a>
   </div>
  </div>
 </div>
@@ -239,10 +239,10 @@ There are many ways to do personal websites. In fact, any software or platform t
 1.  **Quarto** is a code-enabled publishing system, compatible with [R](https://www.r-project.org), [Python](https://www.python.org), [Julia](https://julialang.org), and [Observable](https://observablehq.com). It can be run on [Jupyter Notebook](https://jupyter.org), [RStudio](https://posit.co), and [VS Code](https://code.visualstudio.com). The extension of a Quarto doc is called `qmd`, short for Quarto Markdown. This document, for example, is rendered from a `qmd` file.
 2.  **RStudio** is the major IDE that we use for R coding. I use Quarto on RStudio to create and edit my website project and other coding projects.
 3.  **GitHub** is used as an online repository management platform. It's necessary here since Netlify fetches the GitHub repo and deploys the site.
-4.  **Namecheap** is used to buy and manage domains. It also lets you to manage DNS, which is important for linking your domain to Netlify. In fact, I bought [my domain](https://pingfanhu.com) at Namecheap.
+4.  **Namecheap** is used to buy and manage domains. It also lets you to manage DNS, which is important for linking your domain to Netlify. In fact, I bought [my domain](https://pingfan.org) at Namecheap.
 5.  **Netlify** deploys your site. You may log in using your GitHub credential. Netlify also sells domains, by doing which can speed up your website deployment, since you'll have DNS settings automatically taken care of.
 
-> Above is just a brief introduction of which is which. If you are interested in building a website in this way, please go to another blog of mine: [How to Make a Personal Website](https://pingfanhu.com/blog/2023-12-09-personal-website/).
+> Above is just a brief introduction of which is which. If you are interested in building a website in this way, please go to another blog of mine: [How to Make a Personal Website](https://pingfan.org/blog/2023-12-09-personal-website/).
 
 ## Summary
 

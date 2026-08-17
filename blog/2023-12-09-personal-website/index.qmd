@@ -59,7 +59,7 @@ You'll use [Netlify](https://www.netlify.com) to deploy your GitHub repo as a we
 
 > Hint: Domain names are usually in the format of `third.second.top`. For example, in Google's homepage `www.google.com`, `com` is the top-level domain; `google` is second; and `www` is third.
 
-You can use [Netlify](https://www.netlify.com) or [Namecheap](https://www.namecheap.com) to buy your personalized domain. For example, my domain is [pingfanhu.com](https://pingfanhu.com). It is bought from [Namecheap](https://www.namecheap.com) and deployed on [Netlify](https://www.netlify.com). If you do this, both the default Netlify domain and your customized domain will work. They are not replacing each other. Below is the example of my case:
+You can use [Netlify](https://www.netlify.com) or [Namecheap](https://www.namecheap.com) to buy your personalized domain. For example, my domain is [pingfan.org](https://pingfan.org). It is bought from [Namecheap](https://www.namecheap.com) and deployed on [Netlify](https://www.netlify.com). If you do this, both the default Netlify domain and your customized domain will work. They are not replacing each other. Below is the example of my case:
 
 ::: {style="text-align: center;"}
 ![**Figure 1**: *Both my personal domain and netlify-assigned domain are functioning. Plus, there is a re-direction from www by default.*](images/01_my_domain.jpg){width="700"}

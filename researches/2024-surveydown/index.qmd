@@ -2,7 +2,7 @@
 title: surveydown
 image: "/researches/banners/2024-surveydown.png"
 author:
-  - name: "[Pingfan Hu](https://pingfanhu.com)"
+  - name: "[Pingfan Hu](https://pingfan.org)"
   - name: "[John Helveston](https://www.jhelvy.com)"
   - name: "[Bogdan Bunea](https://www.linkedin.com/in/bogdanbt/)"
 date: "Mar, 2025"

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal academic website for Pingfan Hu, built with **Quarto** (a scientific publishing system). The site is deployed to `pingfanhu.com` and uses R for dynamic content generation.
+This is a personal academic website for Pingfan Hu, built with **Quarto** (a scientific publishing system). The site is deployed to `pingfan.org` and uses R for dynamic content generation.
 
 ## Build Commands
 
@@ -75,7 +75,7 @@ All component design standards live in `.claude/rules/`. Always consult the rele
 - **Research pages**: Each research lives in `researches/{year}-{slug}/index.qmd`. Front matter includes `title`, `image`, `author`, `date`, `categories`, and `description`.
 - **Blog posts**: Same pattern in `blog/{date}-{slug}/index.qmd`. `_metadata.yml` in `blog/` sets `author: "Pingfan Hu"` globally for all posts.
 - **Banners**: Research/blog banner images live in `researches/banners/` and `blog/banners/` (referenced in listing configs).
-- **External links**: `link-external-newwindow: true` is global; internal links are filtered by `pingfanhu.com` domain.
+- **External links**: `link-external-newwindow: true` is global; internal links are filtered by `pingfan.org` domain.
 - **`{{< include >}}`** paths are always absolute from project root (e.g., `/resources/chunks/intro.qmd`).
 - **Intro buttons** (2–4 project links at the top of a post): write HTML directly in the `.qmd` using `.intro-links` / `.intro-btn` classes — CSS is global in `styles.scss`, no `<style>` block needed. See `.claude/rules/html-button-intro.md`.
 - **Link tables** (label + multiple buttons): use `.lnk-outer` / `.lnk-row` / `.lnk-btn` with color variants `lnk-purple`, `lnk-blue`, `lnk-green`, `lnk-orange`. CSS is global in `styles.scss`. See `.claude/rules/html-button-table.md`.

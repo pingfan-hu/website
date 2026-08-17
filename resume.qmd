@@ -24,7 +24,7 @@ execute:
       columns: (1fr, 1fr, 1fr),
       align(left)[#updated],
       align(center)[Page #counter(page).display() of #counter(page).final().last()],
-      align(right)[#link("https://pingfanhu.com")[pingfanhu.com]],
+      align(right)[#link("https://pingfan.org")[pingfan.org]],
     )
   },
 )
@@ -110,7 +110,7 @@ execute:
     ~|~
     #liPhone~+61 431 251 227
     ~|~
-    #liCompass~#link("https://www.pingfanhu.com")[pingfanhu.com]
+    #liCompass~#link("https://pingfan.org")[pingfan.org]
   ]
 ]
 
@@ -137,7 +137,7 @@ execute:
 {{< include /resources/chunks/skills.qmd >}}
 
 ```{=typst}
-#section[#link("https://pingfanhu.com/researches")[Researches]]
+#section[#link("https://pingfan.org/researches")[Researches]]
 
 #entry[*`surveydown` Survey Platform* - _Flagship Project of the Helveston Lab at GWU_][2024-2025]
 

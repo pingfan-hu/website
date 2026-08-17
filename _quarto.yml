@@ -21,7 +21,7 @@ website:
   image: resources/images/card.png
   favicon: resources/images/favicon.png
   description: Pingfan Hu - Data science PhD in sustainable transportation and open-source software.
-  site-url: https://pingfanhu.com
+  site-url: https://pingfan.org
   repo-url: https://github.com/pingfan-hu/website
   back-to-top-navigation: false
   twitter-card: true
@@ -29,7 +29,7 @@ website:
     locale: en_US
     image: resources/images/card.png
   page-footer:
-    center: "© <span id='footer-year'></span> [Pingfan Hu](https://pingfanhu.com)"
+    center: "© <span id='footer-year'></span> [Pingfan Hu](https://pingfan.org)"
     border: true
     background: light
   search:

@@ -25,7 +25,7 @@ This is for my personal documentation of how to create a GitHub Action to automa
 
 In my case, I render my website using [Quarto](https://quarto.org) and have it hosted on [Netlify](https://www.netlify.com). I want to automate the process of building the website whenever I push changes to my GitHub repository.
 
-Netlify has a [basic walk-through](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/) of website deployment upon GitHub push, which should solve the problem in most cases. I also documented [my version of tutorial](https://pingfanhu.com/blog/2023-12-09-personal-website/). However, it requires to fully construct the website on user's local machine and push the built folder (usually the `_site/` folder) to the repository. To do this, I need to always fully rebuild all website pages locally anytime I make changes, and the `_site/` folder grows larger and larger over time.
+Netlify has a [basic walk-through](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/) of website deployment upon GitHub push, which should solve the problem in most cases. I also documented [my version of tutorial](https://pingfan.org/blog/2023-12-09-personal-website/). However, it requires to fully construct the website on user's local machine and push the built folder (usually the `_site/` folder) to the repository. To do this, I need to always fully rebuild all website pages locally anytime I make changes, and the `_site/` folder grows larger and larger over time.
 
 Then I'm thinking of a solution of auto-building the website on GitHub upon push, and ignore the built folder in the repository. This tutorial documents my solution for my own record, and may also benefit you if you have similar needs.
 

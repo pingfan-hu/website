@@ -24,7 +24,7 @@ execute:
       columns: (1fr, 1fr, 1fr),
       align(left)[#updated],
       align(center)[Page #counter(page).display() of #counter(page).final().last()],
-      align(right)[#link("https://pingfanhu.com")[pingfanhu.com]],
+      align(right)[#link("https://pingfan.org")[pingfan.org]],
     )
   },
 )
@@ -106,7 +106,7 @@ execute:
     liMapPin, [Greater Melbourne, Australia],
     liPhone, [+61 431 251 227],
     liMail, [#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]],
-    liCompass, [#link("https://www.pingfanhu.com")[www.pingfanhu.com]],
+    liCompass, [#link("https://pingfan.org")[pingfan.org]],
   )
 ]
 
