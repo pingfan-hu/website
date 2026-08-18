@@ -1,6 +1,6 @@
 ---
 title: "Pingfan Hu"
-description: "Pingfan Hu - Data science PhD in sustainable transportation and open-source software."
+description: "Pingfan Hu - Systems Engineering PhD in data science, transportation systems, open-source software, and agentic AI workflows."
 image: resources/images/homepage.png
 open-graph:
   image: resources/images/card.png

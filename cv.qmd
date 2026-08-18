@@ -133,7 +133,7 @@ execute:
 
 #section[Research Interests]
 
-- *Data Science*: Studying human behavior in sustainable transportation with mixed logit and related discrete choice models and large-scale scenario simulation, from survey design and fielding through statistical modeling and visualization, using electric vehicle smart charging as the leading case to generate program design and policy suggestions.
+- *Data Science*: Studying human behavior in transportation systems with mixed logit and related discrete choice models and large-scale scenario simulation, from survey design and fielding through statistical modeling and visualization, using electric vehicle smart charging as the leading case to generate program design and policy suggestions.
 - *Open-Source Software*: Development of `surveydown`, a programmable, markdown-based survey platform built on Quarto, Shiny, and PostgreSQL, its companion GUI `sdstudio`, and `TidyViz`, a Python package for tidying and visualizing survey data.
 - *Agentic AI Engineering*: Building reproducible research and engineering workflows around Claude Code with plugins, skills, MCPs, and hooks, documented in public tutorials, and taught through a workshop on the GW Trustworthy AI Initiative for researchers and developers.
 
