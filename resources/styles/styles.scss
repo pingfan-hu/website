@@ -174,6 +174,12 @@ div.sourceCode {
     code {
       display: block;
       white-space: normal; // collapse \n text nodes between line spans
+      // The chunk background is owned by `pre.sourceCode` above; the inner <code> must
+      // never paint its own. Bootstrap's `p/li/td code.sourceCode` rule (meant for inline
+      // code) otherwise lays a gray slab over any block nested in a list, paragraph, or
+      // table cell. `!important` mirrors the pre's own declaration so the pair stays in
+      // sync regardless of where the block sits or what theme CSS ships later.
+      background-color: transparent !important;
     }
   }
 }

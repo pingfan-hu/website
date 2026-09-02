@@ -99,7 +99,7 @@ format:
     embed-resources: false
     link-external-newwindow: true
     link-external-icon: false
-    link-external-filter: '^(?:http:|https:)\/\/(?:www\.)?pingfanhu\.com'
+    link-external-filter: '^(?:http:|https:)\/\/(?:www\.)?(?:pingfan\.org|pingfanhu\.com)(?:\/|$)'
     include-after-body:
       text: |
         <script src="/resources/styles/styles.js"></script>
