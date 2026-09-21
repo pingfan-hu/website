@@ -6,6 +6,7 @@ categories: [Data Science]
 code-fold: true
 code-tools: true
 description: "A brief history of the Logit Model"
+bibliography: references.bib
 ---
 
 ```{r}
@@ -22,7 +23,7 @@ library(here)
  <div class="lnk-row lnk-purple">
   <div class="lnk-label">Research Paper</div>
   <div class="lnk-chips">
-   <a href="https://papers.tinbergen.nl/02119.pdf" class="lnk-btn" target="_blank">The Origins of Logit Regression</a>
+   <a href="https://papers.tinbergen.nl/02119.pdf" class="lnk-btn" target="_blank">The Origins of Logistic Regression</a>
   </div>
  </div>
  <div class="lnk-row lnk-blue">
@@ -47,7 +48,7 @@ This blog describes a brief history of the Logit Model. It starts from the famou
 
 ### 1. The Malthusian Growth Model
 
-In the biology class of my high school, I learned that the population will grow exponentially given unlimited resources and spaces. This is called the "Malthus Population Problem" and was give the name "J Curve", since the exponential Malthusian Model looks like the English letter J.
+In the biology class of my high school, I learned that the population will grow exponentially given unlimited resources and spaces. This comes from Malthus (1798) and is called the "Malthus Population Problem" and was give the name "J Curve", since the exponential Malthusian Model looks like the English letter J.
 
 The Malthusian Growth Function:
 
@@ -60,7 +61,7 @@ $$ Where:
 -   $N_0$ stands for the initial population size, and
 -   $r$ stands for the growth rate.
 
-The Malthusian Growth Model (CDF):
+The Malthusian Growth Model:
 
 ```{r}
 # Parameters
@@ -92,19 +93,21 @@ In this model, we set a simple scenario of $K$ = 10,000, $N_0$ = 100, and $r$ = 
 
 ### 2. The Logistic Growth Model
 
-However, this exponential model is unrealistic due to the scarcity of resources and spaces. A Belgian mathematician named Verhulst realized the cap of population growth. He used an S curve to explain this cap. This S curve is perhaps the first S-shaped curve that we could learn in our textbooks.
+However, this exponential model is unrealistic due to the scarcity of resources and spaces. The Belgian statistician Adolphe Quetelet knew that extrapolating exponential growth leads to impossible values, and asked his pupil Pierre-François Verhulst to look into the problem. Verhulst added a term for the resistance to further growth, and the result is an S curve with a cap. He published it in three papers between 1838 and 1847. This S curve is perhaps the first S-shaped curve that we could learn in our textbooks.
 
-Verhulst named this distribution "logistique", originated from a French word "logis", meaning "lodging" in English. However, we used the word "Logistic" instead for statistical analysis. This model is thus called the "Logistic Model", or "Logit Model".
+Verhulst named the curve "logistique" in his 1845 paper [@verhulst1845] and never explained the name [@cramer2002]. It is likely from the Greek "logistikos" (skilled in calculation), chosen by analogy with "arithmetic" and "geometric" growth, and in contrast to the "logarithmic" curve (what we now call the exponential) that he drew next to it. It is not related to the military word "logistics", which comes from the French "logis" (lodging). His work was then forgotten. Pearl and Reed rediscovered the same curve in 1920 while studying the US population, and the name "logistic" was revived in the 1920s.
 
-> The word "**logit**" is a portmanteau, coming from **logi**stic + uni**t**.
+The "Logit Model" came a century later. Joseph Berkson [-@berkson1944] proposed the logistic function as an alternative to the normal-based "probit" in bio-assay, and coined the term "logit" for the log of odds.
 
-The Logit Growth Function:
+> The word "**logit**" is a portmanteau, coming from **logi**stic + uni**t**. Berkson coined it in 1944 by analogy with "probit" (**prob**ability + un**it**).
+
+The Logistic Growth Function:
 
 $$
 N_t = \frac{K}{1 + \left( \frac{K - N_0}{N_0} \right) e^{-rt}}
 $$
 
-The Logit Growth Model (CDF):
+The Logistic Growth Model:
 
 ```{r}
 # Calculation for Logistic Growth Model
@@ -126,27 +129,27 @@ ggplot(data_logit, aes(x = Time, y = Population)) +
         plot.title = element_text(hjust = 0.5, size = 14))
 ```
 
-This is the "S Curve" we've been seen in a lot of scenarios where there is a designed cap of population due to resource scarcity. There are also other S shaped curves. To avoid ambiguity, we use the term "Logit" instead.
+This is the "S Curve" we've been seen in a lot of scenarios where there is a designed cap of population due to resource scarcity. There are also other S shaped curves, such as the normal CDF used by the probit model. Divide the population by $K$ and the logistic curve becomes a proportion between 0 and 1, which is the same function the logit model uses for probability.
 
-> The CDF of logit model is an S curve. With a visible diminishing of returns, it is a perfect model for human behavior studies for the purpose of generating a feasible marketing strategy.
+> The CDF of the logistic distribution is this S curve. With a visible diminishing of returns, it is a perfect model for human behavior studies for the purpose of generating a feasible marketing strategy.
 
 ## The Logit Model
 
 ### 1. Probability vs Logit
 
-The traditional way of defining the probability is to calculate the utility of choosing over the sum of utilities. The equation is written like this:
+In choice modeling, the utility of an alternative has an observed part $v_j$ and a random error $\varepsilon_j$:
 
 $$
-P_j = \frac{v_j}{v_j + v_k}
+u_j = v_j + \varepsilon_j
 $$
 
-In this equation, the probability of choosing $j$ over $k$ is the utility of $j$ over the sum of utilities. In this model, utilities are normally distributed.
-
-An alternative way is to use the **Logit Model**, where we take the logarithm of the odds:
+The probability of choosing $j$ over $k$ is the probability that $u_j > u_k$. To compute it, we need to assume a distribution for the errors. If the errors are normally distributed, we get the **Probit Model**, which is supported by theory but has no closed form solution for the probability. If the errors follow the Type 1 Extreme Value distribution, we get the **Logit Model**, which has a closed form:
 
 $$
 P_j = \frac{e^{v_j}}{e^{v_j} + e^{v_k}}
 $$
+
+Here the logarithm of the odds is simply the utility difference: $\log(P_j / P_k) = v_j - v_k$.
 
 This is again the probability of choosing $j$ over $k$. To generalize the equation, the probability of choosing $j$ over all other alternatives is written as this:
 
@@ -154,13 +157,15 @@ $$
 P_j = \frac{e^{v_j}}{\sum_{k=1}^{J} e^{v_k}}
 $$
 
-The logit model utilizes the Type 1 Extreme Value distribution, and requires independent errors (IIA).
+This multinomial form was first suggested by Cox (1966) and Theil (1969). Daniel McFadden [-@mcfadden1973] linked it to the theory of discrete choice from mathematical psychology, Luce's choice axiom, which gave the logit model its theoretical foundation and earned him the Nobel Prize in 2000.
 
-> IIA can be problematic when products are close substitutes. For example, in a DCM scenario, alternatives of Taxi, Red Bus, and Blue Bus are in fact 2 alternatives, since the Red Bus and the Blue Bus should be identical and only considered as one alternative. This is ignored by the IIA property.
+The logit model requires the errors to be independent and identically distributed. As a result it has the IIA property (Independence of Irrelevant Alternatives): the ratio $P_j / P_k$ does not depend on what other alternatives are available.
+
+> IIA can be problematic when products are close substitutes. The classic example is "Red Bus vs Blue Bus". Suppose the choice is between Taxi and Red Bus, with probabilities of 0.66 and 0.33. Now add a Blue Bus that is identical to the Red Bus except for the color. We expect 0.66, 0.165, and 0.165, since the two buses are in fact one alternative. But IIA keeps the ratio between Taxi and Red Bus at 2:1, so the logit model gives 0.50, 0.25, and 0.25.
 
 ### 2. Why Logit
 
-So, why using Logit Model? Why bother transforming the simple probability value into a somewhat non-intuitive value? An important reason is that the Logit Model does not have lower and upper limits. This can be better explained by the **Logit Transformation**:
+So, why using Logit Model? Why bother transforming the simple probability value into a somewhat non-intuitive value? An important reason is that the logit value does not have lower and upper limits, so it can be modeled as a linear function of utilities. This can be better explained by the **Logit Transformation**:
 
 $$
 \text{Probability} \rightarrow \text{Odds} \rightarrow \text{Logit}
@@ -225,8 +230,9 @@ To better explain the differences between these 3, I constructed a data frame an
 P <- c(0.01, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99)
 
 # Calculation
-Odds <- round(P / (1 - P), 2)
+Odds <- P / (1 - P)
 Logit <- round(log(Odds), 2)
+Odds <- round(Odds, 2)
 
 # Data frame
 data_logit <- data.frame(P, Odds, Logit)
@@ -275,3 +281,8 @@ A summary of the transformation:
 1.  **Probability** values range from $0$ to $1$.
 2.  **Odds** values range from $0$ to $+\infty$.
 3.  **Logit** values range from $-\infty$ to $+\infty$.
+
+## References
+
+::: {#refs}
+:::
