@@ -155,9 +155,9 @@
     </div>
     <div class="sw-card">
       <div class="sw-card-icon">
-        <a href="https://github.com/pingfan-hu/MiniNotes" target="_blank"><img src="resources/mininotes-icon.png" /></a>
+        <a href="https://github.com/alkaline-software/MiniNotes" target="_blank"><img src="resources/mininotes-icon.png" /></a>
       </div>
-      <div class="sw-label"><a href="https://github.com/pingfan-hu/MiniNotes" target="_blank">MiniNotes</a></div>
+      <div class="sw-label"><a href="https://github.com/alkaline-software/MiniNotes" target="_blank">MiniNotes</a></div>
       <div class="sw-desc">Menu bar companion for Obsidian.</div>
     </div>
     <div class="sw-card">

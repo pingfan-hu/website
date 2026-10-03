@@ -133,7 +133,7 @@ Beyond the basics, Obsidian has a large plugin marketplace and its own CLI. Plug
 
 #### MiniNotes
 
-While we're on the subject, a quick plug for an open-source app of my own: [MiniNotes](https://github.com/pingfan-hu/MiniNotes). It's a menu bar companion for Obsidian. I take a lot of quick, throwaway notes throughout the day, all of which land in a single `.md` file inside my vault. Opening Obsidian every time for a one-line note was overkill, so MiniNotes lets me jot the note straight from the menu bar.
+While we're on the subject, a quick plug for an open-source app of my own: [MiniNotes](https://github.com/alkaline-software/MiniNotes). It's a menu bar companion for Obsidian. I take a lot of quick, throwaway notes throughout the day, all of which land in a single `.md` file inside my vault. Opening Obsidian every time for a one-line note was overkill, so MiniNotes lets me jot the note straight from the menu bar.
 
 The app mirrors Obsidian's editing experience on purpose. Edit mode is the default, and you can toggle between source mode and read mode just like Obsidian. A one-click button opens the underlying file in Obsidian whenever I want to keep working on it there.
 

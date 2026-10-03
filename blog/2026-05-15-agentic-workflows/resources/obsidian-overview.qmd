@@ -174,7 +174,7 @@
 
   <div class="obs-footer">
     <i data-lucide="sticky-note"></i>
-    <span class="obs-footer-text">Pair with: <a href="https://github.com/pingfan-hu/MiniNotes" target="_blank">MiniNotes</a></span>
+    <span class="obs-footer-text">Pair with: <a href="https://github.com/alkaline-software/MiniNotes" target="_blank">MiniNotes</a></span>
   </div>
 </div>
 
