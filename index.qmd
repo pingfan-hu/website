@@ -1,6 +1,6 @@
 ---
 title: "Pingfan Hu"
-description: "Pingfan Hu - Systems Engineering PhD in data science, transportation systems, open-source software, and agentic AI workflows."
+description: "Pingfan Hu - Systems Engineering PhD in data science, transportation systems, and open-source software; co-founder of Alkaline Software, maker of the Emaki agentic development environment."
 image: resources/images/homepage.png
 open-graph:
   image: resources/images/card.png

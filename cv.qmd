@@ -64,13 +64,13 @@ execute:
 #let liCompass = li("\u{E09B}")
 
 // === HELPERS ===
-// Section header with underline rule.
-#let section(name) = {
-  text(size: 12pt, weight: "bold")[#upper[#name]]
-  v(5pt)
-  line(length: 100%, stroke: 0.5pt + rgb("#888"))
-  v(gap)
-}
+// Section header with underline rule. Sticky so it never strands at a page bottom.
+#let section(name) = block(sticky: true)[
+  #text(size: 12pt, weight: "bold")[#upper[#name]]
+  #v(5pt)
+  #line(length: 100%, stroke: 0.5pt + rgb("#888"))
+  #v(gap)
+]
 
 // Subsection header - bold, no rule.
 #let subsection(name) = {
@@ -124,6 +124,7 @@ execute:
     [2026], [*George Washington University*, Washington, D.C.], [Ph.D.], [Systems Engineering],
     table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation: _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the `surveydown` Open-Source Survey Platform_]]],
     table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Doctoral Committee: _John Paul Helveston, Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
+    table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Dissertation defended; degree conferral expected December 2026.]],
     [2018], [*University of Sydney*, Sydney, NSW, Australia], [M.P.E.], [Mechanical Engineering],
     [2015], [*Pennsylvania State University*, State College, PA], [B.S.], [Industrial Engineering],
   )
@@ -135,7 +136,7 @@ execute:
 
 - *Data Science*: Studying human behavior in transportation systems with mixed logit and related discrete choice models and large-scale scenario simulation, from survey design and fielding through statistical modeling and visualization, using electric vehicle smart charging as the leading case to generate program design and policy suggestions.
 - *Open-Source Software*: Development of `surveydown`, a programmable, markdown-based survey platform built on Quarto, Shiny, and PostgreSQL, its companion GUI `sdstudio`, and `TidyViz`, a Python package for tidying and visualizing survey data.
-- *Agentic AI Engineering*: Building reproducible research and engineering workflows around Claude Code with plugins, skills, MCPs, and hooks, documented in public tutorials, and taught through a workshop on the GW Trustworthy AI Initiative for researchers and developers.
+- *Agentic AI Engineering*: Building reproducible research and engineering workflows around Claude Code with plugins, skills, MCPs, and hooks, documented in public tutorials, and taught through a workshop on the GW Trustworthy AI Initiative for researchers and developers. Building `Emaki`, an Agentic Development Environment (ADE) organized around coding-agent sessions rather than files.
 
 #section[Honors & Awards]
 
@@ -167,6 +168,7 @@ execute:
 
 #subsection[D. Software]
 
++ *Hu, P.*, & Helveston, J. P. (2026) "`Emaki`: An Agentic Development Environment that keeps, searches, and continues Claude Code and Codex sessions" Desktop application for macOS, Windows, and Linux, built in Rust with GPUI. Alkaline Software. #link("https://emaki.lol")[emaki.lol].
 + *Hu, P.* (aut,cre,cph) (2026) "`MiniNotes`: An Obsidian-compatible macOS menu bar Markdown note app" macOS application.
 + *Hu, P.* (aut,cre,cph) (2025) "`TidyViz`: A Python package for tidying and visualizing survey data."
 + *Hu, P.* (aut,cre,cph) (2025) "`MiniCalendar`: A free and open-source mini menu bar calendar" macOS application.
@@ -213,6 +215,7 @@ execute:
 
 #section[Industry Experiences]
 
+- Co-Founder of _Alkaline Software_, an app development studio founded with Professor John Paul Helveston that builds apps in Rust with GPUI. Lead developer of the flagship product `Emaki`, an Agentic Development Environment (ADE). #link("https://github.com/alkaline-software")[github.com/alkaline-software]. Remote (2026 - Present).
 - Software Engineer at _Harsco Rail_. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
 - Project Engineer at _GE Appliances_. Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs. Qingdao, China (2019 - 2020).
 - Assistant Process Engineer (Intern) at _Kurtz Ersa GmbH_. Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first Asian market promotion video on YouTube. Wertheim, Germany (Jan. - Mar. 2017).

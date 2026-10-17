@@ -125,7 +125,7 @@ execute:
     inset: (x: 0pt, y: 2pt),
     column-gutter: 14pt,
     align: left,
-    [2026], [*George Washington University*], [Ph.D.], [Systems Engineering], [GPA 4.0],
+    [Dec 2026], [*George Washington University*], [Ph.D. (defended)], [Systems Engineering], [GPA 4.0],
     [2018], [*University of Sydney*], [M.P.E.], [Mechanical Engineering], [GPA 3.5],
     [2015], [*Pennsylvania State University*], [B.S.], [Industrial Engineering], [GPA 3.2],
   )
@@ -158,9 +158,9 @@ execute:
 #entry[*BEV Smart Charging Adoption Project* - _Joint Project between GWU, UC Davis & UC Irvine_][2023-2024]
 
 - Performed survey fielding, data wrangling, and discrete choice modeling.
-- Collected and filtered 1300+ valuable responses from Meta and Dynata throughout the U.S. with 100% BEV ownership to ensure data quality.
-- Leveraged mixed logit models for consumer preferences and sensitivities to various smart charging program attributes.
-- Published a journal article in _IOP Science_ and a conference paper in _IEEE_ as 1st author with 300+ views altogether.
+- Collected and filtered 1300+ responses from U.S. BEV owners via Meta and Dynata to ensure data quality.
+- Estimated mixed logit models of consumer preferences for smart charging program attributes.
+- Published a journal article in _IOP Science_ and a conference paper in _IEEE_ as 1st author, 300+ views.
 - Presented at TRB 2024.
 
 #entry[*Smart Charging Cost-Efficiency Project* - _Joint Project between GWU, UC Davis & UC Irvine_][2025-2026]
@@ -173,19 +173,23 @@ execute:
 
 #section[Work Experience]
 
+#work-entry[*Alkaline Software* - _Co-Founder_][#liMapPin~Remote][2026 - Present]
+
+- Co-founded an app development studio with Professor John Paul Helveston that builds apps in Rust with GPUI.
+- Lead developer of #link("https://emaki.lol")[`Emaki`], the flagship Agentic Development Environment (ADE) for coding-agent sessions.
+
 #work-entry[*Harsco Rail* - _Software Engineer_][#liMapPin~SC, USA & Beijing, China][2021 - 2022]
 
-- Led cross-border Switch Undercutter and Grinder software projects, achieving 25 software releases while providing critical on-site technical support.
-- Combined expertise in embedded C++ coding, CAN bus communication systems, and mechanical design with project management skills to track and deliver complex initiatives.
+- Led cross-border Switch Undercutter and Grinder software projects: 25 releases plus on-site technical support.
+- Combined embedded C++, CAN bus communication, and mechanical design with project management.
 
 #work-entry[*GE Appliances* - _Project Engineer_][#liMapPin~Qingdao, China][2019 - 2020]
 
 - Managed 500+ components across 9 GE washing machine models from development to production.
-- Contributed to various home appliances' engineering design to enhance product functionality and user experience, showing expertise in PLM management and engineering.
+- Contributed to engineering design of home appliances for function and user experience, using PLM management.
 
 #work-entry[*Kurtz Ersa GmbH* - _Assistant Process Engineer (Intern)_][#liMapPin~Wertheim, Germany][2017]
 
 - Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples.
-- Conducted Asian market analysis for Ersa's 2017 marketing strategy.
-- Served as the face of the company by starring in Ersa's first Asian market promotional video.
+- Conducted Asian market analysis and starred in Ersa's first Asian market promotional video.
 ```

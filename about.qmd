@@ -30,7 +30,7 @@ My research is proudly funded by the {{< var sloan >}}.
 
 #### Degrees
 
-- (Ongoing) **Ph.D.** - *Doctor of Philosophy* in Engineering Management and Systems Engineering at [George Washington University](https://www.emse.seas.gwu.edu), advised by professor [John Helveston](https://www.jhelvy.com).
+- **Ph.D.** - *Doctor of Philosophy* in Engineering Management and Systems Engineering at [George Washington University](https://www.emse.seas.gwu.edu), advised by professor [John Helveston](https://www.jhelvy.com). Dissertation defended; degree conferral expected December 2026.
 - **M.P.E.** - *Master of Professional Engineering* in Mechanical Engineering at [Sydney University](https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html), qualified by [Engineers Australia](https://www.engineersaustralia.org.au).
 - **B.S.** - *Bachelor of Science* in Industrial & Manufacturing Engineering at [Penn State University](https://www.ime.psu.edu), with a minor of Six Sigma.
 
