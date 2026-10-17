@@ -38,12 +38,12 @@ execute:
 // between lists/tables/entries). Tune this one value to tighten or loosen
 // the whole resume. `entry-gap` is the tighter gap from an entry title to
 // its first bullet.
-#let gap = 5pt
-#let entry-gap = 2pt
+#let gap = 6pt
+#let entry-gap = 2.5pt
 
 // === LISTS & TABLES ===
-#show list: set block(spacing: 0.25em)
-#show list: set par(leading: 0.35em)
+#show list: set block(spacing: 0.3em)
+#show list: set par(leading: 0.39em)
 #set list(indent: 1em, body-indent: 0.4em, marker: ([•]))
 
 // Lists/tables emit `gap` AFTER themselves so the gap to the next block is
@@ -53,9 +53,6 @@ execute:
 
 // Navy-blue links
 #show link: set text(fill: rgb(0%, 20%, 60%))
-
-// Monospace font for inline code spans
-#show raw: set text(font: "Maple Mono NF", size: 0.92em)
 
 // === LUCIDE ICONS ===
 #let li(code) = box(baseline: 0.2em)[#text(font: "lucide", size: 9pt, code)]
@@ -125,7 +122,7 @@ execute:
     inset: (x: 0pt, y: 2pt),
     column-gutter: 14pt,
     align: left,
-    [Dec 2026], [*George Washington University*], [Ph.D. (defended)], [Systems Engineering], [GPA 4.0],
+    [2026], [*George Washington University*], [Ph.D. (defended)], [Systems Engineering], [GPA 4.0],
     [2018], [*University of Sydney*], [M.P.E.], [Mechanical Engineering], [GPA 3.5],
     [2015], [*Pennsylvania State University*], [B.S.], [Industrial Engineering], [GPA 3.2],
   )
@@ -139,18 +136,18 @@ execute:
 ```{=typst}
 #section[#link("https://pingfan.org/research")[Research]]
 
-#entry[*`surveydown` Survey Platform* - _Flagship Project of the Helveston Lab at GWU_][2024-2025]
+#entry[*surveydown Survey Platform* - _Flagship Project of the Helveston Lab at GWU_][2024-2025]
 
-- Developed `surveydown`, an open-source, feature-packed R package for programmable and reproducible surveys, combining Quarto, Shiny, and PostgreSQL.
+- Developed surveydown, an open-source, feature-packed R package for programmable and reproducible surveys, combining Quarto, Shiny, and PostgreSQL.
 - Implemented UI/UX design, SQL and survey templates.
 - Achieved 170+ stars on GitHub and 8000+ downloads on CRAN.
 - Published a journal article in _PLOS One_ as 1st author with 1000+ views.
 - Presented at Posit Conference, USRSE, and GW OSCON in 2025.
 - Awarded 2nd prize at GW OSPO and profiled by GW Engineering.
 
-#entry[*`sdstudio` Survey GUI* - _Companion Project of `surveydown`_][2025-2026]
+#entry[*sdstudio Survey GUI* - _Companion Project of surveydown_][2025-2026]
 
-- Developed `sdstudio` as GUI and SQL support to `surveydown`.
+- Developed sdstudio as GUI and SQL support to surveydown.
 - Implemented UI/UX design for survey preview and SQL visualization.
 - Achieved 1200+ downloads on CRAN.
 - Presented at GW OSCON 2026.
@@ -176,7 +173,7 @@ execute:
 #work-entry[*Alkaline Software* - _Co-Founder_][#liMapPin~Remote][2026 - Present]
 
 - Co-founded an app development studio with Professor John Paul Helveston that builds apps in Rust with GPUI.
-- Lead developer of #link("https://emaki.lol")[`Emaki`], the flagship Agentic Development Environment (ADE) for coding-agent sessions.
+- Lead developer of #link("https://emaki.lol")[Emaki], the flagship Agentic Development Environment (ADE) for coding-agent sessions.
 
 #work-entry[*Harsco Rail* - _Software Engineer_][#liMapPin~SC, USA & Beijing, China][2021 - 2022]
 
