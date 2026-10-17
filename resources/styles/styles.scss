@@ -1,13 +1,104 @@
 /*-- scss:defaults --*/
-$primary: #5654A2;
-$code-color: #ED6D46;
-$dropdown-bg: #F8F7F0;
-$dropdown-link-hover-bg: #EEEDF8;
-$dropdown-link-hover-color: #5654A2;
-$dropdown-link-active-bg: #EEEDF8;
-$dropdown-link-active-color: #5654A2;
+
+// The standard this sheet keeps to is written at the top of the rules: one
+// accent, a token for every colour with a value in each appearance, six
+// sizes of type, hairlines and no shadow at rest, one easing for every
+// motion. Bootstrap's own knobs come first, so what Quarto draws itself
+// (the table of contents, the search, the category badges) follows the
+// accent and the page. `!default` throughout: dark.scss sets the dark
+// appearance's values first, since Quarto lays a later sheet's defaults
+// under an earlier one's.
+$primary: #5061B3 !default;
+$link-color: #5061B3 !default;
+$body-bg: #F8F7F0 !default;
+$body-color: #2A2920 !default;
+$code-color: #5061B3 !default;
+$headings-font-weight: 600 !default;
+$border-radius: 8px !default;
+$border-radius-lg: 12px !default;
+$border-radius-sm: 5px !default;
 
 /*-- scss:rules --*/
+
+// ---- Tokens ----
+// A value for the light appearance (:root) and the dark (body.quarto-dark).
+// The page is the site's cream; the frame (navbar and footer) is the
+// accent's own night shade in both appearances; the accent is periwinkle,
+// the blue Emaki uses, for what can be done: a link, a button, the entry
+// you are on, the focus ring. The supporting shades (hover, active, the
+// wash, the frame, the light shade on the frame) are all drawn from it. A
+// colour that is not a token is a mistake.
+
+:root {
+  --page: #F8F7F0;
+  --ink: #2A2920;
+  --muted: #77746B;            // a line under a name, a date, a caption, an icon at rest
+  --panel: #FFFFFF;            // a card, a tile, a code plate: white, so it lifts off the cream
+  --panel-2: #F1F0E9;          // a shade past the panel: a hover, a cap
+  --border: #E0DED4;           // every hairline
+  --border-2: #D0CEC3;         // a control's edge
+  --frame: #2D3B76;            // the navbar and the footer: the accent at a third of its light
+  --paper: #F3F1EA;            // words on the frame
+
+  --accent: #5061B3;
+  --accent-hover: #4A5BAC;
+  --accent-active: #4050A0;
+  --accent-on-frame: #B1BFF5;  // the accent's light shade, which reads on the frame in both appearances
+  --on-accent: #FFFFFF;
+  --link: #5061B3;
+  --link-hover: #4050A0;
+  --wash: rgb(80 97 179 / 0.09);       // the accent as a plate
+  --wash-edge: rgb(80 97 179 / 0.24);
+
+  // Popovers float over the page and take its appearance. A shadow only on
+  // what floats.
+  --pop-bg: #FFFFFF;
+  --pop-border: #E0DED4;
+  --shadow-float: 0 12px 32px -8px rgb(42 41 32 / 0.14), 0 1px 3px rgb(42 41 32 / 0.06);
+
+  // The one easing (gpui's ease_out_quint): 160ms for a hover, 240ms for
+  // something that appears, 400ms for the page's fade.
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+
+  // The faces, each with one job: TsangerJinKai for the words, Maple Mono
+  // for the chrome (labels, chips, buttons, the table of contents) and for
+  // code, Optima for the name.
+  --font-words: 'TsangerJinKai', serif;
+  --font-ui: 'Maple Mono', ui-monospace, Menlo, monospace;
+  --font-mono: 'Maple Mono', ui-monospace, Menlo, monospace;
+  --font-wordmark: Optima, 'Avenir Next', Avenir, 'TsangerJinKai', sans-serif;
+
+  // The navbar's widgets sit on the frame in both appearances, so their
+  // washes are light-on-dark throughout.
+  --w-bg: rgb(255 255 255 / 0.08);
+  --w-bg-hover: rgb(255 255 255 / 0.16);
+  --w-border: rgb(255 255 255 / 0.18);
+  --w-border-hover: rgb(255 255 255 / 0.3);
+}
+
+body.quarto-dark {
+  --page: #1A1918;
+  --ink: #F3F1EA;
+  --muted: #A09D94;
+  --panel: #272624;            // a step up from the page, as white is from the cream
+  --panel-2: #343330;
+  --border: #3A3834;
+  --border-2: #4E4C47;
+  --frame: #283465;
+
+  --accent: #94A7ED;
+  --accent-hover: #A0B3FB;
+  --accent-active: #879AE0;
+  --on-accent: #1A1918;
+  --link: #94A7ED;
+  --link-hover: #A0B3FB;
+  --wash: rgb(148 167 237 / 0.14);
+  --wash-edge: rgb(148 167 237 / 0.3);
+
+  --pop-bg: #2A2927;
+  --pop-border: #3B3A37;
+  --shadow-float: 0 12px 32px -8px rgb(0 0 0 / 0.45), 0 1px 3px rgb(0 0 0 / 0.3);
+}
 
 // ---- Fonts ----
 
@@ -21,9 +112,11 @@ $dropdown-link-active-color: #5654A2;
 }
 
 body {
-  font-family: 'TsangerJinKai', serif;
+  font-family: var(--font-words);
   line-height: 1.65;
-  background-color: #F8F7F0;
+  background-color: var(--page);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
 }
 
 main.content {
@@ -31,52 +124,119 @@ main.content {
 }
 
 // ---- Typography ----
+// Six sizes and nothing set in a seventh: h1 2.25rem, h2 1.5rem, h3 1.125rem,
+// h4 1rem, the words 1rem, small 0.875rem for labels, captions and chips.
+// Bold is 600, never 700.
 
-a {
-  text-decoration: none;
-  &:hover { text-decoration: underline; }
-}
+strong, b { font-weight: 600; }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+
   a:hover { text-decoration: none; }
 }
 
-p {
-  margin-bottom: 0.5rem;
+h1, .title { font-size: 2.25rem; }
+
+// No rule under a heading: the air over it and the table of contents do that
+// work. Quarto draws one by default.
+h2 {
+  font-size: 1.5rem;
+  margin: 3rem 0 0.9rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+h3 { font-size: 1.125rem; margin: 2rem 0 0.5rem; }
+h4, h5, h6 { font-size: 1rem; margin: 1.5rem 0 0.4rem; }
+
+// The first heading under a title block needs no 3rem of air over it.
+#title-block-header + * > h2:first-child,
+main.content > h2:first-child,
+section.level2:first-of-type > h2:first-child { margin-top: 1.5rem; }
+
+p { margin-bottom: 0.75rem; }
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent);
+  transition: color 160ms var(--ease), text-decoration-color 160ms var(--ease);
+
+  &:hover, &:focus { color: var(--link-hover); text-decoration-color: currentColor; }
+}
+
+hr {
+  border-color: var(--border);
+  opacity: 1;
+  margin: 2.5rem 0;
 }
 
 blockquote {
-  background-color: #DDDCEC;
-  padding: 10px;
-  border-color: #5654A2;
-  border-radius: 5px;
+  margin: 1rem 0;
+  padding: 0.1rem 0 0.1rem 1rem;
+  border-left: 1px solid var(--border);
+  color: var(--muted);
+  background: none;
+  border-radius: 0;
+
+  p:last-child { margin-bottom: 0; }
 }
 
-// Keep separate — combined selector breaks in some browsers
-::selection      { background-color: #D6C2DD; color: #694696; }
-::-moz-selection { background-color: #D6C2DD; color: #694696; }
+::selection { background: color-mix(in srgb, var(--accent) 24%, transparent); }
 
-// Selection color inside code blocks. Chromium does not inherit the body ::selection into
-// code, so declare it explicitly to keep the highlight purple and consistent across browsers.
-// `-webkit-text-fill-color` forces Safari to recolor the selected text (it can otherwise keep
-// each token's original color, leaving light code text unreadable on the purple highlight).
-// Dark mode keeps a light-gray highlight on its light chunk background.
-pre.sourceCode ::selection      { background-color: #D6C2DD; color: #694696; -webkit-text-fill-color: #694696; }
-pre.sourceCode ::-moz-selection { background-color: #D6C2DD; color: #694696; }
-body.quarto-dark pre.sourceCode ::selection      { background-color: #dddcd6; color: #2a2920; -webkit-text-fill-color: #2a2920; }
-body.quarto-dark pre.sourceCode ::-moz-selection { background-color: #dddcd6; color: #2a2920; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+// The content comes in over a moment on each page.
+@keyframes page-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #quarto-content { animation: page-in 400ms var(--ease) both; }
+}
+
+// Everything that is a control or a label rather than a sentence is set in
+// the chrome's face.
+.navbar, .nav-footer, #TOC, nav[role="doc-toc"], #quarto-margin-sidebar .quarto-listing-category,
+.listing-category, .quarto-category, .listing-date, .listing-author,
+.quarto-title-meta-heading, .quarto-title-meta-contents, .code-copy-button,
+.aa-DetachedSearchButton, .aa-DetachedContainer, .aa-Panel, figcaption, .figure-caption,
+th, kbd, #quarto-back-to-top {
+  font-family: var(--font-ui);
+}
+
+// Selection colour inside code blocks. Chromium does not inherit the body
+// ::selection into code, so declare it explicitly. `-webkit-text-fill-color`
+// forces Safari to recolour the selected text. The chunk keeps its own
+// inverted palette, so the highlight is set per appearance here.
+pre.sourceCode ::selection      { background-color: #CBD4F2; color: #34428A; -webkit-text-fill-color: #34428A; }
+pre.sourceCode ::-moz-selection { background-color: #CBD4F2; color: #34428A; }
+body.quarto-dark pre.sourceCode ::selection      { background-color: var(--ink); color: var(--ink); -webkit-text-fill-color: var(--ink); }
+body.quarto-dark pre.sourceCode ::-moz-selection { background-color: var(--ink); color: var(--ink); }
 
 // ---- Code ----
 
 code, pre, .sourceCode {
-  font-family: 'Maple Mono', monospace !important;
+  font-family: var(--font-mono) !important;
 }
 
+// Inline code: the accent on its faint plate. The code window below keeps
+// its own inverted palette (dark chunk on the light page, light on the dark),
+// so those colours are not tokens.
 :not(pre) > code {
-  background-color: #EEEDF8 !important;
-  color: #5654A2 !important;
-  border: 1px solid #D4D3EE !important;
-  border-radius: 5px !important;
+  background-color: var(--wash) !important;
+  color: var(--link) !important;
+  border: 1px solid var(--wash-edge) !important;
+  border-radius: $border-radius-sm !important;
   padding: 0.1em 0.4em !important;
   font-size: 0.88em !important;
   word-break: break-all !important;
@@ -256,21 +416,21 @@ body.quarto-dark pre > code.sourceCode > span::before {
 // ---- Skill Tree ----
 // File/directory tree component used in blog posts to diagram a skill's layout.
 // Markup lives in resources/*.qmd includes; only Maple Mono + Lucide are loaded there.
-.tree-outer { width: 100%; margin: 1em 0; border: 1.5px solid #5654A2; border-radius: 14px; overflow: hidden; }
-.tree-header { display: flex; align-items: center; gap: 12px; background: #5654A2; padding: 10px 16px; }
+.tree-outer { width: 100%; margin: 1em 0; border: 1.5px solid var(--accent); border-radius: 14px; overflow: hidden; }
+.tree-header { display: flex; align-items: center; gap: 12px; background: var(--accent); padding: 10px 16px; }
 .tree-header-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(248,247,240,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.tree-header-icon svg { width: 14px; height: 14px; color: #F8F7F0; stroke-width: 1.8; }
+.tree-header-icon svg { width: 14px; height: 14px; color: var(--page); stroke-width: 1.8; }
 .tree-header-text { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; min-width: 0; }
-.tree-header-name { font-family: 'Maple Mono', monospace; font-size: 0.9em; font-weight: bold; color: #F8F7F0; letter-spacing: 0.02em; white-space: nowrap; }
+.tree-header-name { font-family: 'Maple Mono', monospace; font-size: 0.9em; font-weight: bold; color: var(--page); letter-spacing: 0.02em; white-space: nowrap; }
 .tree-header-desc { font-family: 'Maple Mono', monospace; font-size: 0.78em; color: rgba(248,247,240,0.7); }
-.tree-body { background: #F8F7F0; padding: 16px 18px; border-top: 1px solid #D4D3EE; }
+.tree-body { background: var(--page); padding: 16px 18px; border-top: 1px solid var(--wash-edge); }
 .tree-row { display: flex; align-items: center; gap: 8px; font-family: 'Maple Mono', monospace; font-size: 0.9em; line-height: 2; }
 .tree-row svg { width: 16px; height: 16px; stroke-width: 1.8; flex-shrink: 0; }
-.tree-folder svg { color: #5654A2; }
-.tree-file svg { color: #9B8EA0; }
-.tree-name { color: #564232; }
-.tree-folder .tree-name { color: #5654A2; font-weight: bold; }
-.tree-branch { color: #B0A8C0; white-space: pre; }
+.tree-folder svg { color: var(--accent); }
+.tree-file svg { color: var(--muted); }
+.tree-name { color: var(--ink); }
+.tree-folder .tree-name { color: var(--accent); font-weight: bold; }
+.tree-branch { color: var(--muted); white-space: pre; }
 
 @media (max-width: 520px) {
   .tree-header { padding: 10px 14px; gap: 10px; }
@@ -282,33 +442,85 @@ body.quarto-dark pre > code.sourceCode > span::before {
 }
 
 // ---- Tables ----
+// Hairline rows, the head in the muted ink, no vertical lines, no zebra.
 
-table {
+.table, table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--ink);
+  --bs-table-striped-bg: transparent;
   width: auto !important;
+  border-color: var(--border);
+  font-size: 0.95rem;
 
-  thead {
-    border-top: solid #E5DFD5;
-    border-bottom: solid #E5DFD5;
+  thead { border-top: none; border-bottom: none; }
+
+  th {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.75rem 0.5rem 0;
   }
+
+  td {
+    padding: 0.6rem 0.75rem 0.6rem 0;
+    border-color: var(--border);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
 }
 
 // ---- Categories ----
+// A chip: the chrome's face, a hairline, the muted ink; the accent under the
+// pointer and on the one that is selected.
 
 .quarto-category,
-.listing-category {
+.listing-category,
+.quarto-title .quarto-categories .quarto-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1em 0.6em;
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 1;
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: background 160ms var(--ease), color 160ms var(--ease), border-color 160ms var(--ease);
 
   &:hover {
-    background-color: $primary !important;
-    color: #F8F7F0 !important;
-    border-color: $primary !important;
+    background: var(--wash) !important;
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+    opacity: 1 !important;
   }
 }
 
-// Post-page categories have opacity: .6 — reset to full on hover
-.quarto-title .quarto-categories .quarto-category:hover {
-  opacity: 1 !important;
+// The category list in the margin of a listing page.
+.quarto-listing-category-title {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.quarto-listing-category .category {
+  padding: 0.2rem 0 0.2rem 0.85rem;
+  border-left: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 160ms var(--ease), border-color 160ms var(--ease);
+
+  &:hover { color: var(--ink); }
+  &.active { color: var(--ink); border-left-color: var(--accent); font-weight: 400; }
 }
 
 // ---- References ----
@@ -344,36 +556,51 @@ table {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 2px solid #5654A2;
+  border: 2px solid var(--accent);
+}
+
+// ---- Pills ----
+// Every button the site draws itself is one pill: a full round, a hairline,
+// the chrome's face, an icon before its word. Quiet at rest; under the
+// pointer the edge and the word take the accent on the accent's plate; a
+// press is a small scale. Nothing lifts and nothing glows.
+
+@mixin pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.35em 0.95em;
+  border-radius: 999px;
+  border: 1px solid var(--border-2);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: background 160ms var(--ease), border-color 160ms var(--ease),
+              color 160ms var(--ease), transform 120ms var(--ease);
+
+  &:hover, &:focus-visible {
+    background: var(--wash);
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+  }
+  &:active { transform: scale(0.96); background: var(--panel-2); }
+
+  i, .bi { font-size: 1em; line-height: 1; flex-shrink: 0; font-style: normal; }
 }
 
 // ---- Subpage Back Button ----
+// Injected above the title on subpages by styles.js.
 
 .subpage-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
+  @include pill;
   max-width: 48%;
   margin: 0 0 1rem;
-  padding: 4px 14px 4px 11px;
-  border-radius: 20px;
-  border: 1.5px solid #5654A2;
-  background: #EEEDF8;
-  color: #5654A2;
-  font-family: 'Maple Mono', monospace;
-  font-size: 0.78em;
-  text-decoration: none;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  font-size: 0.78rem;
 
-  &:hover {
-    background: #5654A2;
-    color: #F8F7F0;
-    text-decoration: none;
-    transform: translateX(-2px);
-  }
-  &:active { transform: translateX(-2px) scale(0.96); }
-
-  i { font-size: 1em; line-height: 1; flex-shrink: 0; font-style: normal; }
   > span { min-width: 0; overflow-wrap: break-word; }
 }
 
@@ -383,9 +610,9 @@ table {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4%;
-  margin: 2rem 0 0.5rem;
+  margin: 2.5rem 0 0.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #D4D3CC;
+  border-top: 1px solid var(--border);
 }
 
 .post-nav-slot       { min-width: 0; }
@@ -393,81 +620,37 @@ table {
 .post-nav-slot-next  { justify-self: end; }
 
 .post-nav-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
+  @include pill;
   max-width: 100%;
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: 1.5px solid #5654A2;
-  background: #EEEDF8;
-  color: #5654A2;
-  font-family: 'Maple Mono', monospace;
-  font-size: 0.82em;
-  line-height: 1.3;
-  text-decoration: none;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
 
-  &:hover {
-    background: #5654A2;
-    color: #F8F7F0;
-    text-decoration: none;
-  }
-
-  &.post-nav-prev:hover { transform: translateX(-2px); }
-  &.post-nav-next:hover { transform: translateX(2px); }
-  &.post-nav-prev:active { transform: translateX(-2px) scale(0.96); }
-  &.post-nav-next:active { transform: translateX(2px) scale(0.96); }
-
-  i { font-size: 1em; line-height: 1; flex-shrink: 0; font-style: normal; }
-
-  .post-nav-title {
-    min-width: 0;
-    overflow-wrap: break-word;
-  }
-
+  .post-nav-title { min-width: 0; overflow-wrap: break-word; }
   &.post-nav-prev .post-nav-title { text-align: left; }
   &.post-nav-next .post-nav-title { text-align: right; }
 }
 
 @media (max-width: 520px) {
-  .post-nav-btn { font-size: 0.78em; padding: 5px 12px; }
+  .post-nav-btn { font-size: 0.78rem; }
 }
 
 // ---- Intro Links ----
 
 .intro-links {
-  text-align: center;
-  margin: 1em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
 }
 
 .intro-btn {
-  display: inline-block;
-  margin: 5px 4px;
-  padding: 5px 14px;
-  border-radius: 20px;
-  border: 1.5px solid #5654A2;
-  background: #EEEDF8;
-  color: #5654A2;
-  font-family: 'Maple Mono', monospace;
-  font-size: 0.82em;
-  text-decoration: none;
+  @include pill;
   white-space: nowrap;
-  text-align: center;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
-
-  &:hover {
-    background: #5654A2;
-    color: #F8F7F0;
-    text-decoration: none;
-  }
-  &:active { transform: scale(0.96); }
 }
 
 // ---- Featured Ribbon ----
 // Full-width clickable announcement strip at the top of a post
-// (e.g. "Featured in R for the Rest of Us"). Card-style glow on
-// hover, card-style press on :active — no lift.
+// (e.g. "Featured in R for the Rest of Us"). A card that is a link: the
+// edge takes the accent under the pointer, a press is a small scale.
 
 // Three-part anatomy: star flank | centered flowing text | arrow flank.
 // The flanks stay vertically centered against the whole text block at
@@ -478,28 +661,23 @@ table {
   gap: 0.7em;
   margin: 0 0 1.5rem;
   padding: 11px 18px;
-  border: 1.5px solid #5654A2;
-  border-radius: 14px;
-  background: #EEEDF8;
-  color: #5654A2;
-  font-family: 'Maple Mono', monospace;
+  border: 1px solid var(--wash-edge);
+  border-radius: $border-radius-lg;
+  background: var(--wash);
+  color: var(--accent);
+  font-family: var(--font-ui);
   font-size: 0.85em;
   text-decoration: none;
-  transition: box-shadow 0.25s ease, transform 0.12s ease;
+  transition: border-color 160ms var(--ease), transform 120ms var(--ease);
 
   &:hover {
-    color: #5654A2;
+    color: var(--accent);
     text-decoration: none;
-    box-shadow: 0 0 16px 1px rgba(86, 84, 162, 0.22),
-                0 6px 16px rgba(86, 84, 162, 0.16);
+    border-color: var(--accent);
 
     .featured-ribbon-arrow { transform: translate(3px, -0.051em); }
   }
-  &:active {
-    transform: scale(0.992);
-    box-shadow: 0 0 9px 0 rgba(86, 84, 162, 0.18),
-                0 3px 8px rgba(86, 84, 162, 0.16);
-  }
+  &:active { transform: scale(0.992); }
 }
 
 // The body mixes fonts and sizes, so no shared baseline looks right:
@@ -539,7 +717,7 @@ table {
 
 // The organization — bold, the loudest element
 .featured-ribbon-org {
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   white-space: nowrap;
   transform: translateY(-0.048em);
@@ -547,11 +725,11 @@ table {
 
 // The post name — italic body font at a larger size, second voice
 .featured-ribbon-title {
-  font-family: 'TsangerJinKai', serif;
+  font-family: var(--font-words);
   font-style: italic;
   font-size: 1.18em;
   line-height: 1.2;
-  color: #45438a;
+  color: var(--ink);
   transform: translateY(-0.066em);
 }
 
@@ -566,7 +744,7 @@ table {
   flex-shrink: 0;
   line-height: 1;
   transform: translateY(-0.051em);
-  transition: transform 0.15s ease;
+  transition: transform 160ms var(--ease);
 }
 
 @media (max-width: 520px) {
@@ -574,20 +752,23 @@ table {
 }
 
 // ---- Link Table ----
+// Label + pill button rows. The colour variants (purple, blue, green,
+// orange) each set the row's own accent as `--la`; the label and the pills
+// read from it, so a row is re-themed by one variable.
 
 .lnk-outer {
   width: 100%;
   margin: 1em 0;
-  border: 1.5px solid #5654A2;
-  border-radius: 14px;
+  border: 1px solid var(--border);
+  border-radius: $border-radius-lg;
   overflow: hidden;
+  background: var(--panel);
 }
 
 .lnk-row {
   display: grid;
   grid-template-columns: 28% 1fr;
-  border-top: 1px solid #D4D3EE;
-  background: #F8F7F0;
+  border-top: 1px solid var(--border);
 
   &:first-child { border-top: none; }
 }
@@ -596,9 +777,11 @@ table {
   display: flex;
   align-items: center;
   padding: 12px 16px;
-  font-family: 'Maple Mono', monospace;
+  font-family: var(--font-ui);
   font-size: 0.85em;
-  border-right: 1px solid #D4D3EE;
+  color: var(--la);
+  background: color-mix(in srgb, var(--la) 8%, transparent);
+  border-right: 1px solid var(--border);
 }
 
 .lnk-chips {
@@ -610,61 +793,47 @@ table {
 }
 
 .lnk-btn {
-  display: inline-block;
-  padding: 5px 14px;
-  border-radius: 20px;
-  border: 1.5px solid;
-  font-family: 'Maple Mono', monospace;
-  font-size: 0.82em;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  @include pill;
+  background: var(--page);
 
-  &:active { transform: scale(0.96); }
+  &:hover, &:focus-visible {
+    background: color-mix(in srgb, var(--la) 10%, var(--page));
+    border-color: var(--la);
+    color: var(--la);
+  }
 }
 
-.lnk-purple {
-  .lnk-label { color: #5654A2; background: #EEEDF8; }
-  .lnk-btn   { border-color: #5654A2; color: #5654A2; background: #EEEDF8; }
-  .lnk-btn:hover { background: #5654A2; color: #F8F7F0; text-decoration: none; }
-}
+.lnk-purple { --la: var(--accent); }
+.lnk-blue   { --la: #3F72AF; }
+.lnk-green  { --la: #3D8B7A; }
+.lnk-orange { --la: #BE7A4E; }
 
-.lnk-blue {
-  .lnk-label { color: #2471A3; background: #EBF5FB; }
-  .lnk-btn   { border-color: #2471A3; color: #2471A3; background: #EBF5FB; }
-  .lnk-btn:hover { background: #2471A3; color: #F8F7F0; text-decoration: none; }
-}
-
-.lnk-green {
-  .lnk-label { color: #1E8449; background: #E9F7EF; }
-  .lnk-btn   { border-color: #1E8449; color: #1E8449; background: #E9F7EF; }
-  .lnk-btn:hover { background: #1E8449; color: #F8F7F0; text-decoration: none; }
-}
-
-.lnk-orange {
-  .lnk-label { color: #CA6F1E; background: #FEF5E7; }
-  .lnk-btn   { border-color: #CA6F1E; color: #CA6F1E; background: #FEF5E7; }
-  .lnk-btn:hover { background: #CA6F1E; color: #F8F7F0; text-decoration: none; }
+body.quarto-dark {
+  .lnk-blue   { --la: #8FB6E6; }
+  .lnk-green  { --la: #7FCBB9; }
+  .lnk-orange { --la: #E0AA7D; }
 }
 
 @media (max-width: 520px) {
   .lnk-row { grid-template-columns: 1fr; }
   .lnk-label {
     border-right: none;
-    border-bottom: 1px solid #D4D3EE;
+    border-bottom: 1px solid var(--border);
     padding: 8px 14px;
   }
   .lnk-chips { padding: 10px 14px; }
 }
 
-// Press feedback for the Bootstrap outline buttons used in paper citation blocks
-// (e.g. "PLOS One Webpage" / "PDF"). Transform appended to Bootstrap's transition.
+// The Bootstrap outline buttons used in paper citation blocks ("PLOS One
+// Webpage" / "PDF") are pills too.
 .btn-outline-primary {
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-              border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
-              transform 0.1s ease;
-
-  &:active { transform: scale(0.96); }
+  @include pill;
+  --bs-btn-hover-bg: var(--wash);
+  --bs-btn-hover-color: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-bg: var(--panel-2);
+  --bs-btn-active-color: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
 }
 
 // ---- Recipe Page Components ----
@@ -688,8 +857,8 @@ table {
   gap: 0;
   margin: 0 0 1.5em;
   padding: 0;
-  background: #EEEDF8;
-  border: 1.5px solid #D4D3EE;
+  background: var(--wash);
+  border: 1.5px solid var(--wash-edge);
   border-radius: 14px;
   overflow: hidden;
 }
@@ -700,7 +869,7 @@ table {
   align-items: center;
   text-align: center;
   padding: 14px 10px;
-  border-left: 1px solid #D4D3EE;
+  border-left: 1px solid var(--wash-edge);
 
   &:first-child { border-left: none; }
 }
@@ -709,7 +878,7 @@ table {
   font-family: 'Maple Mono', monospace;
   font-size: 0.74em;
   letter-spacing: 0.06em;
-  color: #5654A2;
+  color: var(--accent);
   text-transform: uppercase;
   margin-bottom: 4px;
 }
@@ -717,17 +886,17 @@ table {
 .recipe-meta-value {
   font-size: 1.02em;
   font-weight: 600;
-  color: #2a2920;
+  color: var(--ink);
 }
 
 @media (max-width: 520px) {
   .recipe-meta { grid-template-columns: repeat(2, 1fr); }
   .recipe-meta-item {
     border-left: none;
-    border-top: 1px solid #D4D3EE;
+    border-top: 1px solid var(--wash-edge);
   }
   .recipe-meta-item:nth-child(odd)  { border-left: none; }
-  .recipe-meta-item:nth-child(even) { border-left: 1px solid #D4D3EE; }
+  .recipe-meta-item:nth-child(even) { border-left: 1px solid var(--wash-edge); }
   .recipe-meta-item:nth-child(1),
   .recipe-meta-item:nth-child(2)    { border-top: none; }
 }
@@ -737,7 +906,7 @@ table {
 .ing-outer {
   width: 100%;
   margin: 1em 0;
-  border: 1.5px solid #5654A2;
+  border: 1.5px solid var(--accent);
   border-radius: 14px;
   overflow: hidden;
 }
@@ -747,7 +916,7 @@ table {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: #5654A2;
+  background: var(--accent);
   padding: 10px 16px;
 }
 
@@ -764,7 +933,7 @@ table {
   svg {
     width: 14px;
     height: 14px;
-    color: #F8F7F0;
+    color: var(--page);
     stroke-width: 1.8;
   }
 }
@@ -773,19 +942,19 @@ table {
   font-family: 'Maple Mono', monospace;
   font-size: 0.85em;
   font-weight: bold;
-  color: #F8F7F0;
+  color: var(--page);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .ing-section-bar {
   padding: 7px 16px;
-  background: #EEEDF8;
-  border-top: 1px solid #D4D3EE;
+  background: var(--wash);
+  border-top: 1px solid var(--wash-edge);
   font-family: 'Maple Mono', monospace;
   font-size: 0.75em;
   font-weight: bold;
-  color: #9B8EA0;
+  color: var(--muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -796,8 +965,8 @@ table {
   justify-content: center;
   gap: 10px;
   padding: 14px;
-  background: #F8F7F0;
-  border-top: 1px solid #D4D3EE;
+  background: var(--page);
+  border-top: 1px solid var(--wash-edge);
 }
 
 .ing-card {
@@ -807,14 +976,14 @@ table {
   align-items: center;
   text-align: center;
   padding: 14px 12px;
-  background: #FBFAF6;
-  border: 1px solid #E5E4DC;
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 10px;
   transition: background 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    background: #F0EFF8;
-    border-color: #C4C3E8;
+    background: var(--wash);
+    border-color: var(--wash-edge);
   }
 }
 
@@ -824,26 +993,26 @@ table {
   aspect-ratio: 1 / 1;
   height: auto;
   border-radius: 10px;
-  background: #fff;
+  background: var(--panel);
   margin-bottom: 10px;
 }
 
 .ing-qty {
   font-family: 'Maple Mono', monospace;
   font-size: 0.78em;
-  color: #5654A2;
+  color: var(--accent);
   line-height: 1.35;
 }
 
 .ing-note {
   padding: 13px 18px;
-  background: #F8F7F0;
-  border-top: 1px solid #D4D3EE;
+  background: var(--page);
+  border-top: 1px solid var(--wash-edge);
   font-size: 0.9em;
-  color: #564232;
+  color: var(--ink);
   line-height: 1.6;
 
-  strong { color: #5654A2; }
+  strong { color: var(--accent); }
 }
 
 @media (max-width: 600px) {
@@ -873,30 +1042,22 @@ table {
   height: 210px;
   margin: 0 0 2rem;
   border-radius: 18px;
-  border: 1.5px solid #5654A2;
+  border: 1.5px solid var(--accent);
   overflow: hidden;
   text-decoration: none;
-  color: #F8F7F0;
-  background: linear-gradient(90deg, #45437f 0%, #4f4d93 60%, #56548f 100%);
-  box-shadow: 0 6px 18px rgba(86, 84, 162, 0.22);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.12s ease;
+  color: var(--page);
+  background: linear-gradient(90deg, var(--frame) 0%, var(--accent-active) 60%, var(--accent) 100%);
+  transition: border-color 160ms var(--ease), transform 120ms var(--ease);
 
-  // Glow instead of lift: brighten the rim and cast a luminous lavender halo
-  // (lighter than the card itself, so it reads as a glow rather than a blurry edge).
+  // The rim brightens to the accent's light shade under the pointer; a press
+  // is a small scale. No lift, no glow.
   &:hover {
-    border-color: #b4b1e6;
-    box-shadow: 0 0 0 1px rgba(194, 191, 240, 0.4),
-                0 0 18px 1px rgba(150, 146, 224, 0.42),
-                0 5px 14px rgba(86, 84, 162, 0.22);
-    color: #F8F7F0;
+    border-color: var(--accent-on-frame);
+    color: var(--page);
     text-decoration: none;
   }
-  // Pressed: tighten and dim the glow with a faint inward press (no lift).
   &:active {
-    border-color: #a7a4dc;
-    box-shadow: 0 0 0 1px rgba(170, 167, 224, 0.4),
-                0 0 9px 0 rgba(150, 146, 224, 0.3),
-                0 3px 8px rgba(86, 84, 162, 0.22);
+    border-color: var(--accent-on-frame);
     transform: scale(0.992);
   }
   &:hover .pantry-feature-cta { gap: 12px; background: rgba(248, 247, 240, 0.28); }
@@ -988,7 +1149,7 @@ table {
   max-width: 640px;
   margin: 0.25rem auto 1.5rem;
   text-align: center;
-  color: #6b6a78;
+  color: var(--muted);
   font-size: 0.98em;
   line-height: 1.6;
 }
@@ -998,10 +1159,10 @@ table {
 .timeline-outer {
   width: 100%;
   margin: 1em 0;
-  border: 1.5px solid #5654A2;
+  border: 1.5px solid var(--accent);
   border-radius: 14px;
   overflow: hidden;
-  background: #F8F7F0;
+  background: var(--page);
 }
 
 .timeline-header {
@@ -1009,9 +1170,9 @@ table {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  background: #5654A2;
+  background: var(--accent);
   padding: 10px 16px;
-  color: #F8F7F0;
+  color: var(--page);
 }
 
 .timeline-header-left {
@@ -1033,7 +1194,7 @@ table {
   svg {
     width: 14px;
     height: 14px;
-    color: #F8F7F0;
+    color: var(--page);
     stroke-width: 1.8;
   }
 }
@@ -1084,7 +1245,7 @@ table {
   left: 0;
   right: 50%;
   height: 2px;
-  background: #D4D3EE;
+  background: var(--wash-edge);
   margin-right: 20px;
 }
 
@@ -1094,9 +1255,9 @@ table {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #EEEDF8;
-  border: 2px solid #C4C3E8;
-  color: #5654A2;
+  background: var(--wash);
+  border: 2px solid var(--wash-edge);
+  color: var(--accent);
   font-family: 'Maple Mono', monospace;
   font-size: 0.82em;
   font-weight: bold;
@@ -1119,25 +1280,25 @@ table {
 .timeline-step-label {
   font-size: 0.88em;
   font-weight: 600;
-  color: #2a2920;
+  color: var(--ink);
   line-height: 1.3;
 }
 
 .timeline-step-time {
   font-family: 'Maple Mono', monospace;
   font-size: 0.7em;
-  color: #9B8EA0;
+  color: var(--muted);
   line-height: 1.2;
   white-space: nowrap;
 }
 
 .timeline-step:hover {
   .timeline-step-circle {
-    background: #5654A2;
-    border-color: #5654A2;
-    color: #F8F7F0;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--page);
   }
-  .timeline-step-label { color: #5654A2; }
+  .timeline-step-label { color: var(--accent); }
 }
 
 @media (max-width: 600px) {
@@ -1188,8 +1349,8 @@ table {
   display: grid;
   grid-template-columns: 220px 1fr;
   gap: 0;
-  background: #FBFAF6;
-  border: 1px solid #E5E4DC;
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
   scroll-margin-top: 80px;
@@ -1206,7 +1367,7 @@ table {
 
 .step-photo {
   position: relative;
-  background: #F0EFF8;
+  background: var(--wash);
   padding: 12px;
   display: flex;
   align-items: center;
@@ -1241,7 +1402,7 @@ table {
   font-family: 'Maple Mono', monospace;
   font-size: 1.95em;
   font-weight: bold;
-  color: #5654A2;
+  color: var(--accent);
   line-height: 1;
   flex-shrink: 0;
 }
@@ -1249,7 +1410,7 @@ table {
 .step-title {
   font-size: 1.18em;
   font-weight: 700;
-  color: #2a2920;
+  color: var(--ink);
   line-height: 1.25;
   flex: 1;
 }
@@ -1260,8 +1421,8 @@ table {
   gap: 6px;
   padding: 5px 13px;
   border-radius: 999px;
-  background: #EEEDF8;
-  color: #5654A2;
+  background: var(--wash);
+  color: var(--accent);
   font-family: 'Maple Mono', monospace;
   font-size: 0.9em;
   white-space: nowrap;
@@ -1277,7 +1438,7 @@ table {
   margin: 0;
   padding-left: 1.1em;
   line-height: 1.65;
-  color: #2a2920;
+  color: var(--ink);
 
   li {
     margin: 2px 0;
@@ -1342,42 +1503,27 @@ table {
 
 .step-time.timer-enabled {
   cursor: pointer;
-  border: 1px solid #d6d3ef;
-  box-shadow: 0 1px 2px rgba(86, 84, 162, 0.14);
-  transition: background 0.18s ease, color 0.18s ease,
-    border-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
-
-  // Promote to its own compositor layer so the lift is interpolated on the GPU
-  // instead of re-rasterizing the SVG each frame — kills the icon shake.
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: transform;
+  border: 1px solid var(--border);
+  transition: background 160ms var(--ease), color 160ms var(--ease),
+    border-color 160ms var(--ease), transform 120ms var(--ease);
 
   &:hover,
   &:focus-visible {
-    background: #5654A2;
-    color: #F8F7F0;
-    border-color: #5654A2;
-    box-shadow: 0 4px 10px rgba(86, 84, 162, 0.28);
-    transform: translate3d(0, -1px, 0);
+    background: var(--accent);
+    color: var(--on-accent);
+    border-color: var(--accent);
   }
-  &:focus-visible { outline: 2px solid #5654A2; outline-offset: 2px; }
-  &:active {
-    transform: translate3d(0, 0, 0) scale(0.97);
-    box-shadow: 0 1px 2px rgba(86, 84, 162, 0.2);
-  }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  &:active { transform: scale(0.97); }
 }
 
-.step-time.is-timing { background: #5654A2; color: #F8F7F0; }
+.step-time.is-timing { background: var(--accent); color: var(--on-accent); }
 
-// Active-step glow: the card whose timer is open — and the drawer that extends
-// below it — share an accent outline + soft glow, reusing the `.is-timing` purple
-// so the running step reads as one continuous, highlighted unit. JS toggles
-// `.is-timing-card` on the card; the drawer is glowed via its always-active
-// `.is-open` state (only the active card's drawer is ever open).
+// The card whose timer is open takes the accent on its edge, as the chip does
+// on its plate, so the running step reads as one unit. JS toggles
+// `.is-timing-card` on the card (only the active card's drawer is ever open).
 .step-card.is-timing-card {
-  border-color: #5654A2;
-  box-shadow: 0 6px 22px rgba(86, 84, 162, 0.20);
+  border-color: var(--accent);
 }
 
 // The timer drops in right below its `.step-card` as in-flow content (never an
@@ -1434,8 +1580,8 @@ table {
   // Top padding also absorbs the 14px tuck hidden behind the card, so the
   // visible space above the title is roughly (top - 14)px. 34 → ~20px visible.
   padding: 24px 16px 16px;
-  background: #fff;
-  border: 1px solid #E5E4DC; // matches `.step-card` so the outline is continuous
+  background: var(--panel);
+  border: 1px solid var(--border); // matches `.step-card` so the outline is continuous
   border-top: none;          // top edge is hidden behind the card
   border-radius: 0 0 14px 14px; // square top (tucks behind card), round bottom like the card
   transition: border-color 0.25s ease;
@@ -1449,10 +1595,9 @@ table {
 // bottom radius so the halo follows the corners.
 .recipe-timer.is-open {
   border-radius: 0 0 14px 14px;
-  box-shadow: 0 8px 22px rgba(86, 84, 162, 0.18);
 }
 .recipe-timer.is-open .recipe-timer-inner {
-  border-color: #5654A2;
+  border-color: var(--accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1471,12 +1616,12 @@ table {
   height: 3rem;
   display: grid;
   place-items: center;
-  border: 1px solid #5654A2;
+  border: 1px solid var(--accent);
   border-radius: 50%;
-  background: #5654A2;
-  color: #fff;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: var(--shadow-float); // it floats, so it is the one thing with a shadow
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(86, 84, 162, 0.35);
 
   // Hidden by default; fades + lifts in when active. `visibility` is delayed off
   // so the fade-out can play before the button stops catching pointer events.
@@ -1486,7 +1631,7 @@ table {
   transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease,
     border-color 0.2s ease, visibility 0s linear 0.25s;
 
-  &:hover { background: #6361b5; border-color: #6361b5; }
+  &:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
   &:active { transform: translateY(0) scale(0.96); }
 
   svg { width: 22px; height: 22px; }
@@ -1514,7 +1659,7 @@ table {
   font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.3;
-  color: #5654A2;
+  color: var(--accent);
 }
 
 .recipe-timer-close {
@@ -1523,12 +1668,12 @@ table {
   padding: 0 4px;
   border: none;
   background: transparent;
-  color: #8a8676;
+  color: var(--muted);
   font-size: 1.85rem;
   line-height: 1;
   cursor: pointer;
 
-  &:hover { color: #2a2920; }
+  &:hover { color: var(--ink); }
 }
 
 .recipe-timer-display {
@@ -1537,7 +1682,7 @@ table {
   font-weight: 700;
   text-align: center;
   letter-spacing: 1px;
-  color: #2a2920;
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1559,24 +1704,24 @@ table {
   align-items: center;
   justify-content: center;
   padding: 8px 0;
-  border: 1px solid #e3e1d6;
+  border: 1px solid var(--border);
   border-radius: 9px;
-  background: #F8F7F0;
-  color: #2a2920;
+  background: var(--page);
+  color: var(--ink);
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 
-  &:hover { background: #EEEDF8; border-color: #5654A2; color: #5654A2; }
+  &:hover { background: var(--wash); border-color: var(--accent); color: var(--accent); }
 
   svg { width: 18px; height: 18px; }
 }
 
 .recipe-timer-btn.rt-toggle {
-  background: #5654A2;
-  border-color: #5654A2;
-  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
 
-  &:hover { background: #45438a; border-color: #45438a; color: #fff; }
+  &:hover { background: var(--accent-active); border-color: var(--accent-active); color: var(--on-accent); }
 }
 
 .recipe-timer-track {
@@ -1584,11 +1729,11 @@ table {
   height: 8px;
   margin-top: 16px;
   border-radius: 999px;
-  background: #EEEDF8;
+  background: var(--wash);
   cursor: pointer;
   touch-action: none; // let pointer-drag scrub instead of scrolling the page
 
-  &:focus-visible { outline: 2px solid #5654A2; outline-offset: 3px; }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 }
 
 .recipe-timer-fill {
@@ -1596,7 +1741,7 @@ table {
   width: 100%;
   height: 100%;
   border-radius: inherit;
-  background: #5654A2;
+  background: var(--accent);
   transition: width 0.25s linear, opacity 0.2s ease;
 }
 
@@ -1610,9 +1755,8 @@ table {
   height: 14px;
   transform: translate(50%, -50%);
   border-radius: 50%;
-  background: #5654A2;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(40, 38, 30, 0.25);
+  background: var(--accent);
+  border: 2px solid var(--page);
 }
 
 // Paused (and not yet started): bar freezes and dims to read as inactive.
@@ -1647,14 +1791,14 @@ html.rt-scrubbing * {
   align-items: center;
   text-align: center;
   padding: 14px 12px;
-  background: #FBFAF6;
-  border: 1px solid #E5E4DC;
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 12px;
   transition: background 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    background: #F0EFF8;
-    border-color: #C4C3E8;
+    background: var(--wash);
+    border-color: var(--wash-edge);
   }
 }
 
@@ -1662,7 +1806,7 @@ html.rt-scrubbing * {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: #EEEDF8;
+  background: var(--wash);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1672,7 +1816,7 @@ html.rt-scrubbing * {
   svg {
     width: 20px;
     height: 20px;
-    color: #5654A2;
+    color: var(--accent);
     stroke-width: 1.8;
   }
 }
@@ -1680,13 +1824,13 @@ html.rt-scrubbing * {
 .pairing-label {
   font-size: 1.02em;
   font-weight: 600;
-  color: #2a2920;
+  color: var(--ink);
   margin-bottom: 4px;
 }
 
 .pairing-desc {
   font-size: 0.84em;
-  color: #6B6566;
+  color: var(--muted);
   line-height: 1.4;
 }
 
@@ -1712,13 +1856,13 @@ html.rt-scrubbing * {
 }
 
 .recipe-faq details {
-  background: #FBFAF6;
-  border: 1px solid #E5E4DC;
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
   transition: border-color 0.15s ease;
 
-  &[open] { border-color: #C4C3E8; }
+  &[open] { border-color: var(--wash-edge); }
 }
 
 .recipe-faq summary {
@@ -1727,18 +1871,18 @@ html.rt-scrubbing * {
   gap: 10px;
   padding: 12px 14px;
   font-weight: 600;
-  color: #2a2920;
+  color: var(--ink);
   cursor: pointer;
   list-style: none;
   user-select: none;
   transition: background 0.15s ease;
 
   &::-webkit-details-marker { display: none; }
-  &:hover { background: #F0EFF8; }
+  &:hover { background: var(--wash); }
 }
 
 .recipe-faq details[open] summary {
-  background: #F0EFF8;
+  background: var(--wash);
 }
 
 .recipe-faq summary::before {
@@ -1746,8 +1890,8 @@ html.rt-scrubbing * {
   font-family: 'Maple Mono', monospace;
   font-size: 0.85em;
   font-weight: bold;
-  color: #5654A2;
-  background: #EEEDF8;
+  color: var(--accent);
+  background: var(--wash);
   width: 24px;
   height: 24px;
   border-radius: 6px;
@@ -1762,7 +1906,7 @@ html.rt-scrubbing * {
   margin-left: auto;
   font-family: 'Maple Mono', monospace;
   font-size: 1.15em;
-  color: #9B8EA0;
+  color: var(--muted);
   transition: transform 0.2s ease;
 }
 
@@ -1772,36 +1916,32 @@ html.rt-scrubbing * {
 
 .recipe-faq-answer {
   padding: 0 14px 14px 48px;
-  color: #564232;
+  color: var(--ink);
   line-height: 1.6;
   font-size: 0.95em;
 }
 
 // ---- Blog Listing Cards ----
+// A card that is a link: the panel's ground, a hairline, radius 12. Under
+// the pointer the edge takes the accent; a press is a small scale. No
+// shadow at rest, and none under the pointer.
 
 .quarto-post {
   position: relative;
-  border: 1.5px solid #D4D3EE !important;
-  border-radius: 14px;
+  border: 1px solid var(--border) !important;
+  border-radius: $border-radius-lg;
   padding: 1.25rem 1.5rem;
-  margin-bottom: 1.25rem;
-  background: #F8F7F0;
-  transition: border-color 0.25s ease,
-              box-shadow 0.25s ease,
-              transform 0.12s ease;
+  margin-bottom: 1rem;
+  background: var(--panel);
+  transition: border-color 160ms var(--ease), transform 120ms var(--ease);
 
-  // Glow instead of lift, matching the listing grid cards and pantry hero.
-  &:hover {
-    border-color: #5654A2 !important;
-    box-shadow: 0 0 16px 1px rgba(86, 84, 162, 0.22),
-                0 6px 16px rgba(86, 84, 162, 0.16);
-  }
-  &:active {
-    border-color: #45438a !important;
-    box-shadow: 0 0 9px 0 rgba(86, 84, 162, 0.18),
-                0 3px 8px rgba(86, 84, 162, 0.16);
-    transform: scale(0.992);
-  }
+  &:hover { border-color: var(--accent) !important; }
+  &:active { border-color: var(--accent-active) !important; transform: scale(0.992); }
+
+  .listing-title { font-size: 1.125rem; font-weight: 600; }
+  .listing-title a { color: var(--ink); text-decoration: none; }
+  .listing-description { color: var(--muted); font-size: 0.95rem; }
+  .listing-date, .listing-author { color: var(--muted); font-size: 0.8rem; }
 
   // Stretch the title link to cover the entire card
   .listing-title a::after {
@@ -1812,9 +1952,7 @@ html.rt-scrubbing * {
   }
 
   // Add space between title and category badges
-  .listing-categories {
-    margin-top: 0.4rem;
-  }
+  .listing-categories { margin-top: 0.4rem; gap: 0.3rem; }
 
   // Raise category badges above the overlay so they remain clickable
   .quarto-category,
@@ -1824,13 +1962,11 @@ html.rt-scrubbing * {
   }
 
   // Vertically center the thumbnail within the card
-  .thumbnail {
-    align-self: center;
-  }
+  .thumbnail { align-self: center; }
 
   // Round the banner image to match card corners
   .thumbnail img {
-    border-radius: 10px;
+    border-radius: $border-radius;
     overflow: hidden;
   }
 }
@@ -1840,43 +1976,38 @@ html.rt-scrubbing * {
 .card {
   --bs-card-spacer-y: 0.6rem;
   --bs-card-spacer-x: 0.8rem;
+  --bs-card-bg: var(--panel);
+  --bs-card-border-color: var(--border);
+  --bs-card-border-radius: #{$border-radius-lg};
+  --bs-card-inner-border-radius: calc(#{$border-radius-lg} - 1px);
+  --bs-card-color: var(--ink);
 }
 
+// The grid card of a listing (research, recipes, cocktails) is a link: the
+// same hover and press as a blog card.
 .quarto-grid-item {
-  transition: border-color 0.25s ease,
-              box-shadow 0.25s ease,
-              transform 0.12s ease;
+  transition: border-color 160ms var(--ease), transform 120ms var(--ease);
 
-  // Glow instead of lift, matching the pantry hero (accent-purple halo for light cards).
-  &:hover {
-    border-color: #5654A2 !important;
-    box-shadow: 0 0 16px 1px rgba(86, 84, 162, 0.22),
-                0 6px 16px rgba(86, 84, 162, 0.16);
-  }
-  // Pressed: tighter, dimmer glow with a faint inward press (no lift).
-  &:active {
-    border-color: #45438a !important;
-    box-shadow: 0 0 9px 0 rgba(86, 84, 162, 0.18),
-                0 3px 8px rgba(86, 84, 162, 0.16);
-    transform: scale(0.992);
-  }
+  &:hover { border-color: var(--accent) !important; }
+  &:active { border-color: var(--accent-active) !important; transform: scale(0.992); }
+
+  .card-title { font-size: 1.125rem; font-weight: 600; }
+  .card-title a, a.card-title { color: var(--ink); text-decoration: none; }
+  .card-text { color: var(--muted); font-size: 0.95rem; }
+  .listing-date, .listing-author, .card-attribution { color: var(--muted); font-size: 0.8rem; }
 }
 
 .custom-card {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-color: #E5DFD5;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
-
-  &:hover {
-    box-shadow: 0 4px 12px rgba(86, 84, 162, 0.15);
-    border-color: #5654A2;
-  }
+  border-color: var(--border);
+  transition: border-color 160ms var(--ease);
+  &:hover { border-color: var(--accent); }
 }
 
 .callout.callout-style-default {
-  background-color: #ecf4ec !important;
+  background-color: var(--panel) !important;
+  border-color: var(--border);
 
-  .callout-header { background-color: #deeede !important; }
+  .callout-header { background-color: var(--panel-2) !important; }
 }
 
 // ---- Works ----
@@ -1937,14 +2068,14 @@ $pres-filter-gap: 0px;
   top: 5rem;
   align-self: flex-start;
   padding: 12px;
-  border: 1px solid #E7E3D7;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #FBFAF6;
+  background: var(--panel);
 
   // Default accent (the "All" button); category buttons override via variant class.
-  --pa: #5654A2;
-  --pa-bg: #EEEDF8;
-  --pa-bd: #D6CFEE;
+  --pa: var(--accent);
+  --pa-bg: var(--wash);
+  --pa-bd: var(--wash-edge);
 }
 
 .pres-filter-title {
@@ -1954,7 +2085,7 @@ $pres-filter-gap: 0px;
   font-weight: bold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #A79E8B;
+  color: var(--muted);
 }
 
 .pres-filter-list {
@@ -1977,7 +2108,7 @@ $pres-filter-gap: 0px;
   font-size: 0.82rem;
   font-weight: bold;
   letter-spacing: 0.01em;
-  color: #6E6552;
+  color: var(--muted);
   text-align: left;
   text-decoration: none;
   cursor: pointer;
@@ -2105,7 +2236,7 @@ $pres-filter-gap: 0px;
     position: relative;
     overflow: hidden;
     flex: 0 0 auto;
-    border-right: 1px solid #E7E3D7;
+    border-right: 1px solid var(--border);
     font-family: 'Maple Mono', monospace;
     font-size: 0.72rem;
     font-weight: bold;
@@ -2142,14 +2273,14 @@ $pres-filter-gap: 0px;
 .pres-section {
   margin: 2.4rem 0;
   scroll-margin-top: 5.5rem; // clears the fixed navbar for anchor jumps
-  --pa: #5654A2;
-  --pa-bg: #EEEDF8;
-  --pa-bd: #D6CFEE;
+  --pa: var(--accent);
+  --pa-bg: var(--wash);
+  --pa-bd: var(--wash-edge);
   --pa-gl: rgba(86, 84, 162, 0.22);
 }
 .pres-section:first-child { margin-top: 1.2rem; }
 
-.pres-violet { --pa: #5F57A8; --pa-bg: #EEECF8; --pa-bd: #D7D1EE; --pa-gl: rgba(95, 87, 168, 0.22); }
+.pres-violet { --pa: var(--accent); --pa-bg: var(--wash); --pa-bd: var(--wash-edge); }
 .pres-teal   { --pa: #3D8B7A; --pa-bg: #E6F1EE; --pa-bd: #C4E0D9; --pa-gl: rgba(61, 139, 122, 0.22); }
 .pres-rose   { --pa: #BC5A79; --pa-bg: #F9EBEF; --pa-bd: #EFCDD8; --pa-gl: rgba(188, 90, 121, 0.24); }
 .pres-blue   { --pa: #3F72AF; --pa-bg: #E9F0F9; --pa-bd: #C7DBEF; --pa-gl: rgba(63, 114, 175, 0.22); }
@@ -2209,9 +2340,9 @@ $pres-filter-gap: 0px;
   padding: 16px 18px;
   // (a fainter mix than .pub-ref's, so the citation box inside paper cards
   // still reads as its own deeper layer).
-  border: 1px solid color-mix(in srgb, var(--pa-bd) 40%, #E5E4DC);
+  border: 1px solid color-mix(in srgb, var(--pa-bd) 40%, var(--border));
   border-radius: 12px;
-  background: color-mix(in srgb, var(--pa-bg) 45%, #FBFAF6);
+  background: color-mix(in srgb, var(--pa-bg) 45%, var(--panel));
 }
 
 .presentation-content { min-width: 0; }
@@ -2220,7 +2351,7 @@ $pres-filter-gap: 0px;
   font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.4;
-  color: #2a2438;
+  color: var(--ink);
   margin-bottom: 0.6rem;
   // Keep long titles clear of the corner index tab.
   padding-right: 2.4rem;
@@ -2268,7 +2399,7 @@ $pres-filter-gap: 0px;
 .event-location {
   flex: 1;
   min-width: 0;
-  color: #564232;
+  color: var(--ink);
   line-height: 1.45;
 
   a {
@@ -2304,7 +2435,7 @@ $pres-filter-gap: 0px;
   gap: 9px;
   margin-top: 14px;
   padding-top: 14px;
-  border-top: 1px solid #ECE9E0;
+  border-top: 1px solid var(--border);
 }
 
 .pres-btn {
@@ -2334,9 +2465,8 @@ $pres-filter-gap: 0px;
   &:hover {
     background: var(--pa);
     border-color: var(--pa);
-    color: #F8F7F0;
+    color: var(--page);
     text-decoration: none;
-    box-shadow: 0 2px 10px var(--pa-gl);
   }
   &:active { transform: scale(0.97); }
   &:focus-visible { outline: 2px solid var(--pa); outline-offset: 2px; }
@@ -2354,13 +2484,13 @@ $pres-filter-gap: 0px;
   border-radius: 9px;
   // Deeper than the card's 45% wash but still lighter than the buttons, so
   // page → card → citation → button steps stay distinct.
-  background: color-mix(in srgb, var(--pa-bg) 75%, #FBFAF6);
+  background: color-mix(in srgb, var(--pa-bg) 75%, var(--panel));
 }
 
 .pub-ref-text {
   font-size: 0.84rem;
   line-height: 1.55;
-  color: #514b45;
+  color: var(--muted);
   // Long DOI URLs have no natural break points — let them wrap mid-string
   // instead of overflowing the card on narrow screens.
   overflow-wrap: anywhere;
@@ -2380,7 +2510,7 @@ $pres-filter-gap: 0px;
   height: 30px;
   border: 1px solid var(--pa-bd);
   border-radius: 7px;
-  background: #FBFAF6;
+  background: var(--panel);
   color: var(--pa);
   cursor: pointer;
   will-change: transform;
@@ -2389,10 +2519,10 @@ $pres-filter-gap: 0px;
 
   i { font-size: 0.9rem; }
 
-  &:hover { background: var(--pa); border-color: var(--pa); color: #F8F7F0; }
+  &:hover { background: var(--pa); border-color: var(--pa); color: var(--page); }
   &:active { transform: scale(0.9); }
   &:focus-visible { outline: 2px solid var(--pa); outline-offset: 2px; }
-  &.is-copied { background: var(--pa); border-color: var(--pa); color: #F8F7F0; }
+  &.is-copied { background: var(--pa); border-color: var(--pa); color: var(--page); }
   &.is-copied i { font-size: 1.15rem; }
 }
 
@@ -2407,21 +2537,53 @@ $pres-filter-gap: 0px;
 // ---- Layout ----
 
 #quarto-sidebar-toc-left,
-nav.sidebar.sidebar-navigation:not(.rollup) { background-color: #F8F7F0 !important; }
+nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !important; }
 
-body.quarto-dark #quarto-sidebar-toc-left,
-body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color: #1a1f2e !important; }
+// ---- Navbar ----
+// The frame: the accent's night shade in both appearances, the name in its light
+// shade in the wordmark face, the links in the paper colour. Nothing but
+// opacity marks the link you are on.
 
-.sidebar-title { color: #ECF0F1; }
+// An icon drawn from an SVG mask in the current colour, so it takes the
+// frame's paper without a second file per appearance.
+@mixin glyph($size: 1.25rem) {
+  content: "";
+  display: inline-block;
+  flex: none;
+  width: $size;
+  height: $size;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
 
 .navbar {
+  background-color: var(--frame) !important;
+  border-bottom: none;
   padding-top: 0.3rem !important;
   padding-bottom: 0.3rem !important;
   // Pin every stage to the desktop navbar height (~56px). The collapsed stages
   // are naturally shorter (flattened brand + hamburger), so this floors them to
-  // match; the taller open-hamburger dropdown can still grow past it. (px, not
-  // rem — the site's root font is 17px, so 3.5rem would overshoot.)
+  // match; the taller open-hamburger dropdown can still grow past it.
   min-height: 56px;
+
+  .navbar-title, .navbar-nav .nav-link, .navbar-brand, .aa-DetachedSearchButton,
+  .quarto-navbar-tools a, .bi {
+    color: var(--paper) !important;
+  }
+
+  .navbar-title {
+    font-family: var(--font-wordmark);
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--accent-on-frame) !important;
+  }
+
+  .navbar-toggler {
+    border-color: var(--w-border);
+    &:focus { box-shadow: 0 0 0 2px var(--w-border); }
+  }
 }
 
 .navbar-nav .nav-link,
@@ -2429,43 +2591,45 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
 .quarto-navbar-tools > .quarto-navbar-tool {
   text-decoration: none;
   border-radius: 6px;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  opacity: 0.78;
+  transition: opacity 160ms var(--ease), background-color 160ms var(--ease);
 
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.14);
-    color: #ffffff;
-    text-decoration: none;
-  }
+  &:hover, &:focus-visible { opacity: 1; text-decoration: none; }
+  &.active { opacity: 1; }
+  &:active { background-color: var(--w-bg); }
+}
 
-  &.active {
-    background-color: rgba(255, 255, 255, 0.22);
-    color: #ffffff;
-  }
-
-  &:active {
-    background-color: rgba(255, 255, 255, 0.30);
-  }
+// The tools (the social icons, the appearance toggle) are icons of one size
+// in a row; under the pointer each takes a faint wash, nothing more.
+.quarto-navbar-tools > a,
+.quarto-navbar-tools > .quarto-navbar-tool {
+  &:hover, &:focus-visible { background-color: var(--w-bg); }
+  &:active { background-color: var(--w-bg-hover); }
 }
 
 .navbar-nav .nav-link {
   padding: 0.2rem 0.55rem !important;
+  font-size: 0.95rem;
 }
 
-// Dropdown menu inside the navbar. Default Bootstrap dropdowns stretch to a
-// 10rem min-width, which looks awkward for short labels like "菜谱". Shrink to
-// fit content and left-align each item so the icons stay vertically aligned.
+// The search is a widget on the frame.
+.navbar .aa-DetachedSearchButton {
+  background: transparent !important;
+  border: none !important;
+  opacity: 0.78;
+  transition: opacity 160ms var(--ease);
+  &:hover { opacity: 1; }
+}
+
+// The dropdown floats, so it takes the popover's ground and the one shadow.
 .navbar .dropdown-menu {
   min-width: 0;
   width: max-content;
-  padding: 0;
-  // Bootstrap's real 1px border curves at the outer radius while overflow:hidden
-  // clips children at the inner (radius - 1px), so the two curves disagree and
-  // leave white slivers at the corners on hover. Paint the divider as an outset
-  // box-shadow instead. Inset works in Chromium/Gecko but Safari paints child
-  // backgrounds over the inset ring, so use outset — sits outside the element,
-  // unaffected by overflow:hidden, and shares the same border-radius as the fill.
-  border: 0;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+  padding: 4px;
+  border: 1px solid var(--pop-border);
+  border-radius: 10px;
+  background: var(--pop-bg);
+  box-shadow: var(--shadow-float);
   overflow: hidden;
 
   // Fade + slide the menu open/closed. Bootstrap only flips display: none ⇄
@@ -2475,11 +2639,11 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   // old instant toggle. Navbar dropdowns are statically positioned (no Popper
   // inline transform), so animating transform here is safe.
   opacity: 0;
-  transform: translateY(-0.35rem);
+  transform: translateY(-6px);
   transition:
-    opacity 0.18s ease,
-    transform 0.18s ease,
-    display 0.18s allow-discrete;
+    opacity 240ms var(--ease),
+    transform 240ms var(--ease),
+    display 240ms allow-discrete;
 
   &.show {
     opacity: 1;
@@ -2490,18 +2654,13 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
 @starting-style {
   .navbar .dropdown-menu.show {
     opacity: 0;
-    transform: translateY(-0.35rem);
+    transform: translateY(-6px);
   }
 }
 
 // Roll the toggle's caret while the menu is open, matching the menu timing.
-.navbar .dropdown-toggle::after {
-  transition: transform 0.18s ease;
-}
-
-.navbar .dropdown-toggle[aria-expanded="true"]::after {
-  transform: rotate(180deg);
-}
+.navbar .dropdown-toggle::after { transition: transform 240ms var(--ease); }
+.navbar .dropdown-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
 
 @media (prefers-reduced-motion: reduce) {
   .navbar .dropdown-menu,
@@ -2511,13 +2670,11 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
 }
 
 // In the collapsed (hamburger) navbar Bootstrap lays the dropdown out in-flow
-// (position: static), so opening it grows the purple navbar background with no
-// way to animate the height. Float it over the page content instead — same
+// (position: static), so opening it grows the navbar background with no way
+// to animate the height. Float it over the page content instead — same
 // overlay behavior as the desktop dropdown — so the background never resizes.
 @media (max-width: 991.98px) {
-  .navbar .nav-item.dropdown {
-    position: relative;
-  }
+  .navbar .nav-item.dropdown { position: relative; }
 
   .navbar .nav-item.dropdown .dropdown-menu {
     position: absolute;
@@ -2528,23 +2685,26 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   // Bootstrap's .navbar-nav-scroll wraps the nav links in overflow: auto, which
   // clips the now-overlaying dropdown. The nav is 5 short items and never needs
   // to scroll, so let the dropdown escape.
-  .navbar .navbar-nav-scroll {
-    overflow: visible;
-  }
+  .navbar .navbar-nav-scroll { overflow: visible; }
 }
 
 .navbar .dropdown-menu .dropdown-item {
-  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 0.5rem;
   padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  color: var(--ink) !important;
+  text-decoration: none;
+  transition: background 160ms var(--ease);
 
-  &:hover,
-  &:focus,
-  &.active {
+  &:hover, &:focus, &.active {
+    background: var(--panel-2);
+    color: var(--ink) !important;
     text-decoration: none;
   }
+  .bi { color: var(--muted) !important; }
 }
 
 .quarto-navbar-tools > a,
@@ -2561,18 +2721,24 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   display: flex !important;
   align-items: center;
 
-  // Theme toggle (Bootstrap .form-check) inherits margin + baseline from the
-  // form control, which pushes the pill below the icon row. Reset it.
-  .quarto-color-scheme-toggle {
+  // The appearance toggle is one more icon in the tools row, the same size
+  // and weight as its neighbours. The appearance follows the system until
+  // this pins one; the icon shows the appearance a press would bring: the
+  // moon on the light page, the sun on the dark. Tabler's moon and sun,
+  // inlined.
+  > a.quarto-color-scheme-toggle {
     display: inline-flex;
     align-items: center;
-    margin: 0;
+    justify-content: center;
     line-height: 1;
 
-    .form-check,
-    .form-check-input {
+    .bi::before {
+      @include glyph(17px);
+      --icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /></svg>');
       margin: 0;
-      vertical-align: middle;
+    }
+    &.alternate .bi::before {
+      --icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>');
     }
   }
 
@@ -2589,36 +2755,14 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
 // Quarto's `navbar-expand-lg` collapses the nav to a hamburger below 992px and
 // expands it above. That is the lowest clean point: Quarto only applies the full
 // desktop-nav layout (item order, spacing, flex sizing) at >= 992px, so the nav
-// must not be forced to expand any narrower. Above 992px the content has room to
-// spare, so this is where the expanded desktop nav lives; below it, the hamburger.
+// must not be forced to expand any narrower.
 
-// Horizontal nav styling (single row, gaps, vertical dividers) — expanded only.
 @media (min-width: 992px) {
   .navbar-nav {
     flex-wrap: nowrap !important;
     white-space: nowrap;
     .nav-item { flex-shrink: 1; }
-
-    // Spacing + dividers between left-nav items (skip right-side .ms-auto group)
-    &:not(.ms-auto) {
-      gap: 1rem;
-
-      .nav-item + .nav-item {
-        position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          left: -0.5rem;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 1px;
-          height: 1rem;
-          background-color: rgba(255, 255, 255, 0.35);
-          pointer-events: none;
-        }
-      }
-    }
+    &:not(.ms-auto) { gap: 0.35rem; }
   }
 }
 
@@ -2671,34 +2815,58 @@ body.quarto-dark nav.sidebar.sidebar-navigation:not(.rollup) { background-color:
   }
 }
 
+// ---- Footer ----
+// The frame again: one line fixed at the window's foot on every page, as the
+// navbar is at its head. The page leaves its height free under the words.
+
+$footer-h: 2.25rem;
+
+body { padding-bottom: $footer-h; }
+
 .nav-footer {
   position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  height: 2rem;
+  z-index: 1000;
+  height: $footer-h;
   min-height: unset !important;
   padding: 0 !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  z-index: 1000;
+  background-color: var(--frame) !important;
+  border-top: none !important;
+  color: var(--paper);
+  font-size: 0.8rem;
+  line-height: 1;
+  opacity: 0.9;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+
+  .nav-footer-left, .nav-footer-center, .nav-footer-right {
+    order: unset !important;
+    flex: unset !important;
+    min-height: unset !important;
+    margin: 0 !important;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  .nav-footer-center { justify-content: center; }
+
+  p { margin: 0; display: contents; }
+  a {
+    color: var(--accent-on-frame);
+    font-family: var(--font-wordmark);
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-left: 0.3em;
+    &:hover { text-decoration: underline; }
+  }
 }
 
 footer.footer .nav-footer { padding: 0 !important; }
-
-.nav-footer-center a {
-  color: $primary;
-  &:hover { text-decoration: underline; }
-}
-
-.nav-footer-left,
-.nav-footer-center,
-.nav-footer-right {
-  flex: 1 1 0px !important;
-  min-height: unset !important;
-  margin: 0 !important;
-  order: unset !important;
-  white-space: nowrap;
-}
 
 // ---- Hide page descriptions (kept in metadata for SEO) ----
 
@@ -2707,38 +2875,109 @@ div.quarto-about-trestles .about-entity .description {
   display: none;
 }
 
-// ---- Blog post description block (light grey background) ----
+// ---- Title block ----
+// The page's h1, the one line under it on a post (its description, on the
+// panel's ground), then the author and date in the chrome's face.
+
+#title-block-header {
+  margin-bottom: 1.75rem;
+
+  .title { margin: 0 0 0.5rem; }
+
+  .quarto-title-meta-heading {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 1;
+  }
+  .quarto-title-meta-contents {
+    font-size: 0.85rem;
+    color: var(--ink);
+    p { margin: 0; }
+  }
+}
 
 #title-block-header:has(.quarto-title-meta-heading) .description {
-  background-color: #EFEEE7;
-  color: #1a1a1a;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--ink);
   padding: 0.85rem 1.1rem;
-  border-radius: 8px;
+  border-radius: $border-radius;
   margin: 0.75rem 0 0.5rem;
-}
 
-// Force dark text on the light grey block even in dark mode
-#title-block-header:has(.quarto-title-meta-heading) .description,
-#title-block-header:has(.quarto-title-meta-heading) .description p {
-  color: #1a1a1a !important;
-}
-
-#title-block-header:has(.quarto-title-meta-heading) .description p:last-child {
-  margin-bottom: 0;
+  p { color: var(--ink); }
+  p:last-child { margin-bottom: 0; }
 }
 
 // Tighten the gap between the description block and the Author/Published row
 #title-block-header:has(.quarto-title-meta-heading) .quarto-title-meta {
   margin-top: 0 !important;
-  padding-top: 0.25rem !important;
+  padding-top: 0.5rem !important;
 }
 
 // ---- Divider between title block and article body ----
 
 #title-block-header:has(.quarto-title-meta-heading) {
-  border-bottom: 1px solid #D4D3CC;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+// ---- Table of contents ----
+// A rail: the muted ink on a hairline, the entry you are on in the ink with
+// the accent on its rail.
+
+.sidebar nav[role="doc-toc"] {
+  font-size: 0.85rem;
+
+  > h2#toc-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+    border: none;
+    padding: 0;
+  }
+
+  ul a, > ul a {
+    color: var(--muted);
+    text-decoration: none;
+    border-left: 1px solid var(--border);
+    padding: 0.2rem 0 0.2rem 0.85rem;
+    transition: color 160ms var(--ease), border-left-color 160ms var(--ease);
+
+    &:hover { color: var(--ink); }
+    &.active {
+      color: var(--ink);
+      border-left-color: var(--accent);
+    }
+  }
+}
+
+.anchorjs-link {
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  &:hover { color: var(--link) !important; }
+}
+
+// ---- Search ----
+
+.aa-DetachedContainer, .aa-Panel {
+  --bs-body-bg: var(--pop-bg);
+  background: var(--pop-bg);
+  color: var(--ink);
+  border-color: var(--pop-border);
+}
+
+// ---- Figures ----
+
+figcaption, .figure-caption {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
 }
 
 // ---- Categories sidebar breathing room on stage 2 (768-991px) ----
@@ -2765,41 +3004,43 @@ div.quarto-about-trestles .about-entity .description {
 }
 
 // ---- About Page Social Links ----
+// The trestles template's icon links as round pills: a hairline, the muted
+// ink, the accent under the pointer. Nothing scales.
 
 .about-links {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
   justify-content: center !important;
-  gap: 0.75rem !important;
+  gap: 0.6rem !important;
 }
 
 .about-link {
-  width: 2.75rem !important;
-  height: 2.75rem !important;
-  min-width: 2.75rem !important;
-  max-width: 2.75rem !important;
-  flex: 0 0 2.75rem !important;
+  width: 2.6rem !important;
+  height: 2.6rem !important;
+  min-width: 2.6rem !important;
+  max-width: 2.6rem !important;
+  flex: 0 0 2.6rem !important;
   padding: 0 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  border: 1px solid var(--border-2) !important;
   border-radius: 50% !important;
-  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease !important;
+  background: transparent !important;
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  transition: color 160ms var(--ease), border-color 160ms var(--ease),
+              background 160ms var(--ease), transform 120ms var(--ease) !important;
 
-  // Promote to its own compositor layer so the scale-up is interpolated on
-  // the GPU instead of re-rasterized each frame — kills the subpixel shake.
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: transform;
-
-  &:hover {
-    transform: scale(1.10) translateZ(0) !important;
-    color: #5654A2 !important;
-    background-color: rgba(86, 84, 162, 0.1) !important;
+  &:hover, &:focus-visible {
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+    background: var(--wash) !important;
   }
+  &:active { transform: scale(0.96); }
 
-  i, .bi { font-size: 1.2rem !important; margin: 0 !important; }
+  i, .bi { font-size: 1.1rem !important; margin: 0 !important; }
 }
 
 .about-link-text {
@@ -2809,17 +3050,33 @@ div.quarto-about-trestles .about-entity .description {
   margin: 0 !important;
   padding: 0 !important;
 
-  i { font-size: 1.2rem !important; margin: 0 !important; }
+  i { font-size: 1.1rem !important; margin: 0 !important; }
+}
+
+// The homepage (trestles): the name under the picture in the wordmark face.
+div.quarto-about-trestles .about-entity .title {
+  font-family: var(--font-wordmark);
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+}
+
+div.quarto-about-trestles .about-entity .about-image {
+  border: 1px solid var(--border);
 }
 
 // ---- Scroll Animations ----
+// A card rises 12px and fades as it comes into view, once, cards in a grid a
+// beat apart (styles.js sets --anim-delay). Not for someone who asked the
+// system for less motion.
 
 @media (prefers-reduced-motion: no-preference) {
   .animate-on-scroll {
     opacity: 0;
-    transform: translateY(9px);
-    transition: opacity 0.22s ease var(--anim-delay, 0ms),
-                transform 0.22s ease var(--anim-delay, 0ms);
+    transform: translateY(12px);
+    transition: opacity 500ms var(--ease) var(--anim-delay, 0ms),
+                transform 600ms var(--ease) var(--anim-delay, 0ms);
 
     &.is-visible {
       opacity: 1;
@@ -2828,267 +3085,47 @@ div.quarto-about-trestles .about-entity .description {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 // ---- Dark Mode ----
+// Nearly everything follows the tokens, which `body.quarto-dark` resets at
+// the top of the sheet. What remains here is what differs by meaning in the
+// dark appearance: the tinted callouts and tips, and the works sections'
+// accent sets, which lighten their text and thin their tints.
 
 body.quarto-dark {
-  background-color: #1a1f2e;
-
-  .navbar-nav a { color: #ffffff; }
-
-  :not(pre) > code { background-color: rgba(255, 255, 255, 0.1); }
-
-  blockquote {
-    background-color: #292746;
-    border-color: #7c7ac4;
-  }
-
-  thead {
-    border-top: solid var(--bs-border-color);
-    border-bottom: solid var(--bs-border-color);
-  }
-
-  .custom-card {
-    background-color: #232b3e;
-    border-color: var(--bs-border-color);
-
-    &:hover {
-      box-shadow: 0 4px 12px rgba(124, 122, 196, 0.2);
-      border-color: #7c7ac4;
-    }
-  }
-
   .callout.callout-style-default {
     background-color: #192b19 !important;
     .callout-header { background-color: #1f3b1f !important; }
   }
 
-  // Dark-mode accent sets — lighter accent text, translucent tints.
-  .pres-violet { --pa: #b0a8e6; --pa-bg: rgba(124, 122, 196, 0.15); --pa-bd: rgba(124, 122, 196, 0.42); --pa-gl: rgba(124, 122, 196, 0.34); }
-  .pres-teal   { --pa: #7fcbb9; --pa-bg: rgba(76, 160, 142, 0.15);  --pa-bd: rgba(76, 160, 142, 0.42);  --pa-gl: rgba(76, 160, 142, 0.34); }
-  .pres-rose   { --pa: #e39db1; --pa-bg: rgba(188, 90, 121, 0.16);  --pa-bd: rgba(188, 90, 121, 0.44);  --pa-gl: rgba(188, 90, 121, 0.34); }
-  .pres-blue   { --pa: #8fb6e6; --pa-bg: rgba(74, 130, 190, 0.15);  --pa-bd: rgba(74, 130, 190, 0.42);  --pa-gl: rgba(74, 130, 190, 0.34); }
-  .pres-amber  { --pa: #e0aa7d; --pa-bg: rgba(198, 133, 84, 0.15);  --pa-bd: rgba(198, 133, 84, 0.44);  --pa-gl: rgba(198, 133, 84, 0.34); }
+  .pres-teal   { --pa: #7fcbb9; --pa-bg: rgba(76, 160, 142, 0.15);  --pa-bd: rgba(76, 160, 142, 0.42); }
+  .pres-rose   { --pa: #e39db1; --pa-bg: rgba(188, 90, 121, 0.16);  --pa-bd: rgba(188, 90, 121, 0.44); }
+  .pres-blue   { --pa: #8fb6e6; --pa-bg: rgba(74, 130, 190, 0.15);  --pa-bd: rgba(74, 130, 190, 0.42); }
+  .pres-amber  { --pa: #e0aa7d; --pa-bg: rgba(198, 133, 84, 0.15);  --pa-bd: rgba(198, 133, 84, 0.44); }
 
   .pres-filter {
-    background: #232b3e;
-    border-color: rgba(255, 255, 255, 0.08);
-    --pa: #b0a8e6;
-    --pa-bg: rgba(124, 122, 196, 0.15);
-    --pa-bd: rgba(124, 122, 196, 0.42);
+    --pa: var(--accent);
+    --pa-bg: rgba(176, 168, 230, 0.14);
+    --pa-bd: rgba(176, 168, 230, 0.4);
   }
-  .pres-filter-title { color: #7d8598; }
-  .pres-filter-btn { color: #aeb4c2; }
-  // Re-assert the accent color: the plain dark rule above out-specifies the
-  // base :hover/.is-active color rules, and the button's own color is now
-  // the only active indicator besides the glider.
-  .pres-filter-btn:hover,
-  .pres-filter-btn.is-active { color: var(--pa); }
-  .pres-filter-current { border-right-color: rgba(255, 255, 255, 0.08); }
 
   .presentation-box {
-    // Same accent wash as light mode, mixed into the dark card color —
-    // fainter than .pub-ref's 75% so the citation box keeps its own layer.
-    background: color-mix(in srgb, var(--pa-bg) 45%, #232b3e);
-    border-color: color-mix(in srgb, var(--pa-bd) 30%, rgba(255, 255, 255, 0.08));
+    // The accent wash mixed into the dark card colour, fainter than
+    // .pub-ref's so the citation box keeps its own layer.
+    background: color-mix(in srgb, var(--pa-bg) 45%, var(--panel));
+    border-color: color-mix(in srgb, var(--pa-bd) 30%, var(--border));
   }
-
-  .presentation-title { color: var(--bs-body-color); }
-  .event-location { color: var(--bs-secondary-color); }
-
-  .presentation-actions { border-top-color: rgba(255, 255, 255, 0.08); }
-
-  .pres-btn:hover { color: #14151f; }
-
-  .pub-ref { background: color-mix(in srgb, var(--pa-bg) 75%, #232b3e); }
+  .pub-ref { background: color-mix(in srgb, var(--pa-bg) 75%, var(--panel)); }
   .pub-ref-text { color: rgba(255, 255, 255, 0.78); }
-  .pub-ref-copy { background: #232b3e; }
-  .pub-ref-copy:hover,
-  .pub-ref-copy.is-copied { color: #14151f; }
 
-  .quarto-grid-item:hover {
-    border-color: #7c7ac4 !important;
-    box-shadow: 0 0 16px 1px rgba(124, 122, 196, 0.3),
-                0 6px 16px rgba(124, 122, 196, 0.2);
-  }
-  .quarto-grid-item:active {
-    border-color: #9694d8 !important;
-    box-shadow: 0 0 9px 0 rgba(124, 122, 196, 0.26),
-                0 3px 8px rgba(124, 122, 196, 0.2);
-  }
-
-  .quarto-post {
-    background-color: #1e2433;
-    border-color: #3a3858 !important;
-
-    &:hover {
-      border-color: #7c7ac4 !important;
-      box-shadow: 0 0 16px 1px rgba(124, 122, 196, 0.3),
-                  0 6px 16px rgba(124, 122, 196, 0.2);
-    }
-    &:active {
-      border-color: #9694d8 !important;
-      box-shadow: 0 0 9px 0 rgba(124, 122, 196, 0.26),
-                  0 3px 8px rgba(124, 122, 196, 0.2);
-    }
-  }
-
-  .post-nav { border-top-color: var(--bs-border-color); }
-
-  .featured-ribbon {
-    border-color: #7c7ac4;
-    background: rgba(124, 122, 196, 0.15);
-    color: #b5b2e6;
-
-    &:hover {
-      color: #b5b2e6;
-      box-shadow: 0 0 16px 1px rgba(124, 122, 196, 0.3),
-                  0 6px 16px rgba(124, 122, 196, 0.2);
-    }
-    &:active {
-      box-shadow: 0 0 9px 0 rgba(124, 122, 196, 0.26),
-                  0 3px 8px rgba(124, 122, 196, 0.2);
-    }
-  }
-  .featured-ribbon-title { color: #cfcdf0; }
-
-  .subpage-back-btn,
-  .post-nav-btn {
-    border-color: #7c7ac4;
-    background: rgba(124, 122, 196, 0.15);
-    color: #b5b2e6;
-
-    &:hover {
-      background: #7c7ac4;
-      color: #F8F7F0;
-    }
-  }
-
-  // Recipe page components — dark variants
-  .recipe-meta {
-    background: #2a2945;
-    border-color: #3a3858;
-  }
-  .recipe-meta-item        { border-left-color: #3a3858; }
-  .recipe-meta-value       { color: #dddcd6; }
-  .recipe-meta-label,
-  .ing-qty                 { color: #b5b2e6; }
-
-  .ing-outer        { border-color: #7c7ac4; }
-  .ing-section-bar  { background: #2a2945; border-top-color: #3a3858; color: #9694b8; }
-  .ing-grid         { background: #1a1f2e; border-top-color: #3a3858; }
-  .ing-card         { background: #1e2433; border-color: #3a3858; }
-  .ing-card:hover   { background: #232940; border-color: #7c7ac4; }
-  .ing-img          { background: #1e2433; }
-
-  // Cocktail pantry
-  .pantry-intro     { color: #b5b2e6; }
-
-  // Timeline ribbon
-  .timeline-outer         { background: #1a1f2e; border-color: #7c7ac4; }
-  .timeline-step::before  { background: #3a3858; }
-  .timeline-step-circle   { background: #2a2945; border-color: #3a3858; color: #b5b2e6; }
-  .timeline-step-label    { color: #dddcd6; }
-  .timeline-step-time     { color: #8a86a8; }
-
-  .timeline-step:hover {
-    .timeline-step-circle { background: #7c7ac4; border-color: #7c7ac4; color: #F8F7F0; }
-    .timeline-step-label  { color: #b5b2e6; }
-  }
-
-  // Step cards
-  .step-card    { background: #1e2433; border-color: #3a3858; }
-  .step-photo   { background: #2a2945; }
-  .step-num     { color: #b5b2e6; }
-  .step-title   { color: #dddcd6; }
-  .step-time    { background: #2a2945; color: #b5b2e6; }
-  .step-list    { color: #dddcd6; }
   .step-tip     { background: #1a2e22; border-color: #2a4a36; color: #95d5b2; }
   .step-tip svg { color: #6fcf97; }
   .step-warn    { background: #2e1f17; border-color: #4a3324; color: #f5b478; }
   .step-warn svg{ color: #f59849; }
-
-  // Pairings
-  .pairing-card        { background: #1e2433; border-color: #3a3858; }
-  .pairing-card:hover  { background: #232940; border-color: #7c7ac4; }
-  .pairing-icon        { background: #2a2945; }
-  .pairing-icon svg    { color: #b5b2e6; }
-  .pairing-label       { color: #dddcd6; }
-  .pairing-desc        { color: #9694b8; }
-
-  // FAQ
-  .recipe-faq details         { background: #1e2433; border-color: #3a3858; }
-  .recipe-faq details[open]   { border-color: #7c7ac4; }
-  .recipe-faq summary         { color: #dddcd6; }
-  .recipe-faq summary:hover           { background: #232940; }
-  .recipe-faq details[open] summary   { background: #232940; }
-  .recipe-faq summary::before { background: #2a2945; color: #b5b2e6; }
-  .recipe-faq summary::after  { color: #8a86a8; }
-  .recipe-faq-answer          { color: #c9c4ad; }
-
-  @media (max-width: 520px) {
-    .recipe-meta-item {
-      border-top-color: #3a3858;
-    }
-    .recipe-meta-item:nth-child(even) { border-left-color: #3a3858; }
-  }
-
-  // Step timer
-  .step-time.timer-enabled {
-    border-color: #3f3d6b;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  }
-  .step-time.timer-enabled:hover,
-  .step-time.timer-enabled:focus-visible {
-    background: #5654A2;
-    color: #fff;
-    border-color: #6361b5;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  }
-  .step-time.is-timing { background: #5654A2; color: #fff; }
-
-  // Active-step glow (lighter accent + deeper shadow for the dark surface).
-  .step-card.is-timing-card {
-    border-color: #7c7ac4;
-    box-shadow: 0 6px 24px rgba(124, 122, 196, 0.30);
-  }
-  .recipe-timer.is-open {
-    box-shadow: 0 8px 24px rgba(124, 122, 196, 0.28);
-  }
-  .recipe-timer.is-open .recipe-timer-inner {
-    border-color: #7c7ac4;
-  }
-
-  .recipe-timer-jump {
-    border-color: #7c7ac4;
-    background: #5654A2;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-    &:hover { background: #6361b5; border-color: #8a88d0; }
-  }
-
-  .recipe-timer-inner {
-    background: #1e2433;
-    border-color: #3a3858;
-  }
-  .recipe-timer-step    { color: #b5b2e6; }
-  .recipe-timer-display { color: #dddcd6; }
-  .recipe-timer-close   { color: #8a86a8; &:hover { color: #dddcd6; } }
-  .recipe-timer-btn {
-    background: #2a2945;
-    border-color: #3a3858;
-    color: #dddcd6;
-    &:hover { background: #33315a; border-color: #7c7ac4; color: #cfcdf5; }
-  }
-  .recipe-timer-btn.rt-toggle {
-    background: #5654A2;
-    border-color: #5654A2;
-    color: #fff;
-    &:hover { background: #6361b5; border-color: #6361b5; color: #fff; }
-  }
-  .recipe-timer-track { background: #2a2945; }
-  .recipe-timer-fill  { background: #7c7ac4; }
-  .recipe-timer-fill::after {
-    background: #7c7ac4;
-    border-color: #1e2433;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
-  }
 }

@@ -1,0 +1,12 @@
+/*-- scss:defaults --*/
+
+// The dark appearance's Bootstrap knobs. Quarto detects a dark sheet from
+// body-bg and body-color, so both must be set; the rest keeps what Quarto
+// draws itself (the table of contents, the search, the category badges) on
+// the accent's light shade. The tokens themselves are in styles.scss under
+// `body.quarto-dark`.
+$body-bg: #1A1918 !default;
+$body-color: #F3F1EA !default;
+$link-color: #94A7ED !default;
+$primary: #94A7ED !default;
+$code-color: #94A7ED !default;

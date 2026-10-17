@@ -30,8 +30,8 @@ website:
     image: resources/images/card.png
   page-footer:
     center: "© <span id='footer-year'></span> [Pingfan Hu](https://pingfan.org)"
-    border: true
-    background: light
+    border: false
+    background: dark
   search:
     location: navbar
     type: overlay
@@ -95,7 +95,9 @@ format:
     code-copy: true
     theme:
       light: [flatly, resources/styles/styles.scss]
-      dark: [darkly, resources/styles/styles.scss]
+      dark: [darkly, resources/styles/styles.scss, resources/styles/dark.scss]
+    # The appearance follows the system; the toggle in the navbar pins one.
+    respect-user-color-scheme: true
     embed-resources: false
     link-external-newwindow: true
     link-external-icon: false
