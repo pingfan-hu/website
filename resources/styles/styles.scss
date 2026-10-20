@@ -2970,6 +2970,15 @@ $tool-glyphs: (
   // row jumps up ~4px. The strut keeps the first line the same height in both
   // states. order: 0 keeps it ahead of the toggler; the tools' margin-left: auto
   // absorbs free space, so the extra flex item never affects justification.
+  // The bar's ends line up with the page's: the navbar's 1rem padding and
+  // the container's half rem make the 1.5rem gutter the content keeps, so
+  // the menu tile starts where the page's left edge does and the search
+  // tile ends at its right edge.
+  .navbar-container { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+  // Quarto sizes the search 40 wide (`.aa-Autocomplete`) around its 30
+  // tile; the extra 10 would sit past the tile's right edge.
+  .navbar #quarto-search.type-overlay .aa-Autocomplete { width: auto; }
+
   .navbar-container::before {
     content: '';
     order: 0;
@@ -3192,8 +3201,9 @@ figcaption, .figure-caption {
 // columns, the square photo on the last four, and the three cards of work
 // on four each, so the photo is exactly as wide as the third card and every
 // edge lines up with one above it. One scale of type: 13 label, 15 meta,
-// 17 body, 22 lead, 56 name. Below 768 it is one column: the photo keeps
-// the cards' width (the full column, up to 480) and leads the page.
+// 17 body, 22 lead, 56 name. Below 768 it is one column that opens on a
+// profile header: the name, and the photo as a small square at the right
+// edge, then the facts, the bio and the actions at full width.
 
 .masthead {
   max-width: 1056px;
@@ -3428,19 +3438,33 @@ figcaption, .figure-caption {
 }
 
 @media (max-width: 767.98px) {
+  // The words' block dissolves into the masthead's grid, so the name can
+  // share the first row with the photo.
   .masthead {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) clamp(96px, 30vw, 144px);
+    column-gap: 20px;
+    row-gap: 16px;
     padding-block: 16px 40px;
   }
-  .masthead-head, .masthead-photo, .masthead-work { grid-column: 1; }
-  .masthead-photo {
-    order: -1;
-    max-width: 480px;
-    margin-bottom: 32px;
+  .masthead-head { display: contents; }
+  .masthead-photo { grid-column: 2; grid-row: 1; }
+  .masthead-name {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    font-size: clamp(32px, 9vw, 40px);
   }
-  .masthead-name { font-size: 40px; }
+  .masthead-facts, .masthead-bio, .masthead-actions, .masthead-work { grid-column: 1 / -1; }
   .masthead-bio { font-size: 18px; }
-  .masthead-work { margin-top: 40px; }
+  .masthead-work { margin-top: 24px; }
+}
+
+// Too narrow for the pills and the five profiles on one line: the rule
+// becomes a line break, so the five start their own line together, their
+// squares aligned with the pills' left edge.
+@media (max-width: 479.98px) {
+  .masthead-sep { flex-basis: 100%; height: 0; margin: 0; }
+  .masthead-sep + .masthead-icon { margin-left: -6px; }
 }
 
 // ---- Scroll Animations ----
