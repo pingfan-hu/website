@@ -1,5 +1,5 @@
 - **Agentic AI Engineering**: Claude Code Workflows, AI Skill Authoring, Harness Design
 - **Data Science**: PostgreSQL, tidyverse, ggplot, Survey Design, Discrete Choice Modeling, Logit Modeling
 - **Programming**: R, Python, Rust, Git, SQL, Shell, JavaScript
-- **App Development**: GPUI, Cross-Platform Desktop Apps, macOS Menu Bar Apps
+- **App Development**: GPUI, Cross-Platform Desktop Apps
 - **Web Development**: Quarto, R Shiny, HTML, CSS, Website Design and Deployment
