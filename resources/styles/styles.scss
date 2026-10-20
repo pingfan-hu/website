@@ -22,10 +22,10 @@ $border-radius-sm: 5px !default;
 
 // ---- Tokens ----
 // A value for the light appearance (:root) and the dark (body.quarto-dark).
-// The page is the site's cream; the frame (navbar and footer) is the
-// accent's own night shade in both appearances; the accent is periwinkle,
-// the blue Emaki uses, for what can be done: a link, a button, the entry
-// you are on, the focus ring. The supporting shades (hover, active, the
+// The page is the site's cream; the frame (navbar and footer) is dusk, a
+// deep periwinkle in the accent's hue, in both appearances; the accent is
+// periwinkle, the blue Emaki uses, for what can be done: a link, a button,
+// the entry you are on, the focus ring. The supporting shades (hover, active, the
 // wash, the frame, the light shade on the frame) are all drawn from it. A
 // colour that is not a token is a mistake.
 
@@ -37,13 +37,13 @@ $border-radius-sm: 5px !default;
   --panel-2: #F1F0E9;          // a shade past the panel: a hover, a cap
   --border: #E0DED4;           // every hairline
   --border-2: #D0CEC3;         // a control's edge
-  --frame: #2D3B76;            // the navbar and the footer: the accent at a third of its light
+  --frame: #3E4D93;            // the navbar and the footer: dusk, a deep periwinkle in the accent's hue (OKLCH L 0.445, C 0.115, h 272)
   --paper: #F3F1EA;            // words on the frame
 
   --accent: #5061B3;
   --accent-hover: #4A5BAC;
   --accent-active: #4050A0;
-  --accent-on-frame: #B1BFF5;  // the accent's light shade, which reads on the frame in both appearances
+  --accent-on-frame: #BFCCF9;  // the accent's light shade, the name on the frame (4.9:1)
   --on-accent: #FFFFFF;
   --link: #5061B3;
   --link-hover: #4050A0;
@@ -84,7 +84,8 @@ body.quarto-dark {
   --panel-2: #343330;
   --border: #3A3834;
   --border-2: #4E4C47;
-  --frame: #283465;
+  --frame: #273264;            // dusk a step darker, so the bars sit with the dark page (L 0.335, C 0.09)
+  --accent-on-frame: #B4C2F2;  // the name on the dark frame (6.9:1)
 
   --accent: #94A7ED;
   --accent-hover: #A0B3FB;
@@ -536,12 +537,6 @@ body.quarto-dark pre > code.sourceCode > span::before {
 .quarto-video { margin-bottom: 0; }
 
 // ---- Images ----
-
-@media (max-width: 991.98px) {
-  div.quarto-about-trestles .about-entity .about-image {
-    margin-top: 1em;
-  }
-}
 
 .golden-ratio-wrapper {
   position: relative;
@@ -1983,6 +1978,14 @@ html.rt-scrubbing * {
   --bs-card-color: var(--ink);
 }
 
+// A three-column listing (research) keeps each card at least 280 wide: as
+// the window narrows it drops to two columns, then one, instead of
+// squeezing three cards until the banner is a strip over a tall column of
+// words. Never more than three.
+.list.grid.quarto-listing-cols-3 {
+  grid-template-columns: repeat(auto-fill, minmax(max(280px, calc((100% - 2 * 1.5rem) / 3)), 1fr));
+}
+
 // The grid card of a listing (research, recipes, cocktails) is a link: the
 // same hover and press as a blog card.
 .quarto-grid-item {
@@ -1991,7 +1994,10 @@ html.rt-scrubbing * {
   &:hover { border-color: var(--accent) !important; }
   &:active { border-color: var(--accent-active) !important; transform: scale(0.992); }
 
-  .card-title { font-size: 1.125rem; font-weight: 600; }
+  // The body's padding alone sets the title off the banner; the heading's
+  // own top margin would double it.
+  .card-body { padding: 14px 16px 16px; }
+  .card-title { font-size: 1.125rem; font-weight: 600; margin-top: 0; }
   .card-title a, a.card-title { color: var(--ink); text-decoration: none; }
   .card-text { color: var(--muted); font-size: 0.95rem; }
   .listing-date, .listing-author, .card-attribution { color: var(--muted); font-size: 0.8rem; }
@@ -2540,7 +2546,7 @@ $pres-filter-gap: 0px;
 nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !important; }
 
 // ---- Navbar ----
-// The frame: the accent's night shade in both appearances, the name in its light
+// The frame: dusk, a deep periwinkle in the accent's hue, in both appearances, the name in its light
 // shade in the wordmark face, the links in the paper colour. Nothing but
 // opacity marks the link you are on.
 
@@ -2557,15 +2563,91 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
   mask: var(--icon) center / contain no-repeat;
 }
 
+// The site's glyphs, one set for the navbar and the homepage: Tabler's
+// outline icons on its 24 grid with a 2 px round stroke. The five profiles
+// come twice. In the navbar they are marks balanced as one set: in, iD and
+// RG drawn on one cap height (5 to 19), Tabler's GitHub cat and school
+// scaled to it, all in a lighter 1.75 stroke. In the masthead (`-square`)
+// each sits in Tabler's soft square at a 1.5 stroke. The R logo (`r`,
+// Tabler has none) is drawn to match: the ring open where the R stands in
+// front of it. The rest (the moon, sun, glass and user, the documents, the
+// masthead's facts) are Tabler's own. Masks, so each takes the color of
+// the text around it. Nothing on the site uses FontAwesome.
+$glyphs: (
+  "linkedin": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><path d='M6.5 5.5v.01'/><path d='M6.5 10v9'/><path d='M10.5 10v9'/><path d='M10.5 13.5a3.5 3.5 0 0 1 7 0v5.5'/></svg>",
+  "github": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><g transform='translate(12 12) scale(0.85) translate(-12 -12)' stroke-width='2.059'><path d='M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5'/></g></svg>",
+  "orcid": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><path d='M5.5 5.5v.01'/><path d='M5.5 10v9'/><path d='M9.5 5v14h2.5a7 7 0 0 0 0 -14z'/></svg>",
+  "researchgate": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><path d='M4 19v-14h4a3.5 3.5 0 0 1 0 7h-4'/><path d='M8 12l3.5 7'/><path d='M20.1 5.9a3 3 0 1 0 .9 2.1h-2.5'/></svg>",
+  "scholar": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><g transform='translate(12 12) scale(0.88) translate(-12 -12)' stroke-width='1.989'><path d='M22 9l-10 -4l-10 4l10 4l10 -4v6'/><path d='M6 10.6v5.4a6 3 0 0 0 12 0v-5.4'/></g></svg>",
+  "user": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0'/><path d='M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'/><path d='M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855'/></svg>",
+  "moon": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z'/></svg>",
+  "sun": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0'/><path d='M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7'/></svg>",
+  "search": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0'/><path d='M21 21l-6 -6'/></svg>",
+  "briefcase": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z'/><path d='M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2'/><path d='M12 12l0 .01'/><path d='M3 13a20 20 0 0 0 18 0'/></svg>",
+  "certificate": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'/><path d='M13 17.5v4.5l2 -1.5l2 1.5v-4.5'/><path d='M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73'/><path d='M6 9l12 0'/><path d='M6 12l3 0'/><path d='M6 15l2 0'/></svg>",
+  "building": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 21l18 0'/><path d='M9 8l1 0'/><path d='M9 12l1 0'/><path d='M9 16l1 0'/><path d='M14 8l1 0'/><path d='M14 12l1 0'/><path d='M14 16l1 0'/><path d='M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16'/></svg>",
+  "map-pin": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0'/><path d='M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z'/></svg>",
+  "linkedin-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><path d='M8 11v5'/><path d='M8 8v.01'/><path d='M12 16v-5'/><path d='M16 16v-3a2 2 0 1 0 -4 0'/></svg>",
+  "github-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 7) scale(.625) translate(-12 -3.1)' stroke-width='2.4'><path d='M14.5 15.5c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6'/></g><path d='M13.56 14.75c.4 .4 .44 .8 .44 1.5v4.75'/><path d='M10.44 14.75c-.4 .4 -.44 .8 -.44 1.5v4.75'/></svg>",
+  "orcid-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><path d='M8 11v5'/><path d='M8 8v.01'/><path d='M11 8v8h1a4 4 0 0 0 0 -8z'/></svg>",
+  "researchgate-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><path d='M6 16v-8h2.5a2 2 0 0 1 0 4h-2.5'/><path d='M8.5 12l2 4'/><path d='M17.27 8.73a2.5 2.5 0 1 0 .73 1.77h-2'/></svg>",
+  "scholar-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 12.4) scale(.55) translate(-12 -12)' stroke-width='2.73'><path d='M22 9l-10 -4l-10 4l10 4l10 -4v6'/><path d='M6 10.6v5.4a6 3 0 0 0 12 0v-5.4'/></g></svg>",
+  "r": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7.5 15.37A10.5 6.5 0 1 1 19.5 14.05'/><path d='M10 21v-11h4.5a2.75 2.75 0 0 1 0 5.5h-4.5'/><path d='M14.5 15.5l3.5 5.5'/></svg>",
+  "file-text": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3v4a1 1 0 0 0 1 1h4'/><path d='M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z'/><path d='M9 9l1 0'/><path d='M9 13l6 0'/><path d='M9 17l6 0'/></svg>",
+  "file-cv": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3v4a1 1 0 0 0 1 1h4'/><path d='M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z'/><path d='M11 12.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0'/><path d='M13 11l1.5 6l1.5 -6'/></svg>"
+);
+
+@function glyph-url($name) {
+  @return url("data:image/svg+xml,#{map-get($glyphs, $name)}");
+}
+
+// `<span class="glyph glyph-github"></span>`: a glyph one em square.
+.glyph {
+  display: inline-flex;
+  &::before { @include glyph(1em); }
+}
+// The R logo stands in running text, so it drops to sit on the baseline.
+.glyph-r { vertical-align: -0.15em; }
+@each $name, $svg in $glyphs {
+  .glyph-#{$name} { --icon: #{glyph-url($name)}; }
+}
+
+// The navbar's squares, all one size: the menu button at the left on a
+// narrow window, and the tools and the search at the right. The controls
+// (the menu, the appearance toggle, the search) are bordered tiles with a
+// 16 glyph. On the desktop the five profiles share one capsule of the same
+// fill and hairline; on the collapsed bar they fold into one tile's menu.
+$tile: 30px;
+$tile-glyph: 16px;
+$profile-glyph: 20px;  // a profile's mark, in the capsule and on the homepage
+
+// A control tile: the frame's soft fill, a hairline and 8 px corners.
+@mixin frame-tile {
+  background: var(--w-bg) !important;
+  border: 1px solid var(--w-border) !important;
+  border-radius: 8px !important;
+  opacity: 1;
+  transition: background 160ms var(--ease), border-color 160ms var(--ease);
+  &:hover, &:focus-visible { background: var(--w-bg-hover) !important; border-color: var(--w-border-hover) !important; }
+}
+
 .navbar {
   background-color: var(--frame) !important;
   border-bottom: none;
   padding-top: 0.3rem !important;
   padding-bottom: 0.3rem !important;
-  // Pin every stage to the desktop navbar height (~56px). The collapsed stages
-  // are naturally shorter (flattened brand + hamburger), so this floors them to
-  // match; the taller open-hamburger dropdown can still grow past it.
+  // One height at every width: the brand's vertical padding is flattened
+  // below, so no row is taller than this floor on the desktop or on the
+  // collapsed bar; only the open hamburger grows past it.
   min-height: 56px;
+
+  // Bootstrap pads the brand vertically, which alone made the desktop bar
+  // 58.7 against the collapsed bar's 56.
+  .navbar-brand-container,
+  .navbar-brand-container .navbar-brand {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 
   .navbar-title, .navbar-nav .nav-link, .navbar-brand, .aa-DetachedSearchButton,
   .quarto-navbar-tools a, .bi {
@@ -2580,9 +2662,25 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
     color: var(--accent-on-frame) !important;
   }
 
+  // The menu button is a control tile; its three lines a tile's glyph.
+  // No `display` here: Bootstrap hides the button from 992 wide
+  // (`.navbar-expand-lg .navbar-toggler`), and a display set at every
+  // width would outrank that and show it on the desktop too; the
+  // collapsed rules below lay it out.
   .navbar-toggler {
-    border-color: var(--w-border);
-    &:focus { box-shadow: 0 0 0 2px var(--w-border); }
+    align-items: center;
+    justify-content: center;
+    // Quarto gives it `flex-basis: content`, which sizes it in the bar's
+    // row by its icon whatever its width says; the flex size is set here.
+    flex: 0 0 $tile;
+    width: $tile;
+    height: $tile;
+    padding: 0;
+    @include frame-tile;
+
+    &:focus { box-shadow: none; }
+    &:focus-visible { box-shadow: 0 0 0 2px var(--w-border); }
+    .navbar-toggler-icon { width: $tile-glyph; height: $tile-glyph; }
   }
 }
 
@@ -2599,6 +2697,26 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
   &:active { background-color: var(--w-bg); }
 }
 
+// Quarto's navbar tools take only Bootstrap icon names, which have no
+// ORCID, ResearchGate or Scholar. Each profile's icon, in the capsule and in
+// the menu alike, is replaced by its mark, matched by the link's host; a
+// touch smaller in the menu, beside its words.
+$tool-glyphs: (
+  "linkedin.com": linkedin,
+  "github.com": github,
+  "scholar.google": scholar,
+  "orcid.org": orcid,
+  "researchgate.net": researchgate
+);
+@each $host, $name in $tool-glyphs {
+  .quarto-navbar-tools a[href*="#{$host}"] .bi::before {
+    @include glyph($profile-glyph);
+    --icon: #{glyph-url($name)};
+    vertical-align: middle;
+  }
+}
+.quarto-navbar-tools .dropdown-item .bi::before { width: 18px; height: 18px; }
+
 // The tools (the social icons, the appearance toggle) are icons of one size
 // in a row; under the pointer each takes a faint wash, nothing more.
 .quarto-navbar-tools > a,
@@ -2612,13 +2730,24 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
   font-size: 0.95rem;
 }
 
-// The search is a widget on the frame.
+// The search is a control tile, its glass the set's.
 .navbar .aa-DetachedSearchButton {
-  background: transparent !important;
-  border: none !important;
-  opacity: 0.78;
-  transition: opacity 160ms var(--ease);
-  &:hover { opacity: 1; }
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: $tile !important;
+  height: $tile !important;
+  padding: 0 !important;
+  @include frame-tile;
+  .aa-DetachedSearchButtonIcon {
+    display: flex;
+    width: $tile-glyph !important;
+    height: $tile-glyph !important;
+    margin: 0 !important;
+    &::before { @include glyph($tile-glyph); --icon: #{glyph-url(search)}; }
+  }
+  // Quarto's own glass gives way to the set's.
+  .aa-DetachedSearchButtonIcon svg { display: none !important; }
 }
 
 // The dropdown floats, so it takes the popover's ground and the one shadow.
@@ -2709,45 +2838,108 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
 
 .quarto-navbar-tools > a,
 .quarto-navbar-tools > .quarto-navbar-tool {
-  padding: 0.2rem 0.45rem !important;
+  width: $tile;
+  height: $tile;
+  padding: 0 !important;
   margin: 0 0.05rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+  border-radius: 8px;
+
+  .bi { font-size: $tile-glyph; line-height: 1; }
 }
 
 .quarto-navbar-tools {
   display: flex !important;
   align-items: center;
 
-  // The appearance toggle is one more icon in the tools row, the same size
-  // and weight as its neighbours. The appearance follows the system until
-  // this pins one; the icon shows the appearance a press would bring: the
-  // moon on the light page, the sun on the dark. Tabler's moon and sun,
-  // inlined.
+  // The appearance toggle and the search are bordered tiles like the menu
+  // button. The toggle shows the appearance a press would bring: the moon
+  // on the light page, the sun on the dark. The appearance follows the
+  // system until this pins one.
   > a.quarto-color-scheme-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
+    margin-left: 10px;
+    @include frame-tile;
 
     .bi::before {
-      @include glyph(17px);
-      --icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /></svg>');
+      @include glyph($tile-glyph);
+      --icon: #{glyph-url(moon)};
       margin: 0;
     }
-    &.alternate .bi::before {
-      --icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>');
+    &.alternate .bi::before { --icon: #{glyph-url(sun)}; }
+  }
+
+  // The desktop: the five profiles are segments of one capsule, the
+  // tile's fill and hairline drawn across them, its ends rounded on the
+  // first and the fifth. The capsule stays at full strength; only the marks
+  // dim at rest, and the one under the pointer takes an inset wash.
+  @media (min-width: 992px) {
+    > .dropdown { display: none !important; }  // Quarto sets it inline-block
+
+    > a:not(.quarto-color-scheme-toggle) {
+      position: relative;
+      width: 32px;
+      margin: 0;
+      opacity: 1;
+      border-radius: 0;
+      background: var(--w-bg);
+      border-block: 1px solid var(--w-border);
+
+      &:first-child { padding-left: 2px !important; width: 34px; border-left: 1px solid var(--w-border); border-radius: 8px 0 0 8px; }
+      &:nth-child(5) { padding-right: 2px !important; width: 34px; border-right: 1px solid var(--w-border); border-radius: 0 8px 8px 0; }
+
+      .bi { opacity: 0.78; transition: opacity 160ms var(--ease); }
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        border-radius: 6px;
+        background: var(--w-bg-hover);
+        opacity: 0;
+        transition: opacity 160ms var(--ease);
+      }
+      &:first-child::after { left: 4px; }
+      &:nth-child(5)::after { right: 4px; }
+      &:hover, &:focus-visible, &:active {
+        background: var(--w-bg);
+        .bi { opacity: 1; }
+        &::after { opacity: 1; }
+      }
     }
   }
 
-  // The full tools row (brand + hamburger + 5 icons + toggle + search) fits on one
-  // line down to ~460px. Only below 480px does it wrap to a second row, so hide the
-  // social icons just there (theme toggle + search remain) — everything wider keeps
-  // them.
-  @media (max-width: 479.98px) {
+  // The collapsed bar: the five give way to one tile that opens them as a
+  // menu, so the row is three tiles at any width.
+  @media (max-width: 991.98px) {
     > a:not(.quarto-color-scheme-toggle) { display: none !important; }
+
+    > .dropdown > .dropdown-toggle {
+      width: $tile;
+      height: $tile;
+      padding: 0 !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      @include frame-tile;
+
+      &::after { display: none; }  // Bootstrap's caret
+      .bi::before { @include glyph($tile-glyph); --icon: #{glyph-url(user)}; vertical-align: middle; }
+    }
+    // Bootstrap leaves a navbar's menus unpositioned by Popper and hangs them
+    // from the left; this one sits at the right edge, so it hangs from there.
+    > .dropdown > .dropdown-menu {
+      left: auto;
+      right: 0;
+      margin-top: 10px;
+    }
+    > a.quarto-color-scheme-toggle { margin-left: 4px; }
   }
 }
 
@@ -2786,11 +2978,9 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
   }
 
   .navbar-toggler {
+    display: flex;
     order: 1 !important;              // hamburger, far left
     margin-right: 12px !important;
-    padding-top: 0.2rem !important;
-    padding-bottom: 0.2rem !important;
-    font-size: 1.1rem !important;
   }
   .navbar-brand-container {
     order: 2 !important;             // brand, right of the hamburger
@@ -2802,17 +2992,11 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
   }
   .type-overlay {
     order: 4 !important;             // search, flush after the tools
-    margin-left: 0 !important;       // drop Quarto's own auto margin (was a 2nd gap)
+    // Quarto's own auto margin would open a second gap; 4 keeps the
+    // search tile the desktop's 5 from the toggle tile.
+    margin-left: 4px !important;
   }
   .navbar-container > .navbar-collapse { order: 5 !important; } // nav links wrap below
-
-  // Flatten the brand's vertical padding so the collapsed top bar is as short as
-  // the desktop nav.
-  .navbar-brand-container,
-  .navbar-brand-container .navbar-brand {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
 }
 
 // ---- Footer ----
@@ -2837,7 +3021,6 @@ body { padding-bottom: $footer-h; }
   color: var(--paper);
   font-size: 0.8rem;
   line-height: 1;
-  opacity: 0.9;
 
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -2870,14 +3053,17 @@ footer.footer .nav-footer { padding: 0 !important; }
 
 // ---- Hide page descriptions (kept in metadata for SEO) ----
 
-#title-block-header:not(:has(.quarto-title-meta-heading)) .description,
-div.quarto-about-trestles .about-entity .description {
+#title-block-header:not(:has(.quarto-title-meta-heading)) .description {
   display: none;
 }
 
 // ---- Title block ----
 // The page's h1, the one line under it on a post (its description, on the
 // panel's ground), then the author and date in the chrome's face.
+
+// The homepage sets its own name in the masthead, so it carries no `title`
+// and Quarto leaves an empty title block behind. Take its room back.
+#title-block-header.quarto-title-block:empty { display: none; }
 
 #title-block-header {
   margin-bottom: 1.75rem;
@@ -2994,8 +3180,6 @@ figcaption, .figure-caption {
 }
 
 // ---- Center page titles on the narrowest layout (stage 1, <768px) ----
-// Excludes the homepage: its trestles title sits inside .about-entity,
-// not as a direct child of main.content, so this selector never matches it.
 
 @media (max-width: 767.98px) {
   main.content > #title-block-header .quarto-title .title {
@@ -3003,67 +3187,260 @@ figcaption, .figure-caption {
   }
 }
 
-// ---- About Page Social Links ----
-// The trestles template's icon links as round pills: a hairline, the muted
-// ink, the accent under the pointer. Nothing scales.
+// ---- Homepage masthead ----
+// The homepage is one masthead on a twelve-column grid: the words on seven
+// columns, the square photo on the last four, and the three cards of work
+// on four each, so the photo is exactly as wide as the third card and every
+// edge lines up with one above it. One scale of type: 13 label, 15 meta,
+// 17 body, 22 lead, 56 name. Below 768 it is one column: the photo keeps
+// the cards' width (the full column, up to 480) and leads the page.
 
-.about-links {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  gap: 0.6rem !important;
+.masthead {
+  max-width: 1056px;
+  margin: 0 auto;
+  // Quarto's main already sits 31 below the navbar; with this, 72 in all.
+  padding-block: 40px 64px;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
 }
 
-.about-link {
-  width: 2.6rem !important;
-  height: 2.6rem !important;
-  min-width: 2.6rem !important;
-  max-width: 2.6rem !important;
-  flex: 0 0 2.6rem !important;
-  padding: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border: 1px solid var(--border-2) !important;
-  border-radius: 50% !important;
-  background: transparent !important;
-  color: var(--muted) !important;
-  text-decoration: none !important;
-  transition: color 160ms var(--ease), border-color 160ms var(--ease),
-              background 160ms var(--ease), transform 120ms var(--ease) !important;
-
-  &:hover, &:focus-visible {
-    color: var(--accent) !important;
-    border-color: var(--accent) !important;
-    background: var(--wash) !important;
-  }
-  &:active { transform: scale(0.96); }
-
-  i, .bi { font-size: 1.1rem !important; margin: 0 !important; }
+.masthead-head {
+  grid-column: 1 / 8;
+  display: grid;
+  gap: 16px;
+  align-content: start;
 }
 
-.about-link-text {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 !important;
-  padding: 0 !important;
-
-  i { font-size: 1.1rem !important; margin: 0 !important; }
+.masthead-kind {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
 }
 
-// The homepage (trestles): the name under the picture in the wordmark face.
-div.quarto-about-trestles .about-entity .title {
+.masthead-name {
   font-family: var(--font-wordmark);
   font-weight: 400;
-  font-size: 2rem;
-  letter-spacing: 0.01em;
-  color: var(--accent);
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0;
 }
 
-div.quarto-about-trestles .about-entity .about-image {
+// Under the name, the facts: the work, the degree and the place, one to a
+// line in sentence case, each behind a muted glyph. No label line above
+// the name.
+.masthead-facts {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+
+  li { display: flex; align-items: flex-start; gap: 10px; }
+  .glyph { font-size: 16px; margin-top: 3px; flex: none; }
+}
+
+// Then the bio, a short paragraph across the words' seven columns.
+.masthead-bio {
+  font-size: 19px;
+  line-height: 1.6;
+  margin: 8px 0 0;
+  text-wrap: pretty;
+}
+
+// The masthead's actions: the resume and the CV are pills (words, a
+// hairline: documents to open); the five profiles are square glyphs alone
+// (places to go), past a short rule.
+.masthead-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.masthead-doc {
+  @include pill;
+  font-size: 15px;
+  padding: 6px 16px 6px 12px;
+  .glyph { font-size: 16px; }
+}
+
+.masthead-sep {
+  width: 1px;
+  height: 24px;
+  margin: 0 8px;
+  background: var(--border-2);
+}
+
+.masthead-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 24px;
+  transition: color 160ms var(--ease), background 160ms var(--ease), transform 120ms var(--ease);
+
+  &:hover, &:focus-visible { color: var(--accent); background: var(--wash); }
+  &:active { transform: scale(0.96); }
+}
+
+.masthead-photo {
+  grid-column: 9 / 13;
+  align-self: start;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: $border-radius-lg;
   border: 1px solid var(--border);
+}
+
+.masthead-work {
+  grid-column: 1 / 13;
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+// A line of work is a card with the listing cards' hover and press: the
+// edge takes the accent, a press is a small scale. No shadow. The title's
+// link is stretched over the whole card.
+.masthead-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: $border-radius-lg;
+  transition: border-color 160ms var(--ease), transform 120ms var(--ease);
+
+  &:hover, &:has(.masthead-title:focus-visible) { border-color: var(--accent); }
+  &:active { border-color: var(--accent-active); transform: scale(0.992); }
+}
+
+.masthead-kind { color: var(--accent); }
+
+// The project's own mark, top right in the space beside the label and title.
+.masthead-logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 52px;
+  width: auto;
+}
+
+.masthead-title {
+  font-family: var(--font-wordmark);
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--ink);
+  text-decoration: none;
+
+  &:hover, &:focus { color: var(--ink); text-decoration: none; }
+  &:focus-visible { outline: none; }
+  &::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+}
+
+.masthead-desc {
+  font-size: 17px;
+  color: var(--muted);
+}
+
+// A card with a paper is a pair, as tall as a lone card in its row: the
+// card, whole with its four round corners, in front of a drawer of the
+// same width that runs on below it, on the shade past the panel. The
+// drawer's top is hidden behind the card where the card's lower corners
+// begin to round, so its sides carry on the card's sides, and its fill
+// shows in the two curves. The drawer is one link, all of it. Each part
+// has its own hover and press; the press keeps the pair whole by moving
+// the card and the drawer together.
+.masthead-pair {
+  display: flex;
+  flex-direction: column;
+  container-type: inline-size;
+  transition: transform 120ms var(--ease);
+
+  &:active { transform: scale(0.992); }
+
+  .masthead-item {
+    flex: 1;
+    z-index: 1;
+    &:active { transform: none; }
+  }
+}
+
+.masthead-pub {
+  display: block;
+  margin-top: -$border-radius-lg;
+  padding: calc(#{$border-radius-lg} + 12px) 24px 13px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 $border-radius-lg $border-radius-lg;
+  color: var(--muted);
+  text-align: center;
+  text-decoration: none;
+  transition: background 160ms var(--ease), color 160ms var(--ease);
+
+  // Venue and year on one line, centered: the type shrinks with a narrow
+  // card (container units on the pair; the longest venue, ERL's, sets
+  // 16.5 em wide inside 48 px of padding), and only past 13 px is it cut
+  // short.
+  .masthead-pub-text {
+    display: block;
+    font-size: clamp(13px, calc((100cqi - 52px) / 16.6), 16px);
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Under the pointer the drawer fills with the accent's tint and its words
+  // take the accent; its edge stays as it is.
+  &:hover, &:focus-visible {
+    background: color-mix(in srgb, var(--accent) 14%, var(--panel-2));
+    color: var(--accent);
+    text-decoration: none;
+  }
+  &:focus-visible { outline: none; }
+  &:active { background: color-mix(in srgb, var(--accent) 22%, var(--panel-2)); }
+}
+
+// Three cards side by side need the desktop's width: narrower, the paper's
+// line would be cut short, so below the navbar's own break the cards stack.
+@media (max-width: 991.98px) {
+  .masthead-work { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+
+@media (max-width: 767.98px) {
+  .masthead {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 16px 40px;
+  }
+  .masthead-head, .masthead-photo, .masthead-work { grid-column: 1; }
+  .masthead-photo {
+    order: -1;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+  .masthead-name { font-size: 40px; }
+  .masthead-bio { font-size: 18px; }
+  .masthead-work { margin-top: 40px; }
 }
 
 // ---- Scroll Animations ----

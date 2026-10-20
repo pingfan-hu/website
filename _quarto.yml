@@ -82,6 +82,31 @@ website:
         href: https://scholar.google.com/citations?hl=en&user=cHRn7ysAAAAJ&view_op=list_works&gmla=AOv-ny_SNvl4HxALL_saOPSbgciX2yIEDuqGz8VcwqjeV8_KIsvS3Clzw9UsU0HyvsfVAVgU_yJO2NLq6vLT1IL2
         text: Google Scholar
         target: _blank
+      # The same five in one menu, for the collapsed navbar (below 992px);
+      # styles.scss shows either the five icons or this menu, never both.
+      - icon: person-circle
+        text: Profiles
+        menu:
+          - icon: linkedin
+            text: LinkedIn
+            href: https://www.linkedin.com/in/pingfan/
+            target: _blank
+          - icon: github
+            text: GitHub
+            href: https://github.com/pingfan-hu
+            target: _blank
+          - icon: person-vcard
+            text: ORCID
+            href: https://orcid.org/0009-0001-4877-4844
+            target: _blank
+          - icon: journal-bookmark
+            text: ResearchGate
+            href: https://www.researchgate.net/profile/Pingfan-Hu-2
+            target: _blank
+          - icon: mortarboard
+            text: Google Scholar
+            href: https://scholar.google.com/citations?hl=en&user=cHRn7ysAAAAJ
+            target: _blank
 
 format:
   html:

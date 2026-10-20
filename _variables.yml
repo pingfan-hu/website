@@ -3,8 +3,8 @@ shiny: "[Shiny](https://shiny.posit.co/)"
 postgres: "[PostgreSQL](https://www.postgresql.org/)"
 supabase: "[Supabase](https://supabase.com/)"
 shinyapps: "[shinyapps.io](https://shinyapps.io/)"
-rlink: "[{{< fa brands r-project >}}](https://CRAN.R-project.org/)"
-rnolink: "{{< fa brands r-project >}}"
+rlink: '[<span class="glyph glyph-r" role="img" aria-label="R"></span>](https://CRAN.R-project.org/)'
+rnolink: '<span class="glyph glyph-r" role="img" aria-label="R"></span>'
 rstudio_ide: "[RStudio](https://posit.co/products/open-source/rstudio/)"
 vscode: "[VSCode](https://code.visualstudio.com/)"
 positron: "[Positron](https://github.com/posit-dev/positron)"
