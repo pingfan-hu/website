@@ -3672,6 +3672,9 @@ figcaption, .figure-caption {
     > .glyph-r, > .about-tool-mark { width: 1.2em; }
     > .glyph-r::before { width: 1.2em; height: 1.2em; flex: none; }
     > .about-tool-mark img { display: block; flex: none; width: 1.2em; height: 1.2em; max-width: none; margin: 0; }
+    // a logo tile is a fifth taller than a glyph, so centered the same its
+    // foot would sit on the underline; it rises until its foot clears it
+    > .about-tool-mark { top: -0.14em; }
 
     &:hover > .glyph, &:focus-visible > .glyph { color: currentColor; }
   }
