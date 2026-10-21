@@ -209,7 +209,7 @@
         </div>
         <div class="ti-tool-info">
           <div class="ti-tool-name"><a href="https://positron.posit.co" target="_blank">Positron</a> <span class="ti-pick">my pick</span></div>
-          <div class="ti-tool-desc">Built for data science (R & Python)</div>
+          <div class="ti-tool-desc">Built for data science (<span class="glyph glyph-r" role="img" aria-label="R"></span> & Python)</div>
         </div>
       </div>
     </div>

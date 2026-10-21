@@ -16,23 +16,23 @@ Why do we still need to learn software development now that we have LLMs? This h
 
 The [URSSI](https://urssi.us) Winter School is a 3-day bootcamp hosted by Oregon State University in Portland, OR. I was fortunate to attend this event in December 2025 and benefited from the excellent lectures by professor [Kyle Niemeyer](https://engineering.oregonstate.edu/people/kyle-niemeyer), professor [Madicken Munk](https://engineering.oregonstate.edu/people/madicken-munk), and Dr [Joanna Piper Morgan](https://jpmorgan98.github.io).
 
-The bootcamp focused on the full workflow of Python development, from writing code to testing, documentation, version control, and deployment. I mainly use R for data analysis, thus having R packages as my RSE products, like [`surveydown`](https://pingfan.org/research/2024-surveydown/) and [`sdstudio`](https://pingfan.org/research/2025-sdstudio/). This bootcamp benefited me for two reasons: 1) It expanded my skills in Python as a popular programming language; 2) RSE development for different programming languages shares many common principles.
+The bootcamp focused on the full workflow of Python development, from writing code to testing, documentation, version control, and deployment. I mainly use {{< var rnolink >}} for data analysis, thus having {{< var rnolink >}} packages as my RSE products, like [`surveydown`](https://pingfan.org/research/2024-surveydown/) and [`sdstudio`](https://pingfan.org/research/2025-sdstudio/). This bootcamp benefited me for two reasons: 1) It expanded my skills in Python as a popular programming language; 2) RSE development for different programming languages shares many common principles.
 
 ## Introduction
 
 With readily available LLM tools like ChatGPT, Claude, and Gemini, things seem to be easier than ever. It seems like everyone can create designs, write code, generate images, and more. However, the reality is that there remains a significant barrier for those without professional training, even with AI tools at their disposal. In software development, there is a term called "technical debt" which refers to the hidden costs resulting from careless deployment with generative AI in the long run [@anderson_hidden_2025]. Therefore, it is essential to establish a solid foundation of software development principles before leveraging AI tools.
 
 ::: {.callout-note}
-This blog post is based on macOS showcasing both Python and R coding examples.
+This blog post is based on macOS showcasing both Python and {{< var rnolink >}} coding examples.
 :::
 
 ## IDE
 
 The working environment is the first thing to consider. A good IDE (Integrated Development Environment) can significantly boost productivity. Here are my recommendations:
 
-- [Positron](https://positron.posit.co): Positron is a modern IDE published by Posit and is my favorite. It's a VS Code-based IDE and has great support for both Python and R with lots of tailored features for data science.
+- [Positron](https://positron.posit.co): Positron is a modern IDE published by Posit and is my favorite. It's a VS Code-based IDE and has great support for both Python and {{< var rnolink >}} with lots of tailored features for data science.
 - [VS Code](https://code.visualstudio.com): The best general-purpose IDE. It has a rich ecosystem of extensions for almost any programming language and task.
-- [RStudio](https://posit.co/download/rstudio-desktop/): Mature IDE for R programming.
+- [RStudio](https://posit.co/download/rstudio-desktop/): Mature IDE for {{< var rnolink >}} programming.
 - [PyCharm](https://www.jetbrains.com/pycharm/): Mature IDE for Python programming.
 
 Other than IDEs, you can also use text editors like [Sublime Text](https://www.sublimetext.com) or [Vim](https://www.vim.org), in which case you need to have a separated Terminal session ready. One good reason for using IDEs is that they often have integrated terminal support, so you don't need to switch between windows.
@@ -47,10 +47,10 @@ brew install python
 
 After installation, you can set `python` and `pip` as aliases for `python3` and `pip3`, respectively.
 
-R can be installed through CRAN using [this link](https://cran.rstudio.com).
+{{< var rnolink >}} can be installed through CRAN using [this link](https://cran.rstudio.com).
 
 ::: {.callout-tip}
-Both Python and R can be directly executed in Terminal with commands `python` and `R`, respectively. In IDEs, the Python or R language session is called **"Console"**, distinguished from **"Terminal"** which is a shell session. During your development, you might frequently switch between Console and Terminal.
+Both Python and {{< var rnolink >}} can be directly executed in Terminal with commands `python` and `R`, respectively. In IDEs, the Python or {{< var rnolink >}} language session is called **"Console"**, distinguished from **"Terminal"** which is a shell session. During your development, you might frequently switch between Console and Terminal.
 :::
 
 ## Package Management
@@ -91,10 +91,10 @@ pip install numpy
 
 ### R
 
-R is a lot simpler thanks to [CRAN](https://cran.r-project.org). You can safely install R packages globally with the `install.packages()` function in your **R Console**.
+{{< var rnolink >}} is a lot simpler thanks to [CRAN](https://cran.r-project.org). You can safely install {{< var rnolink >}} packages globally with the `install.packages()` function in your **{{< var rnolink >}} Console**.
 
 ::: {.callout-tip}
-Note that we use R Console instead of Terminal here. But if you prefer Terminal, you can run R in Terminal by simply typing `R`.
+Note that we use {{< var rnolink >}} Console instead of Terminal here. But if you prefer Terminal, you can run {{< var rnolink >}} in Terminal by simply typing `R`.
 :::
 
 For example:
@@ -160,9 +160,9 @@ from tidyviz import viz
 
 The `docs/`, `examples/`, and `tests/` directories are all self-explanatory. The root directory contains metadata files like `README.md`, `CHANGELOG.md`, `LICENSE`, and `pyproject.toml` which is the configuration file for building and packaging the Python package.
 
-### R Package Structure
+### {{< var rnolink >}} Package Structure {#r-package-structure}
 
-Our [`surveydown`](https://pingfan.org/research/2024-surveydown/) R package is well-structured and can be used as an example:
+Our [`surveydown`](https://pingfan.org/research/2024-surveydown/) {{< var rnolink >}} package is well-structured and can be used as an example:
 
 ```bash
 surveydown
@@ -194,7 +194,7 @@ surveydown
 └── README.md
 ```
 
-The main code directory for an R package is `R/`. The `inst/` directory contains additional resources like CSS and JS files, as well as examples, templates, etc. The `pkgdown/` directory is used for building the package website with the `pkgdown` package. The `man/` directory is auto-generated during the building process, extracting the `roxygen2` documentation from the R scripts. The `tests/` directory contains the test scripts, and `vignettes/` contains long-form documentation.
+The main code directory for an {{< var rnolink >}} package is `R/`. The `inst/` directory contains additional resources like CSS and JS files, as well as examples, templates, etc. The `pkgdown/` directory is used for building the package website with the `pkgdown` package. The `man/` directory is auto-generated during the building process, extracting the `roxygen2` documentation from the {{< var rnolink >}} scripts. The `tests/` directory contains the test scripts, and `vignettes/` contains long-form documentation.
 
 ## Version Control
 
@@ -220,7 +220,7 @@ Personalization is the key to productivity, and I bet everyone has their own tip
 
 ### IDE Customization
 
-Positron is my favorite IDE which supports both R and Python. It's VS Code-based and supports VS Code-like user settings, extensions, and keybindings. Spend some time with the `settings.json` file or summon the settings page to configure to your own preferences.
+Positron is my favorite IDE which supports both {{< var rnolink >}} and Python. It's VS Code-based and supports VS Code-like user settings, extensions, and keybindings. Spend some time with the `settings.json` file or summon the settings page to configure to your own preferences.
 
 My Positron layout is shown below. It has primary side bar located on the left side, main panel in the middle, and secondary side bar on the right. I don't use bottom panel.
 
@@ -234,7 +234,7 @@ The secondary side bar has both Console and Terminal:
 
 <center>
 <img src="images/positron-console.png" style="max-width: 700px; width: 100%; border: 1px solid #5654A2;">
-<p><em>Console for Python and/or R Language Processing</em></p>
+<p><em>Console for Python and/or {{< var rnolink >}} Language Processing</em></p>
 </center>
 <br>
 

@@ -95,15 +95,15 @@ The hooks I reach for most are post-process hooks, things that fire after the ag
 
 ### My Use Cases
 
-I lean on hooks in two recurring workflows: rendering Quarto and developing R packages.
+I lean on hooks in two recurring workflows: rendering Quarto and developing {{< var rnolink >}} packages.
 
 **Quarto rendering.** Quarto is a publication system that turns `.qmd` files into web pages, slides, PDFs, and Word documents. Every time a `.qmd` file changes, the render (called *knit*) has to run again to produce the new output. Engagement with AI gets much more efficient when this happens on its own. I have a hook that, at the end of each agent session, clears the old generation and runs a fresh render. Every time I improve a draft with the agent, I immediately see the latest rendered version, with no "did I forget to re-knit?" moment.
 
-**R package development.** R packages follow the same idea. After any change I want a clean state: reinstall the package, verify everything loads correctly, regenerate the roxygen documentation, and run a quick test. Stringing those together by hand is tedious, and forgetting one step has burned me before. A single hook chains them into one trigger, so the moment the agent finishes a change, I see the package in its post-update state, with results either green or red.
+**{{< var rnolink >}} package development.** {{< var rnolink >}} packages follow the same idea. After any change I want a clean state: reinstall the package, verify everything loads correctly, regenerate the roxygen documentation, and run a quick test. Stringing those together by hand is tedious, and forgetting one step has burned me before. A single hook chains them into one trigger, so the moment the agent finishes a change, I see the package in its post-update state, with results either green or red.
 
 When the chain is long, the hook does not need to inline every step. It can call a shell script that lives in the project directory and does the heavy lifting. That keeps the hook config short and the logic versioned alongside the rest of the project.
 
-Hooks are also a strong case for writing your own rather than searching for a generic bundle. My needs are shaped by Quarto rendering and R package builds. Another developer's needs will be shaped by whatever their own project builds, tests, or publishes. Two developers in the same field, even on similar problems, end up with very different hook setups. That is normal, and it is why I always recommend starting from scratch.
+Hooks are also a strong case for writing your own rather than searching for a generic bundle. My needs are shaped by Quarto rendering and {{< var rnolink >}} package builds. Another developer's needs will be shaped by whatever their own project builds, tests, or publishes. Two developers in the same field, even on similar problems, end up with very different hook setups. That is normal, and it is why I always recommend starting from scratch.
 
 ### The Advantage of Determinism
 
@@ -154,7 +154,7 @@ What makes Quarto more than "Markdown with a different extension" is the name it
 
 In my own files, Markdown dominates by volume, and that is exactly why Quarto sits so well with AI agentic engineering. The input is mostly plain text, so any coding agent can read it, edit it, and write it back without the friction it would hit on a binary format.
 
-**Four languages.** The code chunks themselves accept four programming languages as first-class citizens: R, Python, Julia, and Observable. As a data scientist I lean on R and Python the most, and switching between them inside the same document is as simple as changing the chunk header. Each language runs against its own kernel, so results, plots, and tables flow back into the rendered output without any glue code on my side.
+**Four languages.** The code chunks themselves accept four programming languages as first-class citizens: {{< var rnolink >}}, Python, Julia, and Observable. As a data scientist I lean on {{< var rnolink >}} and Python the most, and switching between them inside the same document is as simple as changing the chunk header. Each language runs against its own kernel, so results, plots, and tables flow back into the rendered output without any glue code on my side.
 
 **Four outputs.** From that same source, Quarto renders into four mainstream formats: HTML pages by default, PDFs (via LaTeX or Typst), slide decks (via Reveal.js), and Word documents. One `.qmd`, one render command, four destinations.
 
@@ -172,7 +172,7 @@ In the same spirit that Kaku polishes the terminal, Positron polishes an already
 
 - **Left**: directory tree, GitHub source control, and plugin panels.
 - **Middle**: whichever file I'm editing.
-- **Right**: terminal, language console (R or Python), and output viewer.
+- **Right**: terminal, language console ({{< var rnolink >}} or Python), and output viewer.
 
 The right column is the one I lean on most. I can toggle it to show the source of a Quarto file on one side and the rendered output on the other, so the cycle of editing, rendering, and checking stays inside a single window. That side-by-side view is my single most-used workspace setup.
 

@@ -215,6 +215,30 @@ th, kbd, #quarto-back-to-top {
   font-family: var(--font-ui);
 }
 
+// Lists: a bullet is a short hairline in a soft gray, a number the chrome's
+// face in the muted ink with its period. Lists a component draws itself
+// carry a class and keep their own look; the recipe steps take the numbers.
+main.content ul:not([class]) > li {
+  list-style: none;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.1em;
+    top: calc(0.5lh - 0.5px);
+    width: 0.6em;
+    height: 1px;
+    background: color-mix(in srgb, var(--muted) 70%, var(--page));
+  }
+}
+main.content ol:not([class]) > li::marker,
+.step-list > li::marker {
+  font-family: var(--font-ui);
+  font-size: 0.8em;
+  color: var(--muted);
+}
+
 // Selection colour inside code blocks. Chromium does not inherit the body
 // ::selection into code, so declare it explicitly. `-webkit-text-fill-color`
 // forces Safari to recolour the selected text. The chunk keeps its own
@@ -562,6 +586,9 @@ body.quarto-dark pre > code.sourceCode > span::before {
 
 @mixin pill {
   display: inline-flex;
+  // A pill's baseline comes from its first item, and a glyph has no text
+  // to give one, so pills in a line of text align by their middles.
+  vertical-align: middle;
   align-items: center;
   gap: 0.45em;
   padding: 0.35em 0.95em;
@@ -585,6 +612,12 @@ body.quarto-dark pre > code.sourceCode > span::before {
   &:active { transform: scale(0.96); background: var(--panel-2); }
 
   i, .bi { font-size: 1em; line-height: 1; flex-shrink: 0; font-style: normal; }
+  // A glyph takes a text line's height, so a pill holding only a glyph
+  // is as tall as its neighbors.
+  .glyph { height: 1.3em; align-items: center; }
+  // Centered in that line, the R's foot lands 1.0625em down; Maple Mono's
+  // baseline is 1.01em down (ascent 1.02, line 1.3), so it lifts to meet it.
+  .glyph-r::before { transform: translateY(-0.05em); }
 }
 
 // ---- Subpage Back Button ----
@@ -2568,11 +2601,16 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
 // come twice. In the navbar they are marks balanced as one set: in, iD and
 // RG drawn on one cap height (5 to 19), Tabler's GitHub cat and school
 // scaled to it, all in a lighter 1.75 stroke. In the masthead (`-square`)
-// each sits in Tabler's soft square at a 1.5 stroke. The R logo (`r`,
-// Tabler has none) is drawn to match: the ring open where the R stands in
-// front of it. The rest (the moon, sun, glass and user, the documents, the
-// masthead's facts) are Tabler's own. Masks, so each takes the color of
-// the text around it. Nothing on the site uses FontAwesome.
+// the same marks sit in Tabler's soft square, scaled to 0.66, everything at
+// a 1.5 stroke. The R logo (`r`, Tabler has none) is drawn to match, in
+// the logo's proportions: the whole ring at 40% behind the R, the way the
+// gray ring sits behind the blue R. Quarto (no Tabler icon either) is
+// drawn as its logo, a disc cut in four by a thin cross, at 60% so a
+// filled mark weighs no more than the outlines beside it; Anthropic's mark is Simple Icons' (CC0),
+// filled, scaled to the live area. The rest (the moon, sun, glass and user, the
+// documents, the masthead's facts, the About page's headings and skill
+// marks) are Tabler's own. Masks, so each takes the color of the text
+// around it. Nothing on the site uses FontAwesome.
 $glyphs: (
   "linkedin": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><path d='M6.5 5.5v.01'/><path d='M6.5 10v9'/><path d='M10.5 10v9'/><path d='M10.5 13.5a3.5 3.5 0 0 1 7 0v5.5'/></svg>",
   "github": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><g transform='translate(12 12) scale(0.85) translate(-12 -12)' stroke-width='2.059'><path d='M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5'/></g></svg>",
@@ -2587,14 +2625,52 @@ $glyphs: (
   "certificate": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'/><path d='M13 17.5v4.5l2 -1.5l2 1.5v-4.5'/><path d='M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73'/><path d='M6 9l12 0'/><path d='M6 12l3 0'/><path d='M6 15l2 0'/></svg>",
   "building": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 21l18 0'/><path d='M9 8l1 0'/><path d='M9 12l1 0'/><path d='M9 16l1 0'/><path d='M14 8l1 0'/><path d='M14 12l1 0'/><path d='M14 16l1 0'/><path d='M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16'/></svg>",
   "map-pin": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0'/><path d='M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z'/></svg>",
-  "linkedin-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><path d='M8 11v5'/><path d='M8 8v.01'/><path d='M12 16v-5'/><path d='M16 16v-3a2 2 0 1 0 -4 0'/></svg>",
-  "github-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 7) scale(.625) translate(-12 -3.1)' stroke-width='2.4'><path d='M14.5 15.5c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6'/></g><path d='M13.56 14.75c.4 .4 .44 .8 .44 1.5v4.75'/><path d='M10.44 14.75c-.4 .4 -.44 .8 -.44 1.5v4.75'/></svg>",
-  "orcid-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><path d='M8 11v5'/><path d='M8 8v.01'/><path d='M11 8v8h1a4 4 0 0 0 0 -8z'/></svg>",
-  "researchgate-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><path d='M6 16v-8h2.5a2 2 0 0 1 0 4h-2.5'/><path d='M8.5 12l2 4'/><path d='M17.27 8.73a2.5 2.5 0 1 0 .73 1.77h-2'/></svg>",
-  "scholar-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 12.4) scale(.55) translate(-12 -12)' stroke-width='2.73'><path d='M22 9l-10 -4l-10 4l10 4l10 -4v6'/><path d='M6 10.6v5.4a6 3 0 0 0 12 0v-5.4'/></g></svg>",
-  "r": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7.5 15.37A10.5 6.5 0 1 1 19.5 14.05'/><path d='M10 21v-11h4.5a2.75 2.75 0 0 1 0 5.5h-4.5'/><path d='M14.5 15.5l3.5 5.5'/></svg>",
+  "mail": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10'/><path d='M3 7l9 6l9 -6'/></svg>",
+  "phone": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2'/></svg>",
+  "compass": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8 16l2 -6l6 -2l-2 6l-6 2'/><path d='M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0'/><path d='M12 3l0 2'/><path d='M12 19l0 2'/><path d='M3 12l2 0'/><path d='M19 12l2 0'/></svg>",
+  "linkedin-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 12) scale(0.66) translate(-12 -12)' stroke-width='2.273'><path d='M6.5 5.5v.01'/><path d='M6.5 10v9'/><path d='M10.5 10v9'/><path d='M10.5 13.5a3.5 3.5 0 0 1 7 0v5.5'/></g></svg>",
+  "github-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 12) scale(0.66) translate(-12 -12)' stroke-width='2.273'><g transform='translate(12 12) scale(0.85) translate(-12 -12)' stroke-width='2.674'><path d='M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5'/></g></g></svg>",
+  "orcid-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 12) scale(0.66) translate(-12 -12)' stroke-width='2.273'><path d='M5.5 5.5v.01'/><path d='M5.5 10v9'/><path d='M9.5 5v14h2.5a7 7 0 0 0 0 -14z'/></g></svg>",
+  "researchgate-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 12) scale(0.66) translate(-12 -12)' stroke-width='2.273'><path d='M4 19v-14h4a3.5 3.5 0 0 1 0 7h-4'/><path d='M8 12l3.5 7'/><path d='M20.1 5.9a3 3 0 1 0 .9 2.1h-2.5'/></g></svg>",
+  "scholar-square": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z'/><g transform='translate(12 12) scale(0.66) translate(-12 -12)' stroke-width='2.273'><g transform='translate(12 12) scale(0.88) translate(-12 -12)' stroke-width='2.583'><path d='M22 9l-10 -4l-10 4l10 4l10 -4v6'/><path d='M6 10.6v5.4a6 3 0 0 0 12 0v-5.4'/></g></g></svg>",
+  "r": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><g stroke-opacity='.4'><path d='M3 11a9 6 0 1 0 18 0a9 6 0 1 0 -18 0'/></g><path d='M10.5 19.25v-9.75h5a2.25 2.25 0 0 1 0 4.5h-5'/><path d='M14.75 14l3.5 5.25'/></svg>",
+  "chart-dots": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 7m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0'/><path d='M16 15m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0'/><path d='M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'/><path d='M6 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'/><path d='M9 17l5 -1.5'/><path d='M6.5 8.5l7.81 5.37'/><path d='M7 7l8 -1'/></svg>",
+  "package": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5'/><path d='M12 12l8 -4.5'/><path d='M12 12l0 9'/><path d='M12 12l-8 -4.5'/><path d='M16 5.25l-8 4.5'/></svg>",
+  "sparkles": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z'/></svg>",
+  "school": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M22 9l-10 -4l-10 4l10 4l10 -4v6'/><path d='M6 10.6v5.4a6 3 0 0 0 12 0v-5.4'/></svg>",
+  "tools": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4'/><path d='M14.5 5.5l4 4'/><path d='M12 8l-5 -5l-4 4l5 5'/><path d='M7 8l-1.5 1.5'/><path d='M16 12l5 5l-4 4l-5 -5'/><path d='M16 17l-1.5 1.5'/></svg>",
+  "language": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 6.371c0 4.418 -2.239 6.629 -5 6.629'/><path d='M4 6.371h7'/><path d='M5 9c0 2.144 2.252 3.908 6 4'/><path d='M12 20l4 -9l4 9'/><path d='M19.1 18h-6.2'/><path d='M6.694 3l.793 .582'/></svg>",
+  "python": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 9h-7a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h3'/><path d='M12 15h7a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-3'/><path d='M8 9v-4a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v5a2 2 0 0 1 -2 2h-4a2 2 0 0 0 -2 2v5a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4'/><path d='M11 6l0 .01'/><path d='M13 18l0 .01'/></svg>",
+  "rust": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M10.139 3.463c.473 -1.95 3.249 -1.95 3.722 0a1.916 1.916 0 0 0 2.859 1.185c1.714 -1.045 3.678 .918 2.633 2.633a1.916 1.916 0 0 0 1.184 2.858c1.95 .473 1.95 3.249 0 3.722a1.916 1.916 0 0 0 -1.185 2.859c1.045 1.714 -.918 3.678 -2.633 2.633a1.916 1.916 0 0 0 -2.858 1.184c-.473 1.95 -3.249 1.95 -3.722 0a1.916 1.916 0 0 0 -2.859 -1.185c-1.714 1.045 -3.678 -.918 -2.633 -2.633a1.916 1.916 0 0 0 -1.184 -2.858c-1.95 -.473 -1.95 -3.249 0 -3.722a1.916 1.916 0 0 0 1.185 -2.859c-1.045 -1.714 .918 -3.678 2.633 -2.633a1.914 1.914 0 0 0 2.858 -1.184z'/><path d='M8 12h6a2 2 0 1 0 0 -4h-6v8v-4z'/><path d='M19 16h-2a2 2 0 0 1 -2 -2a2 2 0 0 0 -2 -2h-1'/><path d='M9 8h-4'/><path d='M5 16h4'/></svg>",
+  "git": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'/><path d='M12 8m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'/><path d='M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'/><path d='M12 15v-6'/><path d='M15 11l-2 -2'/><path d='M11 7l-1.9 -1.9'/><path d='M13.446 2.6l7.955 7.954a2.045 2.045 0 0 1 0 2.892l-7.955 7.955a2.045 2.045 0 0 1 -2.892 0l-7.955 -7.955a2.045 2.045 0 0 1 0 -2.892l7.955 -7.955a2.045 2.045 0 0 1 2.892 0z'/></svg>",
+  "sql": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2z'/><path d='M17 8v8h4'/><path d='M13 15l1 1'/><path d='M3 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1'/></svg>",
+  "terminal": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8 9l3 3l-3 3'/><path d='M13 15l3 0'/><path d='M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z'/></svg>",
+  "javascript": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z'/><path d='M7.5 8h3v8l-2 -1'/><path d='M16.5 8h-2.5a.5 .5 0 0 0 -.5 .5v3a.5 .5 0 0 0 .5 .5h1.423a.5 .5 0 0 1 .495 .57l-.418 2.93l-2 .5'/></svg>",
+  "html5": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z'/><path d='M15.5 8h-7l.5 4h6l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -.5'/></svg>",
+  "css3": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z'/><path d='M8.5 8h7l-4.5 4h4l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -.5'/></svg>",
+  "database": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0'/><path d='M4 6v6a8 3 0 0 0 16 0v-6'/><path d='M4 12v6a8 3 0 0 0 16 0v-6'/></svg>",
+  "quarto": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12.9 3.045A9 9 0 0 1 20.955 11.1H12.9ZM20.955 12.9A9 9 0 0 1 12.9 20.955V12.9ZM11.1 20.955A9 9 0 0 1 3.045 12.9H11.1ZM3.045 11.1A9 9 0 0 1 11.1 3.045V11.1Z' fill='black' fill-opacity='.6' stroke='none'/></svg>",
+  "arrow-right": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12l14 0'/><path d='M13 18l6 -6'/><path d='M13 6l6 6'/></svg>",
+  "prompt": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 7l5 5l-5 5'/><path d='M13 17l6 0'/></svg>",
+  "wand": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 21l15 -15l-3 -3l-15 15l3 3'/><path d='M15 6l3 3'/><path d='M9 3a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2'/><path d='M19 13a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2'/></svg>",
+  "plug": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5z'/><path d='M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5z'/><path d='M3 21l2.5 -2.5'/><path d='M18.5 5.5l2.5 -2.5'/><path d='M10 11l-2 2'/><path d='M13 14l-2 2'/></svg>",
+  "hexagons": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 18v-5l4 -2l4 2v5l-4 2z'/><path d='M8 11v-5l4 -2l4 2v5'/><path d='M12 13l4 -2l4 2v5l-4 2l-4 -2'/></svg>",
+  "chart-scatter": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 3v18h18'/><path d='M8 15.015v.015'/><path d='M16 16.015v.015'/><path d='M8 7.03v.015'/><path d='M12 11.03v.015'/><path d='M19 11.03v.015'/></svg>",
+  "clipboard-list": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2'/><path d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z'/><path d='M9 12l.01 0'/><path d='M13 12l2 0'/><path d='M9 16l.01 0'/><path d='M13 16l2 0'/></svg>",
+  "arrows-split": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 17h-5.397a5 5 0 0 1 -4.096 -2.133l-.514 -.734a5 5 0 0 0 -4.096 -2.133h-3.897'/><path d='M21 7h-5.395a5 5 0 0 0 -4.098 2.135l-.51 .73a5 5 0 0 1 -4.097 2.135h-3.9'/><path d='M18 10l3 -3l-3 -3'/><path d='M18 20l3 -3l-3 -3'/></svg>",
+  "math-function": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 19a2 2 0 0 0 2 2c2 0 2 -4 3 -9s1 -9 3 -9a2 2 0 0 1 2 2'/><path d='M5 12h6'/><path d='M15 12l6 6'/><path d='M15 18l6 -6'/></svg>",
+  "cpu": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 5m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z'/><path d='M9 9h6v6h-6z'/><path d='M3 10h2'/><path d='M3 14h2'/><path d='M10 3v2'/><path d='M14 3v2'/><path d='M21 10h-2'/><path d='M21 14h-2'/><path d='M14 21v-2'/><path d='M10 21v-2'/></svg>",
+  "devices": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M13 9a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1v-10z'/><path d='M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9'/><path d='M16 9h2'/></svg>",
+  "swift": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20.547 15.828c1.33 -4.126 -1.384 -9.521 -6.047 -12.828c-.135 -.096 2.39 6.704 1.308 9.124c-2.153 -1.454 -4.756 -3.494 -7.808 -6.124l-.5 2l-3.5 -1c4.36 4.748 7.213 7.695 8.56 8.841c-4.658 2.089 -10.65 -.978 -10.56 -.841c1.016 1.545 6 6 11 6c2 0 3.788 -.502 4.742 -1.389c.005 -.005 .432 -.446 1.378 -.17c.504 .148 1.463 .667 2.88 1.559v-1.507c0 -1.377 -.515 -2.67 -1.453 -3.665z'/></svg>",
+  "anthropic": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path transform='translate(12 12) scale(0.8) translate(-12 -12)' d='M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z' fill='black' stroke='none'/></svg>",
+  "browser": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 8h16'/><path d='M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z'/><path d='M8 4v4'/></svg>",
+  "rocket": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3'/><path d='M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3'/><path d='M15 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'/></svg>",
+  "point": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0'/></svg>",
   "file-text": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3v4a1 1 0 0 0 1 1h4'/><path d='M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z'/><path d='M9 9l1 0'/><path d='M9 13l6 0'/><path d='M9 17l6 0'/></svg>",
-  "file-cv": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3v4a1 1 0 0 0 1 1h4'/><path d='M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z'/><path d='M11 12.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0'/><path d='M13 11l1.5 6l1.5 -6'/></svg>"
+  "file-cv": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3v4a1 1 0 0 0 1 1h4'/><path d='M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z'/><path d='M11 12.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0'/><path d='M13 11l1.5 6l1.5 -6'/></svg>",
+  "r-color": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11a9 6 0 1 0 18 0a9 6 0 1 0 -18 0' stroke='rgb(160,164,172)'/><g stroke='rgb(39,109,195)'><path d='M10.5 19.25v-9.75h5a2.25 2.25 0 0 1 0 4.5h-5'/><path d='M14.75 14l3.5 5.25'/></g></svg>",
+  "python-color": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><g stroke='rgb(55,118,171)'><path d='M12 9h-7a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h3'/><path d='M8 9v-4a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v5a2 2 0 0 1 -2 2h-2'/><path d='M11 6l0 .01'/></g><g stroke='rgb(232,184,36)'><path d='M12 15h7a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-3'/><path d='M12 12h-2a2 2 0 0 0 -2 2v5a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4'/><path d='M13 18l0 .01'/></g></svg>",
+  "quarto-color": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12.9 3.045A9 9 0 0 1 20.955 11.1H12.9ZM20.955 12.9A9 9 0 0 1 12.9 20.955V12.9ZM11.1 20.955A9 9 0 0 1 3.045 12.9H11.1ZM3.045 11.1A9 9 0 0 1 11.1 3.045V11.1Z' fill='rgb(117,170,219)' stroke='none'/></svg>",
 );
 
 @function glyph-url($name) {
@@ -2606,10 +2682,71 @@ $glyphs: (
   display: inline-flex;
   &::before { @include glyph(1em); }
 }
-// The R logo stands in running text, so it drops to sit on the baseline.
-.glyph-r { vertical-align: -0.15em; }
+// The R logo stands in running text. At 1.2em its R stands between the
+// x-height and the cap height. The R's foot is 20.25 of the mark's 24
+// units down, 0.1875em above the box's bottom, so the box drops by that
+// much and the foot sits on the baseline. The variables write the letter
+// inside it, so the PDFs and a copy keep an R; on the page the mark covers
+// its box and the letter is clipped.
+.glyph-r {
+  vertical-align: -0.1875em;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  &::before { width: 1.2em; height: 1.2em; }
+}
 @each $name, $svg in $glyphs {
   .glyph-#{$name} { --icon: #{glyph-url($name)}; }
+}
+
+// The marks in color, where a mark stands for a tool or a skill (the
+// About page's links and skills, and the CV and resume, whose script reads
+// this map): a brand mark in its brand's color; a mark that is a picture
+// in the color of its group's maker (Claude Code's clay for the agentic
+// skills, R's blue for the R packages, PostgreSQL's blue for SQL, Bash's
+// green for the shell, Alkaline's violet for its apps, Netlify's teal for
+// deployment, Quarto's blue for the web), research methods in teal. The
+// two-color logos (R, Python) and Quarto at full strength are the
+// `-color` entries above; every other mark has 'black' swapped for its
+// color. Mid tones, so each reads on the cream and the dark page alike.
+$glyph-tints: (
+  "anthropic": "rgb(217,119,87)", "wand": "rgb(217,119,87)", "plug": "rgb(217,119,87)",
+  "hexagons": "rgb(39,109,195)", "chart-scatter": "rgb(39,109,195)",
+  "database": "rgb(65,105,225)", "sql": "rgb(65,105,225)",
+  "clipboard-list": "rgb(38,150,138)", "arrows-split": "rgb(38,150,138)", "math-function": "rgb(38,150,138)",
+  "rust": "rgb(206,66,43)", "swift": "rgb(240,81,56)", "git": "rgb(240,80,50)",
+  "javascript": "rgb(222,184,0)", "terminal": "rgb(78,170,37)",
+  "devices": "rgb(104,56,216)",
+  "html5": "rgb(227,79,38)", "css3": "rgb(21,114,182)",
+  "browser": "rgb(117,170,219)", "rocket": "rgb(0,168,155)",
+);
+
+@function str-replace($string, $find, $with) {
+  $i: str-index($string, $find);
+  @while $i {
+    $string: str-slice($string, 1, $i - 1) + $with + str-slice($string, $i + str-length($find));
+    $i: str-index($string, $find);
+  }
+  @return $string;
+}
+
+// The colored marks are drawn as pictures, not masks.
+@mixin glyph-in-color($svg) {
+  -webkit-mask: none;
+  mask: none;
+  background: url("data:image/svg+xml,#{$svg}") center / contain no-repeat;
+}
+@each $name, $color in $glyph-tints {
+  .about-tool > .glyph-#{$name}::before, .about-skill-logo .glyph-#{$name}::before {
+    @include glyph-in-color(str-replace(map-get($glyphs, $name), "'black'", "'#{$color}'"));
+  }
+}
+@each $name in ("r", "python", "quarto") {
+  .about-tool > .glyph-#{$name}::before, .about-skill-logo .glyph-#{$name}::before {
+    @include glyph-in-color(map-get($glyphs, "#{$name}-color"));
+  }
 }
 
 // The navbar's squares, all one size: the menu button at the left on a
@@ -3282,7 +3419,8 @@ figcaption, .figure-caption {
   @include pill;
   font-size: 15px;
   padding: 6px 16px 6px 12px;
-  .glyph { font-size: 16px; }
+  // a size up from the words, so it keeps its own height
+  .glyph { font-size: 16px; height: auto; }
 }
 
 .masthead-sep {
@@ -3466,6 +3604,213 @@ figcaption, .figure-caption {
   .masthead-sep { flex-basis: 100%; height: 0; margin: 0; }
   .masthead-sep + .masthead-icon { margin-left: -6px; }
 }
+
+// ---- About page ----
+// `body-classes: about-page`. Pandoc moves a heading's classes onto its
+// section, so the rules reach the headings through their sections.
+// Sections open on a quiet label over a hairline (Research, Expertise,
+// Personal Life); each topic under them is an h3 led by its glyph;
+// degrees hang on a rail; skills sit on a grid, each led by its mark.
+.about-page {
+  // Links in the words: the site's underline a shade softer, set a little
+  // lower, and a wash under the pointer.
+  // (plain links only: a link with a class, or in the pill row, is styled apart)
+  main.content :is(p, li) a:not([class], .about-more a) {
+    text-decoration-color: color-mix(in srgb, var(--link) 30%, transparent);
+    text-underline-offset: 0.22em;
+    border-radius: 3px;
+    padding: 0 0.1em;
+    margin: 0 -0.1em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: color 160ms var(--ease), text-decoration-color 160ms var(--ease), background-color 160ms var(--ease);
+
+    &:hover, &:focus-visible { background: var(--wash); text-decoration-color: currentColor; }
+  }
+
+  // A link to a tool or a studio in the intro leads with its mark, and the
+  // underline runs under mark and name together. A text underline skips the
+  // mark, so the line is drawn instead, where the plain links put theirs:
+  // the face's ascent is 1em, so the baseline lies 1em down the text's box
+  // and the line 0.22em below it. Every mark sits in one 1em box: a glyph
+  // in its color (`$glyph-tints`); the R logo and a logo image a fifth
+  // larger, in a box as wide, as their art carries a margin.
+  main.content a.about-tool {
+    --under: color-mix(in srgb, var(--link) 30%, transparent);
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 0 0.1em;
+    margin: 0 -0.1em;
+    background-image: linear-gradient(var(--under), var(--under));
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-clip: padding-box;
+    background-size: 100% 1px;
+    background-position: 0 1.22em;
+    transition: color 160ms var(--ease), background-color 160ms var(--ease);
+
+    &:hover, &:focus-visible { --under: currentColor; background-color: var(--wash); }
+
+    > .glyph, > .about-tool-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+      overflow: visible;
+      // a box with no text takes its baseline from its picture's foot, so
+      // a larger logo would ride high; centered on the line instead (half
+      // the x-height), then raised to the middle of the lowercase and the
+      // capitals, where the skills' marks sit
+      vertical-align: middle;
+      position: relative;
+      top: -0.05em;
+      margin-right: 0.3em;
+    }
+    > .glyph { color: var(--muted); transition: color 160ms var(--ease); }
+    > .glyph-r, > .about-tool-mark { width: 1.2em; }
+    > .glyph-r::before { width: 1.2em; height: 1.2em; flex: none; }
+    > .about-tool-mark img { display: block; flex: none; width: 1.2em; height: 1.2em; max-width: none; margin: 0; }
+
+    &:hover > .glyph, &:focus-visible > .glyph { color: currentColor; }
+  }
+
+  // A section opens on a rule and a title a full step above the topics
+  // under it; Research carries a pill to the listing at the right.
+  // No table of contents here (`toc: false`), but Quarto still reserves
+  // its column on the left and draws its sidebar there, empty and in the
+  // page's color. The sidebar goes; the body takes the page's full span
+  // and centers itself in it at its usual reading width.
+  #quarto-sidebar { display: none; }
+  @media (min-width: 992px) {
+    #quarto-content > main.content { grid-column: page-start / page-end; justify-self: center; width: 100%; max-width: 44rem; }
+  }
+
+  section.about-label {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1rem;
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+
+    > * { grid-column: 1 / -1; }
+    > h2 { grid-column: 1; font-size: 1.875rem; letter-spacing: -0.01em; }
+    // centered on the title's own box, which carries no margin
+    > .about-more { grid-column: 2; grid-row: 1; align-self: center; }
+    > h2 + :not(.about-more), > .about-more + * { margin-top: 0.6rem; }
+  }
+  // over Quarto's narrow-screen margin on a first section's heading (an
+  // ID rule), so the title and the link share one baseline at every width
+  #quarto-content main.content section.about-label > h2 { margin: 0; }
+  .about-more {
+    // the pill is the row's only item, so the row is exactly its height
+    p { margin: 0; display: flex; }
+    a { @include pill; }
+    a::after { @include glyph(1em); transition: transform 160ms var(--ease); }
+    a:hover::after { transform: translateX(2px); }
+  }
+  .about-more a { --icon: #{glyph-url("arrow-right")}; }
+
+  // Research's first line: who funds it, quieter than the work
+  // Resume and CV: the homepage's document pills, centered under the
+  // intro's first paragraph on a hairline that runs out to both edges
+  .about-docs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 1.5rem 0;
+
+    &::before, &::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+    &::before { margin-right: 8px; }
+    &::after { margin-left: 8px; }
+  }
+
+  #research > .about-more + p { color: var(--muted); font-size: 0.94rem; }
+
+  section.about-title > h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    margin: 1.6rem 0 0.4rem;
+
+    &::before { @include glyph(1.125rem); background: var(--muted); }
+  }
+}
+
+.about-rail {
+  list-style: none;
+  margin: 0.6rem 0 0 0.3rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 1px solid var(--border-2);
+  display: grid;
+  gap: 1.1rem;
+
+  li { position: relative; }
+  // a dot on the rail at each year
+  li::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.25rem - 5px);
+    top: 0.3em;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1px solid var(--muted);
+    background: var(--page);
+  }
+}
+.about-year { display: block; font-family: var(--font-ui); font-size: 0.8rem; line-height: 1.4; color: var(--muted); }
+.about-degree { margin: 0.1rem 0 0; }
+.about-note { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+// Skills: each group a label over a hairline, then its skills on an even
+// grid, each led by its mark and a hairline, so the names line up by column.
+.about-skills { display: grid; gap: 1.1rem; margin-top: 0.6rem; container-type: inline-size; }
+.about-skill-label {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 0.55rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+.about-skill-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+}
+// one table for every group: three columns, two on a narrow page, one on
+// a phone; every skill takes one cell
+@container (min-width: 22rem) { .about-skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (min-width: 34rem) { .about-skill-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.about-skill {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  min-width: 0;
+  white-space: nowrap;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.about-skill-logo {
+  flex: none;
+  width: 1.4em;
+  display: flex;
+  justify-content: center;
+  color: var(--muted);
+
+  .glyph { height: 1.4em; align-items: center; }
+  .glyph::before { width: 1.15em; height: 1.15em; }
+  // the R keeps its 1.2 to the others, lifted onto the baseline as in a pill
+  .glyph-r::before { width: 1.38em; height: 1.38em; transform: translateY(-0.05em); }
+}
+.about-skill-sep { flex: none; width: 1px; height: 1em; background: var(--border-2); }
+
 
 // ---- Scroll Animations ----
 // A card rises 12px and fades as it comes into view, once, cards in a grid a

@@ -19,7 +19,7 @@ description: "A tutorial of making a personal website using Quarto on RStudio"
   <div class="lnk-label">Software</div>
   <div class="lnk-chips">
    <a href="https://desktop.github.com" class="lnk-btn" target="_blank">GitHub Desktop</a>
-   <a href="https://www.r-project.org" class="lnk-btn" target="_blank">R</a>
+   <a href="https://www.r-project.org" class="lnk-btn" target="_blank">{{< var rnolink >}}</a>
    <a href="https://www.rstudio.com/categories/rstudio-ide/" class="lnk-btn" target="_blank">RStudio</a>
    <a href="https://quarto.org" class="lnk-btn" target="_blank">Quarto</a>
   </div>
@@ -38,7 +38,7 @@ description: "A tutorial of making a personal website using Quarto on RStudio"
 
 This is a tutorial of making a personal website using Quarto on RStudio. It contains the following:
 
-1.  Constructing the personal blog R project using [Quarto](https://quarto.org)
+1.  Constructing the personal blog {{< var rnolink >}} project using [Quarto](https://quarto.org)
 2.  Pushing the project as a [GitHub](https://github.com) repo
 3.  Purchasing your domain on [Namecheap](https://www.namecheap.com) or [Netlify](https://www.netlify.com)
 4.  Deploying the repo on [Netlify](https://www.netlify.com)
@@ -47,11 +47,11 @@ In summary, this website is made using [Quarto](https://quarto.org) on [RStudio]
 
 ## Introduction
 
-Building a personal website is a very good attempt of showcasing your own abilities and your projects, either for academic reasons or job-seeking purposes. There are a lot of ways to construct your personal website, including some low code or even no code options. As an R programmer, I prefer to make one using the R coding environment. [Quarto](https://quarto.org) is an open-source publishing system compatible with Python, R and Julia. It is the next generation of [R Markdown](https://rmarkdown.rstudio.com/index.html), and is a good option for personal website construction as well.
+Building a personal website is a very good attempt of showcasing your own abilities and your projects, either for academic reasons or job-seeking purposes. There are a lot of ways to construct your personal website, including some low code or even no code options. As an {{< var rnolink >}} programmer, I prefer to make one using the {{< var rnolink >}} coding environment. [Quarto](https://quarto.org) is an open-source publishing system compatible with Python, {{< var rnolink >}} and Julia. It is the next generation of [{{< var rnolink >}} Markdown](https://rmarkdown.rstudio.com/index.html), and is a good option for personal website construction as well.
 
 ## Step 1 - Preparation
 
-The first step is to install the environment. If you haven't done already, please download and install [R language](https://www.r-project.org), [RStudio](https://www.rstudio.com/categories/rstudio-ide/), and [Quarto](https://quarto.org).
+The first step is to install the environment. If you haven't done already, please download and install [{{< var rnolink >}} language](https://www.r-project.org), [RStudio](https://www.rstudio.com/categories/rstudio-ide/), and [Quarto](https://quarto.org).
 
 You'll also need to have your [GitHub](https://github.com) account ready. It's also a good idea to install [GitHub Desktop](https://desktop.github.com) to manage your local GitHub repos.
 
@@ -69,7 +69,7 @@ You can use [Netlify](https://www.netlify.com) or [Namecheap](https://www.namech
 
 ## Step 2 - Website Project
 
-The next step is to create the R project of your website. You can either clone [my website repo](https://github.com/pingfan-hu/website) or make from scratch.
+The next step is to create the {{< var rnolink >}} project of your website. You can either clone [my website repo](https://github.com/pingfan-hu/website) or make from scratch.
 
 ### 2.1 Clone my repo
 
@@ -120,7 +120,7 @@ If you want to make one from scratch, please proceed to the [official Quarto blo
 ![**Figure 6**: *Define the directory name and path, and finally click on "Create Project"*](images/06_create_quarto_blog.jpg){width="500"}
 :::
 
-The creation of the Quarto Blog R project constructs the skeleton of your personal website. You can now add the contents on to it and make it your own.
+The creation of the Quarto Blog {{< var rnolink >}} project constructs the skeleton of your personal website. You can now add the contents on to it and make it your own.
 
 ### 2.3 Project file structure
 

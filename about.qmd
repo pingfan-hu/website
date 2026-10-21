@@ -1,49 +1,74 @@
 ---
 title: "About"
 description: "Short bio and expertise of Pingfan Hu"
+body-classes: about-page
+toc: false
 ---
 
 ![](/resources/images/about.png){fig-align="center" width="800"}
 
-{{< include /resources/chunks/intro.qmd >}}
+I am a research data scientist and open-source software developer. I have defended my PhD in Systems Engineering at [George Washington University](https://www.gwu.edu/), advised by Professor [John Helveston](https://www.jhelvy.com).
 
-Check out my **Resume** and **CV** here:
-
-<div class="intro-links">
-  <a href="resume.pdf" class="intro-btn" target="_blank"><i class="bi bi-person-badge"></i> Resume</a>
-  <a href="cv.pdf" class="intro-btn" target="_blank"><i class="bi bi-file-earmark-text"></i> CV</a>
+```{=html}
+<div class="about-docs">
+ <a class="masthead-doc" href="resume.pdf" target="_blank"><span class="glyph glyph-file-text" aria-hidden="true"></span>Resume</a>
+ <a class="masthead-doc" href="cv.pdf" target="_blank"><span class="glyph glyph-file-cv" aria-hidden="true"></span>CV</a>
 </div>
+```
 
-### [**Research**](research.qmd)
+My research uses data science and quantitative modeling to study human behavior in transportation systems. I develop open-source software for survey design and discrete choice modeling, and build full-stack research applications with [[]{.glyph .glyph-r aria-hidden="true"}R](https://CRAN.R-project.org/){.about-tool}, [[]{.glyph .glyph-python aria-hidden="true"}Python](https://www.python.org){.about-tool}, [[]{.glyph .glyph-quarto aria-hidden="true"}Quarto](https://quarto.org/){.about-tool}, [[]{.glyph .glyph-r aria-hidden="true"}Shiny](https://shiny.posit.co/){.about-tool}, and [[]{.glyph .glyph-database aria-hidden="true"}PostgreSQL](https://supabase.com){.about-tool}.
+
+With Professor Helveston, I run [[![](/resources/images/logo-alkaline.png){alt=""}]{.about-tool-mark}Alkaline Software](https://github.com/alkaline-software){.about-tool}, an app development studio. Our flagship product is [[![](/resources/images/logo-emaki.png){alt=""}]{.about-tool-mark}Emaki](https://emaki.lol){.about-tool}, an Agentic Development Environment (ADE).
+
+## Research {.about-label}
+
+::: {.about-more}
+[All research](research.qmd)
+:::
 
 My research is proudly funded by the {{< var sloan >}}.
 
 {{< include /resources/chunks/research.qmd >}}
 
+## Expertise {.about-label}
 
-### Other Sections
+### Degrees {.about-title .glyph-school}
 
-- [**Blog**](blog.qmd): I write blog posts on this section, mainly for encapsulating my thoughts and ideas during my research. I also write tutorials and guides for the tools and packages I use or develop.
-- [**Works**](works.qmd): I collect my works on this section, including journal & conference papers, storybooks, workshops, conference slides, and posters.
+```{=html}
+<ol class="about-rail">
+ <li>
+  <span class="about-year">2026</span>
+  <p class="about-degree"><strong>Ph.D.</strong> Engineering Management and Systems Engineering</p>
+  <p class="about-note"><a class="about-tool" href="https://www.emse.seas.gwu.edu"><span class="about-tool-mark"><img src="resources/images/logo-gwu.png" alt=""></span>George Washington University</a>, advised by Professor <a href="https://www.jhelvy.com">John Helveston</a>. Dissertation defended; degree conferral expected December 2026.</p>
+ </li>
+ <li>
+  <span class="about-year">2018</span>
+  <p class="about-degree"><strong>M.P.E.</strong> Mechanical Engineering</p>
+  <p class="about-note"><a class="about-tool" href="https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html"><span class="about-tool-mark"><img src="resources/images/logo-usyd.png" alt=""></span>University of Sydney</a>, qualified by <a class="about-tool" href="https://www.engineersaustralia.org.au"><span class="about-tool-mark"><img src="resources/images/logo-engineers-australia.png" alt=""></span>Engineers Australia</a>.</p>
+ </li>
+ <li>
+  <span class="about-year">2015</span>
+  <p class="about-degree"><strong>B.S.</strong> Industrial &amp; Manufacturing Engineering</p>
+  <p class="about-note"><a class="about-tool" href="https://www.ime.psu.edu"><span class="about-tool-mark"><img src="resources/images/logo-psu.png" alt=""></span>Penn State University</a>, with a minor in Six Sigma.</p>
+ </li>
+</ol>
+```
 
-## Expertise
+### Skills {.about-title .glyph-tools}
 
-#### Degrees
+```{r}
+#| echo: false
+#| results: asis
+# the table is shared with the resume and CV; see the script
+source(here::here("resources/scripts/skills.R"))
+cat(skills_html())
+```
 
-- **Ph.D.** - *Doctor of Philosophy* in Engineering Management and Systems Engineering at [George Washington University](https://www.emse.seas.gwu.edu), advised by professor [John Helveston](https://www.jhelvy.com). Dissertation defended; degree conferral expected December 2026.
-- **M.P.E.** - *Master of Professional Engineering* in Mechanical Engineering at [Sydney University](https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html), qualified by [Engineers Australia](https://www.engineersaustralia.org.au).
-- **B.S.** - *Bachelor of Science* in Industrial & Manufacturing Engineering at [Penn State University](https://www.ime.psu.edu), with a minor of Six Sigma.
+### Languages {.about-title .glyph-language}
 
-#### Skills
+{{< include /resources/chunks/languages.qmd >}}
 
-{{< include /resources/chunks/skills.qmd >}}
-
-#### Languages
-
-- Chinese Mandarin - Native language
-- English - Proficient technical writing and oral communication
-
-## Personal Life
+## Personal Life {.about-label}
 
 Throughout the past years, I have traveled, lived, and worked in different countries, including China, USA, Australia, and Germany. I'm currently based in Greater Melbourne, Australia.
 

@@ -20,7 +20,7 @@ description: "An open-source survey platform using {{< var rnolink >}}, Quarto, 
   <a href="https://github.com/surveydown-dev/surveydown" class="intro-btn" target="_blank"><i class="bi bi-github"></i> GitHub</a>
   <a href="https://ospo.gwu.edu/2024-student-open-source-award-winners" class="intro-btn" target="_blank"><i class="bi bi-award"></i> Award</a>
   <a href="https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible" class="intro-btn" target="_blank"><i class="bi bi-newspaper"></i> Spotlight</a>
-  <a href="https://surveydown-dev.r-universe.dev/surveydown" class="intro-btn" target="_blank"><i class="bi bi-r-square-fill"></i> R-univ</a>
+  <a href="https://surveydown-dev.r-universe.dev/surveydown" class="intro-btn" target="_blank"><span class="glyph glyph-r" role="img" aria-label="R"></span> R-univ</a>
 </div>
 
 ## Paper
@@ -51,7 +51,7 @@ The {{< var rnolink >}} package deployment site can be accessed [here](https://p
 
 Here's how it works:
 
-1. Design your survey as a {{< var quarto >}} document using markdown and R code.
+1. Design your survey as a {{< var quarto >}} document using markdown and {{< var rnolink >}} code.
 2. Render your survey into a {{< var shiny >}} app that can be hosted online and sent to respondents.
 3. Store survey response data in a {{< var postgres >}} database. We recommend {{< var supabase >}} as a free, secure, and easy to use option.
 
@@ -64,10 +64,10 @@ your own surveydown survey!**
 
 ## Motivation
 
-Most survey platforms use graphic interfaces or spreadsheets to define survey content, making version control, collaboration, and reproducibility difficult or impossible. Surveydown was designed to address these problems. As an open-source, markdown-based platform, all survey content is defined using **plain text** (markdown and R code) in two files:
+Most survey platforms use graphic interfaces or spreadsheets to define survey content, making version control, collaboration, and reproducibility difficult or impossible. Surveydown was designed to address these problems. As an open-source, markdown-based platform, all survey content is defined using **plain text** (markdown and {{< var rnolink >}} code) in two files:
 
 - **survey.qmd**: A {{< var quarto >}} document that contains the survey content (pages, questions, etc).
-- **app.R**: An R script defining a shiny app that contains global settings (libraries, database configuration, etc.) and server configuration options (e.g., conditional page skipping / conditional display, etc.).
+- **app.R**: An {{< var rnolink >}} script defining a shiny app that contains global settings (libraries, database configuration, etc.) and server configuration options (e.g., conditional page skipping / conditional display, etc.).
 
 This approach makes it easy to reproduce, share, and version control your surveys with common tools like Git. And since all survey data is stored in a {{< var postgres >}} database, you have total control over where your survey data lives. We recommend {{< var supabase >}} as a free, secure, and easy to use option.
 

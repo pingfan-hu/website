@@ -163,7 +163,7 @@
     <div class="qrt-card">
       <div class="qrt-card-icon"><i data-lucide="code"></i></div>
       <div class="qrt-label">Four Languages</div>
-      <div class="qrt-desc">Python, R, Julia, and Observable.</div>
+      <div class="qrt-desc">Python, <span class="glyph glyph-r" role="img" aria-label="R"></span>, Julia, and Observable.</div>
     </div>
     <div class="qrt-card">
       <div class="qrt-card-icon"><i data-lucide="file-output"></i></div>

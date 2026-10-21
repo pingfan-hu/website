@@ -40,11 +40,15 @@ execute:
 // === LISTS & TABLES ===
 #show list: set block(spacing: 0.4em)
 #show list: set par(leading: 0.45em)
-#set list(indent: 1em, body-indent: 0.5em, marker: ([•]), spacing: 0.5em)
+// a bullet is a short gray hairline, a number gray Maple Mono with its
+// period, as on the site
+#let list-mark = box(height: 0.66em, width: 0.5em, place(horizon, line(length: 0.5em, stroke: 0.6pt + rgb("#A3A096"))))
+#let enum-mark(n) = text(font: "Maple Mono NF", size: 0.8em, fill: rgb("#77746B"))[#n.]
+#set list(indent: 1em, body-indent: 0.5em, marker: list-mark, spacing: 0.5em)
 
 #show enum: set block(spacing: 0.4em)
 #show enum: set par(leading: 0.45em)
-#set enum(indent: 1em, body-indent: 0.5em, spacing: 0.5em)
+#set enum(indent: 1em, body-indent: 0.5em, spacing: 0.5em, numbering: enum-mark)
 
 #show list: it => { it; v(gap) }
 #show enum: it => { it; v(gap) }
@@ -53,17 +57,26 @@ execute:
 // Navy-blue links
 #show link: set text(fill: rgb(0%, 20%, 60%))
 
-// Monospace font for inline code spans
-#show raw: set text(font: "Maple Mono NF", size: 0.92em)
-
-// === LUCIDE ICONS ===
-#let li(code) = box(baseline: 1.1em)[#text(font: "lucide", size: 9pt, code)]
-#let liMapPin = li("\u{E111}")
-#let liMail = li("\u{E10F}")
-#let liPhone = li("\u{E133}")
-#let liCompass = li("\u{E09B}")
+// The research chunk shared with the About page (resources/chunks/research.qmd)
+// arrives as headings over paragraphs: a heading is set like a lettered
+// subsection (A., B., C., as the other sections letter theirs), and a link
+// into the site (Quarto writes its path as ./research/...) is pointed at
+// pingfan.org.
+#show heading: it => block(above: 8pt, below: 4pt,
+  text(size: 11pt, weight: "bold")[#counter(heading).display(it.numbering) #it.body])
+#show link: it => if type(it.dest) == str and it.dest.starts-with("./") { link("https://pingfan.org" + it.dest.slice(1), it.body) } else { it }
 
 // === HELPERS ===
+// A mark from the site's glyph map (resources/styles/styles.scss), read at
+// compile time so the documents and the page share one drawing: gray, at
+// the size of the text, its center 0.29em above the baseline, between the
+// lowercase and capital centers, as the page's marks and the skill marks.
+#let glyph(name, size: 0.9em) = {
+  let scss = read("resources/styles/styles.scss")
+  let svg = scss.match(regex("\n  \"" + name + "\": \"(<svg[^\"]*</svg>)\"")).captures.at(0)
+  box(width: size, height: 0.58em, place(horizon + center, image(bytes(svg.replace("'black'", "'#77746B'")), height: size)))
+}
+
 // Section header with underline rule. Sticky so it never strands at a page bottom.
 #let section(name) = block(sticky: true)[
   #text(size: 12pt, weight: "bold")[#upper[#name]]
@@ -98,15 +111,16 @@ execute:
 #v(10pt)
 
 #align(center)[
+  // each mark inline before its text, so it sits in the text's own line
+  // (a mark in a cell of its own is centered on the row, not on the words)
   #grid(
-    columns: (auto, auto),
-    column-gutter: 6pt,
+    columns: 1,
     row-gutter: 3pt,
-    align: (right + horizon, left + horizon),
-    liMapPin, [Greater Melbourne, Australia],
-    liPhone, [+61 431 251 227],
-    liMail, [#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]],
-    liCompass, [#link("https://pingfan.org")[pingfan.org]],
+    align: left,
+    [#glyph("map-pin")~Greater Melbourne, Australia],
+    [#glyph("phone")~+61 431 251 227],
+    [#glyph("mail")~#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]],
+    [#glyph("compass")~#link("https://pingfan.org")[pingfan.org]],
   )
 ]
 
@@ -122,7 +136,7 @@ execute:
     column-gutter: 10pt,
     align: left,
     [2026], [*George Washington University*, Washington, D.C.], [Ph.D.], [Systems Engineering],
-    table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation: _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the `surveydown` Open-Source Survey Platform_]]],
+    table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation: _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the surveydown Open-Source Survey Platform_]]],
     table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Doctoral Committee: _John Paul Helveston, Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
     table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Dissertation defended; degree conferral expected December 2026.]],
     [2018], [*University of Sydney*, Sydney, NSW, Australia], [M.P.E.], [Mechanical Engineering],
@@ -133,15 +147,27 @@ execute:
 #v(5pt)
 
 #section[Research Interests]
+// a heading steps the counter only when it has a numbering; the function
+// letters by the heading's own level alone, since the levels above it are zero
+#set heading(numbering: (..n) => numbering("A.", n.pos().last()))
+// its paragraphs stand in from the margin as the lists' text does (the
+// list indent, its marker and its body indent); the brackets keep the rule
+// to the chunk
+#[
+#show par: it => pad(left: 2em, it)
+```
 
-- *Data Science*: Studying human behavior in transportation systems with mixed logit and related discrete choice models and large-scale scenario simulation, from survey design and fielding through statistical modeling and visualization, using electric vehicle smart charging as the leading case to generate program design and policy suggestions.
-- *Open-Source Software*: Development of `surveydown`, a programmable, markdown-based survey platform built on Quarto, Shiny, and PostgreSQL, its companion GUI `sdstudio`, and `TidyViz`, a Python package for tidying and visualizing survey data.
-- *Agentic AI Engineering*: Building reproducible research and engineering workflows around Claude Code with plugins, skills, MCPs, and hooks, documented in public tutorials, and taught through a workshop on the GW Trustworthy AI Initiative for researchers and developers. Building `Emaki`, an Agentic Development Environment (ADE) organized around coding-agent sessions rather than files.
+{{< include /resources/chunks/research.qmd >}}
+
+```{=typst}
+]
+// a paragraph carries no spacing of its own, as a list or table does
+#v(gap + 0.8em)
 
 #section[Honors & Awards]
 
-- #link("https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible")[2025]: Profiled by GW Engineering for contributing to the `surveydown` platform.
-- #link("https://ospo.gwu.edu/2024-student-open-source-award-winners")[2024]: 2nd Prize in GW's 2024 Student Open Source Awards for the `surveydown` R package.
+- #link("https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible")[2025]: Profiled by GW Engineering for contributing to the surveydown platform.
+- #link("https://ospo.gwu.edu/2024-student-open-source-award-winners")[2024]: 2nd Prize in GW's 2024 Student Open Source Awards for the surveydown R package.
 
 #section[Publications]
 
@@ -153,7 +179,7 @@ execute:
 
 #subsection[A. Journal Articles]
 
-+ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "`surveydown`: An open-source, markdown-based platform for programmable and reproducible surveys" _PLOS ONE_. 20(8). DOI: #link("https://doi.org/10.1371/journal.pone.0331002")[10.1371/journal.pone.0331002]
++ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "surveydown: An open-source, markdown-based platform for programmable and reproducible surveys" _PLOS ONE_. 20(8). DOI: #link("https://doi.org/10.1371/journal.pone.0331002")[10.1371/journal.pone.0331002]
 + *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring electric vehicle owners' willingness to participate in smart charging programs". _Environmental Research Letters_. DOI: #link("https://doi.org/10.1088/1748-9326/ae2597")[10.1088/1748-9326/ae2597]
 
 #subsection[B. Conference Proceedings]
@@ -163,17 +189,17 @@ execute:
 
 #subsection[C. Working Papers & Papers Under Review]
 
-+ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys." _Working Paper_.
++ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "sdstudio: A Companion Package for Designing and Managing surveydown Surveys." _Working Paper_.
 + *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the Peak-Shaving Potential and Cost Efficiency of Battery Electric Vehicle Supplier-Managed Charging" _Environmental Research: Infrastructure and Sustainability_. Under Review.
 
 #subsection[D. Software]
 
-+ *Hu, P.*, & Helveston, J. P. (2026) "`Emaki`: An Agentic Development Environment that keeps, searches, and continues Claude Code and Codex sessions" Desktop application for macOS, Windows, and Linux, built in Rust with GPUI. Alkaline Software. #link("https://emaki.lol")[emaki.lol].
-+ *Hu, P.* (aut,cre,cph) (2026) "`MiniNotes`: An Obsidian-compatible macOS menu bar Markdown note app" macOS application.
-+ *Hu, P.* (aut,cre,cph) (2025) "`TidyViz`: A Python package for tidying and visualizing survey data."
-+ *Hu, P.* (aut,cre,cph) (2025) "`MiniCalendar`: A free and open-source mini menu bar calendar" macOS application.
-+ *Hu, P.* (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "`sdstudio`: Companion Application for the `surveydown` Survey Platform" R package.
-+ Helveston, J. P. (aut,cre,cph), *Hu, P.* (aut,cre), Bogdan Bunea (aut,cre) (2024) "`surveydown`: Markdown-Based Surveys Using Quarto Shiny Documents" R package.
++ *Hu, P.*, & Helveston, J. P. (2026) "Emaki: An Agentic Development Environment that keeps, searches, and continues Claude Code and Codex sessions" Desktop application for macOS, Windows, and Linux, built in Rust with GPUI. Alkaline Software. #link("https://emaki.lol")[emaki.lol].
++ *Hu, P.* (aut,cre,cph) (2026) "MiniNotes: An Obsidian-compatible macOS menu bar Markdown note app" macOS application.
++ *Hu, P.* (aut,cre,cph) (2025) "TidyViz: A Python package for tidying and visualizing survey data."
++ *Hu, P.* (aut,cre,cph) (2025) "MiniCalendar: A free and open-source mini menu bar calendar" macOS application.
++ *Hu, P.* (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "sdstudio: Companion Application for the surveydown Survey Platform" R package.
++ Helveston, J. P. (aut,cre,cph), *Hu, P.* (aut,cre), Bogdan Bunea (aut,cre) (2024) "surveydown: Markdown-Based Surveys Using Quarto Shiny Documents" R package.
 
 #section[Teaching]
 
@@ -186,25 +212,25 @@ execute:
 #subsection[B. Workshops]
 
 - "Agentic Workflows with Claude Code", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Expected Aug 2026. #link("https://pingfan-hu.github.io/2026-agentic-workshop/")[pingfan-hu.github.io/2026-agentic-workshop].
-- "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. #link("https://jhelvy.github.io/2025-qux-surveydown-workshop/")[jhelvy.github.io/2025-qux-surveydown-workshop].
-- "`surveydown`: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. #link("https://jhelvy.github.io/2025-surveydown-workshop/")[jhelvy.github.io/2025-surveydown-workshop].
+- "surveydown: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. #link("https://jhelvy.github.io/2025-qux-surveydown-workshop/")[jhelvy.github.io/2025-qux-surveydown-workshop].
+- "surveydown: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. #link("https://jhelvy.github.io/2025-surveydown-workshop/")[jhelvy.github.io/2025-surveydown-workshop].
 
 #section[Presentations]
 
 #subsection[A. Conferences]
 
-+ "`sdstudio`: A Companion Package for Designing and Managing `surveydown` Surveys". GW Open Source Conference 2026. Washington, DC. Mar 23, 2026.
-+ "`surveydown`: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys". Quant UX Con 2025. Virtual. Nov 05, 2025.
-+ "`surveydown`: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
-+ "`surveydown`: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny", with John Paul Helveston. Posit Conference 2025 - The R & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
++ "sdstudio: A Companion Package for Designing and Managing surveydown Surveys". GW Open Source Conference 2026. Washington, DC. Mar 23, 2026.
++ "surveydown: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys". Quant UX Con 2025. Virtual. Nov 05, 2025.
++ "surveydown: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
++ "surveydown: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny", with John Paul Helveston. Posit Conference 2025 - The R & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
 + "Grid-Integration of Electric Vehicles: Consumer Preferences for Supplier Managed Charging". Bridging Transportation Researchers 7. Virtual. Aug 06, 2025.
-+ "`surveydown`: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys". GW Open Source Conference 2025. Washington, DC. Mar 24, 2025.
++ "surveydown: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys". GW Open Source Conference 2025. Washington, DC. Mar 24, 2025.
 + "Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs", with Brian Tarroja, Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. 2024 IEEE Vehicle Power and Propulsion Conference (VPPC). Washington, DC. Oct 03, 2024.
 
 #subsection[B. Posters]
 
 + "Peak-Shaving Potential and Cost Efficiency". GW 2026 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 24, 2026.
-+ "`surveydown`: An Open-Source, Markdown-Based Survey Platform". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
++ "surveydown: An Open-Source, Markdown-Based Survey Platform". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
 + "Electric Vehicle Owner Preferences for Smart Charging". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
 + "The BEV Smart Charging Adoption Project". 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 06, 2025.
 
@@ -215,7 +241,7 @@ execute:
 
 #section[Industry Experiences]
 
-- Co-Founder of _Alkaline Software_, an app development studio founded with Professor John Paul Helveston that builds apps in Rust with GPUI. Lead developer of the flagship product `Emaki`, an Agentic Development Environment (ADE). #link("https://github.com/alkaline-software")[github.com/alkaline-software]. Remote (2026 - Present).
+- Co-Founder of _Alkaline Software_, an app development studio founded with Professor John Paul Helveston that builds apps in Rust with GPUI. Lead developer of the flagship product Emaki, an Agentic Development Environment (ADE). #link("https://github.com/alkaline-software")[github.com/alkaline-software]. Remote (2026 - Present).
 - Software Engineer at _Harsco Rail_. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
 - Project Engineer at _GE Appliances_. Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs. Qingdao, China (2019 - 2020).
 - Assistant Process Engineer (Intern) at _Kurtz Ersa GmbH_. Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first Asian market promotion video on YouTube. Wertheim, Germany (Jan. - Mar. 2017).
@@ -223,6 +249,16 @@ execute:
 #section[Skills]
 ```
 
-- **Languages**: English (*Proficient*), Chinese (*Native*).
+```{r}
+#| results: asis
+# the About page's skills table, drawn in Typst; see the script
+source(here::here("resources/scripts/skills.R"))
+cat(skills_typst("table", cols = 3))
+```
 
-{{< include /resources/chunks/skills.qmd >}}
+```{=typst}
+#v(gap)
+#section[Languages]
+```
+
+{{< include /resources/chunks/languages.qmd >}}

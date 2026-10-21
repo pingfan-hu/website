@@ -156,7 +156,7 @@ A good practice when designing a skill for an entire project is to design a sing
 1. From the user's perspective, invoking the skill requires recalling its name, which is inefficient for users to memorize many skill names. One skill name for all is more than enough.
 2. How a skill works is that the AI agent will first read through the master `SKILL.md` file. Even though a skill might have multiple aspects, the AI agent is smart enough to understand the task and the content inside the skill and selectively pick the related files. The token consumption is considerably small. 
 
-My `/surveydown-skill` is a good example. The [surveydown](https://surveydown.org) platform is an open-source survey engine built with R, Quarto, Shiny, and PostgreSQL. Me and my advisor, [Dr. John Helveston](https://www.jhelvy.com), both care a lot about user experience and learning curve. The implementation of this skill is also for this same purpose.
+My `/surveydown-skill` is a good example. The [surveydown](https://surveydown.org) platform is an open-source survey engine built with {{< var rnolink >}}, Quarto, Shiny, and PostgreSQL. Me and my advisor, [Dr. John Helveston](https://www.jhelvy.com), both care a lot about user experience and learning curve. The implementation of this skill is also for this same purpose.
 
 Currently, the skill contains these capabilities: creating a survey, connecting a database to store responses, deploying the survey online, and recording a video walkthrough, and each is a full workflow rather than a loose hint.
 
@@ -167,7 +167,7 @@ Currently, the skill contains these capabilities: creating a survey, connecting 
 Strip away the details and a skill is just a command you summon with a forward slash. The only hard requirement is the `SKILL.md` file; everything beside it is optional, and the author is free to put in whatever the workflow needs. Across this post that freedom took a few recurring shapes:
 
 1. **Start minimal:** A single `SKILL.md` is enough. Its description and examples set the basic tune, and they deliberately leave room for the model to vary.
-2. **Deterministic Parts:** Scripts (Python, shell, R) and fixed templates make the deterministic parts reproducible, while the prose stays free to improvise.
+2. **Deterministic Parts:** Scripts (Python, shell, {{< var rnolink >}}) and fixed templates make the deterministic parts reproducible, while the prose stays free to improvise.
 3. **Bundled Workflows:** One skill can hold several distinct abilities, as long as they share a theme.
 4. **Nest other agents:** A skill can wrap another model's API, so your main agent delegates the tasks it is weak at; image generation, where Claude Code turns a loose prompt into a sharp one for Gemini or GPT, is the clearest example.
 

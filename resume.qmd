@@ -14,23 +14,23 @@ execute:
 #set page(
   paper: "a4",
   fill: rgb("#F8F7F0"),
-  margin: (top: 0.3in, bottom: 0.6in, left: 0.6in, right: 0.6in),
+  margin: (top: 0.5in, bottom: 0.5in, left: 0.6in, right: 0.6in),
   footer: context {
     set text(size: 8pt, fill: rgb("#666"), style: "italic")
     let updated = datetime.today().display(
       "Updated [month repr:long] [day padding:none], [year]"
     )
+    // one page, so no page count
     grid(
-      columns: (1fr, 1fr, 1fr),
+      columns: (1fr, 1fr),
       align(left)[#updated],
-      align(center)[Page #counter(page).display() of #counter(page).final().last()],
       align(right)[#link("https://pingfan.org")[pingfan.org]],
     )
   },
 )
 
 #set text(font: ("Optima", "Helvetica Neue", "Arial"), size: 10pt)
-#set par(leading: 0.5em, justify: false, spacing: 0pt)
+#set par(leading: 0.62em, justify: false, spacing: 0pt)
 #set block(spacing: 0pt)
 
 // === SPACING KNOBS ===
@@ -38,13 +38,16 @@ execute:
 // between lists/tables/entries). Tune this one value to tighten or loosen
 // the whole resume. `entry-gap` is the tighter gap from an entry title to
 // its first bullet.
-#let gap = 6pt
-#let entry-gap = 2.5pt
+#let gap = 7pt
+#let entry-gap = 3pt
 
 // === LISTS & TABLES ===
-#show list: set block(spacing: 0.3em)
-#show list: set par(leading: 0.39em)
-#set list(indent: 1em, body-indent: 0.4em, marker: ([•]))
+#show list: set block(spacing: 0.25em)
+// a bullet is a short gray hairline, a number gray Maple Mono with its
+// period, as on the site
+#let list-mark = box(height: 0.66em, width: 0.5em, place(horizon, line(length: 0.5em, stroke: 0.6pt + rgb("#A3A096"))))
+#let enum-mark(n) = text(font: "Maple Mono NF", size: 0.8em, fill: rgb("#77746B"))[#n.]
+#set list(indent: 1em, body-indent: 0.4em, marker: list-mark)
 
 // Lists/tables emit `gap` AFTER themselves so the gap to the next block is
 // always `gap`. Tables also get a small lead-in for breathing room.
@@ -54,28 +57,36 @@ execute:
 // Navy-blue links
 #show link: set text(fill: rgb(0%, 20%, 60%))
 
-// === LUCIDE ICONS ===
-#let li(code) = box(baseline: 0.2em)[#text(font: "lucide", size: 9pt, code)]
-#let liMapPin = li("\u{E111}")
-#let liMail = li("\u{E10F}")
-#let liPhone = li("\u{E133}")
-#let liCompass = li("\u{E09B}")
-
 // === HELPERS ===
+// A mark from the site's glyph map (resources/styles/styles.scss), read at
+// compile time so the documents and the page share one drawing: gray, at
+// the size of the text, its center 0.29em above the baseline, between the
+// lowercase and capital centers, as the page's marks and the skill marks.
+#let glyph(name, size: 0.9em) = {
+  let scss = read("resources/styles/styles.scss")
+  let svg = scss.match(regex("\n  \"" + name + "\": \"(<svg[^\"]*</svg>)\"")).captures.at(0)
+  box(width: size, height: 0.58em, place(horizon + center, image(bytes(svg.replace("'black'", "'#77746B'")), height: size)))
+}
+
 // Section header with underline rule.
+#let hair = rgb("#BDBAB0")
+#let muted = rgb("#77746B")
 #let section(name) = {
-  text(size: 11pt, weight: "bold")[#upper[#name]]
+  text(size: 11pt, weight: "bold", tracking: 0.05em)[#upper[#name]]
   v(4pt)
-  line(length: 100%, stroke: 0.5pt + rgb("#888"))
+  line(length: 100%, stroke: 0.5pt + hair)
   v(gap)
 }
+
+// Dates and places, quiet and in tabular figures.
+#let aside(body) = text(weight: "regular", fill: muted, number-width: "tabular")[#body]
 
 // Project/general entry — title left, dates right.
 #let entry(title, dates) = {
   grid(
     columns: (1fr, auto),
     align: (left, right),
-    title, text(weight: "regular")[#dates],
+    title, aside(dates),
   )
   v(entry-gap)
 }
@@ -83,35 +94,38 @@ execute:
 // Work entry — fixed-width left column so locations line up across rows.
 #let work-entry(company-role, location, dates) = {
   grid(
-    columns: (50%, 1fr, auto),
+    columns: (55%, 1fr, auto),
     align: (left, left, right),
     company-role,
-    text(weight: "regular")[#location],
-    text(weight: "regular")[#dates],
+    aside(location),
+    aside(dates),
   )
   v(entry-gap)
 }
 
 // === HEADER ===
 #align(center)[
-  #text(size: 14pt, weight: "bold")[Pingfan Hu]
+  #text(size: 20pt, weight: "bold")[Pingfan Hu]
 ]
 
-#v(6pt)
+#v(8pt)
 
+// the contact line: a mark before each item, a hairline between items, as
+// in the skills block
+#let sep = [#h(0.8em)#box(height: 0.58em, place(horizon, line(angle: 90deg, length: 0.7em, stroke: 0.4pt + hair)))#h(0.8em)]
 #align(center)[
   #text(size: 9pt)[
-    #liMapPin~Greater Melbourne, Australia
-    ~|~
-    #liMail~#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]
-    ~|~
-    #liPhone~+61 431 251 227
-    ~|~
-    #liCompass~#link("https://pingfan.org")[pingfan.org]
+    #glyph("map-pin")~Greater Melbourne, Australia
+    #sep
+    #glyph("mail")~#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]
+    #sep
+    #glyph("phone")~+61 431 251 227
+    #sep
+    #glyph("compass")~#link("https://pingfan.org")[pingfan.org]
   ]
 ]
 
-#v(5pt)
+#v(9pt)
 
 #section[Education]
 
@@ -119,74 +133,68 @@ execute:
   #table(
     columns: (auto, auto, auto, auto, auto),
     stroke: none,
-    inset: (x: 0pt, y: 2pt),
+    inset: (x: 0pt, y: 1.5pt),
     column-gutter: 14pt,
     align: left,
-    [2026], [*George Washington University*], [Ph.D. (defended)], [Systems Engineering], [GPA 4.0],
-    [2018], [*University of Sydney*], [M.P.E.], [Mechanical Engineering], [GPA 3.5],
-    [2015], [*Pennsylvania State University*], [B.S.], [Industrial Engineering], [GPA 3.2],
+    aside[2026], [George Washington University], [Ph.D. (defended)], [Systems Engineering], [GPA 4.0],
+    aside[2018], [University of Sydney], [M.P.E.], [Mechanical Engineering], [GPA 3.5],
+    aside[2015], [Pennsylvania State University], [B.S.], [Industrial Engineering], [GPA 3.2],
   )
 ]
 
 #section[Skills]
 ```
 
-{{< include /resources/chunks/skills.qmd >}}
+```{r}
+#| results: asis
+# the About page's skills in two columns, each group a label over a hairline
+# with its skills running on beneath; see the script
+source(here::here("resources/scripts/skills.R"))
+cat(skills_typst("flow", cols = 2))
+```
 
 ```{=typst}
-#section[#link("https://pingfan.org/research")[Research]]
+#section[#link("https://pingfan.org/research")[#text(fill: black)[Research & Software]]]
 
-#entry[*surveydown Survey Platform* - _Flagship Project of the Helveston Lab at GWU_][2024-2025]
+#entry[*#link("https://emaki.lol")[Emaki]* - _Agentic Development Environment, Alkaline Software_][2026 - Present]
 
-- Developed surveydown, an open-source, feature-packed R package for programmable and reproducible surveys, combining Quarto, Shiny, and PostgreSQL.
-- Implemented UI/UX design, SQL and survey templates.
-- Achieved 170+ stars on GitHub and 8000+ downloads on CRAN.
-- Published a journal article in _PLOS One_ as 1st author with 1000+ views.
-- Presented at Posit Conference, USRSE, and GW OSCON in 2025.
-- Awarded 2nd prize at GW OSPO and profiled by GW Engineering.
+- Lead developer of Emaki, a desktop app that supports agentic workflows, built in Rust with GPUI for macOS, Windows, and Linux.
 
-#entry[*sdstudio Survey GUI* - _Companion Project of surveydown_][2025-2026]
+#entry[*surveydown* - _Open-Source Survey Platform of the Helveston Lab at GWU_][2024 - 2026]
 
-- Developed sdstudio as GUI and SQL support to surveydown.
-- Implemented UI/UX design for survey preview and SQL visualization.
-- Achieved 1200+ downloads on CRAN.
-- Presented at GW OSCON 2026.
+- Built surveydown, an open-source R package for programmable, reproducible surveys on Quarto, Shiny, and PostgreSQL: 180+ GitHub stars, 11,000+ CRAN downloads.
+- Built sdstudio, its GUI for survey preview and database management: 2,500+ CRAN downloads.
+- First-author paper in _PLOS One_; 2nd prize at the GW Open Source Awards; profiled by GW Engineering.
+- Presented at posit::conf, US-RSE, GW OSCON 2025, and GW OSCON 2026.
 
-#entry[*BEV Smart Charging Adoption Project* - _Joint Project between GWU, UC Davis & UC Irvine_][2023-2024]
+#entry[*BEV Smart Charging Economies* - _Joint Project of GWU, UC Davis & UC Irvine_][2023 - 2026]
 
-- Performed survey fielding, data wrangling, and discrete choice modeling.
-- Collected and filtered 1300+ responses from U.S. BEV owners via Meta and Dynata to ensure data quality.
-- Estimated mixed logit models of consumer preferences for smart charging program attributes.
-- Published a journal article in _IOP Science_ and a conference paper in _IEEE_ as 1st author, 300+ views.
-- Presented at TRB 2024.
-
-#entry[*Smart Charging Cost-Efficiency Project* - _Joint Project between GWU, UC Davis & UC Irvine_][2025-2026]
-
-- Built a scenario-based simulation of 10,000 BEVs with travel patterns from the National Household Travel Survey.
-- Processed time series grid net load data from GridStatus.io for CAISO and NYISO to construct regional baselines.
-- Swept across 5 TOU windows and 11 enrollment levels to quantify peak-shaving potential and cost efficiency.
-- Submitted a journal paper to _Environmental Research: Infrastructure and Sustainability_, under review.
-- Presented at GW 2026 R&D and Senior Design Showcase.
+- Consumer side: fielded a national survey of 1,300+ U.S. BEV owners via Meta and Dynata, and estimated mixed logit models of preferences for smart charging program attributes.
+- Grid side: simulated 10,000 BEVs on NHTS travel patterns against CAISO and NYISO net load; swept 5 TOU windows and 11 enrollment levels to quantify peak shaving and cost efficiency.
+- Published two first-author papers (_Environmental Research Letters_, _IEEE VPPC_); a third is under review.
+- Presented at TRB 2024 and the GW 2026 R&D Showcase.
 
 #section[Work Experience]
 
-#work-entry[*Alkaline Software* - _Co-Founder_][#liMapPin~Remote][2026 - Present]
+#work-entry[*Alkaline Software* - _Co-Founder_][#glyph("map-pin")~Remote][2026 - Present]
 
-- Co-founded an app development studio with Professor John Paul Helveston that builds apps in Rust with GPUI.
-- Lead developer of #link("https://emaki.lol")[Emaki], the flagship Agentic Development Environment (ADE) for coding-agent sessions.
+- Co-founded an app development studio with Professor John Helveston. We are two data scientists building open-source apps that benefit our own team and the community.
 
-#work-entry[*Harsco Rail* - _Software Engineer_][#liMapPin~SC, USA & Beijing, China][2021 - 2022]
+#work-entry[*George Washington University* - _Graduate Research Assistant_][#glyph("map-pin")~DC, USA][2023 - Present]
 
-- Led cross-border Switch Undercutter and Grinder software projects: 25 releases plus on-site technical support.
-- Combined embedded C++, CAN bus communication, and mechanical design with project management.
+- Conducted the research and built the software listed under Research & Software above.
+- Build reproducible Claude Code workflows with plugins, skills, MCPs, and hooks; taught a GW TAI workshop.
+- Teaching assistant for the advisor's data science courses: group lectures, project advising, and grading.
 
-#work-entry[*GE Appliances* - _Project Engineer_][#liMapPin~Qingdao, China][2019 - 2020]
+#work-entry[*Harsco Rail* - _Software Engineer_][#glyph("map-pin")~SC, USA & Beijing, China][2021 - 2022]
 
-- Managed 500+ components across 9 GE washing machine models from development to production.
-- Contributed to engineering design of home appliances for function and user experience, using PLM management.
+- Led C++ and CAN bus software for rail maintenance machines across USA and China. Obtained 25 total releases.
 
-#work-entry[*Kurtz Ersa GmbH* - _Assistant Process Engineer (Intern)_][#liMapPin~Wertheim, Germany][2017]
+#work-entry[*GE Appliances* - _Project Engineer_][#glyph("map-pin")~Qingdao, China][2019 - 2020]
 
-- Led a 2-month Design of Experiments for innovative soldering technology for 200 PCB samples.
-- Conducted Asian market analysis and starred in Ersa's first Asian market promotional video.
+- Managed 500+ components across 9 washing machine models from development to production.
+
+#work-entry[*Kurtz Ersa GmbH* - _Assistant Process Engineer (Intern)_][#glyph("map-pin")~Wertheim, Germany][2017]
+
+- Led a 2-month Design of Experiments on new soldering technology across 200 PCB samples.
 ```

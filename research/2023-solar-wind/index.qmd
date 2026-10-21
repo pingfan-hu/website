@@ -31,4 +31,4 @@ This project contains the following:
 
 The study aims to highlight which of these factors played the most crucial roles in this energy transformation. By understanding these relationships, we can better anticipate the future of renewable energy and make informed decisions.
 
-Data wrangling and analysis are both performed using R coding language, presented with Quarto files.
+Data wrangling and analysis are both performed using {{< var rnolink >}} coding language, presented with Quarto files.
