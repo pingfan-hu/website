@@ -75,7 +75,9 @@ skills_typst <- function(layout = c("table", "flow", "rows"), cols = 3, color = 
   defs <- vapply(marks, function(m) sprintf('  "%s": bytes("%s"),', m, glyph_svg(m, color)), "")
   cells <- function(g) vapply(g$skills, function(s) sprintf('skill-cell("%s")[%s]', s$mark, s$name), "")
   label <- sprintf('  text(size: 0.85em, fill: rgb("%s"), label),', color)
-  rule <- '  line(length: 100%, stroke: 0.4pt + rgb("#D0CEC3")),'
+  # a dotted rule, so a group's label never reads as a section head, whose
+  # rule is solid
+  rule <- '  line(length: 100%, stroke: (paint: rgb("#B5B2A8"), thickness: 0.7pt, dash: (0pt, 2.2pt), cap: "round")),'
   body <- if (layout == "flow") {
     per <- ceiling(length(groups) / cols)
     columns <- split(groups, ceiling(seq_along(groups) / per))

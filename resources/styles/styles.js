@@ -7,7 +7,7 @@
 // ---- Scroll Animations ----
 (function () {
   function init() {
-    var targets = document.querySelectorAll('.quarto-post, .quarto-grid-item, .presentation-box');
+    var targets = document.querySelectorAll('.quarto-post, .quarto-grid-item, .work-card');
     if (!targets.length || !window.IntersectionObserver) return;
     targets.forEach(function (el, i) {
       el.classList.add('animate-on-scroll');
@@ -259,10 +259,15 @@
     function update() {
       ticking = false;
       var line = navOffset() + 12;
-      var current = items[0];
+      var tops = items.map(function (it) { return it.el.getBoundingClientRect().top; });
+      var k = 0;
       for (var i = 0; i < items.length; i++) {
-        if (items[i].el.getBoundingClientRect().top <= line) current = items[i];
+        if (tops[i] <= line) k = i;
       }
+      // Sections side by side (Workshops and Storybooks) share a top: keep
+      // whichever of them is active (a click picks it), else the first.
+      var row = items.filter(function (it, i) { return Math.abs(tops[i] - tops[k]) < 1; });
+      var current = row.filter(function (it) { return it.link === activeLink; })[0] || row[0];
       if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight - 2) {
         current = items[items.length - 1];
       }
@@ -285,13 +290,12 @@
   }
 })();
 
-// ---- Works Reference Copy ----
-// Copy button inside each paper's APA reference block. Copies the reference's
-// plain text (markdown italics collapse to plain text via textContent) and
-// briefly swaps the icon to a check as confirmation.
+// ---- Works Cite Buttons ----
+// A paper's "Cite" pill copies its APA reference (kept in data-cite) and
+// reads "Copied" for a moment.
 (function () {
   function init() {
-    var btns = document.querySelectorAll('.pub-ref-copy');
+    var btns = document.querySelectorAll('.work-cite');
     if (!btns.length) return;
 
     function fallbackCopy(text) {
@@ -306,18 +310,18 @@
     }
 
     btns.forEach(function (btn) {
+      var label = btn.querySelector('span');
+      var icon = btn.querySelector('i');
       btn.addEventListener('click', function () {
-        var box = btn.closest('.pub-ref');
-        var textEl = box ? box.querySelector('.pub-ref-text') : null;
-        if (!textEl) return;
-        var text = textEl.textContent.trim().replace(/\s+/g, ' ');
-        var icon = btn.querySelector('i');
+        var text = btn.getAttribute('data-cite');
         var confirm = function () {
           btn.classList.add('is-copied');
+          if (label) label.textContent = 'Copied';
           if (icon) icon.className = 'bi bi-check-lg';
           setTimeout(function () {
             btn.classList.remove('is-copied');
-            if (icon) icon.className = 'bi bi-clipboard';
+            if (label) label.textContent = 'Cite';
+            if (icon) icon.className = 'bi bi-quote';
           }, 1600);
         };
         if (navigator.clipboard && navigator.clipboard.writeText) {

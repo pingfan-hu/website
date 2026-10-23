@@ -34,11 +34,12 @@ make_github_path <- function(name) {
   paste0("https://github.com/pingfan-hu/", name)
 }
 
-# A labeled pill action button (icon + text)
-pres_button <- function(href, icon, label) {
+# A small pill action (icon + text). Cards draw these above their stretched
+# main link, so each stays a link of its own.
+work_btn <- function(href, icon, label) {
   a(
     href = href,
-    class = "pres-btn",
+    class = "work-btn",
     target = "_blank",
     rel = "noopener noreferrer",
     tags$i(class = paste0("bi ", icon)),
@@ -52,98 +53,110 @@ btn_label <- function(label, fallback) {
   if (is.na(label) || !nzchar(label)) fallback else label
 }
 
-# Paper document buttons, built from the explicit link columns in the CSV.
-# The icon is inferred from the label (website, PDF/paper, or other document).
-paper_doc_buttons <- function(Doc1Label, Doc1URL, Doc2Label, Doc2URL) {
+# A paper's document links, from the Doc columns in the CSV, as
+# list(href, icon, label). The icon is inferred from the label (website,
+# PDF/paper, or other document).
+paper_docs <- function(Doc1Label, Doc1URL, Doc2Label, Doc2URL) {
   make <- function(label, url) {
     if (is.na(url) || !nzchar(url)) return(NULL)
     key <- tolower(label)
     icon <- if (grepl("website", key)) "bi-globe2"
       else if (grepl("pdf|paper", key)) "bi-file-earmark-pdf"
       else "bi-file-earmark-text"
-    pres_button(url, icon, label)
+    list(href = url, icon = icon, label = label)
   }
   Filter(Negate(is.null), list(make(Doc1Label, Doc1URL), make(Doc2Label, Doc2URL)))
 }
 
-# Nested APA reference block (papers only) with a copy button (top-right).
-pub_reference <- function(reference) {
+# A paper's "Cite" pill: copies its APA reference (markdown italics dropped).
+cite_btn <- function(reference) {
   if (is.na(reference) || !nzchar(reference)) return(NULL)
-  div(
-    class = "pub-ref",
-    tags$button(
-      class = "pub-ref-copy",
-      type = "button",
-      `aria-label` = "Copy reference",
-      tags$i(class = "bi bi-clipboard")
-    ),
-    div(class = "pub-ref-text", render_markdown(reference))
+  tags$button(
+    class = "work-btn work-cite",
+    type = "button",
+    `data-cite` = gsub("*", "", reference, fixed = TRUE),
+    tags$i(class = "bi bi-quote"),
+    tags$span("Cite")
   )
 }
 
-# Create a work card. Buttons and date format depend on the type.
-# `Index` is the card's 1-based position within its section (top = 1),
-# shown as a corner tab flush with the card's top-right corner.
+# An event cell may hold markdown links; drop the paragraph commonmark wraps it in.
+inline_markdown <- function(text) {
+  HTML(sub("^<p>(.*)</p>\n?$", "\\1", markdown_html(text)))
+}
+
+# A note after the date, from the Status column (e.g. a paper never published).
+work_status <- function(status) {
+  if (is.na(status) || !nzchar(status)) return(NULL)
+  span(class = "work-status", status)
+}
+
+short_date <- function(date, type) {
+  switch(type,
+    paper = format(date, "%Y"),
+    storybook = , workshop = format(date, "%b %Y"),
+    paste0(format(date, "%b "), as.integer(format(date, "%d")), format(date, ", %Y"))
+  )
+}
+
+# A work card: the thumbnail (works/thumbs/{Name}.jpg, made by
+# resources/scripts/work-thumbs.R), the title, which is the card's main link
+# and stretches over it, the event and date, then pills for its other links.
+# The main link is what the thumbnail shows: the deck, the site, the paper or
+# the poster; it gets no pill of its own.
 create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
-                               Btn1Label = NA, Btn2Label = NA, Btn3Label = NA,
-                               Doc1Label = NA, Doc1URL = NA, Doc2Label = NA, Doc2URL = NA,
-                               Reference = NA, Index = NA) {
-  pub_type <- if (is.null(Type) || is.na(Type)) "slide" else tolower(Type)
+                        Btn1Label = NA, Btn2Label = NA, Btn3Label = NA,
+                        Doc1Label = NA, Doc1URL = NA, Doc2Label = NA, Doc2URL = NA,
+                        Reference = NA, Status = NA) {
+  type <- if (is.na(Type)) "slide" else tolower(Type)
 
-  actions <- if (pub_type == "slide") {
-    list(
-      pres_button(make_slides_path(Name), "bi-easel", btn_label(Btn1Label, "Slides")),
-      pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", btn_label(Btn2Label, "PDF")),
-      pres_button(make_github_path(Name), "bi-github", btn_label(Btn3Label, "GitHub"))
-    )
-  } else if (pub_type %in% c("workshop", "storybook")) {
-    list(
-      pres_button(make_slides_path(Name), "bi-globe", btn_label(Btn1Label, "Website")),
-      pres_button(make_github_path(Name), "bi-github", btn_label(Btn2Label, "GitHub"))
-    )
-  } else if (pub_type == "paper") {
-    paper_doc_buttons(Doc1Label, Doc1URL, Doc2Label, Doc2URL)
-  } else {
-    # Single PDF button for Poster
-    list(pres_button(make_pdf_path(Name), "bi-file-earmark-pdf", btn_label(Btn1Label, "PDF")))
-  }
-
-  # Papers show the year only; storybooks and workshops month + year; everything else full.
-  date_fmt <- switch(pub_type,
-    storybook = "%B, %Y",
-    workshop  = "%B, %Y",
-    paper     = "%Y",
-    "%B %d, %Y"
-  )
-
-  div(
-    class = "presentation-box",
-    if (!is.na(Index)) span(class = "presentation-index", Index) else NULL,
-    div(
-      class = "presentation-content",
-      div(class = "presentation-title", Title),
-      div(
-        class = "presentation-details",
-        div(class = "event-location", render_markdown(Event)),
-        div(
-          class = "presentation-date",
-          tags$i(class = "bi bi-calendar3"),
-          format(Date, date_fmt)
-        )
-      )
+  links <- switch(type,
+    slide = list(
+      list(href = make_slides_path(Name), icon = "bi-easel", label = btn_label(Btn1Label, "Slides")),
+      list(href = make_pdf_path(Name), icon = "bi-file-earmark-pdf", label = btn_label(Btn2Label, "PDF")),
+      list(href = make_github_path(Name), icon = "bi-github", label = btn_label(Btn3Label, "GitHub"))
     ),
-    if (pub_type == "paper") pub_reference(Reference) else NULL,
-    div(class = "presentation-actions", actions)
+    workshop = , storybook = list(
+      list(href = make_slides_path(Name), icon = "bi-globe", label = btn_label(Btn1Label, "Website")),
+      list(href = make_github_path(Name), icon = "bi-github", label = btn_label(Btn2Label, "GitHub"))
+    ),
+    paper = paper_docs(Doc1Label, Doc1URL, Doc2Label, Doc2URL),
+    list(list(href = make_pdf_path(Name), icon = "bi-file-earmark-pdf", label = btn_label(Btn1Label, "PDF")))
+  )
+  # a paper opens on its website where it has one, else its PDF
+  main <- if (type == "paper") {
+    web <- Filter(function(l) l$icon == "bi-globe2", links)
+    pdf <- Filter(function(l) l$icon == "bi-file-earmark-pdf", links)
+    c(web, pdf, links)[[1]]
+  } else links[[1]]
+  pills <- Filter(function(l) !identical(l, main), links)
+
+  thumb <- file.path("works/thumbs", paste0(Name, ".jpg"))
+  div(
+    class = paste("work-card", paste0("is-", type)),
+    if (file.exists(thumb)) div(class = "work-thumb", tags$img(src = thumb, alt = "", loading = "lazy")),
+    div(
+      class = "work-body",
+      div(class = "work-title",
+        a(class = "work-link", href = main$href, target = "_blank", rel = "noopener noreferrer", Title)),
+      div(
+        class = "work-meta",
+        span(class = "work-event", inline_markdown(Event)),
+        span(class = "work-date", short_date(Date, type)),
+        work_status(Status)
+      ),
+      if (length(pills) || type == "paper") div(
+        class = "work-actions",
+        lapply(pills, function(l) work_btn(l$href, l$icon, l$label)),
+        if (type == "paper") cite_btn(Reference)
+      )
+    )
   )
 }
 
-# Build the work cards for a filtered data frame, numbering each card by its
-# position within the section (top card = 1).
 build_works <- function(data) {
   if (nrow(data) == 0) return(list())
-  data %>%
-    mutate(Index = row_number()) %>%
-    pmap(create_work)
+  pmap(data, create_work)
 }
 
 storybook_works <- works_data %>%
@@ -170,7 +183,7 @@ poster_works <- works_data %>%
 # a small icon chip + Maple Mono label + a thin hairline rule. The `variant`
 # class carries the section's soft accent color (see styles.scss). `slug`
 # is the scroll anchor id used by the category locator.
-work_section <- function(title, icon, items, variant, slug) {
+work_section <- function(title, icon, items, variant, slug, grid) {
   div(
     class = paste("pres-section", variant),
     id = slug,
@@ -180,7 +193,7 @@ work_section <- function(title, icon, items, variant, slug) {
       span(class = "pres-section-title", title),
       span(class = "pres-section-rule")
     ),
-    div(class = "pres-section-body", items)
+    div(class = paste("work-grid", grid), items)
   )
 }
 
@@ -199,12 +212,15 @@ nav_link <- function(label, icon, slug, variant) {
 
 # Single source of truth for the sections — drives both the locator and the
 # rendered sections, and drops any category that has no entries.
+# Each section's grid: slides three to a row, papers and posters two, and the
+# two single-entry sections (a workshop, a storybook) side by side in one row
+# (`pair`), so no card stands alone across the page.
 sections <- list(
-  list(title = "Workshops",  icon = "bi-people",            items = workshop_works,  variant = "pres-teal",   slug = "workshops"),
-  list(title = "Storybooks", icon = "bi-journal-bookmark",  items = storybook_works, variant = "pres-rose",   slug = "storybooks"),
-  list(title = "Papers",     icon = "bi-file-earmark-text", items = paper_works,     variant = "pres-violet", slug = "papers"),
-  list(title = "Slides",     icon = "bi-easel",             items = slide_works,     variant = "pres-blue",   slug = "slides"),
-  list(title = "Posters",    icon = "bi-image",             items = poster_works,    variant = "pres-amber",  slug = "posters")
+  list(title = "Workshops",  icon = "bi-people",            items = workshop_works,  variant = "pres-teal",   slug = "workshops",  grid = "cols-1", pair = TRUE),
+  list(title = "Storybooks", icon = "bi-journal-bookmark",  items = storybook_works, variant = "pres-rose",   slug = "storybooks", grid = "cols-1", pair = TRUE),
+  list(title = "Papers",     icon = "bi-file-earmark-text", items = paper_works,     variant = "pres-violet", slug = "papers",     grid = "cols-2", pair = FALSE),
+  list(title = "Slides",     icon = "bi-easel",             items = slide_works,     variant = "pres-blue",   slug = "slides",     grid = "cols-3", pair = FALSE),
+  list(title = "Posters",    icon = "bi-image",             items = poster_works,    variant = "pres-amber",  slug = "posters",    grid = "cols-2", pair = FALSE)
 )
 sections <- Filter(function(s) length(s$items) > 0, sections)
 
@@ -217,9 +233,17 @@ filter_box <- tags$aside(
   )
 )
 
-section_cards <- lapply(sections, function(s) {
-  work_section(s$title, s$icon, s$items, s$variant, s$slug)
+rendered <- lapply(sections, function(s) {
+  work_section(s$title, s$icon, s$items, s$variant, s$slug, s$grid)
 })
+paired <- vapply(sections, function(s) s$pair, logical(1))
+# the paired sections go in one row, where the first of them stood
+section_cards <- if (sum(paired) == 2) {
+  first <- which(paired)[1]
+  c(rendered[seq_len(first - 1)],
+    list(div(class = "pres-pair", rendered[paired])),
+    rendered[!paired & seq_along(rendered) > first])
+} else rendered
 ```
 
 ```{r}

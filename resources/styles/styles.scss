@@ -2362,215 +2362,219 @@ $pres-filter-gap: 0px;
   background: var(--pa-bd);
 }
 
-.pres-section-body {
+// Workshops and Storybooks hold one entry each, so the two sections share a
+// row instead of each card spanning the page alone.
+.pres-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.6rem;
+
+  // the next section's top margin is the gap below the row; the two cards
+  // stretch to one height
+  .pres-section { display: flex; flex-direction: column; margin-bottom: 0; }
+  .work-grid { flex: 1; }
+}
+.pres-pair:first-child .pres-section { margin-top: 1.2rem; }
+
+// The grids measure the body column, not the window, since the locator
+// takes its own room beside them.
+.pres-main { container-type: inline-size; }
+
+.work-grid {
+  display: grid;
+  gap: 14px;
+  &.cols-1 { grid-template-columns: minmax(0, 1fr); }
+  &.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  &.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+// A work card: the thumbnail over the title, event, date and actions. The
+// title link stretches over the whole card (::after), so the card opens its
+// main link; the event's links and the pills sit above it. It shares the
+// listing cards' hover and press: the edge takes the section's accent, a
+// slight press on :active, no shadow.
+.work-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-// The card is not clickable — no hover / press affordance on the box itself.
-// Background carries a whisper of the section's accent (--pa-bg diluted into
-// the neutral card color) so cards read against the page background; the
-// border gets the same treatment so it doesn't look grey-on-tinted.
-.presentation-box {
-  // Anchor for the corner index tab.
-  position: relative;
-  margin: 0;
-  padding: 16px 18px;
-  // (a fainter mix than .pub-ref's, so the citation box inside paper cards
-  // still reads as its own deeper layer).
+  min-width: 0;
+  overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--pa-bd) 40%, var(--border));
   border-radius: 12px;
-  background: color-mix(in srgb, var(--pa-bg) 45%, var(--panel));
+  background: color-mix(in srgb, var(--pa-bg) 35%, var(--panel));
+  transition: border-color 160ms var(--ease), transform 120ms var(--ease);
+
+  &:hover { border-color: var(--pa); }
+  &:active { transform: scale(0.992); }
+  &:has(.work-link:focus-visible) { outline: 2px solid var(--pa); outline-offset: 2px; }
 }
 
-.presentation-content { min-width: 0; }
+.work-thumb {
+  flex: none;
+  aspect-ratio: 16 / 10;
+  border-bottom: 1px solid color-mix(in srgb, var(--pa-bd) 40%, var(--border));
+  background: var(--panel-2);
 
-.presentation-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--ink);
-  margin-bottom: 0.6rem;
-  // Keep long titles clear of the corner index tab.
-  padding-right: 2.4rem;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+// A poster is a dense, loud page, so it hangs matted, as a paper's page
+// sits on its tray: smaller, with the panel's quiet around it.
+.is-poster .work-thumb {
+  aspect-ratio: auto;
+  padding: 22px 15%;
+
+  img {
+    height: auto;
+    border: 1px solid var(--border);
+  }
 }
 
-// Per-section sequence number (1, 2, …) — a tab tucked flush into the card's
-// top-right corner. Outer radius matches the card's 12px (minus the 1px
-// border); the inner bottom-left corner is softened. Uses the --pa custom
-// properties, which are already re-themed in dark mode, so no dark override
-// is needed.
-.presentation-index {
-  position: absolute;
-  top: 0;
-  right: 0;
-  box-sizing: border-box;
-  min-width: 32px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // Optical centering: the 2px top padding offsets (a) the 1px bottom border,
-  // which border-box carves out of the flex area, and (b) the digit riding
-  // high in its line box (fonts reserve descender space below the baseline
-  // that numerals never use). line-height: 1 removes the extra half-leading.
-  padding: 2px 10px 0;
-  border-left: 1px solid var(--pa-bd);
-  border-bottom: 1px solid var(--pa-bd);
-  border-radius: 0 11px 0 10px;
-  background: color-mix(in srgb, var(--pa) 10%, var(--pa-bg));
-  color: var(--pa);
-  font-family: 'Maple Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.presentation-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 14px;
-  font-size: 0.9rem;
-}
-
-.event-location {
+.work-body {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   min-width: 0;
+  padding: 12px 14px 14px;
+}
+
+.work-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
   color: var(--ink);
+}
+
+.work-link {
+  color: inherit;
+  text-decoration: none;
+  &:hover { color: inherit; text-decoration: none; }
+  &:focus-visible { outline: none; }
+  &::after { content: ""; position: absolute; inset: 0; }
+}
+
+.work-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.7em;
+  row-gap: 2px;
+  font-size: 0.85rem;
   line-height: 1.45;
+  color: var(--muted);
 
   a {
+    position: relative;
+    z-index: 1;
     color: var(--pa);
-    font-weight: 500;
     text-decoration: none;
     &:hover { text-decoration: underline; }
   }
 }
 
-// Plain (non-clickable) accent text with a leading calendar icon — no chip
-// styling, so it never reads as a button.
-.presentation-date {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: 'Maple Mono', monospace;
-  font-size: 0.78rem;
-  font-weight: bold;
-  letter-spacing: 0.01em;
+.work-date {
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
   white-space: nowrap;
-  color: var(--pa);
-
-  i { font-size: 0.85rem; line-height: 1; }
+  font-variant-numeric: tabular-nums;
 }
 
-// Prominent action row — buttons flex to fill the full card width. These are
-// the only interactive elements, so they keep the hover / press affordances.
-.presentation-actions {
+.work-status {
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+// The pills sit at the card's foot, so a row of cards lines its actions up.
+.work-actions {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 6px;
 }
 
-.pres-btn {
-  flex: 1 1 0; // zero basis: equal widths regardless of label length
-  min-width: 96px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 11px 14px;
-  // Denser than the raw --pa-bg tint so the buttons read as solid, clickable
-  // pills at rest — hover still steps up to the full accent fill.
-  border: 1px solid color-mix(in srgb, var(--pa) 22%, var(--pa-bd));
-  border-radius: 9px;
-  background: color-mix(in srgb, var(--pa) 16%, var(--pa-bg));
-  color: var(--pa);
-  font-family: 'Maple Mono', monospace;
-  font-size: 0.82rem;
-  font-weight: bold;
-  letter-spacing: 0.02em;
-  text-decoration: none;
+.work-btn {
+  @include pill;
+  font-size: 0.74rem;
+  gap: 0.35em;
+  padding: 0.25em 0.65em;
   cursor: pointer;
-  will-change: transform;
-  transition: background 0.15s ease, color 0.15s ease,
-              border-color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
 
-  &:hover {
-    background: var(--pa);
+  &:hover, &:focus-visible {
+    background: var(--pa-bg);
     border-color: var(--pa);
-    color: var(--page);
-    text-decoration: none;
+    color: var(--pa);
   }
-  &:active { transform: scale(0.97); }
-  &:focus-visible { outline: 2px solid var(--pa); outline-offset: 2px; }
-
-  i { font-size: 1rem; color: inherit; }
+  &.is-copied { background: var(--pa-bg); border-color: var(--pa); color: var(--pa); }
 }
 
-// Nested APA reference (papers) — a soft accent-tinted block with a copy
-// button pinned top-right.
-.pub-ref {
-  position: relative;
-  margin-top: 14px;
-  padding: 12px 46px 12px 14px;
-  border: 1px solid var(--pa-bd);
-  border-radius: 9px;
-  // Deeper than the card's 45% wash but still lighter than the buttons, so
-  // page → card → citation → button steps stay distinct.
-  background: color-mix(in srgb, var(--pa-bg) 75%, var(--panel));
-}
+// A paper's first page is a portrait sheet, so it stands at the card's left,
+// whole: a sheet on a tray as tall as the card, never cropped.
+.work-card.is-paper {
+  flex-direction: row;
 
-.pub-ref-text {
-  font-size: 0.84rem;
-  line-height: 1.55;
-  color: var(--muted);
-  // Long DOI URLs have no natural break points — let them wrap mid-string
-  // instead of overflowing the card on narrow screens.
-  overflow-wrap: anywhere;
+  .work-thumb {
+    width: 112px;
+    aspect-ratio: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-bottom: 0;
+    border-right: 1px solid color-mix(in srgb, var(--pa-bd) 40%, var(--border));
 
-  p { margin: 0; }
-  em { font-style: italic; }
-}
-
-.pub-ref-copy {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--pa-bd);
-  border-radius: 7px;
-  background: var(--panel);
-  color: var(--pa);
-  cursor: pointer;
-  will-change: transform;
-  transition: background 0.14s ease, color 0.14s ease,
-              border-color 0.14s ease, transform 0.08s ease;
-
-  i { font-size: 0.9rem; }
-
-  &:hover { background: var(--pa); border-color: var(--pa); color: var(--page); }
-  &:active { transform: scale(0.9); }
-  &:focus-visible { outline: 2px solid var(--pa); outline-offset: 2px; }
-  &.is-copied { background: var(--pa); border-color: var(--pa); color: var(--page); }
-  &.is-copied i { font-size: 1.15rem; }
-}
-
-@media (max-width: 520px) {
-  .presentation-details {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 7px;
+    img {
+      height: auto;
+      border: 1px solid var(--border);
+    }
   }
+}
+
+// A narrower column: slides two to a row, and the paired sections stack.
+@container (max-width: 700px) {
+  .work-grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pres-pair { grid-template-columns: minmax(0, 1fr); }
+  .pres-pair .pres-section + .pres-section { margin-top: 2.4rem; }
+}
+
+// A phone: one card to a row, the thumbnail at the left of the title and
+// event, the pills in a row across the foot.
+@container (max-width: 520px) {
+  .work-grid.cols-2, .work-grid.cols-3 { grid-template-columns: minmax(0, 1fr); }
+  .work-card, .work-card.is-paper {
+    display: grid;
+    grid-template-columns: 40% minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    column-gap: 12px;
+    row-gap: 6px;
+    padding: 10px 12px 12px 10px;
+  }
+  .work-card.is-paper { grid-template-columns: 72px minmax(0, 1fr); }
+  .work-card .work-thumb, .work-card.is-paper .work-thumb {
+    grid-row: 1 / 3;
+    width: auto;
+    align-self: start;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--pa-bd) 40%, var(--border));
+    border-radius: 6px;
+  }
+  .work-card.is-paper .work-thumb, .work-card.is-poster .work-thumb { padding: 0; border-radius: 4px; }
+  .work-card.is-poster .work-thumb img { border: 0; }
+  .work-card.is-paper .work-thumb img { border: 0; }
+  .work-body { display: contents; }
+  .work-title { grid-column: 2; font-size: 0.92rem; }
+  .work-meta { grid-column: 2; align-self: start; }
+  .work-actions { grid-column: 1 / -1; padding-top: 2px; }
 }
 
 // ---- Layout ----
@@ -3863,15 +3867,6 @@ body.quarto-dark {
     --pa-bg: rgba(176, 168, 230, 0.14);
     --pa-bd: rgba(176, 168, 230, 0.4);
   }
-
-  .presentation-box {
-    // The accent wash mixed into the dark card colour, fainter than
-    // .pub-ref's so the citation box keeps its own layer.
-    background: color-mix(in srgb, var(--pa-bg) 45%, var(--panel));
-    border-color: color-mix(in srgb, var(--pa-bd) 30%, var(--border));
-  }
-  .pub-ref { background: color-mix(in srgb, var(--pa-bg) 75%, var(--panel)); }
-  .pub-ref-text { color: rgba(255, 255, 255, 0.78); }
 
   .step-tip     { background: #1a2e22; border-color: #2a4a36; color: #95d5b2; }
   .step-tip svg { color: #6fcf97; }

@@ -160,7 +160,7 @@ cat(skills_typst("flow", cols = 2))
 
 - Lead developer of Emaki, a desktop app that supports agentic workflows, built in Rust with GPUI for macOS, Windows, and Linux.
 
-#entry[*surveydown* - _Open-Source Survey Platform of the Helveston Lab at GWU_][2024 - 2026]
+#entry[*#link("https://surveydown.org")[surveydown]* - _Open-Source Survey Platform of the Helveston Lab at GWU_][2024 - 2026]
 
 - Built surveydown, an open-source R package for programmable, reproducible surveys on Quarto, Shiny, and PostgreSQL: 180+ GitHub stars, 11,000+ CRAN downloads.
 - Built sdstudio, its GUI for survey preview and database management: 2,500+ CRAN downloads.
