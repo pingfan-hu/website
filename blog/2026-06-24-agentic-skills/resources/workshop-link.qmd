@@ -5,6 +5,7 @@
 <style>
   .wsl-outer {
     width: 100%;
+    container-type: inline-size;
     margin: 1em 0;
     border: 1.5px solid #5654A2;
     border-radius: 14px;
@@ -120,7 +121,7 @@
 
   .wsl-desc code { white-space: nowrap; }
 
-  @media (max-width: 520px) {
+  @container (width < 600px) {
     .wsl-row { grid-template-columns: 1fr; }
     .wsl-card-cell { border-right: none; border-bottom: 1px solid #D4D3EE; }
     .wsl-desc { padding: 12px 16px; }

@@ -5,6 +5,7 @@
 <style>
   .evo-outer {
     width: 100%;
+    container-type: inline-size;
     margin: 1em 0;
     border: 1.5px solid #5654A2;
     border-radius: 14px;
@@ -136,7 +137,7 @@
     line-height: 1.5;
   }
 
-  @media (max-width: 520px) {
+  @container (width < 600px) {
     .evo-flow { flex-direction: column; }
     .evo-arrow { transform: rotate(90deg); padding: 2px 0; }
     .evo-card { border-bottom: 1px solid #D4D3EE; }

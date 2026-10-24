@@ -1,4 +1,4 @@
-- **Agentic Engineering**: Claude Code, Agent Skills, Harness Design
+- **AI Agents**: Claude Code, Codex; Skills, MCP, Hooks
 - **Data Science**: tidyverse, ggplot, PostgreSQL
 - **Research Methods**: Survey Design, Discrete Choice, Logit Modeling
 - **Programming**: {{< var rnolink >}}, Python, Rust, Swift, SQL, JavaScript, Shell, Git

@@ -441,7 +441,7 @@ body.quarto-dark pre > code.sourceCode > span::before {
 // ---- Skill Tree ----
 // File/directory tree component used in blog posts to diagram a skill's layout.
 // Markup lives in resources/*.qmd includes; only Maple Mono + Lucide are loaded there.
-.tree-outer { width: 100%; margin: 1em 0; border: 1.5px solid var(--accent); border-radius: 14px; overflow: hidden; }
+.tree-outer { width: 100%; container-type: inline-size; margin: 1em 0; border: 1.5px solid var(--accent); border-radius: 14px; overflow: hidden; }
 .tree-header { display: flex; align-items: center; gap: 12px; background: var(--accent); padding: 10px 16px; }
 .tree-header-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(248,247,240,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .tree-header-icon svg { width: 14px; height: 14px; color: var(--page); stroke-width: 1.8; }
@@ -457,7 +457,7 @@ body.quarto-dark pre > code.sourceCode > span::before {
 .tree-folder .tree-name { color: var(--accent); font-weight: bold; }
 .tree-branch { color: var(--muted); white-space: pre; }
 
-@media (max-width: 520px) {
+@container (width < 600px) {
   .tree-header { padding: 10px 14px; gap: 10px; }
   .tree-header-text { flex-direction: column; gap: 1px; }
   .tree-header-name { font-size: 0.82em; }
@@ -786,6 +786,7 @@ body.quarto-dark pre > code.sourceCode > span::before {
 
 .lnk-outer {
   width: 100%;
+  container-type: inline-size;
   margin: 1em 0;
   border: 1px solid var(--border);
   border-radius: $border-radius-lg;
@@ -842,7 +843,7 @@ body.quarto-dark {
   .lnk-orange { --la: #E0AA7D; }
 }
 
-@media (max-width: 520px) {
+@container (width < 600px) {
   .lnk-row { grid-template-columns: 1fr; }
   .lnk-label {
     border-right: none;
@@ -2610,8 +2611,8 @@ nav.sidebar.sidebar-navigation:not(.rollup) { background-color: var(--page) !imp
 // the logo's proportions: the whole ring at 40% behind the R, the way the
 // gray ring sits behind the blue R. Quarto (no Tabler icon either) is
 // drawn as its logo, a disc cut in four by a thin cross, at 60% so a
-// filled mark weighs no more than the outlines beside it; Anthropic's mark is Simple Icons' (CC0),
-// filled, scaled to the live area. The rest (the moon, sun, glass and user, the
+// filled mark weighs no more than the outlines beside it; Anthropic's and
+// OpenAI's marks are Simple Icons' (CC0), filled, scaled to the live area. The rest (the moon, sun, glass and user, the
 // documents, the masthead's facts, the About page's headings and skill
 // marks) are Tabler's own. Masks, so each takes the color of the text
 // around it. Nothing on the site uses FontAwesome.
@@ -2667,6 +2668,8 @@ $glyphs: (
   "devices": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M13 9a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1v-10z'/><path d='M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9'/><path d='M16 9h2'/></svg>",
   "swift": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20.547 15.828c1.33 -4.126 -1.384 -9.521 -6.047 -12.828c-.135 -.096 2.39 6.704 1.308 9.124c-2.153 -1.454 -4.756 -3.494 -7.808 -6.124l-.5 2l-3.5 -1c4.36 4.748 7.213 7.695 8.56 8.841c-4.658 2.089 -10.65 -.978 -10.56 -.841c1.016 1.545 6 6 11 6c2 0 3.788 -.502 4.742 -1.389c.005 -.005 .432 -.446 1.378 -.17c.504 .148 1.463 .667 2.88 1.559v-1.507c0 -1.377 -.515 -2.67 -1.453 -3.665z'/></svg>",
   "anthropic": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path transform='translate(12 12) scale(0.8) translate(-12 -12)' d='M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z' fill='black' stroke='none'/></svg>",
+  "openai": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path transform='translate(12 12) scale(0.8) translate(-12 -12)' d='M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z' fill='black' stroke='none'/></svg>",
+  "webhook": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4.876 13.61a4 4 0 1 0 6.124 3.39h6'/><path d='M15.066 20.502a4 4 0 1 0 1.934 -7.502c-.706 0 -1.424 .179 -2 .5l-3 -5.5'/><path d='M16 8a4 4 0 1 0 -8 0c0 1.506 .77 2.818 2 3.5l-3 5.5'/></svg>",
   "browser": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 8h16'/><path d='M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z'/><path d='M8 4v4'/></svg>",
   "rocket": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3'/><path d='M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3'/><path d='M15 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'/></svg>",
   "point": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0'/></svg>",
@@ -2708,15 +2711,16 @@ $glyphs: (
 // The marks in color, where a mark stands for a tool or a skill (the
 // About page's links and skills, and the CV and resume, whose script reads
 // this map): a brand mark in its brand's color; a mark that is a picture
-// in the color of its group's maker (Claude Code's clay for the agentic
-// skills, R's blue for the R packages, PostgreSQL's blue for SQL, Bash's
+// in the color of its group's maker (Claude Code's clay for the agent
+// skills, OpenAI's green for Codex, R's blue for the R packages, PostgreSQL's blue for SQL, Bash's
 // green for the shell, Alkaline's violet for its apps, Netlify's teal for
 // deployment, Quarto's blue for the web), research methods in teal. The
 // two-color logos (R, Python) and Quarto at full strength are the
 // `-color` entries above; every other mark has 'black' swapped for its
 // color. Mid tones, so each reads on the cream and the dark page alike.
 $glyph-tints: (
-  "anthropic": "rgb(217,119,87)", "wand": "rgb(217,119,87)", "plug": "rgb(217,119,87)",
+  "anthropic": "rgb(217,119,87)", "wand": "rgb(217,119,87)", "plug": "rgb(217,119,87)", "webhook": "rgb(217,119,87)",
+  "openai": "rgb(16,163,127)",
   "hexagons": "rgb(39,109,195)", "chart-scatter": "rgb(39,109,195)",
   "database": "rgb(65,105,225)", "sql": "rgb(65,105,225)",
   "clipboard-list": "rgb(38,150,138)", "arrows-split": "rgb(38,150,138)", "math-function": "rgb(38,150,138)",
@@ -3798,6 +3802,8 @@ figcaption, .figure-caption {
 // a phone; every skill takes one cell
 @container (min-width: 22rem) { .about-skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @container (min-width: 34rem) { .about-skill-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+// a skill that opens a row (a semicolon in the list) starts at the left
+.about-skill-row { grid-column-start: 1; }
 .about-skill {
   display: flex;
   align-items: center;

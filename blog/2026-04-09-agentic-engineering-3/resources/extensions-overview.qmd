@@ -5,6 +5,7 @@
 <style>
   .ext-outer {
     width: 100%;
+    container-type: inline-size;
     margin: 1em 0;
     border: 1.5px solid #5654A2;
     border-radius: 14px;
@@ -103,7 +104,7 @@
     margin-top: 2px;
   }
 
-  @media (max-width: 520px) {
+  @container (width < 600px) {
     .ext-grid { grid-template-columns: 1fr; }
     .ext-card {
       display: grid;

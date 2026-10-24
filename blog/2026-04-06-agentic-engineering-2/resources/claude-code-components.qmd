@@ -5,6 +5,7 @@
 <style>
   .ccl-outer {
     width: 100%;
+    container-type: inline-size;
     margin: 1em 0;
     border: 1.5px solid #5654A2;
     border-radius: 14px;
@@ -117,7 +118,7 @@
     align-items: center;
   }
 
-  @media (max-width: 520px) {
+  @container (width < 600px) {
     .ccl-header { grid-template-columns: 1fr; justify-items: center; }
     .ccl-header-cell:last-child { display: none; }
     .ccl-row { grid-template-columns: 1fr; }

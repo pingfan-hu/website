@@ -5,6 +5,7 @@
 <style>
   .qcmd-outer {
     width: 100%;
+    container-type: inline-size;
     margin: 1em 0;
     border: 1.5px solid #5654A2;
     border-radius: 14px;
@@ -100,7 +101,7 @@
     color: #9B8EA0;
   }
 
-  @media (max-width: 520px) {
+  @container (width < 600px) {
     .qcmd-header { grid-template-columns: 1fr; justify-items: center; }
     .qcmd-header-cell:last-child { display: none; }
     .qcmd-row { grid-template-columns: 1fr; }

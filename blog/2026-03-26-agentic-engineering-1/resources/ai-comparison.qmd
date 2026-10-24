@@ -5,6 +5,7 @@
 <style>
   .aac-outer {
     width: 100%;
+    container-type: inline-size;
     margin: 1em 0;
     border: 1.5px solid #5654A2;
     border-radius: 14px;
@@ -126,7 +127,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 4px 10px 4px 4px;
+    padding: 4px 10px;
     border: 1px solid #D4D3EE;
     border-radius: 20px;
     background: #F8F7F0;
@@ -141,7 +142,7 @@
     flex-shrink: 0;
   }
 
-  @media (max-width: 560px) {
+  @container (width < 600px) {
     .aac-header { display: none; }
     .aac-row { grid-template-columns: 1fr; }
     .aac-attr { border-right: none; border-bottom: 1px solid #D4D3EE; }

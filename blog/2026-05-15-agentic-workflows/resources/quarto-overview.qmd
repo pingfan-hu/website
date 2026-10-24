@@ -5,6 +5,7 @@
 <style>
   .qrt-outer {
     width: 100%;
+    container-type: inline-size;
     margin: 1em 0;
     border: 1.5px solid #5654A2;
     border-radius: 14px;
@@ -129,7 +130,7 @@
     color: #5654A2;
   }
 
-  @media (max-width: 520px) {
+  @container (width < 600px) {
     .qrt-grid { grid-template-columns: 1fr; }
     .qrt-card {
       display: grid;

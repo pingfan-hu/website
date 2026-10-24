@@ -4,6 +4,7 @@
 <style>
 .es-outer {
   width: 100%;
+  container-type: inline-size;
   margin: 1em 0;
   border: 1.5px solid #5654A2;
   border-radius: 14px;
@@ -103,7 +104,7 @@
 .es-badge-complete  { background: #E9F7EF; color: #1E8449; border: 1px solid #A9DFBF; }
 .es-badge-screenout { background: #FEF5E7; color: #CA6F1E; border: 1px solid #F5CBA7; }
 .es-badge-quotafull { background: #EEEDF8; color: #5654A2; border: 1px solid #C4C3E8; }
-@media (max-width: 520px) {
+@container (width < 600px) {
   .es-header { grid-template-columns: 1fr; justify-items: center; }
   .es-header-cell:last-child { display: none; }
   .es-row { grid-template-columns: 1fr; }
