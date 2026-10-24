@@ -30,41 +30,40 @@ execute:
 )
 
 #set text(font: ("Optima", "Helvetica Neue", "Arial"), size: 11pt)
-#set par(leading: 0.55em, justify: false, spacing: 0pt)
-#set block(spacing: 0pt)
 
-// === SPACING KNOBS ===
-#let gap = 5pt
-#let entry-gap = 3pt
+// === SPACING ===
+// Every vertical gap in the document is one of these five, used by name
+// below; nothing adds space by hand.
+//   line-gap     between the lines of a paragraph or an entry (the leading),
+//                and between a head and what it heads
+//   para-gap     between paragraphs, entries and blocks
+//   head-gap     above a subsection head, and below a section head's rule
+//   section-gap  above a section head
+//   rule-gap     between a head's words and its rule
+// A block asks for a paragraph's gap below it and only a line's above, so
+// the gap after anything is the one it asks for, and a head asks for more
+// room above. Typst collapses two neighboring gaps to the larger, so a
+// subsection right under a section's rule would take head-gap whatever the
+// rule asked; every rule asks for it, so the space under a rule is one size.
+#let line-gap = 0.5em
+#let para-gap = 0.7em
+#let head-gap = 1em
+#let section-gap = 1.8em
+#let rule-gap = 0.4em
+#set par(leading: line-gap, spacing: para-gap, justify: false)
+#set block(above: line-gap, below: para-gap)
 
-// === LISTS & TABLES ===
-#show list: set block(spacing: 0.4em)
-#show list: set par(leading: 0.45em)
+// === LISTS ===
 // a bullet is a short gray hairline, a number gray Maple Mono with its
-// period, as on the site
+// period, as on the site; each item is an entry, so items stand a
+// paragraph apart
 #let list-mark = box(height: 0.66em, width: 0.5em, place(horizon, line(length: 0.5em, stroke: 0.6pt + rgb("#A3A096"))))
 #let enum-mark(n) = text(font: "Maple Mono NF", size: 0.8em, fill: rgb("#77746B"))[#n.]
-#set list(indent: 1em, body-indent: 0.5em, marker: list-mark, spacing: 0.5em)
-
-#show enum: set block(spacing: 0.4em)
-#show enum: set par(leading: 0.45em)
-#set enum(indent: 1em, body-indent: 0.5em, spacing: 0.5em, numbering: enum-mark)
-
-#show list: it => { it; v(gap) }
-#show enum: it => { it; v(gap) }
-#show table: it => { v(3pt); it; v(gap) }
+#set list(indent: 1em, body-indent: 0.5em, marker: list-mark, spacing: para-gap)
+#set enum(indent: 1em, body-indent: 0.5em, spacing: para-gap, numbering: enum-mark)
 
 // Navy-blue links
 #show link: set text(fill: rgb(0%, 20%, 60%))
-
-// The research chunk shared with the About page (resources/chunks/research.qmd)
-// arrives as headings over paragraphs: a heading is set like a lettered
-// subsection (A., B., C., as the other sections letter theirs), and a link
-// into the site (Quarto writes its path as ./research/...) is pointed at
-// pingfan.org.
-#show heading: it => block(above: 8pt, below: 4pt,
-  text(size: 11pt, weight: "bold")[#counter(heading).display(it.numbering) #it.body])
-#show link: it => if type(it.dest) == str and it.dest.starts-with("./") { link("https://pingfan.org" + it.dest.slice(1), it.body) } else { it }
 
 // === HELPERS ===
 // A mark from the site's glyph map (resources/styles/styles.scss), read at
@@ -78,62 +77,59 @@ execute:
 }
 
 // Section header with underline rule. Sticky so it never strands at a page bottom.
-#let section(name) = block(sticky: true)[
-  #text(size: 12pt, weight: "bold")[#upper[#name]]
-  #v(5pt)
-  #line(length: 100%, stroke: 0.5pt + rgb("#888"))
-  #v(gap)
-]
+#let section(name) = block(sticky: true, above: section-gap, below: head-gap, stack(spacing: rule-gap,
+  text(size: 12pt, weight: "bold", upper(name)),
+  line(length: 100%, stroke: 0.5pt + rgb("#888")),
+))
 
 // Subsection header - bold, no rule.
-#let subsection(name) = {
-  text(size: 11pt, weight: "bold")[#name]
-  v(4pt)
-}
+#let subsection(name) = block(sticky: true, above: head-gap, below: line-gap,
+  text(size: 11pt, weight: "bold", name))
+
+// The research chunk shared with the About page (resources/chunks/research.qmd)
+// arrives as headings over paragraphs: a heading is set as a lettered
+// subsection (A., B., C., as the other sections letter theirs), and a link
+// into the site (Quarto writes its path as ./research/...) is pointed at
+// pingfan.org. The heading's size is set first, as the gaps are in em and
+// would otherwise be read at a heading's larger default size.
+#show heading: set text(size: 11pt)
+#show heading: it => subsection[#counter(heading).display(it.numbering) #it.body]
+#show link: it => if type(it.dest) == str and it.dest.starts-with("./") { link("https://pingfan.org" + it.dest.slice(1), it.body) } else { it }
 
 // === HEADER ===
-#align(center)[
-  #text(size: 18pt)[Pingfan Hu]
-]
-
-#v(6pt)
-
-#align(center)[
-  Engineering Management and Systems Engineering
-]
-
-#v(2pt)
-
-#align(center)[
-  The George Washington University, Washington, DC, USA
-]
-
-#v(10pt)
-
-#align(center)[
-  // each mark inline before its text, so it sits in the text's own line
-  // (a mark in a cell of its own is centered on the row, not on the words)
-  #grid(
+// A letterhead: who at the left, on the section heads' edge; how to reach
+// at the right, flush with the rules' end, each mark closing its line so
+// the marks stand in one column. The two sides share a foot.
+#grid(
+  columns: (1fr, auto),
+  align: (left + bottom, right + bottom),
+  stack(
+    text(size: 22pt)[Pingfan Hu],
+    head-gap,
+    [Engineering Management and Systems Engineering \
+    The George Washington University, Washington, DC, USA],
+  ),
+  grid(
     columns: 1,
-    row-gutter: 3pt,
-    align: left,
-    [#glyph("map-pin")~Greater Melbourne, Australia],
-    [#glyph("phone")~+61 431 251 227],
-    [#glyph("mail")~#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]],
-    [#glyph("compass")~#link("https://pingfan.org")[pingfan.org]],
-  )
-]
-
-#v(10pt)
+    row-gutter: line-gap,
+    align: right,
+    [Greater Melbourne, Australia~#glyph("map-pin")],
+    [+61 431 251 227~#glyph("phone")],
+    [#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]~#glyph("mail")],
+    [#link("https://pingfan.org")[pingfan.org]~#glyph("compass")],
+  ),
+)
 
 #section[Education]
 
 #align(center)[
+  // a degree's own lines sit a line apart, the degrees a paragraph apart
   #table(
     columns: (auto, auto, auto, auto),
     stroke: none,
-    inset: (x: 0pt, y: 2pt),
+    inset: 0pt,
     column-gutter: 10pt,
+    row-gutter: (line-gap, line-gap, line-gap, para-gap, para-gap),
     align: left,
     [2026], [*George Washington University*, Washington, D.C.], [Ph.D.], [Systems Engineering],
     table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation: _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the surveydown Open-Source Survey Platform_]]],
@@ -144,8 +140,6 @@ execute:
   )
 ]
 
-#v(5pt)
-
 #section[Research Interests]
 // a heading steps the counter only when it has a numbering; the function
 // letters by the heading's own level alone, since the levels above it are zero
@@ -154,15 +148,13 @@ execute:
 // list indent, its marker and its body indent); the brackets keep the rule
 // to the chunk
 #[
-#show par: it => pad(left: 2em, it)
+#show par: it => block(inset: (left: 2em), it)
 ```
 
 {{< include /resources/chunks/research.qmd >}}
 
 ```{=typst}
 ]
-// a paragraph carries no spacing of its own, as a list or table does
-#v(gap + 0.8em)
 
 #section[Honors & Awards]
 
@@ -174,8 +166,6 @@ execute:
 #align(center)[
   ORCID: #link("https://orcid.org/0009-0001-4877-4844")[0009-0001-4877-4844] | #link("https://scholar.google.com/citations?hl=en&user=cHRn7ysAAAAJ")[Google Scholar Profile]
 ]
-
-#v(gap)
 
 #subsection[A. Journal Articles]
 
@@ -257,7 +247,6 @@ cat(skills_typst("table", cols = 3))
 ```
 
 ```{=typst}
-#v(gap)
 #section[Languages]
 ```
 

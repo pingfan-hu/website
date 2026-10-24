@@ -3675,7 +3675,8 @@ figcaption, .figure-caption {
     > .glyph { color: var(--muted); transition: color 160ms var(--ease); }
     > .glyph-r, > .about-tool-mark { width: 1.2em; }
     > .glyph-r::before { width: 1.2em; height: 1.2em; flex: none; }
-    > .about-tool-mark img { display: block; flex: none; width: 1.2em; height: 1.2em; max-width: none; margin: 0; }
+    // a hex (surveydown, sdstudio) is narrower than its box and keeps its shape
+    > .about-tool-mark img { display: block; flex: none; width: 1.2em; height: 1.2em; max-width: none; margin: 0; object-fit: contain; }
     // a logo tile is a fifth taller than a glyph, so centered the same its
     // foot would sit on the underline; it rises until its foot clears it
     > .about-tool-mark { top: -0.14em; }
@@ -3733,6 +3734,10 @@ figcaption, .figure-caption {
     &::before { margin-right: 8px; }
     &::after { margin-left: 8px; }
   }
+
+  // The pill row's hairline is the rule that opens Research, so Research
+  // drops its own: two rules a breath apart read as one too many
+  .about-docs + section.about-label { margin-top: 2rem; padding-top: 0; border-top: 0; }
 
   #research > .about-more + p { color: var(--muted); font-size: 0.94rem; }
 

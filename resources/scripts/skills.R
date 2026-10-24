@@ -81,34 +81,37 @@ skills_typst <- function(layout = c("table", "flow", "rows"), cols = 3, color = 
   body <- if (layout == "flow") {
     per <- ceiling(length(groups) / cols)
     columns <- split(groups, ceiling(seq_along(groups) / per))
-    stacks <- vapply(columns, function(col) sprintf("  stack(spacing: 0.75em,\n%s\n  ),", paste(vapply(col, function(g)
+    # spaced by the resume's own gaps: groups `head-gap` apart, each label
+    # `rule-gap` over its rule and `line-gap` over its skills, which wrap at
+    # the document's leading
+    stacks <- vapply(columns, function(col) sprintf("  stack(spacing: head-gap,\n%s\n  ),", paste(vapply(col, function(g)
       sprintf("    skill-flow([%s], %s),", g$label, paste(cells(g), collapse = ", ")), ""), collapse = "\n")), "")
     c(
       "// the weak space between skills falls away at a line's end",
-      "#let skill-flow(label, ..cells) = stack(spacing: 0.4em,",
-      label, rule,
-      "  par(leading: 0.35em, cells.pos().join(h(1.5em, weak: true))),",
+      "#let skill-flow(label, ..cells) = stack(",
+      sub(",$", ", rule-gap,", label), sub(",$", ", line-gap,", rule),
+      "  par(cells.pos().join(h(1.5em, weak: true))),",
       ")",
       sprintf("#grid(columns: (1fr,) * %d, column-gutter: 2.4em,", cols),
       stacks,
-      ")",
-      "#v(gap)"
+      ")"
     )
   } else if (layout == "table") {
+    # a group's label is a small head over its rows, spaced by the CV's own
+    # gaps (`head-gap` above, `rule-gap` to its rule, `line-gap` between
+    # rows), so the table reads as the text around it
     c(
-      "#let skill-group(label, ..cells) = block(breakable: false, below: 0.8em, stack(spacing: 0.45em,",
-      label, rule,
-      sprintf("  grid(columns: (1fr,) * %d, row-gutter: 0.5em, column-gutter: 0.8em, ..cells.pos()),", cols),
+      "#let skill-group(label, ..cells) = block(breakable: false, above: head-gap, stack(",
+      sub(",$", ", rule-gap,", label), sub(",$", ", line-gap,", rule),
+      sprintf("  grid(columns: (1fr,) * %d, row-gutter: line-gap, column-gutter: 0.8em, ..cells.pos()),", cols),
       "))",
-      vapply(groups, function(g) sprintf("#skill-group([%s], %s)", g$label, paste(cells(g), collapse = ", ")), ""),
-      # the last group's own `below` is lost at the end of the block Quarto
-      # wraps the chunk in, so the table carries it
-      "#v(0.8em)"
+      vapply(groups, function(g) sprintf("#skill-group([%s], %s)", g$label, paste(cells(g), collapse = ", ")), "")
     )
   } else {
     rows <- vapply(groups, function(g) ceiling(length(g$skills) / cols), 0)
-    # a group's rows sit close; a wider gap falls between groups
-    gutters <- unlist(lapply(rows, function(n) c(rep("0.3em", n - 1), "0.6em")))
+    # a group's rows sit a line apart, the groups a paragraph apart (the
+    # document's `line-gap` and `para-gap`)
+    gutters <- unlist(lapply(rows, function(n) c(rep("line-gap", n - 1), "para-gap")))
     gutters <- head(gutters, -1)
     lines <- vapply(seq_along(groups), function(i) {
       g <- groups[[i]]
@@ -119,9 +122,7 @@ skills_typst <- function(layout = c("table", "flow", "rows"), cols = 3, color = 
       sprintf("#grid(columns: (auto,) + (1fr,) * %d, column-gutter: 0.9em, row-gutter: (%s),",
               cols, paste(gutters, collapse = ", ")),
       lines,
-      ")",
-      # the template's own gap after a block, as its lists get
-      "#v(gap)"
+      ")"
     )
   }
   paste0(

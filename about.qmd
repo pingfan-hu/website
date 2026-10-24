@@ -16,10 +16,6 @@ I am a research data scientist and open-source software developer. I have defend
 </div>
 ```
 
-My research uses data science and quantitative modeling to study human behavior in transportation systems. I develop open-source software for survey design and discrete choice modeling, and build full-stack research applications with [[]{.glyph .glyph-r aria-hidden="true"}R](https://CRAN.R-project.org/){.about-tool}, [[]{.glyph .glyph-python aria-hidden="true"}Python](https://www.python.org){.about-tool}, [[]{.glyph .glyph-quarto aria-hidden="true"}Quarto](https://quarto.org/){.about-tool}, [[]{.glyph .glyph-r aria-hidden="true"}Shiny](https://shiny.posit.co/){.about-tool}, and [[]{.glyph .glyph-database aria-hidden="true"}PostgreSQL](https://supabase.com){.about-tool}.
-
-With Professor Helveston, I run [[![](/resources/images/logo-alkaline.png){alt=""}]{.about-tool-mark}Alkaline Software](https://github.com/alkaline-software){.about-tool}, an app development studio. Our flagship product is [[![](/resources/images/logo-emaki.png){alt=""}]{.about-tool-mark}Emaki](https://emaki.lol){.about-tool}, an Agentic Development Environment (ADE).
-
 ## Research {.about-label}
 
 ::: {.about-more}

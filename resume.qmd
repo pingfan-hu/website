@@ -30,29 +30,40 @@ execute:
 )
 
 #set text(font: ("Optima", "Helvetica Neue", "Arial"), size: 10pt)
-#set par(leading: 0.62em, justify: false, spacing: 0pt)
-#set block(spacing: 0pt)
 
-// === SPACING KNOBS ===
-// `gap` controls every major boundary (above sections, below section rules,
-// between lists/tables/entries). Tune this one value to tighten or loosen
-// the whole resume. `entry-gap` is the tighter gap from an entry title to
-// its first bullet.
-#let gap = 7pt
-#let entry-gap = 3pt
+// === SPACING ===
+// The CV's five gaps, at the resume's own sizes (it must fit one page).
+// Every vertical gap in the document is one of them, used by name below;
+// nothing adds space by hand.
+//   line-gap     between the lines of a paragraph, a bullet or a table (the
+//                leading), and between a head and what it heads
+//   para-gap     between bullets and between blocks (here a line's gap: on
+//                one page there is no room for a visible break, so the
+//                heads carry the grouping)
+//   head-gap     above an entry's title, and below a section head's rule
+//   section-gap  above a section head
+//   rule-gap     between a head's words and its rule
+// A block asks for a paragraph's gap below it and only a line's above, so
+// the gap after anything is the one it asks for, and a head asks for more
+// room above. Typst collapses two neighboring gaps to the larger, so an
+// entry right under a section's rule would take head-gap whatever the rule
+// asked; every rule asks for it, so the space under a rule is one size.
+// The page is full to within a few points: after a change, check
+// `pdfinfo _site/resume.pdf` still says one page.
+#let line-gap = 0.5em
+#let para-gap = 0.5em
+#let head-gap = 0.8em
+#let section-gap = 1.1em
+#let rule-gap = 0.4em
+#set par(leading: line-gap, spacing: para-gap, justify: false)
+#set block(above: line-gap, below: para-gap)
 
-// === LISTS & TABLES ===
-#show list: set block(spacing: 0.25em)
+// === LISTS ===
 // a bullet is a short gray hairline, a number gray Maple Mono with its
 // period, as on the site
 #let list-mark = box(height: 0.66em, width: 0.5em, place(horizon, line(length: 0.5em, stroke: 0.6pt + rgb("#A3A096"))))
 #let enum-mark(n) = text(font: "Maple Mono NF", size: 0.8em, fill: rgb("#77746B"))[#n.]
-#set list(indent: 1em, body-indent: 0.4em, marker: list-mark)
-
-// Lists/tables emit `gap` AFTER themselves so the gap to the next block is
-// always `gap`. Tables also get a small lead-in for breathing room.
-#show list: it => { it; v(gap) }
-#show table: it => { v(3pt); it; v(gap) }
+#set list(indent: 1em, body-indent: 0.4em, marker: list-mark, spacing: para-gap)
 
 // Navy-blue links
 #show link: set text(fill: rgb(0%, 20%, 60%))
@@ -71,50 +82,42 @@ execute:
 // Section header with underline rule.
 #let hair = rgb("#BDBAB0")
 #let muted = rgb("#77746B")
-#let section(name) = {
-  text(size: 11pt, weight: "bold", tracking: 0.05em)[#upper[#name]]
-  v(4pt)
-  line(length: 100%, stroke: 0.5pt + hair)
-  v(gap)
-}
+#let section(name) = block(sticky: true, above: section-gap, below: head-gap, stack(spacing: rule-gap,
+  text(size: 11pt, weight: "bold", tracking: 0.05em, upper(name)),
+  line(length: 100%, stroke: 0.5pt + hair),
+))
 
 // Dates and places, quiet and in tabular figures.
 #let aside(body) = text(weight: "regular", fill: muted, number-width: "tabular")[#body]
 
+// An entry's title line heads its bullets.
+#let entry-head(body) = block(sticky: true, above: head-gap, below: line-gap, body)
+
 // Project/general entry — title left, dates right.
-#let entry(title, dates) = {
-  grid(
-    columns: (1fr, auto),
-    align: (left, right),
-    title, aside(dates),
-  )
-  v(entry-gap)
-}
+#let entry(title, dates) = entry-head(grid(
+  columns: (1fr, auto),
+  align: (left, right),
+  title, aside(dates),
+))
 
 // Work entry — fixed-width left column so locations line up across rows.
-#let work-entry(company-role, location, dates) = {
-  grid(
-    columns: (55%, 1fr, auto),
-    align: (left, left, right),
-    company-role,
-    aside(location),
-    aside(dates),
-  )
-  v(entry-gap)
-}
+#let work-entry(company-role, location, dates) = entry-head(grid(
+  columns: (55%, 1fr, auto),
+  align: (left, left, right),
+  company-role,
+  aside(location),
+  aside(dates),
+))
 
 // === HEADER ===
-#align(center)[
-  #text(size: 20pt, weight: "bold")[Pingfan Hu]
-]
-
-#v(8pt)
-
 // the contact line: a mark before each item, a hairline between items, as
 // in the skills block
 #let sep = [#h(0.8em)#box(height: 0.58em, place(horizon, line(angle: 90deg, length: 0.7em, stroke: 0.4pt + hair)))#h(0.8em)]
-#align(center)[
-  #text(size: 9pt)[
+// the name heads the contact line, so a head's gap parts them
+#align(center, stack(
+  text(size: 20pt, weight: "bold")[Pingfan Hu],
+  head-gap,
+  text(size: 9pt)[
     #glyph("map-pin")~Greater Melbourne, Australia
     #sep
     #glyph("mail")~#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]
@@ -122,19 +125,19 @@ execute:
     #glyph("phone")~+61 431 251 227
     #sep
     #glyph("compass")~#link("https://pingfan.org")[pingfan.org]
-  ]
-]
-
-#v(9pt)
+  ],
+))
 
 #section[Education]
 
 #align(center)[
+  // one degree to a row, the rows a line apart
   #table(
     columns: (auto, auto, auto, auto, auto),
     stroke: none,
-    inset: (x: 0pt, y: 1.5pt),
+    inset: 0pt,
     column-gutter: 14pt,
+    row-gutter: line-gap,
     align: left,
     aside[2026], [George Washington University], [Ph.D. (defended)], [Systems Engineering], [GPA 4.0],
     aside[2018], [University of Sydney], [M.P.E.], [Mechanical Engineering], [GPA 3.5],
