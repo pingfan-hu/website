@@ -12,7 +12,7 @@ page-layout: full
 <div class="masthead">
  <div class="masthead-head">
   <!-- Not an <h1>: with no title, Quarto would lift a leading h1 into its title block. -->
-  <p class="masthead-name" role="heading" aria-level="1">Pingfan Hu</p>
+  <p class="masthead-name" role="heading" aria-level="1">Dr. Pingfan&nbsp;Hu</p>
   <ul class="masthead-facts">
    <li><span class="glyph glyph-map-pin" aria-hidden="true"></span>Greater Melbourne, Australia</li>
    <li><span class="glyph glyph-briefcase" aria-hidden="true"></span>Research data scientist, co-founder of Alkaline Software</li>

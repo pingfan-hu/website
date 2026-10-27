@@ -115,7 +115,7 @@ execute:
 #let sep = [#h(0.8em)#box(height: 0.58em, place(horizon, line(angle: 90deg, length: 0.7em, stroke: 0.4pt + hair)))#h(0.8em)]
 // the name heads the contact line, so a head's gap parts them
 #align(center, stack(
-  text(size: 20pt, weight: "bold")[Pingfan Hu],
+  text(size: 20pt, weight: "bold")[Dr. Pingfan Hu],
   head-gap,
   text(size: 9pt)[
     #glyph("map-pin")~Greater Melbourne, Australia
@@ -139,7 +139,7 @@ execute:
     column-gutter: 14pt,
     row-gutter: line-gap,
     align: left,
-    aside[2026], [George Washington University], [Ph.D. (defended)], [Systems Engineering], [GPA 4.0],
+    aside[2026], [George Washington University], [Ph.D.], [Systems Engineering], [GPA 4.0],
     aside[2018], [University of Sydney], [M.P.E.], [Mechanical Engineering], [GPA 3.5],
     aside[2015], [Pennsylvania State University], [B.S.], [Industrial Engineering], [GPA 3.2],
   )

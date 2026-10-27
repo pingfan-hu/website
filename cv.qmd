@@ -104,7 +104,7 @@ execute:
   columns: (1fr, auto),
   align: (left + bottom, right + bottom),
   stack(
-    text(size: 22pt)[Pingfan Hu],
+    text(size: 22pt)[Dr. Pingfan Hu],
     head-gap,
     [Engineering Management and Systems Engineering \
     The George Washington University, Washington, DC, USA],
@@ -129,12 +129,11 @@ execute:
     stroke: none,
     inset: 0pt,
     column-gutter: 10pt,
-    row-gutter: (line-gap, line-gap, line-gap, para-gap, para-gap),
+    row-gutter: (line-gap, line-gap, para-gap, para-gap),
     align: left,
     [2026], [*George Washington University*, Washington, D.C.], [Ph.D.], [Systems Engineering],
     table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation: _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the surveydown Open-Source Survey Platform_]]],
     table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Doctoral Committee: _John Paul Helveston, Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
-    table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Dissertation defended; degree conferral expected December 2026.]],
     [2018], [*University of Sydney*, Sydney, NSW, Australia], [M.P.E.], [Mechanical Engineering],
     [2015], [*Pennsylvania State University*, State College, PA], [B.S.], [Industrial Engineering],
   )

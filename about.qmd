@@ -7,7 +7,7 @@ toc: false
 
 ![](/resources/images/about.png){fig-align="center" width="800"}
 
-I am a research data scientist and open-source software developer. I have defended my PhD in Systems Engineering at [George Washington University](https://www.gwu.edu/), advised by Professor [John Helveston](https://www.jhelvy.com).
+I am a research data scientist and open-source software developer. I completed my PhD in Systems Engineering at [George Washington University](https://www.gwu.edu/) in August 2026, advised by Professor [John Helveston](https://www.jhelvy.com).
 
 ```{=html}
 <div class="about-docs">
@@ -35,7 +35,7 @@ My research is proudly funded by the {{< var sloan >}}.
  <li>
   <span class="about-year">2026</span>
   <p class="about-degree"><strong>Ph.D.</strong> Engineering Management and Systems Engineering</p>
-  <p class="about-note"><a class="about-tool" href="https://www.emse.seas.gwu.edu"><span class="about-tool-mark"><img src="resources/images/logo-gwu.png" alt=""></span>George Washington University</a>, advised by Professor <a href="https://www.jhelvy.com">John Helveston</a>. Dissertation defended; degree conferral expected December 2026.</p>
+  <p class="about-note"><a class="about-tool" href="https://www.emse.seas.gwu.edu"><span class="about-tool-mark"><img src="resources/images/logo-gwu.png" alt=""></span>George Washington University</a>, advised by Professor <a href="https://www.jhelvy.com">John Helveston</a>.</p>
  </li>
  <li>
   <span class="about-year">2018</span>
