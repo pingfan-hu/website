@@ -7,7 +7,7 @@ toc: false
 
 ![](/resources/images/about.png){fig-align="center" width="800"}
 
-I am a research data scientist and open-source software developer. I have completed my PhD in Systems Engineering at [George Washington University](https://www.gwu.edu/), advised by Professor [John Helveston](https://www.jhelvy.com).
+I am a research data scientist and open-source software developer. I have completed my Ph.D. in Systems Engineering at [George Washington University](https://www.gwu.edu/), advised by Professor [John Helveston](https://www.jhelvy.com).
 
 ```{=html}
 <div class="about-docs">
