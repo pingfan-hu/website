@@ -104,7 +104,7 @@ execute:
   columns: (1fr, auto),
   align: (left + bottom, right + bottom),
   stack(
-    text(size: 22pt)[Dr. Pingfan Hu],
+    text(size: 22pt)[Pingfan Hu],
     head-gap,
     [Engineering Management and Systems Engineering \
     The George Washington University, Washington, DC, USA],
