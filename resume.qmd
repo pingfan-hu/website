@@ -181,7 +181,7 @@ cat(skills_typst("flow", cols = 2))
 
 #work-entry[*Alkaline Software* - _Co-Founder_][#glyph("map-pin")~Remote][2026 - Present]
 
-- Co-founded an app development studio with Professor John Helveston. We are two data scientists building open-source apps that benefit our own team and the community.
+- Co-founded an app studio with Professor John Helveston: two data scientists building open-source apps.
 
 #work-entry[*George Washington University* - _Graduate Research Assistant_][#glyph("map-pin")~DC, USA][2023 - Present]
 
@@ -192,6 +192,10 @@ cat(skills_typst("flow", cols = 2))
 #work-entry[*Harsco Rail* - _Software Engineer_][#glyph("map-pin")~SC, USA & Beijing, China][2021 - 2022]
 
 - Led C++ and CAN bus software for rail maintenance machines across USA and China. Obtained 25 total releases.
+
+#work-entry[*Daimler Greater China* - _Engineering Consultant (Contract)_][#glyph("map-pin")~Beijing, China][2020 - 2021]
+
+- Decided engineering change requests for 3 Mercedes-Benz SUVs localized for China, including 1 EV.
 
 #work-entry[*GE Appliances* - _Project Engineer_][#glyph("map-pin")~Qingdao, China][2019 - 2020]
 
