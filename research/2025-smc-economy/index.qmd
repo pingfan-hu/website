@@ -7,6 +7,10 @@ categories: [R, EV]
 description: "Peak-shaving and cost-effectiveness of Supplier-managed Charging programs."
 ---
 
+## Paper
+
+{{< include /resources/chunks/2025-eris-peak-shaving.qmd >}}
+
 ## Abstract
 
 Unmanaged battery electric vehicle (BEV) charging amplifies evening grid peaks, and supplier-managed charging (SMC) programs address this by shifting load to off-peak hours while reducing consumer charging costs. Whether SMC is cost-effective at scale depends on realistic enrollment rates and regional grid conditions, which prior analyses have not addressed jointly. We integrate empirical consumer enrollment curves from a discrete choice experiment with 1,356 BEV owners into a scenario-based grid simulation for CAISO and NYISO, two regions with contrasting generation mixes and climates. CAISO achieves larger absolute peak reductions (up to 5.6 GW) while NYISO shows more favorable per-household cost efficiency. Cost efficiency is season-invariant in CAISO but deteriorates in NYISO winters when elevated overnight load compresses the off-peak valley window. Diminishing returns to enrollment are sharp in both regions, and enrollment beyond a certain threshold can reconstitute a new overnight peak, which occurs on approximately 15.0\% of CAISO days. These results demonstrate that moderate enrollment, not maximum participation, is the cost-effective operating target for SMC programs.

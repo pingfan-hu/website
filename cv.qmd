@@ -184,7 +184,9 @@ execute:
 #subsection[D. Software]
 
 + *Hu, P.*, & Helveston, J. P. (2026) "Emaki: An Agentic Development Environment that keeps, searches, and continues Claude Code and Codex sessions" Desktop application for macOS, Windows, and Linux, built in Rust with GPUI. Alkaline Software. #link("https://emaki.lol")[emaki.lol].
-+ *Hu, P.* (aut,cre,cph) (2026) "MiniNotes: An Obsidian-compatible macOS menu bar Markdown note app" macOS application.
++ *Hu, P.* (aut,cre,cph) (2026) "Onyx: A note-taking app that keeps notes as plain Markdown files in a folder of one's own" macOS application, built in Rust with GPUI, succeeding MiniNotes. Alkaline Software. #link("https://github.com/alkaline-software/onyx")[github.com/alkaline-software/onyx].
++ *Hu, P.* (aut,cre,cph) (2026) "Kotoba: Dictation anywhere on the Mac, run on the machine so nothing said leaves it" macOS menu bar application, built in Rust with GPUI. Alkaline Software. #link("https://github.com/alkaline-software/kotoba")[github.com/alkaline-software/kotoba].
++ *Hu, P.*, & Helveston, J. P. (2026) "tabflip: A Mac window switcher that moves between windows, not apps" macOS application, built in Rust. Alkaline Software. #link("https://github.com/alkaline-software/tabflip")[github.com/alkaline-software/tabflip].
 + *Hu, P.* (aut,cre,cph) (2025) "TidyViz: A Python package for tidying and visualizing survey data."
 + *Hu, P.* (aut,cre,cph) (2025) "MiniCalendar: A free and open-source mini menu bar calendar" macOS application.
 + *Hu, P.* (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "sdstudio: Companion Application for the surveydown Survey Platform" R package.
@@ -200,7 +202,7 @@ execute:
 
 #subsection[B. Workshops]
 
-- "Agentic Workflows with Claude Code", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Expected Aug 2026. #link("https://pingfan-hu.github.io/2026-agentic-workshop/")[pingfan-hu.github.io/2026-agentic-workshop].
+- "Agentic Workflows with Claude Code", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Aug 14, 2026. #link("https://pingfan-hu.github.io/2026-agentic-workshop/")[pingfan-hu.github.io/2026-agentic-workshop].
 - "surveydown: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. #link("https://jhelvy.github.io/2025-qux-surveydown-workshop/")[jhelvy.github.io/2025-qux-surveydown-workshop].
 - "surveydown: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. #link("https://jhelvy.github.io/2025-surveydown-workshop/")[jhelvy.github.io/2025-surveydown-workshop].
 
@@ -208,6 +210,7 @@ execute:
 
 #subsection[A. Conferences]
 
++ "Quantifying the Peak-Shaving Potential and Cost Efficiency of Battery Electric Vehicle Supplier-Managed Charging", with Brian Tarroja, Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. ASTR Conference 2026, University of California, Davis. Davis, CA. Oct 27, 2026.
 + "sdstudio: A Companion Package for Designing and Managing surveydown Surveys". GW Open Source Conference 2026. Washington, DC. Mar 23, 2026.
 + "surveydown: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys". Quant UX Con 2025. Virtual. Nov 05, 2025.
 + "surveydown: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
@@ -230,7 +233,7 @@ execute:
 
 #section[Industry Experiences]
 
-- Co-Founder of _Alkaline Software_, an app development studio founded with Professor John Paul Helveston that builds apps in Rust with GPUI. Lead developer of the flagship product Emaki, an Agentic Development Environment (ADE). #link("https://github.com/alkaline-software")[github.com/alkaline-software]. Remote (2026 - Present).
+- Co-Founder of _Alkaline Software_, an app development studio founded with Professor John Paul Helveston that builds apps in Rust with GPUI. Lead developer of the flagship product Emaki, an Agentic Development Environment (ADE), and of the Mac apps Onyx (notes), Kotoba (dictation), and tabflip (window switching). #link("https://github.com/alkaline-software")[github.com/alkaline-software]. Remote (2026 - Present).
 - Software Engineer at _Harsco Rail_. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
 - Engineering Consultant at _Daimler Greater China_, on contract through EnSure Auto. Managed engineering changes for three Mercedes-Benz SUVs localized for China, one of them electric: decided on R&D change requests and analyzed plant workforce, layout, and production schedules. Beijing, China (2020 - 2021).
 - Project Engineer at _GE Appliances_. Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs. Qingdao, China (2019 - 2020).

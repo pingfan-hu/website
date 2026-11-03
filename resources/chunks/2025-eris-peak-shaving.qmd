@@ -1,0 +1,7 @@
+:::: {.card .mb-4 .custom-card}
+::: {.card-body}
+**Journal Paper** - Environmental Research: Infrastructure and Sustainability, under review
+
+Hu, P., Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. *Quantifying the Peak-Shaving Potential and Cost Efficiency of Battery Electric Vehicle Supplier-Managed Charging*. Under review at Environmental Research: Infrastructure and Sustainability.
+:::
+::::
