@@ -2776,6 +2776,8 @@ $profile-glyph: 20px;  // a profile's mark, in the capsule and on the homepage
   &:hover, &:focus-visible { background: var(--w-bg-hover) !important; border-color: var(--w-border-hover) !important; }
 }
 
+$navbar-h: 56px;
+
 .navbar {
   background-color: var(--frame) !important;
   border-bottom: none;
@@ -2784,7 +2786,7 @@ $profile-glyph: 20px;  // a profile's mark, in the capsule and on the homepage
   // One height at every width: the brand's vertical padding is flattened
   // below, so no row is taller than this floor on the desktop or on the
   // collapsed bar; only the open hamburger grows past it.
-  min-height: 56px;
+  min-height: $navbar-h;
 
   // Bootstrap pads the brand vertically, which alone made the desktop bar
   // 58.7 against the collapsed bar's 56.
@@ -3349,27 +3351,72 @@ figcaption, .figure-caption {
 // 17 body, 22 lead, 56 name. Below 768 it is one column that opens on a
 // profile header: the name, and the photo as a small square at the right
 // edge, then the facts, the bio and the actions at full width.
+//
+// On the desktop the masthead is one composition that fits the window: it
+// fills the room between the navbar and the footer, centered in it, and
+// every size in it is a multiple of one unit, `--u`, so the whole of it
+// scales down together when the window is too short (a 13-inch laptop) or
+// too narrow for it, and keeps its line breaks. The unit is 1px when it
+// fits; it never goes below 0.8px, and past that the page scrolls.
+
+// The masthead's height at 1px a unit: the words (361) over the cards
+// (223), the gap between them (64), and 32 above and below, 712 measured,
+// plus a little for lines that round up as they scale. Measure it again
+// when the masthead changes.
+$masthead-w: 1056;
+$masthead-h: 720;
+
+@property --u {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 1px;
+}
+
+@function u($n) { @return calc(#{$n} * var(--u)); }
 
 .masthead {
-  max-width: 1056px;
+  max-width: u($masthead-w);
   margin: 0 auto;
   // Quarto's main already sits 31 below the navbar; with this, 72 in all.
   padding-block: 40px 64px;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 24px;
+  column-gap: u(24);
+}
+
+@media (min-width: 992px) {
+  // The page gives up its own space above and below main (Quarto's 14 on
+  // top, its 60 row at the foot, and the window's height less the navbar's
+  // that its script sets as a floor, which forgets the footer), so the
+  // masthead alone fills the room between the two bars; a registered `--u`
+  // is worked out against main's width and handed down as a length.
+  #quarto-content:has(> main > .masthead) {
+    min-height: 0 !important;
+    grid-template-rows: [content-top] auto [content-bottom page-bottom];
+    > main {
+      container-type: inline-size;
+      margin-block: 0;
+      padding-block: 0;
+    }
+  }
+  .masthead {
+    --u: clamp(0.8px, min((100dvh - #{$navbar-h} - #{$footer-h}) / #{$masthead-h}, 100cqi / #{$masthead-w}), 1px);
+    min-height: calc(100dvh - #{$navbar-h} - #{$footer-h});
+    padding-block: u(32);
+    align-content: center;
+  }
 }
 
 .masthead-head {
   grid-column: 1 / 8;
   display: grid;
-  gap: 16px;
+  gap: u(16);
   align-content: start;
 }
 
 .masthead-kind {
   font-family: var(--font-ui);
-  font-size: 13px;
+  font-size: u(13);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
@@ -3379,7 +3426,7 @@ figcaption, .figure-caption {
 .masthead-name {
   font-family: var(--font-wordmark);
   font-weight: 400;
-  font-size: 56px;
+  font-size: u(56);
   line-height: 1;
   letter-spacing: -0.005em;
   color: var(--ink);
@@ -3391,24 +3438,24 @@ figcaption, .figure-caption {
 // the name.
 .masthead-facts {
   list-style: none;
-  margin: 4px 0 0;
+  margin: u(4) 0 0;
   padding: 0;
   display: grid;
-  gap: 6px;
+  gap: u(6);
   font-family: var(--font-ui);
-  font-size: 15px;
+  font-size: u(15);
   line-height: 1.5;
   color: var(--muted);
 
-  li { display: flex; align-items: flex-start; gap: 10px; }
-  .glyph { font-size: 16px; margin-top: 3px; flex: none; }
+  li { display: flex; align-items: flex-start; gap: u(10); }
+  .glyph { font-size: u(16); margin-top: u(3); flex: none; }
 }
 
 // Then the bio, a short paragraph across the words' seven columns.
 .masthead-bio {
-  font-size: 19px;
+  font-size: u(19);
   line-height: 1.6;
-  margin: 8px 0 0;
+  margin: u(8) 0 0;
   text-wrap: pretty;
 }
 
@@ -3419,22 +3466,22 @@ figcaption, .figure-caption {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  margin-top: 8px;
+  gap: u(8);
+  margin-top: u(8);
 }
 
 .masthead-doc {
   @include pill;
-  font-size: 15px;
-  padding: 6px 16px 6px 12px;
+  font-size: u(15);
+  padding: u(6) u(16) u(6) u(12);
   // a size up from the words, so it keeps its own height
-  .glyph { font-size: 16px; height: auto; }
+  .glyph { font-size: u(16); height: auto; }
 }
 
 .masthead-sep {
   width: 1px;
-  height: 24px;
-  margin: 0 8px;
+  height: u(24);
+  margin: 0 u(8);
   background: var(--border-2);
 }
 
@@ -3442,11 +3489,11 @@ figcaption, .figure-caption {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: u(36);
+  height: u(36);
+  border-radius: u(8);
   color: var(--muted);
-  font-size: 24px;
+  font-size: u(24);
   transition: color 160ms var(--ease), background 160ms var(--ease), transform 120ms var(--ease);
 
   &:hover, &:focus-visible { color: var(--accent); background: var(--wash); }
@@ -3465,10 +3512,10 @@ figcaption, .figure-caption {
 
 .masthead-work {
   grid-column: 1 / 13;
-  margin-top: 64px;
+  margin-top: u(64);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  gap: u(24);
 }
 
 // A line of work is a card with the listing cards' hover and press: the
@@ -3478,8 +3525,8 @@ figcaption, .figure-caption {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 24px;
+  gap: u(8);
+  padding: u(24);
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: $border-radius-lg;
@@ -3494,15 +3541,15 @@ figcaption, .figure-caption {
 // The project's own mark, top right in the space beside the label and title.
 .masthead-logo {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  height: 52px;
+  top: u(20);
+  right: u(20);
+  height: u(52);
   width: auto;
 }
 
 .masthead-title {
   font-family: var(--font-wordmark);
-  font-size: 22px;
+  font-size: u(22);
   line-height: 1.25;
   color: var(--ink);
   text-decoration: none;
@@ -3513,7 +3560,7 @@ figcaption, .figure-caption {
 }
 
 .masthead-desc {
-  font-size: 17px;
+  font-size: u(17);
   color: var(--muted);
 }
 
@@ -3543,7 +3590,7 @@ figcaption, .figure-caption {
 .masthead-pub {
   display: block;
   margin-top: -$border-radius-lg;
-  padding: calc(#{$border-radius-lg} + 12px) 24px 13px;
+  padding: calc(#{$border-radius-lg} + #{u(12)}) u(24) u(13);
   background: var(--panel-2);
   border: 1px solid var(--border);
   border-top: 0;
@@ -3559,7 +3606,7 @@ figcaption, .figure-caption {
   // short.
   .masthead-pub-text {
     display: block;
-    font-size: clamp(13px, calc((100cqi - 52px) / 16.6), 16px);
+    font-size: clamp(#{u(13)}, calc((100cqi - #{u(52)}) / 16.6), #{u(16)});
     font-style: italic;
     white-space: nowrap;
     overflow: hidden;
