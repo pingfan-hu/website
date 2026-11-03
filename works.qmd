@@ -107,7 +107,7 @@ short_date <- function(date, type) {
 create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
                         Btn1Label = NA, Btn2Label = NA, Btn3Label = NA,
                         Doc1Label = NA, Doc1URL = NA, Doc2Label = NA, Doc2URL = NA,
-                        Reference = NA, Status = NA) {
+                        Reference = NA, Status = NA, Video = NA) {
   type <- if (is.na(Type)) "slide" else tolower(Type)
 
   links <- switch(type,
@@ -123,6 +123,12 @@ create_work <- function(Date, Title, Event, Location, Name, Type = "slide",
     paper = paper_docs(Doc1Label, Doc1URL, Doc2Label, Doc2URL),
     list(list(href = make_pdf_path(Name), icon = "bi-file-earmark-pdf", label = btn_label(Btn1Label, "PDF")))
   )
+  # a recorded talk adds a Video pill before the GitHub one
+  if (!is.na(Video) && nzchar(Video)) {
+    video <- list(href = Video, icon = "bi-youtube", label = "Video")
+    gh <- vapply(links, function(l) l$icon == "bi-github", logical(1))
+    links <- c(links[!gh], list(video), links[gh])
+  }
   # a paper opens on its website where it has one, else its PDF
   main <- if (type == "paper") {
     web <- Filter(function(l) l$icon == "bi-globe2", links)
