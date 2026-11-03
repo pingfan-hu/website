@@ -3163,6 +3163,11 @@ $footer-h: 2.25rem;
 
 body { padding-bottom: $footer-h; }
 
+// Quarto's script gives the page a floor of the window's height less the
+// navbar's, which forgets this footer's room below it, so a short page
+// scrolled by the footer's height. The floor leaves room for both bars.
+.quarto-container { min-height: calc(100vh - #{$navbar-h} - #{$footer-h}) !important; }
+
 .nav-footer {
   position: fixed;
   left: 0;
@@ -3386,12 +3391,10 @@ $masthead-h: 720;
 
 @media (min-width: 992px) {
   // The page gives up its own space above and below main (Quarto's 14 on
-  // top, its 60 row at the foot, and the window's height less the navbar's
-  // that its script sets as a floor, which forgets the footer), so the
-  // masthead alone fills the room between the two bars; a registered `--u`
-  // is worked out against main's width and handed down as a length.
+  // top and its 60 row at the foot), so the masthead alone fills the room
+  // between the two bars; a registered `--u` is worked out against main's
+  // width and handed down as a length.
   #quarto-content:has(> main > .masthead) {
-    min-height: 0 !important;
     grid-template-rows: [content-top] auto [content-bottom page-bottom];
     > main {
       container-type: inline-size;
