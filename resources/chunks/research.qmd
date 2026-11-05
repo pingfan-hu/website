@@ -1,6 +1,6 @@
 ### Data Science {.about-title .glyph-chart-dots}
 
-I study how people respond to incentives in energy and transportation, and what their choices do to the wider system. For electric vehicle smart charging, I ran a national choice experiment with 1,356 owners and estimated mixed logit models of what makes them [enroll](/research/2024-sc-adoption): flexibility and recurring payments matter most. I then simulated 10,000 vehicles against California and New York grid load. Managed charging cut California's peak by up to 5.6 GW, and moderate enrollment, not maximum, gave the best [cost efficiency](/research/2025-smc-economy). My methods also include optimization, agent-based and discrete-event simulation, system dynamics, and network analysis.
+I study how people respond to incentives in energy and transportation. For electric vehicle smart charging, with Southern California Edison, Pacific Gas & Electric, and National Grid, I ran a choice experiment with 1,356 owners to model what makes them [enroll](/research/2024-sc-adoption), and simulated 10,000 vehicles on the grid to find the most [cost-efficient](/research/2025-smc-economy) level of enrollment. My methods also include optimization, agent-based and discrete-event simulation, system dynamics, and network analysis.
 
 ### Open-Source Software {.about-title .glyph-package}
 

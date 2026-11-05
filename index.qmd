@@ -1,5 +1,5 @@
 ---
-pagetitle: "Pingfan Hu"
+pagetitle: "Pingfan Hu - Research Data Scientist"
 description: "Pingfan Hu - Ph.D. in Systems Engineering; models how people respond to incentives in energy and transportation, builds open-source survey tools in R, and co-founded Alkaline Software, maker of the Emaki agentic development environment."
 image: resources/images/homepage.png
 open-graph:

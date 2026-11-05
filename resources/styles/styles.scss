@@ -2726,12 +2726,12 @@ $glyphs: (
 // `-color` entries above; every other mark has 'black' swapped for its
 // color. Mid tones, so each reads on the cream and the dark page alike.
 $glyph-tints: (
-  "anthropic": "rgb(217,119,87)", "wand": "rgb(217,119,87)", "plug": "rgb(217,119,87)", "webhook": "rgb(217,119,87)",
+  "anthropic": "rgb(217,119,87)", "sparkles": "rgb(217,119,87)", "wand": "rgb(217,119,87)", "plug": "rgb(217,119,87)", "webhook": "rgb(217,119,87)",
   "openai": "rgb(16,163,127)",
   "hexagons": "rgb(39,109,195)", "chart-scatter": "rgb(39,109,195)",
   "database": "rgb(65,105,225)", "sql": "rgb(65,105,225)",
   "clipboard-list": "rgb(38,150,138)", "arrows-split": "rgb(38,150,138)", "math-function": "rgb(38,150,138)",
-  "chart-dots-3": "rgb(38,150,138)", "target-arrow": "rgb(38,150,138)", "chart-histogram": "rgb(38,150,138)", "a-b": "rgb(38,150,138)",
+  "chart-dots-3": "rgb(38,150,138)", "chart-dots": "rgb(38,150,138)", "target-arrow": "rgb(38,150,138)", "chart-histogram": "rgb(38,150,138)", "a-b": "rgb(38,150,138)",
   "rust": "rgb(206,66,43)", "swift": "rgb(240,81,56)", "git": "rgb(240,80,50)",
   "javascript": "rgb(222,184,0)", "terminal": "rgb(78,170,37)",
   "devices": "rgb(104,56,216)", "pointer": "rgb(104,56,216)",
@@ -3699,9 +3699,10 @@ $masthead-h: 720;
   // underline runs under mark and name together. A text underline skips the
   // mark, so the line is drawn instead, where the plain links put theirs:
   // the face's ascent is 1em, so the baseline lies 1em down the text's box
-  // and the line 0.22em below it. Every mark sits in one 1em box: a glyph
-  // in its color (`$glyph-tints`); the R logo and a logo image a fifth
-  // larger, in a box as wide, as their art carries a margin.
+  // and the line 0.22em below it. Every mark, a glyph in its color
+  // (`$glyph-tints`), the R logo or a logo image, is drawn at one size in
+  // one box and raised the same, so the marks along a paragraph stand
+  // level, tops and feet.
   main.content a.about-tool {
     --under: color-mix(in srgb, var(--link) 30%, transparent);
     white-space: nowrap;
@@ -3723,26 +3724,21 @@ $masthead-h: 720;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 1em;
-      height: 1em;
+      width: 1.15em;
+      height: 1.15em;
       overflow: visible;
       // a box with no text takes its baseline from its picture's foot, so
-      // a larger logo would ride high; centered on the line instead (half
-      // the x-height), then raised to the middle of the lowercase and the
-      // capitals, where the skills' marks sit
+      // centered on the line instead (half the x-height), then raised until
+      // the mark's foot clears the underline
       vertical-align: middle;
       position: relative;
-      top: -0.05em;
+      top: -0.12em;
       margin-right: 0.3em;
     }
     > .glyph { color: var(--muted); transition: color 160ms var(--ease); }
-    > .glyph-r, > .about-tool-mark { width: 1.2em; }
-    > .glyph-r::before { width: 1.2em; height: 1.2em; flex: none; }
+    > .glyph::before { width: 1.15em; height: 1.15em; flex: none; }
     // a hex (surveydown, sdstudio) is narrower than its box and keeps its shape
-    > .about-tool-mark img { display: block; flex: none; width: 1.2em; height: 1.2em; max-width: none; margin: 0; object-fit: contain; }
-    // a logo tile is a fifth taller than a glyph, so centered the same its
-    // foot would sit on the underline; it rises until its foot clears it
-    > .about-tool-mark { top: -0.14em; }
+    > .about-tool-mark img { display: block; flex: none; width: 1.15em; height: 1.15em; max-width: none; margin: 0; object-fit: contain; }
 
     &:hover > .glyph, &:focus-visible > .glyph { color: currentColor; }
   }

@@ -10,6 +10,7 @@ execute:
 ---
 
 ```{=typst}
+#set document(title: "Pingfan Hu - CV", author: "Pingfan Hu")
 // === PAGE ===
 #set page(
   paper: "a4",
@@ -90,17 +91,14 @@ execute:
 #let aside(body) = text(fill: rgb("#77746B"), number-width: "tabular")[#body]
 
 // An entry: who in bold at the left, the place and the dates gray at the
-// right, and the role in italic under who, over its bullets. The role has
-// its own line, as at 11pt a role beside the place would wrap. The places
-// are right-aligned against a dates column of one width, so they end on
-// one line.
-#let work-entry(org, role, location, dates) = block(sticky: true, above: head-gap, below: line-gap, grid(
-  columns: (1fr, auto, 7.2em),
-  column-gutter: 1em,
-  row-gutter: line-gap,
-  align: (left, right, right),
-  strong(org), aside(location), aside(dates),
-  grid.cell(colspan: 3, emph(role)),
+// right as one run, and the role in italic under who, over its bullets. The
+// role has its own line, as at 11pt a role beside the place would wrap. Each
+// line is a paragraph, not a grid: a parser that rebuilds a page's columns
+// reads a grid's cells column by column, the dates of every entry apart from
+// their titles.
+#let work-entry(org, role, location, dates) = block(sticky: true, above: head-gap, below: line-gap, stack(spacing: line-gap,
+  par[#strong(org)#h(1fr)#aside[#location#h(1em)#dates]],
+  par(emph(role)),
 ))
 
 // === HEADER ===
@@ -121,6 +119,7 @@ execute:
     row-gutter: line-gap,
     align: right,
     [Greater Melbourne, Australia~#glyph("map-pin")],
+    [Australian Permanent Resident~#glyph("user")],
     [+61 431 251 227~#glyph("phone")],
     [#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]~#glyph("mail")],
     [#link("https://pingfan.org")[pingfan.org]~#glyph("compass")],
@@ -129,22 +128,14 @@ execute:
 
 #section[Education]
 
-#align(center)[
-  // a degree's own lines sit a line apart, the degrees a paragraph apart
-  #table(
-    columns: (auto, auto, auto, auto),
-    stroke: none,
-    inset: 0pt,
-    column-gutter: 10pt,
-    row-gutter: (line-gap, line-gap, para-gap, para-gap),
-    align: left,
-    [2026], [*George Washington University*, Washington, D.C.], [Ph.D.], [Systems Engineering],
-    table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation (defended August 2026): _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the surveydown Open-Source Survey Platform_]]],
-    table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
-    [2018], [*University of Sydney*, Sydney, NSW, Australia], [M.P.E.], [Mechanical Engineering],
-    [2015], [*Pennsylvania State University*, State College, PA], [B.S.], [Industrial Engineering],
-  )
-]
+#work-entry[The George Washington University][Ph.D., Systems Engineering][Washington, D.C.][2026]
+
+#pad(left: 1em, text(size: 9.5pt)[Dissertation (defended August 2026): _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the surveydown Open-Source Survey Platform_ \
+Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René van Dorp, & Eric Hittinger_])
+
+#work-entry[University of Sydney][M.P.E., Mechanical Engineering][Sydney, NSW, Australia][2018]
+
+#work-entry[Pennsylvania State University][B.S., Industrial Engineering][State College, PA, USA][2015]
 
 #section[Research Interests]
 
@@ -154,6 +145,7 @@ execute:
 - Discrete choice modeling and consumer preferences
 - Incentive and program design in energy and transportation
 - Electric vehicle grid integration
+- Systems modeling: optimization, agent-based and discrete-event simulation (Simio), system dynamics (Vensim), and network analysis
 - Survey methodology and open-source research software
 - Agentic AI workflows for research software
 ]
@@ -166,9 +158,12 @@ execute:
 
 #work-entry[The George Washington University][Graduate Research Assistant, Helveston Lab][Washington, D.C.][2023 - 2026]
 
-- Sloan Foundation-funded study of electric vehicle smart charging with UC Davis and UC Irvine.
-- Designed a national choice experiment with 1,356 EV owners, recruited through Meta and Dynata with A/B tests, and estimated mixed logit models of enrollment.
-- Simulated 10,000 EVs against CAISO and NYISO load.
+- Sloan Foundation-funded study of electric vehicle smart charging with UC Davis and UC Irvine, in partnership with Southern California Edison, Pacific Gas & Electric, and National Grid.
+- Designed a national choice experiment with 1,356 EV owners and managed its recruitment budget across Meta and Dynata, using A/B tests to find the most cost-effective approach.
+- Ran the survey under GW IRB approval (NCR245575) with informed consent.
+- Estimated mixed logit models of enrollment: owners value flexibility and recurring payments most, and the models predict uptake for program designs not yet offered.
+- Simulated 10,000 EVs, each on its own travel pattern, against CAISO and NYISO load in 55 time-of-use and enrollment scenarios: managed charging cut CAISO peaks by up to 5.6 GW, and moderate enrollment, not maximum, proved most cost-effective.
+- Presented findings to stakeholders at the partner utilities and the Sloan Foundation.
 - Lead developer of surveydown and sdstudio.
 
 #work-entry[The George Washington University][Research Assistant, Professor Caitlin Grady's FEWS Lab][Washington, D.C.][May - Aug. 2023]
@@ -195,19 +190,20 @@ execute:
 
 #subsection[C. Under Review & Working Papers]
 
-+ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential and cost efficiency of battery electric vehicle supplier-managed charging." Under review at _Environmental Research: Infrastructure and Sustainability_.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential and cost efficiency of battery electric vehicle supplier-managed charging." Under review at _Environmental Research: Infrastructure and Sustainability_. Replication data and code to be released on publication.
 + *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "sdstudio: A companion package for designing and managing surveydown surveys." Working paper.
 
 #section[Research Funding]
 
 - _Alfred P. Sloan Foundation_, Grant G-2023-20976 (Sept. 2023 - Dec. 2026). Electric vehicle smart charging research at George Washington University with UC Davis and UC Irvine. PI: John Paul Helveston. Role: Graduate Research Assistant, funded by the grant.
 
-#section[Software]
+#section[Software & Data]
 
 + Helveston, J. P., *Hu, P.*, & Bunea, B. (2024). "surveydown: Markdown-Based Surveys Using Quarto Shiny Documents." R package; 180+ GitHub stars, 11,000+ CRAN downloads. #link("https://surveydown.org")[surveydown.org].
 + *Hu, P.*, Helveston, J. P., & Bunea, B. (2025). "sdstudio: Companion Application for the surveydown Survey Platform." R package; 2,500+ CRAN downloads. #link("https://CRAN.R-project.org/package=sdstudio")[CRAN.R-project.org/package=sdstudio].
 + *Hu, P.*, & Helveston, J. P. (2026). "Emaki: An Agentic Development Environment that keeps, searches, and continues Claude Code and Codex sessions." Desktop application for macOS, Windows, and Linux, built in Rust with GPUI. Alkaline Software. #link("https://emaki.lol")[emaki.lol].
 + *Hu, P.* (2025). "TidyViz: A Python package for tidying and visualizing survey data." Python package.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "smart-charging-preferences-2025: Replication data and code for the EV smart charging preferences study." Survey data and R code, with a Shiny enrollment simulator. Zenodo. DOI: #link("https://doi.org/10.5281/zenodo.17911540")[10.5281/zenodo.17911540]
 
 #section[Presentations]
 
@@ -235,7 +231,7 @@ execute:
 
 - Fall 2025 - EMSE 4572/6572: Exploratory Data Analysis (undergraduate & graduate).
 - Spring 2025 - EMSE 4571: Programming for Analytics (undergraduate).
-- Mentored students through substantial R programming and data analysis projects.
+- Mentored about 20 of the class's roughly 40 students through their R programming and data analysis projects.
 
 #subsection[B. Workshops]
 
@@ -255,8 +251,9 @@ execute:
 - _Applied Energy_ (Elsevier): 2 reviews, 2025.
 - _Engineering Research Express_ (IOP Publishing): 5 reviews, 2025 - 2026.
 
-#subsection[B. Professional Memberships]
+#subsection[B. Professional Qualifications & Memberships]
 
+- Engineers Australia assessment (2022): both degrees in engineering meet the Professional Engineer standard (Mechanical Engineer, ANZSCO 233512; Industrial Engineer, ANZSCO 233511).
 - Institute of Electrical and Electronics Engineers (IEEE)
 - Transportation Research Board (TRB)
 
@@ -275,6 +272,7 @@ execute:
 #work-entry[Harsco Rail][Software Engineer][SC, USA & Beijing, China][2021 - 2022]
 
 - Led C++ and CAN bus software for the Undercutter and Grinder rail maintenance machines across teams in the USA and China; delivered 25 releases.
+- Served as liaison between customers, US management, and the China team, and ran on-site testing of the machines.
 
 #work-entry[Daimler Greater China][Engineering Consultant (Contract, through EnSure Auto)][Beijing, China][2020 - 2021]
 
@@ -295,9 +293,9 @@ execute:
 
 ```{r}
 #| results: asis
-# the About page's skills table, drawn in Typst; see the script
+# the About page's skills as plain text, one group to a line; see the script
 source(here::here("resources/scripts/skills.R"))
-cat(skills_typst("table", cols = 3))
+cat(skills_typst("text"))
 ```
 
 ```{=typst}
@@ -309,28 +307,9 @@ cat(skills_typst("table", cols = 3))
 ```{=typst}
 #section[References]
 
-// three referees side by side, each one block: name, title, place, email,
-// and how they know the work
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  column-gutter: 1.5em,
-  [*John Paul Helveston* \
-  Assistant Professor \
-  Engineering Management and Systems Engineering \
-  George Washington University \
-  #link("mailto:jph@gwu.edu")[jph\@gwu.edu] \
-  _Ph.D. Advisor_],
-  [*Eric Hittinger* \
-  Associate Professor \
-  Department of Public Policy \
-  Rochester Institute of Technology \
-  #link("mailto:eshgpt@rit.edu")[eshgpt\@rit.edu] \
-  _Ph.D. Committee Member_],
-  [*Alan Jenn* \
-  Associate Professor \
-  Civil and Environmental Engineering \
-  University of California, Davis \
-  #link("mailto:ajenn@ucdavis.edu")[ajenn\@ucdavis.edu] \
-  _Co-author_],
-)
+// one referee to a paragraph: name, title, place, how they know the work,
+// and email
+- *John Paul Helveston*, Assistant Professor, Engineering Management and Systems Engineering, The George Washington University (Ph.D. Advisor). #link("mailto:jph@gwu.edu")[jph\@gwu.edu]
+- *Eric Hittinger*, Associate Professor, Department of Public Policy, Rochester Institute of Technology (Ph.D. Committee Member). #link("mailto:eshgpt@rit.edu")[eshgpt\@rit.edu]
+- *Alan Jenn*, Associate Professor, Civil and Environmental Engineering, University of California, Davis (Co-author). #link("mailto:ajenn@ucdavis.edu")[ajenn\@ucdavis.edu]
 ```

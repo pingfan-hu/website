@@ -9,11 +9,11 @@
 # logo (Shiny is R's, GPUI is Rust's, SwiftUI is Swift's), otherwise a
 # Tabler picture of what it is. A skill not listed here gets a dot.
 skill_marks <- c(
-  "Claude Code" = "anthropic", "Codex" = "openai", "Skills" = "wand", "MCP" = "plug",
+  "Claude Code" = "anthropic", "Codex" = "openai", "LLM Workflows" = "sparkles", "Skills" = "wand", "MCP" = "plug",
   "Hooks" = "webhook",
   "PostgreSQL" = "database", "tidyverse" = "hexagons", "ggplot" = "chart-scatter",
   "Survey Design" = "clipboard-list", "Discrete Choice" = "arrows-split",
-  "Logit Modeling" = "math-function", "Econometrics" = "chart-histogram", "A/B Testing" = "a-b", "Simulation" = "chart-dots-3", "Optimization" = "target-arrow",
+  "Logit Modeling" = "math-function", "Statistical Modeling" = "chart-dots", "Econometrics" = "chart-histogram", "A/B Testing" = "a-b", "Simulation" = "chart-dots-3", "Optimization" = "target-arrow",
   "R" = "r", "Python" = "python", "Rust" = "rust", "Swift" = "swift", "Git" = "git",
   "SQL" = "sql", "Shell" = "terminal", "JavaScript" = "javascript",
   "GPUI" = "rust", "SwiftUI" = "swift", "UI/UX Design" = "pointer",
@@ -74,9 +74,16 @@ glyph_svg <- function(name, color) {
 # label over a hairline with its skills running on beneath it and wrapping
 # where they must, so a name is read under its group and no cell stands
 # empty. "rows" sets the label at the left of its group's first row, one
-# grid for every group. Each mark is gray, a hairline before the name.
+# grid for every group. "inline" is "text" with each name led by its mark
+# (no hairline): it still reads in order, as the marks sit inside the line
+# and the names keep their commas. "text" is for documents that screening software
+# reads first: each group one line of plain text, its label run in before
+# the names, comma-separated and without marks. A parser that rebuilds a
+# page's columns reads the columns of "flow" one after the other, and parts
+# names set apart by marks and wide gaps; plain text it reads in order. Each mark is gray, a
+# hairline before the name.
 # Wrapped in a raw Typst block for Quarto.
-skills_typst <- function(layout = c("table", "flow", "rows"), cols = 3, color = "#77746B") {
+skills_typst <- function(layout = c("table", "flow", "rows", "text", "inline"), cols = 3, color = "#77746B") {
   layout <- match.arg(layout)
   groups <- skill_groups()
   marks <- unique(unlist(lapply(groups, function(g) vapply(g$skills, function(s) s$mark, ""))))
@@ -115,6 +122,25 @@ skills_typst <- function(layout = c("table", "flow", "rows"), cols = 3, color = 
       sprintf("#grid(columns: (1fr,) * %d, column-gutter: 2.4em,", cols),
       stacks,
       ")"
+    )
+  } else if (layout == "inline") {
+    # each skill its mark and its name, no hairline, comma-separated
+    c(
+      "#let skill-inline(mark, name) = box({",
+      "  let size = if mark == \"r\" { 1.08em } else { 0.9em }",
+      "  box(width: 1.08em, height: 0.58em, place(horizon + center, image(skill-marks.at(mark), height: size)))",
+      "  h(0.22em); name",
+      "})",
+      "// indented 1em, to the bullets' edge, as the resume's degrees are",
+      "#let skill-line(label, ..cells) = pad(left: 1em, par(hanging-indent: 1em, [*#label:* ] + cells.pos().join[, ]))",
+      vapply(groups, function(g) sprintf("#skill-line([%s], %s)", g$label,
+        paste(vapply(g$skills, function(s) sprintf('skill-inline("%s")[%s]', s$mark, s$name), ""), collapse = ", ")), "")
+    )
+  } else if (layout == "text") {
+    c(
+      "#let skill-line(label, names) = par(hanging-indent: 1em, [*#label:* #names])",
+      vapply(groups, function(g) sprintf("#skill-line([%s], [%s])", g$label,
+        paste(vapply(g$skills, function(s) s$name, ""), collapse = ", ")), "")
     )
   } else if (layout == "table") {
     # a group's label is a small head over its rows, spaced by the CV's own

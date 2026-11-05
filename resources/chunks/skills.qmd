@@ -1,6 +1,6 @@
-- **Research Methods**: Discrete Choice, Logit Modeling, Econometrics, Survey Design, A/B Testing, Simulation, Optimization
+- **Research Methods**: Discrete Choice, Logit Modeling, Statistical Modeling, Econometrics, Survey Design, A/B Testing, Simulation, Optimization
 - **Data Science**: tidyverse, ggplot, PostgreSQL
 - **Programming**: {{< var rnolink >}}, Python, Rust, Swift, SQL, JavaScript, Shell, Git
-- **AI Agents**: Claude Code, Codex; Skills, MCP, Hooks
+- **Generative AI**: Claude Code, Codex, LLM Workflows; Skills, MCP, Hooks
 - **Web Development**: Quarto, Shiny, HTML, CSS, Docker, Google Cloud
 - **App Development**: GPUI, SwiftUI, UI/UX Design

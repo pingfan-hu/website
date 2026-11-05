@@ -10,6 +10,7 @@ execute:
 ---
 
 ```{=typst}
+#set document(title: "Pingfan Hu - Resume", author: "Pingfan Hu")
 // === PAGE ===
 #set page(
   paper: "a4",
@@ -52,8 +53,8 @@ execute:
 // `pdfinfo _site/resume.pdf` still says one page.
 #let line-gap = 0.5em
 #let para-gap = 0.5em
-#let head-gap = 0.86em
-#let section-gap = 1.18em
+#let head-gap = 0.89em
+#let section-gap = 1.23em
 #let rule-gap = 0.4em
 #set par(leading: line-gap, spacing: para-gap, justify: false)
 #set block(above: line-gap, below: para-gap)
@@ -93,21 +94,22 @@ execute:
 // An entry's title line heads its bullets.
 #let entry-head(body) = block(sticky: true, above: head-gap, below: line-gap, body)
 
-// Project/general entry — title left, dates right.
-#let entry(title, dates) = entry-head(grid(
-  columns: (1fr, auto),
-  align: (left, right),
-  title, aside(dates),
-))
+// An entry's head is one line of text: the title at the left, and at the
+// right the place and dates as one run. It is a paragraph, not a grid: a
+// parser that rebuilds a page's columns reads a grid's cells column by
+// column, the dates of every entry apart from their titles, and it parts a
+// date set alone in a column of its own from its line too.
 
-// Work entry — fixed-width left column so locations line up across rows.
-#let work-entry(company-role, location, dates) = entry-head(grid(
-  columns: (55%, 1fr, auto),
-  align: (left, left, right),
-  company-role,
-  aside(location),
-  aside(dates),
-))
+// Project/general entry — title left, dates right.
+#let entry(title, when) = entry-head(par[#title#h(1fr)#aside(when)])
+
+// Work entry — title left, place and dates right.
+#let work-entry(company-role, location, when) = entry-head(par[#company-role#h(1fr)#aside[#location#h(1em)#when]])
+
+// A degree: one line, the year after the degree. Not at the right: three
+// years stacked at one edge read as a column of their own, apart from their
+// schools. The degrees a line apart.
+#let degree(body) = block(above: line-gap, below: line-gap, pad(left: 1em, par(body)))
 
 // === HEADER ===
 // A letterhead, as the CV's: the name at the left, on the section heads'
@@ -148,70 +150,60 @@ execute:
 
 // the bio: what he is and does, in two lines under the letterhead, after
 // the homepage's
-#block(above: section-gap, text(hyphenate: false, par(justify: true)[Research data scientist who uses choice models and simulation to study how people respond to incentives in energy and transportation. Builds open-source survey tools in R and desktop apps in Rust. Australian permanent resident.]))
+#block(above: section-gap, text(hyphenate: false, par(justify: true)[Research data scientist who uses choice models and simulation to study how customers respond to incentives in energy and transportation. Builds survey tools in R and Python and desktop apps in Rust. Australian permanent resident.]))
 
 #section[Education]
 
-#align(center)[
-  // one degree to a row, the rows a line apart
-  #table(
-    columns: (auto, auto, auto, auto, auto),
-    stroke: none,
-    inset: 0pt,
-    column-gutter: 14pt,
-    row-gutter: line-gap,
-    align: left,
-    aside[2026], [George Washington University], [Ph.D.], [Systems Engineering], aside[GPA 4.0],
-    aside[2018], [University of Sydney], [M.P.E.], [Mechanical Engineering], [],
-    aside[2015], [Pennsylvania State University], [B.S.], [Industrial Engineering], [],
-  )
-]
+#degree[*George Washington University* - _Ph.D., Systems Engineering_, #aside[2026 (GPA 4.0)]]
+#degree[*University of Sydney* - _M.P.E., Mechanical Engineering_, #aside[2018]]
+#degree[*Pennsylvania State University* - _B.S., Industrial Engineering_, #aside[2015]]
 
 #section[Skills]
 ```
 
 ```{r}
 #| results: asis
-# the About page's skills in two columns, each group a label over a hairline
-# with its skills running on beneath; see the script
+# the About page's skills as plain text, one group to a line; see the script
 source(here::here("resources/scripts/skills.R"))
-cat(skills_typst("flow", cols = 2))
+cat(skills_typst("inline"))
 ```
 
 ```{=typst}
-#section[#link("https://pingfan.org/research")[#text(fill: black)[Research & Software]]]
+#section[#link("https://pingfan.org/research")[#text(fill: black)[Research Projects]]]
 
 #entry[*EV Smart Charging* - _Sloan-Funded Project of GWU, UC Davis & UC Irvine_][2023 - 2026]
 
-- Designed a national choice experiment for 1,356 EV owners, recruited via Meta and Dynata with A/B tests.
-- Built mixed logit models of enrollment, finding that owners value flexibility and recurring payments most, and predicted uptake for program designs not yet offered.
+- Designed a national choice experiment for 1,356 EV owners and managed its recruitment budget across Meta and Dynata, using A/B tests to find the most cost-effective approach.
+- Built mixed logit models of customer enrollment, finding that EV owners value flexibility and recurring payments most, and predicted uptake for program designs not yet offered.
 - Simulated 10,000 EVs against CAISO and NYISO load in 55 time-of-use and enrollment scenarios: managed charging cut CAISO peaks by up to 5.6 GW, and moderate enrollment, not maximum, proved most cost-effective.
+- Presented findings to stakeholders at Southern California Edison, PG&E, National Grid, and the Sloan Foundation.
 - First-author papers in _Environmental Research Letters_ and _IEEE VPPC_, a third under review; talks at TRB and ASTR.
 
 #entry[*#link("https://surveydown.org")[surveydown]* - _Open-Source Survey Platform of the Helveston Lab at GWU_][2024 - 2026]
 
 - Lead developer of an open-source R package for programmable, reproducible surveys on Quarto, Shiny, and PostgreSQL: 180+ GitHub stars, 11,000+ CRAN downloads.
-- Designed and built sdstudio, its Shiny GUI for survey preview and data management: 2,500+ CRAN downloads.
+- Built sdstudio, its Shiny GUI (2,500+ CRAN downloads), and TidyViz, a Python package for survey data.
 - First-author paper in _PLOS ONE_; 2nd prize at the GW Open Source Awards; profiled by GW Engineering.
-- Talks at posit::conf, US-RSE, and GW OSCON 2025 and 2026.
+- Communicated the platform in talks at posit::conf, US-RSE, and GW OSCON 2025 and 2026.
 
 #section[Work Experience]
 
-#work-entry[*George Washington University* - _Graduate Research Assistant_][#glyph("map-pin")~DC, USA][2023 - 2026]
-
-- Teaching assistant for Exploratory Data Analysis and Programming for Analytics in R; mentored student projects.
-- Built Claude Code workflows with skills, MCP servers, and hooks; taught them in a GW Trustworthy AI workshop.
-- Research assistant, FEWS Lab (May - Aug 2023): modeled the Mid-Atlantic freight network's resilience in Python.
-
 #work-entry[*Alkaline Software* - _Co-Founder & Principal Engineer_][#glyph("map-pin")~Remote][2026 - Present]
 
-- Lead developer of #link("https://emaki.lol")[Emaki], the studio's agentic development environment (27 releases).
+- Lead developer of #link("https://emaki.lol")[Emaki], the studio's agentic development environment; deployed 27 releases.
 - Built a reusable Rust + GPUI app template for macOS, Windows, and Linux, now the base of three more apps.
 - Created the studio's design system (color, type, icons, motion) and the UI and UX of every app.
+
+#work-entry[*George Washington University* - _Graduate Research Assistant_][#glyph("map-pin")~DC, USA][2023 - 2026]
+
+- Teaching assistant for Exploratory Data Analysis and Programming for Analytics in R; mentored about 20 students.
+- Built and evaluated Claude Code skills, MCP servers, and hooks for reproducibility; taught in a GW AI workshop.
+- Research assistant, FEWS Lab (May - Aug 2023): modeled the Mid-Atlantic freight network's resilience in Python.
 
 #work-entry[*Harsco Rail* - _Software Engineer_][#glyph("map-pin")~SC, USA & Beijing, China][2021 - 2022]
 
 - Led C++ and CAN bus software for rail maintenance machines across the USA and China; delivered 25 releases.
+- Stakeholder liaison between customers, US management, and the China team; ran on-site testing.
 
 #work-entry[*GE Appliances* - _Project Engineer_][#glyph("map-pin")~Qingdao, China][2019 - 2020]
 

@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "Short bio and expertise of Pingfan Hu"
+description: "Pingfan Hu, research data scientist with a Ph.D. in Systems Engineering: research in choice modeling and EV smart charging, open-source R tools, degrees, and skills."
 body-classes: about-page
 toc: false
 ---
