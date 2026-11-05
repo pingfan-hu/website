@@ -52,8 +52,8 @@ execute:
 // `pdfinfo _site/resume.pdf` still says one page.
 #let line-gap = 0.5em
 #let para-gap = 0.5em
-#let head-gap = 0.8em
-#let section-gap = 1.1em
+#let head-gap = 0.86em
+#let section-gap = 1.18em
 #let rule-gap = 0.4em
 #set par(leading: line-gap, spacing: para-gap, justify: false)
 #set block(above: line-gap, below: para-gap)
@@ -110,23 +110,45 @@ execute:
 ))
 
 // === HEADER ===
-// the contact line: a mark before each item, a hairline between items, as
-// in the skills block
-#let sep = [#h(0.8em)#box(height: 0.58em, place(horizon, line(angle: 90deg, length: 0.7em, stroke: 0.4pt + hair)))#h(0.8em)]
-// the name heads the contact line, so a head's gap parts them
-#align(center, stack(
-  text(size: 20pt, weight: "bold")[Pingfan Hu, Ph.D.],
-  head-gap,
-  text(size: 9pt)[
-    #glyph("map-pin")~Greater Melbourne, Australia
-    #sep
-    #glyph("mail")~#link("mailto:pingfanhu@proton.me")[pingfanhu\@proton.me]
-    #sep
-    #glyph("phone")~+61 431 251 227
-    #sep
-    #glyph("compass")~#link("https://pingfan.org")[pingfan.org]
-  ],
-))
+// A letterhead, as the CV's: the name at the left, on the section heads'
+// edge; how to reach him at the right, flush with the rules' end, in two
+// lines of two, each mark closing its item, and each column right-aligned so
+// its marks line up. The two lines stand exactly as tall as the name, by ink:
+// Optima reports no usable cap height, so Typst's default edges are the
+// ascender line, and the sides are matched by their glyphs' bounds instead.
+// The lines keep the default edges, so the items of a line share a baseline;
+// the bounds only set the gap between the lines (the name's ink height less
+// the first line's ink above its baseline, a line's box, and the second
+// line's ink below its baseline) and lift the lines by that last depth, so
+// the tops and the feet of the two sides are level.
+#context {
+  let inked(top, bottom, body) = measure(text(top-edge: top, bottom-edge: bottom, body)).height
+  let name = text(size: 22pt, top-edge: "bounds", bottom-edge: "bounds")[Pingfan Hu, Ph.D.]
+  let first = ([Greater Melbourne, Australia], [+61 431 251 227])
+  let second = ([pingfanhu\@proton.me], [pingfan.org])
+  let above = calc.max(..first.map(t => inked("bounds", "baseline", t)))
+  let below = calc.max(..second.map(t => inked("baseline", "bounds", t)))
+  let gap = measure(name).height - above - measure[Australia].height - below
+  grid(
+    columns: (1fr, auto),
+    align: (left + bottom, right + bottom),
+    name,
+    pad(bottom: below, grid(
+      columns: (auto, auto),
+      column-gutter: 1.5em,
+      row-gutter: gap,
+      align: right,
+      [#first.at(0)~#glyph("map-pin")],
+      [#first.at(1)~#glyph("phone")],
+      [#link("mailto:pingfanhu@proton.me")[#second.at(0)]~#glyph("mail")],
+      [#link("https://pingfan.org")[#second.at(1)]~#glyph("compass")],
+    )),
+  )
+}
+
+// the bio: what he is and does, in two lines under the letterhead, after
+// the homepage's
+#block(above: section-gap, text(hyphenate: false, par(justify: true)[Research data scientist who uses choice models and simulation to study how people respond to incentives in energy and transportation. Builds open-source survey tools in R and desktop apps in Rust. Australian permanent resident.]))
 
 #section[Education]
 
@@ -139,9 +161,9 @@ execute:
     column-gutter: 14pt,
     row-gutter: line-gap,
     align: left,
-    aside[2026], [George Washington University], [Ph.D.], [Systems Engineering], [GPA 4.0],
-    aside[2018], [University of Sydney], [M.P.E.], [Mechanical Engineering], [GPA 3.5],
-    aside[2015], [Pennsylvania State University], [B.S.], [Industrial Engineering], [GPA 3.2],
+    aside[2026], [George Washington University], [Ph.D.], [Systems Engineering], aside[GPA 4.0],
+    aside[2018], [University of Sydney], [M.P.E.], [Mechanical Engineering], [],
+    aside[2015], [Pennsylvania State University], [B.S.], [Industrial Engineering], [],
   )
 ]
 
@@ -159,49 +181,44 @@ cat(skills_typst("flow", cols = 2))
 ```{=typst}
 #section[#link("https://pingfan.org/research")[#text(fill: black)[Research & Software]]]
 
-#entry[*#link("https://emaki.lol")[Emaki]* - _Agentic Development Environment, Alkaline Software_][2026 - Present]
+#entry[*EV Smart Charging* - _Sloan-Funded Project of GWU, UC Davis & UC Irvine_][2023 - 2026]
 
-- Lead developer of Emaki, a desktop app that supports agentic workflows, built in Rust with GPUI for macOS, Windows, and Linux.
+- Designed a national choice experiment for 1,356 EV owners, recruited via Meta and Dynata with A/B tests.
+- Built mixed logit models of enrollment, finding that owners value flexibility and recurring payments most, and predicted uptake for program designs not yet offered.
+- Simulated 10,000 EVs against CAISO and NYISO load in 55 time-of-use and enrollment scenarios: managed charging cut CAISO peaks by up to 5.6 GW, and moderate enrollment, not maximum, proved most cost-effective.
+- First-author papers in _Environmental Research Letters_ and _IEEE VPPC_, a third under review; talks at TRB and ASTR.
 
 #entry[*#link("https://surveydown.org")[surveydown]* - _Open-Source Survey Platform of the Helveston Lab at GWU_][2024 - 2026]
 
-- Built surveydown, an open-source R package for programmable, reproducible surveys on Quarto, Shiny, and PostgreSQL: 180+ GitHub stars, 11,000+ CRAN downloads.
-- Built sdstudio, its GUI for survey preview and database management: 2,500+ CRAN downloads.
-- First-author paper in _PLOS One_; 2nd prize at the GW Open Source Awards; profiled by GW Engineering.
-- Presented at posit::conf, US-RSE, GW OSCON 2025, and GW OSCON 2026.
-
-#entry[*BEV Smart Charging Economies* - _Joint Project of GWU, UC Davis & UC Irvine_][2023 - 2026]
-
-- Consumer side: fielded a national survey of 1,300+ U.S. BEV owners via Meta and Dynata, and estimated mixed logit models of preferences for smart charging program attributes.
-- Grid side: simulated 10,000 BEVs on NHTS travel patterns against CAISO and NYISO net load; swept 5 TOU windows and 11 enrollment levels to quantify peak shaving and cost efficiency.
-- Published two first-author papers (_Environmental Research Letters_, _IEEE VPPC_); a third is under review.
-- Presented at TRB 2024 and the GW 2026 R&D Showcase.
+- Lead developer of an open-source R package for programmable, reproducible surveys on Quarto, Shiny, and PostgreSQL: 180+ GitHub stars, 11,000+ CRAN downloads.
+- Designed and built sdstudio, its Shiny GUI for survey preview and data management: 2,500+ CRAN downloads.
+- First-author paper in _PLOS ONE_; 2nd prize at the GW Open Source Awards; profiled by GW Engineering.
+- Talks at posit::conf, US-RSE, and GW OSCON 2025 and 2026.
 
 #section[Work Experience]
 
-#work-entry[*Alkaline Software* - _Co-Founder_][#glyph("map-pin")~Remote][2026 - Present]
+#work-entry[*George Washington University* - _Graduate Research Assistant_][#glyph("map-pin")~DC, USA][2023 - 2026]
 
-- Co-founded an app studio with Professor John Helveston: two data scientists building open-source apps.
+- Teaching assistant for Exploratory Data Analysis and Programming for Analytics in R; mentored student projects.
+- Built Claude Code workflows with skills, MCP servers, and hooks; taught them in a GW Trustworthy AI workshop.
+- Research assistant, FEWS Lab (May - Aug 2023): modeled the Mid-Atlantic freight network's resilience in Python.
 
-#work-entry[*George Washington University* - _Graduate Research Assistant_][#glyph("map-pin")~DC, USA][2023 - Present]
+#work-entry[*Alkaline Software* - _Co-Founder & Principal Engineer_][#glyph("map-pin")~Remote][2026 - Present]
 
-- Conducted the research and built the software listed under Research & Software above.
-- Build reproducible Claude Code workflows with plugins, skills, MCPs, and hooks; taught a GW TAI workshop.
-- Teaching assistant for the advisor's data science courses: group lectures, project advising, and grading.
+- Lead developer of #link("https://emaki.lol")[Emaki], the studio's agentic development environment (27 releases).
+- Built a reusable Rust + GPUI app template for macOS, Windows, and Linux, now the base of three more apps.
+- Created the studio's design system (color, type, icons, motion) and the UI and UX of every app.
 
 #work-entry[*Harsco Rail* - _Software Engineer_][#glyph("map-pin")~SC, USA & Beijing, China][2021 - 2022]
 
-- Led C++ and CAN bus software for rail maintenance machines across USA and China. Obtained 25 total releases.
-
-#work-entry[*Daimler Greater China* - _Engineering Consultant (Contract)_][#glyph("map-pin")~Beijing, China][2020 - 2021]
-
-- Decided engineering change requests for 3 Mercedes-Benz SUVs localized for China, including 1 EV.
+- Led C++ and CAN bus software for rail maintenance machines across the USA and China; delivered 25 releases.
 
 #work-entry[*GE Appliances* - _Project Engineer_][#glyph("map-pin")~Qingdao, China][2019 - 2020]
 
-- Managed 500+ components across 9 washing machine models from development to production.
+- Edison Engineering Development Program: took 500+ components for 9 washer models into production.
 
 #work-entry[*Kurtz Ersa GmbH* - _Assistant Process Engineer (Intern)_][#glyph("map-pin")~Wertheim, Germany][2017]
 
-- Led a 2-month Design of Experiments on new soldering technology across 200 PCB samples.
+- Ran a 2-month Design of Experiments on a new soldering technology across 200 PCB samples.
+
 ```

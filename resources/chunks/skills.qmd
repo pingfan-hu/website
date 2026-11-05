@@ -1,6 +1,6 @@
-- **AI Agents**: Claude Code, Codex; Skills, MCP, Hooks
+- **Research Methods**: Discrete Choice, Logit Modeling, Econometrics, Survey Design, A/B Testing, Simulation, Optimization
 - **Data Science**: tidyverse, ggplot, PostgreSQL
-- **Research Methods**: Survey Design, Discrete Choice, Logit Modeling
 - **Programming**: {{< var rnolink >}}, Python, Rust, Swift, SQL, JavaScript, Shell, Git
-- **App Development**: GPUI, SwiftUI, Cross-Platform
-- **Web Development**: Quarto, Shiny, HTML, CSS, Web Design, Deployment
+- **AI Agents**: Claude Code, Codex; Skills, MCP, Hooks
+- **Web Development**: Quarto, Shiny, HTML, CSS, Docker, Google Cloud
+- **App Development**: GPUI, SwiftUI, UI/UX Design

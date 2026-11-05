@@ -13,12 +13,12 @@ skill_marks <- c(
   "Hooks" = "webhook",
   "PostgreSQL" = "database", "tidyverse" = "hexagons", "ggplot" = "chart-scatter",
   "Survey Design" = "clipboard-list", "Discrete Choice" = "arrows-split",
-  "Logit Modeling" = "math-function",
+  "Logit Modeling" = "math-function", "Econometrics" = "chart-histogram", "A/B Testing" = "a-b", "Simulation" = "chart-dots-3", "Optimization" = "target-arrow",
   "R" = "r", "Python" = "python", "Rust" = "rust", "Swift" = "swift", "Git" = "git",
   "SQL" = "sql", "Shell" = "terminal", "JavaScript" = "javascript",
-  "GPUI" = "rust", "SwiftUI" = "swift", "Cross-Platform" = "devices",
+  "GPUI" = "rust", "SwiftUI" = "swift", "UI/UX Design" = "pointer",
   "Quarto" = "quarto", "Shiny" = "r", "HTML" = "html5", "CSS" = "css3",
-  "Web Design" = "browser", "Deployment" = "rocket"
+  "Docker" = "docker", "Google Cloud" = "google-cloud"
 )
 
 # A mark that names what the label leaves out is read aloud.

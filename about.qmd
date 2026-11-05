@@ -7,7 +7,7 @@ toc: false
 
 ![](/resources/images/about.png){fig-align="center" width="800"}
 
-I am a research data scientist and open-source software developer. I have completed my PhD in Systems Engineering at [George Washington University](https://www.gwu.edu/), advised by Professor [John Helveston](https://www.jhelvy.com).
+I am a research data scientist and open-source software developer with a PhD in Systems Engineering from [George Washington University](https://www.gwu.edu/), advised by Professor [John Helveston](https://www.jhelvy.com). Before my PhD, I worked in industry as a software engineer at Harsco Rail, an engineering consultant to Daimler Greater China, and a project engineer at GE Appliances.
 
 ```{=html}
 <div class="about-docs">
@@ -22,7 +22,7 @@ I am a research data scientist and open-source software developer. I have comple
 [All research](research.qmd)
 :::
 
-My research is proudly funded by the {{< var sloan >}}.
+My doctoral research was funded by the {{< var sloan >}}.
 
 {{< include /resources/chunks/research.qmd >}}
 
@@ -34,17 +34,17 @@ My research is proudly funded by the {{< var sloan >}}.
 <ol class="about-rail">
  <li>
   <span class="about-year">2026</span>
-  <p class="about-degree"><strong>Ph.D.</strong> Engineering Management and Systems Engineering</p>
+  <p class="about-degree"><strong>Ph.D.</strong> Systems Engineering</p>
   <p class="about-note"><a class="about-tool" href="https://www.emse.seas.gwu.edu"><span class="about-tool-mark"><img src="resources/images/logo-gwu.png" alt=""></span>George Washington University</a>, advised by Professor <a href="https://www.jhelvy.com">John Helveston</a>.</p>
  </li>
  <li>
   <span class="about-year">2018</span>
   <p class="about-degree"><strong>M.P.E.</strong> Mechanical Engineering</p>
-  <p class="about-note"><a class="about-tool" href="https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html"><span class="about-tool-mark"><img src="resources/images/logo-usyd.png" alt=""></span>University of Sydney</a>, qualified by <a class="about-tool" href="https://www.engineersaustralia.org.au"><span class="about-tool-mark"><img src="resources/images/logo-engineers-australia.png" alt=""></span>Engineers Australia</a>.</p>
+  <p class="about-note"><a class="about-tool" href="https://www.sydney.edu.au/engineering/study/undergraduate-courses/mechanical-engineering.html"><span class="about-tool-mark"><img src="resources/images/logo-usyd.png" alt=""></span>University of Sydney</a>, assessed by <a class="about-tool" href="https://www.engineersaustralia.org.au"><span class="about-tool-mark"><img src="resources/images/logo-engineers-australia.png" alt=""></span>Engineers Australia</a>.</p>
  </li>
  <li>
   <span class="about-year">2015</span>
-  <p class="about-degree"><strong>B.S.</strong> Industrial &amp; Manufacturing Engineering</p>
+  <p class="about-degree"><strong>B.S.</strong> Industrial Engineering</p>
   <p class="about-note"><a class="about-tool" href="https://www.ime.psu.edu"><span class="about-tool-mark"><img src="resources/images/logo-psu.png" alt=""></span>Penn State University</a>, with a minor in Six Sigma.</p>
  </li>
 </ol>
@@ -66,9 +66,7 @@ cat(skills_html())
 
 ## Personal Life {.about-label}
 
-Throughout the past years, I have traveled, lived, and worked in different countries, including China, USA, Australia, and Germany. I'm currently based in Greater Melbourne, Australia.
-
-I am married and have a busy and enjoyable life with my wife. We have a cat named Pinocchio.
+I have lived and worked in China, the USA, Germany, and Australia. I now live in Greater Melbourne as an Australian permanent resident, with my wife and our cat, Pinocchio.
 
 ::: {style="text-align: center;"}
 ![*Pinocchio*](/resources/images/pinocchio.png){fig-alt="Pinocchio" width="600"}

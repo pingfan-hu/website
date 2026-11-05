@@ -86,15 +86,22 @@ execute:
 #let subsection(name) = block(sticky: true, above: head-gap, below: line-gap,
   text(size: 11pt, weight: "bold", name))
 
-// The research chunk shared with the About page (resources/chunks/research.qmd)
-// arrives as headings over paragraphs: a heading is set as a lettered
-// subsection (A., B., C., as the other sections letter theirs), and a link
-// into the site (Quarto writes its path as ./research/...) is pointed at
-// pingfan.org. The heading's size is set first, as the gaps are in em and
-// would otherwise be read at a heading's larger default size.
-#show heading: set text(size: 11pt)
-#show heading: it => subsection[#counter(heading).display(it.numbering) #it.body]
-#show link: it => if type(it.dest) == str and it.dest.starts-with("./") { link("https://pingfan.org" + it.dest.slice(1), it.body) } else { it }
+// An aside is a place or a date: gray, tabular figures.
+#let aside(body) = text(fill: rgb("#77746B"), number-width: "tabular")[#body]
+
+// An entry: who in bold at the left, the place and the dates gray at the
+// right, and the role in italic under who, over its bullets. The role has
+// its own line, as at 11pt a role beside the place would wrap. The places
+// are right-aligned against a dates column of one width, so they end on
+// one line.
+#let work-entry(org, role, location, dates) = block(sticky: true, above: head-gap, below: line-gap, grid(
+  columns: (1fr, auto, 7.2em),
+  column-gutter: 1em,
+  row-gutter: line-gap,
+  align: (left, right, right),
+  strong(org), aside(location), aside(dates),
+  grid.cell(colspan: 3, emph(role)),
+))
 
 // === HEADER ===
 // A letterhead: who at the left, on the section heads' edge; how to reach
@@ -104,10 +111,10 @@ execute:
   columns: (1fr, auto),
   align: (left + bottom, right + bottom),
   stack(
-    text(size: 22pt)[Pingfan Hu],
+    text(size: 22pt)[Pingfan Hu, Ph.D.],
     head-gap,
     [Engineering Management and Systems Engineering \
-    The George Washington University, Washington, DC, USA],
+    The George Washington University, Washington, D.C., USA],
   ),
   grid(
     columns: 1,
@@ -132,33 +139,43 @@ execute:
     row-gutter: (line-gap, line-gap, para-gap, para-gap),
     align: left,
     [2026], [*George Washington University*, Washington, D.C.], [Ph.D.], [Systems Engineering],
-    table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation: _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the surveydown Open-Source Survey Platform_]]],
-    table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Doctoral Committee: _John Paul Helveston, Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
+    table.cell(colspan: 4)[#pad(left: 0.5em)[#text(size: 9.5pt)[Dissertation (defended August 2026): _Sustainable Transportation, Sustainable Research: Consumer Adoption and Grid Peak-Shaving of Battery Electric Vehicle Smart Charging, Inspiring the surveydown Open-Source Survey Platform_]]],
+    table.cell(colspan: 4)[#h(0.5em)#text(size: 9.5pt)[Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René van Dorp, & Eric Hittinger_]],
     [2018], [*University of Sydney*, Sydney, NSW, Australia], [M.P.E.], [Mechanical Engineering],
     [2015], [*Pennsylvania State University*, State College, PA], [B.S.], [Industrial Engineering],
   )
 ]
 
 #section[Research Interests]
-// a heading steps the counter only when it has a numbering; the function
-// letters by the heading's own level alone, since the levels above it are zero
-#set heading(numbering: (..n) => numbering("A.", n.pos().last()))
-// its paragraphs stand in from the margin as the lists' text does (the
-// list indent, its marker and its body indent); the brackets keep the rule
-// to the chunk
+
 #[
-#show par: it => block(inset: (left: 2em), it)
-```
+#set list(spacing: line-gap)
 
-{{< include /resources/chunks/research.qmd >}}
-
-```{=typst}
+- Discrete choice modeling and consumer preferences
+- Incentive and program design in energy and transportation
+- Electric vehicle grid integration
+- Survey methodology and open-source research software
+- Agentic AI workflows for research software
 ]
 
-#section[Honors & Awards]
+#section[Research Experience]
 
-- #link("https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible")[2025]: Profiled by GW Engineering for contributing to the surveydown platform.
-- #link("https://ospo.gwu.edu/2024-student-open-source-award-winners")[2024]: 2nd Prize in GW's 2024 Student Open Source Awards for the surveydown R package.
+// an entry's bullets stand a line apart, so they read as one entry
+#[
+#set list(spacing: line-gap)
+
+#work-entry[The George Washington University][Graduate Research Assistant, Helveston Lab][Washington, D.C.][2023 - 2026]
+
+- Sloan Foundation-funded study of electric vehicle smart charging with UC Davis and UC Irvine.
+- Designed a national choice experiment with 1,356 EV owners, recruited through Meta and Dynata with A/B tests, and estimated mixed logit models of enrollment.
+- Simulated 10,000 EVs against CAISO and NYISO load.
+- Lead developer of surveydown and sdstudio.
+
+#work-entry[The George Washington University][Research Assistant, Professor Caitlin Grady's FEWS Lab][Washington, D.C.][May - Aug. 2023]
+
+- Built a multi-layer network model of the Mid-Atlantic freight system (road, rail, air, and marine) in Python.
+- Ranked its nodes by betweenness, closeness, and degree centrality, and measured its resilience under targeted and random node removal.
+]
 
 #section[Publications]
 
@@ -168,29 +185,49 @@ execute:
 
 #subsection[A. Journal Articles]
 
-+ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "surveydown: An open-source, markdown-based platform for programmable and reproducible surveys" _PLOS ONE_. 20(8). DOI: #link("https://doi.org/10.1371/journal.pone.0331002")[10.1371/journal.pone.0331002]
-+ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring electric vehicle owners' willingness to participate in smart charging programs". _Environmental Research Letters_. DOI: #link("https://doi.org/10.1088/1748-9326/ae2597")[10.1088/1748-9326/ae2597]
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring electric vehicle owners' willingness to participate in smart charging programs." _Environmental Research Letters_, 20(12), 124067. DOI: #link("https://doi.org/10.1088/1748-9326/ae2597")[10.1088/1748-9326/ae2597]
++ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "surveydown: An open-source, markdown-based platform for programmable and reproducible surveys." _PLOS ONE_, 20(8), e0331002. DOI: #link("https://doi.org/10.1371/journal.pone.0331002")[10.1371/journal.pone.0331002]
 
-#subsection[B. Conference Proceedings]
+#subsection[B. Conference Papers]
 
-+ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" (Paper No. TRBAM-25-01317). Paper accepted for presentation at the Transportation Research Board 104th Annual Meeting, Washington, D.C.
-+ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2024). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs" _2024 IEEE Vehicle Power and Propulsion Conference (VPPC)_. 1–17. DOI: #link("https://doi.org/10.1109/VPPC63154.2024.10755299")[10.1109/VPPC63154.2024.10755299]
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs." Presented at the Transportation Research Board 104th Annual Meeting, Washington, D.C. Paper No. TRBAM-25-01317.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2024). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs." _2024 IEEE Vehicle Power and Propulsion Conference (VPPC)_, 1–17. DOI: #link("https://doi.org/10.1109/VPPC63154.2024.10755299")[10.1109/VPPC63154.2024.10755299]
 
-#subsection[C. Working Papers & Papers Under Review]
+#subsection[C. Under Review & Working Papers]
 
-+ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "sdstudio: A Companion Package for Designing and Managing surveydown Surveys." _Working Paper_.
-+ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the Peak-Shaving Potential and Cost Efficiency of Battery Electric Vehicle Supplier-Managed Charging" _Environmental Research: Infrastructure and Sustainability_. Under Review.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential and cost efficiency of battery electric vehicle supplier-managed charging." Under review at _Environmental Research: Infrastructure and Sustainability_.
++ *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "sdstudio: A companion package for designing and managing surveydown surveys." Working paper.
 
-#subsection[D. Software]
+#section[Research Funding]
 
-+ *Hu, P.*, & Helveston, J. P. (2026) "Emaki: An Agentic Development Environment that keeps, searches, and continues Claude Code and Codex sessions" Desktop application for macOS, Windows, and Linux, built in Rust with GPUI. Alkaline Software. #link("https://emaki.lol")[emaki.lol].
-+ *Hu, P.* (aut,cre,cph) (2026) "Onyx: A note-taking app that keeps notes as plain Markdown files in a folder of one's own" macOS application, built in Rust with GPUI, succeeding MiniNotes. Alkaline Software. #link("https://github.com/alkaline-software/onyx")[github.com/alkaline-software/onyx].
-+ *Hu, P.* (aut,cre,cph) (2026) "Kotoba: Dictation anywhere on the Mac, run on the machine so nothing said leaves it" macOS menu bar application, built in Rust with GPUI. Alkaline Software. #link("https://github.com/alkaline-software/kotoba")[github.com/alkaline-software/kotoba].
-+ *Hu, P.*, & Helveston, J. P. (2026) "tabflip: A Mac window switcher that moves between windows, not apps" macOS application, built in Rust. Alkaline Software. #link("https://github.com/alkaline-software/tabflip")[github.com/alkaline-software/tabflip].
-+ *Hu, P.* (aut,cre,cph) (2025) "TidyViz: A Python package for tidying and visualizing survey data."
-+ *Hu, P.* (aut,cre,cph) (2025) "MiniCalendar: A free and open-source mini menu bar calendar" macOS application.
-+ *Hu, P.* (aut,cre,cph), Helveston, J. P. (aut,cre), Bogdan Bunea (aut,cre) (2025) "sdstudio: Companion Application for the surveydown Survey Platform" R package.
-+ Helveston, J. P. (aut,cre,cph), *Hu, P.* (aut,cre), Bogdan Bunea (aut,cre) (2024) "surveydown: Markdown-Based Surveys Using Quarto Shiny Documents" R package.
+- _Alfred P. Sloan Foundation_, Grant G-2023-20976 (Sept. 2023 - Dec. 2026). Electric vehicle smart charging research at George Washington University with UC Davis and UC Irvine. PI: John Paul Helveston. Role: Graduate Research Assistant, funded by the grant.
+
+#section[Software]
+
++ Helveston, J. P., *Hu, P.*, & Bunea, B. (2024). "surveydown: Markdown-Based Surveys Using Quarto Shiny Documents." R package; 180+ GitHub stars, 11,000+ CRAN downloads. #link("https://surveydown.org")[surveydown.org].
++ *Hu, P.*, Helveston, J. P., & Bunea, B. (2025). "sdstudio: Companion Application for the surveydown Survey Platform." R package; 2,500+ CRAN downloads. #link("https://CRAN.R-project.org/package=sdstudio")[CRAN.R-project.org/package=sdstudio].
++ *Hu, P.*, & Helveston, J. P. (2026). "Emaki: An Agentic Development Environment that keeps, searches, and continues Claude Code and Codex sessions." Desktop application for macOS, Windows, and Linux, built in Rust with GPUI. Alkaline Software. #link("https://emaki.lol")[emaki.lol].
++ *Hu, P.* (2025). "TidyViz: A Python package for tidying and visualizing survey data." Python package.
+
+#section[Presentations]
+
+#subsection[A. Conferences]
+
++ "Quantifying the Peak-Shaving Potential and Cost Efficiency of Battery Electric Vehicle Supplier-Managed Charging," with Brian Tarroja, Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. ASTR Conference 2026, University of California, Davis. Davis, CA. Oct 27, 2026.
++ "sdstudio: A Companion Package for Designing and Managing surveydown Surveys." GW Open Source Conference 2026. Washington, D.C. Mar 23, 2026.
++ "surveydown: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys." Quant UX Con 2025. Virtual. Nov 5, 2025.
++ "surveydown: An open-source platform for programmable, markdown-based surveys." U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 6, 2025.
++ "surveydown: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny," with John Paul Helveston. Posit Conference 2025 - The R & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
++ "Grid-Integration of Electric Vehicles: Consumer Preferences for Supplier Managed Charging." Bridging Transportation Researchers 7. Virtual. Aug 6, 2025.
++ "surveydown: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys." GW Open Source Conference 2025. Washington, D.C. Mar 24, 2025.
++ "Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs," with Brian Tarroja, Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. 2024 IEEE Vehicle Power and Propulsion Conference (VPPC). Washington, D.C. Oct 3, 2024.
+
+#subsection[B. Posters]
+
++ "Peak-Shaving Potential and Cost Efficiency." GW 2026 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 24, 2026.
++ "surveydown: An Open-Source, Markdown-Based Survey Platform." GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
++ "Electric Vehicle Owner Preferences for Smart Charging." GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
++ "The BEV Smart Charging Adoption Project." 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 6, 2025.
 
 #section[Teaching]
 
@@ -202,42 +239,56 @@ execute:
 
 #subsection[B. Workshops]
 
-- "Agentic Workflows with Claude Code", with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Aug 14, 2026. #link("https://pingfan-hu.github.io/2026-agentic-workshop/")[pingfan-hu.github.io/2026-agentic-workshop].
-- "surveydown: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys", with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 06, 2025. #link("https://jhelvy.github.io/2025-qux-surveydown-workshop/")[jhelvy.github.io/2025-qux-surveydown-workshop].
-- "surveydown: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys", with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. #link("https://jhelvy.github.io/2025-surveydown-workshop/")[jhelvy.github.io/2025-surveydown-workshop].
+- "Agentic Workflows with Claude Code," with John Paul Helveston. GW Trustworthy AI Initiative Summer Workshop 2026. Washington, D.C. Aug 14, 2026. #link("https://pingfan-hu.github.io/2026-agentic-workshop/")[pingfan-hu.github.io/2026-agentic-workshop].
+- "surveydown: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys," with John Paul Helveston. Quant UX Con 2025 Workshop Session. Virtual. Nov 6, 2025. #link("https://jhelvy.github.io/2025-qux-surveydown-workshop/")[jhelvy.github.io/2025-qux-surveydown-workshop].
+- "surveydown: An Open-Source, Markdown-Based Platform for Programmable and Reproducible Surveys," with John Paul Helveston. Workshops for Ukraine. Virtual. May 29, 2025. #link("https://jhelvy.github.io/2025-surveydown-workshop/")[jhelvy.github.io/2025-surveydown-workshop].
 
-#section[Presentations]
+#section[Honors & Recognition]
 
-#subsection[A. Conferences]
+- #link("https://engineering.gwu.edu/building-platform-make-survey-research-more-reproducible")[2025]: Profiled by GW Engineering for contributing to the surveydown platform.
+- #link("https://ospo.gwu.edu/2024-student-open-source-award-winners")[2024]: 2nd Prize in GW's 2024 Student Open Source Awards for the surveydown R package.
 
-+ "Quantifying the Peak-Shaving Potential and Cost Efficiency of Battery Electric Vehicle Supplier-Managed Charging", with Brian Tarroja, Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. ASTR Conference 2026, University of California, Davis. Davis, CA. Oct 27, 2026.
-+ "sdstudio: A Companion Package for Designing and Managing surveydown Surveys". GW Open Source Conference 2026. Washington, DC. Mar 23, 2026.
-+ "surveydown: An Open-Source, Markdown-Based Platform for Reproducible and Programmable Surveys". Quant UX Con 2025. Virtual. Nov 05, 2025.
-+ "surveydown: An open-source platform for programmable, markdown-based surveys". U.S. Research Software Engineer Conference 2025. Philadelphia, PA. Oct 06, 2025.
-+ "surveydown: A Markdown-Based Platform for Interactive and Reproducible Surveys Using Quarto and Shiny", with John Paul Helveston. Posit Conference 2025 - The R & Python Data Science Conference. Atlanta, GA. Sep 17, 2025.
-+ "Grid-Integration of Electric Vehicles: Consumer Preferences for Supplier Managed Charging". Bridging Transportation Researchers 7. Virtual. Aug 06, 2025.
-+ "surveydown: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys". GW Open Source Conference 2025. Washington, DC. Mar 24, 2025.
-+ "Measuring Consumer Willingness to Enroll in Battery Electric Vehicle Smart Charging Programs", with Brian Tarroja, Matthew Dean, Kate Forrest, Eric Hittinger, Alan Jenn, and John Paul Helveston. 2024 IEEE Vehicle Power and Propulsion Conference (VPPC). Washington, DC. Oct 03, 2024.
+#section[Service & Memberships]
 
-#subsection[B. Posters]
+#subsection[A. Peer Review]
 
-+ "Peak-Shaving Potential and Cost Efficiency". GW 2026 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 24, 2026.
-+ "surveydown: An Open-Source, Markdown-Based Survey Platform". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
-+ "Electric Vehicle Owner Preferences for Smart Charging". GW 2025 R&D and Senior Design Showcase, The George Washington University. Washington, D.C. Apr 25, 2025.
-+ "The BEV Smart Charging Adoption Project". 2025 Transportation Research Board 104th Annual Meeting. Washington, D.C. Jan 06, 2025.
+- _Applied Energy_ (Elsevier): 2 reviews, 2025.
+- _Engineering Research Express_ (IOP Publishing): 5 reviews, 2025 - 2026.
 
-#section[Organization Memberships]
+#subsection[B. Professional Memberships]
 
 - Institute of Electrical and Electronics Engineers (IEEE)
 - Transportation Research Board (TRB)
 
-#section[Industry Experiences]
+#section[Industry Experience]
 
-- Co-Founder of _Alkaline Software_, an app development studio founded with Professor John Paul Helveston that builds apps in Rust with GPUI. Lead developer of the flagship product Emaki, an Agentic Development Environment (ADE), and of the Mac apps Onyx (notes), Kotoba (dictation), and tabflip (window switching). #link("https://github.com/alkaline-software")[github.com/alkaline-software]. Remote (2026 - Present).
-- Software Engineer at _Harsco Rail_. Managed and delivered software for Undercutter and Grinder projects, demonstrating expertise in programming and project management skills. SC, USA & Beijing, China (2021 - 2022).
-- Engineering Consultant at _Daimler Greater China_, on contract through EnSure Auto. Managed engineering changes for three Mercedes-Benz SUVs localized for China, one of them electric: decided on R&D change requests and analyzed plant workforce, layout, and production schedules. Beijing, China (2020 - 2021).
-- Project Engineer at _GE Appliances_. Participated in GE's Edison Engineering Development Program with various appliance projects, showing expertise in PLM management and designs. Qingdao, China (2019 - 2020).
-- Assistant Process Engineer (Intern) at _Kurtz Ersa GmbH_. Executed a DoE for new soldering technology, and featured as lead actor in Ersa's first Asian market promotion video on YouTube. Wertheim, Germany (Jan. - Mar. 2017).
+// an entry's bullets stand a line apart, so they read as one entry
+#[
+#set list(spacing: line-gap)
+
+#work-entry[#link("https://github.com/alkaline-software")[Alkaline Software]][Co-Founder & Principal Engineer][Remote][2026 - Present]
+
+- Co-founded a desktop app studio with Professor John Paul Helveston.
+- Lead developer of Emaki, an Agentic Development Environment (27 releases), and of the Mac apps Onyx (notes), Kotoba (dictation), and tabflip (window switching).
+- Built the studio's reusable Rust and GPUI app template for macOS, Windows, and Linux, and its design system.
+
+#work-entry[Harsco Rail][Software Engineer][SC, USA & Beijing, China][2021 - 2022]
+
+- Led C++ and CAN bus software for the Undercutter and Grinder rail maintenance machines across teams in the USA and China; delivered 25 releases.
+
+#work-entry[Daimler Greater China][Engineering Consultant (Contract, through EnSure Auto)][Beijing, China][2020 - 2021]
+
+- Managed engineering changes for three Mercedes-Benz SUVs localized for China, one of them electric.
+- Decided on R&D change requests and analyzed plant workforce, layout, and production schedules.
+
+#work-entry[GE Appliances][Project Engineer, Edison Engineering Development Program][Qingdao, China][2019 - 2020]
+
+- Managed 500+ components across 9 washing machine models from development to production, tracked in product lifecycle management.
+
+#work-entry[Kurtz Ersa GmbH][Assistant Process Engineer (Intern)][Wertheim, Germany][Jan. - Mar. 2017]
+
+- Ran a 2-month Design of Experiments on a new soldering technology across 200 PCB samples.
+]
 
 #section[Skills]
 ```
@@ -254,3 +305,32 @@ cat(skills_typst("table", cols = 3))
 ```
 
 {{< include /resources/chunks/languages.qmd >}}
+
+```{=typst}
+#section[References]
+
+// three referees side by side, each one block: name, title, place, email,
+// and how they know the work
+#grid(
+  columns: (1fr, 1fr, 1fr),
+  column-gutter: 1.5em,
+  [*John Paul Helveston* \
+  Assistant Professor \
+  Engineering Management and Systems Engineering \
+  George Washington University \
+  #link("mailto:jph@gwu.edu")[jph\@gwu.edu] \
+  _Ph.D. Advisor_],
+  [*Eric Hittinger* \
+  Associate Professor \
+  Department of Public Policy \
+  Rochester Institute of Technology \
+  #link("mailto:eshgpt@rit.edu")[eshgpt\@rit.edu] \
+  _Ph.D. Committee Member_],
+  [*Alan Jenn* \
+  Associate Professor \
+  Civil and Environmental Engineering \
+  University of California, Davis \
+  #link("mailto:ajenn@ucdavis.edu")[ajenn\@ucdavis.edu] \
+  _Co-author_],
+)
+```

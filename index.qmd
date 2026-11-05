@@ -1,6 +1,6 @@
 ---
 pagetitle: "Pingfan Hu"
-description: "Pingfan Hu - Systems Engineering Ph.D. in data science, transportation systems, and open-source software; co-founder of Alkaline Software, maker of the Emaki agentic development environment."
+description: "Pingfan Hu - Ph.D. in Systems Engineering; models how people respond to incentives in energy and transportation, builds open-source survey tools in R, and co-founded Alkaline Software, maker of the Emaki agentic development environment."
 image: resources/images/homepage.png
 open-graph:
   image: resources/images/card.png
@@ -18,7 +18,7 @@ page-layout: full
    <li><span class="glyph glyph-briefcase" aria-hidden="true"></span>Research data scientist, co-founder of Alkaline Software</li>
    <li><span class="glyph glyph-certificate" aria-hidden="true"></span>Ph.D. in Systems Engineering, George Washington University</li>
   </ul>
-  <p class="masthead-bio">I use discrete choice models to study human behavior in sustainable transportation. I build open-source <span class="glyph glyph-r" role="img" aria-label="R"></span> tools for survey research. I teach agentic engineering with Claude Code, and develop software with fully agentic workflows.</p>
+  <p class="masthead-bio">I use choice models and simulation to study incentives in energy and transportation. I build open-source <span class="glyph glyph-r" role="img" aria-label="R"></span> tools for survey research. I teach agentic engineering with Claude Code, and develop software with fully agentic workflows.</p>
   <div class="masthead-actions">
    <a class="masthead-doc" href="resume.pdf" target="_blank"><span class="glyph glyph-file-text" aria-hidden="true"></span>Resume</a>
    <a class="masthead-doc" href="cv.pdf" target="_blank"><span class="glyph glyph-file-cv" aria-hidden="true"></span>CV</a>
@@ -32,13 +32,14 @@ page-layout: full
  </div>
  <img class="masthead-photo" src="resources/images/homepage.png" alt="Pingfan Hu on a canal bridge in Amsterdam">
  <div class="masthead-work">
-  <!-- A card with a paper is a pair: the card, its title link stretched over
-       it, and behind its foot the paper as a drawer, its own link. -->
+  <!-- A card with a paper or a studio is a pair: the card, its title link
+       stretched over it, and behind its foot the paper or the studio as a
+       drawer, its own link. -->
   <div class="masthead-pair">
    <div class="masthead-item">
     <span class="masthead-kind">Research</span>
     <a class="masthead-title" href="research/2024-sc-adoption/index.html">EV smart charging</a>
-    <span class="masthead-desc">Consumer preferences for supplier-managed charging.</span>
+    <span class="masthead-desc">Driver choices and grid impact of managed charging.</span>
    </div>
    <a class="masthead-pub" href="https://doi.org/10.1088/1748-9326/ae2597" target="_blank" rel="noopener" title="Environmental Research Letters, 2025"><span class="masthead-pub-text">Environmental Research Letters, 2025</span></a>
   </div>
@@ -51,11 +52,14 @@ page-layout: full
    </div>
    <a class="masthead-pub" href="https://doi.org/10.1371/journal.pone.0331002" target="_blank" rel="noopener" title="PLOS ONE, 2025"><span class="masthead-pub-text">PLOS ONE, 2025</span></a>
   </div>
-  <div class="masthead-item">
-   <img class="masthead-logo" src="resources/images/logo-emaki.png" alt="">
-   <span class="masthead-kind">Studio</span>
-   <a class="masthead-title" href="https://emaki.lol" target="_blank" rel="noopener">Emaki</a>
-   <span class="masthead-desc">An agentic development environment, built in Rust with GPUI at Alkaline Software.</span>
+  <div class="masthead-pair">
+   <div class="masthead-item">
+    <img class="masthead-logo" src="resources/images/logo-emaki.png" alt="">
+    <span class="masthead-kind">Studio</span>
+    <a class="masthead-title" href="https://emaki.lol" target="_blank" rel="noopener">Emaki</a>
+    <span class="masthead-desc">An agentic development environment, built in Rust with GPUI.</span>
+   </div>
+   <a class="masthead-pub" href="https://github.com/alkaline-software" target="_blank" rel="noopener" title="Alkaline Software"><span class="masthead-pub-text">Alkaline Software</span></a>
   </div>
  </div>
 </div>
