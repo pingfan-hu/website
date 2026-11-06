@@ -2806,7 +2806,7 @@ $navbar-h: 56px;
   }
 
   .navbar-title, .navbar-nav .nav-link, .navbar-brand, .aa-DetachedSearchButton,
-  .quarto-navbar-tools a, .bi {
+  .quarto-navbar-tools a, .quarto-color-scheme-toggle, .bi {
     color: var(--paper) !important;
   }
 
@@ -2842,7 +2842,8 @@ $navbar-h: 56px;
 
 .navbar-nav .nav-link,
 .quarto-navbar-tools > a,
-.quarto-navbar-tools > .quarto-navbar-tool {
+.quarto-navbar-tools > .quarto-navbar-tool,
+.quarto-navbar-tools > .quarto-color-scheme-toggle {
   text-decoration: none;
   border-radius: 6px;
   opacity: 0.78;
@@ -2876,7 +2877,8 @@ $tool-glyphs: (
 // The tools (the social icons, the appearance toggle) are icons of one size
 // in a row; under the pointer each takes a faint wash, nothing more.
 .quarto-navbar-tools > a,
-.quarto-navbar-tools > .quarto-navbar-tool {
+.quarto-navbar-tools > .quarto-navbar-tool,
+.quarto-navbar-tools > .quarto-color-scheme-toggle {
   &:hover, &:focus-visible { background-color: var(--w-bg); }
   &:active { background-color: var(--w-bg-hover); }
 }
@@ -2993,7 +2995,8 @@ $tool-glyphs: (
 }
 
 .quarto-navbar-tools > a,
-.quarto-navbar-tools > .quarto-navbar-tool {
+.quarto-navbar-tools > .quarto-navbar-tool,
+.quarto-navbar-tools > .quarto-color-scheme-toggle {
   width: $tile;
   height: $tile;
   padding: 0 !important;
@@ -3015,7 +3018,7 @@ $tool-glyphs: (
   // button. The toggle shows the appearance a press would bring: the moon
   // on the light page, the sun on the dark. The appearance follows the
   // system until this pins one.
-  > a.quarto-color-scheme-toggle {
+  > .quarto-color-scheme-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -3095,7 +3098,7 @@ $tool-glyphs: (
       right: 0;
       margin-top: 10px;
     }
-    > a.quarto-color-scheme-toggle { margin-left: 4px; }
+    > .quarto-color-scheme-toggle { margin-left: 4px; }
   }
 }
 
