@@ -231,7 +231,9 @@ Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René v
 
 - Fall 2025 - EMSE 4572/6572: Exploratory Data Analysis (undergraduate & graduate).
 - Spring 2025 - EMSE 4571: Programming for Analytics (undergraduate).
-- Mentored about 20 of the class's roughly 40 students through their R programming and data analysis projects.
+- Presented lectures to the class of 40 students and mentored every team through its project.
+- Proctored the class's regular and make-up exams, and graded all homework and exams.
+- Held one-on-one sessions with students in class, in office hours and on Zoom.
 
 #subsection[B. Workshops]
 
@@ -267,12 +269,12 @@ Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René v
 
 - Co-founded a desktop app studio with Professor John Paul Helveston.
 - Lead developer of Emaki, an Agentic Development Environment (27 releases), and of the Mac apps Onyx (notes), Kotoba (dictation), and tabflip (window switching).
-- Built the studio's reusable Rust and GPUI app template for macOS, Windows, and Linux, and its design system.
+- Built the studio's design system and its Rust and GPUI app template for macOS, Windows, and Linux.
 
 #work-entry[Harsco Rail][Software Engineer][SC, USA & Beijing, China][2021 - 2022]
 
 - Led C++ and CAN bus software for the Undercutter and Grinder rail maintenance machines across teams in the USA and China; delivered 25 releases.
-- Served as liaison between customers, US management, and the China team, and ran on-site testing of the machines.
+- Liaison between customers, US management, and the China team; ran on-site testing.
 
 #work-entry[Daimler Greater China][Engineering Consultant (Contract, through EnSure Auto)][Beijing, China][2020 - 2021]
 
@@ -285,7 +287,7 @@ Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René v
 
 #work-entry[Kurtz Ersa GmbH][Assistant Process Engineer (Intern)][Wertheim, Germany][Jan. - Mar. 2017]
 
-- Ran a 2-month Design of Experiments on a new soldering technology across 200 PCB samples.
+- Ran a 2-month Design of Experiments on a new soldering method over 200 PCB samples.
 ]
 
 #section[Skills]
@@ -309,7 +311,7 @@ cat(skills_typst("text"))
 
 // one referee to a paragraph: name, title, place, how they know the work,
 // and email
-- *John Paul Helveston*, Assistant Professor, Engineering Management and Systems Engineering, The George Washington University (Ph.D. Advisor). #link("mailto:jph@gwu.edu")[jph\@gwu.edu]
+- *John Paul Helveston*, Associate Professor, Engineering Management and Systems Engineering, The George Washington University (Ph.D. Advisor). #link("mailto:jph@gwu.edu")[jph\@gwu.edu]
 - *Eric Hittinger*, Associate Professor, Department of Public Policy, Rochester Institute of Technology (Ph.D. Committee Member). #link("mailto:eshgpt@rit.edu")[eshgpt\@rit.edu]
 - *Alan Jenn*, Associate Professor, Civil and Environmental Engineering, University of California, Davis (Co-author). #link("mailto:ajenn@ucdavis.edu")[ajenn\@ucdavis.edu]
 ```
