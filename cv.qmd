@@ -166,7 +166,7 @@ Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René v
 - Presented findings to stakeholders at the partner utilities and the Sloan Foundation.
 - Lead developer of surveydown and sdstudio.
 
-#work-entry[The George Washington University][Research Assistant, Professor Caitlin Grady's FEWS Lab][Washington, D.C.][May - Aug. 2023]
+#work-entry[The George Washington University][Student Research Specialist, Professor Caitlin Grady's FEWS Lab][Washington, D.C.][May - Aug. 2023]
 
 - Built a multi-layer network model of the Mid-Atlantic freight system (road, rail, air, and marine) in Python.
 - Ranked its nodes by betweenness, closeness, and degree centrality, and measured its resilience under targeted and random node removal.

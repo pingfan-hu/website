@@ -198,7 +198,7 @@ cat(skills_typst("inline"))
 
 - Teaching assistant for two R analytics courses of 40 students; presented lectures and mentored every project team.
 - Built and evaluated Claude Code skills, MCP servers, and hooks for reproducibility; taught in a GW AI workshop.
-- Research assistant, FEWS Lab (May - Aug 2023): modeled the Mid-Atlantic freight network's resilience in Python.
+- Student research specialist, FEWS Lab (May - Aug 2023): modeled the Mid-Atlantic freight network in Python.
 
 #work-entry[*Harsco Rail* - _Software Engineer_][#glyph("map-pin")~SC, USA & Beijing, China][2021 - 2022]
 
