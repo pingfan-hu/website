@@ -150,7 +150,7 @@ execute:
 
 // the bio: what he is and does, in two lines under the letterhead, after
 // the homepage's
-#block(above: section-gap, text(hyphenate: false, par(justify: true)[Research data scientist who uses choice models and simulation to study how customers respond to incentives in energy and transportation. Builds survey tools in R and Python and desktop apps in Rust. Australian permanent resident.]))
+#block(above: section-gap, text(hyphenate: false, par(justify: true)[Research data scientist. Builds choice models that predict customer preferences in energy, from electric vehicles to the power grid. Designs surveys and simulations. Writes code in R, Python, SQL and Rust. Australian permanent resident.]))
 
 #section[Education]
 
@@ -198,7 +198,7 @@ cat(skills_typst("inline"))
 
 - Teaching assistant for two R analytics courses of 40 students; presented lectures and mentored every project team.
 - Built and evaluated Claude Code skills, MCP servers, and hooks for reproducibility; taught in a GW AI workshop.
-- Student research specialist, FEWS Lab (May - Aug 2023): modeled the Mid-Atlantic freight network in Python.
+- Student research specialist, FEWS Lab (May - Aug 2023): modeled the Mid-Atlantic freight transportation network.
 
 #work-entry[*Harsco Rail* - _Software Engineer_][#glyph("map-pin")~SC, USA & Beijing, China][2021 - 2022]
 

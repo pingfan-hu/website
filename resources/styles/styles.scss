@@ -2909,12 +2909,14 @@ $tool-glyphs: (
 }
 
 // The dropdown floats, so it takes the popover's ground and the one shadow.
-.navbar .dropdown-menu {
+// `ul` outranks Quarto's `.navbar ul.dropdown-menu`, which zeroes the top and bottom padding. On the desktop bar a nav menu hangs centered under its toggle (`--menu-x`).
+.navbar ul.dropdown-menu {
+  --menu-x: 0;
   min-width: 0;
   width: max-content;
-  padding: 4px;
+  padding: 6px;
   border: 1px solid var(--pop-border);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--pop-bg);
   box-shadow: var(--shadow-float);
   overflow: hidden;
@@ -2926,7 +2928,7 @@ $tool-glyphs: (
   // old instant toggle. Navbar dropdowns are statically positioned (no Popper
   // inline transform), so animating transform here is safe.
   opacity: 0;
-  transform: translateY(-6px);
+  transform: translate(var(--menu-x), -6px);
   transition:
     opacity 240ms var(--ease),
     transform 240ms var(--ease),
@@ -2934,14 +2936,22 @@ $tool-glyphs: (
 
   &.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(var(--menu-x), 0);
+  }
+}
+
+// Centered on the desktop bar only: in the collapsed navbar the toggle is a full-width row, so its menu keeps hanging from the label's left edge.
+@media (min-width: 992px) {
+  .navbar .navbar-nav ul.dropdown-menu {
+    --menu-x: -50%;
+    left: 50%;
   }
 }
 
 @starting-style {
-  .navbar .dropdown-menu.show {
+  .navbar ul.dropdown-menu.show {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translate(var(--menu-x), -6px);
   }
 }
 
@@ -2950,7 +2960,7 @@ $tool-glyphs: (
 .navbar .dropdown-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
 
 @media (prefers-reduced-motion: reduce) {
-  .navbar .dropdown-menu,
+  .navbar ul.dropdown-menu,
   .navbar .dropdown-toggle::after {
     transition: none;
   }
@@ -2975,12 +2985,15 @@ $tool-glyphs: (
   .navbar .navbar-nav-scroll { overflow: visible; }
 }
 
+// Each item is a pill inset in the menu, a hair apart from the next, so the hover fill never meets the menu's edge or a neighbor's.
+.navbar .dropdown-menu li + li { margin-top: 2px; }
+
 .navbar .dropdown-menu .dropdown-item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 0.5rem;
-  padding: 0.45rem 0.9rem;
+  padding: 0.4rem 0.6rem;
   border-radius: 6px;
   color: var(--ink) !important;
   text-decoration: none;

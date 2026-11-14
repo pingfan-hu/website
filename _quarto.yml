@@ -54,6 +54,9 @@ website:
       - icon: journal-text
         text: 杂记
         menu:
+          - icon: map
+            text: 旅行
+            href: https://travel.pingfan.org/
           - icon: cup-hot
             text: 菜谱
             href: recipes.qmd
