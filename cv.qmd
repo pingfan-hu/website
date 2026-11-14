@@ -158,18 +158,18 @@ Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René v
 
 #work-entry[The George Washington University][Graduate Research Assistant, Helveston Lab][Washington, D.C.][2023 - 2026]
 
-- Sloan Foundation-funded study of electric vehicle smart charging with UC Davis and UC Irvine, in partnership with Southern California Edison, Pacific Gas & Electric, and National Grid.
-- Designed a national choice experiment with 1,356 EV owners and managed its recruitment budget across Meta and Dynata, using A/B tests to find the most cost-effective approach.
+- Sloan Foundation-funded study of electric vehicle smart charging, with UC Davis and UC Irvine. Partner utilities: Southern California Edison, Pacific Gas & Electric, and National Grid.
+- Designed a national choice experiment with 1,356 EV owners. Managed its recruitment budget across Meta and Dynata, with A/B tests to find the most cost-effective approach.
 - Ran the survey under GW IRB approval (NCR245575) with informed consent.
-- Estimated mixed logit models of enrollment: owners value flexibility and recurring payments most, and the models predict uptake for program designs not yet offered.
-- Simulated 10,000 EVs, each on its own travel pattern, against CAISO and NYISO load in 55 time-of-use and enrollment scenarios: managed charging cut CAISO peaks by up to 5.6 GW, and moderate enrollment, not maximum, proved most cost-effective.
+- Estimated mixed logit models of enrollment: owners value flexibility and recurring payments most. Used the models to predict uptake for program designs not yet offered.
+- Simulated 10,000 EVs, each with its own travel pattern, against CAISO and NYISO load in 55 time-of-use and enrollment scenarios. Managed charging cut CAISO peaks by up to 5.6 GW. Moderate enrollment, not maximum, was the most cost-effective.
 - Presented findings to stakeholders at the partner utilities and the Sloan Foundation.
 - Lead developer of surveydown and sdstudio.
 
 #work-entry[The George Washington University][Student Research Specialist, Professor Caitlin Grady's FEWS Lab][Washington, D.C.][May - Aug. 2023]
 
 - Built a multi-layer network model of the Mid-Atlantic freight system (road, rail, air, and marine) in Python.
-- Ranked its nodes by betweenness, closeness, and degree centrality, and measured its resilience under targeted and random node removal.
+- Ranked its nodes by betweenness, closeness, and degree centrality. Measured its resilience under targeted and random node removal.
 ]
 
 #section[Publications]
@@ -188,9 +188,9 @@ Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René v
 + *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs." Presented at the Transportation Research Board 104th Annual Meeting, Washington, D.C. Paper No. TRBAM-25-01317.
 + *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2024). "Measuring consumer willingness to enroll in battery electric vehicle smart charging programs." _2024 IEEE Vehicle Power and Propulsion Conference (VPPC)_, 1–17. DOI: #link("https://doi.org/10.1109/VPPC63154.2024.10755299")[10.1109/VPPC63154.2024.10755299]
 
-#subsection[C. Under Review & Working Papers]
+#subsection[C. In Revision & Working Papers]
 
-+ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential and cost efficiency of battery electric vehicle supplier-managed charging." Under review at _Environmental Research: Infrastructure and Sustainability_. Replication data and code to be released on publication.
++ *Hu, P.*, Tarroja, B., Dean, M., Forrest, K., Hittinger, E., Jenn, A., & Helveston, J. P. (2025). "Quantifying the peak-shaving potential and cost efficiency of battery electric vehicle supplier-managed charging." In revision at _Environmental Research: Infrastructure and Sustainability_. Replication data and code to be released on publication.
 + *Hu, P.*, Bunea, B., & Helveston, J. P. (2025). "sdstudio: A companion package for designing and managing surveydown surveys." Working paper.
 
 #section[Research Funding]
@@ -268,7 +268,7 @@ Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René v
 #work-entry[#link("https://github.com/alkaline-software")[Alkaline Software]][Co-Founder & Principal Engineer][Remote][2026 - Present]
 
 - Co-founded a desktop app studio with Professor John Paul Helveston.
-- Lead developer of Emaki, an Agentic Development Environment (27 releases), and of the Mac apps Onyx (notes), Kotoba (dictation), and tabflip (window switching).
+- Lead developer of Emaki, an Agentic Development Environment (27 releases). Also lead developer of the Mac apps Onyx (notes), Kotoba (dictation), and tabflip (window switching).
 - Built the studio's design system and its Rust and GPUI app template for macOS, Windows, and Linux.
 
 #work-entry[Harsco Rail][Software Engineer][SC, USA & Beijing, China][2021 - 2022]
@@ -279,11 +279,11 @@ Doctoral Committee: _John Paul Helveston (Advisor), Caitlin Grady, Johan René v
 #work-entry[Daimler Greater China][Engineering Consultant (Contract, through EnSure Auto)][Beijing, China][2020 - 2021]
 
 - Managed engineering changes for three Mercedes-Benz SUVs localized for China, one of them electric.
-- Decided on R&D change requests and analyzed plant workforce, layout, and production schedules.
+- Decided on R&D change requests. Analyzed plant workforce, layout, and production schedules.
 
 #work-entry[GE Appliances][Project Engineer, Edison Engineering Development Program][Qingdao, China][2019 - 2020]
 
-- Managed 500+ components across 9 washing machine models from development to production, tracked in product lifecycle management.
+- Managed 500+ components across 9 washing machine models, from development to production. Tracked them in product lifecycle management.
 
 #work-entry[Kurtz Ersa GmbH][Assistant Process Engineer (Intern)][Wertheim, Germany][Jan. - Mar. 2017]
 

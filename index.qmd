@@ -1,6 +1,6 @@
 ---
 pagetitle: "Pingfan Hu - Research Data Scientist"
-description: "Pingfan Hu - Ph.D. in Systems Engineering; models how people respond to incentives in energy and transportation, builds open-source survey tools in R, and co-founded Alkaline Software, maker of the Emaki agentic development environment."
+description: "Pingfan Hu, research data scientist with a Ph.D. in Systems Engineering. Builds choice models that predict customer preferences in energy, from electric vehicles to the power grid. Writes open-source survey tools in R. Co-founder of Alkaline Software, maker of Emaki."
 image: resources/images/homepage.png
 open-graph:
   image: resources/images/card.png
@@ -18,7 +18,7 @@ page-layout: full
    <li><span class="glyph glyph-briefcase" aria-hidden="true"></span>Research data scientist, co-founder of Alkaline Software</li>
    <li><span class="glyph glyph-certificate" aria-hidden="true"></span>Ph.D. in Systems Engineering, George Washington University</li>
   </ul>
-  <p class="masthead-bio">I use choice models and simulation to study incentives in energy and transportation. I build open-source <span class="glyph glyph-r" role="img" aria-label="R"></span> tools for survey research. I teach agentic engineering with Claude Code, and develop software with fully agentic workflows.</p>
+  <p class="masthead-bio">I build choice models that predict customer preferences in energy, from electric vehicles to the power grid. I write open-source <span class="glyph glyph-r" role="img" aria-label="R"></span> tools for survey research. I teach agentic engineering with Claude Code, and build software with agentic workflows.</p>
   <div class="masthead-actions">
    <a class="masthead-doc" href="resume.pdf" target="_blank"><span class="glyph glyph-file-text" aria-hidden="true"></span>Resume</a>
    <a class="masthead-doc" href="cv.pdf" target="_blank"><span class="glyph glyph-file-cv" aria-hidden="true"></span>CV</a>

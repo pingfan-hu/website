@@ -7,7 +7,7 @@ toc: false
 
 ![](/resources/images/about.png){fig-align="center" width="800"}
 
-I am a research data scientist and open-source software developer with a PhD in Systems Engineering from [George Washington University](https://www.gwu.edu/), advised by Professor [John Helveston](https://www.jhelvy.com). Before my PhD, I worked in industry as a software engineer at Harsco Rail, an engineering consultant to Daimler Greater China, and a project engineer at GE Appliances.
+I am a research data scientist and open-source software developer. I hold a PhD in Systems Engineering from [George Washington University](https://www.gwu.edu/), where I was advised by Professor [John Helveston](https://www.jhelvy.com). Before my PhD, I worked in industry as a software engineer at Harsco Rail, an engineering consultant to Daimler Greater China, and a project engineer at GE Appliances.
 
 ```{=html}
 <div class="about-docs">

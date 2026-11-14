@@ -148,8 +148,7 @@ execute:
   )
 }
 
-// the bio: what he is and does, in two lines under the letterhead, after
-// the homepage's
+// the bio: what he is and does, in two lines under the letterhead
 #block(above: section-gap, text(hyphenate: false, par(justify: true)[Research data scientist. Builds choice models that predict customer preferences in energy, from electric vehicles to the power grid. Designs surveys and simulations. Writes code in R, Python, SQL and Rust. Australian permanent resident.]))
 
 #section[Education]
@@ -173,16 +172,16 @@ cat(skills_typst("inline"))
 
 #entry[*EV Smart Charging* - _Sloan-Funded Project of GWU, UC Davis & UC Irvine_][2023 - 2026]
 
-- Designed a national choice experiment for 1,356 EV owners and managed its recruitment budget across Meta and Dynata, using A/B tests to find the most cost-effective approach.
-- Built mixed logit models of customer enrollment, finding that EV owners value flexibility and recurring payments most, and predicted uptake for program designs not yet offered.
-- Simulated 10,000 EVs against CAISO and NYISO load in 55 time-of-use and enrollment scenarios: managed charging cut CAISO peaks by up to 5.6 GW, and moderate enrollment, not maximum, proved most cost-effective.
+- Designed a national choice experiment with 1,356 EV owners. Managed its recruitment budget across Meta and Dynata, with A/B tests to find the most cost-effective approach.
+- Built mixed logit models of customer enrollment: EV owners value flexibility and recurring payments most. Used the models to predict uptake for program designs not yet offered.
+- Simulated 10,000 EVs against CAISO and NYISO load in 55 time-of-use and enrollment scenarios. Managed charging cut CAISO peaks by up to 5.6 GW. Moderate enrollment, not maximum, was the most cost-effective.
 - Presented findings to stakeholders at Southern California Edison, PG&E, National Grid, and the Sloan Foundation.
-- First-author papers in _Environmental Research Letters_ and _IEEE VPPC_, a third under review; talks at TRB and ASTR.
+- First-author papers in _Environmental Research Letters_ and _IEEE VPPC_, a third in revision. Talks at TRB and ASTR.
 
 #entry[*#link("https://surveydown.org")[surveydown]* - _Open-Source Survey Platform of the Helveston Lab at GWU_][2024 - 2026]
 
-- Lead developer of an open-source R package for programmable, reproducible surveys on Quarto, Shiny, and PostgreSQL: 180+ GitHub stars, 11,000+ CRAN downloads.
-- Built sdstudio, its Shiny GUI (2,500+ CRAN downloads), and TidyViz, a Python package for survey data.
+- Lead developer of an open-source R package for programmable, reproducible surveys. Built on Quarto, Shiny, and PostgreSQL; 180+ GitHub stars and 11,000+ CRAN downloads.
+- Built sdstudio, its Shiny GUI (2,500+ CRAN downloads). Also wrote TidyViz, a Python package for survey data.
 - First-author paper in _PLOS ONE_; 2nd prize at the GW Open Source Awards; profiled by GW Engineering.
 - Communicated the platform in talks at posit::conf, US-RSE, and GW OSCON 2025 and 2026.
 
@@ -191,7 +190,7 @@ cat(skills_typst("inline"))
 #work-entry[*Alkaline Software* - _Co-Founder & Principal Engineer_][#glyph("map-pin")~Remote][2026 - Present]
 
 - Lead developer of #link("https://emaki.lol")[Emaki], the studio's agentic development environment; deployed 27 releases.
-- Built a reusable Rust + GPUI app template for macOS, Windows, and Linux, now the base of three more apps.
+- Built a reusable Rust + GPUI app template for macOS, Windows, and Linux. Three more apps now build on it.
 - Created the studio's design system (color, type, icons, motion) and the UI and UX of every app.
 
 #work-entry[*George Washington University* - _Graduate Research Assistant_][#glyph("map-pin")~DC, USA][2023 - 2026]
