@@ -1,0 +1,135 @@
+```{=html}
+<figure class="emk-swap">
+ <div class="emk-swap-frame">
+  <div class="emk-swap-apps">
+   <div class="emk-swap-app" data-k="files" tabindex="0">
+    <svg viewBox="0 0 120 84" aria-hidden="true">
+     <rect class="sil" x="1" y="1" width="118" height="82" rx="7"/>
+     <path class="lo" d="M1 16H119M38 16V83M8 26H28M8 34H24M8 42H30M8 50H22"/>
+     <circle class="dm" cx="9" cy="8.5" r="1.7"/><circle class="dm" cx="15" cy="8.5" r="1.7"/><circle class="dm" cx="21" cy="8.5" r="1.7"/>
+     <rect class="wash" x="42" y="30" width="73" height="10" rx="3"/>
+     <path class="hi" d="M46 22h3l1.5 1.5h4.5v5h-9zM46 32h3l1.5 1.5h4.5v5h-9zM47 41.5h4l2 2v5h-6zM47 51.5h4l2 2v5h-6zM47 61.5h4l2 2v5h-6z"/>
+     <path class="mid" d="M60 25H90M60 35H102M60 45H84M60 55H96M60 65H88"/>
+    </svg>
+    <span>Finder</span>
+   </div>
+   <div class="emk-swap-app" data-k="git" tabindex="0">
+    <svg viewBox="0 0 120 84" aria-hidden="true">
+     <rect class="sil" x="1" y="1" width="118" height="82" rx="7"/>
+     <path class="lo" d="M1 16H119M46 16V83M58 26H104M58 34H96M58 58H108M58 74H90"/>
+     <circle class="dm" cx="9" cy="8.5" r="1.7"/><circle class="dm" cx="15" cy="8.5" r="1.7"/><circle class="dm" cx="21" cy="8.5" r="1.7"/>
+     <rect class="wash" x="47" y="38" width="71" height="16"/>
+     <rect class="hi wash" x="7" y="64" width="33" height="11" rx="3"/>
+     <path class="hi" d="M8 24h5v5h-5zM8 34h5v5h-5zM8 44h5v5h-5zM51 42h3M52.5 40.5v3M51 50h3M52.5 48.5v3M51 66h3M58 42H100M58 50H92"/>
+     <path class="mid" d="M17 26.5H38M17 36.5H34M17 46.5H40M58 66H98"/>
+    </svg>
+    <span>GitHub Desktop</span>
+   </div>
+   <div class="emk-swap-app" data-k="view" tabindex="0">
+    <svg viewBox="0 0 120 84" aria-hidden="true">
+     <rect class="sil" x="1" y="1" width="118" height="82" rx="7"/>
+     <path class="lo" d="M1 16H119M12 68H108M12 75H84"/>
+     <circle class="dm" cx="9" cy="8.5" r="1.7"/><circle class="dm" cx="15" cy="8.5" r="1.7"/><circle class="dm" cx="21" cy="8.5" r="1.7"/>
+     <rect class="hi wash" x="12" y="24" width="44" height="34" rx="3"/>
+     <path class="hi" d="M13 53l11-12 8 8 6-5 17 11M64 28H98"/>
+     <circle class="hi" cx="44" cy="33" r="3"/>
+     <path class="mid" d="M64 36H108M64 43H104M64 50H108M64 57H92"/>
+    </svg>
+    <span>Viewers</span>
+   </div>
+   <div class="emk-swap-app" data-k="agent" tabindex="0">
+    <svg viewBox="0 0 120 84" aria-hidden="true">
+     <rect class="sil" x="1" y="1" width="118" height="82" rx="7"/>
+     <path class="lo" d="M1 16H119"/>
+     <circle class="dm" cx="9" cy="8.5" r="1.7"/><circle class="dm" cx="15" cy="8.5" r="1.7"/><circle class="dm" cx="21" cy="8.5" r="1.7"/>
+     <path class="dk" d="M12 22l1.3 3.7 3.7 1.3-3.7 1.3-1.3 3.7-1.3-3.7-3.7-1.3 3.7-1.3z"/>
+     <rect class="hi wash" x="6" y="66" width="108" height="12" rx="3"/>
+     <path class="hi" d="M21 27H54M10.5 70l2.5 2-2.5 2"/>
+     <rect class="dk" x="16.5" y="69.5" width="3" height="5"/>
+     <path class="mid" d="M8 38H100M8 45H88M8 52H104M8 59H64"/>
+    </svg>
+    <span>Agent TUIs</span>
+   </div>
+   <div class="emk-swap-app" data-k="shell" tabindex="0">
+    <svg viewBox="0 0 120 84" aria-hidden="true">
+     <rect class="sil" x="1" y="1" width="118" height="82" rx="7"/>
+     <path class="lo" d="M1 16H119M8 35H92M8 42H80M8 49H100M8 66.5H70"/>
+     <circle class="dm" cx="9" cy="8.5" r="1.7"/><circle class="dm" cx="15" cy="8.5" r="1.7"/><circle class="dm" cx="21" cy="8.5" r="1.7"/>
+     <path class="hi" d="M8 24l3 2.5-3 2.5M8 55.5l3 2.5-3 2.5M8 72l3 2.5-3 2.5"/>
+     <path class="mid" d="M15 26.5H56M15 58H44"/>
+     <rect class="dk" x="15" y="71.5" width="3.5" height="6"/>
+    </svg>
+    <span>Terminal</span>
+   </div>
+  </div>
+  <svg class="emk-swap-lines" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
+   <path data-k="files" d="M10 0C10 12 20.5 8 20.5 20"/>
+   <path data-k="git" d="M30 0C30 12 32 8 32 20"/>
+   <path data-k="view" d="M50 0C50 12 46.5 8 46.5 20"/>
+   <path data-k="agent" d="M70 0C70 12 69.2 8 69.2 20"/>
+   <path data-k="shell" d="M90 0C90 12 90.4 8 90.4 20"/>
+  </svg>
+  <div class="emk-swap-stem"></div>
+  <svg class="emk-swap-one" viewBox="0 0 600 224" role="img" aria-label="Emaki's window: the sidebar with projects and their sessions, then the Files Panel with git in its header, an open file as it reads, the chat, and the Terminal Panel.">
+   <rect class="sil" x="1" y="1" width="598" height="222" rx="10"/>
+   <path class="lo" d="M1 24H599M100 24V223M214 24V223M344 24V223M486 24V223"/>
+   <circle class="dm" cx="14" cy="12.5" r="2.4"/><circle class="dm" cx="23" cy="12.5" r="2.4"/><circle class="dm" cx="32" cy="12.5" r="2.4"/>
+   <rect class="lo" x="110" y="6" width="70" height="13" rx="4"/><rect class="lo" x="186" y="6" width="60" height="13" rx="4"/>
+   <rect class="lo" x="9" y="32" width="82" height="13" rx="4"/><rect class="lo" x="9" y="194" width="82" height="20" rx="4"/>
+   <path class="mid" d="M10 58H58M10 112H54M10 124H66M10 136H48"/>
+   <path class="lo" d="M22 70H70M22 82H62M22 94H74"/>
+   <circle class="dm" cx="15" cy="70" r="1.8"/><circle class="dm" cx="15" cy="82" r="1.8"/><circle class="dm" cx="15" cy="94" r="1.8"/>
+   <circle class="d-waits" cx="88" cy="70" r="2.2"/><circle class="d-works" cx="88" cy="82" r="2.2"/><circle class="d-done" cx="88" cy="94" r="2.2"/>
+   <g data-k="files">
+    <rect class="wash" x="104" y="52" width="106" height="167" rx="5"/>
+    <path class="hi" d="M110 59h3l1.5 1.5h4.5v5h-9zM120 71h3l1.5 1.5h4.5v5h-9zM131 82.5h4l2 2v5h-6zM131 94.5h4l2 2v5h-6zM120 107h3l1.5 1.5h4.5v5h-9zM131 118.5h4l2 2v5h-6zM111 130.5h4l2 2v5h-6zM111 142.5h4l2 2v5h-6zM111 154.5h4l2 2v5h-6z"/>
+    <path class="mid" d="M124 62H160M134 74H176M142 86H186M142 98H178M134 110H166M142 122H190M122 134H170M122 146H158M122 158H182"/>
+   </g>
+   <g data-k="git">
+    <rect class="wash" x="104" y="28" width="106" height="20" rx="5"/>
+    <rect class="hi" x="108" y="31" width="50" height="14" rx="7"/><rect class="hi" x="162" y="31" width="44" height="14" rx="7"/>
+    <path class="hi" d="M120 38H150M170 38H198"/>
+    <circle class="dk" cx="115" cy="38" r="1.6"/><circle class="dk" cx="203" cy="86" r="1.9"/><circle class="dk" cx="203" cy="122" r="1.9"/><circle class="dk" cx="203" cy="146" r="1.9"/>
+   </g>
+   <g data-k="view">
+    <rect class="wash" x="218" y="28" width="122" height="191" rx="5"/>
+    <rect class="lo" x="296" y="32" width="36" height="12" rx="6"/>
+    <rect class="dk soft" x="297.5" y="33.5" width="17" height="9" rx="4.5"/>
+    <rect class="hi wash" x="226" y="108" width="106" height="58" rx="4"/>
+    <path class="hi" d="M226 38H270M226 60H290M234 158H324M240 158v-18h10v18M258 158v-30h10v30M276 158v-24h10v24M294 158v-38h10v38M312 158v-28h10v28"/>
+    <path class="mid" d="M226 72H332M226 80H326M226 88H332M226 96H300M226 180H332M226 188H318M226 196H332M226 204H280"/>
+   </g>
+   <g data-k="agent">
+    <rect class="wash" x="348" y="28" width="134" height="191" rx="5"/>
+    <rect class="hi wash" x="396" y="36" width="80" height="24" rx="6"/>
+    <rect class="lo" x="370" y="108" width="64" height="13" rx="5"/>
+    <rect class="hi" x="356" y="168" width="118" height="44" rx="8"/>
+    <rect class="lo" x="363" y="194" width="22" height="11" rx="5.5"/><rect class="lo" x="389" y="194" width="26" height="11" rx="5.5"/><rect class="lo" x="419" y="194" width="22" height="11" rx="5.5"/>
+    <path class="dk" d="M360 70l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6zM360 132l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z"/>
+    <circle class="dk" cx="463" cy="199.5" r="6"/>
+    <path class="mid" d="M404 44H468M404 52H452M372 73H470M372 81H462M372 89H474M372 97H430M372 135H474M372 143H452M372 151H468"/>
+    <path class="lo" d="M377 114.5H426M364 180H420"/>
+   </g>
+   <g data-k="shell">
+    <rect class="wash" x="490" y="28" width="105" height="191" rx="5"/>
+    <rect class="hi" x="494" y="32" width="40" height="13" rx="4"/><rect class="lo" x="538" y="32" width="34" height="13" rx="4"/>
+    <path class="hi" d="M497 55.5l3 2.5-3 2.5M497 101.5l3 2.5-3 2.5M497 131.5l3 2.5-3 2.5"/>
+    <path class="mid" d="M505 58H560M505 104H544"/>
+    <path class="lo" d="M497 68H585M497 76H570M497 84H588M497 92H548M497 114H580M497 122H562"/>
+    <rect class="dk" x="505" y="130" width="4" height="8"/>
+   </g>
+  </svg>
+  <div class="emk-swap-foot">
+   <a class="emk-swap-name" href="https://emaki.lol" target="_blank" rel="noopener"><img src="resources/emaki-icon.png" alt="">Emaki</a>
+   <div class="emk-swap-parts">
+    <span data-k="files"><span class="glyph glyph-folder"></span>Files Panel</span>
+    <span data-k="git"><span class="glyph glyph-git"></span>Git</span>
+    <span data-k="view"><span class="glyph glyph-eye"></span>File view</span>
+    <span data-k="agent"><span class="glyph glyph-sparkles"></span>Chat</span>
+    <span data-k="shell"><span class="glyph glyph-terminal"></span>Terminal Panel</span>
+   </div>
+  </div>
+ </div>
+ <figcaption class="emk-cap">Five apps for one project, and the one window that holds their work. Point at any of them to see where it went.</figcaption>
+</figure>
+```

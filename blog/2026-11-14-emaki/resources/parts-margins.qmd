@@ -1,0 +1,14 @@
+```{=html}
+<div class="emk-parts">
+ <div class="emk-parts-row">
+  <figure class="emk-part">
+   <a class="emk-part-fig" href="https://emaki.lol/docs/outline.html" target="_blank" rel="noopener" tabindex="-1"><div class="fig" data-figure="outline" role="img" aria-label="Emaki's window with the Outline standing forward of it, a drawer in the chat's left margin: an entry for every round under its day."></div></a>
+   <figcaption><a class="emk-part-name" href="https://emaki.lol/docs/outline.html" target="_blank" rel="noopener"><span>Outline</span><span class="emk-part-go"><span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>O</kbd></span><span class="glyph glyph-external-link"></span></span></a></figcaption>
+  </figure>
+  <figure class="emk-part">
+   <a class="emk-part-fig" href="https://emaki.lol/docs/agent-cli.html" target="_blank" rel="noopener" tabindex="-1"><div class="fig" data-figure="agent" role="img" aria-label="Emaki's window with the Agent CLI standing forward of it, in the chat's place: the agent's own screen."></div></a>
+   <figcaption><a class="emk-part-name" href="https://emaki.lol/docs/agent-cli.html" target="_blank" rel="noopener"><span>Agent CLI</span><span class="emk-part-go"><span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>L</kbd></span><span class="glyph glyph-external-link"></span></span></a></figcaption>
+  </figure>
+ </div>
+</div>
+```

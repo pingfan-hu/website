@@ -1,0 +1,14 @@
+```{=html}
+<div class="emk-parts">
+ <div class="emk-parts-row">
+  <figure class="emk-part">
+   <a class="emk-part-fig" href="https://emaki.lol/docs/projects.html" target="_blank" rel="noopener" tabindex="-1"><div class="fig" data-figure="projects" role="img" aria-label="Emaki's window with the sidebar standing forward of it: projects in rows, the open one with its sessions under it."></div></a>
+   <figcaption><a class="emk-part-name" href="https://emaki.lol/docs/projects.html" target="_blank" rel="noopener"><span>Projects</span><span class="emk-part-go"><span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></span><span class="glyph glyph-external-link"></span></span></a></figcaption>
+  </figure>
+  <figure class="emk-part">
+   <a class="emk-part-fig" href="https://emaki.lol/docs/chats.html" target="_blank" rel="noopener" tabindex="-1"><div class="fig" data-figure="chats" role="img" aria-label="Emaki's window with the chat standing forward of it: the transcript, and the composer under it."></div></a>
+   <figcaption><a class="emk-part-name" href="https://emaki.lol/docs/chats.html" target="_blank" rel="noopener"><span>Chats</span><span class="emk-part-go"><span class="glyph glyph-external-link"></span></span></a></figcaption>
+  </figure>
+ </div>
+</div>
+```

@@ -1,0 +1,18 @@
+```{=html}
+<div class="emk-types">
+ <div class="emk-types-grid">
+  <span class="emk-type"><img src="resources/icons/xml.svg" alt="">Code</span>
+  <span class="emk-type"><img src="resources/icons/markdown.svg" alt="">Markdown</span>
+  <span class="emk-type"><img src="resources/icons/latex.svg" alt="">LaTeX</span>
+  <span class="emk-type"><img src="resources/icons/typst.svg" alt="">Typst</span>
+  <span class="emk-type"><img src="resources/icons/csv.svg" alt="">CSV and TSV</span>
+  <span class="emk-type"><img src="resources/icons/database.svg" alt="">Parquet</span>
+  <span class="emk-type"><img src="resources/icons/ms-word.svg" alt="">Word</span>
+  <span class="emk-type"><img src="resources/icons/ms-excel.svg" alt="">Excel</span>
+  <span class="emk-type"><img src="resources/icons/ms-powerpoint.svg" alt="">PowerPoint</span>
+  <span class="emk-type"><img src="resources/icons/pdf.svg" alt="">PDF</span>
+  <span class="emk-type"><img src="resources/icons/html.svg" alt="">HTML</span>
+  <span class="emk-type"><img src="resources/icons/image.svg" alt="">Pictures</span>
+ </div>
+</div>
+```

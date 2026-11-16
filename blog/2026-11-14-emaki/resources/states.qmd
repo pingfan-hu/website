@@ -1,0 +1,19 @@
+```{=html}
+<div class="emk-states">
+ <div class="emk-state">
+  <div class="emk-sess"><span class="glyph glyph-claude"></span><span>Draft the report</span><span class="emk-dot emk-dot-waits"></span></div>
+  <p class="emk-state-word">Waiting</p>
+  <p class="emk-state-more">Orange while a question waits for you.</p>
+ </div>
+ <div class="emk-state">
+  <div class="emk-sess"><span class="glyph glyph-openai"></span><span>Fix the outline</span><span class="emk-dot emk-dot-works"></span></div>
+  <p class="emk-state-word">Working</p>
+  <p class="emk-state-more">Blue while the agent works, or something it started still runs.</p>
+ </div>
+ <div class="emk-state">
+  <div class="emk-sess"><span class="glyph glyph-claude"></span><span>Release notes</span><span class="emk-dot emk-dot-done"></span></div>
+  <p class="emk-state-word">Finished</p>
+  <p class="emk-state-more">Green for half an hour after it finishes.</p>
+ </div>
+</div>
+```

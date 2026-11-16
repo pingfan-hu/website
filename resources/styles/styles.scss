@@ -50,6 +50,20 @@ $border-radius-sm: 5px !default;
   --wash: rgb(80 97 179 / 0.09);       // the accent as a plate
   --wash-edge: rgb(80 97 179 / 0.24);
 
+  // The colors of Emaki's parts, for the figures in the Emaki post: three
+  // of its site's own set, hues at one lightness and chroma (OKLCH L 0.60,
+  // C 0.09 here; L 0.80, C 0.08 in the dark), and its two agents' colors. Git's
+  // and GitHub's are that site's too, for the marks on the post's pills.
+  --sk-ochre: #9E793D;
+  --sk-sage: #578F63;
+  --sk-mauve: #986EA2;
+  --claude: #D97757;
+  --codex: #5F9E6E;
+  --git: #E8532F;
+  --github: #8250DF;
+  --mark: #D99A1F;             // the handscroll's sun, the icon's amber
+  --seal: #A8665B;             // its title, an old seal's faded red
+
   // Popovers float over the page and take its appearance. A shadow only on
   // what floats.
   --pop-bg: #FFFFFF;
@@ -95,6 +109,15 @@ body.quarto-dark {
   --link-hover: #A0B3FB;
   --wash: rgb(148 167 237 / 0.14);
   --wash-edge: rgb(148 167 237 / 0.3);
+
+  --sk-ochre: #DAB883;
+  --sk-sage: #99CDA3;
+  --sk-mauve: #D5ADDE;
+  --codex: #79B487;
+  --git: #F27D5F;
+  --github: #A782F0;
+  --mark: #FFB83E;
+  --seal: #D49A90;
 
   --pop-bg: #2A2927;
   --pop-border: #3B3A37;
@@ -213,6 +236,29 @@ blockquote {
 .aa-DetachedSearchButton, .aa-DetachedContainer, .aa-Panel, figcaption, .figure-caption,
 th, kbd, #quarto-back-to-top {
   font-family: var(--font-ui);
+}
+
+// A key is drawn as a key, never as code: a small cap, a shade past the
+// panel, in one hairline ring. A chord is one cap per key (`.keys` holds them
+// on one line).
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75em;
+  height: 1.75em;
+  padding: 0 0.4em;
+  font-family: var(--font-ui);
+  font-size: 0.72em;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 0;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px var(--border-2);
+  vertical-align: 0.12em;
+  white-space: nowrap;
 }
 
 // Lists: a bullet is a short hairline in a soft gray, a number the chrome's
@@ -2000,6 +2046,17 @@ html.rt-scrubbing * {
   }
 }
 
+// ---- Banners with a dark twin ----
+// A banner drawn in code can be drawn in both appearances (`make-banner.sh
+// --dark`): `{name}.png` and `{name}-dark.png` side by side in the banners
+// folder. The front matter names the light one, which is also what a link
+// preview shows; in the dark, wherever the site shows that image, the twin
+// takes its place. The path is from the site's root.
+$dark-banners: ("blog/banners/2026-11-14-emaki");
+@each $banner in $dark-banners {
+  body.quarto-dark img[src$="#{$banner}.png"] { content: url("/#{$banner}-dark.png"); }
+}
+
 // ---- Cards ----
 
 .card {
@@ -2685,6 +2742,23 @@ $glyphs: (
   "r-color": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11a9 6 0 1 0 18 0a9 6 0 1 0 -18 0' stroke='rgb(160,164,172)'/><g stroke='rgb(39,109,195)'><path d='M10.5 19.25v-9.75h5a2.25 2.25 0 0 1 0 4.5h-5'/><path d='M14.75 14l3.5 5.25'/></g></svg>",
   "python-color": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><g stroke='rgb(55,118,171)'><path d='M12 9h-7a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h3'/><path d='M8 9v-4a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v5a2 2 0 0 1 -2 2h-2'/><path d='M11 6l0 .01'/></g><g stroke='rgb(232,184,36)'><path d='M12 15h7a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-3'/><path d='M12 12h-2a2 2 0 0 0 -2 2v5a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4'/><path d='M13 18l0 .01'/></g></svg>",
   "quarto-color": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12.9 3.045A9 9 0 0 1 20.955 11.1H12.9ZM20.955 12.9A9 9 0 0 1 12.9 20.955V12.9ZM11.1 20.955A9 9 0 0 1 3.045 12.9H11.1ZM3.045 11.1A9 9 0 0 1 11.1 3.045V11.1Z' fill='rgb(117,170,219)' stroke='none'/></svg>",
+  "folder": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2'/></svg>",
+  "arrow-down": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5l0 14'/><path d='M18 13l-6 6'/><path d='M6 13l6 6'/></svg>",
+  "eye": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0'/><path d='M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6'/></svg>",
+  "download": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2'/><path d='M7 11l5 5l5 -5'/><path d='M12 4l0 12'/></svg>",
+  "chevron-right": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 6l6 6l-6 6'/></svg>",
+  "check": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12l5 5l10 -10'/></svg>",
+  "external-link": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6'/><path d='M11 13l9 -9'/><path d='M15 4h5v5'/></svg>",
+  "os-mac": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8.286 7.008c-3.216 0 -4.286 3.23 -4.286 5.92c0 3.229 2.143 8.072 4.286 8.072c1.165 -.05 1.799 -.538 3.214 -.538c1.406 0 1.607 .538 3.214 .538s4.286 -3.229 4.286 -5.381c-.03 -.011 -2.649 -.434 -2.679 -3.23c-.02 -2.335 2.589 -3.179 2.679 -3.228c-1.096 -1.606 -3.162 -2.113 -3.75 -2.153c-1.535 -.12 -3.032 1.077 -3.75 1.077c-.729 0 -2.036 -1.077 -3.214 -1.077z'/><path d='M12 4a2 2 0 0 0 2 -2a2 2 0 0 0 -2 2'/></svg>",
+  "os-windows": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M17.8 20l-12 -1.5c-1 -.1 -1.8 -.9 -1.8 -1.9v-9.2c0 -1 .8 -1.8 1.8 -1.9l12 -1.5c1.2 -.1 2.2 .8 2.2 1.9v12.1c0 1.2 -1.1 2.1 -2.2 1.9z'/><path d='M12 5l0 14'/><path d='M4 12l16 0'/></svg>",
+  "os-linux": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 20c-2.2 -.6 -3.5 -2.4 -3.5 -4.8c0 -2.2 1.2 -4 2.2 -5.6c.8 -1.3 1 -2.2 1 -3.6c0 -1.9 1.3 -3.5 3.3 -3.5s3.3 1.6 3.3 3.5c0 1.4 .2 2.3 1 3.6c1 1.6 2.2 3.4 2.2 5.6c0 2.4 -1.3 4.2 -3.5 4.8'/><path d='M6.5 20.5h4'/><path d='M13.5 20.5h4'/><path d='M10.5 6.5v.01'/><path d='M13.5 6.5v.01'/><path d='M11 8.6l1 .8l1 -.8'/></svg>",
+  "claude": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z'/></svg>",
+  "git-branch": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0'/><path d='M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0'/><path d='M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0'/><path d='M7 8l0 8'/><path d='M9 18h6a2 2 0 0 0 2 -2v-5'/><path d='M14 14l3 -3l3 3'/></svg>",
+  "app-window": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z'/><path d='M6 8h.01'/><path d='M9 8h.01'/></svg>",
+  "archive": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z'/><path d='M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10'/><path d='M10 12l4 0'/></svg>",
+  "history": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 8l0 4l2 2'/><path d='M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5'/></svg>",
+  "copy": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666'/><path d='M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1'/></svg>",
+  "layout-dashboard": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1'/><path d='M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1'/><path d='M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1'/><path d='M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1'/></svg>",
 );
 
 @function glyph-url($name) {
@@ -3900,6 +3974,654 @@ $masthead-h: 720;
 }
 .about-skill-sep { flex: none; width: 1px; height: 1em; background: var(--border-2); }
 
+
+// ---- Emaki Post ----
+// This section stands after the glyphs, whose mixin and map its download
+// control draws on.
+// blog/2026-11-14-emaki. Its figures are emaki.lol's own: that site's
+// js/figures.js (Hairline's line drawings, and Emaki's drawn on them),
+// copied into the post's resources/, draws one into every
+// `.fig[data-figure]`. The rules for them are that site's (its
+// css/theme.scss, Figures) on this site's tokens, which carry the same
+// names; the parts' colors are the `--sk-*` set in the token block. The
+// plate and the four strokes are the page's: the plate is the ground the
+// figure stands on, the bright stroke the accent, the silhouettes the muted
+// ink, the rest the two borders. Only the six parts' figures are used here
+// (projects, chats, files, shell, outline, agent), so only their rules are
+// carried over; another figure from that script needs its own from that
+// sheet.
+
+.fig[data-figure] {
+  --hairline-plate: var(--page);
+  --hairline-hi: var(--accent);
+  --hairline-edge: var(--muted);
+  --hairline-mid: var(--border-2);
+  --hairline-lo: var(--border);
+  margin: 0;
+
+  // Each panel's figure is in the panel's own color: the files ochre, the
+  // outline mauve, the terminal sage, the agent's CLI Claude's. The main
+  // system's two keep the accent.
+  &[data-figure="files"] { --hairline-hi: var(--sk-ochre); }
+  &[data-figure="outline"] { --hairline-hi: var(--sk-mauve); }
+  &[data-figure="shell"] { --hairline-hi: var(--sk-sage); }
+  &[data-figure="agent"] { --hairline-hi: var(--claude); }
+
+  svg {
+    // The part standing out of the window: its face washed with its own
+    // color, and its shadow on the window under it.
+    .emk-wash { fill: color-mix(in oklab, var(--hairline-hi) 7%, var(--hairline-plate)); }
+    .emk-shade { fill: color-mix(in oklab, var(--hairline-hi) 22%, transparent); stroke: none; }
+    // A panel's button in the chrome is a plate, tinted while its panel shows.
+    .emk-btn { fill: var(--hl-plate); transition: fill 160ms var(--ease); }
+    .emk-btn.emk-in { fill: color-mix(in oklab, var(--hairline-hi) 35%, var(--hl-plate)); }
+    // The agents' marks beside their sessions, each in its agent's color.
+    .emk-mark { stroke: none; }
+    .emk-claude { fill: var(--claude); }
+    .emk-codex { fill: var(--codex); }
+    .emk-mark.lo { fill: var(--hl-lo); }
+  }
+}
+
+// The post's components share one manner, taken from the editorial product
+// blogs (Zed, Linear, Things): soft in the surfaces and strong in the words.
+// A frame is one hairline in the border's gray on the panel, never the
+// accent; words inside are smaller than the body's (0.75 to 1rem) and in
+// the full ink, with a second voice only a little softer (`--emk-soft`,
+// the ink at 80%: at 68% Pingfan found a table pale); radii step down with
+// size (a frame 10, a small window 6, a key or a tag 4 to 5); and color is
+// spent whole, in a drawing's strokes, a mark in a small tile, a dot, a
+// link, and the one filled button a page has, its download. Nothing has a
+// shadow but the menu that floats, and a hover darkens a hairline or
+// washes a row.
+.emk-shot, .emk-parts, .emk-swap, .emk-answers, .emk-states, .emk-types, .emk-keys, .emk-steps {
+  --emk-soft: color-mix(in oklab, var(--ink) 80%, var(--page));
+  margin: 1.5rem 0;
+}
+.emk-cap {
+  margin-top: 0.65rem;
+  font-family: var(--font-words);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--emk-soft);
+  text-align: center;
+}
+
+// The post's head: the download, the site and the repository, and the app's
+// icon at their right, one group centered in the column. It is a block of
+// its own, so the words under it start under it at every width (the icon
+// was a float at first, and the first paragraph wrapped round it raggedly
+// in a narrow column). Where the three buttons and the icon fit one line,
+// they stand in one; where they do not, the download takes a line and the
+// two pills the line under it, each half the download's width, and the
+// pair of lines is as tall as the icon beside it; in a column too narrow
+// for that, the icon stands over them.
+.emk-head { container-type: inline-size; margin: 1.5rem 0 1.75rem; }
+.emk-head-row { display: flex; align-items: center; justify-content: center; gap: 0.75rem 1.5rem; }
+.emk-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem 0.6rem;
+
+  .intro-btn { justify-content: center; height: 2.5rem; padding: 0 1.1rem; }
+}
+.emk-logo {
+  flex: none;
+
+  img { display: block; width: 6rem; height: 6rem; }
+}
+// The thresholds leave room for the longest word the download takes
+// ("Download for Windows").
+@container (width < 680px) {
+  .emk-head-row { column-gap: 1.1rem; }
+  .emk-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .emk-actions .dl { grid-column: 1 / -1; display: flex; }
+  .emk-actions .dl-main { flex: 1; justify-content: center; }
+}
+@container (width < 420px) {
+  .emk-head-row { flex-direction: column-reverse; }
+}
+
+// The handscroll over the words about the name: emaki.lol's own figure (its
+// _hero.html, copied into the post's resources/handscroll.qmd, with
+// hero-scroll.js beside it, which winds the scroll as the pointer crosses
+// it and by itself where there is no pointer). Lines only, in the ink; the
+// sun is the one bright mark and the title is in a seal's red.
+// It stands small in a frame of its own, as a part's figure does: at the
+// column's width, bare on the page, it was too large and came in abruptly.
+.emk-scroll {
+  margin: 1.5rem 0;
+  padding: 1.6rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  transition: border-color 160ms var(--ease);
+
+  &:hover { border-color: var(--border-2); }
+}
+.hero-fig {
+  width: 100%;
+  max-width: 24rem;
+  margin: 0 auto;
+  color: var(--ink);
+  touch-action: pan-y;
+
+  svg { display: block; width: 100%; height: auto; }
+  svg * { vector-effect: non-scaling-stroke; }
+}
+#hero-sun { stroke: var(--mark); }
+.hero-title {
+  font-family: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Yu Mincho", YuMincho, "Noto Serif JP", "Noto Serif CJK JP", serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  fill: var(--seal);
+  stroke: none;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+// The download as one control, emaki.lol's (resources/download.js in the
+// post builds its second half): one accent pill in two parts, the installer
+// for this computer and, past a light seam and in a lighter tint of the
+// accent, a chevron that opens that system's other installers. The menu
+// floats as the site's popovers do, this computer's row marked with a
+// check. Before the script runs, and without it, it is one round pill to
+// the release page.
+.dl {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  font-family: var(--font-ui);
+}
+.dl-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 160ms var(--ease);
+
+  &:hover, &:focus { background: var(--accent-hover); color: var(--on-accent); text-decoration: none; }
+  &:active { background: var(--accent-active); }
+  .glyph { font-size: 1.15em; }
+}
+.dl-ready:not(.dl-ask) .dl-main { padding-right: 1rem; border-radius: 999px 0 0 999px; }
+@mixin dl-chevron {
+  @include glyph(0.9rem);
+  --icon: #{glyph-url("chevron-right")};
+  transform: rotate(90deg);
+  transition: transform 240ms var(--ease);
+}
+.dl-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0 999px 999px 0;
+  background: color-mix(in oklab, var(--accent) 78%, white);
+  color: var(--on-accent);
+  box-shadow: inset 1px 0 0 color-mix(in oklab, var(--on-accent) 55%, transparent);
+  cursor: pointer;
+  transition: background 160ms var(--ease);
+
+  &::before { @include dl-chevron; }
+  &:hover { background: var(--accent); }
+  .dl-open &::before { transform: rotate(-90deg); }
+}
+// On Linux the pill is the menu: one round pill, its chevron after the word.
+.dl-ask {
+  .dl-more { display: none; }
+  .dl-main::after { @include dl-chevron; margin-left: auto; }
+  &.dl-open .dl-main::after { transform: rotate(-90deg); }
+}
+.dl-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 13.5rem;
+  padding: 5px;
+  background: var(--pop-bg);
+  border: 1px solid var(--pop-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 240ms var(--ease), transform 240ms var(--ease), visibility 0s linear 240ms;
+  z-index: 1000;
+  text-align: left;
+
+  .dl-open & { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+
+  a {
+    display: grid;
+    grid-template-columns: 1.15rem auto 1fr auto;
+    align-items: center;
+    column-gap: 0.6rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 8px;
+    color: var(--ink);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 160ms var(--ease);
+
+    &::before { @include glyph(1.15rem); color: var(--muted); }
+    &[data-os="mac"]::before { --icon: #{glyph-url("os-mac")}; }
+    &[data-os="windows"]::before { --icon: #{glyph-url("os-windows")}; }
+    &[data-os="linux"]::before { --icon: #{glyph-url("os-linux")}; }
+
+    strong { font-weight: 500; }
+    span { color: var(--muted); font-size: 0.75rem; }
+    &:hover, &:focus { background: var(--panel-2); color: var(--ink); }
+    &.dl-here::after { @include glyph(1rem); --icon: #{glyph-url("check")}; color: var(--accent); }
+
+    // The last row, under a hairline: the release page, for another system's installer.
+    &.dl-all {
+      position: relative;
+      margin-top: 9px;
+
+      &::before { --icon: #{glyph-url("external-link")}; }
+      strong { color: var(--muted); font-weight: 400; }
+      &:hover strong { color: var(--ink); }
+      &::after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 0.65rem;
+        right: 0.65rem;
+        height: 1px;
+        background: var(--pop-border);
+      }
+    }
+  }
+}
+
+// A picture of the app: the image in a hairline, its caption under it.
+.emk-shot img { display: block; width: 100%; border: 1px solid var(--border); border-radius: 10px; }
+
+// A row of the app's parts, two to a row, as emaki.lol's landing page has
+// them. Each card is washed, faintly, in the part's own color, the one its
+// figure is drawn in (the accent for the main system's two, each panel's
+// and margin's its own), its edge and the hairline over its foot a shade of
+// the same, and the figure's plate is that ground, so its filled plates sit
+// on the card without a seam. That site mixes 6% into a panel darker than
+// its page; this site's panel is white, where 6% is lost against the
+// cream, so the mix is 10%. The figure and the foot are both the way to
+// the part's docs page: the figure answers the pointer as it moves and a
+// click as a link (it is out of the tab order, so a keyboard meets one link
+// to a card, the foot), and the foot holds the part's name, in a deep shade
+// of its color, with its key and the mark of a link that leaves at the
+// right. Under the pointer, on either, the edge takes the color whole, the
+// foot's wash deepens and the name comes nearer the color.
+.emk-parts { container-type: inline-size; }
+.emk-parts-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.emk-part {
+  --part: var(--accent);
+  &:has(.fig[data-figure="files"]) { --part: var(--sk-ochre); }
+  &:has(.fig[data-figure="shell"]) { --part: var(--sk-sage); }
+  &:has(.fig[data-figure="outline"]) { --part: var(--sk-mauve); }
+  &:has(.fig[data-figure="agent"]) { --part: var(--claude); }
+  --part-bg: color-mix(in oklab, var(--part) 10%, var(--panel));
+  --part-edge: color-mix(in oklab, var(--part) 24%, var(--border));
+
+  margin: 0;
+  border: 1px solid var(--part-edge);
+  border-radius: 10px;
+  background: var(--part-bg);
+  overflow: hidden;
+  transition: border-color 160ms var(--ease);
+
+  &:has(a:hover), &:has(a:focus-visible) { border-color: var(--part); }
+  .fig { --hairline-plate: var(--part-bg); width: min(92%, 22rem); margin: 0 auto; }
+  figcaption { margin: 0; border-top: 1px solid var(--part-edge); }
+}
+.emk-part-fig { display: block; text-decoration: none; }
+.emk-part-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.85rem;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: color-mix(in oklab, var(--part) 62%, var(--ink));
+  text-align: left;
+  text-decoration: none;
+  transition: background 160ms var(--ease), color 160ms var(--ease);
+
+  .glyph { font-size: 1rem; color: color-mix(in oklab, var(--part) 62%, var(--muted)); transition: color 160ms var(--ease); }
+  &:hover, &:focus, .emk-part:has(.emk-part-fig:hover) & {
+    background: color-mix(in oklab, var(--part) 12%, transparent);
+    color: color-mix(in oklab, var(--part) 85%, var(--ink));
+    text-decoration: none;
+
+    .glyph { color: var(--part); }
+  }
+  &:active { background: color-mix(in oklab, var(--part) 20%, transparent); }
+}
+.emk-part-go { display: inline-flex; align-items: center; gap: 0.65rem; }
+
+// Keys side by side, each its own cap, kept on one line.
+.keys { display: inline-flex; gap: 3px; white-space: nowrap; }
+
+// Five apps, then one window, drawn as the parts' figures are: hairlines on
+// the panel in the border's two grays, a muted silhouette, and one color to
+// a thing. Each app is a small window in its own color; a dotted line takes
+// it down to Emaki's window, where its work has a place in the same color:
+// Finder's in the Files Panel, GitHub Desktop's in the panel's header and
+// its marks on the tree, a viewer's in the open file, the agent's own
+// screen in the chat, a terminal's in the Terminal Panel. `data-k` names
+// the pair, on the app, its line, its place and its name under the window;
+// the pointer on any of them brings the pair forward (the app lifts, the
+// place fills, the line is drawn whole) and grays the other four.
+$emk-pairs: (files: var(--sk-ochre), git: var(--sk-mauve), view: var(--accent), agent: var(--claude), shell: var(--sk-sage));
+.emk-swap { container-type: inline-size; }
+.emk-swap-frame { padding: 1.4rem 1.25rem 1rem; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); }
+.emk-swap svg {
+  display: block;
+  overflow: visible;
+  fill: none;
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  * { vector-effect: non-scaling-stroke; transition: stroke 240ms var(--ease), fill 240ms var(--ease); }
+  .sil { stroke: var(--muted); fill: var(--panel); }
+  .lo { stroke: var(--border); }
+  .mid { stroke: var(--border-2); }
+  .hi { stroke: var(--k); }
+  .wash { fill: color-mix(in oklab, var(--k) 8%, var(--panel)); }
+  .dm { fill: var(--muted); }
+  .dk { fill: var(--k); }
+  .dk.soft { fill: color-mix(in oklab, var(--k) 35%, var(--panel)); }
+  // The three sessions' dots in the sidebar, as the app colors them.
+  .d-waits { fill: var(--claude); }
+  .d-works { fill: var(--accent); }
+  .d-done { fill: var(--sk-sage); }
+}
+.emk-swap-apps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.emk-swap-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.35rem;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--ink);
+  text-align: center;
+  cursor: default;
+  outline-offset: 4px;
+
+  svg { width: 100%; max-width: 7.5rem; transition: transform 240ms var(--ease); }
+}
+.emk-swap-lines {
+  width: 100%;
+  height: 2.1rem;
+  margin: 0.4rem 0 0.1rem;
+
+  path { stroke: var(--border-2); stroke-dasharray: 1 3; }
+}
+.emk-swap-stem { display: none; width: 1px; height: 1.25rem; margin: 0.6rem auto 0.4rem; background: var(--border-2); }
+.emk-swap-one { width: 100%; height: auto; }
+.emk-swap-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.5rem; margin-top: 0.9rem; }
+.emk-swap-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-wordmark);
+  font-size: 1.25rem;
+  line-height: 1;
+  text-decoration: none;
+
+  &:hover, &:focus-visible { text-decoration: none; }
+  img { width: 1.9rem; height: 1.9rem; margin: -0.2rem 0; }
+}
+.emk-swap-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--ink);
+
+  > span { display: inline-flex; align-items: center; gap: 0.35rem; cursor: default; transition: color 240ms var(--ease); }
+  .glyph { font-size: 1rem; color: var(--k); transition: color 240ms var(--ease); }
+}
+@each $k, $color in $emk-pairs {
+  .emk-swap [data-k="#{$k}"] { --k: #{$color}; }
+  .emk-swap:has([data-k="#{$k}"]:is(:hover, :focus-visible)) {
+    [data-k]:not([data-k="#{$k}"]) { --k: var(--border-2); }
+    .emk-swap-parts [data-k]:not([data-k="#{$k}"]) { color: var(--muted); }
+    [data-k="#{$k}"] .wash { fill: color-mix(in oklab, var(--k) 20%, var(--panel)); }
+    .emk-swap-app[data-k="#{$k}"] svg { transform: translateY(-4px); }
+    .emk-swap-lines [data-k="#{$k}"] { stroke: var(--k); stroke-dasharray: none; }
+  }
+}
+
+// What was wrong, and what Emaki does about it: a table in a frame, a row
+// to a pain. The pain is at the left on the page's own ground, set back;
+// the answer at the right on the panel, which lifts off it in both
+// appearances. Each has its mark in a small tile, the pain's gray and the
+// answer's the accent on its wash, so the eye finds the bright column
+// first. Every word is in the ink; only the line under an answer is softer.
+.emk-answers { container-type: inline-size; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); overflow: hidden; }
+.emk-answers-head, .emk-answer { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.emk-answers-head {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--emk-soft);
+
+  > span { display: flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.1rem; }
+  > span:first-child { background: var(--page); }
+  > span + span { border-left: 1px solid var(--border); color: var(--ink); }
+  img { width: 1.25rem; height: 1.25rem; margin: -0.2rem 0; }
+}
+.emk-answer {
+  border-top: 1px solid var(--border);
+
+  p { margin: 0; }
+  .glyph {
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+  }
+}
+.emk-answer-pain {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  background: var(--page);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--ink);
+
+  .glyph { flex: none; background: color-mix(in oklab, var(--ink) 7%, transparent); color: var(--muted); }
+}
+.emk-answer-fix {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.75rem;
+  align-content: center;
+  padding: 1rem 1.1rem;
+  border-left: 1px solid var(--border);
+
+  .glyph { grid-row: 1 / span 2; margin-top: 0.1rem; background: var(--wash); color: var(--accent); }
+}
+.emk-answer-lead { font-size: 1rem; line-height: 1.45; color: var(--ink); }
+.emk-answer-more { margin-top: 0.15rem !important; font-size: 0.875rem; line-height: 1.55; color: var(--emk-soft); }
+
+// What a session's dot says, a state to a line: the session's row as the
+// sidebar draws it (its agent's mark, its name, its dot at the right), the
+// state's word, and when the dot shows.
+.emk-states { container-type: inline-size; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); overflow: hidden; }
+.emk-state {
+  display: grid;
+  grid-template-columns: 13rem 4.75rem minmax(0, 1fr);
+  align-items: center;
+  column-gap: 1.1rem;
+  padding: 0.6rem 1.1rem 0.6rem 0.6rem;
+
+  & + & { border-top: 1px solid var(--border); }
+  p { margin: 0; }
+}
+.emk-sess {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2rem;
+  padding: 0 0.7rem 0 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--page);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--ink);
+
+  > span:nth-child(2) { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .glyph { font-size: 0.9rem; }
+  .glyph-claude { color: var(--claude); }
+  .glyph-openai { color: var(--codex); }
+}
+.emk-state-word { font-family: var(--font-ui); font-size: 0.8125rem; line-height: 1.4; color: var(--ink); }
+.emk-state-more { font-size: 0.875rem; line-height: 1.5; color: var(--emk-soft); }
+.emk-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--dot, var(--muted)); }
+.emk-dot-waits { --dot: var(--claude); }
+.emk-dot-works { --dot: var(--accent); }
+.emk-dot-done { --dot: var(--sk-sage); }
+
+// The file types Emaki opens: one grid of equal cells in a frame, four to a
+// row, each the type's icon as the app's file tree shows it (Catppuccin's,
+// in the post's resources/icons) and its name, the hairlines between them
+// the frame's own ground.
+.emk-types { container-type: inline-size; border: 1px solid var(--border); border-radius: 10px; background: var(--border); overflow: hidden; }
+.emk-types-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; }
+.emk-type {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--panel);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--ink);
+  white-space: nowrap;
+
+  img { flex: none; width: 16px; height: 16px; }
+}
+// LaTeX's icon is drawn in a dark gray, which the dark panel swallows.
+body.quarto-dark .emk-type img[src$="latex.svg"] { filter: invert(0.85); }
+
+// The keys: what each shows, and its caps at the right. Two columns of rows
+// in one frame, the hairlines between them the frame's own ground.
+.emk-keys {
+  container-type: inline-size;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--border);
+  overflow: hidden;
+}
+.emk-keys-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(4, auto); grid-auto-columns: minmax(0, 1fr); gap: 1px; }
+.emk-key { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.5rem 0.9rem; background: var(--panel); font-size: 0.875rem; line-height: 1.4; }
+
+// The steps to a first session, as emaki.lol's Get started has them: three
+// cards across, each with its number in a ring, what to do, a line, and its
+// buttons at the card's foot so the three feet line up. A card's two
+// buttons share a row, each as wide as its word asks and the pair filling
+// the row, and stand one under the other where the card is too narrow. The agents' and git's marks are in their own colors.
+.emk-steps { container-type: inline-size; }
+.emk-steps-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; counter-reset: emk-step; }
+.emk-step {
+  counter-increment: emk-step;
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.1rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+
+  &::before {
+    content: counter(emk-step);
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid var(--border-2);
+    border-radius: 50%;
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    line-height: 1;
+    color: var(--ink);
+  }
+  p { margin: 0; }
+  > .dl, > .emk-step-links { margin-top: auto; }
+  > .dl { display: flex; }
+  .dl-main { flex: 1; justify-content: center; height: 2.25rem; font-size: 0.82rem; }
+  .dl-more { width: 2.4rem; }
+}
+.emk-step-name { font-size: 1rem; line-height: 1.4; color: var(--ink); }
+.emk-step-more { padding: 0.2rem 0 1rem; font-size: 0.875rem; line-height: 1.55; color: var(--emk-soft); }
+.emk-step-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+
+  .intro-btn { flex: 1 1 auto; justify-content: center; gap: 0.35em; height: 2.25rem; padding: 0 0.35rem; font-size: 0.75rem; }
+  .glyph { font-size: 1.05em; }
+  .glyph-claude { color: var(--claude); }
+  .glyph-openai { color: var(--codex); }
+  .glyph-git-branch { color: var(--git); }
+  .glyph-github { color: var(--github); }
+}
+
+// Three cards across a column this narrow cannot hold Claude Code and Codex
+// side by side, so every card's pair stands one under the other, alike.
+@container (600px <= width < 720px) {
+  .emk-step-links { flex-direction: column; }
+}
+@container (width < 600px) {
+  .emk-parts-row { grid-template-columns: minmax(0, 1fr); }
+  .emk-keys-grid { grid-auto-flow: row; grid-template-rows: none; }
+  .emk-types-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .emk-steps-row { grid-template-columns: minmax(0, 1fr); }
+  .emk-swap-apps { display: flex; flex-wrap: wrap; justify-content: center; row-gap: 0.9rem; }
+  .emk-swap-app { flex: 0 0 33.3%; }
+  .emk-swap .emk-swap-lines { display: none; }
+  .emk-swap-stem { display: block; }
+  .emk-answers-head { display: none; }
+  .emk-answer { grid-template-columns: minmax(0, 1fr); }
+  .emk-answer:first-of-type { border-top: 0; }
+  .emk-answer-fix { border-left: 0; border-top: 1px solid var(--border); }
+  .emk-state { grid-template-columns: 4.75rem minmax(0, 1fr); row-gap: 0.5rem; padding: 0.7rem 0.85rem 0.75rem 0.7rem; }
+  .emk-sess { grid-column: 1 / -1; }
+  .emk-state-word { padding-left: 0.15rem; }
+}
 
 // ---- Scroll Animations ----
 // A card rises 12px and fades as it comes into view, once, cards in a grid a

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Emaki Post Banner</title>
+<style>
+ /* The banner of the Emaki post (blog/2026-11-14-emaki), 1376 x 768, drawn
+    in the manner of the post's hairline figures and shot by headless Chrome,
+    once for each appearance and with no avatar badge:
+
+      resources/scripts/make-banner.sh --no-badge emaki blog/banners/2026-11-14-emaki.png
+      resources/scripts/make-banner.sh --no-badge --dark emaki blog/banners/2026-11-14-emaki-dark.png
+
+    It is Emaki's handscroll, the app's icon and the figure over the post's
+    words about the name: two rolls, and a sheet read from the left as a
+    handscroll is. First a picture, as an old scroll has one (a sun, two
+    ridges, a pine, a boat), then the app as it opens: the sidebar with three
+    sessions, and the chat, which stands forward of the sheet as a part does
+    in its figure. Nothing more: a first version showed five panes full of
+    rows, and Pingfan found it frightening for someone new, where the app is
+    meant to look light and easy to follow. At the left the name and what it
+    is, as the site's other banners have a title.
+
+    The light colors are the site's tokens (resources/styles/styles.scss)
+    and the ground the accent mixed a little into the panel, the Features
+    cards' own. The dark version, which the script below sets when the
+    address ends in `?dark`, is not the site's dark page: a banner sits in a
+    card that is already dark, and a ground darker than the card looked
+    sunk and uncomfortable, so its ground is a slate lighter than the card
+    and its sheet lighter again. The listing shows a banner at about a
+    quarter of this size, so a "hairline" here is 3px and the two grays are
+    a step firmer than the site's. */
+ :root {
+  --panel: #FFFFFF;
+  --ink: #2A2920;
+  --muted: #77746B;
+  --border: #D8D5CA;
+  --border-2: #C4C1B5;
+  --accent: #5061B3;
+  --sage: #578F63;
+  --claude: #D97757;
+  --seal: #A8665B;
+  --sun: #D99A1F;
+  --ground: color-mix(in oklab, var(--accent) 11%, var(--panel));
+  --soft: color-mix(in oklab, var(--ink) 72%, var(--ground));
+  --shade: color-mix(in oklab, var(--accent) 30%, transparent);
+ }
+ html.dark {
+  --panel: #474A57;
+  --ink: #F3F1EA;
+  --muted: #B6B4AE;
+  --border: #696C78;
+  --border-2: #838692;
+  --accent: #AAB9F3;
+  --sage: #A6D5AF;
+  --claude: #E48D6F;
+  --seal: #E2ACA2;
+  --sun: #FFC257;
+  --ground: #393C48;
+  --shade: rgb(0 0 0 / 0.28);
+ }
+
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+ html, body { width: 1376px; height: 768px; overflow: hidden; }
+ body { background: var(--ground); -webkit-font-smoothing: antialiased; }
+ svg { display: block; width: 1376px; height: 768px; fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
+ /* The words. */
+ .name { font-family: Optima, "Avenir Next", sans-serif; font-size: 148px; fill: var(--ink); letter-spacing: -1px; }
+ .what { font-family: "Maple Mono NF CN", "Maple Mono", ui-monospace, Menlo, monospace; font-size: 24px; fill: var(--soft); letter-spacing: 0.4px; }
+ .seal { font-family: "Hiragino Mincho ProN", "Songti SC", serif; font-size: 30px; font-weight: 700; fill: var(--seal); text-anchor: middle; }
+
+ /* The strokes, as the figures name them: the scroll's own outline in the
+    muted ink on the panel, two grays under it, and a pane's color. */
+ .sil { stroke: var(--muted); fill: var(--panel); }
+ .edge { stroke: var(--muted); }
+ .sheet { fill: var(--panel); }
+ .lo { stroke: var(--border); }
+ .mid { stroke: var(--border-2); }
+ .hi { stroke: var(--k); }
+ .pane { stroke: var(--k); stroke-width: 2.5; fill: color-mix(in oklab, var(--k) 9%, var(--panel)); }
+ .wash { fill: color-mix(in oklab, var(--k) 16%, var(--panel)); }
+ .dk { fill: var(--k); stroke: none; }
+ .claude { fill: var(--claude); stroke: none; }
+ .sun { stroke: var(--sun); }
+ .d-waits { fill: var(--claude); stroke: none; }
+ .d-works { fill: var(--accent); stroke: none; }
+ .d-done { fill: var(--sage); stroke: none; }
+ .k-accent { --k: var(--accent); }
+ .forward { filter: drop-shadow(0 14px 16px var(--shade)); }
+</style>
+</head>
+<body>
+ <svg viewBox="0 0 1376 768" role="img" aria-label="Emaki, the agentic development environment: a handscroll whose sheet holds a small landscape and then the app, its sidebar and its chat.">
+  <text class="name" x="92" y="392">Emaki</text>
+  <text class="what" x="98" y="452">The Agentic</text>
+  <text class="what" x="98" y="488">Development Environment</text>
+
+  <g transform="translate(-14 0)">
+  <!-- The scroll: the sheet, its two edges, the rolls and their axles. -->
+  <rect class="sheet" x="600" y="192" width="696" height="384"/>
+  <path class="edge" d="M600 192H1296M600 576H1296"/>
+  <rect class="sil" x="548" y="176" width="52" height="416" rx="20"/>
+  <rect class="sil" x="1296" y="176" width="30" height="416" rx="12"/>
+  <path class="edge" d="M566 177V164q0-6 6-6h4q6 0 6 6V177M566 591V604q0 6 6 6h4q6 0 6-6V591M1305 177V164q0-6 6-6q6 0 6 6V177M1305 591V604q0 6 6 6q6 0 6-6V591"/>
+  <path class="mid" d="M565 198V570M583 198V570"/>
+  <text class="seal" x="631" y="242">絵</text>
+  <text class="seal" x="631" y="276">巻</text>
+
+  <!-- The picture, as an old scroll has one: a sun, two ridges, a pine, a boat on the water. -->
+  <circle class="sun" cx="808" cy="268" r="18"/>
+  <path class="lo" d="M660 386C696 366 712 326 746 324S796 362 830 354S862 330 878 338M664 474H720M750 474H796M832 474H878M690 502H748M792 502H852M664 530H704M740 530H816"/>
+  <path class="mid" d="M660 430C704 404 732 440 776 428S838 398 878 416M684 420V396M676 404l8-8 8 8M677 413l7-7 7 7M772 468q16 10 32 0M788 468V442M788 444l14 20H788"/>
+
+  <!-- Then the app as it opens: the sidebar, three sessions and where each stands. -->
+  <g class="k-accent" transform="translate(-30 0)">
+   <rect class="pane" x="936" y="212" width="92" height="344" rx="10"/>
+   <path class="hi" d="M950 250H994"/>
+   <path class="mid" d="M950 286H996M950 316H988M950 346H998M950 396H990M950 426H1004"/>
+   <circle class="d-waits" cx="1013" cy="286" r="5"/><circle class="d-works" cx="1013" cy="316" r="5"/><circle class="d-done" cx="1013" cy="346" r="5"/>
+  </g>
+
+  <!-- And the chat, forward of the sheet: your message, the agent's answer, the composer. -->
+  <g class="k-accent forward" transform="translate(-30 0)">
+   <rect class="pane" x="1038" y="176" width="240" height="416" rx="14"/>
+   <rect class="hi wash" x="1152" y="204" width="110" height="40" rx="12"/>
+   <path class="mid" d="M1168 224H1246M1082 290H1258M1082 312H1236M1082 334H1180"/>
+   <path class="claude" d="M1061 280l3 8.5 8.5 3-8.5 3-3 8.5-3-8.5-8.5-3 8.5-3z"/>
+   <rect class="hi" x="1054" y="500" width="208" height="72" rx="14"/>
+   <path class="lo" d="M1072 524H1160"/>
+   <circle class="dk" cx="1240" cy="550" r="10"/>
+  </g>
+  </g>
+ </svg>
+ <script>
+  if (/[?&]dark\b/.test(location.search)) document.documentElement.classList.add("dark");
+ </script>
+</body>
+</html>

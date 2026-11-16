@@ -1,0 +1,27 @@
+```{=html}
+<div class="emk-steps">
+ <div class="emk-steps-row">
+  <div class="emk-step">
+   <p class="emk-step-name">Download Emaki</p>
+   <p class="emk-step-more">For macOS, Windows and Linux.</p>
+   <div class="dl" data-short><a class="dl-main no-external" href="https://github.com/alkaline-software/emaki/releases/latest" target="_blank" rel="noopener"><span class="glyph glyph-download"></span><span class="dl-word">Download</span></a></div>
+  </div>
+  <div class="emk-step">
+   <p class="emk-step-name">Install the agents</p>
+   <p class="emk-step-more">Emaki works with Claude Code and Codex.</p>
+   <div class="emk-step-links">
+    <a class="intro-btn" href="https://docs.claude.com/en/docs/claude-code" target="_blank" rel="noopener"><span class="glyph glyph-claude"></span>Claude Code</a>
+    <a class="intro-btn" href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener"><span class="glyph glyph-openai"></span>Codex</a>
+   </div>
+  </div>
+  <div class="emk-step">
+   <p class="emk-step-name">Git (optional)</p>
+   <p class="emk-step-more">Install Git and the GitHub CLI to commit, branch and push from Emaki.</p>
+   <div class="emk-step-links">
+    <a class="intro-btn" href="https://git-scm.com/downloads" target="_blank" rel="noopener"><span class="glyph glyph-git-branch"></span>Git</a>
+    <a class="intro-btn" href="https://cli.github.com" target="_blank" rel="noopener"><span class="glyph glyph-github"></span>GitHub</a>
+   </div>
+  </div>
+ </div>
+</div>
+```

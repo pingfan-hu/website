@@ -1,0 +1,14 @@
+```{=html}
+<div class="emk-keys">
+ <div class="emk-keys-grid">
+  <div class="emk-key">Sidebar<span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>B</kbd></span></div>
+  <div class="emk-key">Files Panel<span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>F</kbd></span></div>
+  <div class="emk-key">Terminal Panel<span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>S</kbd></span></div>
+  <div class="emk-key">Outline<span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>O</kbd></span></div>
+  <div class="emk-key">Agent CLI<span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>L</kbd></span></div>
+  <div class="emk-key">Git's Changes sheet<span class="keys"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>G</kbd></span></div>
+  <div class="emk-key">Search in every session<span class="keys"><kbd>⌘</kbd><kbd>K</kbd></span></div>
+  <div class="emk-key">All Sessions<span class="keys"><kbd>⌘</kbd><kbd>L</kbd></span></div>
+ </div>
+</div>
+```
