@@ -1,6 +1,6 @@
 ---
 title: "Emaki - The Agentic Development Environment"
-image: "/blog/banners/2026-11-14-emaki.png"
+image: "/blog/banners/2026-11-16-emaki.png"
 description: "There should be a better working environment in the agentic AI era, and we made one."
 date: '2026-11-16'
 categories: [Software, Agentic Engineering]

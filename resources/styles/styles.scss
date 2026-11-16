@@ -2052,7 +2052,7 @@ html.rt-scrubbing * {
 // folder. The front matter names the light one, which is also what a link
 // preview shows; in the dark, wherever the site shows that image, the twin
 // takes its place. The path is from the site's root.
-$dark-banners: ("blog/banners/2026-11-14-emaki");
+$dark-banners: ("blog/banners/2026-11-16-emaki");
 @each $banner in $dark-banners {
   body.quarto-dark img[src$="#{$banner}.png"] { content: url("/#{$banner}-dark.png"); }
 }
@@ -3978,7 +3978,7 @@ $masthead-h: 720;
 // ---- Emaki Post ----
 // This section stands after the glyphs, whose mixin and map its download
 // control draws on.
-// blog/2026-11-14-emaki. Its figures are emaki.lol's own: that site's
+// blog/2026-11-16-emaki. Its figures are emaki.lol's own: that site's
 // js/figures.js (Hairline's line drawings, and Emaki's drawn on them),
 // copied into the post's resources/, draws one into every
 // `.fig[data-figure]`. The rules for them are that site's (its

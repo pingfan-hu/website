@@ -11,8 +11,8 @@
 # that draws a dark version of itself when asked; --no-badge leaves the
 # banner without the avatar.
 #
-#   resources/scripts/make-banner.sh --no-badge emaki blog/banners/2026-11-14-emaki.png
-#   resources/scripts/make-banner.sh --no-badge --dark emaki blog/banners/2026-11-14-emaki-dark.png
+#   resources/scripts/make-banner.sh --no-badge emaki blog/banners/2026-11-16-emaki.png
+#   resources/scripts/make-banner.sh --no-badge --dark emaki blog/banners/2026-11-16-emaki-dark.png
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 QUERY=""
