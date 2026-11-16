@@ -4047,17 +4047,48 @@ $masthead-h: 720;
   text-align: center;
 }
 
-// The post's head: the download, the site and the repository, and the app's
-// icon at their right, one group centered in the column. It is a block of
-// its own, so the words under it start under it at every width (the icon
-// was a float at first, and the first paragraph wrapped round it raggedly
-// in a narrow column). Where the three buttons and the icon fit one line,
-// they stand in one; where they do not, the download takes a line and the
-// two pills the line under it, each half the download's width, and the
-// pair of lines is as tall as the icon beside it; in a column too narrow
-// for that, the icon stands over them.
-.emk-head { container-type: inline-size; margin: 1.5rem 0 1.75rem; }
-.emk-head-row { display: flex; align-items: center; justify-content: center; gap: 0.75rem 1.5rem; }
+// The app's icon stands in the post's title block, at the right of the
+// title and its categories and as tall as the two together (a script in the
+// post's head.qmd moves it there). It was tried in three places under the
+// title block first, and none sat well: a float at the right, where the
+// first paragraph wrapped round it raggedly; the last thing in the
+// buttons' row, where it read as a fourth button; and centered over the
+// buttons, which Pingfan liked least. On the narrowest layout, where the
+// site centers a title, it stands over the title, centered too.
+#title-block-header .quarto-title:has(> .emk-logo) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1.25rem;
+  align-items: start;
+
+  > .title, > .quarto-categories { grid-column: 1; }
+  > .emk-logo { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: -0.5rem -0.6rem -0.5rem 0; }
+}
+// The icon is a link to the app's site. Under the pointer its color shifts
+// a little, a shade deeper, and nothing else: no edge, no change of size.
+// A press is the pills' small scale, gone when the press is.
+.emk-logo {
+  display: block;
+  transition: transform 120ms var(--ease);
+
+  img { display: block; width: 7.5rem; height: 7.5rem; transition: filter 160ms var(--ease); }
+  &:hover img, &:focus-visible img { filter: brightness(0.93) saturate(1.08); }
+  &:active { transform: scale(0.96); }
+}
+@media (max-width: 767.98px) {
+  #title-block-header .quarto-title:has(> .emk-logo) {
+    grid-template-columns: minmax(0, 1fr);
+
+    > .emk-logo { grid-column: 1; grid-row: 1; justify-self: center; margin: -0.5rem 0 0.25rem; }
+  }
+  .emk-logo img { width: 6rem; height: 6rem; }
+}
+
+// The post's head: the download, the site and the repository, centered in
+// the column. Where the three fit one line they stand in one; where they
+// do not, the download takes a line and the two pills the line under it,
+// each half the download's width.
+.emk-head { container-type: inline-size; margin: 1.5rem 0 1.75rem; display: flex; justify-content: center; }
 .emk-actions {
   display: flex;
   align-items: center;
@@ -4065,21 +4096,12 @@ $masthead-h: 720;
 
   .intro-btn { justify-content: center; height: 2.5rem; padding: 0 1.1rem; }
 }
-.emk-logo {
-  flex: none;
-
-  img { display: block; width: 6rem; height: 6rem; }
-}
-// The thresholds leave room for the longest word the download takes
+// The threshold leaves room for the longest word the download takes
 // ("Download for Windows").
-@container (width < 680px) {
-  .emk-head-row { column-gap: 1.1rem; }
+@container (width < 560px) {
   .emk-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
   .emk-actions .dl { grid-column: 1 / -1; display: flex; }
   .emk-actions .dl-main { flex: 1; justify-content: center; }
-}
-@container (width < 420px) {
-  .emk-head-row { flex-direction: column-reverse; }
 }
 
 // The handscroll over the words about the name: emaki.lol's own figure (its

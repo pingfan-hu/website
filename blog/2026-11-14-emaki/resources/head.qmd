@@ -1,12 +1,21 @@
 ```{=html}
+<a class="emk-logo" href="https://emaki.lol" target="_blank" rel="noopener" hidden><img src="resources/emaki-icon.png" alt="Emaki's icon: a handscroll with a chat on its sheet"></a>
 <div class="emk-head">
- <div class="emk-head-row">
-  <div class="emk-actions">
-   <div class="dl"><a class="dl-main no-external" href="https://github.com/alkaline-software/emaki/releases/latest" target="_blank" rel="noopener"><span class="glyph glyph-download"></span><span class="dl-word">Download</span></a></div>
-   <a href="https://emaki.lol" class="intro-btn" target="_blank" rel="noopener"><i class="bi bi-browser-safari"></i> Website</a>
-   <a href="https://github.com/alkaline-software/emaki" class="intro-btn" target="_blank" rel="noopener"><i class="bi bi-github"></i> GitHub</a>
-  </div>
-  <a class="emk-logo" href="https://emaki.lol" target="_blank" rel="noopener"><img src="resources/emaki-icon.png" alt="Emaki's icon: a handscroll with a chat on its sheet"></a>
+ <div class="emk-actions">
+  <div class="dl"><a class="dl-main no-external" href="https://github.com/alkaline-software/emaki/releases/latest" target="_blank" rel="noopener"><span class="glyph glyph-download"></span><span class="dl-word">Download</span></a></div>
+  <a href="https://emaki.lol" class="intro-btn" target="_blank" rel="noopener"><i class="bi bi-browser-safari"></i> Website</a>
+  <a href="https://github.com/alkaline-software/emaki" class="intro-btn" target="_blank" rel="noopener"><i class="bi bi-github"></i> GitHub</a>
  </div>
 </div>
+<script>
+ // The app's icon belongs beside the post's title, in the title block Quarto
+ // writes, which a post's own markup cannot reach: it waits here, hidden,
+ // and is moved there as the page is read.
+ (function () {
+  var logo = document.querySelector(".emk-logo"), title = document.querySelector("#title-block-header .quarto-title");
+  if (!logo || !title) return;
+  title.appendChild(logo);
+  logo.hidden = false;
+ })();
+</script>
 ```
