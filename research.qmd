@@ -18,5 +18,5 @@ page-layout: full
 
 ```{=html}
 <script src="/resources/banners/specs.js" defer></script>
-<script src="/resources/banners/banner.js" defer></script>
+<script src="/resources/banners/hairline.js" defer></script>
 ```

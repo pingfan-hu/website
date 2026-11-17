@@ -10,9 +10,11 @@
 // table, form, nav, code, edit, bars, chart-s, chart-up, peak, choice,
 // list), key: true on the one part in color }. A link: [from, to], or
 // [from, to, "drop", [u, v]] between two layers at a node they share.
-// resources/banners/banner.js draws them; make-banners.sh shoots the PNGs.
+// `dir` is the site's own: where make-banners.sh puts the PNGs.
+// resources/banners/hairline.js draws them (a verbatim copy of the ph-image
+// skill's hairline engine); make-banners.sh shoots the PNGs.
 
-window.BANNER_SPECS = {
+window.HAIRLINE_SPECS = {
   // Steps: prepare the tools, make the website project, buy a domain, deploy.
   "2023-12-09-personal-website": {
     dir: "blog", key: "accent",

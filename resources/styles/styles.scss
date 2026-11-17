@@ -2082,12 +2082,13 @@ $dark-banners: (
 
 // ---- Live banners ----
 // The blog and research banners are drawn live in the listings by
-// resources/banners/banner.js from their specs (resources/banners/specs.js),
+// resources/banners/hairline.js (the ph-image skill's hairline engine) from
+// their specs (resources/banners/specs.js),
 // the same drawing each PNG was shot from; their colors are in that script,
 // one source for the PNG and the page. Here only their place in a card,
 // rounded as the image was. The Emaki banner has its own drawing, below.
-.bn-live { display: block; border-radius: $border-radius; overflow: hidden; }
-.card-img-top > .bn-live { border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0; }
+.hl-live { display: block; border-radius: $border-radius; overflow: hidden; }
+.card-img-top > .hl-live { border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0; }
 
 // The Emaki post's banner is live in the blog listing: the listing page
 // loads blog/banners/2026-11-16-emaki.js, which puts the drawing behind the
