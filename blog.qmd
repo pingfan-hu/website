@@ -13,3 +13,7 @@ listing:
   image-height: auto
 page-layout: full
 ---
+
+```{=html}
+<script src="/blog/banners/2026-11-16-emaki.js" defer></script>
+```

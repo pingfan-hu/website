@@ -148,7 +148,7 @@ main.content {
 }
 
 // ---- Typography ----
-// Six sizes and nothing set in a seventh: h1 2.25rem, h2 1.5rem, h3 1.125rem,
+// Six sizes and nothing set in a seventh: h1 2rem, h2 1.5rem, h3 1.125rem,
 // h4 1rem, the words 1rem, small 0.875rem for labels, captions and chips.
 // Bold is 600, never 700.
 
@@ -163,7 +163,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
   a:hover { text-decoration: none; }
 }
 
-h1, .title { font-size: 2.25rem; }
+h1, .title { font-size: 2rem; }
 
 // No rule under a heading: the air over it and the table of contents do that
 // work. Quarto draws one by default.
@@ -2055,6 +2055,68 @@ html.rt-scrubbing * {
 $dark-banners: ("blog/banners/2026-11-16-emaki");
 @each $banner in $dark-banners {
   body.quarto-dark img[src$="#{$banner}.png"] { content: url("/#{$banner}-dark.png"); }
+}
+
+// ---- Live banners ----
+// The Emaki post's banner is live in the blog listing: the listing page
+// loads blog/banners/2026-11-16-emaki.js, which puts the drawing behind the
+// PNG in the card in its place and winds its scroll with the pointer, as
+// the handscroll in the post winds. Its colors are the PNG's
+// (resources/scripts/banner/emaki.html): in the light, the site's tokens
+// with the two grays a step firmer, since the listing shows it small; in
+// the dark, not the site's dark page but the banner's own slate, lighter
+// than the card it sits in (a deliberate exception to the token block).
+.emaki-banner {
+  --eb-panel: var(--panel);
+  --eb-ink: var(--ink);
+  --eb-muted: var(--muted);
+  --eb-border: color-mix(in oklab, var(--border) 92%, var(--muted));
+  --eb-border-2: color-mix(in oklab, var(--border-2) 86%, var(--muted));
+  --eb-accent: var(--accent);
+  --eb-sage: var(--sk-sage);
+  --eb-claude: var(--claude);
+  --eb-seal: var(--seal);
+  --eb-sun: var(--mark);
+  --eb-ground: color-mix(in oklab, var(--eb-accent) 11%, var(--eb-panel));
+  --eb-soft: color-mix(in oklab, var(--eb-ink) 72%, var(--eb-ground));
+  --eb-shade: color-mix(in oklab, var(--eb-accent) 30%, transparent);
+  display: block;
+  background: var(--eb-ground);
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  svg { display: block; width: 100%; height: auto; fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .emb-name { font-family: var(--font-wordmark); font-size: 148px; fill: var(--eb-ink); letter-spacing: -1px; }
+  .emb-what { font-family: var(--font-ui); font-size: 24px; fill: var(--eb-soft); letter-spacing: 0.4px; }
+  .emb-seal { font-family: "Hiragino Mincho ProN", "Songti SC", serif; font-size: 30px; font-weight: 700; fill: var(--eb-seal); text-anchor: middle; }
+  .emb-sil { stroke: var(--eb-muted); fill: var(--eb-panel); }
+  .emb-edge { stroke: var(--eb-muted); }
+  .emb-sheet { fill: var(--eb-panel); }
+  .emb-lo { stroke: var(--eb-border); }
+  .emb-mid { stroke: var(--eb-border-2); }
+  .emb-hi { stroke: var(--eb-accent); }
+  .emb-pane { stroke: var(--eb-accent); stroke-width: 2.5; fill: color-mix(in oklab, var(--eb-accent) 9%, var(--eb-panel)); }
+  .emb-wash { fill: color-mix(in oklab, var(--eb-accent) 16%, var(--eb-panel)); }
+  .emb-dk { fill: var(--eb-accent); }
+  .emb-claude, .emb-waits { fill: var(--eb-claude); }
+  .emb-works { fill: var(--eb-accent); }
+  .emb-done { fill: var(--eb-sage); }
+  .emb-sun { stroke: var(--eb-sun); }
+  .emb-forward { filter: drop-shadow(0 14px 16px var(--eb-shade)); }
+}
+body.quarto-dark .emaki-banner {
+  --eb-panel: #474A57;
+  --eb-ink: #F3F1EA;
+  --eb-muted: #B6B4AE;
+  --eb-border: #696C78;
+  --eb-border-2: #838692;
+  --eb-accent: #AAB9F3;
+  --eb-sage: #A6D5AF;
+  --eb-claude: #E48D6F;
+  --eb-seal: #E2ACA2;
+  --eb-sun: #FFC257;
+  --eb-ground: #393C48;
+  --eb-shade: rgb(0 0 0 / 0.28);
 }
 
 // ---- Cards ----
@@ -4048,8 +4110,10 @@ $masthead-h: 720;
 }
 
 // The app's icon stands in the post's title block, at the right of the
-// title and its categories and as tall as the two together (a script in the
-// post's head.qmd moves it there). It was tried in three places under the
+// title and its categories, its tile's top level with the top of the
+// title's first line (the image's own transparent margin, 47 of 512, is
+// taken back by the small lift; a script in the post's head.qmd moves it
+// there). It was tried in three places under the
 // title block first, and none sat well: a float at the right, where the
 // first paragraph wrapped round it raggedly; the last thing in the
 // buttons' row, where it read as a fourth button; and centered over the
@@ -4062,7 +4126,7 @@ $masthead-h: 720;
   align-items: start;
 
   > .title, > .quarto-categories { grid-column: 1; }
-  > .emk-logo { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: -0.5rem -0.6rem -0.5rem 0; }
+  > .emk-logo { grid-column: 2; grid-row: 1 / span 2; align-self: start; margin: -0.15rem -0.6rem 0 0; }
 }
 // The icon is a link to the app's site. Under the pointer its color shifts
 // a little, a shade deeper, and nothing else: no edge, no change of size.
@@ -4273,6 +4337,11 @@ $masthead-h: 720;
 
 // A picture of the app: the image in a hairline, its caption under it.
 .emk-shot img { display: block; width: 100%; border: 1px solid var(--border); border-radius: 10px; }
+// The GIF comes in both appearances (the dark one drawn by the same
+// script in emaki.lol's dark values); the page shows the one that matches.
+// Both are lazy, so the hidden one is never fetched.
+.emk-shot img.emk-dark, body.quarto-dark .emk-shot img.emk-light { display: none; }
+body.quarto-dark .emk-shot img.emk-dark { display: block; }
 
 // A row of the app's parts, two to a row, as emaki.lol's landing page has
 // them. Each card is washed, faintly, in the part's own color, the one its
