@@ -2052,12 +2052,43 @@ html.rt-scrubbing * {
 // folder. The front matter names the light one, which is also what a link
 // preview shows; in the dark, wherever the site shows that image, the twin
 // takes its place. The path is from the site's root.
-$dark-banners: ("blog/banners/2026-11-16-emaki");
+$dark-banners: (
+  "blog/banners/2023-12-09-personal-website",
+  "blog/banners/2023-12-30-formr-instance",
+  "blog/banners/2024-01-30-how-to-do-research",
+  "blog/banners/2024-05-20-history-of-logit",
+  "blog/banners/2025-03-07-pull-repos",
+  "blog/banners/2025-04-12-github-action",
+  "blog/banners/2025-07-07-dynata-tutorial",
+  "blog/banners/2025-11-21-surveydown-version-1",
+  "blog/banners/2025-12-16-tidyviz",
+  "blog/banners/2025-12-23-urssi-winter-school",
+  "blog/banners/2026-03-26-agentic-engineering-1",
+  "blog/banners/2026-04-06-agentic-engineering-2",
+  "blog/banners/2026-04-09-agentic-engineering-3",
+  "blog/banners/2026-05-15-agentic-workflows",
+  "blog/banners/2026-06-24-agentic-skills",
+  "blog/banners/2026-11-16-emaki",
+  "research/banners/2023-network-science",
+  "research/banners/2023-solar-wind",
+  "research/banners/2024-sc-adoption",
+  "research/banners/2024-surveydown",
+  "research/banners/2025-sdstudio",
+  "research/banners/2025-smc-economy"
+);
 @each $banner in $dark-banners {
   body.quarto-dark img[src$="#{$banner}.png"] { content: url("/#{$banner}-dark.png"); }
 }
 
 // ---- Live banners ----
+// The blog and research banners are drawn live in the listings by
+// resources/banners/banner.js from their specs (resources/banners/specs.js),
+// the same drawing each PNG was shot from; their colors are in that script,
+// one source for the PNG and the page. Here only their place in a card,
+// rounded as the image was. The Emaki banner has its own drawing, below.
+.bn-live { display: block; border-radius: $border-radius; overflow: hidden; }
+.card-img-top > .bn-live { border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0; }
+
 // The Emaki post's banner is live in the blog listing: the listing page
 // loads blog/banners/2026-11-16-emaki.js, which puts the drawing behind the
 // PNG in the card in its place and winds its scroll with the pointer, as

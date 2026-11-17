@@ -10,6 +10,7 @@ project:
     - resources/images/
     - research/banners/
     - blog/banners/
+    - resources/banners/
     - resources/fonts/
 
 language:
