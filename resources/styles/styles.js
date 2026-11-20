@@ -548,6 +548,88 @@ var ASC_SECTIONS = /^\/(recipes|cocktails)\//;
   }
 })();
 
+// ---- Phone Menu ----
+// The hamburger's menu slides out from under the bar by `transform` (see
+// styles.scss, The open menu), and the header keeps its height while it
+// moves. The page moves with it here: the content slides down by the menu's
+// height, the same time and easing, also by `transform`, so no frame lays
+// the page out. At the motion's end the real layout is taken once: the body's
+// top padding is set to the header's new height (as Quarto's own observer
+// then sets it again, with the sidebars) and the slide is dropped in the same
+// task, so nothing jumps. Closing is the reverse: the padding goes back
+// first, the content starts from where it stood and slides up.
+(function () {
+  var menu = document.getElementById('navbarCollapse');
+  var header = document.getElementById('quarto-header');
+  var content = document.getElementById('quarto-content');
+  if (!menu || !header || !content || !content.animate) return;
+  var root = document.documentElement;
+  var slide = null;
+
+  function collapsed() {
+    var toggler = header.querySelector('.navbar-toggler');
+    return !!toggler && getComputedStyle(toggler).display !== 'none';
+  }
+  // The menu's own transition, so the page and the menu share one timing.
+  function timing() {
+    var cs = getComputedStyle(menu);
+    return {
+      duration: (parseFloat(cs.transitionDuration) || 0) * 1000,
+      easing: cs.transitionTimingFunction.split(/,(?![^(]*\))/)[0].trim() || 'ease'
+    };
+  }
+  function drop() { if (slide) { slide.cancel(); slide = null; } }
+  function offset(px) { document.body.style.paddingTop = px + 'px'; }
+
+  menu.addEventListener('show.bs.collapse', function (e) {
+    if (e.target !== menu || !collapsed()) return;
+    root.classList.add('menu-in-play');
+    // After Bootstrap's own synchronous steps, in the same task: the menu
+    // is laid out (hung from the bar) and can be measured.
+    queueMicrotask(function () {
+      var nav = menu.offsetParent;
+      if (!nav) return;
+      var h = menu.offsetTop + menu.offsetHeight - nav.offsetHeight;
+      var t = timing();
+      drop();
+      if (h > 0 && t.duration > 0) {
+        slide = content.animate(
+          [{ transform: 'none' }, { transform: 'translateY(' + h + 'px)' }],
+          { duration: t.duration, easing: t.easing, fill: 'forwards' }
+        );
+      }
+    });
+  });
+  menu.addEventListener('shown.bs.collapse', function (e) {
+    if (e.target !== menu) return;
+    offset(header.clientHeight);
+    drop();
+  });
+  menu.addEventListener('hide.bs.collapse', function (e) {
+    if (e.target !== menu || !collapsed()) return;
+    // Before Bootstrap takes the menu out of the flow: the header still has
+    // its open height.
+    var open = header.clientHeight;
+    queueMicrotask(function () {
+      var h = open - header.clientHeight;
+      var t = timing();
+      offset(header.clientHeight);
+      drop();
+      if (h > 0 && t.duration > 0) {
+        slide = content.animate(
+          [{ transform: 'translateY(' + h + 'px)' }, { transform: 'none' }],
+          { duration: t.duration, easing: t.easing }
+        );
+      }
+    });
+  });
+  menu.addEventListener('hidden.bs.collapse', function (e) {
+    if (e.target !== menu) return;
+    drop();
+    root.classList.remove('menu-in-play');
+  });
+})();
+
 // ---- Code Window Language Labels ----
 (function () {
   function initCodeWindows() {

@@ -2046,6 +2046,57 @@ html.rt-scrubbing * {
   }
 }
 
+// The card's layout follows the card's own width, not the window's (the
+// list is the container): beside a sidebar of categories the card is
+// narrow in a wide window. Quarto's own layout was three columns (date and
+// author, words, banner) by fixed shares, so at a middle width the date
+// broke over two lines, the categories stacked and the banner was a stamp;
+// below 768px it stacked, with the banner last and shrunk to its content,
+// so a live banner (a drawing with no size of its own) stood small.
+// - Narrow (under 576px): the words, then the banner at the full width of
+//   the card's inside, then one line, the date at the left and the author
+//   at the right. The banner is inset and rounded, between the words and
+//   that line, which sets the card apart from the research grid's (banner
+//   on top, edge to edge).
+// - Wide: the words at the left over that same line, which stands on the
+//   banner's foot, and the banner at the right, 240 to 280px wide: about
+//   as tall as the words beside it, so the words' column is full. A wider
+//   banner (40% of the card was tried) made the card as tall as the banner
+//   and left the words' column half empty. Below 576px a banner beside the words would be a stamp
+//   again; above it a stacked banner is too heavy for a list.
+// The selectors carry the list and `div.` to outweigh Quarto's own.
+.quarto-listing-default { container-type: inline-size; }
+
+.quarto-listing-default div.quarto-post {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "body" "thumb" "meta";
+  gap: 0.875rem;
+  padding: 1.125rem 1.125rem 0.875rem;
+  margin-bottom: 1rem;
+
+  .body { grid-area: body; min-width: 0; }
+  .listing-description { margin: 0.4rem 0 0; }
+  .listing-description p { margin: 0; line-height: 1.55; }
+
+  .thumbnail { grid-area: thumb; min-width: 0; }
+  .thumbnail img { display: block; width: 100%; margin-top: 0; }
+
+  .metadata { grid-area: meta; margin: 0; padding: 0; }
+  .metadata a { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .listing-date, .listing-author { white-space: nowrap; }
+}
+
+@container (width >= 576px) {
+  .quarto-listing-default div.quarto-post {
+    grid-template-columns: minmax(0, 1fr) clamp(240px, 30%, 280px);
+    grid-template-rows: 1fr auto;
+    grid-template-areas: "body thumb" "meta thumb";
+    gap: 0.75rem 1.75rem;
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  }
+}
+
 // ---- Banners with a dark twin ----
 // A banner drawn in code can be drawn in both appearances (`make-banner.sh
 // --dark`): `{name}.png` and `{name}-dark.png` side by side in the banners
@@ -3346,7 +3397,62 @@ $tool-glyphs: (
     margin-left: 4px !important;
   }
   .navbar-container > .navbar-collapse { order: 5 !important; } // nav links wrap below
+
+  // ---- The open menu: it slides out from under the bar ----
+  // Bootstrap opens a collapse by animating its `height` to its
+  // `scrollHeight`, and here that went wrong twice. Quarto gives the list
+  // `margin: -4px; padding: 4px`, so the scroll height is 4px more than the
+  // menu's own: the bar grew 4px too far, then snapped back. And the menu
+  // is in the bar's flow, so the fixed header grew with it, and Quarto
+  // watches the header's size: on every frame it set the body's top
+  // padding again, moved the sidebars and wrote a new style element, a
+  // layout and a style pass of the whole page per frame, which is what
+  // made the motion choppy.
+  // So while it moves (`.collapsing`) the menu is out of the flow, hung
+  // from the bar's foot in the frame's color, exactly where it stands when
+  // open: the header keeps its height for the whole motion. Its height is
+  // never animated: it keeps its own, and it moves by `transform` alone,
+  // which the compositor draws without a layout. It sits behind the bar
+  // (`z-index: -1` in the header's own stack), so it comes out from under
+  // it. Bootstrap marks the two directions on the button
+  // (`aria-expanded`) before the first frame: opening starts from the
+  // `@starting-style`, closing ends at the same place.
+  // At rest, open, it is in the flow again as Quarto made it, so the
+  // header has its full height and the page stands below the menu. The
+  // page's own move down and up with the menu is in styles.js (Phone
+  // Menu): the same distance, time and easing, by `transform`, with the
+  // real layout taken once at the motion's end.
+  .navbar-container > .navbar-collapse.collapsing {
+    position: absolute;
+    z-index: -1;
+    top: calc(100% - 0.3rem);        // where it stands in the flow
+    left: 0;
+    right: 0;
+    padding: 0 1.5rem 0.3rem;        // the navbar's 1rem and the container's half rem
+    background: var(--frame);
+    height: auto !important;         // over Bootstrap's inline height
+    overflow: visible;
+    transition: transform 240ms var(--ease);
+    will-change: transform;
+  }
+  // Closed, its foot is level with the bar's: it travels its height less
+  // the 0.3rem it stands behind the bar, which is the distance the page
+  // travels, so the two move as one.
+  .navbar-toggler[aria-expanded="false"] ~ .navbar-collapse.collapsing { transform: translateY(calc(-100% + 0.3rem)); }
+
+  @starting-style {
+    .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse.collapsing { transform: translateY(calc(-100% + 0.3rem)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar-container > .navbar-collapse.collapsing { transition: none; }
+  }
 }
+
+// While the menu is open or moving the browser must not hold the page in
+// place against the change of the body's top padding (scroll anchoring):
+// the page is meant to move down with the menu.
+html.menu-in-play, html.menu-in-play body { overflow-anchor: none; }
 
 // ---- Footer ----
 // The frame again: one line fixed at the window's foot on every page, as the
