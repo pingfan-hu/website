@@ -11,6 +11,8 @@
 // text inside a window is drawn as plain bars. And no line of keywords
 // under the title ("A · B · C"): the title and the picture say it.
 //
+// The paradigm (November 2026; the ph-image skill's hairline.md has it in full): read the whole post, say in one sentence what it says, and draw that with each thing as itself (a prompt with its command typed, a folder with its files, a monitor), never an icon in a box. The only words are the few that are the point, and none is under 44 on the canvas (a `tag` chip is 52), so all can be read in the listing. Agentic Skills, Agentic Workflows and the three Agentic Engineering banners are the models.
+//
 // A banner is a canvas, not a template: the title stands where the picture
 // wants it (`layout`).
 // - "left" (the default) and "right": the words beside a 3 x 3 stage.
@@ -44,7 +46,7 @@ window.HAIRLINE_SPECS = {
     dir: "blog", key: "accent",
     lead: "How to Make a", title: ["Personal", "Website"],
     items: [
-      { id: "site", k: "win", at: [0, 0], span: [3, 2], body: "page", url: "pingfan.org", key: true },
+      { id: "site", k: "win", at: [0, 0], span: [3, 2], body: "page", key: true },
       { id: "quarto", k: "tile", at: [0, 2], icon: "file-code", label: "Quarto" },
       { id: "github", k: "tile", at: [1, 2], icon: "brand-github", label: "GitHub" },
       { id: "netlify", k: "tile", at: [2, 2], icon: "world-upload", label: "Netlify" }
@@ -85,7 +87,7 @@ window.HAIRLINE_SPECS = {
     dir: "blog", key: "sage",
     lead: "Shortcut to", title: ["Pull Repos"],
     items: [
-      { id: "keys", k: "tile", size: "l", at: [0, 0.875], icon: "command", label: "Shortcut", key: true },
+      { id: "keys", k: "tile", size: "l", at: [0, 0.875], icon: "command", key: true },
       { id: "repos", k: "fig", fig: "repos", at: [1, 0.25], span: [2, 2.5] }
     ],
     links: [["keys", "repos"]]
@@ -108,25 +110,28 @@ window.HAIRLINE_SPECS = {
     lead: "Embedding", title: ["Dynata", "Links"],
     items: [
       { id: "panel", k: "fig", fig: "people", at: [0, 0.6], span: [1, 1.8], label: "Dynata" },
-      { id: "start", k: "tile", at: [1, 0.6], icon: "link", label: "Start", key: true },
-      { id: "end", k: "tile", at: [1, 1.5], icon: "link", label: "End" },
+      { id: "start", k: "tile", at: [1, 0.6], icon: "link", key: true },
+      { id: "end", k: "tile", at: [1, 1.5], icon: "link" },
       { id: "survey", k: "win", at: [2, 0.6], span: [1, 1.8], body: "form", label: "Survey" }
     ],
     links: [["panel", "start"], ["start", "survey"], ["survey", "end"], ["end", "panel"]]
   },
-  // The package's mark, for a release.
+  // The stable release: the package's mark over its name and version,
+  // and beside it what it is for: the designer only writes text, and it is
+  // rendered as a survey with set type, a picture, a map, choices.
   "2025-11-21-surveydown-version-1": {
-    dir: "blog", key: "slate", layout: "right",
-    title: ["surveydown"], tag: "v1.0.0",
+    dir: "blog", key: "slate", layout: "scene", words: "nw", inset: [0, 46], room: 490,
+    mark: { fig: "hex", size: 300 }, title: ["surveydown"], lang: "r", tag: "v1.0.0",
     items: [
-      { id: "rays", k: "fig", fig: "burst", at: [0.1, 0.1], span: [2.8, 2.8], depth: 0.3 },
-      { id: "mark", k: "fig", fig: "hex", at: [0.55, 0.45], span: [1.9, 2.1], key: true }
-    ]
+      { id: "qmd", k: "win", file: true, at: [2.558, 0.4615], span: [1.404, 2.385], body: "qmd", head: "# Hello", label: "survey.qmd" },
+      { id: "survey", k: "win", at: [4.106, 0.173], span: [1.933, 2.654], body: "survey", title: "Hello", progress: 0.4, key: true }
+    ],
+    links: [["qmd", "survey", "flow"]]
   },
   // Messy survey data, tidied, then drawn.
   "2025-12-16-tidyviz": {
     dir: "blog", key: "sage", layout: "top",
-    title: ["tidyviz"],
+    mark: { fig: "python" }, title: ["tidyviz"],
     items: [
       { id: "csv", k: "win", at: [0.15, 0], span: [1.8, 2.4], body: "table", messy: true, label: "survey.csv" },
       { id: "tidy", k: "win", at: [2.1, 0], span: [1.8, 2.4], body: "table", badge: true, label: "tv.tidy" },
@@ -137,66 +142,78 @@ window.HAIRLINE_SPECS = {
   // A staircase from code to release.
   "2025-12-23-urssi-winter-school": {
     dir: "blog", key: "slate", layout: "scene", words: "nw",
-    lead: "From Bootcamp to", title: ["Better Code"], tag: "URSSI Winter School 2025",
+    lead: "From Bootcamp to", title: ["Better Code"], tag: "URSSI 2025",
     items: [
       { id: "stairs", k: "fig", fig: "stairs", tile: 176, at: [0.9, 0.5], span: [5.1, 2.5], z: 0 },
-      { id: "code", k: "tile", size: "l", at: [1.094, 1.702], icon: "folder", label: "Code", depth: 0.6 },
-      { id: "git", k: "tile", size: "l", at: [2.33, 1.321], icon: "git-branch", label: "Git", depth: 0.6 },
-      { id: "test", k: "tile", size: "l", at: [3.565, 0.939], icon: "circle-check", label: "Test", depth: 0.6 },
-      { id: "ship", k: "tile", size: "l", at: [4.801, 0.558], icon: "rocket", label: "Ship", key: true }
+      { id: "code", k: "tile", size: "l", at: [1.095, 1.663], icon: "folder", label: "Code", depth: 0.6 },
+      { id: "git", k: "tile", size: "l", at: [2.332, 1.32], icon: "git-branch", label: "Git", depth: 0.6 },
+      { id: "test", k: "tile", size: "l", at: [3.568, 0.977], icon: "circle-check", label: "Test", depth: 0.6 },
+      { id: "ship", k: "tile", size: "l", at: [4.805, 0.634], icon: "rocket", label: "Ship", key: true }
     ]
   },
-  // A prompt, the agent, the project it works in.
+  // An agent, unlike an assistant, works in the project: it reads and
+  // writes what is there, CLAUDE.md first.
   "2026-03-26-agentic-engineering-1": {
     dir: "blog", key: "accent", layout: "top",
     title: ["Agentic", "Engineering"], tag: "Part 1",
     items: [
-      { id: "ask", k: "tile", at: [0.35, 0.71], span: [1.5, 1.69], icon: "message-circle", label: "Prompt" },
-      { id: "agent", k: "win", at: [2.1, 0], span: [1.8, 2.4], body: "term", spark: true, label: "Agent", key: true },
-      { id: "project", k: "tile", at: [4.15, 0.71], span: [1.5, 1.69], icon: "folder", label: "Project" }
+      { id: "agent", k: "win", at: [0.115, 0.12], span: [2.9, 2.28], body: "session", cmd: "claude", key: true },
+      { id: "project", k: "fig", fig: "folder", sheet: "CLAUDE.md", name: "project", at: [3.39, 0.12], span: [2.45, 2.28] }
     ],
-    links: [["ask", "agent"], ["agent", "project"]]
+    links: [["agent", "project", "both"]]
   },
-  // A workflow put together from its pieces: context, connectors, skills,
-  // agents.
+  // The agent holds the rest: what it knows, what it can do, how it works.
   "2026-04-06-agentic-engineering-2": {
-    dir: "blog", key: "ochre",
+    dir: "blog", key: "ochre", layout: "top",
     title: ["Agentic", "Engineering"], tag: "Part 2",
     items: [
-      { id: "context", k: "fig", fig: "piece", at: [0.5, 0.6], tabs: [0, 1, -1, 0], icon: "file-text" },
-      { id: "mcp", k: "fig", fig: "piece", at: [0.5, 1.6], tabs: [1, 1, 0, 0], icon: "plug" },
-      { id: "agents", k: "fig", fig: "piece", at: [1.5, 1.6], tabs: [-1, 0, 0, -1], icon: "robot" },
-      { id: "skills", k: "fig", fig: "piece", at: [1.75, 0.3], tabs: [0, 0, 1, -1], icon: "wand", key: true }
+      { id: "agent", k: "win", at: [0, 0.1], span: [6, 2.3], body: "host", title: "Agent", key: true, depth: 0.4 },
+      { id: "context", k: "fig", fig: "module", of: "sheet", name: "Context", at: [0.125, 0.827], span: [1.942, 1.413], depth: 0.85 },
+      { id: "can", k: "fig", fig: "module", of: "plug", name: "Capabilities", at: [2.029, 0.827], span: [1.942, 1.413], depth: 0.85 },
+      { id: "does", k: "fig", fig: "module", of: "wand", name: "Behaviors", at: [3.933, 0.827], span: [1.942, 1.413], depth: 0.85 }
     ]
   },
-  // The agent, and the software and extensions around it.
+  // The tools on the wall, four to a row: the four apps, and the three
+  // kinds of extension, with a place left for the next.
   "2026-04-09-agentic-engineering-3": {
-    dir: "blog", key: "sage",
+    dir: "blog", key: "sage", layout: "top",
     title: ["Agentic", "Engineering"], tag: "Part 3",
     items: [
-      { id: "ring", k: "fig", fig: "orbit", at: [0, 0], span: [3, 3], depth: 0.4, icons: ["notebook", "microphone", "app-window", "puzzle", "plug", "wand"] },
-      { id: "agent", k: "tile", size: "l", at: [1, 0.875], icon: "terminal-2", key: true }
+      { id: "wall", k: "fig", fig: "pegboard", rows: ["Software", "Extensions"], at: [0, 0.12], span: [6, 2.28], depth: 0.3 },
+      { id: "notes", k: "fig", fig: "notebook", peg: true, at: [1.75, 0.358], span: [0.875, 0.875], depth: 0.3 },
+      { id: "voice", k: "fig", fig: "mic", peg: true, at: [2.817, 0.358], span: [0.875, 0.875], depth: 0.3 },
+      { id: "ide", k: "win", body: "code", peg: true, at: [3.885, 0.358], span: [0.875, 0.875], depth: 0.3 },
+      { id: "term", k: "win", body: "term", spark: true, peg: true, at: [4.952, 0.358], span: [0.875, 0.875], key: true, depth: 0.3 },
+      { id: "plugin", k: "fig", fig: "piece", peg: true, at: [1.858, 1.498], span: [0.66, 0.66], tabs: [0, 1, -1, 0], depth: 0.3 },
+      { id: "mcp", k: "fig", fig: "plug", peg: true, drop: 0.22, at: [2.817, 1.42], span: [0.875, 0.875], depth: 0.3 },
+      { id: "skill", k: "fig", fig: "wand", tilt: 0, peg: true, drop: 0.14, at: [3.885, 1.42], span: [0.875, 0.875], depth: 0.3 },
+      { id: "next", k: "fig", fig: "slot", at: [4.952, 1.42], span: [0.875, 0.875], depth: 0.3 }
     ]
   },
-  // The post's three parts, as a path.
+  // A day at the desk: what is said goes to the agent, a skill does the
+  // work, and a hook makes the page again by itself.
   "2026-05-15-agentic-workflows": {
-    dir: "blog", key: "slate", layout: "right",
+    dir: "blog", key: "slate", layout: "scene", words: "nw", room: 545,
     title: ["Agentic", "Workflows"],
     items: [
-      { id: "skills", k: "win", at: [0, 0], span: [1.6, 0.92], body: "mark", icon: "wand", name: "Skills" },
-      { id: "hooks", k: "win", at: [1.4, 1.04], span: [1.6, 0.92], body: "mark", icon: "webhook", name: "Hooks", key: true },
-      { id: "apps", k: "win", at: [0, 2.08], span: [1.6, 0.92], body: "mark", icon: "apps", name: "Software" }
+      { id: "desk", k: "fig", fig: "ground", plain: true, at: [0, 2.8], span: [6, 0.2] },
+      { id: "mic", k: "fig", fig: "mic", at: [0.25, 1.5], span: [1.1, 1.5] },
+      { id: "voice", k: "fig", fig: "wave", at: [1.45, 1.561], span: [1.3, 0.83] },
+      { id: "screen", k: "fig", fig: "monitor", at: [2.7, 1], span: [3.3, 2], key: true, depth: 0.6 },
+      { id: "skills", k: "chip", at: [2.885, 0.3], icon: "wand", name: "Skills", min: 6 },
+      { id: "hooks", k: "chip", at: [4.37, 0.3], icon: "webhook", name: "Hooks", min: 6 }
     ],
-    links: [["skills", "hooks", "plain"], ["hooks", "apps", "plain"]]
+    links: [["skills", "screen", "dots", "left"], ["hooks", "screen", "dots", "right"]]
   },
-  // A command calls a skill, which does the work.
+  // A command calls a skill, a folder of instructions, scripts and
+  // templates, and what comes out is of one make each time.
   "2026-06-24-agentic-skills": {
     dir: "blog", key: "mauve", layout: "top",
     title: ["Agentic", "Skills"],
     items: [
-      { id: "call", k: "tile", at: [0.35, 0.71], span: [1.5, 1.69], icon: "slash", label: "Command" },
-      { id: "skill", k: "win", at: [2.1, 0], span: [1.8, 2.4], body: "mark", icon: "wand", label: "SKILL.md", key: true },
-      { id: "work", k: "tile", at: [4.15, 0.71], span: [1.5, 1.69], icon: "photo", label: "Result" }
+      { id: "call", k: "win", at: [0, 0.65], span: [2.05, 1.1], body: "prompt", cmd: "/ph-image", hot: true },
+      { id: "skill", k: "fig", fig: "folder", sheet: "SKILL.md", name: "ph-image", icon: "wand", at: [2.159, 0], span: [2.3, 2.4], key: true },
+      { id: "work", k: "fig", fig: "set", at: [4.567, 0.1], span: [1.433, 2.2] }
     ],
     links: [["call", "skill"], ["skill", "work"]]
   },
@@ -236,8 +253,8 @@ window.HAIRLINE_SPECS = {
       { id: "land", k: "fig", fig: "ground", at: [0, 2.6], span: [6, 0.2] },
       { id: "car", k: "fig", fig: "car", at: [2, 1.35], span: [3.3, 1.45] },
       { id: "post", k: "fig", fig: "charger", at: [5.2, 1.1], span: [0.8, 1.7], key: true, depth: 0.6 },
-      { id: "flex", k: "chip", at: [4.6, 0.1], icon: "gauge", name: "Flexibility" },
-      { id: "pay", k: "chip", at: [3.43, 0.5], icon: "credit-card", name: "Payment" }
+      { id: "flex", k: "chip", at: [4, 0.1], icon: "gauge", name: "Flexibility" },
+      { id: "pay", k: "chip", at: [2.69, 0.62], icon: "credit-card", name: "Payment" }
     ],
     links: [["car", "post", "cable"], ["flex", "post", "dots"], ["pay", "car", "dots"]]
   },
@@ -257,9 +274,9 @@ window.HAIRLINE_SPECS = {
     dir: "research", key: "accent", layout: "top",
     mark: { fig: "hex", inner: "studio" }, title: ["sdstudio"],
     items: [
-      { id: "build", k: "win", at: [0.4, 0], span: [2.3, 1.9], body: "edit", name: "Build", z: 1 },
-      { id: "preview", k: "win", at: [1.85, 0.25], span: [2.3, 1.9], body: "form", options: [null, null, null, null], name: "Preview", key: true, z: 2 },
-      { id: "responses", k: "win", at: [3.3, 0.5], span: [2.3, 1.9], body: "table", name: "Responses", z: 3 }
+      { id: "build", k: "win", at: [0.4, 0], span: [2.3, 1.9], body: "edit", z: 1 },
+      { id: "preview", k: "win", at: [1.85, 0.25], span: [2.3, 1.9], body: "form", options: [null, null, null, null], key: true, z: 2 },
+      { id: "responses", k: "win", at: [3.3, 0.5], span: [2.3, 1.9], body: "table", z: 3 }
     ]
   },
   // The evening peak shaved and the charging moved into the night; under
