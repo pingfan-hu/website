@@ -2082,9 +2082,28 @@ html.rt-scrubbing * {
   .thumbnail { grid-area: thumb; min-width: 0; }
   .thumbnail img { display: block; width: 100%; margin-top: 0; }
 
-  .metadata { grid-area: meta; margin: 0; padding: 0; }
-  .metadata a { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-  .listing-date, .listing-author { white-space: nowrap; }
+  // Words never leave the card: a long word in the title or description
+  // breaks rather than run past the edge.
+  .listing-title, .listing-description { overflow-wrap: anywhere; }
+
+  // The foot: the date at the left, the authors at the right. One author
+  // stands on the date's line. Several take the room the date leaves as a
+  // column set to the right, and break only between names (styles.js wraps
+  // each name), so a name is never cut and the line never runs past the
+  // card's edge, as "Pingfan Hu, John Paul Helveston" did on a phone. Where
+  // even the longest name does not fit beside the date, the authors go
+  // under it, still at the right.
+  .metadata { grid-area: meta; min-width: 0; margin: 0; padding: 0; }
+  .metadata a { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.125rem 0.75rem; }
+  .listing-date { white-space: nowrap; }
+  .listing-author { flex: 1 1 0; min-width: min-content; max-width: 100%; text-align: right; line-height: 1.5; overflow-wrap: break-word; }
+  .listing-author-name { white-space: nowrap; }
+}
+
+// A list too narrow for a whole name on a line (under a 240px phone): the
+// name breaks rather than run past the card.
+@container (width < 240px) {
+  .quarto-listing-default div.quarto-post .listing-author-name { white-space: normal; }
 }
 
 @container (width >= 576px) {

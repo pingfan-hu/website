@@ -43,6 +43,33 @@
   }
 })();
 
+// ---- Listing Authors ----
+// A blog card's foot names its authors in one run, "A, B". Each name is put
+// in a box of its own (with its comma), so where the run takes two lines it
+// breaks between names and never inside one (styles.scss, Blog Listing Cards).
+(function () {
+  function init() {
+    document.querySelectorAll('.quarto-post .listing-author').forEach(function (el) {
+      if (el.children.length) return;
+      var names = el.textContent.trim().split(/,\s*/).filter(Boolean);
+      if (names.length < 2) return;
+      el.textContent = '';
+      names.forEach(function (name, i) {
+        var box = document.createElement('span');
+        box.className = 'listing-author-name';
+        box.textContent = name + (i < names.length - 1 ? ',' : '');
+        el.appendChild(box);
+        if (i < names.length - 1) el.appendChild(document.createTextNode(' '));
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
 // ---- Works Category Locator ----
 // Scoped to the Works page (only runs when `.pres-filter` exists).
 // Acts like a table of contents: clicking a category smooth-scrolls to its
