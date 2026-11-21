@@ -41,17 +41,18 @@
 // skill's hairline engine); make-banners.sh shoots the PNGs.
 
 window.HAIRLINE_SPECS = {
-  // The site, and the three tools that make it, in order.
+  // The site is text in a Quarto project, pushed to a repo on GitHub,
+  // which Netlify deploys as the site.
   "2023-12-09-personal-website": {
-    dir: "blog", key: "accent",
+    dir: "blog", key: "accent", layout: "top",
     lead: "How to Make a", title: ["Personal", "Website"],
     items: [
-      { id: "site", k: "win", at: [0, 0], span: [3, 2], body: "page", key: true },
-      { id: "quarto", k: "tile", at: [0, 2], icon: "file-code", label: "Quarto" },
-      { id: "github", k: "tile", at: [1, 2], icon: "brand-github", label: "GitHub" },
-      { id: "netlify", k: "tile", at: [2, 2], icon: "world-upload", label: "Netlify" }
+      { id: "qmd", k: "win", file: true, at: [0, 0.3], span: [1.356, 2.05], body: "qmd", head: "# Hello", label: "index.qmd" },
+      { id: "repo", k: "fig", fig: "folder", icon: "brand-github", at: [1.452, 0.3], span: [1.356, 2.05], label: "GitHub" },
+      { id: "host", k: "fig", fig: "cloud", at: [2.904, 0.3], span: [1.26, 2.05], label: "Netlify" },
+      { id: "site", k: "win", at: [4.26, 0.3], span: [1.74, 2.05], body: "site", label: "pingfan.org", key: true }
     ],
-    links: [["quarto", "github"], ["github", "netlify"], ["netlify", "site"]]
+    links: [["qmd", "repo", "flow"], ["repo", "host", "flow"], ["host", "site", "flow"]]
   },
   // A Docker container, lifted to a server in the cloud.
   "2023-12-30-formr-instance": {
@@ -82,39 +83,40 @@ window.HAIRLINE_SPECS = {
       { id: "curve", k: "fig", fig: "scurve", at: [0, 0], span: [6, 3], key: true }
     ]
   },
-  // One shortcut pulls every repository.
+  // One key runs `git pull` in every repo on the machine.
   "2025-03-07-pull-repos": {
-    dir: "blog", key: "sage",
-    lead: "Shortcut to", title: ["Pull Repos"],
+    dir: "blog", key: "sage", layout: "top",
+    lead: "Shortcut to", title: ["Pull", "Repos"],
     items: [
-      { id: "keys", k: "tile", size: "l", at: [0, 0.875], icon: "command", key: true },
-      { id: "repos", k: "fig", fig: "repos", at: [1, 0.25], span: [2, 2.5] }
+      { id: "key", k: "fig", fig: "keycap", at: [0, 0.75], span: [1.3, 1.3], key: true },
+      { id: "run", k: "win", at: [1.572, 0.85], span: [1.95, 1.1], body: "prompt", cmd: "git pull" },
+      { id: "repos", k: "fig", fig: "pulled", at: [3.798, 0.45], span: [2.2, 1.9] }
     ],
-    links: [["keys", "repos"]]
+    links: [["key", "run", "flow"], ["run", "repos", "flow"]]
   },
-  // A push, the action, the built website.
+  // A push; GitHub builds the site by the workflow file; Netlify hosts it.
   "2025-04-12-github-action": {
     dir: "blog", key: "ochre", layout: "top",
     title: ["GitHub", "Action"],
     items: [
-      { id: "push", k: "tile", at: [0.35, 0.71], span: [1.5, 1.69], icon: "brand-git", label: "git push" },
-      { id: "action", k: "fig", fig: "gear", icon: "bolt", at: [2.25, 0.71], span: [1.5, 1.69], label: "Action", key: true },
-      { id: "site", k: "win", at: [4.05, 0], span: [1.8, 2.4], body: "site", label: "Website" }
+      { id: "push", k: "win", at: [0, 0.5], span: [1.95, 1.1], body: "prompt", cmd: "git push" },
+      { id: "build", k: "fig", fig: "gear", at: [2.226, 0.2], span: [1.5, 2.0], icon: "bolt", label: "build.yml", key: true },
+      { id: "site", k: "win", at: [4.0, 0.2], span: [2.0, 2.0], body: "site", label: "Netlify" }
     ],
-    links: [["push", "action"], ["action", "site"]]
+    links: [["push", "build", "flow"], ["build", "site", "flow"]]
   },
-  // A respondent's round trip: out of Dynata's panel by the starting link,
-  // through the survey, back by the ending link.
+  // Dynata sends its respondents to the survey on a starting link, which
+  // the survey checks; the survey sends them back on an ending link.
   "2025-07-07-dynata-tutorial": {
-    dir: "blog", key: "rose",
+    dir: "blog", key: "rose", layout: "top",
     lead: "Embedding", title: ["Dynata", "Links"],
     items: [
-      { id: "panel", k: "fig", fig: "people", at: [0, 0.6], span: [1, 1.8], label: "Dynata" },
-      { id: "start", k: "tile", at: [1, 0.6], icon: "link", key: true },
-      { id: "end", k: "tile", at: [1, 1.5], icon: "link" },
-      { id: "survey", k: "win", at: [2, 0.6], span: [1, 1.8], body: "form", label: "Survey" }
+      { id: "panel", k: "fig", fig: "people", at: [0.25, 0.35], span: [1.2, 2.05], label: "Dynata" },
+      { id: "start", k: "fig", fig: "url", parts: ["psid", "_k", "_s"], ok: true, at: [1.69, 0.4], span: [2.46, 0.7], key: true, depth: 0.6 },
+      { id: "end", k: "fig", fig: "url", parts: ["rst=1"], at: [1.69, 1.25], span: [2.46, 0.7] },
+      { id: "survey", k: "win", at: [4.39, 0.35], span: [1.36, 1.74], body: "form", cards: true }
     ],
-    links: [["panel", "start"], ["start", "survey"], ["survey", "end"], ["end", "panel"]]
+    links: [["panel", "start", "flow"], ["start", "survey", "flow"], ["survey", "end", "flow"], ["end", "panel", "flow"]]
   },
   // The stable release: the package's mark over its name and version,
   // and beside it what it is for: the designer only writes text, and it is
@@ -139,16 +141,16 @@ window.HAIRLINE_SPECS = {
     ],
     links: [["csv", "tidy"], ["tidy", "viz"]]
   },
-  // A staircase from code to release.
+  // The fundamentals as a climb: code, its tests, its history, its release.
   "2025-12-23-urssi-winter-school": {
     dir: "blog", key: "slate", layout: "scene", words: "nw",
-    lead: "From Bootcamp to", title: ["Better Code"], tag: "URSSI 2025",
+    lead: "From Bootcamp to", title: ["Better Code"], lang: "python", tag: "URSSI 2025",
     items: [
       { id: "stairs", k: "fig", fig: "stairs", tile: 176, at: [0.9, 0.5], span: [5.1, 2.5], z: 0 },
-      { id: "code", k: "tile", size: "l", at: [1.095, 1.663], icon: "folder", label: "Code", depth: 0.6 },
-      { id: "git", k: "tile", size: "l", at: [2.332, 1.32], icon: "git-branch", label: "Git", depth: 0.6 },
-      { id: "test", k: "tile", size: "l", at: [3.568, 0.977], icon: "circle-check", label: "Test", depth: 0.6 },
-      { id: "ship", k: "tile", size: "l", at: [4.805, 0.634], icon: "rocket", label: "Ship", key: true }
+      { id: "code", k: "fig", fig: "sheet", at: [1.158, 1.76], span: [0.875, 1.183], label: "Code", depth: 0.6 },
+      { id: "test", k: "fig", fig: "notebook", at: [2.394, 1.417], span: [0.875, 1.183], label: "Test", depth: 0.6 },
+      { id: "git", k: "fig", fig: "branch", at: [3.631, 1.074], span: [0.875, 1.183], label: "Git", depth: 0.6 },
+      { id: "ship", k: "fig", fig: "cloud", at: [4.72, 0.731], span: [1.17, 1.183], label: "Ship", key: true, depth: 0.6 }
     ]
   },
   // An agent, unlike an assistant, works in the project: it reads and
@@ -218,19 +220,22 @@ window.HAIRLINE_SPECS = {
     links: [["call", "skill"], ["skill", "work"]]
   },
 
-  // Three transport networks over the same places, one layer each.
+  // Four transport networks over the same places, one layer each.
   "2023-network-science": {
-    dir: "research", key: "accent",
+    dir: "research", key: "accent", room: 500,
     lead: "Multi-layer", title: ["Network", "Science"],
     items: [
-      { id: "air", k: "layer", at: [0, 0.05], label: "Air", key: true, depth: 1,
+      { id: "air", k: "layer", at: [0, 0], dx: -70, label: "Airline", key: true, depth: 1,
         nodes: [[0.2, 0.5], [0.5, 0.25], [0.8, 0.6], [0.36, 0.82], [0.66, 0.86]], edges: [[1, 0], [1, 2], [1, 3], [1, 4], [0, 3], [2, 4]] },
-      { id: "rail", k: "layer", at: [0, 0.95], label: "Rail", depth: 0.6,
+      { id: "sea", k: "layer", at: [0, 0.75], dx: -70, label: "Marine", depth: 0.75,
+        nodes: [[0.2, 0.5], [0.5, 0.25], [0.8, 0.6], [0.44, 0.8], [0.7, 0.9]], edges: [[0, 3], [3, 4], [4, 2], [1, 2]] },
+      { id: "rail", k: "layer", at: [0, 1.5], dx: -70, label: "Rail", depth: 0.5,
         nodes: [[0.2, 0.5], [0.5, 0.25], [0.8, 0.6], [0.35, 0.2], [0.62, 0.78], [0.3, 0.82]], edges: [[0, 3], [3, 1], [1, 2], [1, 4], [4, 2], [0, 5], [5, 4]] },
-      { id: "road", k: "layer", at: [0, 1.85], label: "Road", depth: 0.25,
-        nodes: [[0.2, 0.5], [0.5, 0.25], [0.8, 0.6], [0.32, 0.2], [0.68, 0.2], [0.36, 0.8], [0.64, 0.86], [0.5, 0.56]], edges: [[0, 3], [3, 1], [1, 4], [4, 2], [0, 5], [5, 6], [6, 2], [3, 7], [7, 5], [4, 7], [7, 6], [1, 7]] }
+      { id: "road", k: "layer", at: [0, 2.25], dx: -70, label: "Road", depth: 0.25,
+        nodes: [[0.2, 0.5], [0.5, 0.25], [0.8, 0.6], [0.32, 0.2], [0.68, 0.2], [0.36, 0.8], [0.64, 0.86], [0.5, 0.56]], edges: [[0, 3], [3, 1], [1, 4], [4, 2], [0, 5], [5, 6], [6, 2], [3, 7], [7, 5], [4, 7], [7, 6], [7, 1]] }
     ],
-    links: [["air", "rail", "drop", [0.2, 0.5]], ["air", "rail", "drop", [0.5, 0.25]], ["air", "rail", "drop", [0.8, 0.6]],
+    links: [["air", "sea", "drop", [0.2, 0.5]], ["air", "sea", "drop", [0.5, 0.25]], ["air", "sea", "drop", [0.8, 0.6]],
+      ["sea", "rail", "drop", [0.2, 0.5]], ["sea", "rail", "drop", [0.5, 0.25]], ["sea", "rail", "drop", [0.8, 0.6]],
       ["rail", "road", "drop", [0.2, 0.5]], ["rail", "road", "drop", [0.5, 0.25]], ["rail", "road", "drop", [0.8, 0.6]]]
   },
   // A wind turbine and a solar panel, and their rise.
@@ -245,38 +250,41 @@ window.HAIRLINE_SPECS = {
       { id: "land", k: "fig", fig: "ground", at: [0, 2.6], span: [6, 0.2] }
     ]
   },
-  // An electric car at its charger, and what its owner weighs.
+  // A survey of owners: an electric car at its charger, and the question
+  // its owner is asked, more money against more of the battery kept.
   "2024-sc-adoption": {
     dir: "research", key: "sage", layout: "scene", words: "nw",
     lead: "Smart Charging", title: ["Adoption"],
     items: [
       { id: "land", k: "fig", fig: "ground", at: [0, 2.6], span: [6, 0.2] },
-      { id: "car", k: "fig", fig: "car", at: [2, 1.35], span: [3.3, 1.45] },
-      { id: "post", k: "fig", fig: "charger", at: [5.2, 1.1], span: [0.8, 1.7], key: true, depth: 0.6 },
-      { id: "flex", k: "chip", at: [4, 0.1], icon: "gauge", name: "Flexibility" },
-      { id: "pay", k: "chip", at: [2.69, 0.62], icon: "credit-card", name: "Payment" }
+      { id: "car", k: "fig", fig: "car", at: [2.3, 1.75], span: [2.7, 1.05] },
+      { id: "post", k: "fig", fig: "charger", at: [5.2, 1.5], span: [0.8, 1.3] },
+      { id: "ask", k: "win", at: [2.85, 0], span: [3.15, 1.3], body: "conjoint", a: "$5", b: "$20", key: true, depth: 0.8 }
     ],
-    links: [["car", "post", "cable"], ["flex", "post", "dots"], ["pay", "car", "dots"]]
+    links: [["car", "post", "cable"], ["ask", "car", "dots"]]
   },
-  // The survey's file, the survey, the database.
+  // The whole platform: the text the designer writes, the survey it is
+  // rendered as, and the database the answers go to.
   "2024-surveydown": {
     dir: "research", key: "slate", layout: "top",
-    mark: { fig: "hex" }, title: ["surveydown"],
+    mark: { fig: "hex" }, title: ["surveydown"], lang: "r",
     items: [
-      { id: "qmd", k: "win", at: [0.15, 0], span: [1.8, 2.4], body: "code", label: "survey.qmd" },
-      { id: "survey", k: "win", at: [2.2, 0], span: [1.8, 2.4], body: "form", options: [null, null, null, null], label: "Survey", key: true },
-      { id: "db", k: "fig", fig: "db", at: [4.3, 0], span: [1.47, 2.4], label: "PostgreSQL" }
+      { id: "qmd", k: "win", file: true, at: [0, 0.2], span: [1.596, 2.05], body: "qmd", head: "# Hello", label: "survey.qmd" },
+      { id: "survey", k: "win", at: [1.865, 0], span: [2.365, 2.4], body: "survey", title: "Hello", key: true },
+      { id: "db", k: "fig", fig: "db", at: [4.5, 0.2], span: [1.5, 2.05], label: "PostgreSQL" }
     ],
-    links: [["qmd", "survey"], ["survey", "db"]]
+    links: [["qmd", "survey", "flow"], ["survey", "db", "flow"]]
   },
-  // The studio's three tabs, one over the next.
+  // The studio is one app with three tabs: build the survey from blocks,
+  // preview it as rendered, read the responses.
   "2025-sdstudio": {
     dir: "research", key: "accent", layout: "top",
-    mark: { fig: "hex", inner: "studio" }, title: ["sdstudio"],
+    mark: { fig: "hex", inner: "studio" }, title: ["sdstudio"], lang: "r",
     items: [
-      { id: "build", k: "win", at: [0.4, 0], span: [2.3, 1.9], body: "edit", z: 1 },
-      { id: "preview", k: "win", at: [1.85, 0.25], span: [2.3, 1.9], body: "form", options: [null, null, null, null], key: true, z: 2 },
-      { id: "responses", k: "win", at: [3.3, 0.5], span: [2.3, 1.9], body: "table", z: 3 }
+      { id: "app", k: "win", at: [0, 0.1], span: [6, 2.3], body: "host", key: true, depth: 0.4 },
+      { id: "build", k: "fig", fig: "module", of: "blocks", name: "Build", at: [0.125, 0.55], span: [1.942, 1.7], depth: 0.85 },
+      { id: "preview", k: "fig", fig: "module", of: "preview", name: "Preview", at: [2.029, 0.55], span: [1.942, 1.7], depth: 0.85 },
+      { id: "responses", k: "fig", fig: "module", of: "grid", name: "Responses", at: [3.933, 0.55], span: [1.942, 1.7], depth: 0.85 }
     ]
   },
   // The evening peak shaved and the charging moved into the night; under

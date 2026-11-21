@@ -1,9 +1,10 @@
 ---
 title: "Announcing surveydown v1.0.0!"
 image: "/blog/banners/2025-11-21-surveydown-version-1.png"
+# blog/_metadata.yml already gives every post the author Pingfan Hu, and
+# Quarto adds a post's own list to it, so only the co-author is named here.
 author:
   - name: John Paul Helveston
-  - name: Pingfan Hu
 description: "A stable release of `surveydown` with experience improvements to YAML, navigation, and question creation."
 date: '2025-11-21'
 categories: [Software, Survey]
